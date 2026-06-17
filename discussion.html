@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আলোচনা ও ফোরাম— ইমার ঠার</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
+
+  nav {
+    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100;
+  }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; text-decoration: none; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; }
+  .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+  .forum-layout { max-width: 900px; margin: 3rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 240px; gap: 30px; }
+  .forum-header { grid-column: span 2; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  .page-title { font-size: 28px; font-weight: 800; color: #0f172a; }
+  .new-topic-btn { background: #10b981; color: white; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .new-topic-btn:hover { background: #059669; }
+
+  /* Threads */
+  .threads-list { display: flex; flex-direction: column; gap: 16px; }
+  .thread-card {
+    background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem;
+    display: flex; gap: 16px; align-items: center; text-decoration: none; color: inherit; transition: border 0.2s;
+  }
+  .thread-card:hover { border-color: #10b981; }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #475569; font-size: 14px; flex-shrink: 0; }
+  .thread-main { flex: 1; }
+  .thread-title { font-size: 15px; font-weight: 600; color: #0f172a; margin-bottom: 4px; }
+  .thread-meta { font-size: 12px; color: #94a3b8; display: flex; gap: 12px; }
+  
+  .thread-stats { display: flex; gap: 16px; font-size: 13px; color: #64748b; font-weight: 500; text-align: center; }
+  .stat-unit span { display: block; font-size: 15px; font-weight: 700; color: #0f172a; }
+
+  /* Sidebar Guidelines */
+  .sidebar-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; }
+  .sidebar-box h3 { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .sidebar-box ul { padding-left: 18px; font-size: 13px; color: #475569; display: flex; flex-direction: column; gap: 8px; }
+
+  footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; grid-column: span 2; margin-top: 5rem; }
+  footer span { color: #10b981; font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .forum-layout { grid-template-columns: 1fr; padding: 0 1.25rem; }
+    .forum-header { grid-column: span 1; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .sidebar { display: none; }
+    footer { grid-column: span 1; }
+    .thread-stats { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="index.html#tools">টুল</a>
+    <a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html" class="active">আলোচনা</a>
+  </div>
+</nav>
+
+<div class="forum-layout">
+  <div class="forum-header">
+    <div>
+      <h1 class="page-title">কমিউনিটি আলোচনা</h1>
+    </div>
+    <button class="new-topic-btn"><i class="ti ti-plus"></i> নতুন টপিক আলোচনা করিক</button>
+  </div>
+
+  <!-- Threads -->
+  <div class="threads-list">
+    <!-- Thread 1 -->
+    <a href="#" class="thread-card">
+      <div class="avatar" style="background: #d1fae5; color: #065f46;">বি</div>
+      <div class="thread-main">
+        <h3 class="thread-title">বিষ্ণুপ্রিয়া মণিপুরি কীবোর্ড লেআউট সংক্রান্ত সমস্যা বারো সমাধান</h3>
+        <div class="thread-meta">
+          <span>শুরু করলা: <strong>বিজয় সিনহা</strong></span>
+          <span><i class="ti ti-clock"></i> ২ ঘন্টা আগে</span>
+        </div>
+      </div>
+      <div class="thread-stats">
+        <div class="stat-unit"><span>১৪</span>মন্তব্য</div>
+        <div class="stat-unit"><span>১২৮</span>দেখেছে</div>
+      </div>
+    </a>
+
+    <!-- Thread 2 -->
+    <a href="#" class="thread-card">
+      <div class="avatar" style="background: #e0f2fe; color: #0369a1;">প্র</div>
+      <div class="thread-main">
+        <h3 class="thread-title">ডিজিটাল অভিধানে নতুন ওয়াহি (শব্দ) যুক্ত করানির নিয়মাবলী</h3>
+        <div class="thread-meta">
+          <span>শুরু করলা: <strong>প্রদীপ কুমার</strong></span>
+          <span><i class="ti ti-clock"></i> ১ দিন আগে</span>
+        </div>
+      </div>
+      <div class="thread-stats">
+        <div class="stat-unit"><span>৮</span>মন্তব্য</div>
+        <div class="stat-unit"><span>৯৫</span>দেখেছে</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-box">
+      <h3>ফোরামর নিয়মাবলী</h3>
+      <ul>
+        <li>ভাষার মর্যাদা রক্ষা করিয়া আলোচনা করিক।</li>
+        <li>কোনো ধরনের স্প্যাম বা অনাকাঙ্ক্ষিত লিঙ্ক শেয়ার না করানি।</li>
+        <li>গঠনমূলক সমালোচনা বারো পারস্পরিক সহযোগিতা বজায় থইক।</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+    <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
+  </footer>
+</div>
+
+</body>
+</html>

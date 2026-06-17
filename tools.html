@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ডিজিটাল টুলস— ইমার ঠার</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  /* ── Base Styles ── */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: #f8fafc; 
+    color: #1e293b; 
+    line-height: 1.5;
+  }
+
+  /* ── Navigation Bar ── */
+  nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+  /* ── Layout & Structure ── */
+  .container { max-width: 1000px; margin: 2.5rem auto; padding: 0 1.5rem; }
+  .page-header { margin-bottom: 2.5rem; text-align: center; }
+  .page-title { font-size: 32px; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem; }
+  .page-desc { color: #64748b; font-size: 16px; }
+
+  /* Tabs Navigation */
+  .tool-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 2.5rem;
+    background: #e2e8f0;
+    padding: 6px;
+    border-radius: 14px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+  }
+  .tab-btn.active {
+    background: #ffffff;
+    color: #10b981;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  }
+
+  .tool-section { display: none; }
+  .tool-section.active { display: block; }
+
+  /* ── Card UI ── */
+  .tool-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.02);
+  }
+
+  /* ── 1. Translator Component ── */
+  .translator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 1rem; }
+  .box-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 14px; background: #f1f5f9; border-radius: 10px 10px 0 0;
+    font-size: 13px; font-weight: 600; color: #475569; border: 1px solid #e2e8f0; border-bottom: none;
+  }
+  .lang-select { border: none; background: transparent; font-weight: 600; color: #10b981; cursor: pointer; outline: none; }
+  .textarea-wrapper { position: relative; }
+  .tool-textarea {
+    width: 100%; height: 180px; padding: 1rem;
+    border: 1px solid #e2e8f0; border-radius: 0 0 10px 10px;
+    font-size: 15px; color: #0f172a; resize: none; outline: none;
+    font-family: inherit; transition: border 0.2s;
+  }
+  .tool-textarea:focus { border-color: #10b981; }
+  .tool-textarea[readonly] { background: #f8fafc; }
+  .translate-actions { display: flex; justify-content: flex-end; margin-top: 1.2rem; }
+  .primary-btn {
+    background: #10b981; color: white; border: none; padding: 12px 24px;
+    border-radius: 10px; font-weight: 600; font-size: 14px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s;
+  }
+  .primary-btn:hover { background: #059669; }
+
+  /* ── 2. Dictionary Component ── */
+  .search-wrapper { display: flex; gap: 10px; margin-bottom: 1.5rem; }
+  .search-input {
+    flex: 1; padding: 12px 16px; border: 1px solid #e2e8f0;
+    border-radius: 10px; font-size: 15px; outline: none; transition: border 0.2s;
+  }
+  .search-input:focus { border-color: #10b981; }
+  .dict-result {
+    border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem;
+    background: #f8fafc; display: none;
+  }
+  .dict-result.active { display: block; }
+  .word-title { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+  .word-pos { display: inline-block; font-size: 11px; font-weight: 700; background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 4px; margin-bottom: 12px; }
+  .word-meaning { font-size: 15px; color: #334155; margin-bottom: 8px; }
+  .word-example { font-size: 13.5px; color: #64748b; font-style: italic; }
+
+  /* ── 3. Keyboard Component ── */
+  .keyboard-layout { display: flex; flex-direction: column; gap: 8px; background: #1e293b; padding: 15px; border-radius: 16px; margin-top: 1.5rem; }
+  .kb-row { display: flex; justify-content: center; gap: 6px; }
+  .kb-key {
+    background: #334155; color: #f8fafc; border: none; padding: 12px 0; width: 45px;
+    font-size: 14px; font-weight: 600; border-radius: 6px; cursor: pointer;
+    user-select: none; transition: all 0.1s; text-align: center;
+  }
+  .kb-key:active { background: #10b981; transform: scale(0.95); }
+  .kb-key.wide { width: 96px; background: #475569; }
+  .kb-key.space { width: 260px; }
+  .kb-guide { margin-top: 1.5rem; font-size: 13.5px; color: #64748b; background: #f1f5f9; padding: 12px; border-radius: 10px; border-left: 4px solid #10b981; }
+
+  /* ── Footer ── */
+  footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; margin-top: 5rem; }
+  footer span { color: #10b981; font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .translator-grid { grid-template-columns: 1fr; }
+    .kb-key { width: 32px; padding: 8px 0; font-size: 12px; }
+    .kb-key.space { width: 140px; }
+    .kb-key.wide { width: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="tools.html" class="active">টুল</a>
+    <a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-header">
+    <h1 class="page-title">অনলাইন ভাষাগত টুলস</h1>
+    <p class="page-desc">বিষ্ণুপ্রিয়া মণিপুরি ভাষা প্রসেসিং, ট্রান্সলেশন এবং টাইপিং সহজ করার আধুনিক প্ল্যাটফর্ম।</p>
+  </div>
+
+  <div class="tool-tabs">
+    <button class="tab-btn active" onclick="switchTab('translator')"><i class="ti ti-language"></i> ট্রান্সলেটর</button>
+    <button class="tab-btn" onclick="switchTab('dictionary')"><i class="ti ti-book"></i> অভিধান</button>
+    <button class="tab-btn" onclick="switchTab('keyboard')"><i class="ti ti-keyboard"></i> কীবোর্ড</button>
+  </div>
+
+  <div id="translator" class="tool-section active">
+    <div class="tool-card">
+      <div class="translator-grid">
+        <div>
+          <div class="box-header">
+            <span>উৎস ভাষা</span>
+            <span style="color: #10b981; font-weight: 700;">বিষ্ণুপ্রিয়া মণিপুরি</span>
+          </div>
+          <div class="textarea-wrapper">
+            <textarea id="source-text" class="tool-textarea" placeholder="এখানে ইমার ঠার টাইপ বা পেস্ট করিক..."></textarea>
+          </div>
+        </div>
+        <div>
+          <div class="box-header">
+            <span>টার্গেট ভাষা</span>
+            <select class="lang-select">
+              <option value="bn">বাংলা (Bengali)</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+          <div class="textarea-wrapper">
+            <textarea id="target-text" class="tool-textarea" readonly placeholder="অনুবাদ এখানে দেখা যাবে..."></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="translate-actions">
+        <button class="primary-btn" onclick="mockTranslate()"><i class="ti ti-transform"></i> অনুবাদ করিক</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="dictionary" class="tool-section">
+    <div class="tool-card">
+      <div class="search-wrapper">
+        <input type="text" id="dict-search" class="search-input" placeholder="ইমার ঠার বা বাংলা শব্দ লিখে খুঁজুন (যেমন: ওয়াহি, হঙকরানি)...">
+        <button class="primary-btn" onclick="searchDict()"><i class="ti ti-search"></i> খুঁজুন</button>
+      </div>
+
+      <div id="dict-output" class="dict-result">
+        <h2 class="word-title" id="res-word">ওয়াহি</h2>
+        <span class="word-pos" id="res-pos">বিশেষ্য (Noun)</span>
+        <p class="word-meaning"><strong>অর্থ:</strong> <span id="res-meaning">শব্দ / বাণী (Word)।</span></p>
+        <p class="word-example"><strong>উদাহরণ:</strong> <span id="res-example">"আহান ওয়াহিও মাতো।" -> একটা শব্দও বলো।</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="keyboard" class="tool-section">
+    <div class="tool-card">
+      <div class="box-header">
+        <span>ইউনিকোর্ড টাইপিং জোন</span>
+        <span style="font-size: 12px; color: #64748b;">অন-স্ক্রিন কীবোর্ড ব্যবহার করতে পারেন</span>
+      </div>
+      <textarea id="kb-screen" class="tool-textarea" style="border-radius: 0; height: 120px;" placeholder="কীবোর্ড বোতামে ক্লিক করে ইমার ঠার লিখুন..."></textarea>
+      
+      <div class="keyboard-layout">
+        <div class="kb-row">
+          <button class="kb-key" onclick="pressKey('অ')">অ</button>
+          <button class="kb-key" onclick="pressKey('আ')">আ</button>
+          <button class="kb-key" onclick="pressKey('ই')">ই</button>
+          <button class="kb-key" onclick="pressKey('ঈ')">ঈ</button>
+          <button class="kb-key" onclick="pressKey('উ')">উ</button>
+          <button class="kb-key" onclick="pressKey('ঊ')">ঊ</button>
+          <button class="kb-key" onclick="pressKey('এ')">এ</button>
+          <button class="kb-key" onclick="pressKey('ঐ')">ঐ</button>
+          <button class="kb-key" onclick="pressKey('ও')">ও</button>
+          <button class="kb-key" onclick="pressKey('ঔ')">ঔ</button>
+        </div>
+        <div class="kb-row">
+          <button class="kb-key" onclick="pressKey('ক')">ক</button>
+          <button class="kb-key" onclick="pressKey('খ')">খ</button>
+          <button class="kb-key" onclick="pressKey('গ')">গ</button>
+          <button class="kb-key" onclick="pressKey('ঘ')">ঘ</button>
+          <button class="kb-key" onclick="pressKey('ঙ')">ঙ</button>
+          <button class="kb-key" onclick="pressKey('চ')">চ</button>
+          <button class="kb-key" onclick="pressKey('ছ')">ছ</button>
+          <button class="kb-key" onclick="pressKey('জ')">জ</button>
+          <button class="kb-key" onclick="pressKey('ঝ')">ঝ</button>
+          <button class="kb-key" onclick="pressKey('ঞ')">ঞ</button>
+        </div>
+        <div class="kb-row">
+          <button class="kb-key" onclick="pressKey('ত')">ত</button>
+          <button class="kb-key" onclick="pressKey('থ')">থ</button>
+          <button class="kb-key" onclick="pressKey('দ')">দ</button>
+          <button class="kb-key" onclick="pressKey('ধ')">ধ</button>
+          <button class="kb-key" onclick="pressKey('ন')">ন</button>
+          <button class="kb-key" onclick="pressKey('প')">প</button>
+          <button class="kb-key" onclick="pressKey('ফ')">ফ</button>
+          <button class="kb-key" onclick="pressKey('ব')">ব</button>
+          <button class="kb-key" onclick="pressKey('ভ')">ভ</button>
+          <button class="kb-key" onclick="pressKey('ম')">ম</button>
+        </div>
+        <div class="kb-row">
+          <button class="kb-key" onclick="pressKey('য')">য</button>
+          <button class="kb-key" onclick="pressKey('র')">র</button>
+          <button class="kb-key" onclick="pressKey('ল')">ল</button>
+          <button class="kb-key" onclick="pressKey('শ')">শ</button>
+          <button class="kb-key" onclick="pressKey('ষ')">ষ</button>
+          <button class="kb-key" onclick="pressKey('স')">স</button>
+          <button class="kb-key" onclick="pressKey('হ')">হ</button>
+          <button class="kb-key" onclick="pressKey('ড়')">ড়</button>
+          <button class="kb-key" onclick="pressKey('ঢ়')">ঢ়</button>
+          <button class="kb-key" onclick="pressKey('য়')">য়</button>
+        </div>
+        <div class="kb-row">
+          <button class="kb-key wide" onclick="pressKey('backspace')">Backspace</button>
+          <button class="kb-key space" onclick="pressKey(' ')">Space</button>
+          <button class="kb-key wide" onclick="pressKey('clear')">Clear</button>
+        </div>
+      </div>
+
+      <div class="kb-guide">
+        <p><strong>💡 টাইপিং গাইড:</strong> বিষ্ণুপ্রিয়া মণিপুরি ভাষা লেখার জন্য স্ট্যান্ডার্ড বাংলা ইউনিকোর্ড স্ক্রিপ্ট ব্যবহৃত হয়, তবে কিছু নির্দিষ্ট ধ্বনি ও বানানের ক্ষেত্রে এর নিজস্ব বৈশিষ্ট্য রয়েছে। এই ইন-বিল্ট কীবোর্ডটি দিয়ে আপনি যেকোনো ডিভাইসে কনফিগারেশন ছাড়াই সরাসরি টাইপ করতে পারবেন।</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script>
+  // Tab Switching Logic
+  function switchTab(tabId) {
+    document.querySelectorAll('.tool-section').forEach(sec => sec.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  // Interactive Mock Translator
+  function mockTranslate() {
+    const srcText = document.getElementById('source-text').value.trim();
+    const targetArea = document.getElementById('target-text');
+    
+    if(!srcText) {
+      targetArea.value = "অনুগ্রহ করে কিছু লিখুন...";
+      return;
+    }
+    
+    // Simple rule-based demo translation for testing
+    if(srcText.includes("ইমার ঠার")) {
+      targetArea.value = "আমার মাতৃভাষা";
+    } else if(srcText.toLowerCase().includes("কুতি আসে")) {
+      targetArea.value = "কোথায় আছো?";
+    } else {
+      targetArea.value = "[অনুবাদ ডেমো]: " + srcText + " (NLP সার্ভার কানেক্ট করা হচ্ছে...)";
+    }
+  }
+
+  // Local Dictionary Database Search
+  const dictData = {
+    "ওয়াহি": { pos: "विशेष्य (Noun)", meaning: "শব্দ বা বাণী।", example: "\"আহান ওয়াহিও মাতো\" -> একটা শব্দও বলো।" },
+    "হঙকরানি": { pos: "क्रिया (Verb)", meaning: "তৈরি করা বা প্রস্তুত করা (To build/create)।", example: "\"মডেল আহান হঙকরানি\" -> একটি মডেল তৈরি করা।" },
+    "ঠার": { pos: "विशेष्य (Noun)", meaning: "ভাষা বা বাকশক্তি (Language)।", example: "\"ইমার ঠার\" -> মাতৃভাষা।" }
+  };
+
+  function searchDict() {
+    const query = document.getElementById('dict-search').value.trim();
+    const output = document.getElementById('dict-output');
+    
+    if (dictData[query]) {
+      document.getElementById('res-word').textContent = query;
+      document.getElementById('res-pos').textContent = dictData[query].pos;
+      document.getElementById('res-meaning').textContent = dictData[query].meaning;
+      document.getElementById('res-example').textContent = dictData[query].example;
+      output.style.display = "block";
+    } else {
+      document.getElementById('res-word').textContent = "শব্দটি পাওয়া যায়নি";
+      document.getElementById('res-pos').textContent = "N/A";
+      document.getElementById('res-meaning').textContent = "দুঃখিত, এই শব্দটি আমাদের ডেমো ডাটাবেজে নেই।";
+      document.getElementById('res-example').textContent = "";
+      output.style.display = "block";
+    }
+  }
+
+  // Virtual Unicode Keyboard Logic
+  function pressKey(char) {
+    const screen = document.getElementById('kb-screen');
+    if (char === 'backspace') {
+      screen.value = screen.value.slice(0, -1);
+    } else if (char === 'clear') {
+      screen.value = '';
+    } else {
+      screen.value += char;
+    }
+    screen.focus();
+  }
+</script>
+</body>
+</html>

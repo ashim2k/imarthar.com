@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>বিষ্ণুপ্রিয়া মণিপুরির ইতিহাস — ইমার ঠার</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    line-height: 1.5;
+  }
+
+  /* ── Nav ── */
+  nav {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226,232,240,0.8);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+  /* ── Article Layout ── */
+  .article-layout {
+    max-width: 900px;
+    margin: 2.5rem auto 4rem;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  /* ── Article Main ── */
+  article {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+  }
+
+  .article-cover {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    background: #f1f5f9;
+  }
+
+  .article-body { padding: 2rem; }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 1.25rem;
+  }
+  .breadcrumb a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
+  .breadcrumb a:hover { color: #10b981; }
+  .breadcrumb i { font-size: 12px; }
+
+  /* Article Header */
+  .article-tag {
+    font-size: 11px;
+    font-weight: 700;
+    background: #f0fdf4;
+    color: #166534;
+    padding: 3px 12px;
+    border-radius: 99px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+  .article-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.35;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    color: #94a3b8;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+  }
+  .meta-item { display: flex; align-items: center; gap: 5px; }
+
+  /* Author chip */
+  .author-chip {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-left: auto;
+  }
+  .author-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10b981, #06b6d4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: white;
+  }
+  .author-name { font-size: 13px; font-weight: 600; color: #475569; }
+
+  /* Article Content Typography */
+  .article-content { font-size: 15px; color: #374151; line-height: 1.85; }
+  .article-content p { margin-bottom: 1.25rem; }
+  .article-content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 2rem 0 0.75rem;
+    padding-left: 12px;
+    border-left: 3px solid #10b981;
+  }
+  .article-content h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .article-content strong { color: #0f172a; font-weight: 600; }
+
+  /* Pull Quote */
+  .pull-quote {
+    background: #f0fdf4;
+    border-left: 4px solid #10b981;
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem 1.5rem;
+    margin: 1.75rem 0;
+    font-size: 16px;
+    font-style: italic;
+    color: #065f46;
+    font-weight: 500;
+    line-height: 1.7;
+  }
+
+  /* Info Box */
+  .info-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    font-size: 13px;
+    color: #475569;
+  }
+  .info-box-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .info-box-title i { color: #10b981; }
+  .info-box ul { padding-left: 1.25rem; display: flex; flex-direction: column; gap: 4px; }
+
+  /* Article Footer */
+  .article-footer {
+    border-top: 1px solid #f1f5f9;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: gap;
+    gap: 12px;
+  }
+  .tag-row { display: flex; gap: 7px; flex-wrap: wrap; }
+  .tag-pill {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 99px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    text-decoration: none;
+  }
+  .tag-pill:hover { background: #f0fdf4; border-color: #10b981; color: #065f46; }
+  .share-row { display: flex; gap: 8px; }
+  .share-btn {
+    width: 34px; height: 34px;
+    border-radius: 9px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    display: flex; align-items: center; justify-content: center;
+    color: #64748b;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+  .share-btn:hover { border-color: #10b981; color: #10b981; }
+
+  /* ── Related Posts ── */
+  .related-section {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  }
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
+  .related-card {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f5f9;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .related-card:last-child { border-bottom: none; padding-bottom: 0; }
+  .related-card:hover .related-title { color: #10b981; }
+  .related-img {
+    width: 60px; height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #f1f5f9;
+    flex-shrink: 0;
+  }
+  .related-info {}
+  .related-tag {
+    font-size: 10px;
+    font-weight: 700;
+    color: #10b981;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .related-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.4;
+    transition: color 0.15s;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {}
+  .sidebar-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  }
+  .sidebar-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sidebar-title i { color: #10b981; font-size: 16px; }
+
+  /* Progress / TOC */
+  .toc-list { display: flex; flex-direction: column; gap: 4px; }
+  .toc-item {
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+    padding: 7px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-left: 2px solid transparent;
+  }
+  .toc-item:hover { background: #f8fafc; color: #0f172a; border-color: #10b981; }
+  .toc-item.active { background: #f0fdf4; color: #065f46; border-color: #10b981; font-weight: 600; }
+  .toc-num { font-size: 11px; font-weight: 700; color: #94a3b8; width: 18px; }
+
+  /* Read Progress Bar */
+  .progress-bar-wrap {
+    background: #f1f5f9;
+    border-radius: 99px;
+    height: 6px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #06b6d4);
+    border-radius: 99px;
+    width: 30%;
+    transition: width 0.3s;
+  }
+  .progress-label { font-size: 12px; color: #94a3b8; text-align: right; }
+
+  /* Recent mini list */
+  .recent-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .recent-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .recent-num { font-size: 18px; font-weight: 800; color: #e2e8f0; line-height: 1; width: 24px; flex-shrink: 0; }
+  .recent-text { font-size: 13px; font-weight: 500; color: #475569; line-height: 1.5; transition: color 0.15s; }
+  .recent-item:hover .recent-text { color: #10b981; }
+
+  /* Back Button */
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #ffffff;
+    margin-bottom: 1.5rem;
+    transition: all 0.15s;
+  }
+  .back-btn:hover { border-color: #10b981; color: #10b981; }
+
+  /* ── Footer ── */
+  footer {
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.8;
+  }
+  footer span { color: #10b981; font-weight: 600; }
+
+  /* Reading progress bar at top */
+  #reading-progress {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #10b981, #06b6d4);
+    z-index: 99;
+    transition: width 0.1s;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .article-layout { grid-template-columns: 1fr; padding: 0 1.25rem; }
+    .sidebar { display: none; }
+    .article-cover { height: 200px; }
+    .article-title { font-size: 22px; }
+    .article-body { padding: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Reading Progress -->
+<div id="reading-progress"></div>
+
+<!-- Nav (লিঙ্কগুলো আপডেট করা হয়েছে) -->
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="tools.html">টুল</a>
+    <a href="blogs.html" class="active">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<!-- Article Layout -->
+<div class="article-layout">
+
+  <!-- Main Article -->
+  <div>
+    <a href="blogs.html" class="back-btn"><i class="ti ti-arrow-left"></i> ব্লগে ফিরিক</a>
+
+    <article>
+      <img class="article-cover"
+        src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=900&auto=format&fit=crop&q=70"
+        alt="বিষ্ণুপ্রিয়া মণিপুরির ইতিহাস">
+
+      <div class="article-body">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+          <a href="index.html">হোম</a>
+          <i class="ti ti-chevron-right"></i>
+          <a href="blogs.html">ব্লগ</a>
+          <i class="ti ti-chevron-right"></i>
+          <span>ভাষা</span>
+        </div>
+
+        <div class="article-tag">ভাষা</div>
+        <h1 class="article-title">বিষ্ণুপ্রিয়া মণিপুরির ইতিহাস বারো বিকাশ</h1>
+
+        <!-- Meta -->
+        <div class="article-meta">
+          <span class="meta-item"><i class="ti ti-calendar-event"></i> জুন ২০২৬</span>
+          <span class="meta-item"><i class="ti ti-clock"></i> ৫ মিনিট পড়া</span>
+          <span class="meta-item"><i class="ti ti-eye"></i> ১.২ হাজার</span>
+          <div class="author-chip">
+            <div class="author-avatar">কথ</div>
+            <span class="author-name">কুঙ্গ থাঙ</span>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="article-content" id="article-content">
+
+          <p>বিষ্ণুপ্রিয়া মণিপুরি — এই ঠারআহান শুধু একটা ভাষা নুওয়া, ইহান আমার পরিচয়, আমার ইতিহাস, আমার অস্তিত্বর আইনা। কিন্তু আজিকার ডিজিটাল দুনিয়াত এই ঠার টিকানাত আমার গরানি লাগতে।</p>
+
+          <div class="pull-quote">
+            "একটা ঠার মরিলে, একটা দুনিয়া মরে। বিষ্ণুপ্রিয়া মণিপুরি ঠার আমার দুনিয়া — এরে বাঁচানা আমার দায়িত্ব।"
+          </div>
+
+          <h2 id="origin">উৎপত্তি বারো পরিবার</h2>
+          <p>বিষ্ণুপ্রিয়া মণিপুরি Indo-Aryan ভাষা পরিবারর একটা সদস্য। ভাষাবিজ্ঞানীরা এরে পূর্বী ইন্দো-আর্য শাখার অংশ হিসেবে চিনান, যার সাথে বাংলা, অসমিয়া বারো ওড়িয়ার কাছর সম্পর্ক আছে।</p>
+          <p>ইতিহাসবিদরা মনে করান, মণিপুর উপত্যকাত বহু শতাব্দী আগে বৈষ্ণব ধর্মর প্রভাবে এই ঠারর বিকাশ হয়। "বিষ্ণুপ্রিয়া" নামটা আইсе বিষ্ণু বারো প্রিয়া থাকি — অর্থাৎ বিষ্ণুর প্রিয়া।</p>
+
+          <div class="info-box">
+            <div class="info-box-title"><i class="ti ti-info-circle"></i> দ্রুত তথ্য</div>
+            <ul>
+              <li>ভাষা পরিবার: ইন্দো-আর্য</li>
+              <li>বক্তার সংখ্যা: আনুমানিক ৫ লাখ</li>
+              <li>লিপি: বাংলা লিপি (বিষ্ণুপ্রিয়া বর্ণমালাও প্রচলিত)</li>
+              <li>প্রধান অঞ্চল: ভারত, বাংলাদেশ</li>
+            </ul>
+          </div>
+
+          <h2 id="script">লিপি বারো সাহিত্য</h2>
+          <p>বিষ্ণুপ্রিয়া মণিপুরির নিজস্ব লিপি আছে, যদিও বর্তমানে বেশিরভাগ লেখালেখি বাংলা লিপিত হয়। সাহিত্যর দিক থাকি এই ঠার বেশ সমৃদ্ধ — কবিতা, গল্প, নাটক সবই আছে।</p>
+          <p>বিংশ শতাব্দীর প্রথমভাগে এই ঠারর আধুনিক সাহিত্যর যাত্রা শুরু হয়। বহু লেখক বারো কবি এই ঠারত সাহিত্য রচনা করি এর বিকাশে অবদান রাখিয়া গিয়ার।</p>
+
+          <h2 id="digital">ডিজিটাল যুগে চ্যালেঞ্জ</h2>
+          <p>আজিকার সময়ত বিষ্ণুপ্রিয়া মণিপুরির সামনে সবচেয়ে বড় চ্যালেঞ্জ হইল ডিজিটাল উপস্থিতি। ইন্টারনেটে এই ঠারর কন্টেন্ট অত্যন্ত সীমিত — কোনো ভালো অনুবাদ সরঞ্জাম নেই, ডিজিটাল অভিধান নেই, NLP মডেল নেই।</p>
+          <p><strong>imarthar.com</strong> এই শূন্যস্থান পূরণ করতে চায়। আমরা চাই বিষ্ণুপ্রিয়া মণিপুরি ঠার ডিজিটাল দুনিয়াত তার যোগ্য স্থান পাক।</p>
+
+        </div>
+
+        <!-- Article Footer -->
+        <div class="article-footer">
+          <div class="tag-row">
+            <a href="#" class="tag-pill">ভাষাবিজ্ঞান</a>
+            <a href="#" class="tag-pill">ইতিহাস</a>
+            <a href="#" class="tag-pill">মণিপুর</a>
+          </div>
+          <div class="share-row">
+            <a href="#" class="share-btn" title="শেয়ার"><i class="ti ti-share"></i></a>
+            <a href="#" class="share-btn" title="বুকমার্ক"><i class="ti ti-bookmark"></i></a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related Posts (লিঙ্কগুলো প্লেসহোল্ডার থেকে আপডেটযোগ্য করা হয়েছে) -->
+    <div class="related-section">
+      <div class="section-title">আরো পড়িক</div>
+      <a href="blogs.html" class="related-card">
+        <img class="related-img"
+          src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=120&auto=format&fit=crop&q=60"
+          alt="">
+        <div class="related-info">
+          <div class="related-tag">গবেষণা</div>
+          <div class="related-title">ইমার ঠার কর্পাস হঙকরানির থাক</div>
+        </div>
+      </a>
+      <a href="blogs.html" class="related-card">
+        <img class="related-img"
+          src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=120&auto=format&fit=crop&q=60"
+          alt="">
+        <div class="related-info">
+          <div class="related-tag">সংস্কৃতি</div>
+          <div class="related-title">ইমার ঠার, আমার পরিচয়</div>
+        </div>
+      </a>
+      <a href="tools.html" class="related-card">
+        <img class="related-img"
+          src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=120&auto=format&fit=crop&q=60"
+          alt="">
+        <div class="related-info">
+          <div class="related-tag">টেকনোলজি</div>
+          <div class="related-title">বিষ্ণুপ্রিয়ার জন্য NLP মডেল তৈরি করানো</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+    <!-- Reading Progress -->
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-progress"></i> পড়ার অগ্রগতি</div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="sidebar-progress"></div>
+      </div>
+      <div class="progress-label" id="progress-label">৩০%</div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-list"></i> বিষয়বস্তু</div>
+      <div class="toc-list">
+        <a href="#origin" class="toc-item active">
+          <span class="toc-num">০১</span> উৎপত্তি বারো পরিবার
+        </a>
+        <a href="#script" class="toc-item">
+          <span class="toc-num">০২</span> লিপি বারো সাহিত্য
+        </a>
+        <a href="#digital" class="toc-item">
+          <span class="toc-num">০৩</span> ডিজিটাল যুগে চ্যালেঞ্জ
+        </a>
+      </div>
+    </div>
+
+    <!-- More Posts (লিঙ্কগুলো আপডেট করা হয়েছে) -->
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-sparkles"></i> আরো লেখা</div>
+      <a href="blogs.html" class="recent-item">
+        <span class="recent-num">০১</span>
+        <span class="recent-text">ইমার ঠার কর্পাস হঙকরানির থাক</span>
+      </a>
+      <a href="tools.html" class="recent-item">
+        <span class="recent-num">০২</span>
+        <span class="recent-text">বিষ্ণুপ্রিয়ার জন্য NLP মডেল</span>
+      </a>
+      <a href="blogs.html" class="recent-item">
+        <span class="recent-num">০৩</span>
+        <span class="recent-text">পুয়াহানরে ইমার ঠার শিখানোর উপায়</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script>
+  // Reading progress bar
+  window.addEventListener('scroll', () => {
+    const article = document.getElementById('article-content');
+    const bar = document.getElementById('reading-progress');
+    const sideBar = document.getElementById('sidebar-progress');
+    const label = document.getElementById('progress-label');
+    if (!article) return;
+
+    const rect = article.getBoundingClientRect();
+    const total = article.offsetHeight;
+    const scrolled = Math.max(0, -rect.top);
+    const pct = Math.min(100, Math.round((scrolled / total) * 100));
+
+    bar.style.width = pct + '%';
+    if (sideBar) sideBar.style.width = pct + '%';
+    if (label) label.textContent = pct + '%';
+
+    // TOC active state
+    const sections = ['origin', 'script', 'digital'];
+    const tocItems = document.querySelectorAll('.toc-item');
+    let current = 0;
+    sections.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 120) current = i;
+    });
+    tocItems.forEach((item, i) => {
+      item.classList.toggle('active', i === current);
+    });
+  });
+</script>
+
+</body>
+</html>

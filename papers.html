@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>গবেষণা পেপার— ইমার ঠার</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
+
+  nav {
+    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100;
+  }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; text-decoration: none; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; }
+  .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+  .container { max-width: 900px; margin: 3rem auto; padding: 0 2rem; }
+  .page-header { margin-bottom: 2.5rem; }
+  .page-title { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem; }
+  .page-desc { color: #64748b; font-size: 15px; }
+
+  /* Paper Row layout */
+  .papers-list { display: flex; flex-direction: column; gap: 20px; }
+  .paper-card {
+    background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem;
+    display: flex; gap: 20px; align-items: flex-start; transition: all 0.2s;
+  }
+  .paper-card:hover { border-color: #10b981; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.03); }
+  .paper-icon-box { background: #f0fdf4; color: #10b981; width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+  .paper-info { flex: 1; }
+  .paper-title { font-size: 17px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+  .paper-authors { font-size: 13px; color: #475569; font-weight: 500; margin-bottom: 4px; }
+  .paper-journal { font-size: 12px; color: #94a3b8; margin-bottom: 12px; }
+  .paper-abstract { font-size: 14px; color: #475569; line-height: 1.6; margin-bottom: 1rem; }
+  
+  .paper-actions { display: flex; gap: 12px; }
+  .action-btn {
+    display: inline-flex; align-items: center; gap: 6px; background: #f1f5f9; color: #475569;
+    padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s;
+  }
+  .action-btn:hover { background: #e2e8f0; color: #0f172a; }
+  .action-btn.primary { background: #d1fae5; color: #065f46; }
+  .action-btn.primary:hover { background: #a7f3d0; }
+
+  footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; margin-top: 5rem; }
+  footer span { color: #10b981; font-weight: 600; }
+
+  @media (max-width: 640px) {
+    .paper-card { flex-direction: column; gap: 12px; }
+    .container { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="index.html#tools">টুল</a>
+    <a href="blogs.html">ব্লগ</a>
+    <a href="papers.html" class="active">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-header">
+    <h1 class="page-title">গবেষণা পত্রহানি (Research Papers)</h1>
+    <p class="page-desc">বিষ্ণুপ্রিয়া মণিপুরি কম্পিউটেশনাল লিঙ্গুইস্টিকস এবং ভাষা প্রযুক্তির একাডেমিক আর্কাইভ।</p>
+  </div>
+
+  <div class="papers-list">
+    <!-- Paper 1 -->
+    <div class="paper-card">
+      <div class="paper-icon-box"><i class="ti ti-file-text"></i></div>
+      <div class="paper-info">
+        <h2 class="paper-title">A Computational Approach to Bishnupriya Manipuri Morphology</h2>
+        <div class="paper-authors">কুঙ্গ থাঙ, ড. সুমিত শর্মা</div>
+        <div class="paper-journal">ইন্টারন্যাশনাল জার্নাল অফ ল্যাঙ্গুয়েজ কম্পিউটিং, ২০২৬</div>
+        <p class="paper-abstract">এই গবেষণাপত্রে বিষ্ণুপ্রিয়া মণিপুরি ভাষার শব্দতাত্ত্বিক গঠন বিশ্লেষণ এবং একটি স্বয়ংক্রিয় মরফোলজিক্যাল অ্যানালাইজার তৈরির ফ্রেমওয়ার্ক প্রস্তাব করা হয়েছে।</p>
+        <div class="paper-actions">
+          <a href="#" class="action-btn primary"><i class="ti ti-download"></i> PDF ডাউনলোড</a>
+          <a href="#" class="action-btn"><i class="ti ti-quote"></i> সাইটেশন</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paper 2 -->
+    <div class="paper-card">
+      <div class="paper-icon-box"><i class="ti ti-file-text"></i></div>
+      <div class="paper-info">
+        <h2 class="paper-title">Building the First Digital Corpus for Bishnupriya Manipuri</h2>
+        <div class="paper-authors">রোহিত সিনহা, কুঙ্গ থাঙ</div>
+        <div class="paper-journal">ডিজিটাল হেরিটেজ কনফারেন্স, ২০২৫</div>
+        <p class="paper-abstract">ইন্টারনেটে কন্টেন্ট বৃদ্ধির লক্ষ্যে প্রথম বৃহৎ আকারের টেক্সট কর্পাস সংগ্রহ, ফিল্টারিং এবং ট্যাগিং পদ্ধতির বিশদ বিবরণ এখানে উপস্থাপিত হয়েছে।</p>
+        <div class="paper-actions">
+          <a href="#" class="action-btn primary"><i class="ti ti-download"></i> PDF ডাউনলোড</a>
+          <a href="#" class="action-btn"><i class="ti ti-quote"></i> সাইটেশন</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+</body>
+</html>
