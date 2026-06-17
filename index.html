@@ -6,115 +6,211 @@
 <title>ইমার ঠার — বিষ্ণুপ্রিয়া মণিপুরি ঠারর ডিজিটাল গরগ</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
+  /* Reset & Base Styles */
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: sans-serif; background: #f5f5f3; color: #1a1a1a; }
+  body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: #f8fafc; 
+    color: #1e293b; 
+    line-height: 1.5;
+  }
 
+  /* Navigation Bar */
   nav {
-    background: #ffffff;
-    border-bottom: 0.5px solid #e0e0e0;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
     padding: 0 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 56px;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
-  .logo { font-size: 20px; font-weight: 500; color: #1a1a1a; }
-  .logo span { color: #1D9E75; }
-  .nav-links { display: flex; gap: 24px; }
-  .nav-links a { font-size: 14px; color: #666; text-decoration: none; }
-  .nav-links a:hover { color: #1a1a1a; }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: #10b981; }
 
+  /* Premium Hero Section with Graphics & Gradients */
   .hero {
-    background: #ffffff;
-    border-bottom: 0.5px solid #e0e0e0;
-    padding: 4rem 2rem 3rem;
+    position: relative;
+    background: radial-gradient(circle at top right, rgba(209, 250, 229, 0.4), transparent),
+                radial-gradient(circle at bottom left, rgba(240, 253, 250, 0.4), transparent),
+                #ffffff;
+    background-image: radial-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 0);
+    background-size: 24px 24px;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 5rem 2rem 4rem;
     text-align: center;
+    overflow: hidden;
   }
+  /* Floating Decorative Graphics */
+  .hero::before, .hero::after {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 0;
+  }
+  .hero::before { top: 10%; left: 10%; background: #10b981; opacity: 0.15; }
+  .hero::after { bottom: 10%; right: 10%; background: #06b6d4; opacity: 0.15; }
+
+  .hero-content { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
   .hero-badge {
-    display: inline-block;
-    background: #E1F5EE;
-    color: #0F6E56;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #d1fae5;
+    color: #065f46;
     font-size: 12px;
-    padding: 4px 14px;
+    font-weight: 600;
+    padding: 6px 16px;
     border-radius: 99px;
     margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
   }
-  .hero h1 { font-size: 36px; font-weight: 500; color: #1a1a1a; margin-bottom: 0.5rem; line-height: 1.3; }
-  .hero h1 span { color: #1D9E75; }
-  .hero h2 { font-size: 16px; font-weight: 400; color: #888; margin-bottom: 1.25rem; }
-  .hero p { font-size: 15px; color: #555; max-width: 520px; margin: 0 auto 2rem; line-height: 1.7; }
+  .hero h1 { font-size: 42px; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem; letter-spacing: -1px; }
+  .hero h1 span { color: #10b981; }
+  .hero h2 { font-size: 18px; font-weight: 500; color: #94a3b8; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+  .hero p { font-size: 16px; color: #475569; margin: 0 auto 2.5rem; line-height: 1.8; }
 
+  /* Glassmorphic Search Bar */
   .search-bar {
     display: flex;
-    max-width: 480px;
+    max-width: 520px;
     margin: 0 auto;
-    border: 0.5px solid #ccc;
-    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 16px;
     overflow: hidden;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .search-bar:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
+    border-color: #10b981;
   }
   .search-bar input {
     flex: 1;
     border: none;
-    padding: 12px 16px;
-    font-size: 14px;
+    padding: 16px 20px;
+    font-size: 15px;
     background: transparent;
-    color: #1a1a1a;
+    color: #0f172a;
     outline: none;
   }
   .search-bar button {
-    background: #1D9E75;
+    background: #10b981;
     color: white;
     border: none;
-    padding: 12px 20px;
-    font-size: 14px;
+    padding: 0 26px;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background 0.2s;
   }
+  .search-bar button:hover { background: #059669; }
 
-  .section { padding: 2.5rem 2rem; max-width: 720px; margin: 0 auto; }
-  .section-title { font-size: 13px; font-weight: 500; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+  /* Sections Structure */
+  .section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+  .section-title { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.75rem; display: flex; align-items: center; gap: 8px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
 
-  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+  /* Smart Tools Graphical Grid */
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
   .tool-card {
     background: #ffffff;
-    border: 0.5px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 1.25rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.5rem;
     cursor: pointer;
-    transition: border-color 0.15s;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
   }
-  .tool-card:hover { border-color: #aaa; }
-  .tool-icon { font-size: 22px; margin-bottom: 10px; color: #1D9E75; }
-  .tool-name { font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 4px; }
-  .tool-desc { font-size: 12px; color: #888; line-height: 1.5; }
+  .tool-card:hover { 
+    border-color: #10b981; 
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -8px rgba(16, 185, 129, 0.15);
+  }
+  /* Micro graphic element inside tool cards */
+  .tool-card::before {
+    content: ''; position: absolute; top: 0; right: 0; width: 45px; height: 45px; 
+    background: linear-gradient(135deg, transparent 50%, rgba(16, 185, 129, 0.05) 50%);
+    border-top-right-radius: 16px;
+  }
+  .tool-icon { 
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; background: #f0fdf4; 
+    border-radius: 12px; font-size: 24px; margin-bottom: 16px; color: #10b981; 
+  }
+  .tool-name { font-size: 16px; font-weight: 600; color: #0f172a; margin-bottom: 6px; }
+  .tool-desc { font-size: 13px; color: #64748b; line-height: 1.6; }
 
-  .blog-list { display: flex; flex-direction: column; gap: 12px; }
+  /* Premium Blog List with Cover Art Images */
+  .blog-list { display: flex; flex-direction: column; gap: 16px; }
   .blog-item {
     background: #ffffff;
-    border: 0.5px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 20px;
     cursor: pointer;
     text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
   }
-  .blog-item:hover { border-color: #aaa; }
-  .blog-tag { font-size: 11px; background: #E1F5EE; color: #0F6E56; padding: 2px 10px; border-radius: 99px; margin-bottom: 6px; display: inline-block; }
-  .blog-title { font-size: 14px; font-weight: 500; color: #1a1a1a; }
-  .blog-date { font-size: 12px; color: #888; margin-top: 4px; }
-  .blog-arrow { color: #aaa; font-size: 18px; }
+  .blog-item:hover { 
+    border-color: #cbd5e1; 
+    transform: translateX(4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Blog Layout Graphics Placeholder integration */
+  .blog-image {
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #f1f5f9;
+  }
+  .blog-info { flex: 1; min-width: 0; }
+  .blog-tag { font-size: 11px; font-weight: 600; background: #f0fdf4; color: #166534; padding: 2px 10px; border-radius: 99px; margin-bottom: 6px; display: inline-block; }
+  .blog-title { font-size: 15px; font-weight: 600; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .blog-date { font-size: 13px; color: #94a3b8; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+  .blog-arrow { color: #94a3b8; font-size: 20px; padding-right: 8px; transition: color 0.2s; }
+  .blog-item:hover .blog-arrow { color: #10b981; }
 
+  /* Footer Section */
   footer {
-    border-top: 0.5px solid #e0e0e0;
-    padding: 1.5rem 2rem;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    padding: 2.5rem 2rem;
     text-align: center;
     font-size: 13px;
-    color: #888;
+    color: #64748b;
+    line-height: 1.8;
   }
-  footer span { color: #1D9E75; }
+  footer span { color: #10b981; font-weight: 600; }
+
+  /* Mobile Optimization */
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 32px; }
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    .blog-image { display: none; }
+    .section { padding: 2.5rem 1.25rem; }
+  }
 </style>
 </head>
 <body>
@@ -130,18 +226,20 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-badge">বিষ্ণুপ্রিয়া মণিপুরি ঠারর ডিজিটাল গরগ</div>
-  <h1>ইমার <span>ঠার</span></h1>
-  <h2>My Mother Tongue</h2>
-  <p>বিষ্ণুপ্রিয়া মণিপুরি ঠারর অনুবাদ, অভিধান, গবেষণা বারো কমিউনিটির কাজে প্ল্যাটফর্ম আহান।</p>
-  <div class="search-bar">
-    <input type="text" placeholder="ওয়াহি বিসারিক ..." />
-    <button>বিসারিক</button>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="ti ti-sparkles"></i> বিষ্ণুপ্রিয়া মণিপুরি ঠারর ডিজিটাল গরগ</div>
+    <h1>ইমার <span>ঠার</span></h1>
+    <h2>My Mother Tongue</h2>
+    <p>বিষ্ণুপ্রিয়া মণিপুরি ঠারর অনুবাদ, অভিধান, গবেষণা বারো কমিউনিটি প্ল্যাটফর্ম আহান।</p>
+    <div class="search-bar">
+      <input type="text" placeholder="ওয়াহি বিসারিক ..." />
+      <button>বিসারিক</button>
+    </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">টুলহানি</div>
+  <div class="section-title">টুলসমূহ</div>
   <div class="tools-grid">
     <div class="tool-card">
       <div class="tool-icon"><i class="ti ti-language"></i></div>
@@ -170,34 +268,39 @@
   <div class="section-title">সাম্প্রতিক ব্লগ</div>
   <div class="blog-list">
     <div class="blog-item">
-      <div>
+      <!-- High Quality Visual Art Placeholders aligned contextually -->
+      <img class="blog-image" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=150&auto=format&fit=crop&q=60" alt="History">
+      <div class="blog-info">
         <div class="blog-tag">ভাষা</div>
         <div class="blog-title">বিষ্ণুপ্রিয়া মণিপুরির ইতিহাস বারো বিকাশ</div>
-        <div class="blog-date">জুন ২০২৬</div>
+        <div class="blog-date"><i class="ti ti-calendar-event"></i> জুন ২০২৬</div>
       </div>
-      <i class="ti ti-arrow-right blog-arrow"></i>
+      <i class="ti ti-arrow-up-right blog-arrow"></i>
     </div>
     <div class="blog-item">
-      <div>
+      <img class="blog-image" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=150&auto=format&fit=crop&q=60" alt="Data Corpus">
+      <div class="blog-info">
         <div class="blog-tag">গবেষণা</div>
         <div class="blog-title">ইমার ঠার কর্পাস হঙকরানির থাক</div>
-        <div class="blog-date">জুন ২০২৬</div>
+        <div class="blog-date"><i class="ti ti-calendar-event"></i> জুন ২০২৬</div>
       </div>
-      <i class="ti ti-arrow-right blog-arrow"></i>
+      <i class="ti ti-arrow-up-right blog-arrow"></i>
     </div>
     <div class="blog-item">
-      <div>
+      <img class="blog-image" src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=150&auto=format&fit=crop&q=60" alt="Culture">
+      <div class="blog-info">
         <div class="blog-tag">সংস্কৃতি</div>
         <div class="blog-title">ইমার ঠার, আমার পরিচয়</div>
-        <div class="blog-date">জুন ২০২৬</div>
+        <div class="blog-date"><i class="ti ti-calendar-event"></i> জুন ২০২৬</div>
       </div>
-      <i class="ti ti-arrow-right blog-arrow"></i>
+      <i class="ti ti-arrow-up-right blog-arrow"></i>
     </div>
   </div>
 </div>
 
 <footer>
-  © ২০২৬ <span>imarthar.com</span><br>Developed by কুঙ্গ থাঙ
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
 </footer>
 
 </body>
