@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>অনুবাদক — ইমার ঠার</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    /* ── Nav (same as index) ── */
+    nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: #10b981; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+    /* ── Page Hero (smaller than index) ── */
+    .page-hero {
+      position: relative;
+      background: radial-gradient(circle at top right, rgba(209, 250, 229, 0.4), transparent),
+                  radial-gradient(circle at bottom left, rgba(240, 253, 250, 0.4), transparent),
+                  #ffffff;
+      background-image: radial-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero::before, .page-hero::after {
+      content: '';
+      position: absolute;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: 0;
+    }
+    .page-hero::before { top: 0; left: 8%; background: #10b981; opacity: 0.12; }
+    .page-hero::after  { bottom: 0; right: 8%; background: #06b6d4; opacity: 0.12; }
+
+    .page-hero-content { position: relative; z-index: 1; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      margin-bottom: 1.2rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #10b981; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #d1fae5;
+      color: #065f46;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 99px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
+    }
+
+    .page-hero h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.4rem;
+    }
+    .page-hero h1 span { color: #10b981; }
+    .page-hero p { font-size: 15px; color: #64748b; }
+
+    .corpus-badge {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 4px 14px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 99px;
+      font-size: 12px;
+      color: #166534;
+      font-weight: 500;
+    }
+
+    /* ── Main layout ── */
+    .main {
+      max-width: 720px;
+      margin: 2.5rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    /* ── Direction toggle ── */
+    .direction-toggle {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .dir-btn {
+      padding: 0.6rem 1.5rem;
+      background: #fff;
+      border: none;
+      color: #64748b;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .dir-btn.active { background: #10b981; color: #fff; font-weight: 600; }
+    .dir-sep { width: 1px; background: #e2e8f0; }
+
+    /* ── Translator card ── */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      overflow: visible;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+    }
+
+    .card-top {
+      padding: 1.4rem 1.6rem 1rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .lang-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      margin-bottom: 0.7rem;
+    }
+
+    .input-wrap { position: relative; }
+
+    #query {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #0f172a;
+      font-family: inherit;
+      font-size: 1.4rem;
+      line-height: 1.6;
+      resize: none;
+      min-height: 80px;
+    }
+    #query::placeholder { color: #cbd5e1; font-size: 1.1rem; }
+
+    .clear-btn {
+      position: absolute;
+      top: 0; right: 0;
+      background: #f1f5f9;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      padding: 4px 8px;
+      display: none;
+      transition: all 0.15s;
+    }
+    .clear-btn:hover { background: #e2e8f0; color: #475569; }
+    .clear-btn.visible { display: block; }
+
+    /* ── Dropdown ── */
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: #fff;
+      border: 1px solid #10b981;
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      z-index: 100;
+      overflow: hidden;
+      display: none;
+      box-shadow: 0 8px 16px -4px rgba(16,185,129,0.12);
+    }
+    .dropdown.visible { display: block; }
+    .dropdown-item {
+      padding: 0.65rem 1.2rem;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: #1e293b;
+      border-bottom: 1px solid #f1f5f9;
+      transition: background 0.15s;
+    }
+    .dropdown-item:last-child { border-bottom: none; }
+    .dropdown-item:hover { background: #f0fdf4; color: #059669; }
+
+    /* ── Result area ── */
+    .card-bottom {
+      padding: 1.2rem 1.6rem 1.4rem;
+      min-height: 110px;
+    }
+
+    .result-text {
+      font-size: 1.4rem;
+      color: #10b981;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    .result-text.placeholder {
+      color: #cbd5e1;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    .no-result { color: #94a3b8; font-size: 0.88rem; }
+
+    /* ── Divider between result sections ── */
+    .card-divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 1.6rem;
+      color: #94a3b8;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .card-divider::before, .card-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    /* ── Tip box ── */
+    .tip-box {
+      margin-top: 1.5rem;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      font-size: 13px;
+      color: #166534;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .tip-box i { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+
+    /* ── Footer (same as index) ── */
+    footer {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.8;
+    }
+    footer span { color: #10b981; font-weight: 600; }
+
+    @media (max-width: 640px) {
+      .page-hero { padding: 2.5rem 1.25rem 2rem; }
+      .page-hero h1 { font-size: 26px; }
+      .main { padding: 0 1rem; margin-top: 1.8rem; }
+      #query { font-size: 1.2rem; }
+      .result-text { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="tools.html" class="active">টুল</a>
+    <a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <a href="index.html" class="back-link">
+      <i class="ti ti-arrow-left"></i> মূলপাতায় ফিরুন
+    </a>
+    <div class="hero-badge"><i class="ti ti-language"></i> অনুবাদক</div>
+    <h1>বিষ্ণুপ্রিয়া ↔ <span>বাংলা</span></h1>
+    <p>corpus-ভিত্তিক অনুবাদ · Corpus-based Translation</p>
+    <div class="corpus-badge" id="corpus-count">corpus লোড হচ্ছে…</div>
+  </div>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- Direction toggle -->
+  <div class="direction-toggle">
+    <button class="dir-btn active" id="btn-bm2bn" onclick="setDirection('bm2bn')">বিষ্ণুপ্রিয়া → বাংলা</button>
+    <div class="dir-sep"></div>
+    <button class="dir-btn" id="btn-bn2bm" onclick="setDirection('bn2bm')">বাংলা → বিষ্ণুপ্রিয়া</button>
+  </div>
+
+  <!-- Translator card -->
+  <div class="card">
+    <!-- Input -->
+    <div class="card-top">
+      <div class="lang-label" id="src-label">বিষ্ণুপ্রিয়া মণিপুরি লিখুন</div>
+      <div class="input-wrap">
+        <textarea id="query" rows="3" placeholder="এখানে লিখুন…" oninput="onInput(this)"></textarea>
+        <button class="clear-btn" id="clear-btn" onclick="clearInput()" title="মুছুন">✕</button>
+        <div class="dropdown" id="dropdown"></div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="card-divider">অনুবাদ</div>
+
+    <!-- Result -->
+    <div class="card-bottom">
+      <div class="lang-label" id="tgt-label">বাংলা অনুবাদ</div>
+      <div id="result-area">
+        <div class="result-text placeholder">অনুবাদ এখানে দেখাবে</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tip -->
+  <div class="tip-box">
+    <i class="ti ti-info-circle"></i>
+    <span>শব্দ টাইপ করলে নিচে সাজেশন আসবে। সঠিক শব্দটি সিলেক্ট করুন, অনুবাদ দেখাবে।</span>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script>
+  let corpus = [];
+  let direction = 'bm2bn';
+
+  async function loadCorpus() {
+    try {
+      const res = await fetch('bm_bengali_corpus.csv');
+      const text = await res.text();
+      const lines = text.trim().split('\n').slice(1);
+      corpus = lines.map(line => {
+        const parts = line.split(',');
+        if (parts.length < 2) return null;
+        return { bm: parts[0].trim(), bn: parts.slice(1).join(',').trim() };
+      }).filter(Boolean);
+      document.getElementById('corpus-count').textContent = `${corpus.length}টি শব্দ ও বাক্য`;
+    } catch (e) {
+      document.getElementById('corpus-count').textContent = 'corpus লোড ব্যর্থ';
+    }
+  }
+
+  function setDirection(dir) {
+    direction = dir;
+    document.getElementById('btn-bm2bn').classList.toggle('active', dir === 'bm2bn');
+    document.getElementById('btn-bn2bm').classList.toggle('active', dir === 'bn2bm');
+    document.getElementById('src-label').textContent =
+      dir === 'bm2bn' ? 'বিষ্ণুপ্রিয়া মণিপুরি লিখুন' : 'বাংলা লিখুন';
+    document.getElementById('tgt-label').textContent =
+      dir === 'bm2bn' ? 'বাংলা অনুবাদ' : 'বিষ্ণুপ্রিয়া মণিপুরি অনুবাদ';
+    clearInput();
+  }
+
+  function onInput(el) {
+    const q = el.value.trim().toLowerCase();
+    document.getElementById('clear-btn').classList.toggle('visible', q.length > 0);
+
+    if (!q) { showPlaceholder(); hideDropdown(); return; }
+
+    const srcKey = direction === 'bm2bn' ? 'bm' : 'bn';
+    const tgtKey = direction === 'bm2bn' ? 'bn' : 'bm';
+
+    const matches = corpus.filter(row => row[srcKey].toLowerCase().includes(q));
+
+    if (matches.length === 0) {
+      document.getElementById('result-area').innerHTML =
+        '<div class="no-result">কোনো ফলাফল পাওয়া যায়নি</div>';
+      hideDropdown();
+      return;
+    }
+
+    const exact = matches.find(r => r[srcKey].toLowerCase() === q);
+    if (exact) showResult(exact[tgtKey]);
+    else showPlaceholder();
+
+    if (matches.length > 1 || !exact) showDropdown(matches, srcKey, tgtKey);
+    else hideDropdown();
+  }
+
+  function showResult(text) {
+    document.getElementById('result-area').innerHTML =
+      `<div class="result-text">${text}</div>`;
+  }
+
+  function showDropdown(matches, srcKey, tgtKey) {
+    const dd = document.getElementById('dropdown');
+    dd.innerHTML = matches.slice(0, 10).map(r => `
+      <div class="dropdown-item"
+        onclick="selectSuggestion('${r[srcKey].replace(/'/g,"\\'")}','${r[tgtKey].replace(/'/g,"\\'")}')">
+        ${r[srcKey]}
+      </div>`).join('');
+    dd.classList.add('visible');
+  }
+
+  function hideDropdown() {
+    const dd = document.getElementById('dropdown');
+    dd.classList.remove('visible');
+    dd.innerHTML = '';
+  }
+
+  function selectSuggestion(src, tgt) {
+    document.getElementById('query').value = src;
+    document.getElementById('clear-btn').classList.add('visible');
+    showResult(tgt);
+    hideDropdown();
+  }
+
+  function showPlaceholder() {
+    document.getElementById('result-area').innerHTML =
+      '<div class="result-text placeholder">অনুবাদ এখানে দেখাবে</div>';
+  }
+
+  function clearInput() {
+    document.getElementById('query').value = '';
+    document.getElementById('clear-btn').classList.remove('visible');
+    showPlaceholder();
+    hideDropdown();
+  }
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.input-wrap')) hideDropdown();
+  });
+
+  loadCorpus();
+</script>
+</body>
+</html>
