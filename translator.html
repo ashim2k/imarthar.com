@@ -376,7 +376,7 @@
 
   async function loadCorpus() {
     try {
-      const res = await fetch('bm_bengali_corpus.csv');
+      console.log("Fetching CSV..."); const res = await fetch('https://imarthar.com/bm_bengali_corpus.csv');
       const text = await res.text();
       const lines = text.trim().split('\n').slice(1);
       corpus = lines.map(line => {
@@ -389,7 +389,7 @@
       }).filter(Boolean);
       document.getElementById('corpus-count').textContent = `${corpus.length}টি শব্দ ও বাক্য`;
     } catch (e) {
-      document.getElementById('corpus-count').textContent = 'corpus লোড ব্যর্থ';
+      console.error("CSV load error:", e); document.getElementById("corpus-count").textContent = "corpus লোড ব্যর্থ: " + e.message;
     }
   }
 
