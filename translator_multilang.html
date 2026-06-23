@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>অনুবাদক — ইমার ঠার</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f0fdf4; color: #1e293b; min-height: 100vh; }
+
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #d1fae5;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-size: 20px; font-weight: 700; color: #064e3b; text-decoration: none; }
+    .logo span { color: #10b981; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { font-size: 14px; color: #6b7280; text-decoration: none; font-weight: 500; }
+    .nav-links a:hover { color: #10b981; }
+
+    .hero {
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border-bottom: 1px solid #a7f3d0;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+    }
+    .back-link { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; color: #6b7280; text-decoration: none; margin-bottom: 1rem; }
+    .back-link:hover { color: #10b981; }
+    .hero h1 { font-size: 28px; font-weight: 800; color: #064e3b; margin-bottom: 0.3rem; }
+    .hero h1 span { color: #10b981; }
+    .hero p { font-size: 14px; color: #6b7280; margin-bottom: 0.8rem; }
+    .corpus-badge {
+      display: inline-block;
+      background: #fff;
+      border: 1px solid #6ee7b7;
+      border-radius: 99px;
+      padding: 4px 16px;
+      font-size: 12px;
+      color: #065f46;
+      font-weight: 600;
+    }
+
+    .main { max-width: 680px; margin: 2rem auto; padding: 0 1.5rem 4rem; }
+
+    .toggle {
+      display: flex;
+      background: #fff;
+      border: 1px solid #d1fae5;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .toggle-btn {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 600;
+      color: #6b7280;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .toggle-btn.active { background: #10b981; color: #fff; }
+    .toggle-sep { width: 1px; background: #d1fae5; }
+
+    .card {
+      background: #fff;
+      border: 1px solid #d1fae5;
+      border-radius: 16px;
+      overflow: visible;
+      box-shadow: 0 2px 8px rgba(16,185,129,0.06);
+    }
+    .card-input {
+      padding: 1.2rem 1.4rem 0.8rem;
+      border-bottom: 1px solid #f0fdf4;
+      position: relative;
+    }
+    .lang-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #10b981; margin-bottom: 0.6rem; }
+    .dropdown-wrap { position: relative; }
+    #query {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 1.3rem;
+      font-family: inherit;
+      color: #0f172a;
+      background: transparent;
+      resize: none;
+      min-height: 72px;
+      line-height: 1.6;
+    }
+    #query::placeholder { color: #d1d5db; }
+    .clear-btn {
+      position: absolute;
+      top: 0; right: 0;
+      background: #f1f5f9;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      border-radius: 6px;
+      padding: 4px 9px;
+      font-size: 12px;
+      display: none;
+    }
+    .clear-btn.show { display: block; }
+    .clear-btn:hover { background: #e2e8f0; }
+
+    .dropdown {
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      background: #fff;
+      border: 1px solid #6ee7b7;
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      z-index: 50;
+      display: none;
+      box-shadow: 0 8px 20px rgba(16,185,129,0.1);
+      max-height: 220px;
+      overflow-y: auto;
+    }
+    .dropdown.open { display: block; }
+    .dd-item {
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      font-size: 14px;
+      color: #1e293b;
+      border-bottom: 1px solid #f0fdf4;
+      transition: background 0.1s;
+    }
+    .dd-item:last-child { border-bottom: none; }
+    .dd-item:hover { background: #ecfdf5; color: #065f46; }
+    .dd-match { font-weight: 700; color: #10b981; }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 1.4rem;
+      font-size: 11px;
+      color: #a7f3d0;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #d1fae5; }
+
+    .card-result {
+      padding: 1.2rem 1.4rem 1.4rem;
+      min-height: 100px;
+      background: #f9fffe;
+      border-radius: 0 0 16px 16px;
+    }
+    .result-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; margin-bottom: 0.6rem; }
+    #result { font-size: 1.3rem; font-weight: 500; color: #065f46; line-height: 1.6; }
+    #result.placeholder { color: #d1d5db; font-size: 1rem; font-weight: 400; }
+    #result.error { color: #f87171; font-size: 0.9rem; font-weight: 400; }
+
+    .tip {
+      margin-top: 1.2rem;
+      padding: 0.9rem 1.1rem;
+      background: #fff;
+      border: 1px solid #d1fae5;
+      border-radius: 10px;
+      font-size: 13px;
+      color: #6b7280;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .tip i { color: #10b981; font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+    footer {
+      border-top: 1px solid #d1fae5;
+      padding: 2rem;
+      text-align: center;
+      font-size: 13px;
+      color: #9ca3af;
+      background: #fff;
+    }
+    footer span { color: #10b981; font-weight: 600; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 22px; }
+      #query, #result { font-size: 1.1rem; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="tools.html">টুল</a>
+    <a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <a href="index.html" class="back-link"><i class="ti ti-arrow-left"></i> মূলপাতায় ফিরুন</a>
+  <h1>বিষ্ণুপ্রিয়া ↔ <span>বাংলা</span></h1>
+  <p>Corpus-based Translation · কর্পাস-ভিত্তিক অনুবাদ</p>
+  <div class="corpus-badge" id="corpus-count">লোড হচ্ছে…</div>
+</div>
+
+<div class="main">
+
+  <div class="toggle">
+    <button class="toggle-btn active" id="btn-bm" onclick="setDir('bm2bn')">বিষ্ণুপ্রিয়া → বাংলা</button>
+    <div class="toggle-sep"></div>
+    <button class="toggle-btn" id="btn-bn" onclick="setDir('bn2bm')">বাংলা → বিষ্ণুপ্রিয়া</button>
+  </div>
+
+  
+  <div style="margin-bottom:1rem;">
+    <div class="lang-label">Target Language</div>
+    <select id="targetLang" style="width:100%;padding:10px;border:1px solid #d1fae5;border-radius:10px;font-family:inherit;">
+      <option value="bn">বাংলা</option>
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <option value="es">Español</option>
+      <option value="ar">العربية</option>
+    </select>
+  </div>
+
+
+<div class="card">
+    <div class="card-input">
+      <div class="lang-label" id="src-label">বিষ্ণুপ্রিয়া মণিপুরি</div>
+      <div class="dropdown-wrap">
+        <textarea id="query" rows="3" placeholder="এখানে লিখুন…" oninput="onType(this)"></textarea>
+        <button class="clear-btn" id="clear-btn" onclick="doClear()">✕</button>
+        <div class="dropdown" id="dropdown"></div>
+      </div>
+    </div>
+
+    <div class="divider">অনুবাদ</div>
+
+    <div class="card-result">
+      <div class="result-label" id="tgt-label">বাংলা</div>
+      <div id="result" class="placeholder">অনুবাদ এখানে দেখাবে</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <i class="ti ti-bulb"></i>
+    <span>শব্দ বা বাক্য লিখুন — নিচে সাজেশন আসবে। সঠিকটি বেছে নিন।</span>
+  </div>
+
+</div>
+
+<footer>
+  © ২০২৬ <span>imarthar.com</span> · Developed by কুঙ্গ থাঙ<br>
+  <small>Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script>
+  let corpus = [];
+  let dir = 'bm2bn';
+
+  fetch('bm_bengali_corpus.csv')
+    .then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    })
+    .then(function(text) {
+      var lines = text.trim().split(/\r?\n/);
+      for (var i = 1; i < lines.length; i++) {
+        var line = lines[i].trim();
+        if (!line) continue;
+        var ci = line.indexOf(',');
+        if (ci < 1) continue;
+        var bm = line.substring(0, ci).trim();
+        var bn = line.substring(ci + 1).trim();
+        if (bm && bn) corpus.push({ bm: bm, bn: bn });
+      }
+      document.getElementById('corpus-count').textContent = corpus.length + 'টি শব্দ ও বাক্য';
+    })
+    .catch(function(err) {
+      document.getElementById('corpus-count').textContent = 'লোড ব্যর্থ';
+      console.error('CSV error:', err);
+    });
+
+  function setDir(d) {
+    dir = d;
+    document.getElementById('btn-bm').classList.toggle('active', d === 'bm2bn');
+    document.getElementById('btn-bn').classList.toggle('active', d === 'bn2bm');
+    document.getElementById('src-label').textContent = d === 'bm2bn' ? 'বিষ্ণুপ্রিয়া মণিপুরি' : 'বাংলা';
+    document.getElementById('tgt-label').textContent = d === 'bm2bn' ? 'বাংলা' : 'বিষ্ণুপ্রিয়া মণিপুরি';
+    doClear();
+  }
+
+  function onType(el) {
+    var q = el.value.trim();
+    document.getElementById('clear-btn').classList.toggle('show', q.length > 0);
+    if (!q) { resetResult(); closeDD(); return; }
+
+    var sk = dir === 'bm2bn' ? 'bm' : 'bn';
+    var tk = dir === 'bm2bn' ? 'bn' : 'bm';
+    var ql = q.toLowerCase();
+
+    var hits = corpus.filter(function(r) { return r[sk].toLowerCase().indexOf(ql) !== -1; });
+
+    if (!hits.length) {
+      setResult('কোনো ফলাফল পাওয়া যায়নি', 'error');
+      closeDD();
+      return;
+    }
+
+    var exact = null;
+    for (var i = 0; i < hits.length; i++) {
+      if (hits[i][sk].toLowerCase() === ql) { exact = hits[i]; break; }
+    }
+
+    if (exact) setResult(exact[tk], '');
+    else resetResult();
+
+    if (!exact || hits.length > 1) openDD(hits, sk, tk, ql);
+    else closeDD();
+  }
+
+  function setResult(text, cls) {
+    var el = document.getElementById('result');
+    el.textContent = text;
+    el.className = cls;
+  }
+
+  function resetResult() {
+    setResult('অনুবাদ এখানে দেখাবে', 'placeholder');
+  }
+
+  function openDD(hits, sk, tk, ql) {
+    var dd = document.getElementById('dropdown');
+    var html = '';
+    var limit = Math.min(hits.length, 12);
+    for (var i = 0; i < limit; i++) {
+      var word = hits[i][sk];
+      var tgt = hits[i][tk];
+      html += '<div class="dd-item" onclick="pick(\'' + esc(word) + '\',\'' + esc(tgt) + '\')">' + word + '</div>';
+    }
+    dd.innerHTML = html;
+    dd.classList.add('open');
+  }
+
+  function closeDD() {
+    var dd = document.getElementById('dropdown');
+    dd.classList.remove('open');
+    dd.innerHTML = '';
+  }
+
+  function pick(src, tgt) {
+    document.getElementById('query').value = src;
+    document.getElementById('clear-btn').classList.add('show');
+    setResult(tgt, '');
+    closeDD();
+  }
+
+  function doClear() {
+    document.getElementById('query').value = '';
+    document.getElementById('clear-btn').classList.remove('show');
+    resetResult();
+    closeDD();
+  }
+
+  function esc(s) {
+    return s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown-wrap')) closeDD();
+  });
+
+async function translateFromBangla(text,targetLang){
+  if(targetLang==='bn') return text;
+  try{
+    const response = await fetch('https://translate.argosopentech.com/translate',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        q:text,
+        source:'bn',
+        target:targetLang,
+        format:'text'
+      })
+    });
+    const data = await response.json();
+    return data.translatedText || text;
+  }catch(e){
+    return 'Translation service unavailable';
+  }
+}
+
+</script>
+</body>
+</html>
