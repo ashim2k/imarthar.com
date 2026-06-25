@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>অভিধান — ইমার ঠার</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226,232,240,0.8);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: #10b981; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+    /* ── Hero ── */
+    .page-hero {
+      position: relative;
+      background: radial-gradient(circle at top right, rgba(209,250,229,0.4), transparent),
+                  radial-gradient(circle at bottom left, rgba(240,253,250,0.4), transparent),
+                  #ffffff;
+      background-image: radial-gradient(rgba(16,185,129,0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero::before, .page-hero::after {
+      content: '';
+      position: absolute;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: 0;
+    }
+    .page-hero::before { top: 0; left: 8%; background: #10b981; opacity: 0.12; }
+    .page-hero::after  { bottom: 0; right: 8%; background: #06b6d4; opacity: 0.12; }
+
+    .page-hero-content { position: relative; z-index: 1; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      margin-bottom: 1.2rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #10b981; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #d1fae5;
+      color: #065f46;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 99px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(16,185,129,0.12);
+    }
+
+    .page-hero h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.4rem;
+    }
+    .page-hero h1 span { color: #10b981; }
+    .page-hero p { font-size: 15px; color: #64748b; }
+
+    /* ── Main ── */
+    .main {
+      max-width: 620px;
+      margin: 3rem auto 5rem;
+      padding: 0 1.5rem;
+    }
+
+    /* ── Search card ── */
+    .search-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+    }
+
+    .search-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #94a3b8;
+      margin-bottom: 0.8rem;
+    }
+
+    .search-wrap {
+      display: flex;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-wrap:focus-within {
+      border-color: #10b981;
+      box-shadow: 0 0 0 3px rgba(16,185,129,0.1);
+    }
+
+    #search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 0.9rem 1.1rem;
+      font-size: 1.1rem;
+      font-family: inherit;
+      color: #0f172a;
+      background: transparent;
+    }
+    #search-input::placeholder { color: #cbd5e1; }
+
+    .search-btn {
+      background: #10b981;
+      border: none;
+      color: #fff;
+      padding: 0 1.4rem;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .search-btn:hover { background: #059669; }
+
+    /* ── Info box ── */
+    .info-box {
+      margin-top: 1.2rem;
+      padding: 0.9rem 1.1rem;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 10px;
+      font-size: 13px;
+      color: #166534;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .info-box i { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── Owahi credit ── */
+    .credit {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .credit a { color: #10b981; text-decoration: none; font-weight: 500; }
+    .credit a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.8;
+    }
+    footer span { color: #10b981; font-weight: 600; }
+
+    @media (max-width: 640px) {
+      .page-hero { padding: 2.5rem 1.25rem 2rem; }
+      .page-hero h1 { font-size: 26px; }
+      .main { margin-top: 2rem; padding: 0 1rem; }
+      .search-card { padding: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="tools.html" class="active">টুল</a>
+    <a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <a href="index.html" class="back-link">
+      <i class="ti ti-arrow-left"></i> মূলপাতায় ফিরুন
+    </a>
+    <div class="hero-badge"><i class="ti ti-book"></i> অভিধান</div>
+    <h1>ওয়াহি <span>বিসারিক</span></h1>
+    <p>বিষ্ণুপ্রিয়া মণিপুরি শব্দের অর্থ খুঁজুন</p>
+  </div>
+</div>
+
+<!-- Main -->
+<div class="main">
+  <div class="search-card">
+    <div class="search-label">শব্দ লিখুন</div>
+    <div class="search-wrap">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="যেমন: মি, থাকাত, খানা…"
+        onkeydown="if(event.key==='Enter') doSearch()"
+      />
+      <button class="search-btn" onclick="doSearch()">
+        <i class="ti ti-search"></i> বিসারিক
+      </button>
+    </div>
+
+    <div class="info-box">
+      <i class="ti ti-info-circle"></i>
+      <span>শব্দটি লিখে বিসারিক বাটনে ক্লিক করুন বা Enter চাপুন — owahi.com এ নতুন ট্যাবে ফলাফল দেখাবে।</span>
+    </div>
+  </div>
+
+  <div class="credit">
+    অভিধান সেবা প্রদান করছে <a href="https://owahi.com" target="_blank">owahi.com</a> —
+    বিষ্ণুপ্রিয়া মণিপুরি অনলাইন অভিধান
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script>
+  function doSearch() {
+    var word = document.getElementById('search-input').value.trim();
+    if (!word) {
+      document.getElementById('search-input').focus();
+      return;
+    }
+    var url = 'https://owahi.com/' + encodeURIComponent(word) + '.html';
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
