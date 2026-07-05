@@ -46,7 +46,7 @@
     background-image: radial-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 0);
     background-size: 24px 24px;
     border-bottom: 1px solid #e2e8f0;
-    padding: 2.5rem 2rem 3rem;
+    padding: 5rem 2rem 4rem;
     text-align: center;
     overflow: hidden;
   }
@@ -82,43 +82,86 @@
   .hero h2 { font-size: 18px; font-weight: 500; color: #94a3b8; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
   .hero p { font-size: 16px; color: #475569; margin: 0 auto 2.5rem; line-height: 1.8; }
 
-  /* Glassmorphic Search Bar */
-  .search-bar {
-    display: flex;
-    max-width: 520px;
-    margin: 0 auto;
-    border: 1px solid #cbd5e1;
-    border-radius: 16px;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
+  /* ── Inline Translator Widget ── */
+  .tr-widget { max-width: 560px; margin: 0 auto; }
+
+  .tr-dir-row {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.9); border: 1px solid #cbd5e1;
+    border-radius: 14px 14px 0 0; padding: 8px 12px;
+    border-bottom: none;
   }
-  .search-bar:focus-within {
-    transform: translateY(-2px);
-    box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
+  .tr-lang-wrap { flex: 1; }
+  .tr-lang-wrap label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; display: block; margin-bottom: 2px; }
+  .tr-lang-wrap select {
+    width: 100%; border: none; outline: none; background: transparent;
+    font-size: 13px; font-weight: 700; color: #065f46; cursor: pointer;
+    font-family: inherit;
+  }
+  .tr-swap-btn {
+    background: #f0fdf4; border: 1px solid #a7f3d0; color: #10b981;
+    border-radius: 50%; width: 32px; height: 32px; font-size: 16px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: all 0.2s;
+  }
+  .tr-swap-btn:hover { background: #10b981; color: #fff; }
+
+  .tr-input-row {
+    display: flex; background: rgba(255,255,255,0.9);
+    border: 1px solid #cbd5e1; border-radius: 0 0 16px 16px;
+    overflow: visible; transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .tr-input-row:focus-within {
     border-color: #10b981;
+    box-shadow: 0 8px 20px -5px rgba(16,185,129,0.15);
   }
-  .search-bar input {
-    flex: 1;
-    border: none;
-    padding: 16px 20px;
-    font-size: 15px;
-    background: transparent;
-    color: #0f172a;
-    outline: none;
+  .tr-textarea {
+    flex: 1; border: none; outline: none; padding: 14px 16px;
+    font-size: 15px; font-family: inherit; color: #0f172a;
+    background: transparent; resize: none; min-height: 52px; line-height: 1.5;
+    border-right: 1px solid #e2e8f0;
   }
-  .search-bar button {
-    background: #10b981;
-    color: white;
-    border: none;
-    padding: 0 26px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
+  .tr-textarea::placeholder { color: #cbd5e1; }
+  .tr-result-wrap {
+    flex: 1; padding: 14px 16px; font-size: 15px; font-weight: 600;
+    color: #10b981; line-height: 1.5; min-height: 52px;
+    display: flex; align-items: center;
   }
-  .search-bar button:hover { background: #059669; }
+  .tr-result-wrap.placeholder { color: #cbd5e1; font-weight: 400; font-size: 14px; }
+  .tr-result-wrap.error { color: #f87171; font-weight: 400; font-size: 13px; }
+  .tr-search-btn {
+    background: #10b981; color: white; border: none;
+    padding: 0 20px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s;
+    display: flex; align-items: center; gap: 6px; border-radius: 0 0 14px 0;
+  }
+  .tr-search-btn:hover { background: #059669; }
+
+  /* Autocomplete dropdown */
+  .tr-dd {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: #fff; border: 1px solid #6ee7b7; border-top: none;
+    border-radius: 0 0 12px 12px; z-index: 200; display: none;
+    box-shadow: 0 8px 20px rgba(16,185,129,0.12);
+    max-height: 200px; overflow-y: auto;
+  }
+  .tr-dd.open { display: block; }
+  .tr-dd-item {
+    padding: 0.55rem 1rem; cursor: pointer; font-size: 13px;
+    color: #1e293b; border-bottom: 1px solid #f0fdf4;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: background 0.1s;
+  }
+  .tr-dd-item:last-child { border-bottom: none; }
+  .tr-dd-item:hover { background: #ecfdf5; color: #065f46; }
+  .tr-dd-item .dd-s { font-weight: 600; }
+  .tr-dd-item .dd-t { font-size: 12px; color: #94a3b8; }
+
+  .tr-corpus-note {
+    font-size: 11px; color: #94a3b8; text-align: center;
+    margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 4px;
+  }
 
   /* Sections Structure */
   .section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
@@ -209,7 +252,7 @@
   /* Mobile Optimization */
   @media (max-width: 640px) {
     .hero h1 { font-size: 32px; }
-    .hero { padding: 2rem 1.25rem 2.5rem; }
+    .hero { padding: 3.5rem 1.25rem 3rem; }
     .blog-image { display: none; }
     .section { padding: 2.5rem 1.25rem; }
   }
@@ -238,9 +281,50 @@
 	  <h1>ইমার <span>ঠার</span></h1>
     <h2>My Mother Tongue</h2>
     <p>বিষ্ণুপ্রিয়া মণিপুরি ঠারর অনুবাদ, অভিধান, গবেষণা বারো কমিউনিটি প্ল্যাটফর্ম আহান।</p>
-    <div class="search-bar">
-      <input type="text" placeholder="ওয়াহি বিসারিক ..." />
-      <button>বিসারিক</button>
+    <!-- Inline Translator Widget -->
+    <div class="tr-widget">
+      <div class="tr-dir-row">
+        <div class="tr-lang-wrap">
+          <label>From</label>
+          <select id="idx-src" onchange="idxLangChange()">
+            <option value="bm">বিষ্ণুপ্রিয়া মণিপুরি</option>
+            <option value="bn">বাংলা</option>
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="zh">中文</option>
+          </select>
+        </div>
+        <button class="tr-swap-btn" onclick="idxSwap()" title="ভাষা বদলান">
+          <i class="ti ti-arrows-exchange"></i>
+        </button>
+        <div class="tr-lang-wrap">
+          <label>To</label>
+          <select id="idx-tgt" onchange="idxLangChange()">
+            <option value="bn">বাংলা</option>
+            <option value="bm">বিষ্ণুপ্রিয়া মণিপুরি</option>
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="zh">中文</option>
+          </select>
+        </div>
+      </div>
+      <div class="tr-input-row" id="idx-input-row">
+        <textarea class="tr-textarea" id="idx-query" rows="1"
+          placeholder="ওয়াহি বিসারিক …" oninput="idxType(this)"></textarea>
+        <div class="tr-result-wrap placeholder" id="idx-result">অনুবাদ দেখাবে</div>
+        <button class="tr-search-btn" onclick="window.location.href='translator_multilang.html'">
+          <i class="ti ti-language"></i> বিস্তারিত
+        </button>
+        <div class="tr-dd" id="idx-dd"></div>
+      </div>
+      <div class="tr-corpus-note">
+        <i class="ti ti-database" style="font-size:12px;"></i>
+        <span id="idx-corpus-note">corpus লোড হচ্ছে…</span>
+      </div>
     </div>
   </div>
 </div>
@@ -253,28 +337,29 @@
       <div class="tool-name">অনুবাদক</div>
       <div class="tool-desc">বিষ্ণুপ্রিয়া ↔ বাংলা বা অন্য ঠারে অনুবাদ করিক</div>
     </a>
-    <a href="dictionary.html" class="tool-card">
+    <div class="tool-card">
       <div class="tool-icon"><i class="ti ti-book"></i></div>
       <div class="tool-name">অভিধান</div>
       <div class="tool-desc">ওয়াহির অর্থ বারো ব্যবহার বিসারিক</div>
-    </a>
-    <a href="corpus.html" class="tool-card">
+    </div>
+    <div class="tool-card">
       <div class="tool-icon"><i class="ti ti-database"></i></div>
       <div class="tool-name">কর্পাস</div>
       <div class="tool-desc">ভাষার ডেটাসেট ডাউনলোড করিক</div>
-    </a>
-    <a href="papers.html" class="tool-card">
+    </div>
+    <div class="tool-card">
       <div class="tool-icon"><i class="ti ti-file-text"></i></div>
       <div class="tool-name">গবেষণা</div>
       <div class="tool-desc">একাডেমিক পেপারহানি পাকরিক</div>
-    </a>
+    </div>
   </div>
 </div>
 
 <div class="section" style="padding-top: 0;">
   <div class="section-title">সাম্প্রতিক ব্লগ</div>
   <div class="blog-list">
-    <a href="blogs/post-1.html" class="blog-item">
+    <div class="blog-item">
+      <!-- High Quality Visual Art Placeholders aligned contextually -->
       <img class="blog-image" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=150&auto=format&fit=crop&q=60" alt="History">
       <div class="blog-info">
         <div class="blog-tag">ভাষা</div>
@@ -282,8 +367,8 @@
         <div class="blog-date"><i class="ti ti-calendar-event"></i> জুন ২০২৬</div>
       </div>
       <i class="ti ti-arrow-up-right blog-arrow"></i>
-    </a>
-    <a href="blogs/post-2.html" class="blog-item">
+    </div>
+    <div class="blog-item">
       <img class="blog-image" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=150&auto=format&fit=crop&q=60" alt="Data Corpus">
       <div class="blog-info">
         <div class="blog-tag">গবেষণা</div>
@@ -291,8 +376,8 @@
         <div class="blog-date"><i class="ti ti-calendar-event"></i> জুন ২০২৬</div>
       </div>
       <i class="ti ti-arrow-up-right blog-arrow"></i>
-    </a>
-    <a href="blogs/post-6.html" class="blog-item">
+    </div>
+    <div class="blog-item">
       <img class="blog-image" src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=150&auto=format&fit=crop&q=60" alt="Culture">
       <div class="blog-info">
         <div class="blog-tag">সংস্কৃতি</div>
@@ -300,14 +385,108 @@
         <div class="blog-date"><i class="ti ti-calendar-event"></i> জুন ২০২৬</div>
       </div>
       <i class="ti ti-arrow-up-right blog-arrow"></i>
-    </a>
+    </div>
   </div>
 </div>
 
 <footer>
   © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
-  <small style="color: #94a3b8;"> A race to preserve my mother tongue in the digital age.</small>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
 </footer>
 
+
+<script>
+  const IDX_COL = { bm:0, bn:1, en:2, zh:3, hi:4, es:5, fr:6 };
+  const IDX_NAME = { bm:'বিষ্ণুপ্রিয়া', bn:'বাংলা', en:'English', zh:'中文', hi:'हिन्दी', es:'Español', fr:'Français' };
+  let idxCorpus = [];
+  let idxSrc = 'bm', idxTgt = 'bn';
+
+  fetch('bm_corpus_multilang.csv')
+    .then(r => r.ok ? r.text() : Promise.reject())
+    .then(text => {
+      const lines = text.trim().split(/\r?\n/);
+      for (let i = 1; i < lines.length; i++) {
+        const cols = idxParseCSV(lines[i]);
+        if (cols.length >= 2) idxCorpus.push(cols);
+      }
+      document.getElementById('idx-corpus-note').textContent = idxCorpus.length + 'টি শব্দ লোড হয়েছে';
+    })
+    .catch(() => {
+      document.getElementById('idx-corpus-note').textContent = 'corpus লোড ব্যর্থ';
+    });
+
+  function idxParseCSV(line) {
+    const r = []; let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') inQ = !inQ;
+      else if (c === ',' && !inQ) { r.push(cur.trim()); cur = ''; }
+      else cur += c;
+    }
+    r.push(cur.trim()); return r;
+  }
+
+  function idxLangChange() {
+    idxSrc = document.getElementById('idx-src').value;
+    idxTgt = document.getElementById('idx-tgt').value;
+    document.getElementById('idx-query').value = '';
+    idxSetResult('অনুবাদ দেখাবে', 'placeholder');
+    idxCloseDD();
+  }
+
+  function idxSwap() {
+    const s = document.getElementById('idx-src');
+    const t = document.getElementById('idx-tgt');
+    const tmp = s.value; s.value = t.value; t.value = tmp;
+    idxLangChange();
+  }
+
+  function idxType(el) {
+    const q = el.value.trim();
+    if (!q) { idxSetResult('অনুবাদ দেখাবে', 'placeholder'); idxCloseDD(); return; }
+    const si = IDX_COL[idxSrc], ti = IDX_COL[idxTgt];
+    if (si === undefined || ti === undefined) return;
+    const ql = q.toLowerCase();
+    const hits = idxCorpus.filter(r => r[si] && r[si].toLowerCase().includes(ql));
+    if (!hits.length) { idxSetResult('পাওয়া যায়নি', 'error'); idxCloseDD(); return; }
+    const exact = hits.find(r => r[si].toLowerCase() === ql);
+    if (exact && exact[ti]) idxSetResult(exact[ti], '');
+    else idxSetResult('অনুবাদ দেখাবে', 'placeholder');
+    if (!exact || hits.length > 1) idxOpenDD(hits, si, ti);
+    else idxCloseDD();
+  }
+
+  function idxOpenDD(hits, si, ti) {
+    const dd = document.getElementById('idx-dd');
+    const lim = Math.min(hits.length, 10);
+    let h = '';
+    for (let i = 0; i < lim; i++) {
+      const s = hits[i][si] || '', t = hits[i][ti] || '—';
+      h += \`<div class="tr-dd-item" onclick="idxPick(\${JSON.stringify(s)},\${JSON.stringify(t)})">
+        <span class="dd-s">\${s}</span><span class="dd-t">\${t}</span></div>\`;
+    }
+    dd.innerHTML = h; dd.classList.add('open');
+  }
+
+  function idxCloseDD() {
+    const dd = document.getElementById('idx-dd');
+    dd.classList.remove('open'); dd.innerHTML = '';
+  }
+
+  function idxPick(src, tgt) {
+    document.getElementById('idx-query').value = src;
+    idxSetResult(tgt, '');
+    idxCloseDD();
+  }
+
+  function idxSetResult(text, cls) {
+    const el = document.getElementById('idx-result');
+    el.textContent = text; el.className = 'tr-result-wrap ' + cls;
+  }
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#idx-input-row')) idxCloseDD();
+  });
+</script>
 </body>
 </html>
