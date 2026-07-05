@@ -264,6 +264,54 @@
   let srcLang = 'bm';
   let tgtLang = 'bn';
 
+  // ── ভাষা তালিকা (বিষ্ণুপ্রিয়া মণিপুরি জোড়া নিয়ম প্রয়োগের জন্য) ──
+  const SRC_FULL = [
+    { v:'bm', t:'বিষ্ণুপ্রিয়া মণিপুরি' },
+    { v:'bn', t:'বাংলা' },
+    { v:'en', t:'English' },
+    { v:'hi', t:'हिन्दी' },
+    { v:'es', t:'Español' },
+    { v:'fr', t:'Français' },
+    { v:'zh', t:'中文' }
+  ];
+  const TGT_FULL = [
+    { v:'bn', t:'বাংলা' },
+    { v:'bm', t:'বিষ্ণুপ্রিয়া মণিপুরি' },
+    { v:'en', t:'English' },
+    { v:'hi', t:'हिन्दी' },
+    { v:'es', t:'Español' },
+    { v:'fr', t:'Français' },
+    { v:'zh', t:'中文' }
+  ];
+  const BM_ONLY = [ { v:'bm', t:'বিষ্ণুপ্রিয়া মণিপুরি' } ];
+
+  function buildOptions(list, selectedVal) {
+    return list.map(l => '<option value="' + l.v + '"' + (l.v === selectedVal ? ' selected' : '') + '>' + l.t + '</option>').join('');
+  }
+
+  // src ও tgt এর বর্তমান মান অনুযায়ী দুই ড্রপডাউনের অপশন তালিকা ঠিক করে —
+  // শুধু bm→অন্য ভাষা অথবা অন্য ভাষা→bm অনুবাদ করা যাবে, bn→en এর মতো জোড়া নয়
+  function rebuildLangOptions() {
+    const srcSel = document.getElementById('src-lang');
+    const tgtSel = document.getElementById('tgt-lang');
+    const sVal = srcSel.value;
+    const tVal = tgtSel.value;
+
+    if (sVal !== 'bm') {
+      tgtSel.innerHTML = buildOptions(BM_ONLY, 'bm');
+    } else {
+      const keep = TGT_FULL.some(l => l.v === tVal) ? tVal : 'bn';
+      tgtSel.innerHTML = buildOptions(TGT_FULL, keep);
+    }
+
+    if (tVal !== 'bm') {
+      srcSel.innerHTML = buildOptions(BM_ONLY, 'bm');
+    } else {
+      const keep = SRC_FULL.some(l => l.v === sVal) ? sVal : 'bm';
+      srcSel.innerHTML = buildOptions(SRC_FULL, keep);
+    }
+  }
+
   // ── Load CSV ──
   fetch('bm_corpus_multilang.csv')
     .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
@@ -298,6 +346,7 @@
 
   // ── Language change ──
   function onLangChange() {
+    rebuildLangOptions();
     srcLang = document.getElementById('src-lang').value;
     tgtLang = document.getElementById('tgt-lang').value;
     document.getElementById('src-label').textContent = LANG_NAME[srcLang];
@@ -308,9 +357,22 @@
   function swapLangs() {
     const sl = document.getElementById('src-lang');
     const tl = document.getElementById('tgt-lang');
-    const tmp = sl.value;
-    sl.value = tl.value;
-    tl.value = tmp;
+    const newSrcVal = tl.value;
+    const newTgtVal = sl.value;
+
+    // নতুন মান অনুযায়ী সরাসরি সঠিক অপশন তালিকা বসানো হচ্ছে,
+    // যাতে লক করা (শুধু bm) সিলেক্ট বক্সে মান বসাতে সমস্যা না হয়
+    if (newTgtVal !== 'bm') {
+      sl.innerHTML = buildOptions(BM_ONLY, 'bm');
+    } else {
+      sl.innerHTML = buildOptions(SRC_FULL, newSrcVal);
+    }
+    if (newSrcVal !== 'bm') {
+      tl.innerHTML = buildOptions(BM_ONLY, 'bm');
+    } else {
+      tl.innerHTML = buildOptions(TGT_FULL, newTgtVal);
+    }
+
     onLangChange();
   }
 
@@ -409,6 +471,8 @@
   document.addEventListener('click', e => {
     if (!e.target.closest('.dropdown-wrap')) closeDD();
   });
+
+  rebuildLangOptions(); // পৃষ্ঠা লোড হওয়ার সময় নিয়ম অনুযায়ী ড্রপডাউন ঠিক করা
 </script>
 </body>
 </html>
