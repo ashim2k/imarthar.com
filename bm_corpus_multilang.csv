@@ -35,7 +35,7 @@ bm,bn,en,zh-CN,hi,es,fr
 করতেগা,করতে,to do,要做,करने के लिए,hacer,faire
 করানির,করার,to do,要做,करने के लिए,hacer,faire
 করলু অইস,করতাম,I did,我做到了,मैंने किया,Hice,Je l'ai fait
-করল অইষ,করত,used to,习惯于,अभ्यस्त,solía hacerlo,habitué
+করল অইস,করত,used to,习惯于,अभ्यस्त,solía hacerlo,habitué
 যাংগা,যাই,let's go,我们走吧,चल दर,vamos,allons-y
 যাগা,যাও,go,去,जाना,ir,aller
 যারগা,যায়,goes,去,जाता है,va,va
@@ -140,50 +140,47 @@ bm,bn,en,zh-CN,hi,es,fr
 থায়,থেকে,from,从,से,de,depuis
 থাইলু অইস,থাকতাম,I would stay,我会留下来,मैं रुकूंगा,me quedaría,je resterais
 খাউরি,খাই,eat,吃,खाओ,comer,manger
-খার,খাও,eat,吃,खाओ,comer,manger
+খা,খাও,eat,吃,खाओ,comer,manger
 খার,খায়,eats,吃,खाता है,come,mange
 খার,খান,eat,吃,खाओ,comer,manger
-থাইলু অইস,খাচ্ছি,eating,吃,खाना,comiendo,manger
+খাউরি,খাচ্ছি,eating,吃,खाना,comiendo,manger
 খার,খাচ্ছে,eating,吃,खाना,comiendo,manger
-খার,খেলাম,the game,游戏,खेल,el juego,le jeu
-খার,খেল,play,玩,खेल,jugar,jouer
-খার,খেয়েছি,have eaten,吃过,खा लिया है,han comido,avoir mangé
-খার,খেয়েছে,ate,吃,खाया,comió,a mangé
-খাউরিতৌ,খাব,will eat,会吃,खाऊंगा,comerá,va manger
-খার,খাবে,will eat,会吃,खाऊंगा,comerá,va manger
-খার,খেতে,to eat,吃饭,को खाने के,comer,manger
-খার,খেয়ে,by eating,通过吃,खाने से,comiendo,en mangeant
-খার,খেতাম,I used to eat,我以前吃过,मैं खाता था,yo solía comer,je mangeais
+খেইলু,খেলাম,the game,游戏,खेल,el juego,le jeu
+খেইল,খেল,play,玩,खेल,jugar,jouer
+খেইলু,খেয়েছি,have eaten,吃过,खा लिया है,han comido,avoir mangé
+খেইল,খেয়েছে,ate,吃,खाया,comió,a mangé
+খেইতৌ,খাব,will eat,会吃,खाऊंगा,comerá,va manger
+খেইতৈ,খাবে,will eat,会吃,खाऊंगा,comerá,va manger
+খেইতে,খেতে,to eat,吃饭,को खाने के,comer,manger
+খেয়া,খেয়ে,by eating,通过吃,खाने से,comiendo,en mangeant
+খেইলু অইস,খেতাম,I used to eat,我以前吃过,मैं खाता था,yo solía comer,je mangeais
 পাওরি,পাই,get,得到,पाना,conseguir,obtenir
-পার,পাও,get,得到,पाना,conseguir,obtenir
+পা,পাও,get,得到,पाना,conseguir,obtenir
 পার,পায়,gets,得到,जाता,obtiene,obtient
 পার,পান,drink,喝,पीना,beber,boire
-খার,পাচ্ছি,getting,得到,उपार्जन,conseguir,obtenir
+পাউরি,পাচ্ছি,getting,得到,उपार्जन,conseguir,obtenir
 পার,পাচ্ছে,getting,得到,उपार्जन,conseguir,obtenir
-পার,পেলাম,got,得到,प्राप्त,consiguió,a obtenu
-পার,পেল,got,得到,प्राप्त,consiguió,a obtenu
-পার,পেয়েছি,received,已收到,प्राप्त,recibió,reçu
-পার,পেয়েছে,received,已收到,प्राप्त,recibió,reçu
-পাওরিতৌ,পাব,will get,将会得到,लाऊंगा,conseguirá,obtiendra
-পার,পাবে,will get,将会得到,लाऊंगा,conseguirá,obtiendra
-পার,পেতে,to get,要得到,पाने के,Llegar,obtenir
-পার,পেয়ে,getting,得到,उपार्जन,conseguir,obtenir
-পার,পেতাম,I would have,我会,मैंने यह किया होता,Quisiera,J'aurais
+পেইলু,পেলাম,got,得到,प्राप्त,consiguió,a obtenu
+পেইল,পেল,got,得到,प्राप्त,consiguió,a obtenu
+পেইলু,পেয়েছি,received,已收到,प्राप्त,recibió,reçu
+পেইল,পেয়েছে,received,已收到,प्राप्त,recibió,reçu
+পেইতৌ,পাব,will get,将会得到,लाऊंगा,conseguirá,obtiendra
+পেইতৈ,পাবে,will get,将会得到,लाऊंगा,conseguirá,obtiendra
+পেইতে,পেতে,to get,要得到,पाने के,Llegar,obtenir
+পেয়া,পেয়ে,getting,得到,उपार्जन,conseguir,obtenir
+পেইলু অইস,পেতাম,I would have,我会,मैंने यह किया होता,Quisiera,J'aurais
 থউরি,রাখি,keep,保持,रखना,mantener,garder
-থর,রাখো,keep,保持,रखना,mantener,garder
+থ,রাখো,keep,保持,रखना,mantener,garder
 থর,রাখে,keeps,保持,रखता है,mantiene,garde
-থর,রাখেন,keep,保持,रखना,mantener,garder
-পার,রাখছি,keeping,保持,रखते हुए,acuerdo,garde
-থর,রাখছে,keeping,保持,रखते हुए,acuerdo,garde
-থউরিইলু,রাখলাম,I kept,我保留了,मैनें रखा,mantuve,j'ai gardé
-থউরিইল,রাখল,kept,保留,रखा,conservó,gardé
-থর,রেখেছি,kept,保留,रखा,conservó,gardé
-থর,রেখেছে,kept,保留,रखा,conservó,gardé
-থউরিতৌ,রাখব,will keep,会保留,हम रखते हैं,mantendrá,gardera
-থর,রাখবে,will keep,会保留,हम रखते हैं,mantendrá,gardera
-থর,রাখতে,to keep,保留,बनाए रखने के लिए,mantener,garder
-থর,রেখে,keeping,保持,रखते हुए,acuerdo,garde
-থউরিইলু অইস,রাখতাম,I would keep,我会保留,मैं रखूंगा,yo mantendría,je garderais
+থইলু,রাখলাম,I kept,我保留了,मैनें रखा,mantuve,j'ai gardé
+থইল,রাখল,kept,保留,रखा,conservó,gardé
+থসু,রেখেছি,kept,保留,रखा,conservó,gardé
+থসে,রেখেছে,kept,保留,रखा,conservó,gardé
+থইতৌ,রাখব,will keep,会保留,हम रखते हैं,mantendrá,gardera
+থইতৈ,রাখবে,will keep,会保留,हम रखते हैं,mantendrá,gardera
+থইতে,রাখতে,to keep,保留,बनाए रखने के लिए,mantener,garder
+থয়া,রেখে,keeping,保持,रखते हुए,acuerdo,garde
+থইলু অইস,রাখতাম,I would keep,我会保留,मैं रखूंगा,yo mantendría,je garderais
 বহুরি,বসি,sit down,坐下,बैठ जाओ,sentarse,asseyez-vous
 বহ,বসো,sit down,坐下,बैठ जाओ,sentarse,asseyez-vous
 বহের,বসে,sit down,坐下,बैठ जाओ,sentarse,asseyez-vous
@@ -208,136 +205,133 @@ bm,bn,en,zh-CN,hi,es,fr
 উবা অইল,দাঁড়াল,stood up,站起来,उठ गई,se puso de pie,s'est levé
 উবা অর,দাঁড়িয়েছি,standing up,站起来,खड़े होना,de pie,debout
 উবা অর,দাঁড়িয়েছে,is standing,站着,खड़ा है,esta de pie,est debout
-উবা অতৌ,দাঁড়াব,will stand,会站起来,खड़ा रहेगा,se mantendrá,se tiendra
-উবা অর,দাঁড়াবে,will stand,会站起来,खड़ा रहेगा,se mantendrá,se tiendra
-উবা অর,দাঁড়াতে,to stand,站立,सहन करना,estar de pie,se tenir debout
-উবা অর,দাঁড়িয়ে,standing,常设,खड़ा है,de pie,debout
+উবা অইতৌ,দাঁড়াব,will stand,会站起来,खड़ा रहेगा,se mantendrá,se tiendra
+উবা অইতৈ,দাঁড়াবে,will stand,会站起来,खड़ा रहेगा,se mantendrá,se tiendra
+উবা অইতে,দাঁড়াতে,to stand,站立,सहन करना,estar de pie,se tenir debout
+উবা অয়া,দাঁড়িয়ে,standing up,站起来,खड़े होना,de pie,debout
 হারপাউরি,জানি,i know,我知道,मुझे पता है,lo sé,je sais
 হারপা,জানো,know,知道,जानना,saber,savoir
 হারপার,জানে,knows,知道,जानता है,sabe,sait
 হারপার,জানেন,you know,你知道,आपको पता है,sabes,Vous savez
 হারপাউরি,জানছি,i know,我知道,मुझे पता है,lo sé,je sais
-হারপাইলু,জানলাম,I knew,我知道,मैं जानता था,yo sabia,je savais
-হারপার,জেনেছি,have known,已经知道,विदित होना,he conocido,avoir connu
-হারপার,জেনেছে,knew,知道,जानता था,sabía,savait
-হারপাতৌ,জানব,will know,会知道,पता लग जाएगा,sabrá,saura
-হারপার,জানবে,will know,会知道,पता लग जाएगा,sabrá,saura
-হারপার,জানতে,to know,知道,जानने के,saber,savoir
-হারপার,জেনে,knowing,会心,जानने,conocimiento,connaissance
-হারপাইলু অইস,জানতাম,I knew,我知道,मैं जानता था,yo sabia,je savais
+হারপেইলু,জানলাম,I knew,我知道,मैं जानता था,yo sabia,je savais
+হারপাসু,জেনেছি,have known,已经知道,विदित होना,he conocido,avoir connu
+হারপাসে,জেনেছে,knew,知道,जानता था,sabía,savait
+হারপেইতৌ,জানব,will know,会知道,पता लग जाएगा,sabrá,saura
+হারপেইতৈ,জানবে,will know,会知道,पता लग जाएगा,sabrá,saura
+হারপেইতে,জানতে,to know,知道,जानने के,saber,savoir
+হারপেয়া,জেনে,knowing,会心,जानने,conocimiento,connaissance
+হারপেইলু অইস,জানতাম,I knew,我知道,मैं जानता था,yo sabia,je savais
 হুনুরি,শুনি,listen,听,सुनना,escuchar,écouter
 হুন,শোনো,listen,听,सुनना,escuchar,écouter
-হুনের,শোনে,listens,听,सुनता,escucha,écoute
+হুনের,শোনে,listen,听,सुनना,escuchar,écouter
 হুনের,শোনেন,listen to,听,ध्यान दो,escuchar,écouter
 হুনুরি,শুনছি,listening,倾听,सुनना,escuchando,écoute
-হুনইলু,শুনলাম,I heard,我听说,मैंने सुन लिया।,escuché,j'ai entendu
-হুনের,শুনেছি,heard,听到,सुना,escuchó,entendu
-হুনের,শুনেছে,heard,听到,सुना,escuchó,entendu
+হুনলু,শুনলাম,I heard,我听说,मैंने सुन लिया।,escuché,j'ai entendu
+হুনেসু,শুনেছি,heard,听到,सुना,escuchó,entendu
+হুনেসে,শুনেছে,heard,听到,सुना,escuchó,entendu
 হুনতৌ,শুনব,will listen,会听,सुनेगा,escuchará,je vais écouter
-হুনের,শুনবে,will listen,会听,सुनेगा,escuchará,je vais écouter
-হুনের,শুনতে,to hear,听到,सुनने के लिए,escuchar,entendre
-হুনের,শুনে,hearing,听力,सुनवाई,audiencia,audience
-হুনইলু অইস,শুনতাম,I used to listen,我曾经听过,मैं सुनता था,yo solía escuchar,J'avais l'habitude d'écouter
+হুনতৈ,শুনবে,will listen,会听,सुनेगा,escuchará,je vais écouter
+হুনতে,শুনতে,to hear,听到,सुनने के लिए,escuchar,entendre
+হুনিয়া,শুনে,hearing,听力,सुनवाई,audiencia,audience
+হুনলু অইস,শুনতাম,I used to listen,我曾经听过,मैं सुनता था,yo solía escuchar,J'avais l'habitude d'écouter
 পাকরৌরি,পড়ি,read,读,पढ़ना,leer,lire
 পাকর,পড়ো,read,读,पढ़ना,leer,lire
 পাকরের,পড়ে,read,读,पढ़ना,leer,lire
 পাকরের,পড়েন,read,读,पढ़ना,leer,lire
 পাকরৌরি,পড়ছি,reading,阅读,पढ़ना,lectura,en lisant
-পাকরইলু,পড়লাম,I read,我读了,मैंने पढ़ा है,Yo leo,j'ai lu
-পাকরের,পড়েছি,have read,已读过,पढ़ा है,he leído,avoir lu
-পাকরের,পড়েছে,fell,跌倒了,गिरा,cayó,est tombé
+পাকরলু,পড়লাম,I read,我读了,मैंने पढ़ा है,Yo leo,j'ai lu
+পাকরেসু,পড়েছি,have read,已读过,पढ़ा है,he leído,avoir lu
+পাকরেসে,পড়েছে,fell,跌倒了,गिरा,cayó,est tombé
 পাকরতৌ,পড়ব,will read,会读,पढूंगा,leerá,je lirai
-পাকরের,পড়বে,will read,会读,पढूंगा,leerá,je lirai
-পাকরের,পড়তে,to read,阅读,पढ़ने के लिए,leer,lire
+পাকরতৈ,পড়বে,will read,会读,पढूंगा,leerá,je lirai
+পাকরতে,পড়তে,to read,阅读,पढ़ने के लिए,leer,lire
 পাকরইলু অইস,পড়তাম,I used to read,我以前读过,मैं पढ़ता था,yo solía leer,je lisais
 ইকরৌরি,লিখি,write,写,लिखना,escribir,écrire
 ইকর,লেখো,write down,写下,लिखो,anotar,écrire
 ইকরের,লেখে,writes,写,लिखते हैं,escribe,écrit
 ইকরের,লেখেন,writes,写,लिखते हैं,escribe,écrit
 ইকরৌরি,লিখছি,I am writing,我在写信,मैं लिख रहा हूं,Estoy escribiendo,j'écris
-ইকরইলু,লিখলাম,I wrote,我写,मैंने लिखा,yo escribí,j'ai écrit
-ইকরের,লিখেছি,wrote,写道,लिखा,escribió,a écrit
-ইকরের,লিখেছে,wrote,写道,लिखा,escribió,a écrit
+ইকরলু,লিখলাম,I wrote,我写,मैंने लिखा,yo escribí,j'ai écrit
+ইকরেসু,লিখেছি,wrote,写道,लिखा,escribió,a écrit
+ইকরেসে,লিখেছে,wrote,写道,लिखा,escribió,a écrit
 ইকরতৌ,লিখব,I will write,我会写,मुझे लिखना होगा,escribiré,j'écrirai
-ইকরের,লিখবে,will write,会写,लिखूंगा,escribirá,j'écrirai
-ইকরের,লিখতে,to write,写,लिखना,escribir,écrire
-ইকরের,লিখে,by writing,通过写作,लिखकर,escribiendo,en écrivant
-ইকরইলু অইস,লিখতাম,I used to write,我以前写过,मैं लिखता था,yo solía escribir,j'avais l'habitude d'écrire
+ইকরতৈ,লিখবে,will write,会写,लिखूंगा,escribirá,j'écrirai
+ইকরতে,লিখতে,to write,写,लिखना,escribir,écrire
+ইকরিয়া,লিখে,by writing,通过写作,लिखकर,escribiendo,en écrivant
+ইকরলু অইস,লিখতাম,I used to write,我以前写过,मैं लिखता था,yo solía escribir,j'avais l'habitude d'écrire
 চাউরি,চাই,want,想,चाहना,desear,vouloir
 চা,চাও,want,想,चाहना,desear,vouloir
 চার,চায়,want,想,चाहना,desear,vouloir
 চার,চান,want,想,चाहना,desear,vouloir
 চাউরি,চাইছি,I want,我想,मुझे चाहिए,Quiero,Je veux
-চাইলু,চাইলাম,I wanted,我想要,मैं चाहता था,yo queria,je voulais
-চার,চেয়েছি,wanted,通缉,वांछित,buscado,recherché
-চার,চেয়েছে,wanted,通缉,वांछित,buscado,recherché
-চাতৌ,চাইব,I want,我想,मुझे चाहिए,Quiero,Je veux
-চার,চাইবে,will want,会想要,चाहेंगे,querrá,voudrai
-চার,চাইতে,ask for,要求,पूछना,pedir,demander
-চার,চেয়ে,than,比,बजाय,que,que
-চাইলু অইস,চাইতাম,I wanted,我想要,मैं चाहता था,yo queria,je voulais
+চেইলু,চাইলাম,I wanted,我想要,मैं चाहता था,yo queria,je voulais
+চাসু,চেয়েছি,wanted,通缉,वांछित,buscado,recherché
+চাসে,চেয়েছে,wanted,通缉,वांछित,buscado,recherché
+চেইতৌ,চাইব,will want,会想要,चाहेंगे,querrá,voudrai
+চেইতৈ,চাইবে,will want,会想要,चाहेंगे,querrá,voudrai
+চেইতে,চাইতে,ask for,要求,पूछना,pedir,demander
+চেয়া,চেয়ে,than,比,बजाय,que,que
+চেইলু অইস,চাইতাম,I wanted,我想要,मैं चाहता था,yo queria,je voulais
 লাগুরি,লাগি,take,拿,लेना,llevar,prendre
 লাগের,লাগে,takes,需要,लेता है,acepta,prend
 লাগের,লাগছে,feeling,感觉,अनुभूति,sentimiento,sentiment
 লাগিল,লাগল,took,采取了,लिया,tomó,a pris
 লাগিল,লেগেছে,like,喜欢,पसंद,como,comme
-লাগিল,লাগবে,will need,将需要,आवश्यकता होगी,necesitará,aura besoin
-লাগিল,লাগতে,seems,似乎,प्रतीत,parece,semble
-লাগিল,লেগে,stick to,坚持,के लिए छड़ी,atenerse a,s'en tenir à
-লাগিল,লাগত,seemed to,似乎,लग रहा था,parecía,semblait
+লাগতৈ,লাগবে,will need,将需要,आवश्यकता होगी,necesitará,aura besoin
+লাগতে,লাগতে,seems,似乎,प्रतीत,parece,semble
+লাগিয়া,লেগে,stick to,坚持,के लिए छड़ी,atenerse a,s'en tenir à
+লাগিল অইস,লাগত,seemed to,似乎,लग रहा था,parecía,semblait
 তামকরৌরি,শিখি,learn,学习,सीखना,aprender,apprendre
 তামকর,শেখো,learn,学习,सीखना,aprender,apprendre
-তামকর,শেখে,learns,学习,सीखता,aprende,apprend
-লাগিল,শিখছি,learning,学习,सीखना,aprendiendo,apprentissage
-তামকরৌরিইলু,শিখলাম,learned,学到了,सीखा,aprendió,savant
-তামকর,শিখেছি,have learned,已经学会了,सीखा है,he aprendido,avoir appris
-তামকরৌরিতৌ,শিখব,will learn,会学习,हम सीखेंगे,aprenderá,j'apprendrai
-তামকর,শিখতে,to learn,学习,जानने के लिए,aprender,apprendre
-তামকর,শিখে,learn,学习,सीखना,aprender,apprendre
+তামকরের,শেখে,learns,学习,सीखता,aprende,apprend
+তামকরৌরি,শিখছি,learning,学习,सीखना,aprendiendo,apprentissage
+তামকরলু,শিখলাম,learned,学到了,सीखा,aprendió,savant
+তামকরেসু,শিখেছি,have learned,已经学会了,सीखा है,he aprendido,avoir appris
+তামকরতৌ,শিখব,will learn,会学习,हम सीखेंगे,aprenderá,j'apprendrai
+তামকরতে,শিখতে,to learn,学习,जानने के लिए,aprender,apprendre
+তামকরিয়া,শিখে,learn,学习,सीखना,aprender,apprendre
 হারপাউরি,বুঝি,understand,理解,समझना,entender,comprendre
 হারপা,বোঝো,understand,理解,समझना,entender,comprendre
 হারপার,বোঝে,understand,理解,समझना,entender,comprendre
-হারপাউরি,বুঝছি,i understand,我明白,मैं समझता हूँ,entiendo,je comprends
-হারপাইলু,বুঝলাম,I understand,我明白,मैं समझता हूँ,Entiendo,Je comprends
-হারপার,বুঝেছি,understood,明白了,समझा,comprendido,compris
-হারপাতৌ,বুঝব,I will understand,我会理解的,मैं समझ जाऊंगा,lo entenderé,je comprendrai
-হারপার,বুঝতে,to understand,去理解,समझ में,entender,comprendre
-হারপার,বুঝে,understand,理解,समझना,entender,comprendre
+হারপেইলু,বুঝলাম,I understand,我明白,मैं समझता हूँ,Entiendo,Je comprends
+হারপাসু,বুঝেছি,understood,明白了,समझा,comprendido,compris
+হারপেইতৌ,বুঝব,I will understand,我会理解的,मैं समझ जाऊंगा,lo entenderé,je comprendrai
+হারপেইতে,বুঝতে,to understand,去理解,समझ में,entender,comprendre
+হারপেয়া,বুঝে,understand,理解,समझना,entender,comprendre
 খালকরৌরি,ভাবি,I think,我认为,मुझे लगता है,Creo,Je pense
 খালকর,ভাবো,think,思考,सोचना,pensar,pense
 খালকরের,ভাবে,way,方式,रास्ता,forma,chemin
 খালকরৌরি,ভাবছি,thinking,思维,सोच,pensamiento,pensée
-খালকরইলু,ভাবলাম,I thought,我以为,मैंने सोचा,Pensé,Je pensais
-খালকরের,ভেবেছি,thought,想法,सोचा,pensamiento,pensée
+খালকরলু,ভাবলাম,I thought,我以为,मैंने सोचा,Pensé,Je pensais
+খালকরেসু,ভেবেছি,thought,想法,सोचा,pensamiento,pensée
 খালকরতৌ,ভাবব,will think,会想,सोचेंगे,pensará,penserai
-খালকরের,ভাবতে,to think,思考,सोचने के लिए,pensar,penser
-খালকরের,ভেবে,thinking,思维,सोच,pensamiento,pensée
-হাতুরি,চলি,let's go,我们走吧,चल दर,vamos,allons-y
-হাৎ,চলো,come on,快点,चलो भी,vamos,allez
-হাতের,চলে,move on,继续前行,आगे बढ़ो,siga adelante,passez
-হাতুরি,চলছি,going on,正在进行,चल रहा है,pasando,en cours
-হাৎইলু,চললাম,I went,我去了,मैं चला गया,Fui,Je suis allé
-হাতের,চলেছি,gone,消失了,गया,desaparecido,disparu
+খালকরতে,ভাবতে,to think,思考,सोचने के लिए,pensar,penser
+খালকরিয়া,ভেবে,thinking,思维,सोच,pensamiento,pensée
+হাতুরি,চলিহাৎ,moving,移动,चल रहा है,emocionante,mobile
+হাতের,চলেহাতুরি,Chalhaturi,查尔哈图里,चलहातुरी,Chalhaturi,Chalhaturi
+হাৎলু,চললাম,I went,我去了,मैं चला गया,Fui,Je suis allé
+হাতেসু,চলেছি,gone,消失了,गया,desaparecido,disparu
 হাৎতৌ,চলব,let's go,我们走吧,चल दर,vamos,allons-y
-হাতের,চলতে,to continue,继续,जारी रखने के लिए,continuar,continuer
+হাৎতে,চলতে,to continue,继续,जारी रखने के लिए,continuar,continuer
 উঠুরি,উঠি,get up,起床,उठना,levantarse,se lever
 উঠ,ওঠো,get up,起床,उठना,levantarse,se lever
 উঠের,ওঠে,get up,起床,उठना,levantarse,se lever
 উঠুরি,উঠছি,getting up,起床,उठ रहे,levantarse,se lever
-উঠইলু,উঠলাম,got up,站起来,उठकर,se levantó,je me suis levé
-উঠের,উঠেছি,got up,站起来,उठकर,se levantó,je me suis levé
+উঠলু,উঠলাম,got up,站起来,उठकर,se levantó,je me suis levé
+উঠেসু,উঠেছি,got up,站起来,उठकर,se levantó,je me suis levé
 উঠতৌ,উঠব,get up,起床,उठना,levantarse,se lever
-উঠের,উঠতে,to get up,起床,उठना,levantarse,se lever
+উঠতে,উঠতে,to get up,起床,उठना,levantarse,se lever
 উঠের,উঠে,get up,起床,उठना,levantarse,se lever
 লামৌরি,নামি,the name,名字,नाम,el nombre,le nom
 লাম,নামো,come down,坠落,नीचे आओ,baja,descendre
 লামের,নামে,in the name,以名义,नाम में,en el nombre,au nom
 লামৌরি,নামছি,coming down,下来,नीचे आना,bajando,descendre
-লামইলু,নামলাম,got down,下来,नीचे मिला,bajó,je suis descendu
-লামের,নেমেছি,got down,下来,नीचे मिला,bajó,je suis descendu
+লামলু,নামলাম,got down,下来,नीचे मिला,bajó,je suis descendu
+লামেসু,নেমেছি,got down,下来,नीचे मिला,bajó,je suis descendu
 লামতৌ,নামব,I will come down,我会下来,मैं नीचे आऊंगा,voy a bajar,je descendrai
-লামের,নামতে,to get off,下车,उतरना,bajar,descendre
-লামের,নেমে,come down,坠落,नीचे आओ,baja,descendre
+লামতে,নামতে,to get off,下车,उतरना,bajar,descendre
+লামিয়া,নেমে,come down,坠落,नीचे आओ,baja,descendre
 দরুরি,ধরি,catch up,赶上,पकड़ो,ponerse al día,rattraper
 দর,ধরো,hold on,坚持，稍等,पकड़ना,esperar,attendez
 দরের,ধরে,by holding,通过持有,जमा पूंजी के द्वारा,sosteniendo,en tenant
@@ -350,172 +344,172 @@ bm,bn,en,zh-CN,hi,es,fr
 এরাদে,ছাড়ো,let go,松手,जाने दो,Déjalo ir,lâcher
 এরাদের,ছাড়ে,leaves,树叶,पत्तियों,hojas,feuilles
 এরাদেউরি,ছাড়ছি,leaving,离开,छोड़कर,partida,sortie
-এরাদেইলু,ছাড়লাম,i left,我离开了,मैंने,me fui,Je suis parti
-এরাদের,ছেড়েছি,left,左边,बाएं,izquierda,gauche
-এরাদেতৌ,ছাড়ব,will leave,会离开,जायेंगे,se irá,partira
-এরাদের,ছাড়তে,to leave,离开,छोड़ जाना,dejar,partir
-এরাদের,ছেড়ে,leave,离开,छुट्टी,dejar,partir
+এরাদিলু,ছাড়লাম,i left,我离开了,मैंने,me fui,Je suis parti
+এরাদেসু,ছেড়েছি,left,左边,बाएं,izquierda,gauche
+এরাদিতৌ,ছাড়ব,will leave,会离开,जायेंगे,se irá,partira
+এরাদিতে,ছাড়তে,to leave,离开,छोड़ जाना,dejar,partir
+এরাদিয়া,ছেড়ে,leave,离开,छुट्टी,dejar,partir
 আনুরি,আনি,I brought,我带来了,मैं ले आया,traje,j'ai apporté
-আন,আনো,bring it,带上它,इसे लाओ,tráelo,
+আন,আনো,bring it,带上它,इसे लाओ,tráelo,apporte-le
 আনের,আনে,brings,带来,लाता है,trae,apporte
 আনুরি,আনছি,bringing,带来,लाना,trayendo,apportant
-আনইলু,আনলাম,I brought,我带来了,मैं ले आया,traje,j'ai apporté
-আনের,এনেছি,brought,带来,लाया,trajo,apporté
+আনলু,আনলাম,I brought,我带来了,मैं ले आया,traje,j'ai apporté
+আনেসু,এনেছি,brought,带来,लाया,trajo,apporté
 আনতৌ,আনব,will bring,会带来,लाएगा,traerá,apportera
-আনের,আনতে,to bring,带来,लाने के लिए,traer,apporter
-আনের,এনে,bring,带来,लाना,traer,apporter
+আনতে,আনতে,to bring,带来,लाने के लिए,traer,apporter
+আনিয়া,এনে,bring,带来,लाना,traer,apporter
 দিয়াবেঠুরি,পাঠাই,send,发送,भेजना,enviar,envoyer
 দিয়াবেঠা,পাঠাও,send,发送,भेजना,enviar,envoyer
 দিয়াবেঠার,পাঠায়,sends,发送,भेजता है,envía,envoie
 দিয়াবেঠুরি,পাঠাচ্ছি,sending,发送,भेज रहा हूँ,envío,envoi
-দিয়াবেঠাইলু,পাঠালাম,I sent,我发送了,मैं भेज,yo envié,j'ai envoyé
+দিয়াবেঠেইলু,পাঠালাম,I sent,我发送了,मैं भेज,yo envié,j'ai envoyé
 দিয়াবেঠার,পাঠিয়েছি,sent,发送,भेजा,enviado,envoyé
-দিয়াবেঠাতৌ,পাঠাব,will send,将发送,भेज देंगे,enviará,enverra
-দিয়াবেঠার,পাঠাতে,to send,发送,भेजने के लिए,enviar,envoyer
-দিয়াবেঠার,পাঠিয়ে,by sending,通过发送,भेजकर,enviando,en envoyant
+দিয়াবেঠেইতৌ,পাঠাব,will send,将发送,भेज देंगे,enviará,enverra
+দিয়াবেঠিতে,পাঠাতে,to send,发送,भेजने के लिए,enviar,envoyer
+দিয়াবেঠিয়া,পাঠিয়ে,by sending,通过发送,भेजकर,enviando,en envoyant
 আংকরৌরি,খুলি,the skull,头骨,खोपड़ी,el cráneo,le crâne
 আংকর,খোলো,open up,打开,खुलना,abrir,ouvrir
 আংকরের,খোলে,opens,打开,खुलता है,abre,ouvre
 আংকরৌরি,খুলছি,opening,开幕,उद्घाटन,apertura,ouverture
-আংকরইলু,খুললাম,I opened,我打开了,मैंने खोला था,abrí,j'ai ouvert
-আংকরের,খুলেছি,opened,打开,खोला गया,abierto,ouvert
+আংকরলু,খুললাম,I opened,我打开了,मैंने खोला था,abrí,j'ai ouvert
+আংকরেসু,খুলেছি,opened,打开,खोला गया,abierto,ouvert
 আংকরতৌ,খুলব,will open,将打开,खुल जाएगा,se abrirá,va ouvrir
-আংকরের,খুলতে,to open,打开,को खोलने के लिए,abrir,ouvrir
-আংকরের,খুলে,opened,打开,खोला गया,abierto,ouvert
+আংকরতে,খুলতে,to open,打开,को खोलने के लिए,abrir,ouvrir
+আংকরিয়া,খুলে,opened,打开,खोला गया,abierto,ouvert
 জিপাউরি,বন্ধ করি,turn off,关,बंद करें,apagar,éteindre
 জিপা,বন্ধ করো,turn it off,把它关掉,इसे बंद करें,apágalo,éteignez-le
 জিপার,বন্ধ করে,turn off,关,बंद करें,apagar,éteindre
-জিপাউরি,বন্ধ করছি,closing,关闭,समापन,cierre,clôture
+জিপোদেউরি,বন্ধ করছি,closing,关闭,समापन,cierre,clôture
 জিপাইলু,বন্ধ করলাম,I closed,我关闭了,मैंने बंद कर दिया,yo cerré,j'ai fermé
-জিপার,বন্ধ করেছি,closed,关闭,बंद किया हुआ,cerrado,fermé
-জিপাতৌ,বন্ধ করব,will close,将关闭,बंद हो जायेगा,cerrará,fermera
+জিপাসু,বন্ধ করেছি,closed,关闭,बंद किया हुआ,cerrado,fermé
+জিপিতৌ,বন্ধ করব,will close,将关闭,बंद हो जायेगा,cerrará,fermera
 আহুরি,হাসি,smile,微笑,मुस्कान,sonrisa,sourire
 আহো,হাসো,smile,微笑,मुस्कान,sonrisa,sourire
 আহের,হাসে,laughs,笑,हंसता,risas,des rires
 আহুরি,হাসছি,laughing,笑,हँसना,reír,en riant
-আহোইলু,হাসলাম,I smiled,我笑了,मैं मुस्कराया,sonreí,j'ai souri
-আহের,হেসেছি,laughed,笑了,हँसे,se rio,ri
-আহোতৌ,হাসব,will laugh,会笑,हँसेंगे,se reirá,va rire
-আহের,হাসতে,to laugh,笑,हँसने के लिए,reír,rire
+আহিলু,হাসলাম,I smiled,我笑了,मैं मुस्कराया,sonreí,j'ai souri
+আহিলু,হেসেছি,laughed,笑了,हँसे,se rio,ri
+আহিতৌ,হাসব,will laugh,会笑,हँसेंगे,se reirá,va rire
+আহিতে,হাসতে,to laugh,笑,हँसने के लिए,reír,rire
 আহের,হেসে,smile,微笑,मुस्कान,sonrisa,sourire
 কাদুরি,কাঁদি,cry,哭,चिल्लाना,llorar,pleurer
 কাদ,কাঁদো,cry,哭,चिल्लाना,llorar,pleurer
 কাদের,কাঁদে,cry,哭,चिल्लाना,llorar,pleurer
 কাদুরি,কাঁদছি,crying,哭,रोना,llanto,pleurs
-কাদইলু,কাঁদলাম,I cried,我哭了,मैं रोया,yo lloré,J'ai pleuré
-কাদের,কেঁদেছি,cried,哭了,रोया,lloró,pleuré
+কাদলু,কাঁদলাম,I cried,我哭了,मैं रोया,yo lloré,J'ai pleuré
+কাদেসু,কেঁদেছি,cried,哭了,रोया,lloró,pleuré
 কাদতৌ,কাঁদব,cry,哭,चिल्लाना,llorar,pleurer
-কাদের,কাঁদতে,to cry,哭,रोना,llorar,pleurer
-কাদের,কেঁদে,cried,哭了,रोया,lloró,pleuré
+কাদতে,কাঁদতে,to cry,哭,रोना,llorar,pleurer
+কাদিয়া,কেঁদে,cried,哭了,रोया,lloró,pleuré
 খেলুরি,খেলি,play,玩,खेल,jugar,jouer
 খেলা,খেলো,play,玩,खेल,jugar,jouer
 খেলার,খেলে,by playing,通过玩耍,खेलकर,jugando,en jouant
-খেলার,খেলছি,playing,玩,खेलना,jugando,jouant
-খেলার,খেললাম,I played,我玩,मैंने,Yo jugué,J'ai joué
-খেলার,খেলেছি,have played,玩过,खेला जा चुका है,han jugado,avoir joué
-খেলার,খেলব,will play,会玩,खेलेंगे,jugará,jouera
-খেলার,খেলতে,to play,玩,क्रीड़ा करना,jugar,jouer
+খেলাউরি,খেলছি,playing,玩,खेलना,jugando,jouant
+খেললু,খেললাম,I played,我玩,मैंने,Yo jugué,J'ai joué
+খেলাসু,খেলেছি,have played,玩过,खेला जा चुका है,han jugado,avoir joué
+খেলতৌ,খেলব,will play,会玩,खेलेंगे,jugará,jouera
+খেলতে,খেলতে,to play,玩,क्रीड़ा करना,jugar,jouer
 জিঙুরি,জিতি,win,赢,जीतना,ganar,gagner
 জিঙ,জেতো,won,韩元,जीत गया,ganado,gagné
 জিঙের,জেতে,to win,赢得胜利,जीतने के लिए,ganar,gagner
 জিঙের,জিতেছি,won,韩元,जीत गया,ganado,gagné
 জিঙতৌ,জিতব,will win,会赢,जीतेंगे,ganará,va gagner
-জিঙের,জিততে,to win,赢得胜利,जीतने के लिए,ganar,gagner
-জিঙের,জিতে,won,韩元,जीत गया,ganado,gagné
+জিঙতে,জিততে,to win,赢得胜利,जीतने के लिए,ganar,gagner
+জিঙিয়া,জিতে,won,韩元,जीत गया,ganado,gagné
 হারলু,হারি,lose,失去,खोना,perder,perdre
 হার,হারো,lose,失去,खोना,perder,perdre
 হারের,হারে,lose,失去,खोना,perder,perdre
 হারের,হেরেছি,lost,丢失的,खो गया,perdido,perdu
 হারতৌ,হারব,lose,失去,खोना,perder,perdre
-হারের,হারতে,to lose,失去,खोने के लिए,perder,perdre
-হারের,হেরে,losing,失去,हार,vencido,perdant
+হারতে,হারতে,to lose,失去,खोने के लिए,perder,perdre
+হারিয়া,হেরে,losing,失去,हार,vencido,perdant
 পিদুরি,পরি,wear,穿,घिसाव,tener puesto,porter
-পিদ,পরে,after,后,बाद,después,après
-পিদের,পরেছি,wearing,穿着,पहना हुआ,agotador,résistant
-পিদের,পরবে,will wear,会穿,पहनूंगा,usará,portera
+পিদিয়া,পরে,after,后,बाद,después,après
+পিদেসু,পরেছি,wearing,穿着,पहना हुआ,agotador,résistant
+পিদতৈ,পরবে,will wear,会穿,पहनूंगा,usará,portera
 পিদের,পরতে,to wear,穿,पहनने के लिए,usar,porter
 হঙকরৌরি,বানাই,make,制作,बनाना,hacer,faire
 হঙকর,বানাও,make it,成功,इसे बनाएं,hazlo,fais-le
 হঙকরের,বানায়,makes,使,बनाता है,marcas,fait
-হঙকরের,বানিয়েছি,made,制成,बनाया,hecho,fait
+হঙকরেসু,বানিয়েছি,made,制成,बनाया,hecho,fait
 হঙকরতৌ,বানাব,will make,将使,कर देंगें,hará,fera
-হঙকরের,বানাতে,to make,使,बनाने के लिए,hacer,faire
-হঙকরের,বানিয়ে,by making,通过制作,बनाने के द्वारा,haciendo,en faisant
+হঙকরতে,বানাতে,to make,使,बनाने के लिए,hacer,faire
+হঙকরিয়া,বানিয়ে,by making,通过制作,बनाने के द्वारा,haciendo,en faisant
 বাগুরি,ভাঙি,broken,破碎的,टूटा हुआ,roto,cassé
 বাগ,ভাঙো,break up,拆散,टूटना,disolver,rompre
 বাগের,ভাঙে,break,休息,तोड़ना,romper,casser
 বাগের,ভেঙেছি,broke,坏了,टूट गया,en bancarrota,cassé
 বাগতৌ,ভাঙব,will break,会打破,टूट जायेगा,se romperá,va se briser
-বাগের,ভাঙতে,to break,打破,तोड़ना,romper,briser
-বাগের,ভেঙে,broken,破碎的,टूटा हुआ,roto,cassé
-হামউরি,ঢুকি,come in,进来,अंदर आएं,Adelante,Entrez
+বাগতে,ভাঙতে,to break,打破,तोड़ना,romper,briser
+বাগিয়া,ভেঙে,broken,破碎的,टूटा हुआ,roto,cassé
+হমাউরি,ঢুকি,come in,进来,अंदर आएं,Adelante,Entrez
 হমা,ঢোকো,come in,进来,अंदर आएं,Adelante,Entrez
-হামার,ঢোকে,enter,进入,प्रवेश करना,ingresar,entrer
-হামার,ঢুকেছি,entered,进入,प्रविष्टि की,entró,entré
-হমাতৌ,ঢুকব,will enter,将进入,दाखिल होंगे,entrará,entrera
-হামার,ঢুকতে,to enter,进入,प्रवेश करना,entrar,entrer
-হামার,ঢুকে,come in,进来,अंदर आएं,Adelante,Entrez
+হমার,ঢোকে,enter,进入,प्रवेश करना,ingresar,entrer
+হমাসু,ঢুকেছি,entered,进入,प्रविष्टि की,entró,entré
+হমিতৌ,ঢুকব,will enter,将进入,दाखिल होंगे,entrará,entrera
+হমিতে,ঢুকতে,to enter,进入,प्रवेश करना,entrar,entrer
+হমিয়া,ঢুকে,come in,进来,अंदर आएं,Adelante,Entrez
 নিকুলুরি,বেরই,get out,出去,चले जाओ,salir,sortir
 নিকুল,বেরও,get out,出去,चले जाओ,salir,sortir
 নিকুলের,বেরোয়,come out,出来,बाहर आओ,salga,sortir
 নিকুলের,বেরিয়েছি,out,出去,बाहर,afuera,dehors
-নিকুলের,বেরোব,go out,出去,बाहर जाओ,salir,sortir
-নিকুলের,বেরোতে,to get out,出去,बाहर निकलने के लिए,salir,sortir
-নিকুলের,বেরিয়ে,get out,出去,चले जाओ,salir,sortir
+নিকুলতৌ,বেরোব,go out,出去,बाहर जाओ,salir,sortir
+নিকুলতে,বেরোতে,to get out,出去,बाहर निकलने के लिए,salir,sortir
+নিকুলিয়া,বেরিয়ে,get out,出去,चले जाओ,salir,sortir
 তুলুরি,তুলি,pick up,捡起,उठाना,levantar,ramasser
 তুল,তোলো,pick up,捡起,उठाना,levantar,ramasser
 তুলের,তুলে,pick up,捡起,उठाना,levantar,ramasser
-তুলের,তুলেছি,picked up,已接,उठाया,recogido,ramassé
+তুলেসু,তুলেছি,picked up,已接,उठाया,recogido,ramassé
 তুলতৌ,তুলব,will lift,会举起,उठा लेंगे,levantará,va soulever
-তুলের,তুলতে,to pick up,拿起,लेने के लिए,recoger,ramasser
+তুলতে,তুলতে,to pick up,拿起,लेने के लिए,recoger,ramasser
 লামাউরি,নামাই,come down,坠落,नीचे आओ,baja,descendre
 লামা,নামাও,get off,下车,उतर जाओ,bajar,descendez
 লামার,নামায়,on the way down,在下降的路上,नीचे रास्ते में,en el camino hacia abajo,en descendant
-লামার,নামিয়েছি,took down,取下来,नीचे ले लिया,derribó,démonté
-লামাতৌ,নামাব,get down,下来,नीचे उतरो,bajar,descendre
-লামার,নামাতে,to take down,取下来,उतारना,derribar,démonter
-লামার,নামিয়ে,take down,记录下来,नीचे करें,Derribar,démonter
+লামিলু,নামিয়েছি,took down,取下来,नीचे ले लिया,derribó,démonté
+লামিতৌ,নামাব,get down,下来,नीचे उतरो,bajar,descendre
+লামিতে,নামাতে,to take down,取下来,उतारना,derribar,démonter
+লামিয়া,নামিয়ে,take down,记录下来,नीचे करें,Derribar,démonter
 হজাক অউরি,জাগি,wake up,醒来,जागो,despertar,réveillez-vous
 হজাক অ,জাগো,wake up,醒来,जागो,despertar,réveillez-vous
-হাজক অর,জাগে,wakes up,醒来,उठता है,se despierta,se réveille
-হাজক অর,জেগেছি,woke up,醒了,जाग उठा,desperté,réveillé
-হজাক অতৌ,জাগব,wake up,醒来,जागो,despertar,réveillez-vous
-হাজক অর,জাগতে,wake up,醒来,जागो,despertar,réveillez-vous
-হাজক অর,জেগে,wake up,醒来,जागो,despertar,réveillez-vous
-গুনজাউরি,ঘুমাই,sleep,睡觉,नींद,dormir,dormir
-গুনজা,ঘুমাও,sleep,睡觉,नींद,dormir,dormir
-গুনজার,ঘুমায়,sleeps,睡觉,सोता,duerme,dort
-গুনজার,ঘুমিয়েছি,i slept,我睡了,मैं सो गया,dormí,j'ai dormi
-গুনজাতৌ,ঘুমাব,will sleep,会睡觉,सोना है,dormirá,je vais dormir
-গুনজার,ঘুমাতে,to sleep,睡觉,सोने के लिए,dormir,dormir
-গুনজার,ঘুমিয়ে,asleep,睡着了,सो गया,dormido,endormi
+হজক অর,জাগে,wakes up,醒来,उठता है,se despierta,se réveille
+হজক অর,জেগেছি,woke up,醒了,जाग उठा,desperté,réveillé
+হজাক অইতৌ,জাগব,wake up,醒来,जागो,despertar,réveillez-vous
+হজক অইতে,জাগতে,wake up,醒来,जागो,despertar,réveillez-vous
+হজক অয়া,জেগে,wake up,醒来,जागो,despertar,réveillez-vous
+গুমজাউরি,ঘুমাই,sleep,睡觉,नींद,dormir,dormir
+গুমজা,ঘুমাও,sleep,睡觉,नींद,dormir,dormir
+গুমজার,ঘুমায়,sleeps,睡觉,सोता,duerme,dort
+গুমজাসু,ঘুমিয়েছি,i slept,我睡了,मैं सो गया,dormí,j'ai dormi
+গুমজিতৌ,ঘুমাব,will sleep,会睡觉,सोना है,dormirá,je vais dormir
+গুমজিতে,ঘুমাতে,to sleep,睡觉,सोने के लिए,dormir,dormir
+গুমজিয়া,ঘুমিয়ে,asleep,睡着了,सो गया,dormido,endormi
 জিংতা অউরি,বাঁচি,live,居住,रहना,vivir,en direct
 জিংতা অ,বাঁচো,live,居住,रहना,vivir,en direct
 জিংতা অর,বাঁচে,live,居住,रहना,vivir,en direct
-জিংতা অর,বেঁচেছি,survived,幸存下来,बच जाना,sobrevivió,survécu
-জিংতা অতৌ,বাঁচব,i will live,我会活下去,मैं जीवित रहूंगा,viviré,je vivrai
-জিংতা অর,বাঁচতে,to live,生活,जिया जाता है,vivir,vivre
-জিংতা অর,বেঁচে,alive,活,जीवित,vivo,vivant
+জিংতা অইলু,বেঁচেছি,survived,幸存下来,बच जाना,sobrevivió,survécu
+জিংতা অইতৌ,বাঁচব,i will live,我会活下去,मैं जीवित रहूंगा,viviré,je vivrai
+জিংতা অইতে,বাঁচতে,to live,生活,जिया जाता है,vivir,vivre
+জিংতা অয়া,বেঁচে,alive,活,जीवित,vivo,vivant
 মরুরি,মরি,die,死,मरना,morir,mourir
 মর,মরো,die,死,मरना,morir,mourir
 মরের,মরে,die,死,मरना,morir,mourir
-মরের,মরেছি,died,死了,मृत,fallecido,décédé
+মরলু,মরেছি,died,死了,मृत,fallecido,décédé
 মরতৌ,মরব,will die,会死的,मर जायेंगे,morirá,mourra
-মরের,মরতে,to die,去死,दम टूटना,morir,mourir
+মরতে,মরতে,to die,去死,दम टूटना,morir,mourir
 লউরি,কিনি,buy,买,खरीदना,comprar,acheter
 ল,কিনো,buy,买,खरीदना,comprar,acheter
 লর,কেনে,buys,买,खरीदता,compra,achète
-লর,কিনেছি,have bought,已经买了,खरीदा क्या,he comprado,avoir acheté
-লতৌ,কিনব,will buy,会买,खरीद लेंगे,comprará,achèterai
-লর,কিনতে,to buy,买,खरीदने के लिए,comprar,acheter
-লর,কিনে,bought,买,खरीदा,compró,acheté
+লসু,কিনেছি,have bought,已经买了,खरीदा क्या,he comprado,avoir acheté
+লইতৌ,কিনব,will buy,会买,खरीद लेंगे,comprará,achèterai
+লইতে,কিনতে,to buy,买,खरीदने के लिए,comprar,acheter
+লয়া,কিনে,bought,买,खरीदा,compró,acheté
 মি,আমি,i am,我是,मैं हूँ,soy,je suis
 আমি,আমরা,we are,我们是,हम हैं,somos,nous sommes
 তি,তুমি,you,你,आप,tú,toi
 তুমি,তোমরা,you,你,आप,tú,toi
 তা,সে (পুরুষ),he (man),他（男人）,हीमैन),él (hombre),il (homme)
 তেই,সে (স্ত্রী),she (wife),她（妻子）,वह (पत्नी),ella (esposa),elle (femme)
-ওহান,এটা,it is,这是,यह है,es,c'est
+অহান,এটা,it is,这是,यह है,es,c'est
 তানু,তারা,they are,他们是,वे हैं,ellos son,ils sont
 মোর,আমার,my,我的,मेरा,mi,mon
 আমার,আমাদের,our,我们的,हमारा,nuestro,notre
@@ -535,15 +529,15 @@ bm,bn,en,zh-CN,hi,es,fr
 আতানি,হাঁটা,walking,步行,चलना,caminando,marche
 দাবদানি,দৌড়ানো,to run,运行,चलाने के लिए,correr,courir
 বহানি,বসা,sitting,坐着,बैठक,sesión,séance
-ওনা,হওয়া,to be,成为,होना,ser,être
-কোরানি,করা,to do,要做,करने के लिए,hacer,faire
-তামকোরানি,পড়া,to read,阅读,पढ़ने के लिए,leer,lire
-নিংকোরানি,ভাবা,to think,思考,सोचने के लिए,pensar,penser
+অনা,হওয়া,to be,成为,होना,ser,être
+করানি,করা,to do,要做,करने के लिए,hacer,faire
+তামকরানি,পড়া,to read,阅读,पढ़ने के लिए,leer,lire
+নিংকরানি,ভাবা,to think,思考,सोचने के लिए,pensar,penser
 লেখানি,লেখা,writing,写作,लिखना,escribiendo,en écrivant
-মাংকোরানি,হারানো,to lose,失去,खोने के लिए,perder,perdre
+মাংকরানি,হারানো,to lose,失去,खोने के लिए,perder,perdre
 হুনানি,শুনা,to hear,听到,सुनने के लिए,escuchar,entendre
 দেহানি,দেখা,see,看,देखना,ver,voir
-ফোরদানি,উড়া,fly,飞,उड़ना,volar,voler
+ফরদানি,উড়া,fly,飞,उड़ना,volar,voler
 খানা,খাওয়া,to eat,吃饭,को खाने के,comer,manger
 পিনা,পান করা,to drink,喝,पीने के लिए,beber,boire
 এলাদেনা,গান করা,to sing,唱歌,गाने के लिए,cantar,chanter
@@ -557,16 +551,16 @@ bm,bn,en,zh-CN,hi,es,fr
 না,না,no,不,नहीं,No,Non
 হাই,হ্যাঁ,yes,是的,हाँ,Sí,Oui
 চুমিসে,ঠিক আছে,ok,好的,ठीक है,OK,d'accord
-স্বাগতোম,স্বাগতম,welcome,欢迎,स्वागत,bienvenido,accueillir
-বিদাই,বিদায়,bye,再见,अलविदा,adiós,au revoir
-আর্তাউ,আরো,more,更多的,अधिक,más,plus
+স্বাগতম,স্বাগতম,welcome,欢迎,स्वागत,bienvenido,accueillir
+বিদায়,বিদায়,bye,再见,अलविदा,adiós,au revoir
+আরতাউ,আরো,more,更多的,अधिक,más,plus
 হবা,ভালো,good,好的,अच्छा,bien,bien
 হবানেই,মন্দ,evil,邪恶的,बुराई,demonio,mal
 কাদা,কাছে,near,靠近,पास में,cerca,près
 দুরেই,দূরে,away,离开,दूर,lejos,loin
 দাঙর,বড়,big,大的,बड़ा,grande,grand
 হুরুকাং,ছোট,small,小的,छोटा,pequeño,petit
-তোপতা,গরম,hot,热的,गर्म,caliente,chaud
+তপতা,গরম,hot,热的,गर्म,caliente,chaud
 ইং,ঠান্ডা,the cold,寒冷,ठंड,el frio,le froid
 চুনা,সুন্দর,beautiful,美丽的,सुंदर,hermoso,beau
 সাকতি,বিশ্রী,awkward,尴尬的,अजीब,extraño,maladroit
@@ -618,11 +612,11 @@ bm,bn,en,zh-CN,hi,es,fr
 মি হারনাপাসু,আমি জানি না,i don't know,我不知道,मुझें नहीं पता,no sé,je ne sais pas
 মি তোরে বানা পাউরি,আমি তোমাকে ভালোবাসি,i love you,我爱你,मुझे तुमसे प्यार है,te amo,Je vous aime
 মোরে না পাহুরিস,আমাকে ভুলো না,don't forget me,不要忘记我,मुझे मत भूलना,no me olvides,ne m'oublie pas
-এহান্দে আহিক,এখানে এসো (বিনয়ের সাথে),come here (politely),来这里（礼貌地）,यहाँ आओ (विनम्रता से),ven aquí (cortésmente),viens ici (poliment)
-এহান্দে আই,এখানে এসো,come here,来这里,यहाँ आओ,ven aquí,venez ici
-ওহান্দে যাগা,ওখানে যাও,go there,去那里,वहाँ जाएँ,ve allí,vas-y
+এহানদে আহিক,এখানে এসো (বিনয়ের সাথে),come here (politely),来这里（礼貌地）,यहाँ आओ (विनम्रता से),ven aquí (cortésmente),viens ici (poliment)
+এহানদে আই,এখানে এসো,come here,来这里,यहाँ आओ,ven aquí,venez ici
+ওহানদেযাগা,ওখানে যাও,go there,去那里,वहाँ जाएँ,ve allí,allez-y
 আমি যারাংগা,আমরা যাচ্ছি,we are going,我们要去,हम जा रहे है,vamos,nous allons
-তুমি যিতাওগা,তুমি যাবে,you will go,你会走的,आपको जाना होगा,tu irás,tu iras
+তুমি যিতাউগা,তুমি যাবে,you will go,你会走的,आपको जाना होगा,tu irás,tu iras
 তি কুরাং থারগো,তুমি কোথায় থাকো,where do you live,你住在哪里,आप कहाँ रहते हैं,dónde vive,où  habites-tu
 মি এবাকা গরে যিতৌগা,আমি এখন বাড়ি যাব,I will go home now,我现在就回家,मुझे अब घर जाना है,me iré a casa ahora,Je vais rentrer à la maison maintenant
 পৌ এহান চালাক্ক দিয়াবেঠা,এই সংবাদটি তাড়াতাড়ি পাঠাও,Send this message quickly,快速发送此消息,यह सन्देश जल्दी भेजो,Envía este mensaje rápidamente,Envoyez ce message rapidement
@@ -667,86 +661,203 @@ bm,bn,en,zh-CN,hi,es,fr
 খা,দক্ষিণ,the south,南方,दक्षिण,el sur,le sud
 গস,উপর,on,在,पर,en,sur
 তল,নিচ,down,向下,नीचे,abajo,vers le bas
+মুঙেদে,সামনে,in front,在前,सामने,Al frente,devant
+পিসেদে,পিছনে,behind,在后面,पीछे,detrás,derrière
+খানি পিসে আহিস,একটু পরে আসো,come later,稍后来,बाद में आना,ven luego,viens plus tard
+কামহান অইল,কাজটা হয়ে গেছে,The job is done,工作完成了,काम पूरा हो गया,el trabajo esta hecho,Le travail est fait
+এবাকাই লাগের,এখনই দরকার,Needed now,现在需要,अभी जरूरत है,Necesario ahora,Nécessaire maintenant
+পিসে করতৌ,পরে করব,will do later,稍后会做,बाद में करेंगे,lo haré más tarde,je le ferai plus tard
+চুমকরে কর,ঠিকমতো করো,do it right,做正确的事,इसे सही से करो,hazlo bien,fais-le bien
+আরেকমাউ হৎনা কর,আবার চেষ্টা করো,try again,再试一次,पुनः प्रयास करें,intentar otra vez,essayer à nouveau
+হাল না এরা দি,হাল ছেড়ো না,Don't give up,不要放弃,हिम्मत मत हारो,no te rindas,N'abandonne pas
+মনহান দিয়া হুন,মন দিয়ে শোনো,Listen carefully,仔细听,ध्यान से सुनो,Escuche atentamente,Écoutez attentivement
+ইংগ অয়া থাক,চুপ করো,shut up,住口,चुप रहो,callarse la boca,fermez-la
+আতকরে টটারা,জোরে বলো,say it out loud,大声说出来,इसे ज़ोर से कहो,dilo en voz alta,dis-le à voix haute
+তাপ্প টটারা,আস্তে বলো,speak slowly,慢慢地说,धीरे बोलो,habla despacio,parler lentement
+কাদাত আয়,কাছে আসো,come closer,靠近一点,करीब आएं,acércate,se rapprocher
+দূরেইত যাগা,দূরে যাও,go away,离开,दूर जाओ,irse,s'en aller
+এগদে আয়,এদিকে আসো,come here,来这里,यहाँ आओ,ven aquí,venez ici
+অহানদে যাগা,ওদিকে যাও,go there,去那里,वहाँ जाएँ,ve allí,allez-y
+গজে চা,উপরে তাকাও,look up,抬头,ऊपर देखो,buscar,chercher
+তলে চা,নিচে দেখো,see below,见下文,नीचे देखें,vea abajo,voir ci-dessous
+সিধা যাগা,সোজা যাও,go straight,直行,सीधे जाओ,Siga derecho,Allez tout droit
+থাম,থামো,stop,停止,रुकना,detener,arrêt
+দাবদে,দৌড়াও,run,跑步,दौड़ना,correr,courir
+আট্,হাঁটো,take a walk,散步,टहलें,dar un paseo,faire une promenade
+বহ,বসো,sit down,坐下,बैठ जाओ,sentarse,asseyez-vous
+উঠ্,উঠো,get up,起床,उठना,levantarse,se lever
+গুমজিয়া থাক,শুয়ে থাকো,lie down,躺,लेट जाओ,acostarse,allongez-vous
+আত নাদি,হাত দিও না,don't touch,不要碰,मत छुओ,no tocar,ne touche pas
+ধর,ধরো,hold on,坚持，稍等,पकड़ना,esperar,attendez
+এরা দে,ছেড়ে দাও,give up,放弃,छोड़ देना,abandonar,abandonner
+না উসুলি,টেনো না,don't drag,不要拖,खींचो मत,no arrastres,ne traîne pas
+না ঠেলি,ঠেলো না,don't push,不要推,धक्का मत दो,no empujes,ne pousse pas
+না থেয়ইস,সরে যাও,move away,搬走,टलना,alejarse,s'éloigner
+যাগা আহান দে,জায়গা দাও,give space,给空间,जगह दो,dar espacio,donner de l'espace
+বিতরে আয়,ভেতরে আসো,come in,进来,अंदर आएं,Adelante,Entrez
+বারে যাগা,বাইরে যাও,go outside,出去,बाहर जाओ,salir afuera,sortir
+দুয়ারহান আংকর,দরজা খোলো,open the door,打开门,दरवाजा खाेलें,abrir la puerta,ouvre la porte
+দুয়ারহান গাৎ,দরজা বন্ধ করো,close the door,关门,दरवाज़ा बंद कर दो,Cierre la puerta,ferme la porte
+থমেইগ জ্বালা,আলো জ্বালাও,turn on the light,打开灯,लाइट को चालू करें,encender la luz,allumer la lumière
+থমেইগ নিবা,আলো নিভাও,turn off the light,关掉灯,बत्ती बंद करें,apagar la luz,éteindre la lumière
+পানি আন,পানি আনো,bring water,带水,पानी लाओ,traer agua,apporter de l'eau
+খাওন দে,খাবার দাও,give food,给食物,भोजन दो,dar comida,donner à manger
+চা হংকর,চা বানাও,make tea,泡茶,चाय बनाएं,hacer té,faire du thé
+ঘুমজা,ঘুমাও,sleep,睡觉,नींद,dormir,dormir
+গুমেত্ত উঠ,জেগে উঠো,wake up,醒来,जागो,despertar,réveillez-vous
+চালাক্করে কর,তাড়াতাড়ি করো,hurry up,赶快,जल्दी करो,apresúrate,dépêche-toi
+সময় নষ্ট না করি,সময় নষ্ট করো না,don't waste time,不要浪费时间,समय बर्बाद मत करो,no pierdas el tiempo,ne perds pas de temps
+মনোযোগ দে,মনোযোগ দাও,pay attention,注意,ध्यान देना,prestar atención,Faites attention
+না পাহুরিস,ভুলে যেও না,don't forget,别忘了,मत भूलो,no lo olvides,n'oublie pas
+মনে থইস,মনে রেখো,remember,记住,याद करना,recordar,souviens-toi
+ইকরিয়া থ,লিখে রাখো,write it down,写下来,नीचे लिखें,escríbelo,écris-le
+হিসাব থ,হিসাব রাখো,keep count,记数,गिनती रखो,mantener la cuenta,compte
+খিয়াল থ,খেয়াল রাখো,take care,小心,अपना ध्यान रखना,cuidarse,prends soin de toi
+তালাবি কর,যত্ন নাও,take care,小心,अपना ध्यान रखना,cuidarse,prends soin de toi
+হশিয়ার থাইস,সাবধান থেকো,be careful,当心,ध्यान से,ten cuidado,sois prudent
+বলি ইয়া থাইস,ভালো থেকো,stay well,保持健康,अच्छे से रहो,mantente bien,reste bien
+হবাবালা অয়া থাইস,সুস্থ থেকো,stay healthy,保持健康,स्वस्थ रहें,mantente saludable,rester en bonne santé
+হারৌ অয়া থাইস,হাসিখুশি থাকো,stay happy,保持快乐,प्रसन्न रहें,mantente feliz,reste heureux
+হবানেই শ্চিন্তা নাকরি,দুশ্চিন্তা করো না,don't worry,不用担心,चिंता मत करो,no te preocupes,Ne vous inquiétez pas
+ডরাই না পেই,ভয় পেও না,don't be afraid,别害怕,डरो मत,no tengas miedo,n'aie pas peur
+সাহসহান থ,সাহস রাখো,keep courage,保持勇气,हिम्मत रखो,mantén el coraje,garde courage
+বিশ্বাস থ,বিশ্বাস রাখো,keep faith,保持信念,भरोसा रखना,ser fiel,garder la foi
+আশা থ,আশা রাখো,keep hope,保持希望,आशा रखो,mantener la esperanza,garder espoir
+ধৈর্য ধর,ধৈর্য ধরো,Be patient,要有耐心,धैर्य रखें,Ser paciente,Sois patient
+মুরগো ঠান্ডা কর,মাথা ঠান্ডা রাখো,Keep a cool head,保持冷静的头脑,दिमाग ठंडा रखें,Mantén la cabeza fría,Gardez la tête froide
+তিকহান সামলা,রাগ সামলাও,Manage your anger,管理你的愤怒,अपने गुस्से पर काबू रखें,Maneja tu ira,Gérez votre colère
+হিন না পেইস,কষ্ট পেও না,don't suffer,别受苦,कष्ट मत करो,no sufras,ne souffre pas
+মনহান দদা কর,মন শক্ত করো,Make up your mind,下定决心,मन बना लो,Decídete,Décidez-vous
+নিজরে সামলা,নিজেকে সামলাও,handle yourself,处理好自己,अपने आप को संभालो,manejate tu mismo,gère-toi
+আকখুলাগ নাগৈ,একা না,not alone,不孤单,अकेले नहीं,no solo,pas seul
+কাদাৎ আসু,পাশে আছি,I'm next to you,我在你旁边,मैं तुम्हारे बगल में हूँ,estoy a tu lado,je suis à côté de toi
+চিন্তা না করি,চিন্তা করো না,don't worry,不用担心,चिंता मत करो,no te preocupes,Ne vous inquiétez pas
+হাবি ঠিক অইতই,সব ঠিক হবে,Everything will be fine,一切都会好起来的,सब कुछ ठीक हो जाएगा,todo estará bien,Tout ira bien
+সময় লাগতই,সময় লাগবে,It will take time,这需要时间,समय तो लगेगा,Tomará tiempo,Cela prendra du temps
+তাপ্প তাপ্প,আস্তে আস্তে,slowly,慢慢地,धीरे से,despacio,lentement
+হাতেং হাতেং,ধীরে ধীরে,slowly,慢慢地,धीरे से,despacio,lentement
+খানি খানি করিয়া,একটু একটু করে,bit by bit,一点一点,टिल तिल,poco a poco,petit à petit
+হাবি হারাপাসু,সব জানি,know everything,知道一切,सब कुछ पता है,saber todo,je sais tout
+কিত্তাউ হান না পাসু,কিছু জানি না,don't know anything,什么都不知道,कुछ पता नहीं,no se nada,je ne sais rien
+হার পেইলু,বুঝতে পেরেছি,understood,明白了,समझा,comprendido,compris
+হার না পেইলু,বুঝিনি,didn't understand,不明白,समझ नहीं आया,no entendí,je n'ai pas compris
+সেংকরে মাত,পরিষ্কার বলো,be clear,说清楚,स्पष्ट होना,ser claro,sois clair
+উদাহরণ দে,উদাহরণ দাও,Give an example,举个例子,एक उदाहरण दीजिए,dar un ejemplo,Donnez un exemple
+দেহাদে,দেখাও,show me,给我看看,मुझे दिखाओ,muéstrame,montre-moi
+হিকাদে,শেখাও,teach,教,पढ़ाना,enseñar,enseigner
+মাতে দে,বলে দাও,tell me,告诉我,मुझे बताओ,dime,dites-moi
+আংকর,জিজ্ঞেস করো,ask,问,पूछना,preguntar,demander
+জওয়াপ দে,উত্তর দাও,answer,回答,उत्तर,respuesta,répondre
+প্রশ্নহান আংকর,প্রশ্ন করো,ask questions,提出问题,प्रश्न पूछें,hacer las cuestiones,poser des questions
+খালকর,ভাবো,think,思考,सोचना,pensar,pense
+লেপো,সিদ্ধান্ত নাও,make a decision,做出决定,फैसला लें,tomar una decisión,prendre une décision
+বাছিয়া নেগা,বেছে নাও,choose,选择,चुनना,elegir,choisir
+এরা দে,ছেড়ে দাও,give up,放弃,छोड़ देना,abandonar,abandonner
+নিয়া যাগা,নিয়ে নাও,,拿走它,इसे लें,tómalo,prends-le
+থুয়া বেলা,রেখে দাও,leave it,留下它,इसे छोड़ो,déjalo,laisse-le
+আলকরে দে,ফিরিয়ে দাও,give it back,把它还给,यह वापस दे,devuélvelo,rends-le
+নষ্ট না করি,নষ্ট করো না,don't waste,不要浪费,बर्बाद मत करो,no desperdicies,ne gaspille pas
+সংরক্ষণ কর,সংরক্ষণ করো,save,节省,बचाना,ahorrar,sauvegarder
+শেয়ার কর,শেয়ার করো,share it,分享它,इसे शेयर करें,Compártelo,Partagez-le
+চেইতে দে,দেখতে দাও,let me see,让我看看,मुझे देखने दो,déjeme ver,laissez-moi voir
 নুঙেইপা ফাল্গুন,সুখের ফাল্গুন,Falgun of happiness,幸福的镰刀,खुशियों का फागुन,Falgun de la felicidad,Falgun du bonheur
-দেবব্রত সিংহ,কুঞ্জবনে সুগন্ধী ফুল,Fragrant flowers in Kunjaban,昆贾班的芬芳花朵,कुंजबन में सुगंधित फूल,Flores fragantes en Kunjaban,Fleurs parfumées à Kunjaban
-কুঞ্জবনে নুংশিপা ফুল,কী সুন্দর চাঁপা ফুল,What a beautiful pressed flower,多么美丽的压花啊,कितना सुंदर दबा हुआ फूल है,Que hermosa flor prensada,Quelle belle fleur pressée
-কতি হবা লেহাউর ফুল,ফুল তুলে নাও তুলে নাও সই,"Pick up flowers, pick up signatures",拿起鲜花，领取签名,"फूल उठाओ, हस्ताक्षर उठाओ","Recoge flores, recoge firmas","Ramasser des fleurs, ramasser des signatures"
-ফুল ছিড় ছিড় ছিড় হমাজি,ভয় নেই কারোর আজ,No one is afraid today,今天没有人害怕,आज किसी को डर नहीं है,Nadie tiene miedo hoy,Personne n'a peur aujourd'hui
-না ডরেয়ার কারৌ আজি,আসছে সই আসছে ফাগুন,Signature is coming Fagun,签名即将到来,हस्ताक्षर आ रहा है फागुन,Se acerca la firma Fagun,La signature arrive Fagun
-আহের হমাজি আহের ফাল্গুনহান,সুখময় শান্তিময় আনন্দময় দিন,Happy peaceful happy day,快乐平安幸福的一天,शुभ शांतिपूर्ण शुभ दिन,Feliz dia feliz y tranquilo,Bonne journée paisible et heureuse
-নুঙেই নুংশি হারৌর দিনহান,কুহু কুহু স্বরে ডাকবে কোকিল,The cuckoo will call in a hoarse voice,杜鹃会用沙哑的声音叫,कोयल कर्कश स्वर में पुकारेगी,El cuco llamará con voz ronca.,Le coucou appellera d'une voix rauque
-কুহু কুহু কোকিল রহিতাই,আমাদের ঘুমাতে দেবে না দিন-রাত,We will not be allowed to sleep day and night,我们将不被允许日夜睡觉,हमें दिन-रात सोने नहीं दिया जाएगा,No se nos permitirá dormir ni de día ni de noche.,Nous ne serons pas autorisés à dormir jour et nuit
-রাতিয়ে দিনে ঘুমানি নাদতাই,খেলব ফাগু মিলব সবাই,Everyone will play fagu meet,大家都会玩法古见面会,फागू मीत सब खेलेंगे,Todos jugarán fagu meet.,Tout le monde jouera au fagu meet
-খেলতাঙাই ফাগু মিলতাঙাই হাবি,আবীর মাখার আনন্দে সদাই,Abir Makha is always happy,阿比尔·马哈永远快乐,अबीर माखा सदैव प्रसन्न रहता है,Abir Makha siempre está feliz,Abir Makha est toujours heureuse
-আবির গছতাঙাই হাবিয়ে আজি,হেসে খেলে যাবে যে দিন,The day will be played with laughter,这一天将在欢声笑语中度过,दिन हंसी-मजाक के साथ बीतेगा,El día se jugará con risas.,La journée se jouera avec le rire
-আহিয়া খেলিয়া যিতইগা দিন,তারপর আসবে যে কষ্টের দিন,Then will come the day of trouble,那么麻烦的日子就会到来,फिर संकट के दिन आयेंगे,Entonces vendrá el día de la angustia,Puis viendra le jour des ennuis
-আহিতই হমাজি হিনপানির দিন,এভাবেই একদিন চলে যাবে ফাল্গুন,This is how Falgun will go one day,这就是 Falgun 有一天会走的路,इसी तरह फागुन एक दिन जाएगा,Así irá Falgun algún día,C'est ainsi que Falgun ira un jour
-এসাদে করিয়া যিতইগা ফাল্গুন,আবার বছর ঘুরে আসবে সুখের ফাল্গুন,The year will come again with happiness,新的一年又会带着幸福来,साल फिर आएगा ख़ुशियाँ लेकर,El año volverá con felicidad.,L'année reviendra avec bonheur
-আহিতই মুঙেদে নুঙেইপা ফাল্গুন,কত দূরে,how far,多远,कितनी दूर,Hasta dónde,jusqu'à quel point
-কতি দূরেইৎ,আজ চললাম আমি প্রেয়সী,I went today my dear,我今天去了亲爱的,मैं आज गया प्रिये,Fui hoy querida,J'y suis allé aujourd'hui ma chérie
-আজি সালইলু মি নুংশিপি,না,no,不,नहीं,No,Non
-না,তোরে বিসারেয়া নাবে,Tore bisareya nabe,托雷比萨雷亚火锅,तोरे बिसरेया नाबे,Tore bisareya nabe,Tore Bisareya Nabe
-জনম এহার বারো আরাক,পথের সন্ধানে,looking for a way,寻找方法,रास्ता ढूंढ रहा हूँ,buscando una manera,je cherche un moyen
-পথ আহান বিসারাৎ,যেখানে থাকবে না,Where will not be,哪里不会,कहाँ नहीं होगा,donde no estara,Où ne sera pas
-যেহাৎ নেইতই খৌরাঙর অবসাদ,আকাঙ্খার অবসাদ,Depression of desire,欲望压抑,इच्छा का अवसाद,Depresión del deseo,Dépression du désir
+নুংশিপা ফুল,সুগন্ধী ফুল,Fragrant flowers,鲜花芬芳,सुगंधित फूल,flores fragantes,Fleurs parfumées
+কতি হবা লেহাউর ফুল,কী সুন্দর চাঁপা ফুল,What a beautiful pressed flower,多么美丽的压花啊,कितना सुंदर दबा हुआ फूल है,Que hermosa flor prensada,Quelle belle fleur pressée
+ফুল ছিড়,ফুল তুলে নাও,pick up the flowers,捡起花,फूल उठाओ,recoger las flores,ramasser les fleurs
+হমাজি,সই,the signature,签名,द सिगनेचर,la firma,la signature
+না ডরেয়ার,ভয় নেই,no fear,没有恐惧,कोई डर नहीं,sin miedo,pas de peur
+কারৌ আজি,কারোর আজ,someone's today,某人的今天,आज किसी का,alguien es hoy,quelqu'un est aujourd'hui
+আহের হমাজি,আসছে সই,Signature is coming,签名来了,हस्ताक्षर आ रहे हैं,La firma esta llegando,La signature arrive
+আহের ফাল্গুনহান,আসছে ফাগুন,Fagun is coming,法贡来了,फागुन आ रहा है,Fagun esta llegando,Fagun arrive
+নুঙেই নুংশি,সুখময় শান্তিময়,Happy and peaceful,快乐又平静,खुश और शांतिपूर्ण,feliz y en paz,Heureux et paisible
+হারৌর দিনহান,আনন্দময় দিন,happy day,快乐的一天,शुभ दिन,feliz dia,bonne journée
+কোকিল রহিতাই,ডাকবে কোকিল,The cuckoo will call,杜鹃会叫,कोयल पुकारेगी,El cuco llamará,Le coucou appellera
+ঘুমানি নাদতাই,ঘুমাতে দেবে না,Don't let me sleep,别让我睡觉,मुझे सोने मत दो,no me dejes dormir,Ne me laisse pas dormir
+রাতি দিন,দিন-রাত,day and night,日夜,दिन और रात,día y noche,jour et nuit
+খেলতাঙাই ফাগু,খেলব ফাগু,I will play fagu,我会玩法古,मैं फागू बजाऊंगा,voy a jugar fagu,je jouerai au fagu
+মিলতাঙাই হাবি,মিলব সবাই,See you all,再见,आप सभी से मुलाकात होगी,Nos vemos a todos,À bientôt
+আবির গছতাঙাই,আবীর মাখব,Abir Makhab,阿比尔·马哈卜,अबीर मखब,Abir Makhab,Abir Makhab
+হাবিয়ে আজি,সবাই আজ,everyone today,今天大家,आज हर कोई,todos hoy,tout le monde aujourd'hui
+আহিয়া খেলিয়া,হেসে খেলে,Laugh and play,又笑又玩,हंसो और खेलो,Reír y jugar,Rire et jouer
+যিতইগা দিন,যাবে যে দিন,That day will go,那一天将会过去,वह दिन जायेगा,ese dia se ira,Ce jour ira
+থাংনাত আহিতই,তারপর আসবে,then come,那么来,तब आना,entonces ven,alors viens
+হিনপানির দিন,কষ্টের দিন,hard day,艰难的一天,कठिन दिन,día duro,dure journée
+এসাদে করিয়া আকদিন,এভাবে একদিন,One day like this,像这样的一天,एक दिन ऐसा भी,Un día como este,Un jour comme ça
+যিতইগা ফাল্গুন,চলে যাবে ফাল্গুন,Falgun will leave,法尔根将离开,फागुन चला जाएगा,Falgun se irá,Falgun partira
+আহিতই মুঙেদে,সামনে আসবে,will come forward,将会挺身而出,आगे आयेंगे,se presentará,se présentera
+কতি দূরেইৎ,কত দূরে,how far,多远,कितनी दूर,Hasta dónde,jusqu'à quel point
+আজি সালইলু,আজ চললাম,I went today,我今天去了,मैं आज गया,fui hoy,j'y suis allé aujourd'hui
+মি নুংশিপি,আমি প্রেয়সী,i am beloved,我被爱着,मैं प्रिय हूँ,soy amado,je suis aimé
+তোরে বিসারেয়া,তোমাকে খোঁজে,looking for you,寻找你,तुम्हें ढूंढ रहा हूं,buscándote,je te cherche
+জনম এহার,এই জীবনের,of this life,此生的,इस जीवन का,de esta vida,de cette vie
+বারো আরাক,অন্য এক,another one,另一个,दूसरा,otro,un autre
+পথ আহান বিসারাৎ,পথের সন্ধানে,looking for a way,寻找方法,रास्ता ढूंढ रहा हूँ,buscando una manera,je cherche un moyen
+যেহাৎ নেইতই,যেখানে থাকবে না,Where will not be,哪里不会,कहाँ नहीं होगा,donde no estara,Où ne sera pas
+খৌরাঙর অবসাদ,আকাঙ্খার অবসাদ,Depression of desire,欲望压抑,इच्छा का अवसाद,Depresión del deseo,Dépression du désir
 যেহাৎ নেইতই খেয়োনির বিষাদ,যেখানে থাকবে না বিচ্ছেদের বিষাদ,Where there will be no sadness of separation,那里不会有分离的悲伤,जहां न होगा बिछड़ने का गम,Donde no habrá tristeza de separación,Où il n'y aura pas de tristesse de séparation
 যেহাৎ নেইতই বিদায় বিরহ যন্ত্রণা,যেখানে থাকবে না বিদায় বিরহ যন্ত্রণা,Where there will be no goodbye pain,那里不会有再见的痛苦,जहां अलविदा दर्द नहीं होगा,Donde no habrá dolor de adiós,Où il n'y aura pas d'adieu à la douleur
 যেহাৎ প্রেমপূজারির আত্মাগ,যেখানে প্রেমপূজারির আত্মা,Where the soul of Prempujari,Prempujari 的灵魂所在,जहां प्रेमपुजारी की आत्मा,Donde el alma de Prempujari,Où l'âme de Prempujari
 মুক্ত প্রেমর হারৌয়ে,মুক্ত প্রেমের আনন্দে,In the joy of free love,在自由恋爱的喜悦中,मुक्त प्रेम की खुशी में,En la alegría del amor libre,Dans la joie de l'amour libre
 বাহিয়া যারগা অহাৎ,ভেসে যায় সেখানে,It floats there,它漂浮在那里,यह वहां तैरता है,flota allí,Il flotte là
 আজি যে পথহান ধরেছু নুংশিপি,আজও  যে পথে হেঁটে চলেছি প্রিয়তমা,I am still walking the same path my dear,亲爱的我依然走在同一条路上,मैं अब भी उसी राह पर चल रहा हूँ प्रिये,Sigo caminando por el mismo camino querida,Je suis toujours sur le même chemin ma chérie
-এপাগাউ সিতকরের নিরাশার বৌ আহান,সেখানে বইছে নিরাশার বাতাস,There is an air of despair,有一种绝望的气息,निराशा का माहौल है,Hay un aire de desesperación,Il y a un air de désespoir
-না,মাতে নুয়ারৌরি,Mate Nuarauri,马特·努拉乌里,मेट नुआरौरी,Mate Nuarauri,Maté Nuarauri
+এপাগাউ সিতকরের নিরাশার বৌ আহান,এখনও বইছে নিরাশার এক বাতাস,A wind of despair still blows,绝望的风还在吹,निराशा की हवा अभी भी चल रही है,Todavía sopla un viento de desesperación,Un vent de désespoir souffle toujours
+না মাতে নুয়ারৌরি,না বলে পারছি না,I can't say no,我不能说不,मैं ना नहीं कह सकता,no puedo decir que no,Je ne peux pas dire non
 চিন্তার খুয়ায় বেড়িয়া থুয়াছে,চিন্তার কুয়াশা আচ্ছন্ন করে রেখেছে,The fog of thought has enveloped,思想的迷雾已经笼罩,सोच का कोहरा छा गया है,La niebla del pensamiento ha envuelto,Le brouillard de la pensée s'est enveloppé
 দৃষ্টির দিগন্তৎ দেখুরি ঝাপসা করে,দৃষ্টির দিগন্তে ঝাপসা করে দেখি,I see blur in the horizon of vision,我的视野变得模糊,मुझे दृष्टि के क्षितिज में धुंधलापन दिखाई देता है,Veo borroso en el horizonte de la visión,Je vois du flou dans l'horizon de vision
-পথ অহান কতি দূরেই,সেই পথ কত দূরে!,How far is that way!,那条路有多远啊！,वह रास्ता कितना दूर है!,¡Qué lejos está ese camino!,Jusqu'où est-ce par là !
+পথ অহান কতি দূরেই,সেই পথ কত দূরে,How far is that way?,那条路有多远？,वह रास्ता कितनी दूर है?,¿Qué tan lejos está ese camino?,Jusqu'où est-ce par là ?
 তেবো মি সালুইছু,তবু আমি চলেছি,But I'm leaving,但我要离开了,लेकिन मैं जा रहा हूँ,pero me voy,Mais je pars
 বারো মুঙেদে,আবারও সামনে,Forward again,再次转发,पुनः अग्रेषित करें,Adelante otra vez,Transférer à nouveau
 দেখুরি ঝাপসা করে,দেখছি ঝাপসা করে,I see it blurry,我看的很模糊,मुझे यह धुंधला दिखाई दे रहा है,lo veo borroso,je le vois flou
 মাতে নুয়ারৌরি,বলতে পারছি না,can't say,不能说,कह नहीं सकता,no puedo decir,je ne peux pas dire
 পথ এহান কতি দূরেই,সেই পথ কত দূরে,How far is that way?,那条路有多远？,वह रास्ता कितनी दूर है?,¿Qué tan lejos está ese camino?,Jusqu'où est-ce par là ?
 খেলতামর খিল্লাগ,সময়ের চাকা,wheel of time,时间之轮,समय का पहिया,rueda del tiempo,roue du temps
-খেলতামর খিল্লাগ এবাকা হাংকা,সময়ের চাকা যখন তখন,When the wheel of time,当时光之轮,जब समय का पहिया,Cuando la rueda del tiempo,Quand la roue du temps
+খেলতামর খিল্লাগ,সময়ের চাকা,wheel of time,时间之轮,समय का पहिया,rueda del tiempo,roue du temps
+এবাকা হাংকা,যখন তখন,when then,那时,जब तब,cuando entonces,quand alors
 কুম্বাকা সরাহানর সাদে,পাহাড়ি ছড়ার মতো,Like a hill rhyme,就像山韵一样,किसी पहाड़ी तुकबंदी की तरह,Como una rima de colina,Comme une rime de colline
 সমুদ্রুহান পেইং পুংনিঙে সালসে,সাগরের সাথে মিলনের আশায় ছুটে চলেছে,Rushing to meet the ocean,急忙去迎接大海,सागर से मिलने की होड़,Corriendo hacia el océano,Se précipiter à la rencontre de l'océan
 হারনেই তার নিংপা মহাকালর,জানি না তার প্রিয় মহাকালের,I don't know his beloved Mahakal,我不认识他心爱的玛哈卡尔,मैं उनके प्रियतम महाकाल को नहीं जानता,No conozco a su amado Mahakal.,Je ne connais pas son bien-aimé Mahakal
 লাক-খুসনেই চেম্ফুগ তালকরে,আদি-অন্তহীন গহবরের উদ্দেশে,To the primordial-endless pit,通往原始无尽的深渊,आदिम-अंतहीन गर्त तक,Al pozo primordial e infinito,Vers le gouffre primordial et sans fin
 তি মি এ দ্বগি লালফামর ফামে,তুমি আমি দু’জন যুদ্ধক্ষেত্রে,You and I are on the battlefield,你我都在战场,आप और मैं युद्ध के मैदान में हैं,Tú y yo estamos en el campo de batalla.,Toi et moi sommes sur le champ de bataille
 ফৌদাম নেই কাফামে,নিষ্ফলা উদ্দেশ্যে,for futile purposes,为了徒劳的目的,व्यर्थ प्रयोजनों के लिए,con fines inútiles,à des fins futiles
-কিয়াকা কাকালি বাধিয়া মজেসি,কেন কোমর বেঁধে নেমেছি?,Why do you tie the waist down?,为什么要把腰绑起来？,आप कमर नीचे क्यों बांधते हैं?,¿Por qué te atas la cintura hacia abajo?,Pourquoi attachez-vous la taille ?
-কামে থইদকপা কিত্তাউ নেইলে ফিজেত পাজালানি,কিছুই করার না থাকলে কাপড় গোছগাছ করা ভালো,"If there is nothing to do, it is better to pack clothes",如果没事做的话，还是收拾一下衣服吧,अगर करने को कुछ नहीं है तो कपड़े पैक करना ही बेहतर है,"Si no hay nada que hacer, es mejor empacar ropa.","S'il n'y a rien à faire, il vaut mieux emporter des vêtements"
-নাপালে চেকচিল জিপা আহিগি,,,,,,
+কিয়াকা কাকালি বাধিয়া মজেসি,কেন কোমর বেঁধে নেমেছি,Why am I down with my waist tied?,为什么我的腰被绑着？,मैं अपनी कमर क्यों बाँध कर बैठा हूँ?,¿Por qué estoy abajo con la cintura atada?,"Pourquoi suis-je à terre, la taille attachée ?"
+কিত্তাউ করানিরতা নেইলে,কিছুই করার না থাকলে,If there is nothing to do,如果无事可做,अगर करने को कुछ नहीं है,Si no hay nada que hacer,S'il n'y a rien à faire
+ফিজেত পাজালানি,কাপড় গোছগাছ করা,do laundry,洗衣服,कपड़े धोना,lavar la ropa,faire la lessive
+নাপালে চেকচিল জিপা আহিগি,অহংকার ভরা বন্ধ চোখ দুটি,Two closed eyes filled with pride,两只闭着的眼睛充满自豪,गर्व से भरी दो बंद आँखें,Dos ojos cerrados llenos de orgullo,Deux yeux fermés remplis de fierté
 চা নারের,দেখতে পায় না,can't see,看不到,देख नहीं सकते,no puedo ver,je ne peux pas voir
-খেলতামর করপেকহানাৎ আউপা লিচেতে,সময়ের পান্ডুলিপির সত্যিকার নিয়মে,In the true canon of period manuscripts,在该时期手稿的真正经典中,काल पांडुलिपियों के सच्चे सिद्धांत में,En el verdadero canon de los manuscritos de época.,Dans le véritable canon des manuscrits d’époque
-কালা না রাঙা কালি পড়েসেতা,কালো নাকি লাল রঙ লেপ্টে আছে,Black or red color is coated,黑色或红色涂层,काले या लाल रंग का लेप किया जाता है,El color negro o rojo está recubierto.,La couleur noire ou rouge est enduite
+খেলতামর করপেকহানাৎ,সময়ের পান্ডুলিপির,Manuscripts of the period,那个时期的手稿,काल की पांडुलिपियाँ,Manuscritos de la época.,Manuscrits de l'époque
+আউপা লিচেতে,সত্যিকার নিয়মে,In real terms,实际上,वास्तविक रूप में,En términos reales,En termes réels
+কালা না রাঙা,কালো নাকি লাল,Black or red,黑色或红色,काला या लाल,Negro o rojo,Noir ou rouge
 সরার পানি কল্পুক ইথাক তুলিয়া,ছড়ার ফেনিল পানি ঢেউ তুলে,Rhyme phenyl water ripples,韵苯水波纹,कविता फिनाइल पानी लहरें,Rima fenilo ondas de agua,Rime phényle ondulations de l'eau
 মিকুপ মিকুপ খেলতাম যারগা,,,,,,
 যিতইগা মহাসিন্ধু বারো মহাকালর বুকগৎ যৌয়নিৎ,মহাসিন্ধু আর মহাকালের বুকে আশ্রয় নিতে,To take shelter in the bosom of Mahasindu and Mahakal,庇护在 Mahasindu 和 Mahakal 的怀抱中,महासिंधु और महाकाल की गोद में शरण लेने के लिए,Refugiarse en el seno de Mahasindu y Mahakal,Se réfugier au sein de Mahasindu et Mahakal
-নুংপাং মাঙয়া ইংচিক অইতাঙাই সইনেই,অবাক বিস্ময়ে নিস্তব্ধ নীরব হয়ে যাব,I will fall silent in amazement,我会惊讶得沉默不语,मैं आश्चर्य से चुप हो जाऊँगा,Me quedaré en silencio de asombro,Je vais me taire d'étonnement
+নুংপাং মাঙয়া ইংচিক অইতাঙাই,অবাক বিস্ময়ে নিস্তব্ধ নীরব হয়ে যাব,I will fall silent in amazement,我会惊讶得沉默不语,मैं आश्चर्य से चुप हो जाऊँगा,Me quedaré en silencio de asombro,Je vais me taire d'étonnement
 রাতি নঙেইর মইপঙর রৌয়ে,গভীর রাতের শঙ্খধ্বনিতে,In the late night conch sound,在深夜的海螺声中,देर रात शंख ध्वनि,En el sonido de la caracola tarde en la noche,Dans le son des conques de fin de soirée
 থাংতে কিহান করানি এবাকাউ,কাজেই এখন কী করতে হবে,So what to do now,那么现在该怎么办,तो अब क्या करना है,Entonces que hacer ahora,Alors que faire maintenant
-থকসে খালকরানি,ভাবা উচিৎ,should think,应该思考,सोचना चाहिए,debería pensar,devrait penser
+খালকরানি থকসে,ভাবা উচিৎ,should think,应该思考,सोचना चाहिए,debería pensar,devrait penser
 চৈত মাহার বিয়ানকার রোদগর,চৈত্রে সকালবেলার রোদের,Chaitra of the morning sun,清晨阳光的柴特拉,चैत्र प्रातःकालीन सूर्य का,Chaitra del sol de la mañana,Chaitra du soleil du matin
 তপ্তা ফাপগৎ হিনা হিনা,উত্তাপ গায়ে মেখে মেখে,The heat rubs on the body,热量摩擦着身体,गर्मी शरीर पर रगड़ती है,El calor roza el cuerpo.,La chaleur frotte sur le corps
 তেই সালুইসে মুঙেদে,সে এগোচ্ছে সামনে,He is moving forward,他正在前进,वह आगे बढ़ रहा है,el esta avanzando,Il avance
 মারুপর লগে,বান্ধবীদের সাথে,with girlfriends,和女朋友,गर्लफ्रेंड के साथ,con amigas,avec des copines
-ইনাফিহার চুটিগ সেচারার মাটিহাৎ,ইনাফির আঁচল গড়াগড়ি খাচ্ছে মাটিতে,Inafi's anchal is rolling on the ground,伊纳菲的锚在地上滚动,इनाफ़ी का आँचल ज़मीन पर लोट रहा है,El anchal del Inafi rueda por el suelo,L'anchal d'Inafi roule par terre
-বাতেদের আতহান গজেদে হেইকরে,ডানহাত উপরের দিকে ছুঁড়ে ছুঁড়ে,Right hand thrown upwards,右手向上举起,दाहिना हाथ ऊपर की ओर फेंका हुआ,Mano derecha lanzada hacia arriba,Main droite projetée vers le haut
+ইনাফিহার চুটিগ,ইনাফির আঁচল,Inafir Anchal,伊纳菲尔·安查尔,इनाफिर आंचल,Inafir Anchal,Inafir Anchal
+সেচারার মাটিহাৎ,গড়াগড়ি খাচ্ছে মাটিতে,Rolling on the ground,在地上打滚,ज़मीन पर लोटना,Rodando por el suelo,Se rouler par terre
+বাতেদের আতহান,ডান হাত,right hand,右手,दांया हाथ,derecha,main droite
+গজেদে হেইকরে,উপরের দিকে ছুঁড়ে,throw up,呕吐,फेंकना,vomitar,vomir
 খুমকরিরি শ্লোগানহান,শ্লোগান ধরছে,Chanting,念诵,जाप,Cantando,Psalmodie
 ইমার ঠারর স্বীকৃতি দেনা লাগতই,মাতৃভাষার স্বীকৃতি দিতে হবে,Mother tongue should be recognized,母语应该被认可,मातृभाषा को मान्यता मिलनी चाहिए,Se debe reconocer la lengua materna.,La langue maternelle doit être reconnue
 খাংদা লম্বেইর গুলি আগ,হঠাৎ একটা গুলি,Suddenly a shot,突然一声枪响,अचानक गोली चली,De repente un disparo,"Soudain, un coup de feu"
-তেইর গারিগ লিতয়া গেলগা,তার হেহটাকে করে দিল এফোঁড় ওফোঁড়,His laughter made him laugh,他的笑声让他笑了,उसकी हँसी ने उसे हँसा दिया,Su risa lo hizo reír.,Son rire le faisait rire
-রকতর গোলাহাৎ বাহিল তেইর গারিগ,রক্তগঙ্গা বয়ে গেল তার সারা দেহে,Blood flowed throughout his body,血液流遍了他的全身,उसके पूरे शरीर में खून बह गया,La sangre fluyó por todo su cuerpo.,Le sang coulait dans tout son corps
-তাপ তাপ্প রকত অতা,ধীরে ধীরে সেই রক্ত,Slowly that blood,慢慢地那血,धीरे-धीरे वह खून,lentamente esa sangre,Lentement ce sang
+তেইর গারিগ লিতয়া গেলগা,তার দেহটাকে করে দিল এফোঁড় ওফোঁড়,He made his body boil,他让他的身体沸腾,उसने अपने शरीर को उबाल लिया,Hizo hervir su cuerpo,Il a fait bouillir son corps
+রকতর গোলাহাৎ বাহিল,রক্তগঙ্গা বয়ে গেল,Blood flowed,血流了,खून बह गया,La sangre fluyo,Le sang coulait
+তেইর গারিগ,তার সারা দেহ,His whole body,他的整个身体,उसका पूरा शरीर,todo su cuerpo,Tout son corps
+তাপ্প তাপ্প রকত অতা,ধীরে ধীরে সেই রক্ত,Slowly that blood,慢慢地那血,धीरे-धीरे वह खून,lentamente esa sangre,Lentement ce sang
 মেয়েক অলিয়া হংকরলা,অক্ষর হয়ে তৈরি করল,Made into letters,做成字母,अक्षरों में बनाया गया,Hecho en letras,Transformé en lettres
-কথার ফুলদান আহান,একটি কথামালা,a word,一句话,शब्द,una palabra,un mot
-‘ইমার ঠার পুঞ্চি পালক’,‘মাতৃভাষা অমর হোক’,"""Let the mother tongue be immortal""",“让母语永垂不朽”,"""मातृभाषा अमर रहे""","""Que la lengua materna sea inmortal""","""Que la langue maternelle soit immortelle"""
+কথার ফুলদান আহান,একটি ফুলের মালা,A garland of flowers,一个花环,फूल माला,Una guirnalda de flores,Une guirlande de fleurs
+ইমার ঠার পুঞ্চি পালক,মাতৃভাষা অমর হোক,Let the mother tongue be immortal,让母语永垂不朽,मातृभाषा अमर रहे,Que la lengua materna sea inmortal.,Que la langue maternelle soit immortelle
 ফুলর শপা আহান উঠিসে,একটা ফুলগাছ বেড়ে উঠেছে,A flower has grown,一朵花已经长出来了,एक फूल उगा है,una flor ha crecido,Une fleur a poussé
 তেইর শ্মশানহাৎ,তার শ্মশানে,at his cremation,在他的火葬场,उनके दाह संस्कार पर,en su cremación,à sa crémation
-না,কাবকলেই উটংলেই নাবেরাঙা,Kabklei Utonglei Naberanga,卡布克莱·乌东格莱·纳贝兰加,कबकली उटोंगलेई नबेरंगा,Kabklei Utonglei Naberanga,Kabklei Utonglei Naberanga
+কাবকলেই উটংলেই,গন্ধরাজ করবী,Gandharaj will do,犍陀罗吉会做,गंधराज करेंगे,Gandharaj hará,Gandharaj fera l'affaire
 অটফুল শপাহান,একটি রক্তজবা গাছ,A bloodstain tree,一棵血迹树,रक्तरंजित वृक्ष,Un árbol manchado de sangre,Un arbre taché de sang
 দেহানির জ্বালা,দেখার জ্বালা,burning to see,渴望看到,देखने में जल रहा है,ardiendo por ver,brûlant de voir
-মি দেহেছু ওটির টেবিলে,আমি দেখেছি ওটির টেবিলে,I saw it on the table,我在桌子上看到了,मैंने इसे मेज पर देखा,lo vi en la mesa,je l'ai vu sur la table
+মি দেহেসু ওটির টেবিলে,আমি দেখেছি ওটির টেবিলে,I saw it on the table,我在桌子上看到了,मैंने इसे मेज पर देखा,lo vi en la mesa,je l'ai vu sur la table
 নুয়ারার নিকদানি,রোগীদের কাঁপুনি,Patients shiver,病人发抖,मरीज़ कांप उठते हैं,Los pacientes tiemblan,Les patients frissonnent
 আর হুনেছু বলির আগে,আর শুনেছি বলির আগে,And I heard before I said,在我说之前我就听到了,और मेरे कहने से पहले मैंने सुना,Y escuché antes de decir,Et j'ai entendu avant de dire
 মরা পশুর কাদানি,পশুদের আর্তনাদ,The cry of animals,动物的叫声,जानवरों का रोना,El grito de los animales.,Le cri des animaux
@@ -754,16 +865,16 @@ bm,bn,en,zh-CN,hi,es,fr
 হেলাফেলায় আলিতে,অবলীলায় ফেলে দিতে,to throw away,扔掉,दूर फेंक ने के लिए,tirar,jeter
 আর দেহেছু ডাস্টবিনেত্ত,আর দেখেছি ডাস্টবিন থেকে,And saw from the dustbin,并从垃圾箱里看到,और कूड़ेदान से देखा,Y vio desde el cubo de la basura,Et j'ai vu dans la poubelle
 হেনুর-আঠি লেহিতে,আমের আঁটি চুষতে,To suck the mango,来吸芒果,आम चूसने के लिए,A chupar el mango,Pour sucer la mangue
-মি হুনেছু,গরমে এসির কাজে,AC works in summer,夏季空调工作,गर्मियों में एसी चलता है,El aire acondicionado funciona en verano.,La climatisation fonctionne en été
+মি হুনেছু গরমে এসির কাজে,আমি শুনেছি গরমে এসির জন্য,I heard for AC in summer,听说夏天要开空调,मैंने गर्मियों में एसी के बारे में सुना है,Escuché para AC en verano.,J'ai entendu parler de AC en été
 হায় হুতাশ করতে,হা হুতাশ করতে,Ha to hurry,哈要快点,हा जल्दी करो,Ja que te des prisa,Ha il faut se dépêcher
 আর দেহেছু মাঘর জারে,আর দেখেছি মাঘের তীব্র শীতে,And I saw in the severe winter of Magh,我在马格的严冬中看到,और मैंने माघ की भीषण सर्दी में देखा,Y vi en el severo invierno de Magh,Et j'ai vu pendant le rude hiver de Magh
 ককারা ইয়া মরতে,কুকড়ে যাওয়া শরীর,Wrinkled body,满是皱纹的身体,झुर्रीदार शरीर,cuerpo arrugado,Corps ridé
 মোর পোড়া আহিত দেহেছু,আমার পোড়া চোখে দেখেছি,I saw with my burning eyes,我用灼热的眼睛看到,मैंने अपनी जलती आँखों से देखा,Vi con mis ojos ardientes,J'ai vu avec mes yeux brûlants
-ইজ্জত বেছানির হক পয়সার কাজে,ইজ্জত বিμির হক টাকার জন্য,The right to honor is for money,荣誉权是为了金钱,सम्मान का अधिकार पैसे के लिए है,El derecho al honor es por el dinero.,Le droit à l'honneur est pour l'argent
+ইজ্জত বেছানির হক পয়সার কাজে,ইজ্জত বিক্রির হক টাকার জন্য,The right to sell honor for money,出卖荣誉换取金钱的权利,पैसे के लिए सम्मान बेचने का अधिकार,El derecho a vender el honor por dinero.,Le droit de vendre l’honneur contre de l’argent
 খদ্দেরর লগে কৌলি করতে,খদ্দেরের সাথে ঝগড়া করতে,To quarrel with the customer,和顾客吵架,ग्राहक से झगड़ा करना,Pelear con el cliente.,Se disputer avec le client
 আর দেহেছু ঘুষ দিতেগা,আমি দেখেছি ঘুষ দিতে গিয়ে,I saw while paying bribes,我在行贿时看到,मैंने रिश्वत देते हुए देखा,Vi mientras pagaba sobornos,J'ai vu en payant des pots-de-vin
 নিজ ভিটাগ বেছতে,নিজের ভিটাবাড়ি বেচতে,To sell your house,卖掉你的房子,अपना घर बेचने के लिए,para vender tu casa,Pour vendre votre maison
-নাঙুইছু,বরনে উরিয়া,Barane Uria,巴兰·乌里亚,बराने उरिया,Barane Uria,Barane Uria
+নাঙুইছু বরনে উরিয়া,অভিজ্ঞতা হয়েছে পানি চুইয়ে পড়ে,Experienced in water seepage,有渗水经验,जल रिसाव में अनुभवी,Con experiencia en filtraciones de agua.,Expérimenté en infiltration d’eau
 কত রাতি না ঘুমিতে,কত রাত নিদ্রাহীন থাকতে,How many sleepless nights?,多少个不眠之夜？,कितनी रातों की नींद हराम?,¿Cuántas noches sin dormir?,Combien de nuits blanches ?
 মি দেহেছু ঘুষর রুপাল,আমি দেখেছি ঘুষের টাকায়,I saw bribe money,我看到了贿赂钱,मैंने रिश्वत के पैसे देखे,vi dinero de soborno,J'ai vu de l'argent de pot-de-vin
 প্রাসাদ হংকরতে,অট্টালিকা বানাতে,To build a building,建造一座建筑物,एक इमारत बनाने के लिए,Para construir un edificio,Pour construire un bâtiment
@@ -772,25 +883,25 @@ bm,bn,en,zh-CN,hi,es,fr
 মি দেহেছু ধলাইর পানি,আমি দেখেছি ধলাই নদীর পানি,I saw the water of Dhalai river,我看到了达莱河的水,मैंने धलाई नदी का पानी देखा,Vi el agua del río Dhalai.,J'ai vu l'eau de la rivière Dhalai
 তুলিয়া হাজম পিতে,আঁজলা ভরে পান করতে,To drink by the brim,喝到杯边,पेट भरकर पीना,Beber hasta el borde,A boire à ras bord
 দেহেছু এ লেইরা দেশেউ,দেখেছি এ গরিব দেশেও,I have seen in this poor country too,我在这个贫穷的国家也见过,मैंने इस गरीब देश में भी देखा है,Yo también he visto en este pobre país,J'ai vu aussi dans ce pauvre pays
-বিদেশর পানি পিতে,বিদেশের পানি খেতে,,,,,
-আরতা কিত্তাউ দেহানি নাহের,আর কিছু দেখতে চায় না,,,,,
-মোর এ আহিগিত,আমার এ দুটি চোখ,,,,,
-ঘুম দে প্রভু,ঘুম দাও প্রভু,,,,,
-চিরশান্তির ঘুম,চিরশান্তির ঘুম,,,,,
-মি যেহান না লিখিসু,আমি যা লিখিনি,,,,,
-হাকহার জোনাক তারা,আকাশের চাঁদ তারা,,,,,
-বারো বেলিগর রঙহান,আর সূর্যের রঙ,,,,,
+বিদেশর পানি পিতে,বিদেশের পানি খেতে,To drink foreign water,喝外国水,विदेशी पानी पीना,Beber agua extranjera,Boire de l'eau étrangère
+আরতা কিত্তাউ দেহানি নাহের,আর কিছু দেখতে চায় না,I don't want to see anything else,我不想看到其他任何东西,मैं और कुछ नहीं देखना चाहता,no quiero ver nada mas,je ne veux rien voir d'autre
+মোর এ আহিগিত,আমার এ দুটি চোখ,I have these two eyes,我有这两只眼睛,मेरे पास ये दो आंखें हैं,tengo estos dos ojos,J'ai ces deux yeux
+ঘুম দে প্রভু,ঘুম দাও প্রভু,sleep lord,睡眠领主,सो जाओ प्रभु,señor del sueño,Seigneur du sommeil
+চিরশান্তির ঘুম,চিরশান্তির ঘুম,eternal sleep,永恒的睡眠,शाश्वत निद्रा,sueño eterno,sommeil éternel
+মি যেহান না লিখিসু,আমি যা লিখিনি,What I didn't write,我没写的,मैंने क्या नहीं लिखा,lo que no escribi,Ce que je n'ai pas écrit
+হাকহার জোনাক তারা,আকাশের চাঁদ তারা,Moon and stars in the sky,天空中的月亮和星星,आसमान में चांद और तारे,Luna y estrellas en el cielo.,Lune et étoiles dans le ciel
+বারো বেলিগর রঙহান,আর সূর্যের রঙ,And the color of the sun,还有太阳的颜色,और सूरज का रंग,Y el color del sol,Et la couleur du soleil
 পৃথিবী এহান হঙনির পিসেত্ত আজি পেয়া,পৃথিবীর জন্ম থেকে আজ পর্যন্ত,From the birth of the world till today,从世界诞生到今天,संसार के जन्म से लेकर आज तक,Desde el nacimiento del mundo hasta hoy,De la naissance du monde à aujourd'hui
 হাবি কবিয়ে এতানো কবিতা লিখতারা,সব কবিই লিখে গেল কবিতায়,All poets wrote in poetry,所有的诗人都写诗,सभी कवियों ने कविता में लिखा,Todos los poetas escribieron en poesía.,Tous les poètes ont écrit en poésie
 নানান উপমা য়ৌকরিয়া,নানা উপমা সংযুক্ত করে,By connecting various similes,通过连接各种比喻,विभिन्न उपमाओं को जोड़कर,Conectando varios símiles,En reliant diverses comparaisons
 কুংগৌ কিতা পারিসিলাতা,কেউ কি পেরেছিল,Did anyone make it?,有人成功了吗？,क्या किसी ने इसे बनाया?,¿Alguien lo logró?,Quelqu'un l'a fait ?
 অরে জোনাক,ঐ চাঁদ,that moon,那个月亮,वह चाँद,esa luna,cette lune
 তারা বারো বেলিগর মিঙালহার সাদে,তারা কিংবা সূর্যের মতো,Like the stars or the sun,就像星星或太阳,सितारों या सूरज की तरह,Como las estrellas o el sol,Comme les étoiles ou le soleil
-তাঙর কবিতা অতা ঙালকরানি?,উজ্জ্বল করতে নিজের কবিতা?,To shine your own poetry?,去闪耀自己的诗意？,अपनी खुद की कविता चमकाने के लिए?,¿Para hacer brillar tu propia poesía?,Pour faire briller votre propre poésie ?
+তাঙর কবিতা অতা ঙালকরানি,উজ্জ্বল করতে নিজের কবিতা,To shine your own poetry,绽放属于自己的诗意,अपनी खुद की शायरी को चमकाने के लिए,Para hacer brillar tu propia poesía,Pour faire briller ta propre poésie
 পৃথিবী এহান হঙিতেত্ত আজি পেয়া,পৃথিবীর জন্ম থেকে আজ অবধি,From the birth of the world till today,从世界诞生到今天,संसार के जन्म से लेकर आज तक,Desde el nacimiento del mundo hasta hoy,De la naissance du monde à aujourd'hui
-যতহান কাব্য লেঙুইসে,যত কাব্য রচিত হয়েছে,As many poems have been written,正如许多诗已被写下,जितनी कविताएं लिखी गई हैं,Tantos poemas se han escrito,Comme de nombreux poèmes ont été écrits
+যতহান কাব্য লেঙুইসে,যত কাব্য রচিত হয়েছে,As much poetry has been written,写了多少诗,जितनी कविता लिखी गई है,Se ha escrito tanta poesía,Autant de poésie a été écrite
 অতা হাবি সুপকরিয়াউ পারতাইতা,সেসব মিলেও কি পারবে,What can they do together?,他们在一起能做什么？,वे एक साथ क्या कर सकते हैं?,¿Qué pueden hacer juntos?,Que peuvent-ils faire ensemble ?
-হাক এহানরে মিঙালে বাহুয়াদেনা?,আকাশটা আলোয় ভরিয়ে দিতে?,Fill the sky with light?,让天空充满光？,आकाश को प्रकाश से भर दो?,¿Llenar el cielo de luz?,Remplir le ciel de lumière ?
+হাক এহানরে মিঙালে বাহুয়াদেনা,আকাশটা আলোয় ভরিয়ে দিতে,To fill the sky with light,让天空充满光,आकाश को रोशनी से भरने के लिए,Para llenar el cielo de luz,Pour remplir le ciel de lumière
 যে ডাঙরিয়া শক্তিহানে,যে মহান শক্তি,That is great power,那是伟大的力量,वह महान शक्ति है,ese es un gran poder,C'est un grand pouvoir
 হাকহানর কাব্যহান লেংকরিসে,আকাশের কাব্য লিখেছে,Akash Kavya wrote,阿卡什·卡维亚写道,आकाश काव्य ने लिखा,Akash Kavya escribió,Akash Kavya a écrit
 মি নাচিনিসু তারে,চিনি নাই তাকে,I don't know him,我不认识他,मैं उसे नहीं जानता,no lo conozco,je ne le connais pas
@@ -799,7 +910,7 @@ bm,bn,en,zh-CN,hi,es,fr
 মেয়েক চিনে চিনে,অক্ষর চিনে চিনে,Knows characters,认识人物,किरदारों को जानता है,Conoce personajes,Connaît les personnages
 যদি মি থাউরি,যদি আমি থাকতে পারি,if i could stay,如果我能留下来,अगर मैं रह पाता,si pudiera quedarme,si je pouvais rester
 মহাসত্যর মাঝে,মহাসত্যের মাঝে,In the middle of the great truth,在伟大的真理之中,महान सत्य के बीच में,En medio de la gran verdad,Au milieu de la grande vérité
-অহানই ইতইতা মোর আউপা কবিতাহান,তা-ই হবে আমার প্রকৃত কবিতা,That will be my real poem,那将是我真正的诗,वही मेरी असली कविता होगी,Ese será mi verdadero poema.,Ce sera mon vrai poème
+অহানই ইতইতা মোর আউপা কবিতাহান,তাই হবে আমার প্রকৃত কবিতা,That will be my real poem,那将是我真正的诗,वही मेरी असली कविता होगी,Ese será mi verdadero poema.,Ce sera mon vrai poème
 যেহান মি কুনোদিন না লিখিসু,যা আমি কোনোদিন লিখিনি জীবনে,Which I have never written in my life,这是我一生中从未写过的,जो मैंने अपने जीवन में कभी नहीं लिखा,que nunca he escrito en mi vida,Que je n'ai jamais écrit de ma vie
 আজি খাংদা,আজ হঠাৎ,today suddenly,今天突然,आज अचानक,hoy de repente,"aujourd'hui, tout à coup"
 ডরুয়া আহির ঔ চানাহান,ভীরু চোখের ওই চাহনি,That look of timid eyes,那双胆怯的眼神,डरपोक आँखों का वह रूप,Esa mirada de ojos tímidos,Ce regard d'yeux timides
@@ -818,7 +929,7 @@ bm,bn,en,zh-CN,hi,es,fr
 অটগির কেতিরা মুকসি,ঠোঁটের বাঁকা হাসি,Crooked lips smile,弯唇微笑,टेढ़े-मेढ़े होंठ मुस्कुराते हैं,Labios torcidos sonríen,Les lèvres tordues sourient
 আহি বুজে চানাহান,চোখের গভীর চাহনি,Deep eyes,深邃的眼睛,गहरी आंखें,ojos profundos,Yeux profonds
 চেইলেই মনে অর,দেখলেই মনে হয়,It looks like it,看起来像这样,यह ऐसा लग रहा है,lo parece,On dirait ça
-কুঙ্গদে তি চাঙ অহান ডাঙর ইয়া পরিসতগাতা?,কখন যে তুমি সাবালিকা হয়ে গেছ!,When did you become a teenager!,你什么时候变成少年了！,आप किशोर कब हो गए!,¿Cuándo te convertiste en adolescente?,Quand es-tu devenu adolescent !
+কুঙ্গদে তি চাঙ অহান ডাঙর ইয়া পরিসতগাতা,কখন যে তুমি সাবালিকা হয়ে গেছ,When did you become a teenager?,你什么时候变成青少年了？,आप किशोर कब बने?,¿Cuándo te convertiste en adolescente?,Quand es-tu devenue adolescente ?
 হৌদিন তোরে ফিতুপ আহান পিদিয়া,এই তো সেদিন তোমাকে গায়ে গামছা জড়িয়ে,This is the day you wrapped a towel,这是你裹着毛巾的日子,यह वह दिन है जब आपने तौलिया लपेटा था,Este es el día en que envolviste una toalla.,C'est le jour où tu as enveloppé une serviette
 গটিঙ খেলানিৎ দেহেসিলু মাংকলর কোণাগৎ,পুতুল খেলতে দেখেছিলাম বারান্দার কোণে,I saw puppets playing in the corner of the balcony,我看到木偶在阳台的角落里玩耍,मैंने बालकनी के कोने में कठपुतलियों को खेलते देखा,Vi muñecos jugando en la esquina del balcón.,J'ai vu des marionnettes jouer dans le coin du balcon
 অথচ আজিকা যৌবনহান,অথচ আজ যৌবন,But today is youth,但今天是青春,लेकिन आज जवानी है,Pero hoy es juventud.,Mais aujourd'hui c'est la jeunesse
@@ -833,90 +944,154 @@ bm,bn,en,zh-CN,hi,es,fr
 কুনো দামতে নাদলে,দাওনি কোনো দাম,I did not give any price,我没有给出任何价格,मैंने कोई कीमत नहीं दी,no di ningun precio,je n'ai donné aucun prix
 নায়ে বেড়া জনম,নাড়ি জড়ানো জীবন,A busy life,忙碌的生活,व्यस्त जीवन,una vida ocupada,Une vie bien remplie
 পূর্ণিমার জোলাকটিক হাকহান,পূর্ণিমার চাঁদজোড়া আকাশ,Full moon sky,满月的天空,पूर्णिमा का आकाश,cielo de luna llena,Ciel de pleine lune
-মি দেখেছিলু আহিথমে তেইর- অকনেই,আমি দেখেছি তার দু’চোখে এই অধমের,I have seen this evil in his eyes,我在他眼中看到了邪恶,मैंने उसकी आँखों में यह बुराई देखी है,He visto este mal en sus ojos.,J'ai vu ce mal dans ses yeux
+মি দেখেছিলু আহিথমে তেইর অকনেই,আমি দেখেছি তার দু’চোখে এই অধমের,I have seen this evil in his eyes,我在他眼中看到了邪恶,मैंने उसकी आँखों में यह बुराई देखी है,He visto este mal en sus ojos.,J'ai vu ce mal dans ses yeux
 আপাঙর নুঙপাঙ জীবনে শিচ্চিল চেপছিলি,অর্থহীন জীবনে সে এসেছিল কাছে,He came to a meaningless life,他来到了毫无意义的生活,वह एक निरर्थक जीवन में आ गया,Llegó a una vida sin sentido.,Il est arrivé à une vie dénuée de sens
 তেই মোর থারানি,সে আমার সম্রাজ্ঞী,She is my empress,她是我的皇后,वह मेरी महारानी है,ella es mi emperatriz,Elle est mon impératrice
-তেইরাংত পাছিলু উম- বসন্তর,তার কাছ থেকে পেয়েছি ওম বসন্তের,From him I received Om Basanter,从他那里我收到了 Om Basanter,उनसे मुझे ओम बसंतर मिला,De él recibí Om Basanter,De lui j'ai reçu Om Basanter
+তেইরাংত পাছিলু উম বসন্তর,তার কাছ থেকে পেয়েছি বসন্তের উম,I got from him the um of spring,我从他那里得到了春天的气息,मुझे उससे वसंत का उम मिला,Recibí de él el um de la primavera.,J'ai reçu de lui le euh du printemps
 নিরাশার জগতে আশার রাঙা হপন,নিরাশার জগতে আশার রঙিন স্বপ্ন,A colorful dream of hope in a world of despair,绝望的世界中充满希望的多彩梦想,निराशा की दुनिया में आशा का एक रंगीन सपना,Un colorido sueño de esperanza en un mundo de desesperación.,Un rêve coloré d'espoir dans un monde de désespoir
-জাতপাতর সমাজহার রাঙাআখির মিল্লেঙেতে,জাতপাত ভরা এই সমাজের চোখ রাঙানো দৃষ্টি,The eyes of this society full of caste are painted,这个充满种姓的社会的眼睛是画出来的,जाति-पाति से भरे इस समाज की आंखें रंगी हुई हैं,Los ojos de esta sociedad llena de castas están pintados,Les yeux de cette société pleine de castes sont peints
+জাতপাতর সমাজহার রাঙাআখির মিল্লেঙেতে,জাতপাত ভরা এই সমাজের চোখ রাঙানো দৃষ্টি,The eyes of this society full of caste,这个充满种姓社会的眼,इस समाज की नजरें जाति से भरी हैं,Los ojos de esta sociedad llena de castas,Les yeux de cette société pleine de castes
 মিমুত করেদেনা মনার,ধ্বংস করে দিতে উদ্যত,Desperate to destroy,不顾一切地想要毁灭,नष्ट करने को बेताब,Desesperado por destruir,Désespéré de détruire
-আশা- আশার,বানা- বানার হপনসংসার,Bana-Bana's family,,बाना-बाना का परिवार,La familia de Bana-Bana,La famille de Bana-Bana
+আশা- আশার,বানা- বানার হপনসংসার,Bana-Bana's family,巴纳巴纳一家,बाना-बाना का परिवार,La familia de Bana-Bana,La famille de Bana-Bana
 আগদে শৃঙ্খলার দুনিয়ার ডর,একদিকে শৃঙ্খলার দুনিয়ার ভয়,"On the one hand, fear of the world of order",一方面，对秩序世界的恐惧,"एक ओर, व्यवस्था की दुनिया का डर","Por un lado, el miedo al mundo del orden.","D’un côté, la peur du monde ordonné"
 এগদে হৃদির বানার হমাজি মোর,অন্যদিকে অন্তরের ভালোবাসার বান্ধবী আমার,"On the other hand, my dearest girlfriend",另一方面，我最亲爱的女朋友,"दूसरी ओर, मेरी सबसे प्रिय प्रेमिका","Por otro lado, mi querida novia.","D'un autre côté, ma très chère amie"
 চখা চখা কারে হৃদিগ ইল জখম,ধারালো তীরে হৃদয় হল জখম,The heart is wounded by sharp edges,心被利刃刺伤,तेज़ धारों से दिल घायल हो जाता है,El corazón está herido por bordes afilados.,Le cœur est blessé par des arêtes vives
-মোর নায়ে বেড়া সমাজে নায়ে বেড়া জনম,নাড়ি জড়ানো সমাজে নাড়ি জড়ানো জীবন,A busy life in a busy society,忙碌的社会里忙碌的生活,व्यस्त समाज में व्यस्त जीवन,Una vida ocupada en una sociedad ocupada,Une vie bien remplie dans une société occupée
-যে ঠারে মাতুরি কথা,অহানই ঠারহান নাবে,Ahani Tharhan Nabe,阿哈尼·塔尔汗·纳贝,अहनि थरहन नाबे,Ahani Tharhan Nabe,Ahani Tharhan Nabe
-মেয়েকে মেয়েকে শাত’পারের যে ঠার,তার জিঙে,in his ring,在他的戒指里,उसकी अंगूठी में,en su anillo,dans sa bague
-আরাক আহান থার বিতরে বিতরেবাগাচুরা,আরেকটি ভাষা থাকে ভেতরে ভেতরেভাঙাচোরা,Another language is broken inside,另一种语言内部已损坏,एक और भाषा अंदर से टूटी हुई है,Otro idioma está roto por dentro.,Une autre langue est brisée à l'intérieur
-ফঙেদে হাজানি নার শৃংখলার দুনিয়ার ডরে,প্রকাশ্যে যায় না আনা শৃঙ্খলার দুনিয়ার ভয়ে,Anna does not go public for fear of the world of discipline,安娜因害怕纪律的世界而不敢公开,अनुशासन की दुनिया के डर से अन्ना जनता के बीच नहीं जाते,Anna no sale a bolsa por miedo al mundo de la disciplina,Anna ne se rend pas publique par peur du monde de la discipline
-আহিগি দেখের ঠার,কানহানি হুনের ঠার,Kanhani Huner Thar,坎哈尼·胡纳·塔尔,कन्हानी हुनर ​​थार,Kanhani Huner Thar,Kanhani Huner Thar
-তঙাল ধমণিপথে নিয়ত ঠারর আনাগোনা,আলাদা ধমনিপথে নিয়ত ভাষার আনাগোনা,The traffic of the target language in separate arteries,不同动脉中目标语言的流量,अलग-अलग धमनियों में लक्ष्य भाषा का आवागमन,El tráfico de la lengua meta en arterias separadas,Le trafic de la langue cible dans des artères distinctes
-ইংগ ইয়া থাইলেউ থাউরি গোপন ঠারে ঠারে,চুপ হয়ে থাকলেও থাকি কোনো নীরব ভাষায়,"Even if I am silent, I am in a silent language",即使我沉默，我也在用无声的语言,अगर मैं खामोश भी हूं तो खामोश जुबान में हूं,"Incluso si estoy en silencio, estoy en un lenguaje silencioso.","Même si je me tais, je suis dans un langage silencieux"
-মোর দেহ এগ নিজে মূর্তিমান ঠারভগবান,আমার এ দেহ নিজে মূর্তিমান ভাষাভগবান,This body of mine is the embodiment of language,我的这个身体就是语言的体现,मेरा यह शरीर भाषा का स्वरूप है,Este cuerpo mío es la encarnación del lenguaje.,Mon corps est l'incarnation du langage
-মেয়েকর দাগে দাগে হাজিয়া যে অর্থ নিকুলের,অক্ষরের দাগে দাগে সেজেগুজে যে অর্থ প্রকাশ,The meaning expressed in the spots of letters,字母点所表达的含义,अक्षरों के धब्बों में व्यक्त अर्थ,El significado expresado en las manchas de las letras.,Le sens exprimé dans les taches de lettres
-অহানই নাবে অর্থহান; জরমজঞ্জালে,ঘামে,in sweat,在汗水中,पसीने में,en sudor,en sueur
-রকতে রকতে তার যে চিন মাঙর,থায়া থায়া,Thaya Thaya,塔亚塔亚,ठांय ठांय,Thaya Thaya,Thaya Thaya
-ফঙর তা চিকারিনো,ইকরের নুয়া করপেক,Iker's Nua Corpek,伊克尔的努阿·科佩克,इकर का नुआ कॉर्पेक,Nua Corpek de Iker,Nua Corpek d'Iker
-মি তার বিতরে গিয়া নুয়া করে চিনুরি মেয়েক,ভেতরে প্রবেশি তার অক্ষর নতুন করে চিনি,"Entering inside, I know its characters anew",走进里面，我重新认识了里面的人物,अंदर प्रवेश करते ही मुझे इसके पात्रों का नये सिरे से पता चलता है,"Al entrar, conozco de nuevo a sus personajes.","En entrant à l'intérieur, je connais à nouveau ses personnages"
-মেয়েকশপার তলে উবা ইলু ফুল তুলানিৎ,অক্ষরগাছের নিচে দাঁড়ালাম ফুল তুলে নিতে,I stood under the maple tree to pick flowers,我站在枫树下摘花,मैं फूल तोड़ने के लिए मेपल के पेड़ के नीचे खड़ा था,Me paré debajo del arce para recoger flores.,Je me tenais sous l'érable pour cueillir des fleurs
-লিশিং লিশিং রঙ,গৎ বারো কেথকমেথক,Last twelve years,过去十二年,पिछले बारह साल,últimos doce años,Douze dernières années
-কুরাং ভিতরে গিয়া দাপদের অরিঙ আগউ,কোথায় ভিতরে গিয়ে ছুটে চলে একটি হরিণ,A deer runs inside,一只鹿在里面跑,एक हिरण अंदर भागता है,Un ciervo corre dentro.,Un cerf court à l'intérieur
-মধু মধু বুলে বুলে ভ্রমরাগ নিজে ইল মধু,মধু মধু ডাক হেঁকে ভ্রমরাটি নিজে হল মধু,"Calling honey honey, the illusion itself is honey",称蜜为蜜，幻觉本身就是蜜,मधु को मधु कहने से भ्रम ही मधु है,"Llamando miel miel, la ilusión misma es miel.","J'appelle du miel, du miel, l'illusion elle-même est du miel"
-পাতায় ধূলিয়ে যত জঞ্জালর হাদিৎ হে ফুল,পাতায় ধুলিতে যত জঞ্জালের ভেতরে হে ফুল,O flower inside the dust on the leaves,叶子上灰尘里的花啊,पत्तों पर धूल के अंदर हे फूल!,Oh flor dentro del polvo de las hojas,Ô fleur dans la poussière des feuilles
-শাতর জঙর,মিতে কিসারে নিতুগা বাসে বাসে,Mite kisare nituga by bus by bus,Mite kisare nituga 乘巴士 乘巴士,माइट किसारे नितुगा बस से बस द्वारा,Mite kisare nituga en autobús en autobús,Acarien kisare nituga en bus en bus
-আত আহানে অনাচার সকে সকে পুণ্য বিসারার,এক হাত অনাচার ছুঁয়ে ছুঁয়ে পুণ্য খুঁজে যায়,One hand touches lawlessness and finds virtue,一只手触及不法，发现美德,एक हाथ अधर्म को छूता है और पुण्य पाता है,Una mano toca la anarquía y encuentra la virtud.,Une main touche l'anarchie et trouve la vertu
-আরাক আহানে বারো সেঙুয়াউ নেনা চার পাপ,আরেকটি হাত দেখো শুদ্ধ,Another hand is clean,另一只手是干净的,दूसरा हाथ साफ़ है,Otra mano esta limpia,Une autre main est propre
-অ মেয়েকশপাহান,ছায়াছায়া হিনে লাকলায়,Shadows fade,阴影消失,छायाएं फीकी पड़ जाती हैं,Las sombras se desvanecen,Les ombres s'estompent
-হারুয়ে নুঙেয়ে আজি বাধেয়িলে বকচা এহান,হাসিতে খুশিতে আজ বেঁধে দিলে এই বোঝখানি,"If you tie it today with a smile and happiness, this is the meaning",如果今天你带着微笑和幸福系上它，这就是意义,आज आप इसे मुस्कुराहट और खुशी के साथ बांध लें तो यही अर्थ है,"Si lo atas hoy con una sonrisa y felicidad, este es el significado.","Si vous l'attachez aujourd'hui avec le sourire et le bonheur, c'est le sens"
-ফুল ফল ধূলি পাতা বিষ মধু ভ্রমরার ভার,ফুল ফল ধূলি পাতা বিষ মধু ভ্রমরার ভার,"Flowers, fruits, dust, leaves, poison, honey, loads of delusions",花、果、尘、叶、毒、蜜、种种妄想,"फूल, फल, धूल, पत्ते, जहर, शहद, भरम भरम","Flores, frutos, polvo, hojas, veneno, miel, un montón de delirios.","Fleurs, fruits, poussière, feuilles, poison, miel, plein d'illusions"
-কিসারে নিতুগা মিতে,এগদে অগদে বৌ দের,Agade Agade Bau der,阿加德·阿加德·鲍德,अगाडे अगाडे बाऊ डेर,Agadé Agadé Bau der,Agade Agade Bau der
-মেয়েকশপার তলে কুংগই কার পৌ দের !,অক্ষরগাছের নিচে কে যে এসে কার কথা কয়,Who comes under the letter tree and talks about whom,谁来到字母树下谈论谁,लेटर ट्री के नीचे कौन आकर किसकी बात करता है,¿Quién viene debajo del árbol de letras y habla de quién?,Qui vient sous l'arbre aux lettres et parle de qui
-ডাঙরিয়া বিয়ানহান,আধারর বুনি পিতে পিতে,Buni Pite Pite of Aadhaar,布尼皮特 (Buni Pite) 阿德哈尔 (Aadhaar) 皮特,आधार की बुनी पाइट पाइट,Buni Pite Pite de Aadhaar,Buni Pite Pite d'Aadhaar
-বলিয়ে পাংকালে আজি মারাংকাইছে হাবি তোর,শৌর্যে আর বীর্যে আজ উপচে পড়ে সব আপনার,You are overflowing with bravery and virility today,今天的你充满了勇敢和阳刚之气,आज आप वीरता और पौरुष से ओत-प्रोत हैं,Estás rebosante de valentía y virilidad hoy.,Vous débordez de courage et de virilité aujourd'hui
-ইঙাল মিঙালে রঙে হাজায়িলে মেঙসেল অহান,উজ্বল আলোতে রঙে আয়নাটি সাজিয়ে দিলেন,He decorated the mirror with bright colors,他用鲜艳的颜色装饰镜子,उसने दर्पण को चमकीले रंगों से सजाया,Decoró el espejo con colores brillantes.,Il a décoré le miroir avec des couleurs vives
-নিজ শাত চেয়া চেয়া মানু এতা কালাকপেলুইরা,নিজরূপ দেখে দেখে মানুষেরা মজে গেল রসে,People were in awe of the juice when they saw their appearance,当人们看到它的样子时，都对果汁感到敬畏,लोगों ने जब उनका रूप देखा तो वे रस से मोहित हो गये,La gente quedó asombrada por el jugo cuando vieron su apariencia.,Les gens étaient impressionnés par le jus lorsqu'ils voyaient leur apparence
-তাঙর আহির তলে মাঙুইল আঁধার,আহেই নে,oh no,哦不,अरे नहीं,"Oh, no",oh non
-বেনিগরে হমাদিক,বেনিসেঙ্করা পানিৎ হিনিয়া,Benisenkara Panit Hinia,贝尼森卡拉·帕尼特·希尼亚,बेनिसेंकरा पनित हिनिया,Benisenkara Panit Hinia,Benisenkara Panit Hinia
-নিজরে সেঙ্করিক,মাঙপা রাতির যত ছাপ,As many impressions as Mangpa night,与芒巴之夜一样多的印象,मंगपा रात जितने इंप्रेशन,Tantas impresiones como la noche de Mangpa,Autant d'impressions que la nuit Mangpa
-মন্তরনো মুছেদিক ভিতরেত আকিহান করে,মন্ত্রে শে−াকে মুছে দেই নিজের ভেতর থেকে সব...,"In the mantra, I erase all from myself...",在咒语中，我抹去了自己的一切……,"मंत्र में, मैं अपने आप से सब कुछ मिटा देता हूं...","En el mantra, borro todo de mí...","Dans le mantra, j'efface tout de moi-même..."
-ডাঙরিয়া হে বিয়ানহান,অতা বুলিয়া হাবি নাপাহুে,Ata Bullia Habi Napahue,阿塔·布利亚·哈比·纳帕休,अता बुलिया हबी नेपहुए,Ata Bullia Habi Napahue,Ata Bullia Habi Napahue
-রবেলিস,যে-আধারস্তন্যে খৌনুগ বুজিলে,In which-Adharastnya Khounug Bujile,其中-Adharastnya Khounug Bujile,जिसमें- अधरस्तन्या खौनुग बुजाइले,En el cual-Adharastnya Khounug Bujile,Dans lequel-Adharastnya Khounug Bujile
-তার দান হুজানির কালে বার পিছবুলা নাদিস,ঋণ তার শোধবার কালে পিছু নাহি তাকাবেন,Do not look back at the time of repayment of the loan,贷款还款时不要回头看,ऋण चुकाने के समय पीछे मुड़कर न देखें,No mires atrás al momento de la amortización del préstamo.,Ne regardez pas en arrière le moment du remboursement du prêt
-পিছেদেউ রক্ষা নেই,আখি মেলিতারা যত লাশ!,Akhi Melitara as many corpses!,Akhi Melitara 尸体一样多！,अखी मेलिटरा जितनी लाशें!,¡Akhi Melitara tantos cadáveres!,Akhi Melitara autant de cadavres !
-বর্তমানচারিয়বারাদে তার থ’ছে ইতিহাস,বর্তমান,current,当前的,मौजूदा,actual,actuel
-কি রাঙা আধারহানে গুরেইল তোরে,হায় অন্ধ,oh blind,哦瞎子,अरे अंधो!,oh ciego,oh aveugle
-কিসারে চিনতেই আজি রঙর নমুনা,তোর আহি,your ahi,你的阿希,आपकी अहि,tu ahi,ton ahi
-বুজিয়া কুংগই দিল উছরিয়া মায়াছায়ারঙ,দুই চোখ ভরে দিল উছলিয়া মায়াছায়া রঙ,Two eyes were filled with a bright color,两只眼睛里充满了明亮的颜色,दो आँखें चमकीले रंग से भरी थीं,Dos ojos se llenaron de un color brillante.,Deux yeux étaient remplis d'une couleur vive
-বেনিগদে চেউলে আরো যাদুর জোনাকহান ইল,তাকালে সূর্যের পানে,Looking at the sun,,सूरज की ओर देख रहे हैं,mirando al sol,En regardant le soleil
-জোনাক জোনাক বুলে সকলেগা তি কার নিরালর,চাঁদ বলে ডেকে ডেকে ছুঁলে কার কপালের টিপ,The moon called and touched the tip of whose forehead,月亮呼唤着触碰了谁的额尖,चंद्रमा ने पुकारा और जिसके माथे की नोक को छुआ,La luna llamó y tocó la punta de cuya frente,La lune appela et toucha le bout du front de qui
-টিপগ,মিকুপেই তোর ভিতরে হমিয়া টিপটিপ,Mikupei got inside you,米库佩进入了你的内心,मिकुपेई आपके अंदर समा गया,Mikupei se metió dentro de ti,Mikupei est entré en toi
-হৃদয়পিন্ডগ ইয়া নাচানি অকরল তালে তালে,হৃদয়পির মতো শুরু করল নাচ তালে তালে,He started dancing like a heart beat,他开始像心跳一样跳舞,वह हृदय की धड़कन की भाँति नाचने लगा,Empezó a bailar como un latido del corazón.,Il a commencé à danser comme un battement de cœur
-নাচ হে হৃদয় নাচ,মিয়ো দেং নেপথ্যের এলা,Mio Deng is behind the scenes,邓淼 (Mio Deng) 幕后花絮,मियो डेंग पर्दे के पीछे हैं,Mio Deng está detrás de escena,Mio Deng est dans les coulisses
-এলায় নাচায় আজি বাহিল ভিতরপথহান,গানে আর নাচে আজ ভেসে গেল গহন সে-পথ,"In song and dance today, the jewelry was swept away",今日歌舞，珠宝一扫而空,आज नाच-गाने में गहने बह गये,"En el canto y el baile de hoy, las joyas fueron arrasadas","En chant et en danse aujourd'hui, les bijoux ont été emportés"
-যিতেগা যিতেগা কুন সুর আগ খাংদামোর পথে,যেতে যেতে কোনো সুর আচমকা এ-পথে দাঁড়ায়,"As you go, a tune suddenly stops on the way",当你走的时候，一首曲子突然停在路上,"जैसे-जैसे आप आगे बढ़ते हैं, रास्ते में अचानक एक धुन रुक जाती है","Mientras avanzas, una melodía se detiene de repente en el camino.","Au fur et à mesure, une mélodie s'arrête soudainement en chemin"
-দ্বিয় আত সালকরিয়া থরোথরো-নেগা মোরে নেগা!,দুহাত বাড়িয়ে ডাকে,Raised both hands and called,举起双手叫,दोनों हाथ उठाकर बुलाया,Levantó ambas manos y llamó,Il a levé les deux mains et a appelé
-কুংগৈ নিতগা কারে,কুংগই পিদাইত মালা,Kungai Pidait Mala,贡盖·皮达特·马拉,कुंगई पीडाइट माला,Kungai Pidait Mala,Kungai Pidait Mala
-ইঙাল আধারে আজি খানি তোর খানি মোর পালা,উজ্জ্বল আঁধারে আজ তোমার আমার শুধু পালা,Today is your turn in the bright darkness,今天轮到你在明亮的黑暗中,उजले अँधेरे में आज तुम्हारी बारी है,Hoy es tu turno en la brillante oscuridad.,"Aujourd'hui, c'est ton tour dans l'obscurité brillante"
-তি ছাড়া কৃষ্ণরে মিতে নাউ চিনলু অইস হে রাধা,তুমি ছাড়া কৃষ্ণকে তো আমি চিনতাম না হে রাধা,"I did not know Krishna without you, O Radha",没有你我就不认识克里希纳，拉妲啊,"हे राधा, मैं तुम्हारे बिना कृष्ण को नहीं जानता था","No conocí a Krishna sin ti, oh Radha.","Je n'ai pas connu Krishna sans toi, ô Radha"
-তোর অন্তরর পথে আতে আতে তার গরে যানা,তোমার অন্তরপথে হেঁটে হেঁটে তাঁর ঘরে যাওয়া,Walk in your heart and walk into His house,走进你的心，走进他的家,अपने हृदय में चलो और उसके घर में चलो,Camina en tu corazón y entra en Su casa.,Marche dans ton cœur et entre dans sa maison
-উঠান মাংকল না চিনিয়া চেয়া থাইলে মনে,উঠান বারান্দা যদি আমাকে না চিনে চেয়ে থাকে,If the yard porch doesn't recognize me,如果院子的门廊不认识我,यदि आँगन का बरामदा मुझे नहीं पहचानता,Si el porche del patio no me reconoce,Si le porche de la cour ne me reconnaît pas
-দেউরি প্রবোধতিয়ৌ পথরুদ্ধকালে তারে নাউ,তখন প্রবোধ দেই তুমিও তো পথরুদ্ধকালে,Then Prabodh Dei you are also in the roadblock,那么 Prabodh Dei 你也遇到了障碍,तो फिर प्रबोध देई आप भी अड़ंगे में हैं,"Entonces Prabodh Dei, tú también estás en el obstáculo.",Alors Prabodh Dei tu es aussi dans le barrage routier
-চিনিছিলে,ডাকাইতগ মালুয়া যেগই হাবি তোর,Dakaitag Malua Jegai Habi Tor,达凯塔格·马鲁阿·杰盖·哈比托,डकैताग मालुआ जेगई हबी तोर,Dakaitag Malua Jegai Habi Tor,Dakaitag Malua Jegai Habi Tor
-কারুনিয়া নিলগা,তা হাবিতানো আয়া ফির তোর,That habitano aya fir tor,那个习惯阿亚冷杉,वो आदत फिर तोर,Ese habitano aya fir tor,Cet habitano aya sapin tor
-বিতরেউ নেরগা জরম,তারে জন্ম দিতে দিতে,To give birth to him,为了生下他,उसे जन्म देना,Para darle a luz,Pour lui donner naissance
-রচিলে তি তার লগে অভিসার মিলন বিরহ---,রচিলে যে তারই সাথে অভিসার মিলন বিরহ...,Abhisar's meeting with him in Rochelle...,阿比萨尔在罗谢尔与他会面......,रोशेल में अभिसार की उनसे मुलाकात...,El encuentro de Abhisar con él en Rochelle...,La rencontre d'Abhisar avec lui à Rochelle...
-নিজর লগেই মোর বিরহ মিলন অভিসার,নিজের সাথে আমার বিরহ মিলন অভিসার,Abhisar is my estrangement with myself,阿比萨是我与自己的疏远,अभिसार मेरा खुद से अलगाव है,Abhisar es mi distanciamiento conmigo mismo.,Abhisar est mon éloignement avec moi-même
-হুদ্দা এরে ধূলি মাটি হিসাবর সংসারে তি রাধা,শুধু এই ধূলি-মাটি-হিসাবের সংসারে হে রাধা,"Only in this world of dust, O Radha",只有在这个尘埃的世界里，哦拉妲,"केवल इस धूल के संसार में, हे राधा","Sólo en este mundo de polvo, oh Radha","Seulement dans ce monde de poussière, ô Radha"
-দুরিপা কৃষ্ণরে মোর হাজায়িলে হৃদয়মা-পে,দূরকৃষ্ণকে আমার সাজালে এ হৃদয়ম-পে,Durakrishna is decorated with my heart,杜拉克里希纳装饰着我的心,दुरकृष्ण मेरे हृदय से सुशोभित हैं,Durakrishna está decorado con mi corazón.,Durakrishna est décoré de mon cœur
-মি তারে চিনুরি,তোর আতনো তার সকুরি চরণ,Your feet are so tender,你的脚好嫩,आपके पैर कितने कोमल हैं,Tus pies son tan tiernos,Tes pieds sont si tendres
-তি ইলেগা গোপীচান অউরি মি হরিনারায়ণ,তুমি হলে গোপীচান আমি হই হরিনারায়ণ,"You are Gopichan, I am Harinarayan",你是 Gopichan，我是 Harinarayan,"तुम गोपीचन, मैं हरिनारायण","Tu eres Gopichan, yo soy Harinarayan","Tu es Gopichan, je suis Harinarayan"
+মোর নায়ে বেড়া সমাজে,নাড়ি জড়ানো সমাজে,In a fast-paced society,在快节奏的社会里,एक तेज़ रफ़्तार समाज में,En una sociedad acelerada,Dans une société en évolution rapide
+নায়ে বেড়া জনম,নাড়ি জড়ানো জীবন,A busy life,忙碌的生活,व्यस्त जीवन,una vida ocupada,Une vie bien remplie
+যে ঠারে মাতুরি কথা,যে ভাষার কথা বলি,I speak the language,我说语言,मैं भाषा बोलता हूं,yo hablo el idioma,je parle la langue
+অহানই ঠারহান নাবে,সেটাই কেবল ভাষা নয়,It is not just the language,这不仅仅是语言,यह सिर्फ भाषा नहीं है,No es solo el idioma,Ce n'est pas seulement la langue
+মেয়েকে মেয়েকে,অক্ষরে অক্ষরে,letter by letter,逐字逐句,पत्र के बाद पत्र,letra por letra,lettre par lettre
+শাত’পারের যে ঠার,ফুটে ওঠে যে ভাষাটি,The language that emerges,出现的语言,जो भाषा उभरती है,El lenguaje que emerge,Le langage qui émerge
+তার জিঙে,তার চেয়ে,than that,比那个,उस से जादा,que eso,que ça
+আরাক আহান ঠার,আরেকটি ভাষা থাকে,There is another language,还有另一种语言,एक और भाषा है,Hay otro idioma,Il y a une autre langue
+বিতরে বিতরে,ভেতরে ভেতরে,inside inside,里面里面,अंदर अंदर,dentro dentro,à l'intérieur à l'intérieur
+বাগাচুরা,ভাঙাচোরা,broken,破碎的,टूटा हुआ,roto,cassé
+ফঙেদে হাজানি নার,প্রকাশ্যে যায় না আনা,Anna does not go public,安娜不公开,अन्ना जनता के बीच नहीं जाते,Anna no lo hace público,Anna ne devient pas publique
+শৃংখলার দুনিয়ার ডরে,শৃঙ্খলার দুনিয়ার ভয়ে,Fear of the world of order,对秩序世界的恐惧,व्यवस्था की दुनिया का डर,Miedo al mundo del orden.,Peur du monde de l'ordre
+আহিগি দেখের যে ঠার,এ চোখ দেখে সে ভাষা,These eyes see that language,这双眼睛看到了那种语言,ये आंखें उस भाषा को देखती हैं,Estos ojos ven ese lenguaje,Ces yeux voient cette langue
+কানহানি হুনের ঠার,কান শোনে ভাষার ধবনি,The ear listens to the sound of language,耳朵聆听语言的声音,कान भाषा की ध्वनि को सुनते हैं,El oído escucha el sonido del lenguaje.,L'oreille écoute le son du langage
+তঙাল ধমণিপথে,আলাদা ধমনিপথে,In separate arteries,在不同的动脉中,अलग-अलग धमनियों में,En arterias separadas,Dans des artères séparées
+নিয়ত ঠারর আনাগোনা,নিয়ত ভাষার আনাগোনা,Intentional language movement,有意识的语言运动,जानबूझकर भाषा आंदोलन,Movimiento intencional del lenguaje.,Mouvement de langage intentionnel
+ইংগ ইয়া থাইলেউ,চুপ হয়ে থাকলেও,Even if it is silent,就算是无声无息,भले ही वह खामोश हो,Incluso si está en silencio,Même si c'est silencieux
+থাউরি গোপন ঠারে ঠারে,থাকি কোনো নীরব ভাষায়,Live in a silent language,生活在无声的语言中,मूक भाषा में जियो,Vive en un lenguaje silencioso,Vivre dans un langage silencieux
+মোর দেহ এগ,আমার এ দেহ,This is my body,这是我的身体,यह मेरा शरीर है,este es mi cuerpo,C'est mon corps
+নিজে মূর্তিমান ঠারভগবান,নিজে মূর্তিমান ভাষাভগবান,He himself is the embodiment of Bhashabhagavan,他本人就是Bhashabhagavan的化身,वे स्वयं भाषाभगवान् के अवतार हैं,Él mismo es la encarnación de Bhashabhagavan.,Il est lui-même l'incarnation de Bhashabhagavan
+মেয়েকর দাগে দাগে,অক্ষরের দাগে দাগে,Dotted with letters,点缀着字母,अक्षरों से युक्त,Salpicado de letras,Parsemé de lettres
+হাজিয়া যে অর্থ নিকুলের,সেজেগুজে যে অর্থ প্রকাশ,Meaning that is expressed in the same way,用同样的方式表达的意思,अर्थात् वह उसी प्रकार व्यक्त किया जाता है,Significado que se expresa de la misma manera.,Un sens qui s'exprime de la même manière
+অহানই নাবে অর্থহান,শুধু তাই অর্থ নয়,Not just money,不只是钱,सिर्फ पैसा नहीं,No solo dinero,Pas seulement de l'argent
+গামে,ঘামে,in sweat,在汗水中,पसीने में,en sudor,en sueur
+রকতে রকতে,রক্তে রক্তে,Blood in blood,血中有血,खून में खून,sangre en sangre,Du sang dans le sang
+তার যে চিন মাঙর,হারায় যে চিহ্নগুলি তার,Lose the marks that belong to him,失去属于他的印记,जो निशान उसके हैं उन्हें खो दो,Pierde las marcas que le pertenecen.,Perdez les marques qui lui appartiennent
+থায়া থায়া,থেকে থেকে,from,从,से,de,depuis
+ফঙর চিকারিনো,ভাসে চিৎকারে,Floating screams,漂浮的尖叫声,तैरती चीखें,Gritos flotantes,Des cris flottants
+ইকরের নুয়া করপেক,লেখে নতুন পান্ডুলিপি,Write a new manuscript,写一篇新的手稿,एक नई पांडुलिपि लिखें,Escribir un nuevo manuscrito,Écrire un nouveau manuscrit
+মি তার বিতরে গিয়া,আমি তার ভেতরে গিয়ে,I went inside it,我进去了,मैं उसके अंदर चला गया,entré dentro,Je suis entré dedans
+নুয়া করে চিনুরি মেয়েক,অক্ষর নতুন করে চিনি,Recognizing characters,识别字符,किरदारों को पहचानना,Reconocer personajes,Reconnaître les caractères
+মেয়েকশপার তলে,অক্ষরগাছের নিচে,Under the alphabet,在字母表下,वर्णमाला के अंतर्गत,bajo el alfabeto,Sous l'alphabet
+উবা ইলু ফুল তুলানিৎ,দাঁড়ালাম ফুল তুলে নিতে,I stood to pick up the flowers,我站起来去摘花,मैं फूल लेने के लिए खड़ा हुआ,Me paré para recoger las flores,Je me suis levé pour ramasser les fleurs
+লিশিং লিশিং রঙ গৎ,হাজার হাজার রঙ গন্ধ,Thousands of colors and smells,数以千计的颜色和气味,हजारों रंग और गंध,Miles de colores y olores,Des milliers de couleurs et d'odeurs
+বারো কেথকমেথক,আর কত যে ভনিতা,And how much is that Bhonita,那个 Bhonita 多少钱？,और वह भोनिता कितने की है,¿Y cuánto cuesta esa Bhonita?,Et combien coûte cette Bhonita
+কুরাং বিতরে গিয়া,কোথায় ভিতরে গিয়ে,Where did you go in?,你进去哪里了？,तुम अंदर कहाँ गए थे?,¿Dónde entraste?,Où es-tu entré ?
+দাপদের অরিঙ আগউ,ছুটে চলে একটি হরিণ,A deer runs,一只鹿奔跑,एक हिरण दौड़ता है,un ciervo corre,Un cerf court
+মধু মধু বুলে বুলে ভ্রমরাগ,মধু মধু ডাক হেঁকে ভ্রমরাটি,Bhramrati called honey honey,Bhramrati 称蜂蜜为蜂蜜,भ्रमरति को मधु मधु कहा जाता है,"Bhramrati llamada miel, miel.",Bhramrati appelé miel chéri
+নিজে ইল মধু,নিজে হল মধু,It is honey itself,这是蜂蜜本身,यह शहद ही है,es la miel misma,C'est le miel lui-même
+পাতায় ধূলিয়ে যত,পাতায় ধুলিতে যত,As much as the dust on the leaves,和树叶上的灰尘一样多,पत्तों पर जमी धूल जितनी,Tanto como el polvo de las hojas,Autant que la poussière sur les feuilles
+জঞ্জালর হাদিৎ হে ফুল,জঞ্জালের ভেতরে হে ফুল,O flower in the garbage,噢，垃圾里的花,हे कूड़े में फूल!,Oh flor en la basura,Ô fleur à la poubelle
+শাতর জঙর,ফোটো ঝরে যাও,Drop the photo,放下照片,फोटो गिराओ,Suelta la foto,Déposez la photo
+মিতে কিসারে,আমি কিভাবে,how am i,我怎么样,मैं कैसे हूँ,como estoy,comment je vais
+আত আহান অনাচার,এক হাত অনাচার,One hand is lawlessness,一只手就是无法无天,एक तरफ अराजकता है,Una mano es la anarquía,Une main est l'anarchie
+সকে সকে,ছুঁয়ে ছুঁয়ে,touch touch,触摸触摸,स्पर्श स्पर्श,toque toque,toucher toucher
+পুণ্য বিসারার,পুণ্য খুঁজে বেড়ায়,Seeks virtue,求德,पुण्य खोजता है,busca virtud,Cherche la vertu
+আরাক আত আহান,আরেকটি হাত,another hand,另一只手,एक अन्य हाथ,otra mano,une autre main
+বারো সেঙুয়াউ নেনা চার পাপ,শুদ্ধ তবু নিতে চায় পাপ,Pure still wants to take sin,纯仍欲受罪,शुद्ध अभी भी पाप लेना चाहता है,Puro todavía quiere tomar el pecado,Pure veut toujours prendre le péché
+অ মেয়েক শপাহান,হে অক্ষরগাছ,O letter tree,O字母树,हे अक्षर वृक्ष,O árbol de letras,O arbre aux lettres
+হিনে লাকলায়,দুঃখে বেদনায়,in pain,痛苦中,दर्द में,en dolor,dans la douleur
+হারুয়ে নুঙেয়ে,হাসিতে খুশিতে,Smile happily,开心地笑,ख़ुशी से मुस्कुराओ,Sonríe felizmente,Souriez joyeusement
+আজি বাধেয়িলে বকচা এহান,আজ বেঁধে দিলে এই বোঝখানি,"If you tie it today, this is understandable",如果你今天打结的话，这是可以理解的,आज बांध लें तो बात समझ में आती है,"Si lo atas hoy, esto es comprensible.","Si vous l'attachez aujourd'hui, c'est compréhensible"
+কিসারে নিতুগা মিতে,কিভাবে গ্রহণ করি আমি,How do I accept,我该如何接受,मैं कैसे मान लूं,¿Cómo acepto?,Comment puis-je accepter
+এগদে অগদে বৌ দের,এদিকে ওদিকে হাওয়া বয়,"Meanwhile, the wind blows",与此同时，风吹过,इसी बीच हवा चलती है,"Mientras tanto, el viento sopla","Pendant ce temps, le vent souffle"
+মেয়েকশপার তলে কুংগই,অক্ষরগাছের নিচে কে,Who is under the letter tree?,谁在字母树下？,पत्र वृक्ष के नीचे कौन है?,¿Quién está debajo del árbol de letras?,Qui est sous l’arbre aux lettres ?
+কার পৌ দের,কার কথা কয়,Who's talking?,谁在说话？,कौन बात कर रहा है?,¿Quién habla?,Qui parle ?
+ডাঙরিয়া বিয়ানহান,মহাত্মা সকাল,Morning Mahatma,早上圣雄,प्रातःकालीन महात्मा,Mahatma de la mañana,Matin Mahatma
+হারাপাসু,জানি,i know,我知道,मुझे पता है,lo sé,je sais
+আধারর বুনি পিতে পিতে,আঁধারের স্তন্য পান করে,Drinks the milk of darkness,喝下黑暗的乳汁,अंधेरे का दूध पीता है,Bebe la leche de la oscuridad,Boit le lait des ténèbres
+বলিয়ে পাংকালে,শৌর্যে আর বীর্যে,Valor and virility,勇气和男子气概,वीरता और पौरुष,Valor y virilidad,Valeur et virilité
+আজি মারাংকাইছে হাবি তোর,আজ উপচে পড়ে সব আপনার,Today overflows all yours,今天充满了你的一切,आज का दिन आपका सब कुछ छलकता है,Hoy desborda todo lo tuyo,Aujourd'hui déborde tout le tien
+ইঙাল মিঙালে রঙে,উজ্বল আলোতে রঙে,Brightly colored,色彩鲜艳,चकमीला रंग का,De colores brillantes,Aux couleurs vives
+হাজায়িলে মেঙসেল অহান,আয়নাটি সাজিয়ে দিলেন,Arranged the mirror,镜子摆好了,दर्पण की व्यवस्था की,arregló el espejo,Disposé le miroir
+নিজ শাত চেয়া চেয়া,নিজরূপ দেখে দেখে,See for yourself,亲自看看,अपने लिए देखलो,Vea usted mismo,Voyez par vous-même
+মানু এতা কালাকপেলুইরা,মানুষেরা মজে গেল রসে,People got drunk,人们喝醉了,लोग नशे में धुत हो गये,La gente se emborrachó,Les gens se sont saoulés
+তাঙর আহির তলে,তাদের চোখের তলে,under their eyes,在他们的眼皮底下,उनकी आँखों के नीचे,bajo sus ojos,sous leurs yeux
+মাঙুইল আঁধার,হারালো আঁধার,Lost the darkness,失去了黑暗,अँधेरा खो गया,Perdió la oscuridad,J'ai perdu l'obscurité
+আহেই নে,এসো এসো,come come,来来来,आओ आओ,ven ven,viens viens
+বেনিগরে হমাদিক,সূর্যকে প্রণাম করি,I bow to the sun,我向太阳鞠躬,मैं सूर्य को प्रणाम करता हूं,me inclino ante el sol,je m'incline devant le soleil
+বেনিসেঙ্করা পানিৎ হিনিয়া,আলোধোয়া জলে সড়বান সেরে,Wash it with cold water,用冷水洗一下,इसे ठंडे पानी से धो लें,Lávalo con agua fría.,Lavez-le à l'eau froide
+নিজরে সেঙ্করিক,নিজেকে পবিত্র করি,Purify yourself,净化自己,अपने आप को शुद्ध करो,Purifícate,Purifiez-vous
+মাঙপা রাতির যত ছাপ,অশুদ্ধ রাতের যত ছাপ,As the impressions of impure night,正如不洁之夜的印象,अशुद्ध रात्रि के संस्कारों के समान,Como las impresiones de la noche impura,Comme les impressions d'une nuit impure
+আকিহান করে,একটি করে,one by one,逐个,एक क,uno por uno,un par un
+অতা বুলিয়া হাবি,তাই বলে সব,That's all,就这样,बस इतना ही,Eso es todo,C'est tout
+না পাহুরে বেলিস,যাবেন না ভুলে,Don't forget,别忘了,मत भूलना,no lo olvides,N'oublie pas
+খৌনুগ,প্রাণ,soul,灵魂,आत्मा,alma,âme
+দান হুজানি,ঋণ শোধ করা,Pay off debt,还清债务,कर्ज चुकाओ,pagar la deuda,Rembourser la dette
+পিছবুলা নাদিস,পিছু তাকাবেন না,Don't look back,不要回头,पीछे मुड़कर मत देखो,no mires atrás,Ne regarde pas en arrière
+পিছেদেউ রক্ষা নেই,পেছনেও রক্ষা নেই,There is no protection behind,背后没有任何保护,पीछे कोई सुरक्षा नहीं है,No hay protección detrás,Il n'y a aucune protection derrière
+আখি মেলিতারা যত লাশ,চোখ মেলে চায় যত লাশ,As many corpses as you can see,能看到多少尸体,जितनी लाशें आप देख सकते हैं,Tantos cadáveres como puedas ver.,Autant de cadavres que tu peux voir
+বর্তমান চারিয়বারাদে,বর্তমান চারিদিকে,Current surroundings,当前环境,वर्तमान परिवेश,Entorno actual,Environnement actuel
+সিতারিয়া থছে ইতিহাস,ছড়িয়ে রেখেছে ইতিহাস,Spread history,传播历史,इतिहास फैलाओ,Historial de difusión,Répandre l'histoire
+কি রাঙা আধারহানে,কী রঙিন অন্ধকারে,What colors in the dark,黑暗中什么颜色,अँधेरे में कौन से रंग हैं,¿Qué colores en la oscuridad?,Quelles couleurs dans le noir
+গুরেইল তোরে,ঢেকেছে তোমাকে,covered you,覆盖你,तुम्हें कवर किया,te cubrió,t'a couvert
+কিসারে চিনতেই আজি,কী করে চিনবে আজ,How will you know today?,今天你怎么知道？,आज कैसे पता चलेगा?,¿Cómo lo sabrás hoy?,Comment le saurez-vous aujourd’hui ?
+রঙর নমুনা তোর আহি,রঙের নমুনা কে তোমার,Who is your color sample?,你的色样是谁？,आपका रंग नमूना कौन है?,¿Quién es tu muestra de color?,Quel est votre échantillon de couleur ?
+বেনিগদে চেইলে,তাকালে সূর্যের পানে,Looking at the sun,看着太阳,सूरज की ओर देख रहे हैं,mirando al sol,En regardant le soleil
+যাদুর জোনাকহান ইল,যাদুর চন্দ্রিমা হয়ে গেল,The magic moon became,神奇的月亮变成了,जादुई चाँद बन गया,La luna mágica se convirtió,La lune magique est devenue
+জোনাক জোনাক বুলে,চাঁদ চাঁদা বলে,The moon is called Chanda,月亮的名字叫“旃陀”,चंद्रमा को चंदा कहा जाता है,La luna se llama Chanda.,La lune s'appelle Chanda
+সকলেগা তি কার নিরালর,ছুঁলে কার কপালের টিপ,Touch the tip of the forehead,触摸额头的尖端,माथे के सिरे को स्पर्श करें,Toca la punta de la frente.,Touchez le bout du front
+মিকুপেই তোর,মুহূর্তেই তোমার,Yours instantly,立即属于您,तुरंत आपका,tuyo al instante,À vous instantanément
+ভিতরে হমিয়া,ভিতরে ঢুকে,get inside,进去,अंदर मिलता,entrar,entrer à l'intérieur
+হৃদয়পিন্ডগ ইয়া,হৃদয়পিন্ড হয়ে,heartbroken,肠断,टूटा हुआ दिल,desconsolado,navré
+নাচানি অকরল তালে তালে,নাচতে শুরু করল তালে তালে,He started dancing to the beat,他开始随着节奏跳舞,वह ताल पर नाचने लगा,Empezó a bailar al ritmo.,Il a commencé à danser au rythme
+নাচ হে হৃদয়,নাচো হে হৃদয়,dance oh heart,跳舞哦心,नाचो हे दिल,baila oh corazón,danse oh coeur
+নাচ মিয়ো দেং নেপথ্যের এলা,নাচো আমি গাই নেপথ্যের গান,Nacho I sing background music,纳乔我唱背景音乐,नाचो मैं बैकग्राउंड म्यूजिक गाता हूं,nacho canto musica de fondo,Nacho je chante une musique de fond
+এলায় নাচায় আজি বাহিল,গানে আর নাচে আজ ভেসে গেল,Today was swept away in song and dance,今天被歌舞所淹没,आज का दिन गीत और नृत्य में बह गया,Hoy fue arrastrado por el canto y el baile.,Aujourd'hui a été emporté par le chant et la danse
+ভিতর পথহান,গহন সে পথ,Jewelry is the way,珠宝就是出路,आभूषण ही रास्ता है,La joyería es el camino,Les bijoux sont le chemin
+যিতেগা যিতেগা কুন সুর আগ,যেতে যেতে কোনো এক সুর,A tune goes by,一首曲子过去,एक धुन बजती है,pasa una melodía,Une mélodie passe
+খাংদা মোর পথে,আচমকা আমার পথে,Suddenly on my way,突然在路上,अचानक मेरे रास्ते पर,De repente en mi camino,Soudain sur mon chemin
+দ্বিয় আত সালকরিয়া,দুহাত প্রসারিত করে,Extends hands,伸出双手,हाथ फैलाता है,extiende las manos,Tend les mains
+নেগা মোরে নেগা,নাও মোরে নাও,take me take me,带我 带我,मुझे ले चलो मुझे ले चलो,llévame llévame,"prends-moi, prends-moi"
+কুংগৈ নিতগা কারে,কে কাহারে নেবে,Who will take whom?,谁会带走谁？,कौन किसको ले जाएगा?,¿Quién se llevará a quién?,Qui prendra qui ?
+কুংগই পিদাইত মালা,কে কাকে পরাবে হে মালা,Who will wear the garland?,谁将佩戴花环？,माला कौन पहनेगा?,¿Quién llevará la guirnalda?,Qui portera la guirlande ?
+ইঙাল আধারে আজি,উজ্জ্বল আঁধারে আজ,Glowing in the dark today,今天在黑暗中发光,आज अँधेरे में चमक रहा हूँ,Brillando en la oscuridad hoy,Briller dans le noir aujourd'hui
+খানি তোর খানি মোর পালা,কিছু তোমার কিছু আমার পালা,"Some are yours, some are my turn",有些是你的，有些是我的,"कुछ तेरी, कुछ मेरी बारी","Algunas son tuyas, algunas son mi turno.","Certains sont à toi, d'autres à mon tour"
+তি ছাড়া কৃষ্ণরে মিতে,তুমি ছাড়া কৃষ্ণকে আমি,I am Krishna without you,没有你我就是克里希纳,मैं तुम्हारे बिना कृष्ण हूँ,Soy Krishna sin ti,Je suis Krishna sans toi
+নাউ চিনলু অইস হে রাধা,চিনতাম না হে রাধা,I did not know O Radha,我不认识拉妲啊,"हे राधा, मैं नहीं जानता था","No lo conocía, oh Radha.",Je ne savais pas ô Radha
+তোর অন্তরর পথে আতে আতে,তোমার অন্তরপথে হেঁটে হেঁটে,Walk in your heart,走进你的心里,अपने दिल में चलो,Camina en tu corazón,Marche dans ton coeur
+তার গরে যানা,তাঁর ঘরে যাওয়া,Go to his house,去他家,उसके घर जाओ,ir a su casa,Va chez lui
+উঠান মাংকল না চিনিয়া,উঠান বারান্দা না চিনে,The yard does not recognize the balcony,院子不认识阳台,आँगन बालकनी को नहीं पहचानता,El patio no reconoce el balcón.,La cour ne reconnaît pas le balcon
+চেয়া থাইলে,চেয়ে থাকলে,If you want,如果你想,अगर आप चाहते हैं,Si quieres,Si tu veux
+দেউরি প্রবোধ,প্রবোধ দেই,Prabodh give,普拉博德给予,प्रबोध दे,prabodh dar,Prabodh donne
+তিয়ৌ,তুমিও,you too,你也是,आप भी,tú también,toi aussi
+না চিনিছিলে,চেনো নাই তাকে,Don't know him,不认识他,उसे नहीं जानते,no lo conozco,Je ne le connais pas
+ডাকাইতগ মালুয়া যেগই হাবি তোর,ডাকাতের বেশ ধরে যে তোমার,The robber is sure that it is yours,强盗确信这是你的,डाकू को यकीन है कि यह आपका है,El ladrón está seguro de que es tuyo.,Le voleur est sûr que c'est à toi
+কারুনিয়া নিলগা হাবিতা,কেড়ে নিল সবকিছু,Took everything away,把一切都拿走了,सबकुछ छीन लिया,Se llevó todo,J'ai tout enlevé
+আয়া ফির তোর,এসে ফের তোমার,come back to you,回到你身边,तुम्हारे पास वापस आओ,volver a ti,reviens vers toi
+বিতরেউ নেরগা জরম,ভেতরেই জন্ম নেয়,Born within,生于内,भीतर पैदा हुआ,Nacido dentro,Né à l'intérieur
+তারে জন্ম দিতে দিতে,তাকে জন্ম দিতে দিতে,To give birth to her,为了生下她,उसे जन्म देने के लिए,Para darle a luz,Pour lui donner naissance
+রচিলে তি তার লগে,রচিলে যে তার সাথে,Rachel is with him,雷切尔和他在一起,राहेल उसके साथ है,raquel está con él,Rachel est avec lui
+নিজর লগেই মোর বিরহ,নিজের সাথে আমার বিরহ,I am angry with myself,我对自己生气,मैं खुद से नाराज हूं,estoy enojado conmigo mismo,je suis en colère contre moi-même
+হুদ্দা এরে ধূলি মাটি,শুধু এই ধূলি মাটি,Just this dusty ground,就在这片尘土飞扬的土地上,बस यही धूल भरी ज़मीन,Sólo este suelo polvoriento,Juste ce sol poussiéreux
+হিসাবর সংসারে তি রাধা,হিসাবের সংসারে তুমি রাধা,You are Radha in the world of calculations,你是计算世界中的拉妲,हिसाब-किताब की दुनिया में तुम राधा हो,Eres Radha en el mundo de los cálculos.,Vous êtes Radha dans le monde des calculs
+দুরিপা কৃষ্ণরে মোর,দূরের কৃষ্ণকে আমার,The distant Krishna is mine,遥远的克里希纳是我的,दूर का कृष्ण मेरा है,El Krishna distante es mío.,Le Krishna lointain est à moi
+হাজায়িলে,সাজালে,arrange,安排,व्यवस्थित करना,arreglar,organiser
+মি তারে চিনুরি,আমি তাকে চিনি,i know him,我认识他,उसे पहचानती हूँ,lo conozco,je le connais
+মি তোরে চিনুরি,আমি তোমাকে চিনি,i know you,我认识你,मैं तुम्हें जानता हूं,te conozco,je te connais
+আতনো তার সকুরি চরণ,হাতে তার পরশি চরণ,In his hands is the Persian foot,他手里拿着的是波斯脚,उसके हाथ में फ़ारसी पैर है,En sus manos está el pie persa.,Dans ses mains se trouve le pied persan
+তি ইলে,তুমি হলে,if you,如果你,अगर आप,si usted,si tu
 হারিদিন বার্তন আহের,প্রতিদিন নিমন্ত্রণ আসে,Invitations come every day,邀请每天都来,हर दिन निमंत्रण आते हैं,Las invitaciones llegan todos los días.,Les invitations arrivent tous les jours
 বার্তনর তাংখাহানে তুলসীপুংগৎ,নিমন্ত্রণপত্রটা তুলসীতলায়,The invitation letter is in Tulsitala,邀请函在图西塔拉,निमंत्रण पत्र तुलसीताला में है,La carta de invitación está en Tulsitala.,La lettre d'invitation est à Tulsitala
 নাপালর কেতিরা মুকশি আহান থাকরেসে,গর্বভরে একটা বাঁকা হাসি উপহার দিয়েছে,He gave a crooked smile proudly,他骄傲地露出一抹邪笑,उसने गर्व से कुटिल मुस्कान दी,Le dio una sonrisa torcida con orgullo.,Il fit fièrement un sourire tordu
 কারাং মাত্তু ব্রজর ভাবহান তঙাল,কাকে বলি ব্রজের ভাব ভিন্ন,What do you think Braj's attitude is different?,您认为 Braj 的态度有何不同？,आपको क्या लगता है कि ब्रज का रुख अलग है?,¿En qué crees que es diferente la actitud de Braj?,En quoi pensez-vous que l'attitude de Braj est différente ?
 আজিকালির বার্তন এতা,আজকাল নিমন্ত্রণগুলো,Invitations these days,这几天的邀请,इन दिनों निमंत्रण,Invitaciones estos días,Invitations ces jours-ci
 হস্তিনাপুরর রাজসভাহানাত্ত আহেরতা,হস্তিনাপুরের রাজসভা থেকে আসে,Comes from the Raj Sabha of Hastinapur,来自 Hastinapur 的 Raj Sabha,हस्तिनापुर की राजसभा से आते हैं,Proviene del Raj Sabha de Hastinapur.,Provient du Raj Sabha d'Hastinapur
-শকুনির পাশার গুটিগির ছলনার বার্তন,শকুনির পাশার গুটির ছলনার নিমন্ত্রণ,Shakuni's Dice Trick Invitation,沙库尼的骰子戏法邀请函,शकुनि की पासे चाल आमंत्रण,Invitación al truco de los dados de Shakuni,Invitation au tour de dés de Shakuni
+শকুনির পাশার গুটিগির ছলনার বার্তন,শকুনির পাশার গুটির ছলনার নিমন্ত্রণ,Shakuni's Dice Trick Invitation,,शकुनि की पासे चाल आमंत्रण,Invitación al truco de los dados de Shakuni,Invitation au tour de dés de Shakuni
 ভীষ্ম দ্রোণ বিদুরতে নুনর গুণে,ভীষ্ম দ্রোণ আর বিদুর তো নুনের গুণে,Bhishma Drona and Vidura are of the quality of salt,Bhishma Drona 和 Vidura 具有盐的品质,भीष्म द्रोण और विदुर नमक के गुण वाले हैं,Bhishma Drona y Vidura son de la calidad de la sal.,Bhishma Drona et Vidura sont de la qualité du sel
 কুম্পাগাত্ত নিজরেও পাহুরে বেলাসি,সেই কবে থেকে নিজেকে ভুলে বসে আছেন,Since then you have forgotten yourself,从此你忘记了自己,तब से तुम अपने आप को भूल गये हो,Desde entonces te has olvidado de ti mismo,Depuis tu t'es oublié
 হারিদিন বার্তন আহের,প্রতিদিন নিমন্ত্রণ আসে,Invitations come every day,邀请每天都来,हर दिन निमंत्रण आते हैं,Las invitaciones llegan todos los días.,Les invitations arrivent tous les jours
@@ -928,39 +1103,43 @@ bm,bn,en,zh-CN,hi,es,fr
 মি হাকহার মেঘালা ইতৌ,আমি আকাশের মেঘ হবো,I will be a cloud in the sky,我会是天上的一朵云,मैं आकाश में बादल बनूँगा,seré una nube en el cielo,je serai un nuage dans le ciel
 ইতৌ নুংশিপা দক্ষিণা বৌহান,হবো দক্ষিণা বাতাস সুমধুর,The southern wind will be pleasant,南风将是宜人的,दक्षिणी हवा सुखद रहेगी,El viento del sur será agradable,Le vent du sud sera agréable
 অহাননো মি,তাই আমি,so i,所以我,इसलिए मैं,entonces yo,donc je
-পূর্ণিমার জোনাকহান ইতৌ বুলিয়া,পূর্ণিমার চাঁদ হবো বলে,Purnima will be the moon,Purnima 将是月亮,पूर्णिमा का चंद्रमा होगा,Purnima será la luna,Purnima sera la lune
-তোরাং খানি মিঙাল উদারি চাসিলুতা,খানিকটা জোছনার আলো ধার চেয়েছি,I wanted to borrow some light,我想借点光,मैं कुछ रोशनी उधार लेना चाहता था,Quería pedir prestada un poco de luz,Je voulais emprunter de la lumière
+পূর্ণিমার জোনাকহান ইতৌ বুলিয়া,পূর্ণিমার চাঁদ হবো বলে,Purnima will be the moon,,पूर्णिमा का चंद्रमा होगा,Purnima será la luna,Purnima sera la lune
+তোরাং খানি মিঙাল উদারি চাসিলুতা,খানিকটা জোছনার আলো ধার চেয়েছি,I wanted to borrow some light,我想借点光,मैं कुछ रोशनी उधार लेना चाहता था,quería pedir prestada un poco de luz,Je voulais emprunter de la lumière
 মুষ্টি আহান হুনামাচু রইদ ইতৌ বুলিয়া,এক মুঠো সোনালি রোদ্দুর হবো বলে,A handful of golden sunshine,一捧金色的阳光,मुट्ठी भर सुनहरी धूप,Un puñado de sol dorado,Une poignée de soleil doré
-তোরাং কালাচিংখেইর মুংবারার দিগন্তহান চাসিলুতা,তোমার কাছে ভোরের পূর্ব দিগন্ত চেয়েছি,I asked you for the eastern horizon of dawn,我问你黎明的东方地平线,मैंने तुमसे भोर का पूर्वी क्षितिज माँगा था,Te pedí el horizonte oriental del amanecer,Je t'ai demandé l'horizon oriental de l'aube
-মেঘালা ইতৌ বুলিয়া চাসিলুতা খানি দলামাচু,মেঘ হবো বলে চেয়েছি কিছুটা শুভ্রতা,I wanted to be a cloud and some whiteness,我想成为一朵云和一些洁白,मैं बादल और कुछ सफ़ेदी बनना चाहता था,Quise ser una nube y algo de blancura,Je voulais être un nuage et un peu de blancheur
-দক্ষিণা বৌহান ইতৌ বুলিয়া চাসিলুতা ইম্পানিহান,দক্ষিণা বাতাস হবো বলে চেয়েছি মৌনতা,Maunta wanted to be the south wind,莫塔想成为南风,माउंटा दक्षिणी हवा बनना चाहता था,Maunta quería ser el viento del sur,Maunta voulait être le vent du sud
-অথচ তি,মোরে সমুদ্রুহান অনা মাতিয়া,More Samudruhan Ana Matia,萨穆德鲁汉·安娜·马蒂亚的作品更多,मोरे समुद्रुहं अना मतिया,Más Samudruhan Ana Matia,Plus Samudruhan Ana Matia
-সমুদ্রুর নীলুয়া বিষাদ উদারি দিলে সুদছাড়া,সমুদ্রের নীল বিষাদ ধার দিলে বিনা সুদে,The blue sadness of the sea lends without interest,大海蓝色的悲伤毫无利息地借给你,समुद्र की नीली उदासी बिना ब्याज के उधार देती है,La tristeza azul del mar presta sin interés,La tristesse bleue de la mer prête sans intérêt
+তোরাং কালাচিংখেইর,তোমার কাছে ভোরের,It's morning for you,对你来说是早晨,यह आपके लिए सुबह है,Es de mañana para ti,C'est le matin pour toi
+মুংবারার দিগন্তহান চাসিলুতা,পূর্ব দিগন্ত চেয়েছি,Looking for the eastern horizon,寻找东方地平线,पूर्वी क्षितिज की तलाश में,Buscando el horizonte oriental,À la recherche de l'horizon oriental
+মেঘালা ইতৌ বুলিয়া,মেঘ হবো বলে,I will be a cloud,我会是一朵云,मैं बादल बनूंगा,seré una nube,je serai un nuage
+চাসিলুতা খানি দলামাচু,চেয়েছি কিছুটা শুভ্রতা,Wanted some whiteness,想要一些白度,कुछ सफ़ेदी चाहिए थी,Quería algo de blancura,Je voulais un peu de blancheur
+দক্ষিণা বৌহান ইতৌ বুলিয়া,দক্ষিণা বাতাস হবো বলে,It will be a southerly wind,将会是南风,यह दक्षिणी हवा होगी,será viento del sur,Ce sera un vent du sud
+চাসিলুতা ইম্পানিহান,চেয়েছি মৌনতা,I want silence,我想要安静,मैं मौन चाहता हूँ,quiero silencio,je veux du silence
+অথচ তি,অথচ তুমি,but you,但你,परन्तु आप,pero tu,mais toi
+মোরে সমুদ্রুহান অনা মাতিয়া,আমাকে সমুদ্র হতে বলে,Tell me to be the sea,告诉我要成为大海,मुझे समुद्र बनने को कहो,Dime que sea el mar,Dis-moi d'être la mer
+সমুদ্রুর নীলুয়া বিষাদ,সমুদ্রের নীল বিষাদ,Blue sadness of the sea,蓝色的悲伤的海,समुद्र की नीली उदासी,Tristeza azul del mar,Tristesse bleue de la mer
+উদারি দিলে সুদছাড়া,ধার দিলে বিনা সুদে,Loan without interest,无息贷款,बिना ब्याज का ऋण,Préstamo sin intereses,Prêt sans intérêts
 থাচির রাতির কর আধারে,অমাবস্যা রাতের ঘোর আঁধারে,In the darkness of the new moon night,在新月之夜的黑暗中,अमावस की रात के अँधेरे में,En la oscuridad de la noche de luna nueva,Dans l'obscurité de la nuit de nouvelle lune
-সিঙ্গারেই ফুলর গতগ সিলুইল,শিউলি ফুলের গন্ধ ভেসে আসে আকাশের দিকে,The smell of Shiuli flowers wafts towards the sky,琉璃花香飘向天空,शिउली के फूलों की महक आसमान की ओर उड़ती है,El olor de las flores de Shiuli flota hacia el cielo.,L'odeur des fleurs de Shiuli se répand vers le ciel
-দিনহানদে আকমাউ চেইতে বারো,একবার তাকিয়ে দেখতেই,Just look once,只看一次,बस एक बार देखिये,Solo mira una vez,Regarde juste une fois
-তারা আগ জরককো জঙিল,একটা তারা খসে পড়ল,A star fell,一颗星星坠落,एक तारा गिरा,cayó una estrella,Une étoile est tombée
-কতগ তারাই মুকশি দিতারা,কয়েকটি তারা মুচকি মুচকি হাসছে কয়েকটি তারা আমাকে ডাকছে,Some of them are smiling and some of them are calling me,他们有的在微笑，有的在呼唤我,उनमें से कुछ मुस्कुरा रहे हैं और कुछ मुझे बुला रहे हैं,Algunos de ellos sonríen y otros me llaman.,Certains sourient et certains m'appellent
-কতগ তারাই মোরেউ ডাকতারা,আমি বসে রইলাম কিছুক্ষণ,I sat for a while,我坐了一会儿,मैं कुछ देर बैठा रहा,Me senté un rato,Je suis resté assis pendant un moment
-বহিয়া থাইলু কতহান,মনটা হারিয়ে গেল আঁধারে,The mind was lost in the darkness,心灵迷失在黑暗中,मन अँधेरे में खोया हुआ था,La mente se perdió en la oscuridad.,L'esprit était perdu dans l'obscurité
-আধারে মাঙুইল মনহান,ঠান্ডা বাতাস বইয়ে পৃথিবী,Cold wind blows the earth,冷风吹过大地,ठंडी हवा धरती को उड़ा देती है,El viento frío sopla la tierra.,Un vent froid souffle sur la terre
-ইংপা বৌহাননো পৃথিবী ইমাই,ফেলে দিল কুয়াশার চাদর,Dropped the fog sheet,掉下雾片,कोहरे की चादर बिछ गई,Se le cayó la hoja de niebla,J'ai laissé tomber la feuille de brouillard
-বেলাদিল খুয়ার শালহান,দুর্বা ঘাসের কুয়াশায় ভিজে গেল পা যৌবনের বীণাটা বেজে উঠল,Durba's feet got wet in the mist of the grass and the harp of youth sounded,杜巴的脚在草雾中打湿，青春的竖琴响起,दूर्बा के पैर घास की धुंध में भीग गए और यौवन की वीणा बज उठी,Los pies de Durba se mojaron en la niebla de la hierba y sonó el arpa de la juventud.,Les pieds de Durba se mouillèrent dans la brume de l'herbe et la harpe de la jeunesse sonna
-দুব শপার খুয়াই জাংহান তিঙিল,মনে পড়ে গেল বান্ধবীর মুখ,I remembered my girlfriend's face,我记住了我女朋友的脸,मुझे अपनी गर्लफ्रेंड का चेहरा याद आ गया,Recordé la cara de mi novia.,Je me suis souvenu du visage de ma copine
-যৌবনর বেণাহান ডংকো রহিল,অদ্ভুত আনন্দে ভরে গেল মন,My mind was filled with strange joy,我的心里充满了奇异的喜悦,मेरा मन अजीब सी खुशी से भर गया,Mi mente se llenó de una extraña alegría.,Mon esprit était rempli d'une étrange joie
-হমাজির সাকতাহান মনহাত ফঙিল,কুয়াশাভেজা গল্প,Misty story,朦胧的故事,धुँधली कहानी,historia brumosa,Histoire brumeuse
-হারৌহানে মনহান তিঙিল,কুয়াশাভেজা একটি গল্প,A foggy story,一个有雾的故事,एक धूमिल कहानी,una historia nebulosa,Une histoire brumeuse
-খুয়াই তিঙা য়ারি,রেখেছি বন্ধু,kept friend,保持朋友关系,दोस्त रखा,amigo mantenido,ami gardé
-খুয়াই তিঙিসে য়ারি আহান,তোমাকে দেব বলে,I will give you,我会给你,मैं तुम्हें दूँगा,te daré,je te donnerai
-থসুতা মারুপ,ভোরের নরম রোদ,Soft morning sun,清晨的阳光柔和,सुबह की नरम धूप,Suave sol de la mañana,Doux soleil du matin
-তোর লগে দেঙ বুলিয়া,সরে যাওয়ার আগে,before moving away,搬走之前,दूर जाने से पहले,antes de alejarse,avant de s'éloigner
-বিয়ানর কঙালা রোদগ,পুকুরপাড়ের চাঁপাতলায়,On the pond side,在池塘边,तालाब के किनारे,Del lado del estanque,Du côté de l'étang
-যানার আগে,দ্রুত চলে এসো বন্ধু,Come fast my friend,快来吧我的朋友,जल्दी आओ मेरे दोस्त,Ven rápido mi amigo,Viens vite mon ami
-পহুরিপারর লেহাউ শপার তলে,দ্রুত চলে এসো,come quickly,快来,जल्दी आओ,ven rápido,venir vite
-থক্ক আই মারুপ,থক্ক আই,Wait,等待,इंतज़ार,Esperar,Attendez
-খুয়ার পানিফুটা গারিগৎ পরতই,কুয়াশাভেজা গল্পটাও জমবে বেশ,The foggy story will also be filled,迷雾的故事也将被填满,धुंधली कहानी भी भर जाएगी,La historia brumosa también se llenará.,L'histoire brumeuse sera également remplie
-খুয়াই তিঙা য়ারিহানৌ জমতই,দ্রুত চলে এসো বন্ধু,Come fast my friend,快来吧我的朋友,जल्दी आओ मेरे दोस्त,Ven rápido mi amigo,Viens vite mon ami
-থক্ক আই মারুপ,থক্ক আই,Wait,等待,इंतज़ार,Esperar,Attendez
+সিঙ্গারেই ফুলর গতগ সিলুইল,শিউলি ফুলের গন্ধ ভেসে আসে,The smell of Shiuli flowers wafts through,飘来的Shiuli花香,शिउली के फूलों की महक आती है,El olor de las flores de Shiuli flota,L'odeur des fleurs de Shiuli flotte
+আকমাউ চেইতে বারো,একবার তাকিয়ে দেখতেই,Just look once,只看一次,बस एक बार देखिये,solo mira una vez,Regarde juste une fois
+তারা আগ জঙিল,একটা তারা খসে পড়ল,A star fell,一颗星星坠落,एक तारा गिरा,cayó una estrella,Une étoile est tombée
+কতগ তারাই মুকশি দিতারা,কয়েকটি তারা মুচকি মুচকি হাসছে,Some of them are smiling,他们中的一些人在微笑,उनमें से कुछ मुस्कुरा रहे हैं,Algunos de ellos están sonriendo,Certains d'entre eux sourient
+কতগ তারাই মোরেউ ডাকতারা,কয়েকটি তারা আমাকে ডাকছে,Some stars are calling me,有些明星在呼唤我,कुछ सितारे मुझे बुला रहे हैं,Algunas estrellas me estan llamando,Certaines stars m'appellent
+বহিয়া থাইলু কতহান,বসে রইলাম কিছুক্ষণ,I sat for a while,我坐了一会儿,मैं कुछ देर बैठा रहा,Me senté un rato,Je suis resté assis pendant un moment
+আধারে মাঙুইল মনহান,মনটা হারিয়ে গেল আঁধারে,The mind was lost in the darkness,心灵迷失在黑暗中,मन अँधेरे में खोया हुआ था,La mente se perdió en la oscuridad.,L'esprit était perdu dans l'obscurité
+ইংপা বৌহাননো পৃথিবী ইমা,ঠান্ডা বাতাস বইয়ে পৃথিবী,Cold wind blows the earth,冷风吹过大地,ठंडी हवा धरती को उड़ा देती है,El viento frío sopla la tierra.,Un vent froid souffle sur la terre
+বেলাদিল খুয়ার শালহান,ফেলে দিল কুয়াশার চাদর,Dropped the fog sheet,掉下雾片,कोहरे की चादर बिछ गई,Se le cayó la hoja de niebla,J'ai laissé tomber la feuille de brouillard
+দুব শপার খুয়াই জাংহান তিঙিল,দুর্বা ঘাসের কুয়াশায় ভিজে গেল পা,The feet got wet in the fog of poor grass,脚被贫草的雾气弄湿了,बेचारी घास के कोहरे में पैर भीग गये,Los pies se mojaron en la niebla de la pobre hierba.,Les pieds se sont mouillés dans le brouillard d'herbe pauvre
+যৌবনর বেনাহান রহিল,যৌবনের বীণাটা বেজে উঠল,The harp of youth sounded,青春的竖琴已经吹响,यौवन की वीणा बज उठी,Sonó el arpa de la juventud,La harpe de la jeunesse sonnait
+হমাজির সাকতাহান মনহাত ফঙিল,মনে পড়ে গেল বান্ধবীর মুখ,I remembered my girlfriend's face,我记住了我女朋友的脸,मुझे अपनी गर्लफ्रेंड का चेहरा याद आ गया,Recordé la cara de mi novia.,Je me suis souvenu du visage de ma copine
+হারৌহানে মনহান তিঙিল,অদ্ভুত আনন্দে ভরে গেল মন,The mind was filled with strange joy,心里充满了奇异的喜悦,मन एक अजीब सी खुशी से भर गया,La mente se llenó de extraña alegría.,L'esprit était rempli d'une étrange joie
+খুয়াই তিঙা য়ারি,কুয়াশায় ভেজা গল্প,A foggy story,一个有雾的故事,एक धूमिल कहानी,una historia nebulosa,Une histoire brumeuse
+থসুতা মারুপ,রেখেছি বন্ধু,kept friend,保持朋友关系,दोस्त रखा,amigo mantenido,ami gardé
+তোরে দিতৌ বুলিয়া,তোমাকে দেব বলে,I will give you,我会给你,मैं तुम्हें दूँगा,te daré,je te donnerai
+বিয়ানর কঙালা রোদগ,ভোরের নরম রোদ,Soft morning sun,清晨的阳光柔和,सुबह की नरम धूप,Suave sol de la mañana,Doux soleil du matin
+তোর লগে দেঙ বুলিয়া,তোমার সাথে দেব বলে,Dev says with you,开发人员和你说,देव कहते हैं तुम्हारे साथ,Dev dice contigo,Dev dit avec toi
+পহুরিপারর লেহাউ শপার তলে,পুকুরপাড়ের চাঁপাতলায়,On the pond side,在池塘边,तालाब के किनारे,Del lado del estanque,Du côté de l'étang
+যানার আগে,যাওয়ার আগে,before going,走之前,जाने से पहले,antes de ir,avant de partir
+থক্ক আই মারুপ,দ্রুত চলে এসো,come quickly,快来,जल्दी आओ,ven rápido,venir vite
+খুয়ার পানিফুটা গারিগৎ পরতই,কুয়াশার পানি গায়ে পড়বে,Mist water will fall on you,雾水会落在你身上,धुंध का पानी आप पर गिरेगा,El agua nebulizada caerá sobre ti,L'eau du brouillard tombera sur toi
+খুয়াই তিঙা য়ারিহানৌ জমতই,কুয়াশাভেজা গল্পটাও জমবে,The foggy story will also freeze,迷雾的故事也会定格,धुंधली कहानी भी जम जाएगी,La historia brumosa también se congelará.,L'histoire brumeuse va également se figer
 সাকতাহান দনাত আহিসে হমাজি,মুখ ধুতে চলে এসেছে সই,Sae has come to wash his face,Sae来洗脸了,सई अपना मुँह धोने आई है,Sae ha venido a lavarse la cara.,Sae est venu se laver le visage
 আলয়া যানার আগে,ওর ফিরে যাওয়ার আগে,Before he went back,在他回去之前,इससे पहले कि वह वापस जाता,Antes de que regresara,Avant qu'il revienne
 আই মারুপ আই,এসো বন্ধু এসো,come friend come,来吧朋友来,आओ मित्र आओ,ven amigo ven,"viens mon ami, viens"
@@ -970,20 +1149,26 @@ bm,bn,en,zh-CN,hi,es,fr
 খেরার জ্বিগ হেদতাঙাই,খড়ের আগুন পোহাব,I will put on a straw fire,我会生一堆稻草火,मैं भूसे में आग लगा दूँगा,Pondré fuego de paja,je vais allumer un feu de paille
 খুয়াই তিঙা য়ারিহানৌ,কুয়াশাভেজা গল্পটাকেও,The foggy story too,也有迷雾的故事,धूमिल कहानी भी,La historia brumosa también,L'histoire brumeuse aussi
 তাপকো তাপকো হুকিতাঙাই,ধীরে ধীরে শুকাব,Dry slowly,慢慢地干,धीरे-धीरे सुखाएं,Secar lentamente,Sécher lentement
-আই মারুপ আই...,এসো বন্ধু এসো...,come friend come...,来吧朋友来...,आओ मित्र आओ...,ven amigo ven...,"viens mon ami, viens..."
+আই মারুপ আই,এসো বন্ধু এসো,come friend come,来吧朋友来,आओ मित्र आओ,ven amigo ven,"viens mon ami, viens"
 মি এপাগাউ জিংতা ইয়া আসু,আমি এখনো বেঁচে আছি,I'm still alive,我还活着,मैं अभी भी ज़िंदा हूँ,todavía estoy vivo,je suis toujours en vie
 জীবন এহান খামো পড়িসিলগা,জীবন থেমে গিয়েছিল,Life had stopped,生命已经停止,जिंदगी थम सी गई थी,la vida se había detenido,La vie s'était arrêtée
 অচিনা কইঠেক আগত,এক অজানা মোড়ে,At an unknown intersection,在一个不知名的十字路口,किसी अनजान चौराहे पर,En una intersección desconocida,À une intersection inconnue
 খাংদা হানি মিঙাল নিবো পড়িসিলগা,হঠাৎ সব আলো নিভে গিয়েছিল,Suddenly all the lights went out,突然所有的灯都灭了,अचानक सारी लाइटें बंद हो गईं,De repente todas las luces se apagaron,"Soudain, toutes les lumières se sont éteintes"
 আহিগির প’গত,চোখের ঘরে,In the eyes,眼中,नजरों में,en los ojos,Dans les yeux
-মোর হপন হাবি বাগে বাগে পড়িসিল,স্বপড়বগুলো ভেঙে পড়েছিল,The roads were broken,道路被破坏了,सड़कें टूटी हुई थीं,Los caminos estaban rotos,Les routes étaient cassées
-বৈশাখর বৌবরনে,গ্রীষ্মের ঝড়ে,In a summer storm,在夏日的暴风雨中,गर्मियों के तूफ़ान में,En una tormenta de verano,Dans une tempête d'été
-আহানির রৌহান মাঙয়া গিয়াসিলগা,হাসির আওয়াজ গিয়েছিল,The laughter was gone,笑声消失了,हंसी गायब थी,La risa se fue,Le rire était parti
+মোর হপন হাবি,আমার সব স্বপ্ন,all my dreams,我所有的梦想,मेरे सारे सपने,todos mis sueños,tous mes rêves
+বাগে বাগে পড়িসিল,ভেঙেচুরে পড়েছিল,It was broken,它被打破了,यह टूट गया,estaba roto,C'était cassé
+বৌবরনে,ঝড়ে,in the storm,在暴风雨中,तूफ़ान में,en la tormenta,dans la tempête
+আহানির রৌহান,হাসির আওয়াজ,the sound of laughter,笑声,हँसी की आवाज,el sonido de la risa,le son du rire
+মাঙয়া গিয়াসিলগা,হারিয়ে গিয়েছিল,was lost,迷路了,खो गया था,se perdió,était perdu
 কর আধারর পারগত,হারিয়ে অন্ধকারের পাড়ে,Lost on the edge of darkness,迷失在黑暗的边缘,अंधेरे के किनारे पर खो गया,Perdido al borde de la oscuridad,Perdu au bord des ténèbres
-গারিগ ইসিল বরি,মনহান ইসিল চকথা,Manhan Isil Chakta,曼汉·伊西尔·查克塔,मनहन इसिल चकता,Manhan Isil Chakta,Manhan Isil Chakta
-আহির পানিয়ে তিঙিসিল হাবি বারা,চোখের জলে ভিজেছিল প্রতিটি প্রান্ত,Every corner was wet with tears,每个角落都被泪水打湿,हर कोना आंसुओं से भीगा हुआ था,Cada rincón estaba mojado de lágrimas.,Chaque coin était mouillé de larmes
-ঠইগর ভিতরে য়মিসিল ইম্পানি লৌ,বুকের ভেতর জমেছিল নিঃশব্দ চিৎকার,There was a silent scream in the chest,胸口里传来一声无声的尖叫,सीने में एक खामोश चीख थी,Hubo un grito silencioso en el pecho.,Il y avait un cri silencieux dans la poitrine
-নিজরে মাংকরে বেলাসিলু পারা কত্তমাউ,যেন নিজেকেই হারিয়ে ফেলেছিলাম বারবার,As if I lost myself again and again,仿佛我一次又一次迷失了自己,मानो मैंने खुद को बार-बार खोया हो,Como si me perdiera una y otra vez,Comme si je me perdais encore et encore
+গারিগ ইসিল বরি,শরীর হয়েছিল ভার,The body was burdened,身体已经担负重担,शरीर पर बोझ था,El cuerpo estaba cargado,Le corps était chargé
+মনহান ইসিল চকথা,মন হয়েছিল ক্লান্ত,I was tired,我累了,मैं थक गया था,estaba cansado,j'étais fatigué
+আহির পানিয়ে তিঙিসিল,চোখের জলে ভিজেছিল,Was wet with tears,被泪水打湿了,आँसुओं से भीग गया था,Estaba mojado con lágrimas,Était mouillé de larmes
+হাবি বারা,প্রতিটি প্রান্ত,each edge,每条边,प्रत्येक किनारा,cada borde,chaque bord
+ঠইগর ভিতরে য়মিসিল,বুকের ভেতর জমেছিল,It was accumulated in the chest,已经积攒在胸口了,वह संदूक में जमा हो गया था,Se acumuló en el pecho.,Il s'est accumulé dans la poitrine
+ইম্পানি লৌ,নিঃশব্দ চিৎকার,silent scream,无声的尖叫,मूक चीख,grito silencioso,cri silencieux
+নিজরে মাংকরে বেলাসিলু,নিজেকে হারিয়ে ফেলেছিলাম,I lost myself,我迷失了自己,मैने अपने आप को खो दिया,me perdí,je me suis perdu
+কত্তমাউ,কয়েক বার,a few times,几次,कुछेक बार,unas cuantas veces,quelques fois
 কিন্তু মি না হারিসু,কিন্তু আমি হেরে যাইনি,But I didn't lose,但我没有输,लेकिन मैं हारा नहीं,Pero no perdí,Mais je n'ai pas perdu
 নাইসু সুপ পরাজিত,নই কোনো পরাজিত,Not a loser,不是失败者,हारा हुआ नहीं,no es un perdedor,Pas un perdant
 ঠই মুজুরা দুঃখর হাদিত্তৌ,যন্ত্রণার ভেতর থেকেও,Out of pain,走出痛苦,दर्द से बाहर,sin dolor,Par douleur
@@ -996,11 +1181,12 @@ bm,bn,en,zh-CN,hi,es,fr
 কিন্তু লাহুল পাংকালে হঙিসু,কিন্তু অশেষ শক্তিতে গড়া,But built with infinite power,却蕴藏着无穷的力量,लेकिन अनंत शक्ति से निर्मित,Pero construido con poder infinito,Mais construit avec une puissance infinie
 মোর মুকশির আরুমে,আমার হাসির আড়ালে,behind my smile,在我微笑的背后,मेरी मुस्कान के पीछे,detrás de mi sonrisa,derrière mon sourire
 লুকিয়া আসে যত বৌবরন,লুকিয়ে আছে ঝড় ধরা,Catching the storm is hidden,捕捉风暴是隐藏的,तूफ़ान को पकड़ना छुपा हुआ है,Atrapar la tormenta está escondido,Attraper la tempête est caché
-টেইপাং এহানে মোরে,জীবন আমাকে,life is me,生活就是我,जीवन मैं हूं,la vida soy yo,la vie c'est moi
+টেইপাং এহানে মোরে,জীবন আমাকে,life is me,生活就是我,जीवन मैं हूं,la vida soy yo,
 বেলাসিল তলে,ফেলেছিল নিচে,threw down,扔下,नीचे फेंक दो,derribó,jeté
 বারো তাই ইমে উঠাদিল,আবার তুলেও দিলো,He gave it again,他又给了,उसने फिर दे दिया,lo dio de nuevo,Il l'a encore donné
-মিয়েই প্রমাণ মানুগ মাঙয়া গেলেগাউ,আমি প্রমাণ মানুষ হারলেও,I'm proof people lose though,我证明人们会失败,हालाँकि मैं इस बात का प्रमाण हूँ कि लोग हारते हैं,Soy prueba de que la gente pierde,Mais je suis la preuve que les gens perdent
-মনহান না মাঙর অহানৌ হিকাদিল,মন হারায় না তাও শিখিয়ে দিলো,He also taught me not to lose my mind,他还教我不要失去理智,उन्होंने मुझे यह भी सिखाया कि मैं अपना दिमाग न खोऊं,También me enseñó a no perder la cabeza.,Il m'a aussi appris à ne pas perdre la tête
+মানুগ মাঙয়া গেলেগা,মানুষ হারিয়ে গেলে,When people get lost,当人们迷失时,जब लोग खो जाते हैं,Cuando la gente se pierde,Quand les gens se perdent
+মনহান না মাঙর,মন হারায় না,Don't lose your mind,不要失去理智,अपना दिमाग मत खोओ,No pierdas la cabeza,Ne perds pas la tête
+অহানৌ হিকাদিল,তাও শিখিয়ে দিলো,Taught that too,也教过这个,वो भी सिखाया,eso también lo enseñé,J'ai appris ça aussi
 মনর খংচেল,হৃদয়ের কণ্ঠস্বর,The voice of the heart,心的声音,दिल की आवाज,La voz del corazón,La voix du coeur
 কিদিয়া জঙের ফুল,কেন ঝরে পড়ে ফুল,Why do flowers fall?,花为什么会落？,फूल क्यों गिरते हैं?,¿Por qué caen las flores?,Pourquoi les fleurs tombent-elles ?
 বারো কিদিয়াউ বা শাতর,,,,,,
@@ -1008,12 +1194,208 @@ bm,bn,en,zh-CN,hi,es,fr
 আগে অসিল ডাঙর খংচেল,আগে তো ছিল কণ্ঠের জোর,"Earlier, there was the force of the voice",早些时候，有声音的力量,पहले आवाज में ताकत थी,Antes estaba la fuerza de la voz.,"Avant, il y avait la force de la voix"
 এরে তোর মোর কতি জনমর ওয়ারিপরি,এই যে তোমার আমার কত জনমের,This is how many of you are born to me,你们中有多少人是为我而生的,आपमें से कितने लोग मेरे लिए पैदा हुए हैं,Así es como muchos de ustedes me nacen.,C'est combien d'entre vous sont nés pour moi
 আসে হাবি পড়িয়া,গল্প সব পড়ে রয়েছে,The story is all told,故事已经全部讲完了,कहानी सब बताई गई है,La historia está toda contada.,L'histoire est entièrement racontée
-কই তিতে মোরে নাউ মাতলে!,কোথায় তুমি তো আমাকে বলোনি!,Where you did not tell me!,你没告诉我哪里啊！,आपने मुझे कहाँ नहीं बताया!,¡Donde no me dijiste!,Où tu ne me l'as pas dit !
+কই তিতে,কোথায় তুমি,where are you,你在哪,आप कहां हैं,dónde estás,où es-tu
+মোরে নাউ মাতলে,আমাকে বলোনি তুমি,you didn't tell me,你没有告诉我,तुमने मुझे नहीं बताया,no me dijiste,tu ne me l'as pas dit
 মিয়ৌ তোরে না বাগেইলু,আমিও তোমাকে জানাইনি,I didn't tell you either,我也没告诉你,मैंने भी तुम्हें नहीं बताया,Yo tampoco te lo dije,Je ne te l'ai pas dit non plus
-এসারেই যারগা দিন,,,,,,
-হাবি হিন গনে গনে,সকল বেদনা- গুনে গুনে,Count all the pains,细数所有的痛苦,सारे दर्द गिनें,Cuenta todos los dolores,Compte toutes les douleurs
-থাক হাবি ইঞ্চিক ইয়া,তুমি থাকো নিশ্চুপ,you keep quiet,你保持安静,शान्त रहो तुम,te quedas callado,tu te tais
+এসারেই যারগা দিন,এভাবেই কেটে যায় দিন,This is how the day passes,日子就这样过去了,इसी तरह दिन बीत जाता है,Así pasa el día.,C'est ainsi que se passe la journée
+হাবি হিন গনে গনে,সকল বেদনা গুনে গুনে,Count all the pains,细数所有的痛苦,सारे दर्द गिनें,Cuenta todos los dolores,Compte toutes les douleurs
+থাক হাবি ইঞ্চিক ইয়া,থাক সবকিছু নিশ্চুপ হয়ে,Keep everything quiet,让一切保持安静,सब कुछ शांत रखो,mantén todo en silencio,Gardez tout silencieux
 কিত্তা নেই মাতে মাতে,কিছুই হবে না কথা বলে,Nothing will happen by talking,说话不会发生任何事情,बात करने से कुछ नहीं होगा,No pasará nada hablando,Rien n'arrivera en parlant
-নাইতই আর এরে জনমে,,,,,,
-জঙিল হাবি রাঙিলা হপন,ঝরে যায় সব রঙিন স্বপ্ন,All colorful dreams fall away,所有五彩斑斓的梦想都消逝了,सारे रंगीन सपने टूट जाते हैं,Todos los sueños coloridos se desvanecen,Tous les rêves colorés s'effondrent
-আরুমে ইল হাবি নিরুদ্দেশ,গোপনে হয় সব নিরুদ্দেশ,Everything is done in secret,一切都是秘密进行的,सब कुछ गुप्त रूप से किया जाता है,Todo se hace en secreto.,Tout se fait en secret
+নাইতই আর এরে জনমে,আর হবে না এ জনমে,There will be no more in this world,这世界上将不再有,अब इस दुनिया में कोई नहीं रहेगा,No habrá más en este mundo.,Il n'y en aura plus dans ce monde
+জঙিল,ঝরে যায়,falls off,脱落,गिरावट करना,se cae,tombe
+জঙের,ঝরে যায়,falls off,脱落,गिरावट करना,se cae,tombe
+হাবি রাঙিলা হপন,সব রঙিন স্বপ্ন,All colorful dreams,一切色彩斑斓的梦想,सारे रंगीन सपने,Todos los sueños coloridos,Tous les rêves colorés
+আরুমে,গোপনে,in secret,秘密地,गुप्त रूप से,en secreto,en secret
+হাবি নিরুদ্দেশ,সব নিরুদ্দেশ,All pointless,一切毫无意义,सब व्यर्थ,Todo inútil,Tout est inutile
+গিরকর লগে উনা অয়া নুঙেই লাগিল,আপনার সাথে দেখা হয়ে ভালো লাগল,Nice to meet you,很高兴见到你,आपसे मिलकर अच्छा लगा,Encantado de conocerlo,Ravi de vous rencontrer
+হবা বিয়ান,শুভ সকাল,good morning,早上好,शुभ प्रभात,buen día,bonjour
+হাবা মাদান,শুভ বিকেল,good afternoon,下午好,शुभ दोपहर,buenas tardes,bon après-midi
+হবা রাতি,শুভ রাত,good night,晚安,शुभ रात्रि,buenas noches,bonne nuit
+আহিক বহিক,আসুন বসুন,let's sit down,我们坐下来,चलो बैठो,sentémonos,asseyons-nous
+থাকাত,ধন্যবাদ,thank you,谢谢,धन्यवाद,gracias,merci
+গিরকরে স্বাগতম,আপনাকে স্বাগতম,you are welcome,不客气,आपका स्वागत है,de nada,je vous en prie
+বারো দেখা অইতয়,আবার দেখা হবে,See you again,再见,फिर मिलेंगे,Nos vemos de nuevo,On se reverra
+মি বাংলাদেশেত্ত আহেসুগ,আমি বাংলাদেশ থেকে এসেছি,I am from Bangladesh,我来自孟加拉国,मैं बांग्लादेश से हूं,soy de bangladesh,Je viens du Bangladesh
+তি কুরাংত আহেসতগ,আপনি কোথা থেকে এসেছেন,where are you from,你从哪来,आप कहाँ से हैं,de dónde eres,d'où venez-vous
+মোর বয়স আককুড়ি দশ,আমার বয়স ত্রিশ বছর,I am thirty years old,我三十岁了,मेरी उम्र तीस साल है,tengo treinta años,j'ai trente ans
+তোর বয়স কতি,আপনার বয়স কত,how old are you,你今年多大,आपकी आयु कितनी है,cuántos años tiene,quel âge as-tu
+মি মাস্টরগ,আমি একজন শিক্ষক,i am a teacher,我是老师,मैं एक शिक्षक हूं,Yo soy un profesor,Je suis enseignant
+তি কী কাম কররগ,আপনি কী কাজ করেন,what do you do,你做什么工作,आप क्या करते हैं,a qué te dedicas,que fais-tu
+মি লহঙ করিসু,আমি বিবাহিত,i am married,我结婚了,मैं शादीशुदा हूं,Estoy casado,Je suis marié
+মোর মৌসুমারা দুগ,আমার দুটি সন্তান আছে,I have two children,我有两个孩子,मेरे दो बच्चे हैं,tengo dos hijos,j'ai deux enfants
+মোর ইমা গারিগ নারিরি,আমার মা অসুস্থ,my mother is sick,我妈妈病了,मेरी मां बीमार है,mi madre esta enferma,ma mère est malade
+মোর বাবা খেতুয়ালগ,আমার বাবা কৃষক,My father is a farmer,我的父亲是一名农民,मेरे पिता एक किसान है,mi padre es granjero,Mon père est agriculteur
+মোর বেয়ক টাউনে থার,পরিবার,the family,家人,परिवार,la familia,la famille
+মোর বনক লেইরিক তামকরিরি,আমার বোন পড়াশোনা করছে,My sister is studying,我妹妹正在读书,मेरी बहन पढ़ रही है,mi hermana esta estudiando,Ma sœur étudie
+আমার গরে পাচগ মানু,আমাদের পরিবারে পাঁচজন সদস্য,There are five members in our family,我们家有五口人,हमारे परिवार में पांच सदस्य हैं,Hay cinco miembros en nuestra familia.,Il y a cinq membres dans notre famille
+মোর হেয়ক ব্যবসায়ীগ,আমার স্বামী ব্যবসায়ী,My husband is a businessman,我的丈夫是一名商人,मेरे पति एक बिजनेसमैन हैं,mi marido es un hombre de negocios,Mon mari est un homme d'affaires
+মোর মইলক গৃহিনীগ,আমার স্ত্রী গৃহিণী,My wife is a housewife,我的妻子是一名家庭主妇,मेरी पत्नी एक गृहिणी है,mi esposa es ama de casa,Ma femme est femme au foyer
+মোর পিতক স্কুলে যারগা,পরিবার,the family,家人,परिवार,la familia,la famille
+মোর জিলক নিয়াম মেধাবী,আমার মেয়ে অনেক মেধাবী,My daughter is very talented,我的女儿非常有才华,मेरी बेटी बहुत प्रतिभाशाली है,mi hija es muy talentosa,Ma fille est très talentueuse
+মোর বপা-দাঙ্গ গাঙে থাইতারা,আমার দাদা-দাদি গ্রামে থাকেন,My grandparents live in the village,我的祖父母住在村里,मेरे दादा-दादी गाँव में रहते हैं,Mis abuelos viven en el pueblo.,Mes grands-parents habitent au village
+এবকা কয়টা বাজের,এখন কয়টা বাজে,what time is it now,现在几点了,अब समय क्या है,¿Qué hora es ahora?,quelle heure est-il maintenant
+এবাকা বিয়ান আটটা বাজের,এখন সকাল আটটা বাজে,It is eight o'clock in the morning,现在是早上八点,सुबह के आठ बजे हैं,Son las ocho de la mañana,Il est huit heures du matin
+আজি কী বার,সময়,the time,时间,समय,el tiempo,le temps
+আজি সোমবার,আজকে সোমবার,Today is Monday,今天是星期一,आज सोमवार हे,Hoy es lunes,C'est lundi aujourd'hui
+আজি কয় তারিখ,আজকে কত তারিখ,what date is today,今天是什么日期,क्या तिथि है आज,que fecha es hoy,quelle date est aujourd'hui
+আজি পয়লা জানুয়ারি,আজকে পহেলা জানুয়ারি,Today is the first of January,今天是一月一号,आज पहली जनवरी है,Hoy es primero de enero.,Aujourd'hui c'est le premier janvier
+মি কারি আহিতৌ,আমি কাল আসব,i will come tomorrow,我明天来,मैं कल आउंगा,vendré mañana,je viendrai demain
+গেলগাকাকিবরন দিয়াসিল,গতকাল বৃষ্টি হয়েছিল,It rained yesterday,昨天下雨了,कल बारिश हुई,Ayer llovió,Il a plu hier
+পৌরু মোর পরীক্ষা,পরশু আমার পরীক্ষা,I have an exam tomorrow,我明天有考试,कल मेरा एग्जाम हे,tengo un examen mañana,j'ai un examen demain
+এরে মাহা এহাত পুজা,এই মাসে পূজা আছে,There is puja in this month,这个月有法会,इस महीने में पूजा होती है,Hay puja en este mes.,Il y a une puja ce mois-ci
+তি কুরাং যারাগ,আপনি কোথায় যাচ্ছেন,where are you going,你要去哪里,आप कहां जा रहे हैं,¿adónde vas?,où vas-tu
+মি বাজারে যাউরিগা,আমি বাজারে যাচ্ছি,I am going to the market,我要去市场,मैं बाजार के लिए जा रहा हूँ,voy al mercado,je vais au marché
+হাসাপাতলগ কুরাং,হাসপাতাল কোথায়,where is the hospital,医院在哪里,अस्पताल कहां है,donde esta el hospital,où est l'hôpital
+বাতেদে যাগা থাংনাৎ বিঙেদে,ডানে যান তারপর বাঁয়ে,Go right then left,向右走然后向左走,दाएँ जाओ फिर बाएँ,Ve a la derecha y luego a la izquierda.,Allez à droite puis à gauche
+এহাত্ত কতিহান দুরেই,এখান থেকে কত দূর,how far from here,离这里有多远,यहाँ से कितनी दूर,¿Qué tan lejos de aquí?,à quelle distance d'ici
+স্কুল এগ মুংহাত আছে,স্কুলটা সামনেই আছে,The school is in front,学校就在前面,स्कूल सामने है,la escuela esta enfrente,L'école est devant
+মি পথহান পাহুরে বেললু,আমি রাস্তা হারিয়ে ফেলেছি,I've lost my way,我迷路了,मैं अपना रास्ता भूल गया हूं,Estoy perdido,J'ai perdu mon chemin
+ঠিকানা এহান কুরাং,এই ঠিকানাটা কোথায়,Where is this address?,这个地址在哪里？,यह पता कहां है?,¿Dónde está esta dirección?,Où est cette adresse ?
+কাদাহাৎ কোনো হজকর দোকান আসেতা,কাছে কোনো ওষুধের দোকান আছে,Is there a drug store nearby?,附近有药店吗？,क्या पास में कोई दवा की दुकान है?,¿Hay una farmacia cerca?,Y a-t-il une pharmacie à proximité ?
+তি কিতা খেইতেইগ,আপনি কী খাবেন,what do you eat,你吃什么,आप क्या खाते हैं,que comes,qu'est-ce que tu manges
+মি ভাত খেইতৌ,আমি ভাত খাব,I will eat rice,我会吃米饭,मैं चावल खाऊंगा,comeré arroz,je mangerai du riz
+তি ভাত বপার থাং,আপনার কি ক্ষুধা লেগেছে,are you hungry,你饿了吗,क्या आप भूखे हैं?,tienes hambre,avez-vous faim
+মি এবাকা খানা নুয়ারিম,আমি এখন খেতে পারব না,I can't eat now,我现在吃不下饭,मैं अब नहीं खा सकता,no puedo comer ahora,Je ne peux pas manger maintenant
+এরে হৌ এতা নিয়ামপারা হুয়াত,এই তরকারিটা অনেক সুস্বাদু,This curry is very tasty,这个咖喱很好吃,यह करी बहुत स्वादिष्ट होती है,Este curry es muy sabroso,Ce curry est très savoureux
+পানি দে,পানি দিন,give water,给水,पानी दो,dar agua,donner de l'eau
+মি মাছ হাদা পাউরি,আমি মাছ পছন্দ করি,i like fish,我喜欢鱼,मैं मछली पसंद करता हूं,me gusta el pescado,j'aime le poisson
+আজিকা কুঙ্গই রাদেসেগ,আজকে রান্না কে করেছে,Who cooked today?,今天谁做饭？,आज किसने खाना बनाया?,¿Quién cocinó hoy?,Qui a cuisiné aujourd'hui ?
+চা হংকরতেইগ,চা বানাবেন,make tea,泡茶,चाय बनाएं,hacer té,faire du thé
+মিষ্টি আন,মিষ্টি আনো,bring sweet,带来甜蜜,मिठाई लाओ,traer dulce,apporter du sucré
+এহার দাম কতি,এটার দাম কত,How much does it cost?,它要多少钱？,इसकी कीमत कितनी होती है?,¿Cuánto cuesta?,Combien ça coûte?
+খানি কমিয়া দে,একটু কমে দিন,Reduce it a bit,减少一点,इसे थोड़ा कम करें,reducirlo un poco,Réduisez-le un peu
+মি এহান লইতৌ,আমি এটা কিনব,i will buy it,我会买它,मैं इसे खरीदूंगा,lo compraré,je vais l'acheter
+আরাকখানি দেখাদে,আরেকটু দেখান,Show me some more,再给我看一些,मुझे कुछ और दिखाओ,Muéstrame un poco más,Montre-moi un peu plus
+এহান হবা নাসে,এটা ভালো না,It's not good,这不好,अच्छी बात नहीँ हे,no es bueno,Ce n'est pas bon
+হাবিয়ে কতি অইলতা,মোট কত হলো,How much is the total?,总共多少钱？,कुल कितना हुआ?,¿Cuánto es el total?,Quelle est l'addition?
+ভাংতি আসেগ,ভাংতি আছে,There is variation,有变异,भिन्नता है,hay variación,Il y a des variations
+রাসিদহান দে,বাজার,the market,市场,बाजार,el mercado,le marché
+এহান কি তাজা,এটা কি তাজা,Is it fresh?,新鲜吗？,क्या यह ताज़ा है?,¿Está fresco?,Est-ce frais ?
+আলু কেজি আহান দে,এক কেজি আলু দিন,Add one kg of potatoes,添加一公斤土豆,एक किलो आलू डालें,Añade un kg de patatas.,Ajouter un kg de pommes de terre
+মোরতা মুরগ কামারার,আমার মাথা ব্যথা করছে,I have a headache,我头疼,मुझे सिर दर्द है,Me duele la cabeza,J'ai mal à la tête
+তাপ হান আহিসে,জ্বর এসেছে,Fever has arrived,发烧已经到来,बुखार आ गया है,ha llegado la fiebre,La fièvre est arrivée
+ডাক্তর দেখাদেনা লাগতৈ,ডাক্তার দেখাতে হবে,Must see a doctor,必须去看医生,डॉक्टर को अवश्य दिखाएं,Debe ver a un medico,Il faut voir un médecin
+এরে হজক এতা কুমবাকা খানা,এই ওষুধটা কখন খেতে হবে,When to take this medicine,何时服用此药,यह दवा कब लेनी है,Cuando tomar este medicamento,Quand prendre ce médicament
+মোরতা জবর দুর্বল লাগের,আমি অনেক দুর্বল লাগছি,I feel so weak,我感觉很虚弱,मैं बहुत कमजोर महसूस करता हूं,me siento tan débil,je me sens si faible
+রকত পরীক্ষা করানি লাগতৈ,রক্ত পরীক্ষা করাতে হবে,Blood test should be done,应该进行血液检查,खून की जांच करानी चाहिए,Se debe hacer un análisis de sangre.,Une prise de sang doit être faite
+পেটগ কামারার,স্বাস্থ্য,health,健康,स्वास्थ्य,salud,santé
+হাসপাতালে ভর্তি অনা লাগের,হাসপাতালে ভর্তি করতে হবে,Must be admitted to hospital,必须入院治疗,अस्पताल में भर्ती होना चाहिए,Debe ser ingresado en el hospital.,Doit être admis à l'hôpital
+মোরতা ডায়াবেটিস আছে,আমার ডায়াবেটিস আছে,I have diabetes,我患有糖尿病,मुझे मधुमेह है,tengo diabetes,j'ai du diabète
+হারদিন ব্যায়াম করিক,প্রতিদিন ব্যায়াম করুন,Exercise every day,每天锻炼身体,हर दिन व्यायाम,Haga ejercicio todos los días,Faites de l'exercice tous les jours
+তি কোন ক্লাশে তামকরর,তুমি কোন ক্লাসে পড়,What class are you in?,你在哪个班？,आप किस वर्ग मे हैं?,¿En qué clase estás?,Dans quelle classe es-tu ?
+মি ক্লশ টেনে তামকরৌরি,আমি দশম শ্রেণিতে পড়ি,I study in 10th standard,我学习第十个标准,मैं 10वीं कक्षा में पढ़ता हूं,estudio en décimo estándar,J'étudie en 10ème norme
+পলীক্ষা কুমবাকা,পরীক্ষা কবে,when is the exam,什么时候考试,परीक्षा कब है,cuando es el examen,quand est l'examen
+লেরিক অহান পাকরলেগ,বইটা পড়েছ,read the book,读这本书,किताब पढ़ें,lee el libro,lire le livre
+মাস্টর লাগতৈ,গৃহশিক্ষক লাগবে,Need a tutor,需要导师,एक शिक्षक की आवश्यकता है,Necesito un tutor,Besoin d'un tuteur
+ফল কুমবাকা নিকুলতইগ,ফলাফল কবে দেবে,When will the result be given?,什么时候给出结果？,रिजल्ट कब आएगा?,¿Cuándo se dará el resultado?,Quand le résultat sera-t-il donné ?
+বিশ্ববিদ্যালয়ে ভর্তি অনা আহের,বিশ্ববিদ্যালয়ে ভর্তি হতে চাই,I want to get admission in university,我想被大学录取,मैं यूनिवर्सिटी में दाखिला लेना चाहता हूं,quiero ser admitido en la universidad,Je veux être admis à l'université
+অংক এহান হারপা নারলু,অঙ্কটা বুঝতে পারছি না,I don't understand the number,我不明白这个数字,मुझे संख्या समझ नहीं आ रही है,no entiendo el numero,je ne comprends pas le numéro
+তামকরানির লেইরকি কুরাং পানা,পাঠ্যবই কোথায় পাব,Where can I get the textbook?,我在哪里可以获得教科书？,मुझे पाठ्यपुस्तक कहां मिल सकती है?,¿Dónde puedo conseguir el libro de texto?,Où puis-je me procurer le manuel ?
+আজি ক্লাস বন্ধ,আজ ক্লাস বন্ধ,Class is closed today,今天停课,आज क्लास बंद है,La clase está cerrada hoy.,La classe est fermée aujourd'hui
+আজি নিয়াম গরম,আজকে অনেক গরম,It's very hot today,今天很热,आज बहुत गर्मी है,hace mucho calor hoy,Il fait très chaud aujourd'hui
+বরন দের,বৃষ্টি হচ্ছে,it's raining,下雨了,बारिश हो रही है,Está lloviendo,Il pleut
+পে হান নেগা,ছাতা নিয়ে যাও,take an umbrella,带把伞,एक छाता ले लो,toma un paraguas,prends un parapluie
+জারগান পরিসে,শীত পড়েছে,It's winter,现在是冬天,शीत ऋतु चल रही है,es invierno,C'est l'hiver
+দিনহান মেগালা,আকাশ মেঘলা,The sky is cloudy,天空多云,आसमान में बादल छाए हुए हैं,el cielo esta nublado,Le ciel est nuageux
+রেলিগ নিকুলের,রোদ উঠেছে,the sun is up,太阳升起来了,सूरज उग आया है,el sol ha salido,le soleil est levé
+বৌবরন আহের,ঝড় আসছে তৌ,The storm is coming,暴风雨即将来临,तूफ़ान आ रहा है,la tormenta esta llegando,La tempête arrive
+আজিকা ঠান্ডা ইসে,আজ বেশ ঠান্ডা,It's quite cold today,今天天气很冷,आज काफ़ी ठंड है,hace bastante frio hoy,Il fait assez froid aujourd'hui
+উম ফুতি পিদ,গরম কাপড় পরো,Wear warm clothes,穿暖和的衣服,गर्म कपड़े पहनें,Use ropa abrigada,Portez des vêtements chauds
+গোলাহার পানি বাড়ের,বন্যার পানি বাড়ছে,Flood water is rising,洪水水位正在上涨,बाढ़ का पानी बढ़ रहा है,El agua de las inundaciones está aumentando,Les eaux de crue montent
+মি আজিয়েই আহিতৌ,আমি আজই আসব,I will come today,我今天就来,मैं आज आऊंगा,vendré hoy,je viendrai aujourd'hui
+মি কালি আহিতৌ,আমি কাল আসব,i will come tomorrow,我明天来,मैं कल आउंगा,vendré mañana,je viendrai demain
+মি এবাকা ব্যস্ত,আমি এখন ব্যস্ত,I am busy now,我现在很忙,मेँ अभी व्यस्त हूँ,estoy ocupado ahora,je suis occupé maintenant
+মি পিসে মাততৌ,আমি পরে কথা বলব,I will talk later,我稍后再说,मैं बाद में बात करूंगा,hablaré más tarde,je parlerai plus tard
+তি কুরাং থারগো,তুমি কোথায় আছ,where are you,你在哪,आप कहां हैं,dónde estás,où es-tu
+তি কিতা কররগো,তুমি কী করছ,what are you doing,你在干什么,आप क्या कर रहे हो,qué estás haciendo,que fais-tu
+তি ব্যস্ত অসতগো,তুমি কি ব্যস্ত,are you busy,你忙吗,क्या आप व्यस्त हैं,estás ocupado,es-tu occupé
+তি ফ্রি আসতগো,তুমি কি ফাঁকা আছ,are you free,你有空吗,क्या तुम आज़ाद हो,Estás libre,êtes-vous libre
+মি তোরকা বাসেয়া আসু,আমি তোমার জন্য অপেক্ষা করছি,i am waiting for you,我在等你,मेरे द्वारा आपकी प्रतीक्षा की जा रही है,estoy esperándote,je vous attends
+তি আহে পারতেইগো,তুমি কি আসতে পারবে,can you come,你能来吗,क्या आप आ सकते हैं,¿puedes venir?,peux-tu venir
+মি আহে নুয়ারিম,আমি আসতে পারব না,i can't come,我不能来,में नही आ,no puedo venir,je ne peux pas venir
+মি হৎনা করতৌ,আমি চেষ্টা করব,i will try,我会尝试,मैं कोशिश करूँगा,intentaré,j'essaierai
+কোনো সমস্যা নেই,কোনো সমস্যা নেই,No problem,没问题,कोई बात नहीं,Ningún problema,Aucun problème
+চিন্তা না করি,চিন্তা করো না,don't worry,不用担心,चिंता मत करो,no te preocupes,Ne vous inquiétez pas
+হাবি ঠিক অইতই,সব ঠিক হয়ে যাবে,Everything will be fine,一切都会好起来的,सब कुछ ठीक हो जाएगा,todo estará bien,Tout ira bien
+তোর দিনহান কিসারে গেলগা,তোমার দিন কেমন গেল,how was your day,你今天过得怎么样,आपका दिन कैसा रहा,cómo estuvo su día,comment s'est passée ta journée
+আজি তোর কিতা পরিকল্পনা,আজ তোমার কী পরিকল্পনা,What are your plans today?,今天你有什么计划？,आपकी आज क्या योजना है?,¿Cuáles son tus planes hoy?,Quels sont vos projets aujourd'hui ?
+মি তোরে মিস কররি,আমি তোমাকে মিস করছি,i miss you,我想你,आपकी याद आ रही है,Te extraño,tu me manques
+মি তোরে বানা পাউরি,আমি তোমাকে ভালোবাসি,i love you,我爱你,मुझे तुमसे प्यार है,te amo,Je vous aime
+মিয়ৌ তোরে বানা পাউরি,আমিও তোমাকে ভালোবাসি,i love you too,我也爱你,मैं भी आपसे प्यार करता हूँ,yo también te amo,je t'aime aussi
+মি তোর কথা খালকরৌরি,আমি তোমার কথা ভাবছি,I'm thinking about you,我在想你,मैं तुम्हारे बारे में सोच रहा हूँ,estoy pensando en ti,je pense à toi
+তি মোরে হুনরগো,তুমি কি আমাকে শুনতে পাচ্ছ,can you hear me,你能听到我吗,क्या आप मुझे सुन सकते हैं,Puedes oírme,pouvez-vous m'entendre
+মি তোরে হুনুরি,আমি তোমাকে শুনতে পাচ্ছি,i can hear you,我能听到你的声音,मैं आपको सुन सकता हूँ,puedo escucharte,je peux t'entendre
+ইন্টারনেট কাম না করের,ইন্টারনেট কাজ করছে না,Internet is not working,互联网无法使用,इंटरनेट काम नहीं कर रहा है,Internet no funciona,Internet ne fonctionne pas
+ফোনর চার্জ লমইল,ফোনের চার্জ শেষ,The phone is out of charge,手机没电了,फ़ोन चार्ज से बाहर है,El teléfono está sin carga,Le téléphone est déchargé
+মোর ফোনহান জিপ বলগা,আমার ফোন বন্ধ হয়ে গেছে,My phone is switched off,我的手机已关机,मेरा फ़ोन बंद है,mi telefono esta apagado,Mon téléphone est éteint
+খানি বাসা,একটু অপেক্ষা কর,wait a minute,等一下,ज़रा ठहरिये,espera un minuto,attends une minute
+মি পথহাৎ আসু,আমি পথে আছি,i'm on the way,我正在路上,मैं रास्ते में हूं,estoy en camino,je suis en route
+মি থুঙো পরলুগা,আমি পৌঁছে গেছি,i have arrived,我已经到了,हम आ चुके हैं,he llegado,je suis arrivé
+তি কুম্বাকা থুঙিতেইগো,তুমি কখন পৌঁছাবে,when will you arrive,你什么时候到,तुम कब आओगे,cuando llegarás,quand arriveras-tu
+মি খানি ডিল করতৌ,আমি একটু দেরি করব,I will be a little late,我会晚一点,मुझे थोड़ा देर हो जाएगी,llegaré un poco tarde,je serai un peu en retard
+মি বারে আসু,আমি বাইরে আছি,i'm out,我出去了,मैं बाहर हूं,estoy fuera,je suis sorti
+মি গরে আসু,আমি বাসায় আছি,i am at home,我在家里,मैं घर में हु,estoy en casa,je suis à la maison
+মি অফিসে আসু,আমি অফিসে আছি,I am in the office,我在办公室,मैं ऑफिस में हूं,estoy en la oficina,je suis au bureau
+মি স্কুলে আসু,আমি স্কুলে আছি,i am at school,我在学校,मैं स्कूल में हूं,estoy en la escuela,je suis à l'école
+মি বিশ্ববিদ্যালয়ে আসু,আমি বিশ্ববিদ্যালয়ে আছি,i am in university,我在大学,मैं विश्वविद्यालय में हूँ,estoy en la universidad,je suis à l'université
+আজি নিয়াম গরম,আজ খুব গরম,Today is very hot,今天很热,आज बहुत गर्मी है,hoy hace mucho calor,Aujourd'hui il fait très chaud
+আজিকা ঠান্ডা ইসে,আজ খুব ঠান্ডা,It's very cold today,今天很冷,आज बहुत ठंड है,hace mucho frio hoy,Il fait très froid aujourd'hui
+আজি আবহাওয়াহান হবা,আজ আবহাওয়া সুন্দর,The weather is nice today,今天天气很好,आज मौसम अच्छा है,El clima esta agradable hoy,Il fait beau aujourd'hui
+বরন দিতে পারে,বৃষ্টি হতে পারে,It may rain,可能会下雨,बारिश हो सकती है,puede llover,Il peut pleuvoir
+পে হান নেগা,ছাতা নিয়ে যাও,take an umbrella,带把伞,एक छाता ले लो,toma un paraguas,prends un parapluie
+দুয়ারহান গাৎ,দরজা বন্ধ কর,close the door,关门,दरवाज़ा बंद कर दो,Cierre la puerta,ferme la porte
+খিলকিহান আংকর,জানালাটা খুলে দাও,Open the window,打开窗户,खिड़की खोलो,abre la ventana,Ouvre la fenêtre
+থমেইগ নিবা,লাইটটা বন্ধ কর,Turn off the light,关掉灯,बत्ती बंद करें,Apagar la luz,Éteignez la lumière
+পাখাহান চালা,পাখাটা চালাও,Run the fan,运行风扇,पंखा चलाओ,enciende el ventilador,Faites fonctionner le ventilateur
+এসিহান চালা,এয়ার কন্ডিশনার চালাও,Run the air conditioner,运行空调,एयर कंडीशनर चलाएँ,Enciende el aire acondicionado,Faites fonctionner le climatiseur
+টিভিহান জিপা,টিভিটা বন্ধ কর,turn off the tv,关掉电视,टीवी बंद करो,apaga la televisión,éteindre la télé
+এলাহান খানি আতকরে চালা,গানটা একটু জোরে চালাও,Play the song a little louder,把歌曲放大声一点,गाना थोड़ा तेज़ बजाओ,Pon la canción un poco más fuerte.,Joue la chanson un peu plus fort
+শব্দহান কমা,শব্দটা কমাও,Reduce the noise,降低噪音,शोर कम करें,Reducir el ruido,Réduire le bruit
+তি ভাত বপার থাং,তুমি কি ক্ষুধার্ত,are you hungry,你饿了吗,क्या आप भूखे हैं?,tienes hambre,avez-vous faim
+আয় বেলিটিকর খাওন খেইক,চলো দুপুরের খাবার খাই,Let's have lunch,我们吃午饭吧,चलो दोपहर का भोजन करते हैं,vamos a almorzar,Allons déjeuner
+আয় রাতিকার খাওন খেইক,চলো রাতের খাবার খাই,Let's have dinner,我们吃晚饭吧,चलो खाना खा लो,vamos a cenar,Allons dîner
+মি রাদৌরি,আমি রান্না করছি,i am cooking,我正在做饭,मैं खाना पका रही हूँ,estoy cocinando,je cuisine
+আরতা কিত্তাউ লাগতৈগো,আর কিছু লাগবে,Something else is needed,还需要其他东西,कुछ और चाहिए,Se necesita algo más,Il faut autre chose
+মি পানি চাউরি,আমি পানি চাই,i want water,我想要水,मुझे पानी चाहिए,quiero agua,je veux de l'eau
+মোরে কাপ আহান চা দে,আমাকে এক কাপ চা দাও,give me a cup of tea,给我一杯茶,मुझे एक कप चाय दो,dame una taza de té,donne-moi une tasse de thé
+মোরে কাপ আহান কফি দে,আমাকে এক কাপ কফি দাও,Give me a cup of coffee,给我一杯咖啡,मुझे एक कप कॉफ़ी दो,Dame una taza de cafe,Donne-moi une tasse de café
+মি ভাত খেইতৌ,আমি ভাত খাব,I will eat rice,我会吃米饭,मैं चावल खाऊंगा,comeré arroz,je mangerai du riz
+মি রুটি খেইতৌ,আমি রুটি খাব,i will eat bread,我会吃面包,मैं रोटी खाऊंगा,comeré pan,je mangerai du pain
+মি ফল খাইতে চাউরি,আমি ফল খেতে চাই,I want to eat fruit,我想吃水果,मैं फल खाना चाहता हूँ,quiero comer fruta,je veux manger des fruits
+মি মাংস না খাউরি,আমি মাংস খাই না,I don't eat meat,我不吃肉,मैं मांस नहीं खाता,no como carne,je ne mange pas de viande
+মি মাছ হাদা পাউরি,আমি মাছ পছন্দ করি,i like fish,我喜欢鱼,मैं मछली पसंद करता हूं,me gusta el pescado,j'aime le poisson
+মি মিষ্টি হাদা পাউরি,আমি মিষ্টি পছন্দ করি,I like sweets,我喜欢甜食,मुझे मिठाइयाँ पसंद है,me gustan los dulces,j'aime les sucreries
+এহান নিয়ামপারা হুয়াত,এটা খুব সুস্বাদু,It is very tasty,非常好吃,ये बहुत ही स्वादिष्ट होता है,es muy sabroso,C'est très savoureux
+এহান মোরতা হবা না লাগিল,এটা আমার ভালো লাগেনি,I didn't like it,我不喜欢它,मुझे यह पसंद नहीं आया,no me gustó,Je n'ai pas aimé
+আরাকখানি দে,আরেকটু দাও,give me some more,再给我一些,मुझे कुछ और दो,dame un poco más,donne-m'en un peu plus
+এহানই যথেষ্ট,এটাই যথেষ্ট,That is enough,这就够了,वह पर्याप्त है,eso es suficiente,C'est assez
+বিলহান দে,বিলটা দিন,pay the bill,付帐,बिल का भुगतान करें,pagar la factura,payer la facture
+ভাংতি আসেগ,খুচরা আছে,There is retail,有零售,खुदरा है,hay venta al por menor,Il y a du commerce de détail
+মোর কাদাত নগদ নাই,আমার কাছে নগদ নেই,I don't have cash,我没有现金,मेरे पास नकदी नहीं है,no tengo efectivo,je n'ai pas d'argent liquide
+মি মোবাইল ব্যাংকিংএ পরিশোধ করতৌ,আমি মোবাইল ব্যাংকিংয়ে পরিশোধ করব,I will pay in mobile banking,我将通过手机银行付款,मैं मोबाइल बैंकिंग में भुगतान करूंगा,Pagaré en banca móvil,Je paierai via les services bancaires mobiles
+এহানদে বহ,এখানে বসুন,sit here,坐在这里,यहाँ बैठो,siéntate aquí,asseyez-vous ici
+ওহানদে যাগা,ওখানে যান,go there,去那里,वहाँ जाएँ,ve allí,allez-y
+এগদে আয়,এদিকে আসুন,Come here,来这里,यहाँ आओ,Ven aquí,Venez ici
+অহানদে চা,ওদিকে তাকান,Look over there,看看那边,उधर देखो,mira hacia allá,Regarde là-bas
+মোরে অনুসরণ কর,আমাকে অনুসরণ করুন,follow me,跟我来,मेरे पीछे आओ,sígueme,suis-moi
+মি তোরে সাহায্য করতৌ,আমি আপনাকে সাহায্য করব,i will help you,我会帮助你,मैं आपकी मदद करूँगा,te ayudaré,je vais t'aider
+তি মোরে হারপা পাররগো,আপনি কি আমাকে বুঝতে পারছেন,do you understand me,你了解我吗,क्या आप मुझे समझते हैं,¿me entiendes?,est-ce que tu me comprends
+মি বারো মাতরাং,আমি আবার বলছি,I say again,我再说一遍,मैं फिर कहता हूं,digo de nuevo,je le répète
+খানি তাপ্প মাত,একটু ধীরে বলুন,Speak slowly,慢慢地说,धीरे बोलो,habla despacio,Parlez lentement
+আরেকমাউ মাত,আরেকবার বলুন,say it again,再说一遍,फिर से कहना,dilo de nuevo,dis-le encore
+মি শিচ্চিল নাগই,আমি নিশ্চিত নই,I'm not sure,我不知道,मुझे यकीन नहीं है,No estoy seguro,Je ne suis pas sûr
+মোরতা অহানই মনে অর,আমার তাই মনে হয়,I think so,我想是的,मुझे भी ऐसा ही लगता है,Creo que sí,Je pense que oui
+হয়তো চুমহান মাতেসে,হয়তো ঠিক বলেছেন,Maybe he is right,也许他是对的,शायद वह सही है,Tal vez tenga razón,Peut-être qu'il a raison
+মি একমত,আমি একমত,i agree,我同意,मैं सहमत हूं,estoy de acuerdo,je suis d'accord
+মি একমত নাগই,আমি একমত নই,I don't agree,我不同意,मैं सहमत नहीं हूं,no estoy de acuerdo,je ne suis pas d'accord
+এহান নিয়াম গুরুত্বপূর্ণ,এটা খুব গুরুত্বপূর্ণ,It is very important,这非常重要,बहुत जरुरी है,es muy importante,C'est très important
+এহান জরুরি,এটা জরুরি,It is important,这很重要,क्या यह महत्वपूर्ण है,es importante,C'est important
+এবাকাই আয়,এখনই আসুন,come now,现在来,अब आ जाओ,Vamos,viens maintenant
+পিসে দেখা অইতৈ,পরে দেখা হবে,See you later,稍后见,बाद में मिलते हैं,Hasta luego,À plus tard
+শুভকামনা রইল,শুভকামনা রইল,Good luck,祝你好运,आपको कामयाबी मिले,Buena suerte,Bonne chance
+হশিয়ার অয়া যাগা,সাবধানে যাবেন,Be careful,当心,ध्यान से,Ten cuidado,Sois prudent
+নিরাপদে থুঙিসগা,নিরাপদে পৌঁছান,Arrive safely,安全抵达,सुरक्षित पहुंचें,Llega sano y salvo,Arrivez en toute sécurité
+হবা করিয়া বিশ্রাম নেগা,ভালো করে বিশ্রাম নিন,Rest well,好好休息,अच्छी तरह से आराम करें,Descansa bien,Repose-toi bien
+চালাক্করে হবাবালা অইক,শীঘ্রই সুস্থ হয়ে উঠুন,Get well soon,快点好起来,जल्द स्वस्थ हो जाओ,Que te mejores pronto,Bon rétablissement
+তোর দিন এহান হাবাবালা অক,আপনার দিনটি সুন্দর হোক,Have a nice day,祝你今天过得愉快,आपका दिन शुभ हो,Que tenga un lindo día,Passe une bonne journée
+বারো দেখা অইতয়,আবার দেখা হবে,See you again,再见,फिर मिलेंगे,Nos vemos de nuevo,On se reverra
