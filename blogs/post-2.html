@@ -1,63 +1,243 @@
-<p>&nbsp;</p>
-<p>বিষ্ণুপ্রিয়া মণিপুরির ইতিহাস &mdash; ইমার ঠার</p>
-<!-- Reading Progress -->
-<div id="reading-progress">&nbsp;</div>
-<!-- Nav (লিঙ্কগুলো আপডেট করা হয়েছে) --><nav><a class="logo" href="index.html">imarthar.com</a>
-<div class="nav-links"><a href="tools.html">টুল</a> <a class="active" href="blogs.html">ব্লগ</a> <a href="papers.html">পেপার</a> <a href="discussion.html">আলোচনা</a></div>
-</nav><!-- Article Layout -->
-<div class="article-layout"><!-- Main Article -->
-<div><a class="back-btn" href="blogs.html"> ব্লগে ফিরিক</a>
-<article><img class="article-cover" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=900&amp;auto=format&amp;fit=crop&amp;q=70" alt="বিষ্ণুপ্রিয়া মণিপুরির ইতিহাস" />
-<div class="article-body"><!-- Breadcrumb -->
-<div class="breadcrumb"><a href="index.html">হোম</a> <a href="blogs.html">ব্লগ</a>ভাষা</div>
-<div class="article-tag">ভাষা</div>
-<h1 class="article-title">ইমার ঠারে কর্পাস তৈরির পরিকল্পনা ও ধাপসুমহ</h1>
-<!-- Meta -->
-<div class="article-meta"><span class="meta-item"> জুন ২০২৬</span> <span class="meta-item"> ৫ মিনিট পড়া</span> <span class="meta-item"> ১.২ হাজার</span>
-<div class="author-chip">
-<div class="author-avatar">কথ</div>
-<span class="author-name">কুঙ্গ থাঙ</span></div>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ইমার ঠার কর্পাস হঙকরানির থাক বারো পরিকল্পনা — ইমার ঠার</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    line-height: 1.5;
+  }
+
+  /* Reading progress bar */
+  #reading-progress-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: transparent; z-index: 300; }
+  #reading-progress { height: 100%; width: 0%; background: #10b981; transition: width .1s; }
+
+  /* Nav */
+  nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; text-decoration: none; letter-spacing: -0.5px; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+  /* Layout */
+  .article-layout {
+    max-width: 1100px; margin: 2rem auto; padding: 0 2rem;
+    display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start;
+  }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: #64748b; text-decoration: none; margin-bottom: 1rem; }
+  .back-btn:hover { color: #10b981; }
+
+  article { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+  .article-cover { width: 100%; height: 320px; object-fit: cover; display: block; }
+  .article-body { padding: 2rem; }
+  .breadcrumb { font-size: 13px; color: #94a3b8; margin-bottom: 1rem; }
+  .breadcrumb a { color: #94a3b8; text-decoration: none; }
+  .breadcrumb a:hover { color: #10b981; }
+  .article-tag { display: inline-block; font-size: 12px; font-weight: 600; background: #f0fdf4; color: #166534; padding: 4px 12px; border-radius: 99px; margin-bottom: 1rem; }
+  .article-title { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 1rem; letter-spacing: -0.5px; line-height: 1.35; }
+  .article-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 13px; color: #94a3b8; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e2e8f0; }
+  .author-chip { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+  .author-avatar { width: 28px; height: 28px; border-radius: 50%; background: #10b981; color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .author-name { font-size: 13px; font-weight: 600; color: #334155; }
+
+  .article-content { font-size: 16px; color: #334155; line-height: 1.9; }
+  .article-content h2 { color: #0f172a; font-size: 21px; font-weight: 800; margin: 1.85rem 0 0.85rem; scroll-margin-top: 90px; }
+  .article-content h3 { color: #0f172a; font-size: 17px; font-weight: 700; margin: 1.5rem 0 0.6rem; scroll-margin-top: 90px; }
+  .article-content strong { color: #0f172a; }
+  .article-content p { margin-bottom: 1rem; }
+  .article-content ul { margin: 0 0 1rem 1.2rem; }
+  .pull-quote { border-left: 3px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #065f46; font-size: 15.5px; font-weight: 500; border-radius: 0 12px 12px 0; }
+  .excerpt-lead { font-size: 17px; color: #475569; font-style: italic; border-left: 3px solid #10b981; padding-left: 1rem; margin-bottom: 1.5rem; }
+  .refs { font-size: 13px; color: #64748b; line-height: 1.8; }
+
+  .article-footer { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; }
+  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag-pill { font-size: 12px; font-weight: 600; background: #f1f5f9; color: #475569; padding: 5px 12px; border-radius: 99px; text-decoration: none; }
+  .tag-pill:hover { background: #10b981; color: #fff; }
+
+  .related-section { margin-top: 2rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; }
+  .section-title { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
+  .related-card { display: flex; align-items: center; gap: 14px; text-decoration: none; padding: .75rem 0; border-bottom: 1px solid #f1f5f9; }
+  .related-card:last-child { border-bottom: none; }
+  .related-img { width: 64px; height: 56px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+  .related-info { min-width: 0; }
+  .related-tag { font-size: 11px; font-weight: 600; color: #10b981; margin-bottom: 2px; }
+  .related-title { font-size: 14px; font-weight: 600; color: #0f172a; }
+
+  .sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 84px; }
+  .sidebar-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; }
+  .sidebar-title { font-size: 13px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
+  .progress-bar-wrap { width: 100%; height: 6px; background: #f1f5f9; border-radius: 99px; overflow: hidden; margin-bottom: .5rem; }
+  #sidebar-progress-fill { display: block; height: 100%; width: 0%; background: #10b981; transition: width .1s; }
+  .progress-label { font-size: 12px; color: #94a3b8; text-align: right; }
+  .toc-list { display: flex; flex-direction: column; gap: .4rem; }
+  .toc-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #64748b; text-decoration: none; padding: 6px 8px; border-radius: 8px; }
+  .toc-item:hover, .toc-item.active { background: #f0fdf4; color: #065f46; }
+  .toc-num { font-size: 11px; font-weight: 700; color: #10b981; }
+  .recent-list { display: flex; flex-direction: column; gap: .35rem; }
+  .recent-item { display: flex; align-items: flex-start; gap: 10px; text-decoration: none; padding: 8px; border-radius: 8px; }
+  .recent-item:hover { background: #f8fafc; }
+  .recent-num { font-size: 11px; font-weight: 700; color: #10b981; flex-shrink: 0; margin-top: 1px; }
+  .recent-text { font-size: 13px; color: #334155; font-weight: 500; }
+
+  footer { background: #fff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; line-height: 1.8; }
+  footer span { color: #10b981; font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .article-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+  }
+  @media (max-width: 640px) {
+    .article-layout { padding: 0 1.1rem; }
+    .article-body { padding: 1.25rem; }
+    .article-title { font-size: 22px; }
+    .article-cover { height: 190px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="reading-progress-wrap"><div id="reading-progress"></div></div>
+
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="tools.html">টুল</a>
+    <a class="active" href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<div class="article-layout">
+  <div>
+    <a class="back-btn" href="blogs.html">&larr; ব্লগে ফিরিক</a>
+    <article>
+      <img class="article-cover" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=900&auto=format&fit=crop&q=70" alt="ইমার ঠার কর্পাস তৈরির পরিকল্পনা">
+      <div class="article-body">
+        <div class="breadcrumb"><a href="index.html">হোম</a> &rsaquo; <a href="blogs.html">ব্লগ</a> &rsaquo; গবেষণা</div>
+        <div class="article-tag">গবেষণা</div>
+        <h1 class="article-title">ইমার ঠার কর্পাস হঙকরানির থাক বারো পরিকল্পনা</h1>
+        <div class="article-meta">
+          <span class="meta-item"><i class="ti ti-calendar-event"></i> জুন ২০২৬</span>
+          <span class="meta-item"><i class="ti ti-clock"></i> ৫ মিনিট পড়া</span>
+          <span class="meta-item"><i class="ti ti-eye"></i> ১.২ হাজার</span>
+          <div class="author-chip">
+            <div class="author-avatar">কথ</div>
+            <span class="author-name">কুঙ্গ থাঙ</span>
+          </div>
+        </div>
+        <div id="article-content" class="article-content">
+
+<p>যেকোনো ভাষার জন্য প্রযুক্তি তৈরি করতে হলে—তা অনুবাদক হোক, বানান পরীক্ষক হোক বা কণ্ঠস্বর সহায়ক হোক—সবার আগে দরকার একটি নির্ভরযোগ্য কর্পাস। কর্পাস মানে ভাষার বাস্তব ব্যবহারের বিশাল সংকলন, যা থেকে ভাষার নিয়ম, শব্দভাণ্ডার আর বাক্যগঠনের প্যাটার্ন শেখা যায়। ইমার ঠার (বিষ্ণুপ্রিয়া মণিপুরি)-এর মতো স্বল্প-সম্পদের ভাষার জন্য এমন কর্পাস আগে কখনো তৈরি হয়নি। এই লেখায় সেই কর্পাস তৈরির ধাপগুলো তুলে ধরা হলো।</p>
+
+<div class="pull-quote">একটি স্বল্প-সম্পদের ভাষার জন্য কর্পাস তৈরি করা কোনো একক কাজ নয়—এটি সংগ্রহ, গঠন, সম্প্রসারণ, নিয়ম-বিশ্লেষণ ও যাচাইয়ের ধারাবাহিক প্রক্রিয়া।</div>
+
+<h2 id="collection">ধাপ ১–২: উৎস সংগ্রহ ও গঠন</h2>
+<h3>ধাপ ১: উৎস টেক্সট সংগ্রহ</h3>
+<p>কাজ শুরু হয়েছে হাতে-কলমে সংগ্রহ করা মূল টেক্সট দিয়ে। কবিতা, প্রবন্ধ, গল্প ও নাটক মিলিয়ে একটি সমান্তরাল টেক্সট সংকলন প্রস্তুত করা হয়েছে, যেখানে বিষ্ণুপ্রিয়া মণিপুরি ও বাংলা পাশাপাশি রাখা আছে। এই পর্যায়ে মূল চ্যালেঞ্জ ছিল যথেষ্ট পরিমাণ লিখিত উপাদান খুঁজে বের করা, কারণ মৌখিক ঐতিহ্যপ্রধান এই ভাষায় লিখিত সাহিত্যের পরিমাণ তুলনামূলক কম।</p>
+
+<h3>ধাপ ২: গঠন ও ডিজিটাইজেশন</h3>
+<p>কাঁচা টেক্সটকে ব্যবহারযোগ্য করতে সেগুলোকে সারিবদ্ধ (aligned) বাক্য-জোড়ায় ভাঙা হয়েছে এবং একটি কাঠামোবদ্ধ সিএসভি (CSV) ফাইলে সাজানো হয়েছে। প্রতিটি এন্ট্রির জন্য একটি নির্দিষ্ট কলাম-ক্রম মেনে চলা হয়—বিষ্ণুপ্রিয়া মণিপুরি, বাংলা, এবং শ্রেণি (category)। এই ধারাবাহিকতা পরবর্তী যেকোনো প্রক্রিয়াকরণ বা মডেল প্রশিক্ষণকে সহজ করে তোলে। এখন পর্যন্ত প্রায় ১,৩০০টি দ্বিভাষিক এন্ট্রি নিয়ে একটি বাংলা–বিষ্ণুপ্রিয়া মণিপুরি কর্পাস দাঁড় করানো হয়েছে।</p>
+
+<h2 id="expansion">ধাপ ৩–৪: বহুভাষিক সম্প্রসারণ ও নিয়ম বিশ্লেষণ</h2>
+<h3>ধাপ ৩: দ্বিভাষিক থেকে বহুভাষিক সম্প্রসারণ</h3>
+<p>দ্বিতীয় ধাপে কর্পাসকে কেবল বাংলা-কেন্দ্রিক না রেখে বহুভাষিক করে তোলা হচ্ছে। ইংরেজি, হিন্দি, চীনা, স্প্যানিশ ও ফরাসি ভাষা যোগ করে একটি বহুভাষিক কর্পাস তৈরি করা হয়েছে, যাতে বিষ্ণুপ্রিয়া মণিপুরি ভাষাটি কেবল বাংলার সঙ্গে নয়, বিশ্বের প্রধান ভাষাগুলোর সঙ্গেও অনুবাদযোগ্য হয়ে ওঠে। এর ফলেই ইমার ঠার ওয়েবসাইটে একাধিক উৎস ও লক্ষ্য ভাষা বেছে নেওয়ার সুবিধা যুক্ত করা সম্ভব হয়েছে।</p>
+
+<h3>ধাপ ৪: ভাষাগত নিয়ম ও প্রত্যয় বিশ্লেষণ</h3>
+<p>কর্পাস জমা করার পাশাপাশি চলছে ভাষার অভ্যন্তরীণ নিয়ম বের করার কাজ। বিষ্ণুপ্রিয়া মণিপুরি ক্রিয়াপদের প্রত্যয় (suffix) প্যাটার্ন আলাদা করে চিহ্নিত করা হচ্ছে, যেমন নেতিবাচক রূপে "না" শব্দটি ক্রিয়ার আগে বসে। একইসঙ্গে অনেক ক্রিয়ার অনুবাদ যাচাই করে সংশোধন করা হয়েছে—উদাহরণস্বরূপ, "আসব"-এর সঠিক প্রতিরূপ "আহিতৌ" বলে নির্দিষ্ট করা হয়েছে। এই নিয়মগুলোই পরবর্তীতে নিয়ম-ভিত্তিক অনুবাদ (Rule-Based Machine Translation বা RBMT) ব্যবস্থার ভিত্তি হয়ে উঠছে।</p>
+
+<h2 id="application">ধাপ ৫–৬: যাচাই, প্রয়োগ ও ভবিষ্যৎ</h2>
+<h3>ধাপ ৫: শ্রেণিবদ্ধকরণ ও যাচাই</h3>
+<p>সংগৃহীত তথ্যকে বিষয়ভিত্তিক শ্রেণিতে ভাগ করে একাধিক রেফারেন্স সিএসভি তৈরি করা হয়েছে, যা ভাষার বিভিন্ন প্রসঙ্গে (দৈনন্দিন কথোপকথন, সাহিত্য, প্রাতিষ্ঠানিক ব্যবহার) শব্দ ও বাক্যের ব্যবহার যাচাই করতে সাহায্য করে। প্রতিটি এন্ট্রি একাধিকবার পর্যালোচনা করে ভুল সংশোধন করা হচ্ছে, যাতে ভবিষ্যতের এনএলপি মডেল ভুল উপাত্ত থেকে না শেখে।</p>
+
+<h3>ধাপ ৬: প্রয়োগ—অনুবাদ পাইপলাইন ও ওয়েবসাইট</h3>
+<p>এই সমস্ত ধাপের ফলাফল এখন ব্যবহার করা হচ্ছে ইমার ঠার ওয়েবসাইটের অনুবাদক টুলে এবং একটি পূর্ণাঙ্গ RBMT পাইপলাইন গড়ে তোলার কাজে, যেখানে কর্পাস, প্রত্যয় নিয়ম এবং অনুবাদ যুক্তি—তিনটি অংশ একসঙ্গে কাজ করবে। লক্ষ্য হলো এমন একটি ব্যবস্থা দাঁড় করানো, যা কেবল শব্দ-বদল নয়, বরং ব্যাকরণগতভাবে সঠিক অনুবাদ দিতে পারে।</p>
+
+<h3>ভবিষ্যৎ পরিকল্পনা</h3>
+<p>আগামী পর্যায়ে কর্পাসের আকার আরও বাড়ানো, বাকি সংগৃহীত সমান্তরাল উপাদান সম্পূর্ণ ডিজিটাইজ করা, এবং প্রত্যয় নিয়মগুলোকে আরও বিস্তৃত ব্যাকরণ কাঠামোয় রূপ দেওয়ার পরিকল্পনা রয়েছে। দীর্ঘমেয়াদে এই কর্পাসই হয়ে উঠবে বিষ্ণুপ্রিয়া মণিপুরি ভাষার জন্য যেকোনো এনএলপি গবেষণার ভিত্তি।</p>
+
+<h2>উপসংহার</h2>
+<p>একটি স্বল্প-সম্পদের ভাষার জন্য কর্পাস তৈরি করা কোনো একক কাজ নয়—এটি সংগ্রহ, গঠন, সম্প্রসারণ, নিয়ম-বিশ্লেষণ ও যাচাইয়ের ধারাবাহিক প্রক্রিয়া। ইমার ঠার প্রকল্পের এই ধাপগুলো দেখায় যে সীমিত সম্পদ নিয়েও কীভাবে ধৈর্য ও পরিকল্পনার মাধ্যমে একটি ভাষার ডিজিটাল ভবিষ্যৎ গড়ে তোলা সম্ভব।</p>
+
+        </div>
+        <div class="article-footer">
+          <div class="tag-row">
+<a class="tag-pill" href="#">কর্পাস</a>
+<a class="tag-pill" href="#">NLP</a>
+<a class="tag-pill" href="#">ডেটা</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="related-section">
+      <div class="section-title">আরতাউ পাকরিক</div>
+<a class="related-card" href="blogs/post-1.html"><img class="related-img" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=120&auto=format&fit=crop&q=60" alt=""><div class="related-info"><div class="related-tag">ভাষা</div><div class="related-title">বিষ্ণুপ্রিয়া মণিপুরির ইতিহাস বারো বিকাশ</div></div></a>
+<a class="related-card" href="blogs/post-6.html"><img class="related-img" src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=120&auto=format&fit=crop&q=60" alt=""><div class="related-info"><div class="related-tag">সংস্কৃতি</div><div class="related-title">ইমার ঠার, আমার পরিচয়</div></div></a>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">পড়ার অগ্রগতি</div>
+      <div class="progress-bar-wrap"><div id="sidebar-progress-fill"></div></div>
+      <div id="progress-label" class="progress-label">০%</div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">বিষয়বস্তু</div>
+      <div class="toc-list">
+<a class="toc-item active" href="#collection"><span class="toc-num">০১</span> উৎস সংগ্রহ ও গঠন</a>
+<a class="toc-item" href="#expansion"><span class="toc-num">০২</span> বহুভাষিক সম্প্রসারণ ও নিয়ম</a>
+<a class="toc-item" href="#application"><span class="toc-num">০৩</span> যাচাই, প্রয়োগ ও ভবিষ্যৎ</a>
+      </div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">আরো লেখা</div>
+      <div class="recent-list">
+<a class="recent-item" href="blogs/post-1.html"><span class="recent-num">০১</span> <span class="recent-text">বিষ্ণুপ্রিয়া মণিপুরির ইতিহাস বারো বিকাশ</span></a>
+<a class="recent-item" href="blogs/post-6.html"><span class="recent-num">০২</span> <span class="recent-text">ইমার ঠার, আমার পরিচয়</span></a>
+      </div>
+    </div>
+  </div>
 </div>
-<!-- Content -->
-<div id="article-content" class="article-content"><strong>ভূমিকা</strong><br /><br />যেকোনো ভাষার জন্য প্রযুক্তি তৈরি করতে হলে&mdash;তা অনুবাদক হোক, বানান পরীক্ষক হোক বা কণ্ঠস্বর সহায়ক হোক&mdash;সবার আগে দরকার একটি নির্ভরযোগ্য কর্পাস। কর্পাস মানে ভাষার বাস্তব ব্যবহারের বিশাল সংকলন, যা থেকে ভাষার নিয়ম, শব্দভাণ্ডার আর বাক্যগঠনের প্যাটার্ন শেখা যায়। ইমার ঠার (বিষ্ণুপ্রিয়া মণিপুরি)-এর মতো স্বল্প-সম্পদের ভাষার জন্য এমন কর্পাস আগে কখনো তৈরি হয়নি। এই লেখায় সেই কর্পাস তৈরির ধাপগুলো তুলে ধরা হলো।<br /><br />ধাপ ১: উৎস টেক্সট সংগ্রহ<br /><br />কাজ শুরু হয়েছে হাতে-কলমে সংগ্রহ করা মূল টেক্সট দিয়ে। কবিতা, প্রবন্ধ, গল্প ও নাটক মিলিয়ে একটি সমান্তরাল টেক্সট সংকলন প্রস্তুত করা হয়েছে, যেখানে বিষ্ণুপ্রিয়া মণিপুরি ও বাংলা পাশাপাশি রাখা আছে। এই পর্যায়ে মূল চ্যালেঞ্জ ছিল যথেষ্ট পরিমাণ লিখিত উপাদান খুঁজে বের করা, কারণ মৌখিক ঐতিহ্যপ্রধান এই ভাষায় লিখিত সাহিত্যের পরিমাণ তুলনামূলক কম।<br /><br /><strong>ধাপ ২: গঠন ও ডিজিটাইজেশন</strong><br /><br />কাঁচা টেক্সটকে ব্যবহারযোগ্য করতে সেগুলোকে সারিবদ্ধ (aligned) বাক্য-জোড়ায় ভাঙা হয়েছে এবং একটি কাঠামোবদ্ধ সিএসভি (CSV) ফাইলে সাজানো হয়েছে। প্রতিটি এন্ট্রির জন্য একটি নির্দিষ্ট কলাম-ক্রম মেনে চলা হয়&mdash;বিষ্ণুপ্রিয়া মণিপুরি, বাংলা, এবং শ্রেণি (category)। এই ধারাবাহিকতা পরবর্তী যেকোনো প্রক্রিয়াকরণ বা মডেল প্রশিক্ষণকে সহজ করে তোলে। এখন পর্যন্ত প্রায় ১,৩০০টি দ্বিভাষিক এন্ট্রি নিয়ে একটি বাংলা&ndash;বিষ্ণুপ্রিয়া মণিপুরি কর্পাস দাঁড় করানো হয়েছে।<br /><br /><strong>ধাপ ৩: দ্বিভাষিক থেকে বহুভাষিক সম্প্রসারণ</strong><br /><br />দ্বিতীয় ধাপে কর্পাসকে কেবল বাংলা-কেন্দ্রিক না রেখে বহুভাষিক করে তোলা হচ্ছে। ইংরেজি, হিন্দি, চীনা, স্প্যানিশ ও ফরাসি ভাষা যোগ করে একটি বহুভাষিক কর্পাস&nbsp; তৈরি করা হয়েছে, যাতে বিষ্ণুপ্রিয়া মণিপুরি ভাষাটি কেবল বাংলার সঙ্গে নয়, বিশ্বের প্রধান ভাষাগুলোর সঙ্গেও অনুবাদযোগ্য হয়ে ওঠে। এর ফলেই ইমার ঠার ওয়েবসাইটে একাধিক উৎস ও লক্ষ্য ভাষা বেছে নেওয়ার সুবিধা যুক্ত করা সম্ভব হয়েছে।<br /><br /><strong>ধাপ ৪: ভাষাগত নিয়ম ও প্রত্যয় বিশ্লেষণ</strong><br /><br />কর্পাস জমা করার পাশাপাশি চলছে ভাষার অভ্যন্তরীণ নিয়ম বের করার কাজ। বিষ্ণুপ্রিয়া মণিপুরি ক্রিয়াপদের প্রত্যয় (suffix) প্যাটার্ন আলাদা করে চিহ্নিত করা হচ্ছে, যেমন নেতিবাচক রূপে "না" শব্দটি ক্রিয়ার আগে বসে। একইসঙ্গে অনেক ক্রিয়ার অনুবাদ যাচাই করে সংশোধন করা হয়েছে&mdash;উদাহরণস্বরূপ, "আসব"-এর সঠিক প্রতিরূপ "আহিতৌ" বলে নির্দিষ্ট করা হয়েছে। এই নিয়মগুলোই পরবর্তীতে নিয়ম-ভিত্তিক অনুবাদ (Rule-Based Machine Translation বা RBMT) ব্যবস্থার ভিত্তি হয়ে উঠছে।<br /><br /><strong>ধাপ ৫: শ্রেণিবদ্ধকরণ ও যাচাই</strong><br /><br />সংগৃহীত তথ্যকে বিষয়ভিত্তিক শ্রেণিতে ভাগ করে প্রায় সহস্রাধিক এন্ট্রির একাধিক রেফারেন্স সিএসভি তৈরি করা হয়েছে, যা ভাষার বিভিন্ন প্রসঙ্গে (দৈনন্দিন কথোপকথন, সাহিত্য, প্রাতিষ্ঠানিক ব্যবহার) শব্দ ও বাক্যের ব্যবহার যাচাই করতে সাহায্য করে। প্রতিটি এন্ট্রি একাধিকবার পর্যালোচনা করে ভুল সংশোধন করা হচ্ছে, যাতে ভবিষ্যতের এনএলপি মডেল ভুল উপাত্ত থেকে না শেখে।<br /><br /><strong>ধাপ ৬: প্রয়োগ&mdash;অনুবাদ পাইপলাইন ও ওয়েবসাইট</strong><br /><br />এই সমস্ত ধাপের ফলাফল এখন ব্যবহার করা হচ্ছে ইমার ঠার ওয়েবসাইটের অনুবাদক টুলে এবং একটি পূর্ণাঙ্গ RBMT পাইপলাইন গড়ে তোলার কাজে, যেখানে কর্পাস, প্রত্যয় নিয়ম এবং অনুবাদ যুক্তি&mdash;তিনটি অংশ একসঙ্গে কাজ করবে। লক্ষ্য হলো এমন একটি ব্যবস্থা দাঁড় করানো, যা কেবল শব্দ-বদল নয়, বরং ব্যাকরণগতভাবে সঠিক অনুবাদ দিতে পারে।<br /><br /><strong>ভবিষ্যৎ পরিকল্পনা</strong><br /><br />আগামী পর্যায়ে কর্পাসের আকার আরও বাড়ানো, বাকি সম্পূর্ণ উপাদান ডিজিটাইজ করা, এবং প্রত্যয় নিয়মগুলোকে আরও বিস্তৃত ব্যাকরণ কাঠামোয় রূপ দেওয়ার পরিকল্পনা রয়েছে। দীর্ঘমেয়াদে এই কর্পাসই হয়ে উঠবে বিষ্ণুপ্রিয়া মণিপুরি ভাষার জন্য যেকোনো এনএলপি গবেষণার ভিত্তি।<br /><br /><strong>উপসংহার</strong><br /><br />একটি স্বল্প-সম্পদের ভাষার জন্য কর্পাস তৈরি করা কোনো একক কাজ নয়&mdash;এটি সংগ্রহ, গঠন, সম্প্রসারণ, নিয়ম-বিশ্লেষণ ও যাচাইয়ের ধারাবাহিক প্রক্রিয়া। ইমার ঠার প্রকল্পের এই ধাপগুলো দেখায় যে সীমিত সম্পদ নিয়েও কীভাবে ধৈর্য ও পরিকল্পনার মাধ্যমে একটি ভাষার ডিজিটাল ভবিষ্যৎ গড়ে তোলা সম্ভব।</div>
-<!-- Article Footer -->
-<div class="article-footer">
-<div class="tag-row"><a class="tag-pill" href="#">ভাষাবিজ্ঞান</a> <a class="tag-pill" href="#">ইতিহাস</a> <a class="tag-pill" href="#">মণিপুর</a></div>
-<div class="share-row">&nbsp;</div>
-</div>
-</div>
-</article>
-<!-- Related Posts (লিঙ্কগুলো প্লেসহোল্ডার থেকে আপডেটযোগ্য করা হয়েছে) -->
-<div class="related-section">
-<div class="section-title">আরতাউ পাকরিক</div>
-<a class="related-card" href="blogs.html"><br /></a><a class="related-card" href="blogs.html"> <img class="related-img" src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=120&amp;auto=format&amp;fit=crop&amp;q=60" alt="" /></a>
-<div class="related-info">
-<div class="related-tag">সংস্কৃতি</div>
-<div class="related-title">ইমার ঠার, আমার পরিচয়</div>
-</div>
-<a class="related-card" href="tools.html"> <img class="related-img" src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=120&amp;auto=format&amp;fit=crop&amp;q=60" alt="" /></a>
-<div class="related-info">
-<div class="related-tag">টেকনোলজি</div>
-<div class="related-title">বিষ্ণুপ্রিয়ার জন্য NLP মডেল তৈরি করানো</div>
-</div>
-</div>
-</div>
-<!-- Sidebar -->
-<div class="sidebar"><!-- Reading Progress -->
-<div class="sidebar-card">
-<div class="sidebar-title">পড়ার অগ্রগতি</div>
-<div class="progress-bar-wrap">&nbsp;</div>
-<div id="progress-label" class="progress-label">৩০%</div>
-</div>
-<!-- Table of Contents -->
-<div class="sidebar-card">
-<div class="sidebar-title">বিষয়বস্তু</div>
-<div class="toc-list"><a class="toc-item active" href="#origin"> <span class="toc-num">০১</span> উৎপত্তি বারো পরিবার </a> <a class="toc-item" href="#script"> <span class="toc-num">০২</span> লিপি বারো সাহিত্য </a> <a class="toc-item" href="#digital"> <span class="toc-num">০৩</span> ডিজিটাল যুগে চ্যালেঞ্জ </a></div>
-</div>
-<!-- More Posts (লিঙ্কগুলো আপডেট করা হয়েছে) -->
-<div class="sidebar-card">
-<div class="sidebar-title">আরো লেখা</div>
-<a class="recent-item" href="blogs.html"> <span class="recent-num">০১</span> <span class="recent-text">ইমার ঠার কর্পাস হঙকরানির থাক</span> </a> <a class="recent-item" href="tools.html"> <span class="recent-num">০২</span> <span class="recent-text">বিষ্ণুপ্রিয়ার জন্য NLP মডেল</span> </a> <a class="recent-item" href="blogs.html"> <span class="recent-num">০৩</span> <span class="recent-text">পুয়াহানরে ইমার ঠার শিখানোর উপায়</span> </a></div>
-</div>
-</div>
-<!-- Footer --><footer>&copy; ২০২৬ imarthar.com &bull; Developed by কুঙ্গ থাঙ<br /> <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small></footer>
+
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color:#94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script>
+  window.addEventListener('scroll', function () {
+    var winHeight = window.innerHeight;
+    var docHeight = document.body.scrollHeight - winHeight;
+    var pct = docHeight > 0 ? Math.min(100, Math.max(0, (window.scrollY / docHeight) * 100)) : 0;
+    var bar = document.getElementById('reading-progress');
+    if (bar) bar.style.width = pct + '%';
+    var fill = document.getElementById('sidebar-progress-fill');
+    if (fill) fill.style.width = pct + '%';
+    var label = document.getElementById('progress-label');
+    if (label) label.textContent = Math.round(pct) + '%';
+  });
+</script>
+</body>
+</html>
