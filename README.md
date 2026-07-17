@@ -2,13 +2,13 @@
 
 **A Digital Platform for the Bishnupriya Manipuri Language**
 
-Imar Thar (My Mother Tongue) is an open digital platform dedicated to preserving, documenting, and promoting the Bishnupriya Manipuri language through modern technology. The project provides language tools, multilingual translation, digital corpora, and community-driven resources for learners, researchers, translators, and native speakers. :contentReference[oaicite:0]{index=0}
+Imar Thar (My Mother Tongue) is an open digital platform dedicated to preserving, documenting, and promoting the Bishnupriya Manipuri language through modern technology. The project provides language tools, multilingual translation, digital corpora, and community-driven resources for learners, researchers, translators, and native speakers.
 
 ---
 
-## ✨ Features
+## Features
 
-### 🌍 Multilingual Translator
+### Multilingual Translator
 
 Translate between Bishnupriya Manipuri and multiple languages, including:
 
@@ -28,28 +28,24 @@ Features include:
 - Copy translated text
 - Corpus-based translation engine
 
-:contentReference[oaicite:1]{index=1} :contentReference[oaicite:2]{index=2}
-
 ---
 
-## 🛠 Available Tools
+## Available Tools
 
 The platform includes several language technologies:
 
-- 🎙 Speech Corpus Collection
-- 🔄 Transliteration
-- 🌐 Translator
-- 📖 Dictionary
-- 📂 Corpus Download
-- 🔊 Text-to-Speech (TTS)
-- ⌨ Online Keyboard
-- ✔ Spell Checker
-
-:contentReference[oaicite:3]{index=3}
+- Speech Corpus Collection
+- Transliteration
+- Translator
+- Dictionary
+- Corpus Download
+- Text-to-Speech (TTS)
+- Online Keyboard
+- Spell Checker
 
 ---
 
-## 📚 Blog
+## Blog
 
 The website publishes articles related to:
 
@@ -58,11 +54,9 @@ The website publishes articles related to:
 - Culture and heritage
 - Digital language preservation
 
-:contentReference[oaicite:4]{index=4}
-
 ---
 
-## 🚀 Technology Stack
+## Technology Stack
 
 - HTML5
 - CSS3
@@ -72,11 +66,9 @@ The website publishes articles related to:
 - CSV-based Language Corpus
 - Tabler Icons
 
-:contentReference[oaicite:5]{index=5}
-
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 /
@@ -104,7 +96,7 @@ The website publishes articles related to:
 
 ---
 
-## 🔍 Translation Engine
+## Translation Engine
 
 The translator is powered by a multilingual CSV corpus.
 
@@ -117,11 +109,11 @@ It supports:
 - Clipboard copy
 - Dynamic language selection
 
-The translation engine loads the language corpus into memory and performs real-time searches for an efficient user experience. :contentReference[oaicite:6]{index=6}
+The translation engine loads the language corpus into memory and performs real-time searches for an efficient user experience.
 
 ---
 
-## 🎯 Project Goals
+## Project Goals
 
 The mission of Imar Thar is to preserve and modernize the Bishnupriya Manipuri language by providing free, accessible, and open digital resources for the global community.
 
@@ -136,7 +128,7 @@ The project aims to:
 
 ---
 
-## 🔮 Future Roadmap
+## Future Roadmap
 
 Planned features include:
 
@@ -153,7 +145,7 @@ Planned features include:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Community contributions are welcome.
 
@@ -168,20 +160,20 @@ You can contribute by:
 
 ---
 
-## 👨‍💻 Developer
+## Developer
 
-**কুঙ্গ থাঙ**
+**Kungo Thang**
 
 Dedicated to preserving the Bishnupriya Manipuri language through open technology.
 
 ---
 
-## 📄 License
+## License
 
 The project license will be announced in a future release.
 
 ---
 
-## 🌐 Website
+## Website
 
-**https://imarthar.com**
+https://imarthar.com
