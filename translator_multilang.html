@@ -166,6 +166,7 @@
 <nav>
   <a href="index.html" class="logo">imar<span>thar</span>.com</a>
   <div class="nav-links">
+    <a href="speech-corpus.html">স্পিচ কর্পাস</a>
     <a href="tools.html" class="active">টুল</a>
     <a href="blogs.html">ব্লগ</a>
     <a href="papers.html">পেপার</a>
@@ -410,28 +411,16 @@
   }
 
   // ── Dropdown ──
-  let ddHits = [], ddSi = null, ddTi = null;
-
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
-
   function openDD(hits, si, ti) {
-    ddHits = hits; ddSi = si; ddTi = ti;
     const dd = document.getElementById('dropdown');
     const limit = Math.min(hits.length, 12);
     let html = '';
     for (let i = 0; i < limit; i++) {
       const src = hits[i][si] || '';
       const tgt = hits[i][ti] || '—';
-      html += `<div class="dd-item" onclick="pickIndex(${i})">
-        <span class="dd-src">${escapeHtml(src)}</span>
-        <span class="dd-tgt">${escapeHtml(tgt)}</span>
+      html += `<div class="dd-item" onclick="pick(${JSON.stringify(src)},${JSON.stringify(tgt)})">
+        <span class="dd-src">${src}</span>
+        <span class="dd-tgt">${tgt}</span>
       </div>`;
     }
     dd.innerHTML = html;
@@ -442,14 +431,6 @@
     const dd = document.getElementById('dropdown');
     dd.classList.remove('open');
     dd.innerHTML = '';
-    ddHits = []; ddSi = null; ddTi = null;
-  }
-
-  function pickIndex(i) {
-    if (!ddHits[i]) return;
-    const src = ddHits[i][ddSi] || '';
-    const tgt = ddHits[i][ddTi] || '—';
-    pick(src, tgt);
   }
 
   function pick(src, tgt) {

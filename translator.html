@@ -7,101 +7,180 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', sans-serif; background: #f0fdf4; color: #1e293b; min-height: 100vh; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.5;
+    }
 
+    /* ── Nav (same as index) ── */
     nav {
-      background: #fff;
-      border-bottom: 1px solid #d1fae5;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
       padding: 0 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 60px;
+      height: 64px;
       position: sticky;
       top: 0;
       z-index: 100;
     }
-    .logo { font-size: 20px; font-weight: 700; color: #064e3b; text-decoration: none; }
+    .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
     .logo span { color: #10b981; }
-    .nav-links { display: flex; gap: 24px; }
-    .nav-links a { font-size: 14px; color: #6b7280; text-decoration: none; font-weight: 500; }
-    .nav-links a:hover { color: #10b981; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #10b981; }
 
-    .hero {
-      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-      border-bottom: 1px solid #a7f3d0;
-      padding: 2.5rem 2rem 2rem;
+    /* ── Page Hero (smaller than index) ── */
+    .page-hero {
+      position: relative;
+      background: radial-gradient(circle at top right, rgba(209, 250, 229, 0.4), transparent),
+                  radial-gradient(circle at bottom left, rgba(240, 253, 250, 0.4), transparent),
+                  #ffffff;
+      background-image: radial-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 3rem 2rem 2.5rem;
       text-align: center;
+      overflow: hidden;
     }
-    .back-link { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; color: #6b7280; text-decoration: none; margin-bottom: 1rem; }
+    .page-hero::before, .page-hero::after {
+      content: '';
+      position: absolute;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: 0;
+    }
+    .page-hero::before { top: 0; left: 8%; background: #10b981; opacity: 0.12; }
+    .page-hero::after  { bottom: 0; right: 8%; background: #06b6d4; opacity: 0.12; }
+
+    .page-hero-content { position: relative; z-index: 1; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      margin-bottom: 1.2rem;
+      transition: color 0.2s;
+    }
     .back-link:hover { color: #10b981; }
-    .hero h1 { font-size: 28px; font-weight: 800; color: #064e3b; margin-bottom: 0.3rem; }
-    .hero h1 span { color: #10b981; }
-    .hero p { font-size: 14px; color: #6b7280; margin-bottom: 0.8rem; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #d1fae5;
+      color: #065f46;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 99px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
+    }
+
+    .page-hero h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.4rem;
+    }
+    .page-hero h1 span { color: #10b981; }
+    .page-hero p { font-size: 15px; color: #64748b; }
+
     .corpus-badge {
       display: inline-block;
-      background: #fff;
-      border: 1px solid #6ee7b7;
+      margin-top: 0.8rem;
+      padding: 4px 14px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
       border-radius: 99px;
-      padding: 4px 16px;
       font-size: 12px;
-      color: #065f46;
-      font-weight: 600;
+      color: #166534;
+      font-weight: 500;
     }
 
-    .main { max-width: 680px; margin: 2rem auto; padding: 0 1.5rem 4rem; }
+    /* ── Main layout ── */
+    .main {
+      max-width: 720px;
+      margin: 2.5rem auto 4rem;
+      padding: 0 1.5rem;
+    }
 
-    .toggle {
+    /* ── Direction toggle ── */
+    .direction-toggle {
       display: flex;
-      background: #fff;
-      border: 1px solid #d1fae5;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      border: 1px solid #e2e8f0;
       border-radius: 12px;
       overflow: hidden;
-      margin-bottom: 1.25rem;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
-    .toggle-btn {
-      flex: 1;
-      padding: 0.7rem 1rem;
+    .dir-btn {
+      padding: 0.6rem 1.5rem;
+      background: #fff;
       border: none;
-      background: transparent;
-      font-size: 13px;
-      font-weight: 600;
-      color: #6b7280;
+      color: #64748b;
       cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
       font-family: inherit;
       transition: all 0.2s;
     }
-    .toggle-btn.active { background: #10b981; color: #fff; }
-    .toggle-sep { width: 1px; background: #d1fae5; }
+    .dir-btn.active { background: #10b981; color: #fff; font-weight: 600; }
+    .dir-sep { width: 1px; background: #e2e8f0; }
 
+    /* ── Translator card ── */
     .card {
-      background: #fff;
-      border: 1px solid #d1fae5;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 16px;
       overflow: visible;
-      box-shadow: 0 2px 8px rgba(16,185,129,0.06);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
     }
-    .card-input {
-      padding: 1.2rem 1.4rem 0.8rem;
-      border-bottom: 1px solid #f0fdf4;
-      position: relative;
+
+    .card-top {
+      padding: 1.4rem 1.6rem 1rem;
+      border-bottom: 1px solid #e2e8f0;
     }
-    .lang-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #10b981; margin-bottom: 0.6rem; }
-    .dropdown-wrap { position: relative; }
+
+    .lang-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      margin-bottom: 0.7rem;
+    }
+
+    .input-wrap { position: relative; }
+
     #query {
       width: 100%;
+      background: transparent;
       border: none;
       outline: none;
-      font-size: 1.3rem;
-      font-family: inherit;
       color: #0f172a;
-      background: transparent;
-      resize: none;
-      min-height: 72px;
+      font-family: inherit;
+      font-size: 1.4rem;
       line-height: 1.6;
+      resize: none;
+      min-height: 80px;
     }
-    #query::placeholder { color: #d1d5db; }
+    #query::placeholder { color: #cbd5e1; font-size: 1.1rem; }
+
     .clear-btn {
       position: absolute;
       top: 0; right: 0;
@@ -109,266 +188,297 @@
       border: none;
       color: #94a3b8;
       cursor: pointer;
+      font-size: 0.9rem;
       border-radius: 6px;
-      padding: 4px 9px;
-      font-size: 12px;
+      padding: 4px 8px;
       display: none;
+      transition: all 0.15s;
     }
-    .clear-btn.show { display: block; }
-    .clear-btn:hover { background: #e2e8f0; }
+    .clear-btn:hover { background: #e2e8f0; color: #475569; }
+    .clear-btn.visible { display: block; }
 
+    /* ── Dropdown ── */
     .dropdown {
       position: absolute;
-      top: 100%; left: 0; right: 0;
+      top: 100%;
+      left: 0; right: 0;
       background: #fff;
-      border: 1px solid #6ee7b7;
+      border: 1px solid #10b981;
       border-top: none;
       border-radius: 0 0 12px 12px;
-      z-index: 50;
+      z-index: 100;
+      overflow: hidden;
       display: none;
-      box-shadow: 0 8px 20px rgba(16,185,129,0.1);
-      max-height: 220px;
-      overflow-y: auto;
+      box-shadow: 0 8px 16px -4px rgba(16,185,129,0.12);
     }
-    .dropdown.open { display: block; }
-    .dd-item {
-      padding: 0.6rem 1.2rem;
+    .dropdown.visible { display: block; }
+    .dropdown-item {
+      padding: 0.65rem 1.2rem;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 0.95rem;
       color: #1e293b;
-      border-bottom: 1px solid #f0fdf4;
-      transition: background 0.1s;
+      border-bottom: 1px solid #f1f5f9;
+      transition: background 0.15s;
     }
-    .dd-item:last-child { border-bottom: none; }
-    .dd-item:hover { background: #ecfdf5; color: #065f46; }
-    .dd-match { font-weight: 700; color: #10b981; }
+    .dropdown-item:last-child { border-bottom: none; }
+    .dropdown-item:hover { background: #f0fdf4; color: #059669; }
 
-    .divider {
+    /* ── Result area ── */
+    .card-bottom {
+      padding: 1.2rem 1.6rem 1.4rem;
+      min-height: 110px;
+    }
+
+    .result-text {
+      font-size: 1.4rem;
+      color: #10b981;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    .result-text.placeholder {
+      color: #cbd5e1;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    .no-result { color: #94a3b8; font-size: 0.88rem; }
+
+    /* ── Divider between result sections ── */
+    .card-divider {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 0 1.4rem;
+      gap: 10px;
+      padding: 0 1.6rem;
+      color: #94a3b8;
       font-size: 11px;
-      color: #a7f3d0;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
     }
-    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #d1fae5; }
-
-    .card-result {
-      padding: 1.2rem 1.4rem 1.4rem;
-      min-height: 100px;
-      background: #f9fffe;
-      border-radius: 0 0 16px 16px;
+    .card-divider::before, .card-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
     }
-    .result-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; margin-bottom: 0.6rem; }
-    #result { font-size: 1.3rem; font-weight: 500; color: #065f46; line-height: 1.6; }
-    #result.placeholder { color: #d1d5db; font-size: 1rem; font-weight: 400; }
-    #result.error { color: #f87171; font-size: 0.9rem; font-weight: 400; }
 
-    .tip {
-      margin-top: 1.2rem;
-      padding: 0.9rem 1.1rem;
-      background: #fff;
-      border: 1px solid #d1fae5;
-      border-radius: 10px;
+    /* ── Tip box ── */
+    .tip-box {
+      margin-top: 1.5rem;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
       font-size: 13px;
-      color: #6b7280;
+      color: #166534;
       display: flex;
-      gap: 8px;
       align-items: flex-start;
+      gap: 10px;
     }
-    .tip i { color: #10b981; font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+    .tip-box i { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
 
+    /* ── Footer (same as index) ── */
     footer {
-      border-top: 1px solid #d1fae5;
-      padding: 2rem;
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 2.5rem 2rem;
       text-align: center;
       font-size: 13px;
-      color: #9ca3af;
-      background: #fff;
+      color: #64748b;
+      line-height: 1.8;
     }
     footer span { color: #10b981; font-weight: 600; }
 
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 22px; }
-      #query, #result { font-size: 1.1rem; }
-      nav { padding: 0 1rem; }
-      .nav-links { gap: 16px; }
+    @media (max-width: 640px) {
+      .page-hero { padding: 2.5rem 1.25rem 2rem; }
+      .page-hero h1 { font-size: 26px; }
+      .main { padding: 0 1rem; margin-top: 1.8rem; }
+      #query { font-size: 1.2rem; }
+      .result-text { font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
 
+<!-- Nav -->
 <nav>
   <a href="index.html" class="logo">imar<span>thar</span>.com</a>
   <div class="nav-links">
-    <a href="tools.html">টুল</a>
+    <a href="speech-corpus.html">স্পিচ কর্পাস</a>
+    <a href="tools.html" class="active">টুল</a>
     <a href="blogs.html">ব্লগ</a>
     <a href="papers.html">পেপার</a>
     <a href="discussion.html">আলোচনা</a>
   </div>
 </nav>
 
-<div class="hero">
-  <a href="index.html" class="back-link"><i class="ti ti-arrow-left"></i> মূলপাতায় ফিরুন</a>
-  <h1>বিষ্ণুপ্রিয়া ↔ <span>বাংলা</span></h1>
-  <p>Corpus-based Translation · কর্পাস-ভিত্তিক অনুবাদ</p>
- </div>
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <a href="index.html" class="back-link">
+      <i class="ti ti-arrow-left"></i> মূলপাতায় ফিরুন
+    </a>
+    <div class="hero-badge"><i class="ti ti-language"></i> অনুবাদক</div>
+    <h1>বিষ্ণুপ্রিয়া ↔ <span>বাংলা</span></h1>
+    <p>corpus-ভিত্তিক অনুবাদ · Corpus-based Translation</p>
+    <div class="corpus-badge" id="corpus-count">corpus লোড হচ্ছে…</div>
+  </div>
+</div>
 
+<!-- Main -->
 <div class="main">
 
-  <div class="toggle">
-    <button class="toggle-btn active" id="btn-bm" onclick="setDir('bm2bn')">বিষ্ণুপ্রিয়া → বাংলা</button>
-    <div class="toggle-sep"></div>
-    <button class="toggle-btn" id="btn-bn" onclick="setDir('bn2bm')">বাংলা → বিষ্ণুপ্রিয়া</button>
+  <!-- Direction toggle -->
+  <div class="direction-toggle">
+    <button class="dir-btn active" id="btn-bm2bn" onclick="setDirection('bm2bn')">বিষ্ণুপ্রিয়া → বাংলা</button>
+    <div class="dir-sep"></div>
+    <button class="dir-btn" id="btn-bn2bm" onclick="setDirection('bn2bm')">বাংলা → বিষ্ণুপ্রিয়া</button>
   </div>
 
+  <!-- Translator card -->
   <div class="card">
-    <div class="card-input">
-      <div class="lang-label" id="src-label">বিষ্ণুপ্রিয়া মণিপুরি</div>
-      <div class="dropdown-wrap">
-        <textarea id="query" rows="3" placeholder="এখানে লিখুন…" oninput="onType(this)"></textarea>
-        <button class="clear-btn" id="clear-btn" onclick="doClear()">✕</button>
+    <!-- Input -->
+    <div class="card-top">
+      <div class="lang-label" id="src-label">বিষ্ণুপ্রিয়া মণিপুরি লিখুন</div>
+      <div class="input-wrap">
+        <textarea id="query" rows="3" placeholder="এখানে লিখুন…" oninput="onInput(this)"></textarea>
+        <button class="clear-btn" id="clear-btn" onclick="clearInput()" title="মুছুন">✕</button>
         <div class="dropdown" id="dropdown"></div>
       </div>
     </div>
 
-    <div class="divider">অনুবাদ</div>
+    <!-- Divider -->
+    <div class="card-divider">অনুবাদ</div>
 
-    <div class="card-result">
-      <div class="result-label" id="tgt-label">বাংলা</div>
-      <div id="result" class="placeholder">অনুবাদ এখানে দেখাবে</div>
+    <!-- Result -->
+    <div class="card-bottom">
+      <div class="lang-label" id="tgt-label">বাংলা অনুবাদ</div>
+      <div id="result-area">
+        <div class="result-text placeholder">অনুবাদ এখানে দেখাবে</div>
+      </div>
     </div>
   </div>
 
-  <div class="tip">
-    <i class="ti ti-bulb"></i>
-    <span>শব্দ বা বাক্য লিখুন — নিচে সাজেশন আসবে। সঠিকটি বেছে নিন।</span>
+  <!-- Tip -->
+  <div class="tip-box">
+    <i class="ti ti-info-circle"></i>
+    <span>শব্দ টাইপ করলে নিচে সাজেশন আসবে। সঠিক শব্দটি সিলেক্ট করুন, অনুবাদ দেখাবে।</span>
+  </div>
+
+  <div style="text-align:center; margin-top: 1.2rem;">
+    <a href="translator_multilang.html" style="font-size:13px; color:#10b981; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+      <i class="ti ti-world"></i> English, हिन्दी, Español সহ অন্য ভাষায় অনুবাদ করতে চান? বহুভাষিক অনুবাদক ব্যবহার করুন →
+    </a>
   </div>
 
 </div>
 
+<!-- Footer -->
 <footer>
-  © ২০২৬ <span>imarthar.com</span> · Developed by কুঙ্গ থাঙ<br>
-  <small>A race to preserve my mother tongue in the digital age.</small>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
 </footer>
 
 <script>
   let corpus = [];
-  let dir = 'bm2bn';
+  let direction = 'bm2bn';
 
-  fetch('bm_bengali_corpus.csv')
-    .then(function(r) {
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      return r.text();
-    })
-    .then(function(text) {
-      var lines = text.trim().split(/\r?\n/);
-      for (var i = 1; i < lines.length; i++) {
-        var line = lines[i].trim();
-        if (!line) continue;
-        var ci = line.indexOf(',');
-        if (ci < 1) continue;
-        var bm = line.substring(0, ci).trim();
-        var bn = line.substring(ci + 1).trim();
-        if (bm && bn) corpus.push({ bm: bm, bn: bn });
-      }
-      document.getElementById('corpus-count').textContent = corpus.length + 'টি শব্দ ও বাক্য';
-    })
-    .catch(function(err) {
-      document.getElementById('corpus-count').textContent = 'লোড ব্যর্থ';
-      console.error('CSV error:', err);
-    });
-
-  function setDir(d) {
-    dir = d;
-    document.getElementById('btn-bm').classList.toggle('active', d === 'bm2bn');
-    document.getElementById('btn-bn').classList.toggle('active', d === 'bn2bm');
-    document.getElementById('src-label').textContent = d === 'bm2bn' ? 'বিষ্ণুপ্রিয়া মণিপুরি' : 'বাংলা';
-    document.getElementById('tgt-label').textContent = d === 'bm2bn' ? 'বাংলা' : 'বিষ্ণুপ্রিয়া মণিপুরি';
-    doClear();
+  async function loadCorpus() {
+    try {
+      const res = await fetch('bm_bengali_corpus.csv');
+      const text = await res.text();
+      const lines = text.trim().split('\n').slice(1);
+      corpus = lines.map(line => {
+        const parts = line.split(',');
+        if (parts.length < 2) return null;
+        return { bm: parts[0].trim(), bn: parts.slice(1).join(',').trim() };
+      }).filter(Boolean);
+      document.getElementById('corpus-count').textContent = `${corpus.length}টি শব্দ ও বাক্য`;
+    } catch (e) {
+      document.getElementById('corpus-count').textContent = 'corpus লোড ব্যর্থ';
+    }
   }
 
-  function onType(el) {
-    var q = el.value.trim();
-    document.getElementById('clear-btn').classList.toggle('show', q.length > 0);
-    if (!q) { resetResult(); closeDD(); return; }
+  function setDirection(dir) {
+    direction = dir;
+    document.getElementById('btn-bm2bn').classList.toggle('active', dir === 'bm2bn');
+    document.getElementById('btn-bn2bm').classList.toggle('active', dir === 'bn2bm');
+    document.getElementById('src-label').textContent =
+      dir === 'bm2bn' ? 'বিষ্ণুপ্রিয়া মণিপুরি লিখুন' : 'বাংলা লিখুন';
+    document.getElementById('tgt-label').textContent =
+      dir === 'bm2bn' ? 'বাংলা অনুবাদ' : 'বিষ্ণুপ্রিয়া মণিপুরি অনুবাদ';
+    clearInput();
+  }
 
-    var sk = dir === 'bm2bn' ? 'bm' : 'bn';
-    var tk = dir === 'bm2bn' ? 'bn' : 'bm';
-    var ql = q.toLowerCase();
+  function onInput(el) {
+    const q = el.value.trim().toLowerCase();
+    document.getElementById('clear-btn').classList.toggle('visible', q.length > 0);
 
-    var hits = corpus.filter(function(r) { return r[sk].toLowerCase().indexOf(ql) !== -1; });
+    if (!q) { showPlaceholder(); hideDropdown(); return; }
 
-    if (!hits.length) {
-      setResult('কোনো ফলাফল পাওয়া যায়নি', 'error');
-      closeDD();
+    const srcKey = direction === 'bm2bn' ? 'bm' : 'bn';
+    const tgtKey = direction === 'bm2bn' ? 'bn' : 'bm';
+
+    const matches = corpus.filter(row => row[srcKey].toLowerCase().includes(q));
+
+    if (matches.length === 0) {
+      document.getElementById('result-area').innerHTML =
+        '<div class="no-result">কোনো ফলাফল পাওয়া যায়নি</div>';
+      hideDropdown();
       return;
     }
 
-    var exact = null;
-    for (var i = 0; i < hits.length; i++) {
-      if (hits[i][sk].toLowerCase() === ql) { exact = hits[i]; break; }
-    }
+    const exact = matches.find(r => r[srcKey].toLowerCase() === q);
+    if (exact) showResult(exact[tgtKey]);
+    else showPlaceholder();
 
-    if (exact) setResult(exact[tk], '');
-    else resetResult();
-
-    if (!exact || hits.length > 1) openDD(hits, sk, tk, ql);
-    else closeDD();
+    if (matches.length > 1 || !exact) showDropdown(matches, srcKey, tgtKey);
+    else hideDropdown();
   }
 
-  function setResult(text, cls) {
-    var el = document.getElementById('result');
-    el.textContent = text;
-    el.className = cls;
+  function showResult(text) {
+    document.getElementById('result-area').innerHTML =
+      `<div class="result-text">${text}</div>`;
   }
 
-  function resetResult() {
-    setResult('অনুবাদ এখানে দেখাবে', 'placeholder');
+  function showDropdown(matches, srcKey, tgtKey) {
+    const dd = document.getElementById('dropdown');
+    dd.innerHTML = matches.slice(0, 10).map(r => `
+      <div class="dropdown-item"
+        onclick="selectSuggestion('${r[srcKey].replace(/'/g,"\\'")}','${r[tgtKey].replace(/'/g,"\\'")}')">
+        ${r[srcKey]}
+      </div>`).join('');
+    dd.classList.add('visible');
   }
 
-  function openDD(hits, sk, tk, ql) {
-    var dd = document.getElementById('dropdown');
-    var html = '';
-    var limit = Math.min(hits.length, 12);
-    for (var i = 0; i < limit; i++) {
-      var word = hits[i][sk];
-      var tgt = hits[i][tk];
-      html += '<div class="dd-item" onclick="pick(\'' + esc(word) + '\',\'' + esc(tgt) + '\')">' + word + '</div>';
-    }
-    dd.innerHTML = html;
-    dd.classList.add('open');
-  }
-
-  function closeDD() {
-    var dd = document.getElementById('dropdown');
-    dd.classList.remove('open');
+  function hideDropdown() {
+    const dd = document.getElementById('dropdown');
+    dd.classList.remove('visible');
     dd.innerHTML = '';
   }
 
-  function pick(src, tgt) {
+  function selectSuggestion(src, tgt) {
     document.getElementById('query').value = src;
-    document.getElementById('clear-btn').classList.add('show');
-    setResult(tgt, '');
-    closeDD();
+    document.getElementById('clear-btn').classList.add('visible');
+    showResult(tgt);
+    hideDropdown();
   }
 
-  function doClear() {
+  function showPlaceholder() {
+    document.getElementById('result-area').innerHTML =
+      '<div class="result-text placeholder">অনুবাদ এখানে দেখাবে</div>';
+  }
+
+  function clearInput() {
     document.getElementById('query').value = '';
-    document.getElementById('clear-btn').classList.remove('show');
-    resetResult();
-    closeDD();
+    document.getElementById('clear-btn').classList.remove('visible');
+    showPlaceholder();
+    hideDropdown();
   }
 
-  function esc(s) {
-    return s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-  }
-
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.dropdown-wrap')) closeDD();
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.input-wrap')) hideDropdown();
   });
+
+  loadCorpus();
 </script>
 </body>
 </html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ট্রান্সলিটারেশন — ইমার ঠার</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226,232,240,0.8);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: #10b981; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+    /* ── Hero ── */
+    .page-hero {
+      position: relative;
+      background: radial-gradient(circle at top right, rgba(209,250,229,0.4), transparent),
+                  radial-gradient(circle at bottom left, rgba(240,253,250,0.4), transparent),
+                  #ffffff;
+      background-image: radial-gradient(rgba(16,185,129,0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero::before, .page-hero::after {
+      content: '';
+      position: absolute;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: 0;
+    }
+    .page-hero::before { top: 0; left: 8%; background: #10b981; opacity: 0.12; }
+    .page-hero::after  { bottom: 0; right: 8%; background: #06b6d4; opacity: 0.12; }
+    .page-hero-content { position: relative; z-index: 1; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: #64748b; text-decoration: none;
+      margin-bottom: 1.2rem; transition: color 0.2s;
+    }
+    .back-link:hover { color: #10b981; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #d1fae5; color: #065f46; font-size: 12px; font-weight: 600;
+      padding: 6px 16px; border-radius: 99px; margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(16,185,129,0.12);
+    }
+
+    .page-hero h1 { font-size: 32px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
+    .page-hero h1 span { color: #10b981; }
+    .page-hero p { font-size: 15px; color: #64748b; }
+
+    /* ── Main ── */
+    .main { max-width: 720px; margin: 2.5rem auto 4rem; padding: 0 1.5rem; }
+
+    /* ── Direction toggle ── */
+    .direction-toggle {
+      display: flex; justify-content: center; margin-bottom: 1.25rem;
+      border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;
+      width: fit-content; margin-left: auto; margin-right: auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .dir-btn {
+      padding: 0.6rem 1.4rem; background: #fff; border: none;
+      color: #64748b; cursor: pointer; font-size: 13px; font-weight: 500;
+      font-family: inherit; transition: all 0.2s;
+    }
+    .dir-btn.active { background: #10b981; color: #fff; font-weight: 600; }
+    .dir-sep { width: 1px; background: #e2e8f0; }
+
+    .card {
+      background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;
+      overflow: visible; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+    }
+    .card-top { padding: 1.4rem 1.6rem 1rem; border-bottom: 1px solid #e2e8f0; }
+    .lang-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #94a3b8; margin-bottom: 0.7rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .input-wrap { position: relative; }
+    #query {
+      width: 100%; background: transparent; border: none; outline: none;
+      color: #0f172a; font-family: inherit; font-size: 1.35rem; line-height: 1.6;
+      resize: none; min-height: 90px;
+    }
+    #query::placeholder { color: #cbd5e1; font-size: 1.05rem; }
+
+    .clear-btn {
+      background: #f1f5f9; border: none; color: #94a3b8;
+      cursor: pointer; font-size: 0.85rem; border-radius: 6px;
+      padding: 3px 8px; display: none; transition: all 0.15s;
+    }
+    .clear-btn.visible { display: inline-block; }
+    .clear-btn:hover { background: #e2e8f0; color: #475569; }
+
+    .card-divider {
+      display: flex; align-items: center; gap: 10px; padding: 0 1.6rem;
+      color: #94a3b8; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .card-divider::before, .card-divider::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
+
+    .card-bottom { padding: 1.2rem 1.6rem 1.4rem; min-height: 100px; }
+    .result-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    #result-text {
+      font-size: 1.3rem; color: #10b981; line-height: 1.6; font-weight: 500;
+      font-family: 'Segoe UI', sans-serif; word-break: break-word;
+    }
+    #result-text.placeholder { color: #cbd5e1; font-size: 1rem; font-weight: 400; }
+
+    .copy-btn {
+      flex-shrink: 0; background: #f0fdf4; border: 1px solid #bbf7d0; color: #059669;
+      cursor: pointer; font-size: 12px; font-weight: 600; border-radius: 8px;
+      padding: 6px 12px; display: flex; align-items: center; gap: 5px;
+      transition: all 0.15s; font-family: inherit;
+    }
+    .copy-btn:hover { background: #dcfce7; }
+    .copy-btn.copied { background: #10b981; color: #fff; border-color: #10b981; }
+
+    .tip-box {
+      margin-top: 1.5rem; background: #f0fdf4; border: 1px solid #bbf7d0;
+      border-radius: 12px; padding: 1rem 1.2rem; font-size: 13px; color: #166534;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .tip-box i { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+
+    /* ── Reference table ── */
+    .ref-section { margin-top: 2.5rem; }
+    .ref-title {
+      font-size: 13px; font-weight: 700; color: #64748b; text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;
+      cursor: pointer; user-select: none;
+    }
+    .ref-title::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
+    .ref-title i.chev { transition: transform 0.2s; margin-right: 4px; }
+    .ref-title.open i.chev { transform: rotate(90deg); }
+    .ref-body { display: none; }
+    .ref-body.open { display: block; }
+
+    .ref-group { margin-bottom: 1.4rem; }
+    .ref-group-name { font-size: 12px; font-weight: 700; color: #10b981; margin-bottom: 8px; }
+    .ref-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+      gap: 8px;
+    }
+    .ref-chip {
+      background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px;
+      padding: 8px 6px; text-align: center;
+    }
+    .ref-chip .bn { font-size: 16px; color: #0f172a; font-weight: 600; }
+    .ref-chip .rm { font-size: 11px; color: #64748b; margin-top: 2px; }
+
+    /* ── Footer ── */
+    footer {
+      background: #ffffff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem;
+      text-align: center; font-size: 13px; color: #64748b; line-height: 1.8;
+    }
+    footer span { color: #10b981; font-weight: 600; }
+
+    @media (max-width: 640px) {
+      .page-hero { padding: 2.5rem 1.25rem 2rem; }
+      .page-hero h1 { font-size: 26px; }
+      .main { padding: 0 1rem; margin-top: 1.8rem; }
+      #query { font-size: 1.15rem; }
+      #result-text { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="speech-corpus.html">স্পিচ কর্পাস</a>
+    <a href="tools.html" class="active">টুল</a>
+    <a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <a href="tools.html" class="back-link">
+      <i class="ti ti-arrow-left"></i> টুলসমূহে ফিরুন
+    </a>
+    <div class="hero-badge"><i class="ti ti-replace"></i> ট্রান্সলিটারেশন</div>
+    <h1>লিপি ↔ <span>রোমান</span></h1>
+    <p>বিষ্ণুপ্রিয়া মণিপুরি লিপি ও রোমান ফোনেটিক — দুই দিকেই কনভার্ট করুন</p>
+  </div>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- Direction toggle -->
+  <div class="direction-toggle">
+    <button class="dir-btn active" id="btn-bm2rm" onclick="setDirection('bm2rm')">বিষ্ণুপ্রিয়া → রোমান</button>
+    <div class="dir-sep"></div>
+    <button class="dir-btn" id="btn-rm2bm" onclick="setDirection('rm2bm')">রোমান → বিষ্ণুপ্রিয়া</button>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="lang-label">
+        <span id="src-label">বিষ্ণুপ্রিয়া মণিপুরি লিখুন</span>
+        <button class="clear-btn" id="clear-btn" onclick="clearInput()">✕ মুছুন</button>
+      </div>
+      <div class="input-wrap">
+        <textarea id="query" rows="3" placeholder="যেমন: ইমার ঠার…" oninput="onInput(this)"></textarea>
+      </div>
+    </div>
+
+    <div class="card-divider">কনভার্সন</div>
+
+    <div class="card-bottom">
+      <div class="lang-label" id="tgt-label">রোমান ফোনেটিক আউটপুট</div>
+      <div class="result-row">
+        <div id="result-text" class="placeholder">রোমান রূপ এখানে দেখাবে</div>
+        <button class="copy-btn" id="copy-btn" onclick="copyResult()">
+          <i class="ti ti-copy"></i> কপি
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <i class="ti ti-info-circle"></i>
+    <span id="tip-text">এইটা একটা সহজ রুল-বেসড (letter-by-letter) কনভার্টার — প্রতিটা বাংলা/বিষ্ণুপ্রিয়া অক্ষরের একটা নির্দিষ্ট রোমান রূপ আছে। উচ্চারণ প্রেক্ষাপট অনুযায়ী কিছুটা তফাত হতে পারে।</span>
+  </div>
+
+  <!-- Reference table -->
+  <div class="ref-section">
+    <div class="ref-title" id="ref-toggle" onclick="toggleRef()">
+      <i class="ti ti-chevron-right chev"></i> বর্ণ-রোমান ম্যাপিং টেবিল দেখুন
+    </div>
+    <div class="ref-body" id="ref-body">
+
+      <div class="ref-group">
+        <div class="ref-group-name">স্বরবর্ণ (Vowels)</div>
+        <div class="ref-grid" id="ref-vowels"></div>
+      </div>
+
+      <div class="ref-group">
+        <div class="ref-group-name">ব্যঞ্জনবর্ণ (Consonants)</div>
+        <div class="ref-grid" id="ref-consonants"></div>
+      </div>
+
+      <div class="ref-group">
+        <div class="ref-group-name">কার / আকার চিহ্ন (Vowel Signs)</div>
+        <div class="ref-grid" id="ref-matras"></div>
+      </div>
+
+      <div class="ref-group">
+        <div class="ref-group-name">অন্যান্য (Others)</div>
+        <div class="ref-grid" id="ref-others"></div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script>
+  // ── Character maps ──
+  const vowels = {
+    'অ':'a', 'আ':'aa', 'ই':'i', 'ঈ':'ii', 'উ':'u', 'ঊ':'uu',
+    'ঋ':'ri', 'এ':'e', 'ঐ':'oi', 'ও':'o', 'ঔ':'ou'
+  };
+
+  const consonants = {
+    'ক':'k', 'খ':'kh', 'গ':'g', 'ঘ':'gh', 'ঙ':'ng',
+    'চ':'ch', 'ছ':'chh', 'জ':'j', 'ঝ':'jh', 'ঞ':'ny',
+    'ট':'t', 'ঠ':'th', 'ড':'d', 'ঢ':'dh', 'ণ':'n',
+    'ত':'t', 'থ':'th', 'দ':'d', 'ধ':'dh', 'ন':'n',
+    'প':'p', 'ফ':'ph', 'ব':'b', 'ভ':'bh', 'ম':'m',
+    'য':'j', 'র':'r', 'ল':'l', 'শ':'sh', 'ষ':'sh',
+    'স':'s', 'হ':'h', 'ড়':'r', 'ঢ়':'rh', 'য়':'y'
+  };
+
+  const matras = {
+    'া':'aa', 'ি':'i', 'ী':'ii', 'ু':'u', 'ূ':'uu',
+    'ৃ':'ri', 'ে':'e', 'ৈ':'oi', 'ো':'o', 'ৌ':'ou'
+  };
+
+  const others = {
+    'ং':'ng', 'ঃ':'h', 'ঁ':'~n', '্':'', '়':'',
+    '০':'0','১':'1','২':'2','৩':'3','৪':'4',
+    '৫':'5','৬':'6','৭':'7','৮':'8','৯':'9',
+    '।':'.', '॥':'..'
+  };
+
+  let direction = 'bm2rm';
+
+  // ── Reverse maps (Roman → Bishnupriya script) ──
+  // Independent vowels (used at start of a syllable, not after a consonant)
+  const vowelIndep = {
+    'aa':'আ', 'ii':'ঈ', 'uu':'ঊ', 'oi':'ঐ', 'ou':'ঔ', 'ri':'ঋ',
+    'a':'অ', 'i':'ই', 'u':'উ', 'e':'এ', 'o':'ও'
+  };
+  // Matras (used right after a consonant, replacing inherent 'a')
+  const matraRev = {
+    'aa':'া', 'ii':'ী', 'uu':'ূ', 'oi':'ৈ', 'ou':'ৌ', 'ri':'ৃ',
+    'i':'ি', 'u':'ু', 'e':'ে', 'o':'ো'
+  };
+  // Consonants — Roman token (longest-first matching) → canonical Bishnupriya/Bengali letter
+  const consonantRev = {
+    'chh':'ছ', 'kh':'খ', 'gh':'ঘ', 'ng':'ঙ', 'ny':'ঞ',
+    'th':'থ', 'dh':'ধ', 'sh':'শ', 'ph':'ফ', 'bh':'ভ', 'rh':'ঢ়',
+    'ch':'চ',
+    'k':'ক', 'g':'গ', 'j':'জ', 't':'ত', 'd':'দ', 'n':'ন',
+    'p':'প', 'b':'ব', 'm':'ম', 'r':'র', 'l':'ল', 's':'স', 'h':'হ', 'y':'য়'
+  };
+  const consonantTokens = Object.keys(consonantRev).sort((a,b) => b.length - a.length);
+  const vowelTokens = ['aa','ii','uu','oi','ou','ri','a','i','u','e','o'].sort((a,b) => b.length - a.length);
+
+  function isAsciiLetter(ch) { return ch && /[a-z]/i.test(ch); }
+
+  function reverseTransliterate(text) {
+    const lower = text.toLowerCase();
+    let out = '';
+    let pos = 0;
+    const n = lower.length;
+
+    while (pos < n) {
+      // Chandrabindu marker
+      if (lower.startsWith('~n', pos)) { out += 'ঁ'; pos += 2; continue; }
+
+      // Try consonant tokens (longest first)
+      let consMatch = null;
+      for (const tok of consonantTokens) {
+        if (lower.startsWith(tok, pos)) { consMatch = tok; break; }
+      }
+
+      if (consMatch) {
+        const consBn = consonantRev[consMatch];
+        let after = pos + consMatch.length;
+
+        // Look for a following vowel token
+        let vowMatch = null;
+        for (const vtok of vowelTokens) {
+          if (lower.startsWith(vtok, after)) { vowMatch = vtok; break; }
+        }
+
+        if (vowMatch === 'a') {
+          out += consBn;               // inherent vowel — bare consonant
+          pos = after + 1;
+        } else if (vowMatch) {
+          out += consBn + matraRev[vowMatch];
+          pos = after + vowMatch.length;
+        } else if (isAsciiLetter(lower[after])) {
+          out += consBn + '্';         // conjunct — no vowel, followed by another consonant
+          pos = after;
+        } else {
+          out += consBn;               // word-final consonant, no vowel written
+          pos = after;
+        }
+        continue;
+      }
+
+      // Try independent vowel (syllable-initial, not after a consonant)
+      let vowMatch = null;
+      for (const vtok of vowelTokens) {
+        if (lower.startsWith(vtok, pos)) { vowMatch = vtok; break; }
+      }
+      if (vowMatch) { out += vowelIndep[vowMatch]; pos += vowMatch.length; continue; }
+
+      // Digits
+      const digitMap = {'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'};
+      if (digitMap[lower[pos]]) { out += digitMap[lower[pos]]; pos++; continue; }
+
+      // Punctuation / space / anything else — pass through
+      out += text[pos] === '.' ? '।' : text[pos];
+      pos++;
+    }
+    return out;
+  }
+
+  function setDirection(dir) {
+    direction = dir;
+    document.getElementById('btn-bm2rm').classList.toggle('active', dir === 'bm2rm');
+    document.getElementById('btn-rm2bm').classList.toggle('active', dir === 'rm2bm');
+    const query = document.getElementById('query');
+    if (dir === 'bm2rm') {
+      document.getElementById('src-label').textContent = 'বিষ্ণুপ্রিয়া মণিপুরি লিখুন';
+      document.getElementById('tgt-label').textContent = 'রোমান ফোনেটিক আউটপুট';
+      query.placeholder = 'যেমন: ইমার ঠার…';
+      document.getElementById('tip-text').textContent = 'এইটা একটা সহজ রুল-বেসড (letter-by-letter) কনভার্টার — প্রতিটা বাংলা/বিষ্ণুপ্রিয়া অক্ষরের একটা নির্দিষ্ট রোমান রূপ আছে। উচ্চারণ প্রেক্ষাপট অনুযায়ী কিছুটা তফাত হতে পারে।';
+    } else {
+      document.getElementById('src-label').textContent = 'রোমান ফোনেটিক লিখুন';
+      document.getElementById('tgt-label').textContent = 'বিষ্ণুপ্রিয়া মণিপুরি আউটপুট';
+      query.placeholder = 'যেমন: imar thar…';
+      document.getElementById('tip-text').textContent = 'রোমান→বিষ্ণুপ্রিয়া দিকে কিছু ধ্বনি একাধিক অক্ষরে ব্যবহৃত হয় (যেমন t = ত/ট উভয়ই) — তাই এই কনভার্শন আনুমানিক, সবসময় নিখুঁত বানান নাও দিতে পারে।';
+    }
+    clearInput();
+  }
+
+  function transliterate(text) {
+    const chars = Array.from(text);
+    let out = '';
+    for (let i = 0; i < chars.length; i++) {
+      const c = chars[i];
+      const next = chars[i+1];
+
+      if (consonants[c]) {
+        if (next === '্') {
+          // hasant / virama — no inherent vowel, conjunct continues
+          out += consonants[c];
+          i++;
+        } else if (next && matras[next]) {
+          out += consonants[c] + matras[next];
+          i++;
+        } else {
+          out += consonants[c] + 'a';
+        }
+      } else if (vowels[c]) {
+        out += vowels[c];
+      } else if (others[c] !== undefined) {
+        out += others[c];
+      } else {
+        out += c; // spaces, punctuation, latin chars, etc.
+      }
+    }
+    return out;
+  }
+
+  function capitalizeSentences(str) {
+    return str.replace(/(^\s*\w|[.!?]\s*\w)/g, m => m.toUpperCase());
+  }
+
+  function onInput(el) {
+    const val = el.value;
+    document.getElementById('clear-btn').classList.toggle('visible', val.trim().length > 0);
+    const resultEl = document.getElementById('result-text');
+    const placeholderMsg = direction === 'bm2rm' ? 'রোমান রূপ এখানে দেখাবে' : 'বিষ্ণুপ্রিয়া রূপ এখানে দেখাবে';
+    if (!val.trim()) {
+      resultEl.textContent = placeholderMsg;
+      resultEl.classList.add('placeholder');
+      return;
+    }
+    const converted = direction === 'bm2rm'
+      ? capitalizeSentences(transliterate(val))
+      : reverseTransliterate(val);
+    resultEl.textContent = converted;
+    resultEl.classList.remove('placeholder');
+  }
+
+  function clearInput() {
+    document.getElementById('query').value = '';
+    document.getElementById('clear-btn').classList.remove('visible');
+    const resultEl = document.getElementById('result-text');
+    resultEl.textContent = direction === 'bm2rm' ? 'রোমান রূপ এখানে দেখাবে' : 'বিষ্ণুপ্রিয়া রূপ এখানে দেখাবে';
+    resultEl.classList.add('placeholder');
+    document.getElementById('query').focus();
+  }
+
+  function copyResult() {
+    const text = document.getElementById('result-text').textContent;
+    if (!text || document.getElementById('result-text').classList.contains('placeholder')) return;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.classList.add('copied');
+      btn.innerHTML = '<i class="ti ti-check"></i> কপি হয়েছে';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = '<i class="ti ti-copy"></i> কপি';
+      }, 1600);
+    });
+  }
+
+  function toggleRef() {
+    document.getElementById('ref-toggle').classList.toggle('open');
+    document.getElementById('ref-body').classList.toggle('open');
+  }
+
+  function buildRefTable() {
+    const vBox = document.getElementById('ref-vowels');
+    Object.entries(vowels).forEach(([bn, rm]) => {
+      vBox.innerHTML += `<div class="ref-chip"><div class="bn">${bn}</div><div class="rm">${rm}</div></div>`;
+    });
+    const cBox = document.getElementById('ref-consonants');
+    Object.entries(consonants).forEach(([bn, rm]) => {
+      cBox.innerHTML += `<div class="ref-chip"><div class="bn">${bn}</div><div class="rm">${rm}</div></div>`;
+    });
+    const mBox = document.getElementById('ref-matras');
+    Object.entries(matras).forEach(([bn, rm]) => {
+      mBox.innerHTML += `<div class="ref-chip"><div class="bn">◌${bn}</div><div class="rm">${rm}</div></div>`;
+    });
+    const oBox = document.getElementById('ref-others');
+    const otherLabels = { 'ং':'ং','ঃ':'ঃ','ঁ':'ঁ','্':'হসন্ত','০':'০','১':'১','২':'২','৩':'৩','৪':'৪','৫':'৫','৬':'৬','৭':'৭','৮':'৮','৯':'৯','।':'।' };
+    Object.entries(otherLabels).forEach(([bn, label]) => {
+      const rm = others[bn] === '' ? '—' : others[bn];
+      oBox.innerHTML += `<div class="ref-chip"><div class="bn">${label}</div><div class="rm">${rm}</div></div>`;
+    });
+  }
+
+  buildRefTable();
+</script>
+</body>
+</html>

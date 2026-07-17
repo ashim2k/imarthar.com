@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>স্পিচ কর্পাস সংগ্রহ — ইমার ঠার</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
+
+  nav {
+    background: rgba(255,255,255,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226,232,240,0.8);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between;
+    height: 64px; position: sticky; top: 0; z-index: 100;
+  }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+  .page-header {
+    background: radial-gradient(circle at top right, rgba(209,250,229,0.4), transparent),
+                radial-gradient(circle at bottom left, rgba(240,253,250,0.4), transparent), #ffffff;
+    background-image: radial-gradient(rgba(16,185,129,0.05) 1px, transparent 0);
+    background-size: 24px 24px;
+    border-bottom: 1px solid #e2e8f0; padding: 3rem 2rem 2.5rem; position: relative; overflow: hidden;
+  }
+  .page-header::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: #10b981; border-radius: 50%; opacity: 0.07; filter: blur(50px); }
+  .page-header::after { content: ''; position: absolute; bottom: -30px; left: -30px; width: 140px; height: 140px; background: #06b6d4; border-radius: 50%; opacity: 0.07; filter: blur(40px); }
+  .page-header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #94a3b8; margin-bottom: 1rem; }
+  .breadcrumb a { color: #94a3b8; text-decoration: none; }
+  .breadcrumb a:hover { color: #10b981; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: #d1fae5; color: #065f46; font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 99px; margin-bottom: 1rem; }
+  .page-header h1 { font-size: 32px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+  .page-header h1 span { color: #10b981; }
+  .page-header p { font-size: 15px; color: #64748b; max-width: 520px; }
+
+  /* ── Profile Modal ── */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(15,23,42,0.5);
+    backdrop-filter: blur(6px); z-index: 200; display: flex;
+    align-items: center; justify-content: center; padding: 1rem;
+  }
+  .modal-overlay.hidden { display: none; }
+  .modal {
+    background: #ffffff; border-radius: 24px; padding: 2rem;
+    width: 100%; max-width: 480px;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+  }
+  .modal-header { text-align: center; margin-bottom: 1.75rem; }
+  .modal-icon {
+    width: 56px; height: 56px; border-radius: 16px;
+    background: linear-gradient(135deg, #10b981, #06b6d4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; color: white; margin: 0 auto 1rem;
+  }
+  .modal-title { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+  .modal-sub { font-size: 13px; color: #64748b; }
+
+  .form-step { display: none; }
+  .form-step.active { display: block; }
+  .step-label {
+    font-size: 11px; font-weight: 700; color: #10b981; text-transform: uppercase;
+    letter-spacing: 0.1em; margin-bottom: 0.5rem;
+  }
+  .step-question { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 1.25rem; }
+
+  .option-grid { display: grid; gap: 10px; }
+  .option-grid.col2 { grid-template-columns: 1fr 1fr; }
+  .option-grid.col3 { grid-template-columns: 1fr 1fr 1fr; }
+  .option-btn {
+    padding: 12px 10px; border-radius: 12px; border: 2px solid #e2e8f0;
+    background: #f8fafc; font-size: 13px; font-weight: 600; color: #475569;
+    cursor: pointer; transition: all 0.2s; text-align: center; font-family: inherit;
+  }
+  .option-btn:hover { border-color: #10b981; color: #065f46; background: #f0fdf4; }
+  .option-btn.selected { border-color: #10b981; background: #f0fdf4; color: #065f46; }
+  .option-btn .opt-icon { font-size: 20px; display: block; margin-bottom: 4px; }
+  .option-btn .opt-sub { font-size: 11px; color: #94a3b8; font-weight: 500; margin-top: 2px; display: block; }
+
+  .zone-select {
+    width: 100%; padding: 12px 14px; border: 2px solid #e2e8f0; border-radius: 12px;
+    font-size: 14px; color: #0f172a; background: #f8fafc; font-family: inherit;
+    transition: border-color 0.2s; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center;
+  }
+  .zone-select:focus { outline: none; border-color: #10b981; }
+
+  .step-nav { display: flex; gap: 8px; margin-top: 1.5rem; }
+  .btn-back {
+    padding: 10px 20px; border-radius: 10px; border: 1px solid #e2e8f0;
+    background: #f8fafc; font-size: 13px; font-weight: 600; color: #64748b;
+    cursor: pointer; font-family: inherit; transition: all 0.15s;
+  }
+  .btn-back:hover { border-color: #10b981; color: #10b981; }
+  .btn-next {
+    flex: 1; padding: 11px; border-radius: 10px; border: none;
+    background: #10b981; color: white; font-size: 14px; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: background 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .btn-next:hover { background: #059669; }
+  .btn-next:disabled { background: #cbd5e1; cursor: not-allowed; }
+
+  /* Step indicator */
+  .step-dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 1.5rem; }
+  .step-dot { width: 8px; height: 8px; border-radius: 50%; background: #e2e8f0; transition: all 0.2s; }
+  .step-dot.active { background: #10b981; width: 24px; border-radius: 4px; }
+  .step-dot.done { background: #10b981; }
+
+  /* Profile chip (shown after setup) */
+  .profile-chip {
+    background: #f0fdf4; border: 1px solid #d1fae5; border-radius: 12px;
+    padding: 10px 14px; margin-bottom: 1.5rem; display: flex;
+    align-items: center; justify-content: space-between; gap: 10px;
+  }
+  .profile-info { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .profile-tag {
+    font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 99px;
+    background: #ffffff; border: 1px solid #d1fae5; color: #065f46;
+  }
+  .profile-edit {
+    font-size: 12px; font-weight: 600; color: #10b981; cursor: pointer;
+    display: flex; align-items: center; gap: 4px; flex-shrink: 0;
+    background: none; border: none; font-family: inherit;
+  }
+
+  /* ── Main Layout ── */
+  .main-layout {
+    max-width: 900px; margin: 2rem auto 4rem; padding: 0 2rem;
+    display: grid; grid-template-columns: 1fr 260px; gap: 2rem; align-items: start;
+  }
+
+  .section-title {
+    font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase;
+    letter-spacing: 0.1em; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
+
+  /* ── Recorder Card ── */
+  .recorder-card {
+    background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px;
+    overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+  }
+
+  .recorder-header {
+    background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+    border-bottom: 1px solid #d1fae5; padding: 1.25rem 1.75rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .progress-info { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .progress-label-row { display: flex; justify-content: space-between; align-items: center; }
+  .progress-label { font-size: 13px; font-weight: 600; color: #065f46; }
+  .progress-count { font-size: 13px; font-weight: 700; color: #10b981; }
+  .progress-track { height: 8px; background: #d1fae5; border-radius: 99px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #10b981, #06b6d4); border-radius: 99px; transition: width 0.4s ease; }
+  .session-badge { background: #ffffff; border: 1px solid #d1fae5; border-radius: 10px; padding: 6px 14px; text-align: center; flex-shrink: 0; }
+  .session-num { font-size: 22px; font-weight: 800; color: #0f172a; line-height: 1; }
+  .session-num span { color: #10b981; }
+  .session-label { font-size: 10px; color: #94a3b8; }
+
+  .sentence-area { padding: 1.5rem 1.75rem 1.25rem; border-bottom: 1px solid #f1f5f9; }
+  .sentence-tag { font-size: 11px; font-weight: 700; color: #10b981; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
+  .sentence-box {
+    background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px;
+    padding: 1.5rem; text-align: center; transition: border-color 0.3s, background 0.3s;
+    position: relative; overflow: hidden; min-height: 100px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .sentence-box.recording { border-color: #ef4444; background: #fff5f5; }
+  .sentence-box.recording::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle, rgba(239,68,68,0.05) 0%, transparent 70%);
+    animation: pulse-bg 1.5s ease-in-out infinite;
+  }
+  .sentence-box.recorded { border-color: #10b981; background: #f0fdf4; }
+  @keyframes pulse-bg { 0%,100%{opacity:0.3} 50%{opacity:1} }
+  .sentence-text { font-size: 22px; font-weight: 700; color: #0f172a; line-height: 1.6; letter-spacing: 0.02em; }
+  .sentence-transliteration { font-size: 13px; color: #94a3b8; margin-top: 6px; font-style: italic; }
+
+  .sentence-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+  .nav-btn {
+    font-size: 12px; font-weight: 600; color: #64748b; background: #ffffff;
+    border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 14px;
+    cursor: pointer; display: flex; align-items: center; gap: 5px; transition: all 0.15s;
+  }
+  .nav-btn:hover { border-color: #10b981; color: #10b981; }
+  .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .sentence-id { font-size: 12px; color: #94a3b8; }
+
+  .waveform-area { padding: 1rem 1.75rem; border-bottom: 1px solid #f1f5f9; }
+  .waveform-wrap {
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;
+    padding: 1rem; height: 68px; display: flex; align-items: center;
+    justify-content: center; overflow: hidden; position: relative;
+  }
+  .waveform-idle { font-size: 13px; color: #cbd5e1; display: flex; align-items: center; gap: 6px; }
+  canvas#waveform { width: 100%; height: 100%; display: none; }
+  .timer-row { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
+  .timer-display { font-size: 13px; font-weight: 700; color: #64748b; display: flex; align-items: center; gap: 6px; }
+  .rec-dot { width: 8px; height: 8px; border-radius: 50%; background: #ef4444; display: none; animation: blink 1s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .filename-preview { font-size: 11px; color: #94a3b8; font-family: monospace; background: #f1f5f9; padding: 3px 8px; border-radius: 6px; max-width: 60%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .controls-area { padding: 1.25rem 1.75rem; display: flex; flex-direction: column; gap: 12px; }
+  .controls-row { display: flex; gap: 10px; justify-content: center; align-items: center; }
+
+  .record-btn {
+    width: 72px; height: 72px; border-radius: 50%; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    font-size: 26px; transition: all 0.2s; position: relative;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white; box-shadow: 0 4px 15px rgba(16,185,129,0.3);
+  }
+  .record-btn:hover { transform: scale(1.06); }
+  .record-btn.recording {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    box-shadow: 0 4px 15px rgba(239,68,68,0.4);
+    animation: rec-pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes rec-pulse { 0%,100%{box-shadow:0 4px 15px rgba(239,68,68,0.4)} 50%{box-shadow:0 4px 30px rgba(239,68,68,0.7)} }
+  .record-btn.recorded { background: linear-gradient(135deg, #64748b, #475569); box-shadow: none; animation: none; }
+  .record-label { font-size: 10px; font-weight: 700; margin-top: 3px; letter-spacing: 0.05em; }
+
+  .action-btn {
+    flex: 1; max-width: 140px; padding: 11px 14px; border-radius: 12px; border: none; cursor: pointer;
+    font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center;
+    gap: 6px; transition: all 0.2s; font-family: inherit;
+  }
+  .btn-play { background: #f0fdf4; color: #065f46; border: 1px solid #d1fae5; }
+  .btn-play:hover:not(:disabled) { background: #d1fae5; }
+  .btn-play:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-submit { background: #10b981; color: #ffffff; box-shadow: 0 2px 8px rgba(16,185,129,0.25); }
+  .btn-submit:hover:not(:disabled) { background: #059669; }
+  .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-skip { background: #f8fafc; color: #94a3b8; border: 1px solid #e2e8f0; }
+  .btn-skip:hover { border-color: #cbd5e1; color: #64748b; }
+
+  /* ── Sidebar ── */
+  .sidebar-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  .sidebar-title { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
+  .sidebar-title i { color: #10b981; font-size: 16px; }
+
+  .stat-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid #f1f5f9; }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-key { font-size: 13px; color: #64748b; display: flex; align-items: center; gap: 6px; }
+  .stat-val { font-size: 14px; font-weight: 700; color: #0f172a; }
+  .stat-val span { color: #10b981; }
+
+  .how-item { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid #f1f5f9; }
+  .how-item:last-child { border-bottom: none; }
+  .how-num { width: 24px; height: 24px; border-radius: 50%; background: #f0fdf4; border: 1px solid #d1fae5; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: #10b981; flex-shrink: 0; }
+  .how-text { font-size: 13px; color: #475569; line-height: 1.5; padding-top: 2px; }
+
+  .tip-box { background: #f0fdf4; border: 1px solid #d1fae5; border-radius: 10px; padding: 10px 12px; }
+  .tip-title { font-size: 12px; font-weight: 700; color: #065f46; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+  .tip-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .tip-list li { font-size: 12px; color: #047857; display: flex; align-items: flex-start; gap: 5px; }
+  .tip-list li::before { content: '✓'; font-weight: 700; flex-shrink: 0; }
+
+  .lb-item { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid #f1f5f9; }
+  .lb-item:last-child { border-bottom: none; }
+  .lb-rank { font-size: 13px; font-weight: 800; color: #e2e8f0; width: 20px; }
+  .lb-rank.gold { color: #f59e0b; }
+  .lb-rank.silver { color: #94a3b8; }
+  .lb-rank.bronze { color: #b45309; }
+  .lb-avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; flex-shrink: 0; }
+  .lb-name { font-size: 13px; font-weight: 600; color: #0f172a; flex: 1; }
+  .lb-count { font-size: 12px; font-weight: 700; color: #10b981; }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: #0f172a; color: #ffffff; padding: 12px 24px; border-radius: 12px;
+    font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px;
+    opacity: 0; transition: all 0.3s; z-index: 999; white-space: nowrap;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast i { color: #10b981; font-size: 18px; }
+
+  footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; line-height: 1.8; }
+  footer span { color: #10b981; font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .main-layout { grid-template-columns: 1fr; padding: 0 1.25rem; }
+    .sidebar { display: none; }
+    .page-header { padding: 2rem 1.25rem; }
+    .sentence-text { font-size: 18px; }
+    .option-grid.col3 { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"><i class="ti ti-circle-check"></i> <span id="toast-msg"></span></div>
+
+<!-- ── Profile Setup Modal ── -->
+<div class="modal-overlay" id="profile-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon"><i class="ti ti-microphone"></i></div>
+      <div class="modal-title">রেকর্ড শুরু করার আগে</div>
+      <div class="modal-sub">আপনার তথ্য দিন — একবার দিলেই হবে</div>
+    </div>
+
+    <div class="step-dots">
+      <div class="step-dot active" id="dot-0"></div>
+      <div class="step-dot" id="dot-1"></div>
+      <div class="step-dot" id="dot-2"></div>
+      <div class="step-dot" id="dot-3"></div>
+      <div class="step-dot" id="dot-4"></div>
+    </div>
+
+    <!-- Step 0: Dialect -->
+    <div class="form-step active" id="step-0">
+      <div class="step-label">ধাপ ১ / ৫</div>
+      <div class="step-question">আপনার ডায়ালেক্ট কোনটা?</div>
+      <div class="option-grid col2">
+        <button class="option-btn" onclick="selectOption('dialect','rajar-gang',this)">
+          <span class="opt-icon">👑</span>
+          রাজার গাঙ
+        </button>
+        <button class="option-btn" onclick="selectOption('dialect','madai-gang',this)">
+          <span class="opt-icon">🏞️</span>
+          মাদৈ গাঙ
+        </button>
+      </div>
+      <div class="step-nav">
+        <button class="btn-next" id="next-0" onclick="goStep(1)" disabled>
+          পরের ধাপ <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 1: Country -->
+    <div class="form-step" id="step-1">
+      <div class="step-label">ধাপ ২ / ৫</div>
+      <div class="step-question">আপনি কোন দেশ থেকে?</div>
+      <div class="option-grid col2">
+        <button class="option-btn" onclick="selectOption('country','india',this); updateZones()">
+          <span class="opt-icon">🇮🇳</span>
+          ভারত
+        </button>
+        <button class="option-btn" onclick="selectOption('country','bangladesh',this); updateZones()">
+          <span class="opt-icon">🇧🇩</span>
+          বাংলাদেশ
+        </button>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(0)"><i class="ti ti-arrow-left"></i> আগে</button>
+        <button class="btn-next" id="next-1" onclick="goStep(2)" disabled>
+          পরের ধাপ <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Zone -->
+    <div class="form-step" id="step-2">
+      <div class="step-label">ধাপ ৩ / ৫</div>
+      <div class="step-question">আপনার এলাকা / জোন?</div>
+      <select class="zone-select" id="zone-select" onchange="profile.zone=this.value; updateNextBtn(2)">
+        <option value="">— জোন বাছুন —</option>
+      </select>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> আগে</button>
+        <button class="btn-next" id="next-2" onclick="goStep(3)" disabled>
+          পরের ধাপ <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 3: Age -->
+    <div class="form-step" id="step-3">
+      <div class="step-label">ধাপ ৪ / ৫</div>
+      <div class="step-question">আপনার বয়স?</div>
+      <div class="option-grid col3">
+        <button class="option-btn" onclick="selectOption('age','18-25',this)">১৮–২৫</button>
+        <button class="option-btn" onclick="selectOption('age','26-40',this)">২৬–৪০</button>
+        <button class="option-btn" onclick="selectOption('age','40+',this)">৪০+</button>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> আগে</button>
+        <button class="btn-next" id="next-3" onclick="goStep(4)" disabled>
+          পরের ধাপ <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 4: Gender -->
+    <div class="form-step" id="step-4">
+      <div class="step-label">ধাপ ৫ / ৫</div>
+      <div class="step-question">আপনার লিঙ্গ?</div>
+      <div class="option-grid col3">
+        <button class="option-btn" onclick="selectOption('gender','male',this)">
+          <span class="opt-icon">👨</span>পুরুষ
+        </button>
+        <button class="option-btn" onclick="selectOption('gender','female',this)">
+          <span class="opt-icon">👩</span>মহিলা
+        </button>
+        <button class="option-btn" onclick="selectOption('gender','other',this)">
+          <span class="opt-icon">🧑</span>অন্য
+        </button>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(3)"><i class="ti ti-arrow-left"></i> আগে</button>
+        <button class="btn-next" id="next-4" onclick="finishProfile()" disabled>
+          রেকর্ড শুরু করিক <i class="ti ti-microphone"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="speech-corpus.html" class="active">স্পিচ কর্পাস</a>
+    <a href="tools.html">টুল</a>
+    <a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">হোম</a>
+      <i class="ti ti-chevron-right"></i>
+      <span>স্পিচ কর্পাস সংগ্রহ</span>
+    </div>
+    <div class="hero-badge"><i class="ti ti-microphone"></i> কমিউনিটি ভয়েস প্রজেক্ট</div>
+    <h1>স্পিচ <span>কর্পাস</span> সংগ্রহ</h1>
+    <p>আপনার কণ্ঠ রেকর্ড করি বিষ্ণুপ্রিয়া মণিপুরি ভাষার AI মডেল তৈরিত সাহায্য করিক।</p>
+  </div>
+</div>
+
+<div class="main-layout">
+  <div>
+    <div class="section-title">রেকর্ডার</div>
+
+    <!-- Profile chip -->
+    <div class="profile-chip" id="profile-chip" style="display:none">
+      <div class="profile-info" id="profile-tags"></div>
+      <button class="profile-edit" onclick="reopenProfile()"><i class="ti ti-edit"></i> বদলাক</button>
+    </div>
+
+    <div class="recorder-card">
+      <!-- Progress -->
+      <div class="recorder-header">
+        <div class="progress-info">
+          <div class="progress-label-row">
+            <span class="progress-label">আজকের অগ্রগতি</span>
+            <span class="progress-count" id="progress-count">০ / ২০</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="session-badge">
+          <div class="session-num"><span id="total-recorded">০</span></div>
+          <div class="session-label">মোট রেকর্ড</div>
+        </div>
+      </div>
+
+      <!-- Sentence -->
+      <div class="sentence-area">
+        <div class="sentence-tag"><i class="ti ti-volume"></i> এই বাক্যটা পড়িক</div>
+        <div class="sentence-box" id="sentence-box">
+          <div class="sentence-text" id="sentence-text">আমার মাতৃভাষা বিষ্ণুপ্রিয়া মণিপুরি।</div>
+          <div class="sentence-transliteration" id="sentence-trans">Amar matrubhasha Bishnupriya Manipuri.</div>
+        </div>
+        <div class="sentence-nav">
+          <button class="nav-btn" id="prev-btn" onclick="prevSentence()" disabled>
+            <i class="ti ti-chevron-left"></i> আগের
+          </button>
+          <span class="sentence-id" id="sentence-id">বাক্য ১ / ৩০</span>
+          <button class="nav-btn" id="next-btn" onclick="nextSentence()">
+            পরের <i class="ti ti-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Waveform -->
+      <div class="waveform-area">
+        <div class="waveform-wrap">
+          <div class="waveform-idle" id="waveform-idle"><i class="ti ti-wave-sine"></i> রেকর্ড শুরু করলে waveform দেখাবে</div>
+          <canvas id="waveform"></canvas>
+        </div>
+        <div class="timer-row">
+          <div class="timer-display">
+            <span class="rec-dot" id="rec-dot"></span>
+            <span id="timer-display">০০:০০</span>
+          </div>
+          <div class="filename-preview" id="filename-preview"></div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls-area">
+        <div class="controls-row">
+          <button class="action-btn btn-play" id="play-btn" onclick="playRecording()" disabled>
+            <i class="ti ti-player-play"></i> শুনিক
+          </button>
+          <button class="record-btn" id="record-btn" onclick="toggleRecord()">
+            <i class="ti ti-microphone" id="record-icon"></i>
+            <span class="record-label" id="record-label">শুরু</span>
+          </button>
+          <button class="action-btn btn-skip" onclick="nextSentence()">
+            <i class="ti ti-player-skip-forward"></i> এড়িয়ে যাক
+          </button>
+        </div>
+        <div class="controls-row">
+          <button class="action-btn btn-submit" id="submit-btn" onclick="submitRecording()" disabled style="max-width:100%;width:100%;">
+            <i class="ti ti-download"></i> ডাউনলোড করিক বারো পরের বাক্যে যাক
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-chart-bar"></i> কর্পাস পরিসংখ্যান</div>
+      <div class="stat-row"><span class="stat-key"><i class="ti ti-microphone"></i> মোট রেকর্ড</span><span class="stat-val"><span>৪,২৩৮</span></span></div>
+      <div class="stat-row"><span class="stat-key"><i class="ti ti-users"></i> অবদানকারী</span><span class="stat-val"><span>১৮৭</span></span></div>
+      <div class="stat-row"><span class="stat-key"><i class="ti ti-clock"></i> মোট সময়</span><span class="stat-val"><span>১২.৩</span> ঘণ্টা</span></div>
+      <div class="stat-row"><span class="stat-key"><i class="ti ti-wave-sine"></i> রাজার গাঙ</span><span class="stat-val"><span>২,৪৫১</span></span></div>
+      <div class="stat-row"><span class="stat-key"><i class="ti ti-wave-sine"></i> মাদৈ গাঙ</span><span class="stat-val"><span>১,৭৮৭</span></span></div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-help"></i> কীভাবে করিম?</div>
+      <div class="how-item"><span class="how-num">১</span><span class="how-text">প্রথমে আপনার তথ্য দিন (ডায়ালেক্ট, জোন, বয়স)</span></div>
+      <div class="how-item"><span class="how-num">২</span><span class="how-text">বাক্যটা মনোযোগ দিয়া পড়িক</span></div>
+      <div class="how-item"><span class="how-num">৩</span><span class="how-text">মাইক বাটনে চাপি স্পষ্টভাবে পড়িক</span></div>
+      <div class="how-item"><span class="how-num">৪</span><span class="how-text">শুনিক — ঠিক হইলে ডাউনলোড করিক</span></div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-bulb"></i> টিপস</div>
+      <div class="tip-box">
+        <div class="tip-title"><i class="ti ti-volume"></i> ভালো রেকর্ডের জন্য</div>
+        <ul class="tip-list">
+          <li>শান্ত জায়গায় রেকর্ড করিক</li>
+          <li>মাইক থাকি ১৫-২০ সেমি দূরে থাকিক</li>
+          <li>স্বাভাবিক গতিতে পড়িক</li>
+          <li>ফাইলের নামে আপনার তথ্য থাকবে</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-trophy"></i> শীর্ষ অবদানকারী</div>
+      <div class="lb-item">
+        <span class="lb-rank gold">১</span>
+        <div class="lb-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">কথ</div>
+        <span class="lb-name">কুঙ্গ থাঙ</span>
+        <span class="lb-count">৩৪২ টি</span>
+      </div>
+      <div class="lb-item">
+        <span class="lb-rank silver">২</span>
+        <div class="lb-avatar" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)">রস</div>
+        <span class="lb-name">রাহুল সিং</span>
+        <span class="lb-count">২৮৭ টি</span>
+      </div>
+      <div class="lb-item">
+        <span class="lb-rank bronze">৩</span>
+        <div class="lb-avatar" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">প্রদ</div>
+        <span class="lb-name">প্রীতি দেবী</span>
+        <span class="lb-count">২১৩ টি</span>
+      </div>
+      <div class="lb-item">
+        <span class="lb-rank">৪</span>
+        <div class="lb-avatar" style="background:linear-gradient(135deg,#10b981,#06b6d4)">সচ</div>
+        <span class="lb-name">সুমন চক্রবর্তী</span>
+        <span class="lb-count">১৫৬ টি</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script>
+// ── Zone Data ──
+const zones = {
+  india: [
+    { value: 'silchar',     label: 'শিলচর জোন — কাছাড়, সোনাই' },
+    { value: 'karimganj',   label: 'করিমগঞ্জ জোন — করিমগঞ্জ, পাথারকান্দি' },
+    { value: 'guwahati',    label: 'গৌহাটি জোন — কামরূপ, গৌহাটি' },
+    { value: 'tripura',     label: 'ত্রিপুরা জোন — আগরতলা, ধর্মনগর, কৈলাসহর' },
+    { value: 'manipur',     label: 'মণিপুর জোন — ইম্ফল উপত্যকা' },
+    { value: 'other-india', label: 'অন্যান্য — মেঘালয়, মিজোরাম' },
+  ],
+  bangladesh: [
+    { value: 'moulvibazar', label: 'মৌলভীবাজার জোন — কমলগঞ্জ, শ্রীমঙ্গল' },
+    { value: 'sylhet',      label: 'সিলেট জোন — সিলেট সদর, গোলাপগঞ্জ' },
+    { value: 'habiganj',    label: 'হবিগঞ্জ জোন — হবিগঞ্জ সদর, বাহুবল' },
+    { value: 'sunamganj',   label: 'সুনামগঞ্জ জোন — সুনামগঞ্জ সদর' },
+  ]
+};
+
+// ── Profile State ──
+const profile = { dialect: '', country: '', zone: '', age: '', gender: '' };
+let currentStep = 0;
+let profileDone = false;
+
+function selectOption(key, value, btn) {
+  profile[key] = value;
+  const grid = btn.closest('.option-grid');
+  grid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  updateNextBtn(currentStep);
+}
+
+function updateNextBtn(step) {
+  const checks = ['dialect','country','zone','age','gender'];
+  const btn = document.getElementById('next-' + step);
+  if (!btn) return;
+  if (step === 2) {
+    btn.disabled = !profile.zone;
+  } else {
+    btn.disabled = !profile[checks[step]];
+  }
+}
+
+function goStep(n) {
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  document.getElementById('dot-' + currentStep).classList.remove('active');
+  document.getElementById('dot-' + currentStep).classList.add('done');
+  currentStep = n;
+  document.getElementById('step-' + n).classList.add('active');
+  document.getElementById('dot-' + n).classList.remove('done');
+  document.getElementById('dot-' + n).classList.add('active');
+}
+
+function updateZones() {
+  const sel = document.getElementById('zone-select');
+  profile.zone = '';
+  sel.innerHTML = '<option value="">— জোন বাছুন —</option>';
+  const list = zones[profile.country] || [];
+  list.forEach(z => {
+    const opt = document.createElement('option');
+    opt.value = z.value; opt.textContent = z.label;
+    sel.appendChild(opt);
+  });
+  updateNextBtn(1);
+}
+
+function finishProfile() {
+  profileDone = true;
+  document.getElementById('profile-modal').classList.add('hidden');
+  renderProfileChip();
+  updateFilename();
+}
+
+function reopenProfile() {
+  document.getElementById('profile-modal').classList.remove('hidden');
+}
+
+const dialectLabel = { 'rajar-gang': 'রাজার গাঙ', 'madai-gang': 'মাদৈ গাঙ' };
+const countryLabel  = { 'india': '🇮🇳 ভারত', 'bangladesh': '🇧🇩 বাংলাদেশ' };
+const genderLabel   = { 'male': 'পুরুষ', 'female': 'মহিলা', 'other': 'অন্য' };
+
+function renderProfileChip() {
+  const chip = document.getElementById('profile-chip');
+  const tags = document.getElementById('profile-tags');
+  const zoneText = [...document.getElementById('zone-select').options].find(o => o.value === profile.zone)?.text?.split('—')[0]?.trim() || profile.zone;
+  tags.innerHTML = [
+    dialectLabel[profile.dialect],
+    countryLabel[profile.country],
+    zoneText,
+    profile.age,
+    genderLabel[profile.gender]
+  ].map(t => `<span class="profile-tag">${t}</span>`).join('');
+  chip.style.display = 'flex';
+}
+
+function buildFilename(sentenceIdx) {
+  const d = profile.dialect || 'unknown';
+  const z = profile.zone    || 'unknown';
+  const g = profile.gender  || 'x';
+  const a = profile.age     || 'x';
+  const s = String(sentenceIdx + 1).padStart(2, '0');
+  return `bpm_${d}_${z}_${g}_${a}_s${s}.webm`;
+}
+
+function updateFilename() {
+  document.getElementById('filename-preview').textContent = buildFilename(currentIdx);
+}
+
+// ── Sentences ──
+const sentences = [
+  { text: "আমার মাতৃভাষা বিষ্ণুপ্রিয়া মণিপুরি।", trans: "Amar matrubhasha Bishnupriya Manipuri." },
+  { text: "আমি ইমার ঠারে কথা কওয়া পছন্দ করিউ।", trans: "Ami imar thare kotha kaoa pochhondo koriyou." },
+  { text: "আমাদের ঠার আমাদের পরিচয়।", trans: "Amader thar amader porichoy." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার টিকানা আমাদের দায়িত্ব।", trans: "Bishnupriya Manipuri thar tikana amader dayitto." },
+  { text: "আমার পুয়া ইমার ঠার শিখতারা।", trans: "Amar puya imar thar shikhtara." },
+  { text: "ইমার ঠারর গান শুনতে ভালো লাগে।", trans: "Imar tharr gaan shunte bhalo lage." },
+  { text: "আমরা একসাথে ইমার ঠার বাঁচাইম।", trans: "Amra eksathe imar thar bachhaim." },
+  { text: "বিষ্ণুপ্রিয়ার সাহিত্য অনেক সমৃদ্ধ।", trans: "Bishnupriyar sahitya anek samriddha." },
+  { text: "ডিজিটাল যুগে ইমার ঠার টিকানা জরুরি।", trans: "Digital yuge imar thar tikana joruri." },
+  { text: "আমার মা ইমার ঠারে গল্প বলতেন।", trans: "Amar ma imar thare golpo bolthen." },
+  { text: "ইমার ঠারর শব্দ অনেক মিষ্টি।", trans: "Imar tharr shobdo anek mishti." },
+  { text: "আমি প্রতিদিন ইমার ঠারে কথা কই।", trans: "Ami protidin imar thare kotha koi." },
+  { text: "আমাদের গ্রামে সবাই বিষ্ণুপ্রিয়া কয়।", trans: "Amader grame sobai Bishnupriya koy." },
+  { text: "ইমার ঠার শিখলে মনে আনন্দ হয়।", trans: "Imar thar shikhle mone ananda hoy." },
+  { text: "আমার বাপ ইমার ঠারে গান গাইতেন।", trans: "Amar bap imar thare gaan gaithen." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি একটি প্রাচীন ভাষা।", trans: "Bishnupriya Manipuri ekti prachin bhasha." },
+  { text: "আমরা ইমার ঠারে স্বপ্ন দেখি।", trans: "Amra imar thare shopno dekhi." },
+  { text: "ইমার ঠারর অভিধান তৈরি হচ্ছে।", trans: "Imar tharr obhidhan toiri hochche." },
+  { text: "আমার পরিবার ইমার ঠারকে ভালোবাসে।", trans: "Amar poribar imar thharke bhalobhase." },
+  { text: "ইমার ঠার আমার প্রাণের ভাষা।", trans: "Imar thar amar praner bhasha." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরির লিপি অনেক সুন্দর।", trans: "Bishnupriya Manipurir lipi anek sundar." },
+  { text: "আমি ইমার ঠারে চিঠি লিখি।", trans: "Ami imar thare chithi likhi." },
+  { text: "ইমার ঠার শিখানো দরকার পুয়াহানরে।", trans: "Imar thar shikhanao dorkar puyahanre." },
+  { text: "আমাদের সংস্কৃতি আমাদের ঠারে বাঁচে।", trans: "Amader sanskriti amader thare bache." },
+  { text: "ইমার ঠারর কবিতা হৃদয় ছুঁয়ে যায়।", trans: "Imar tharr kobita hridoy chhue jay." },
+  { text: "আমি গর্বিত আমার মাতৃভাষায়।", trans: "Ami gorbit amar matrubhasay." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার চিরজীবী হোক।", trans: "Bishnupriya Manipuri thar chirojeebi hok." },
+  { text: "ইমার ঠারে কথা কওয়া মানে মাকে ডাকা।", trans: "Imar thare kotha kaoa mane make daka." },
+  { text: "আমাদের ভাষা আমাদের শক্তি।", trans: "Amader bhasha amader shakti." },
+  { text: "ইমার ঠার বাঁচলে আমরা বাঁচিম।", trans: "Imar thar bachle amra bachim." },
+];
+
+let currentIdx = 0;
+let mediaRecorder = null;
+let audioChunks = [];
+let audioBlob = null;
+let audioUrl = null;
+let isRecording = false;
+let timerInterval = null;
+let seconds = 0;
+let sessionCount = 0;
+let animationId = null;
+let analyser = null;
+
+function updateSentence() {
+  const s = sentences[currentIdx];
+  document.getElementById('sentence-text').textContent = s.text;
+  document.getElementById('sentence-trans').textContent = s.trans;
+  document.getElementById('sentence-id').textContent = `বাক্য ${currentIdx+1} / ${sentences.length}`;
+  document.getElementById('prev-btn').disabled = currentIdx === 0;
+  document.getElementById('next-btn').disabled = currentIdx === sentences.length - 1;
+  updateFilename();
+  resetRecorder();
+}
+
+function prevSentence() { if(currentIdx>0){ currentIdx--; updateSentence(); } }
+function nextSentence() { if(currentIdx<sentences.length-1){ currentIdx++; updateSentence(); } }
+
+function resetRecorder() {
+  audioBlob = null; audioUrl = null;
+  document.getElementById('sentence-box').className = 'sentence-box';
+  document.getElementById('record-btn').className = 'record-btn';
+  document.getElementById('record-icon').className = 'ti ti-microphone';
+  document.getElementById('record-label').textContent = 'শুরু';
+  document.getElementById('play-btn').disabled = true;
+  document.getElementById('submit-btn').disabled = true;
+  document.getElementById('timer-display').textContent = '০০:০০';
+  document.getElementById('rec-dot').style.display = 'none';
+  document.getElementById('waveform-idle').style.display = 'flex';
+  document.getElementById('waveform').style.display = 'none';
+}
+
+function toggleRecord() {
+  if (isRecording) stopRecording();
+  else startRecording();
+}
+
+async function startRecording() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const audioCtx = new AudioContext();
+    const source = audioCtx.createMediaStreamSource(stream);
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 256;
+    source.connect(analyser);
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+    mediaRecorder = new MediaRecorder(stream);
+    audioChunks = [];
+    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+    mediaRecorder.onstop = () => {
+      audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+      audioUrl = URL.createObjectURL(audioBlob);
+      document.getElementById('play-btn').disabled = false;
+      document.getElementById('submit-btn').disabled = false;
+      document.getElementById('sentence-box').classList.remove('recording');
+      document.getElementById('sentence-box').classList.add('recorded');
+      document.getElementById('record-btn').classList.remove('recording');
+      document.getElementById('record-btn').classList.add('recorded');
+      document.getElementById('record-icon').className = 'ti ti-refresh';
+      document.getElementById('record-label').textContent = 'আবার';
+      document.getElementById('rec-dot').style.display = 'none';
+      cancelAnimationFrame(animationId);
+      stream.getTracks().forEach(t => t.stop());
+    };
+    mediaRecorder.start();
+    isRecording = true;
+
+    document.getElementById('sentence-box').classList.add('recording');
+    document.getElementById('record-btn').classList.add('recording');
+    document.getElementById('record-icon').className = 'ti ti-player-stop';
+    document.getElementById('record-label').textContent = 'থামিক';
+    document.getElementById('rec-dot').style.display = 'inline-block';
+    document.getElementById('waveform-idle').style.display = 'none';
+    document.getElementById('waveform').style.display = 'block';
+
+    seconds = 0; clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      seconds++;
+      const m = String(Math.floor(seconds/60)).padStart(2,'0');
+      const s2 = String(seconds%60).padStart(2,'0');
+      document.getElementById('timer-display').textContent = m+':'+s2;
+      if (seconds >= 30) stopRecording();
+    }, 1000);
+
+    // Draw waveform
+    const canvas = document.getElementById('waveform');
+    const ctx = canvas.getContext('2d');
+    function draw() {
+      animationId = requestAnimationFrame(draw);
+      canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight;
+      analyser.getByteFrequencyData(dataArray);
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      const barW = (canvas.width / dataArray.length) * 2.5;
+      let x = 0;
+      for(let i=0;i<dataArray.length;i++){
+        const h = (dataArray[i]/255)*canvas.height;
+        ctx.fillStyle = `rgba(16,185,129,${0.4+(dataArray[i]/255)*0.6})`;
+        ctx.fillRect(x, canvas.height-h, barW-1, h);
+        x += barW;
+      }
+    }
+    draw();
+  } catch(e) {
+    showToast('মাইক্রোফোন অ্যাক্সেস দিন।');
+  }
+}
+
+function stopRecording() {
+  if (mediaRecorder && isRecording) {
+    mediaRecorder.stop(); isRecording = false;
+    clearInterval(timerInterval);
+  }
+}
+
+function playRecording() {
+  if (!audioUrl) return;
+  new Audio(audioUrl).play();
+}
+
+function submitRecording() {
+  if (!audioBlob) return;
+  // Download to local drive with metadata filename
+  const filename = buildFilename(currentIdx);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(audioBlob);
+  a.download = filename;
+  a.click();
+
+  sessionCount++;
+  document.getElementById('total-recorded').textContent = sessionCount;
+  const pct = Math.min(100,(sessionCount/20)*100);
+  document.getElementById('progress-fill').style.width = pct+'%';
+  document.getElementById('progress-count').textContent = `${sessionCount} / ২০`;
+  showToast(`সেভ হচ্ছে: ${filename}`);
+
+  if (currentIdx < sentences.length-1) { currentIdx++; updateSentence(); }
+  else showToast('সব বাক্য শেষ! আপনাকে অনেক ধন্যবাদ।');
+}
+
+function showToast(msg) {
+  document.getElementById('toast-msg').textContent = msg;
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+updateSentence();
+</script>
+</body>
+</html>
