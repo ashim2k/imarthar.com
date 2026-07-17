@@ -39,7 +39,6 @@
   .page-header h1 span { color: #10b981; }
   .page-header p { font-size: 15px; color: #64748b; max-width: 520px; }
 
-  /* ── Profile Modal ── */
   .modal-overlay {
     position: fixed; inset: 0; background: rgba(15,23,42,0.5);
     backdrop-filter: blur(6px); z-index: 200; display: flex;
@@ -107,13 +106,11 @@
   .btn-next:hover { background: #059669; }
   .btn-next:disabled { background: #cbd5e1; cursor: not-allowed; }
 
-  /* Step indicator */
   .step-dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 1.5rem; }
   .step-dot { width: 8px; height: 8px; border-radius: 50%; background: #e2e8f0; transition: all 0.2s; }
   .step-dot.active { background: #10b981; width: 24px; border-radius: 4px; }
   .step-dot.done { background: #10b981; }
 
-  /* Profile chip (shown after setup) */
   .profile-chip {
     background: #f0fdf4; border: 1px solid #d1fae5; border-radius: 12px;
     padding: 10px 14px; margin-bottom: 1.5rem; display: flex;
@@ -130,7 +127,6 @@
     background: none; border: none; font-family: inherit;
   }
 
-  /* ── Main Layout ── */
   .main-layout {
     max-width: 900px; margin: 2rem auto 4rem; padding: 0 2rem;
     display: grid; grid-template-columns: 1fr 260px; gap: 2rem; align-items: start;
@@ -142,7 +138,6 @@
   }
   .section-title::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
 
-  /* ── Recorder Card ── */
   .recorder-card {
     background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px;
     overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
@@ -241,7 +236,6 @@
   .btn-skip { background: #f8fafc; color: #94a3b8; border: 1px solid #e2e8f0; }
   .btn-skip:hover { border-color: #cbd5e1; color: #64748b; }
 
-  /* ── Sidebar ── */
   .sidebar-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
   .sidebar-title { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
   .sidebar-title i { color: #10b981; font-size: 16px; }
@@ -273,7 +267,6 @@
   .lb-name { font-size: 13px; font-weight: 600; color: #0f172a; flex: 1; }
   .lb-count { font-size: 12px; font-weight: 700; color: #10b981; }
 
-  /* Toast */
   .toast {
     position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px);
     background: #0f172a; color: #ffffff; padding: 12px 24px; border-radius: 12px;
@@ -300,13 +293,12 @@
 
 <div class="toast" id="toast"><i class="ti ti-circle-check"></i> <span id="toast-msg"></span></div>
 
-<!-- ── Profile Setup Modal ── -->
 <div class="modal-overlay" id="profile-modal">
   <div class="modal">
     <div class="modal-header">
       <div class="modal-icon"><i class="ti ti-microphone"></i></div>
       <div class="modal-title">রেকর্ড শুরু করার আগে</div>
-      <div class="modal-sub">আপনার তথ্য দিন — একবার দিলেই হবে</div>
+      <div class="modal-sub">তোর তথ্য দে — আকমাউ দিলেই অইতই</div>
     </div>
 
     <div class="step-dots">
@@ -320,7 +312,7 @@
     <!-- Step 0: Dialect -->
     <div class="form-step active" id="step-0">
       <div class="step-label">ধাপ ১ / ৫</div>
-      <div class="step-question">আপনার ডায়ালেক্ট কোনটা?</div>
+      <div class="step-question">তোর ডায়ালেক্ট কোনহান?</div>
       <div class="option-grid col2">
         <button class="option-btn" onclick="selectOption('dialect','rajar-gang',this)">
           <span class="opt-icon">👑</span>
@@ -333,7 +325,7 @@
       </div>
       <div class="step-nav">
         <button class="btn-next" id="next-0" onclick="goStep(1)" disabled>
-          পরের ধাপ <i class="ti ti-arrow-right"></i>
+          পিসের ধাপ <i class="ti ti-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -341,7 +333,7 @@
     <!-- Step 1: Country -->
     <div class="form-step" id="step-1">
       <div class="step-label">ধাপ ২ / ৫</div>
-      <div class="step-question">আপনি কোন দেশ থেকে?</div>
+      <div class="step-question">তি কোন দেশত্ত?</div>
       <div class="option-grid col2">
         <button class="option-btn" onclick="selectOption('country','india',this); updateZones()">
           <span class="opt-icon">🇮🇳</span>
@@ -353,9 +345,9 @@
         </button>
       </div>
       <div class="step-nav">
-        <button class="btn-back" onclick="goStep(0)"><i class="ti ti-arrow-left"></i> আগে</button>
+        <button class="btn-back" onclick="goStep(0)"><i class="ti ti-arrow-left"></i> আগের</button>
         <button class="btn-next" id="next-1" onclick="goStep(2)" disabled>
-          পরের ধাপ <i class="ti ti-arrow-right"></i>
+          পিসের ধাপ <i class="ti ti-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -363,14 +355,14 @@
     <!-- Step 2: Zone -->
     <div class="form-step" id="step-2">
       <div class="step-label">ধাপ ৩ / ৫</div>
-      <div class="step-question">আপনার এলাকা / জোন?</div>
+      <div class="step-question">তোর এলাকা / জোন?</div>
       <select class="zone-select" id="zone-select" onchange="profile.zone=this.value; updateNextBtn(2)">
-        <option value="">— জোন বাছুন —</option>
+        <option value="">— জোন বাছিয়া নেগা —</option>
       </select>
       <div class="step-nav">
-        <button class="btn-back" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> আগে</button>
+        <button class="btn-back" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> আগের</button>
         <button class="btn-next" id="next-2" onclick="goStep(3)" disabled>
-          পরের ধাপ <i class="ti ti-arrow-right"></i>
+          পিসের ধাপ <i class="ti ti-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -378,16 +370,16 @@
     <!-- Step 3: Age -->
     <div class="form-step" id="step-3">
       <div class="step-label">ধাপ ৪ / ৫</div>
-      <div class="step-question">আপনার বয়স?</div>
+      <div class="step-question">তোর বয়স?</div>
       <div class="option-grid col3">
         <button class="option-btn" onclick="selectOption('age','18-25',this)">১৮–২৫</button>
         <button class="option-btn" onclick="selectOption('age','26-40',this)">২৬–৪০</button>
         <button class="option-btn" onclick="selectOption('age','40+',this)">৪০+</button>
       </div>
       <div class="step-nav">
-        <button class="btn-back" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> আগে</button>
+        <button class="btn-back" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> আগের</button>
         <button class="btn-next" id="next-3" onclick="goStep(4)" disabled>
-          পরের ধাপ <i class="ti ti-arrow-right"></i>
+          পিসের ধাপ <i class="ti ti-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -395,7 +387,7 @@
     <!-- Step 4: Gender -->
     <div class="form-step" id="step-4">
       <div class="step-label">ধাপ ৫ / ৫</div>
-      <div class="step-question">আপনার লিঙ্গ?</div>
+      <div class="step-question">তোর লিঙ্গ?</div>
       <div class="option-grid col3">
         <button class="option-btn" onclick="selectOption('gender','male',this)">
           <span class="opt-icon">👨</span>পুরুষ
@@ -408,7 +400,7 @@
         </button>
       </div>
       <div class="step-nav">
-        <button class="btn-back" onclick="goStep(3)"><i class="ti ti-arrow-left"></i> আগে</button>
+        <button class="btn-back" onclick="goStep(3)"><i class="ti ti-arrow-left"></i> আগের</button>
         <button class="btn-next" id="next-4" onclick="finishProfile()" disabled>
           রেকর্ড শুরু করিক <i class="ti ti-microphone"></i>
         </button>
@@ -438,7 +430,7 @@
     </div>
     <div class="hero-badge"><i class="ti ti-microphone"></i> কমিউনিটি ভয়েস প্রজেক্ট</div>
     <h1>স্পিচ <span>কর্পাস</span> সংগ্রহ</h1>
-    <p>আপনার কণ্ঠ রেকর্ড করি বিষ্ণুপ্রিয়া মণিপুরি ভাষার AI মডেল তৈরিত সাহায্য করিক।</p>
+    <p>তোর কণ্ঠ রেকর্ড করিয়া বিষ্ণুপ্রিয়া মণিপুরি ইমার ঠারর AI মডেল তৈরিত সাহায্য কর।</p>
   </div>
 </div>
 
@@ -446,18 +438,16 @@
   <div>
     <div class="section-title">রেকর্ডার</div>
 
-    <!-- Profile chip -->
     <div class="profile-chip" id="profile-chip" style="display:none">
       <div class="profile-info" id="profile-tags"></div>
       <button class="profile-edit" onclick="reopenProfile()"><i class="ti ti-edit"></i> বদলাক</button>
     </div>
 
     <div class="recorder-card">
-      <!-- Progress -->
       <div class="recorder-header">
         <div class="progress-info">
           <div class="progress-label-row">
-            <span class="progress-label">আজকের অগ্রগতি</span>
+            <span class="progress-label">আজকর অগ্রগতি</span>
             <span class="progress-count" id="progress-count">০ / ২০</span>
           </div>
           <div class="progress-track">
@@ -470,12 +460,11 @@
         </div>
       </div>
 
-      <!-- Sentence -->
       <div class="sentence-area">
-        <div class="sentence-tag"><i class="ti ti-volume"></i> এই বাক্যটা পড়িক</div>
+        <div class="sentence-tag"><i class="ti ti-volume"></i> এই বাক্যহান পড়িক</div>
         <div class="sentence-box" id="sentence-box">
-          <div class="sentence-text" id="sentence-text">আমার মাতৃভাষা বিষ্ণুপ্রিয়া মণিপুরি।</div>
-          <div class="sentence-transliteration" id="sentence-trans">Amar matrubhasha Bishnupriya Manipuri.</div>
+          <div class="sentence-text" id="sentence-text">মোর মাতৃভাষা বিষ্ণুপ্রিয়া মণিপুরি।</div>
+          <div class="sentence-transliteration" id="sentence-trans">Mor matrubhasha Bishnupriya Manipuri.</div>
         </div>
         <div class="sentence-nav">
           <button class="nav-btn" id="prev-btn" onclick="prevSentence()" disabled>
@@ -483,12 +472,11 @@
           </button>
           <span class="sentence-id" id="sentence-id">বাক্য ১ / ৩০</span>
           <button class="nav-btn" id="next-btn" onclick="nextSentence()">
-            পরের <i class="ti ti-chevron-right"></i>
+            পিসের <i class="ti ti-chevron-right"></i>
           </button>
         </div>
       </div>
 
-      <!-- Waveform -->
       <div class="waveform-area">
         <div class="waveform-wrap">
           <div class="waveform-idle" id="waveform-idle"><i class="ti ti-wave-sine"></i> রেকর্ড শুরু করলে waveform দেখাবে</div>
@@ -503,23 +491,22 @@
         </div>
       </div>
 
-      <!-- Controls -->
       <div class="controls-area">
         <div class="controls-row">
           <button class="action-btn btn-play" id="play-btn" onclick="playRecording()" disabled>
-            <i class="ti ti-player-play"></i> শুনিক
+            <i class="ti ti-player-play"></i> হুনিক
           </button>
           <button class="record-btn" id="record-btn" onclick="toggleRecord()">
             <i class="ti ti-microphone" id="record-icon"></i>
             <span class="record-label" id="record-label">শুরু</span>
           </button>
           <button class="action-btn btn-skip" onclick="nextSentence()">
-            <i class="ti ti-player-skip-forward"></i> এড়িয়ে যাক
+            <i class="ti ti-player-skip-forward"></i> এড়িয়া যাক
           </button>
         </div>
         <div class="controls-row">
           <button class="action-btn btn-submit" id="submit-btn" onclick="submitRecording()" disabled style="max-width:100%;width:100%;">
-            <i class="ti ti-download"></i> ডাউনলোড করিক বারো পরের বাক্যে যাক
+            <i class="ti ti-download"></i> ডাউনলোড করিক বারো পিসের বাক্যে যাক
           </button>
         </div>
       </div>
@@ -538,22 +525,22 @@
     </div>
 
     <div class="sidebar-card">
-      <div class="sidebar-title"><i class="ti ti-help"></i> কীভাবে করিম?</div>
-      <div class="how-item"><span class="how-num">১</span><span class="how-text">প্রথমে আপনার তথ্য দিন (ডায়ালেক্ট, জোন, বয়স)</span></div>
-      <div class="how-item"><span class="how-num">২</span><span class="how-text">বাক্যটা মনোযোগ দিয়া পড়িক</span></div>
-      <div class="how-item"><span class="how-num">৩</span><span class="how-text">মাইক বাটনে চাপি স্পষ্টভাবে পড়িক</span></div>
-      <div class="how-item"><span class="how-num">৪</span><span class="how-text">শুনিক — ঠিক হইলে ডাউনলোড করিক</span></div>
+      <div class="sidebar-title"><i class="ti ti-help"></i> কিসারে করিম?</div>
+      <div class="how-item"><span class="how-num">১</span><span class="how-text">আগে তোর তথ্য দে (ডায়ালেক্ট, জোন, বয়স)</span></div>
+      <div class="how-item"><span class="how-num">২</span><span class="how-text">বাক্যহান মনোযোগ দিয়া পড়িক</span></div>
+      <div class="how-item"><span class="how-num">৩</span><span class="how-text">মাইক বাটনে চাপিয়া সেংকরে পড়িক</span></div>
+      <div class="how-item"><span class="how-num">৪</span><span class="how-text">হুনিক — ঠিক অইলে ডাউনলোড করিক</span></div>
     </div>
 
     <div class="sidebar-card">
       <div class="sidebar-title"><i class="ti ti-bulb"></i> টিপস</div>
       <div class="tip-box">
-        <div class="tip-title"><i class="ti ti-volume"></i> ভালো রেকর্ডের জন্য</div>
+        <div class="tip-title"><i class="ti ti-volume"></i> বলি রেকর্ডর লাগে</div>
         <ul class="tip-list">
-          <li>শান্ত জায়গায় রেকর্ড করিক</li>
-          <li>মাইক থাকি ১৫-২০ সেমি দূরে থাকিক</li>
-          <li>স্বাভাবিক গতিতে পড়িক</li>
-          <li>ফাইলের নামে আপনার তথ্য থাকবে</li>
+          <li>শান্ত জাগাত রেকর্ড করিক</li>
+          <li>মাইকত্ত ১৫-২০ সেমি দূরে থাকিক</li>
+          <li>স্বাভাবিক গতিত পড়িক</li>
+          <li>ফাইলর নামে তোর তথ্য থাকতই</li>
         </ul>
       </div>
     </div>
@@ -594,7 +581,6 @@
 </footer>
 
 <script>
-// ── Zone Data ──
 const zones = {
   india: [
     { value: 'silchar',     label: 'শিলচর জোন — কাছাড়, সোনাই' },
@@ -612,7 +598,6 @@ const zones = {
   ]
 };
 
-// ── Profile State ──
 const profile = { dialect: '', country: '', zone: '', age: '', gender: '' };
 let currentStep = 0;
 let profileDone = false;
@@ -649,7 +634,7 @@ function goStep(n) {
 function updateZones() {
   const sel = document.getElementById('zone-select');
   profile.zone = '';
-  sel.innerHTML = '<option value="">— জোন বাছুন —</option>';
+  sel.innerHTML = '<option value="">— জোন বাছিয়া নেগা —</option>';
   const list = zones[profile.country] || [];
   list.forEach(z => {
     const opt = document.createElement('option');
@@ -701,38 +686,38 @@ function updateFilename() {
   document.getElementById('filename-preview').textContent = buildFilename(currentIdx);
 }
 
-// ── Sentences ──
+// ── বাক্য তালিকা — corpus pattern অনুসরণ করে সংশোধিত ──
 const sentences = [
-  { text: "আমার মাতৃভাষা বিষ্ণুপ্রিয়া মণিপুরি।", trans: "Amar matrubhasha Bishnupriya Manipuri." },
-  { text: "আমি ইমার ঠারে কথা কওয়া পছন্দ করিউ।", trans: "Ami imar thare kotha kaoa pochhondo koriyou." },
-  { text: "আমাদের ঠার আমাদের পরিচয়।", trans: "Amader thar amader porichoy." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার টিকানা আমাদের দায়িত্ব।", trans: "Bishnupriya Manipuri thar tikana amader dayitto." },
-  { text: "আমার পুয়া ইমার ঠার শিখতারা।", trans: "Amar puya imar thar shikhtara." },
-  { text: "ইমার ঠারর গান শুনতে ভালো লাগে।", trans: "Imar tharr gaan shunte bhalo lage." },
-  { text: "আমরা একসাথে ইমার ঠার বাঁচাইম।", trans: "Amra eksathe imar thar bachhaim." },
-  { text: "বিষ্ণুপ্রিয়ার সাহিত্য অনেক সমৃদ্ধ।", trans: "Bishnupriyar sahitya anek samriddha." },
+  { text: "মোর মাতৃভাষা বিষ্ণুপ্রিয়া মণিপুরি।", trans: "Mor matrubhasha Bishnupriya Manipuri." },
+  { text: "মি ইমার ঠারে কথা মাততে হাদা পাউরি।", trans: "Mi imar thare kotha matote hada pauri." },
+  { text: "আমার ঠার আমার পরিচয়।", trans: "Amar thar amar porichoy." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার টিকানা আমার দায়িত্ব।", trans: "Bishnupriya Manipuri thar tikana amar dayitto." },
+  { text: "মোর পিতক ইমার ঠার হিকতার।", trans: "Mor pitak imar thar hikotar." },
+  { text: "ইমার ঠারর এলা হুনতে বলি লাগের।", trans: "Imar tharr ela hunte boli lager." },
+  { text: "আমি আকলগে ইমার ঠার বাঁচাইতৌ।", trans: "Ami akloge imar thar bachaaitou." },
+  { text: "বিষ্ণুপ্রিয়ার সাহিত্য নিয়াম সমৃদ্ধ।", trans: "Bishnupriyar sahityo niyam samriddho." },
   { text: "ডিজিটাল যুগে ইমার ঠার টিকানা জরুরি।", trans: "Digital yuge imar thar tikana joruri." },
-  { text: "আমার মা ইমার ঠারে গল্প বলতেন।", trans: "Amar ma imar thare golpo bolthen." },
-  { text: "ইমার ঠারর শব্দ অনেক মিষ্টি।", trans: "Imar tharr shobdo anek mishti." },
-  { text: "আমি প্রতিদিন ইমার ঠারে কথা কই।", trans: "Ami protidin imar thare kotha koi." },
-  { text: "আমাদের গ্রামে সবাই বিষ্ণুপ্রিয়া কয়।", trans: "Amader grame sobai Bishnupriya koy." },
-  { text: "ইমার ঠার শিখলে মনে আনন্দ হয়।", trans: "Imar thar shikhle mone ananda hoy." },
-  { text: "আমার বাপ ইমার ঠারে গান গাইতেন।", trans: "Amar bap imar thare gaan gaithen." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি একটি প্রাচীন ভাষা।", trans: "Bishnupriya Manipuri ekti prachin bhasha." },
-  { text: "আমরা ইমার ঠারে স্বপ্ন দেখি।", trans: "Amra imar thare shopno dekhi." },
-  { text: "ইমার ঠারর অভিধান তৈরি হচ্ছে।", trans: "Imar tharr obhidhan toiri hochche." },
-  { text: "আমার পরিবার ইমার ঠারকে ভালোবাসে।", trans: "Amar poribar imar thharke bhalobhase." },
-  { text: "ইমার ঠার আমার প্রাণের ভাষা।", trans: "Imar thar amar praner bhasha." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরির লিপি অনেক সুন্দর।", trans: "Bishnupriya Manipurir lipi anek sundar." },
-  { text: "আমি ইমার ঠারে চিঠি লিখি।", trans: "Ami imar thare chithi likhi." },
-  { text: "ইমার ঠার শিখানো দরকার পুয়াহানরে।", trans: "Imar thar shikhanao dorkar puyahanre." },
-  { text: "আমাদের সংস্কৃতি আমাদের ঠারে বাঁচে।", trans: "Amader sanskriti amader thare bache." },
-  { text: "ইমার ঠারর কবিতা হৃদয় ছুঁয়ে যায়।", trans: "Imar tharr kobita hridoy chhue jay." },
-  { text: "আমি গর্বিত আমার মাতৃভাষায়।", trans: "Ami gorbit amar matrubhasay." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার চিরজীবী হোক।", trans: "Bishnupriya Manipuri thar chirojeebi hok." },
-  { text: "ইমার ঠারে কথা কওয়া মানে মাকে ডাকা।", trans: "Imar thare kotha kaoa mane make daka." },
-  { text: "আমাদের ভাষা আমাদের শক্তি।", trans: "Amader bhasha amader shakti." },
-  { text: "ইমার ঠার বাঁচলে আমরা বাঁচিম।", trans: "Imar thar bachle amra bachim." },
+  { text: "মোর ইমা ইমার ঠারে গপ মাততেন।", trans: "Mor ima imar thare gop matotten." },
+  { text: "ইমার ঠারর মাত নিয়াম মিষ্টি।", trans: "Imar tharr mat niyam mishti." },
+  { text: "মি হারদিন ইমার ঠারে কথা মাতুরি।", trans: "Mi hardin imar thare kotha maturi." },
+  { text: "আমার গেরামে হাবি বিষ্ণুপ্রিয়া মাতর।", trans: "Amar geram-e habi Bishnupriya mator." },
+  { text: "ইমার ঠার হিকলে মনে আনন্দ অর।", trans: "Imar thar hikle mone anondo or." },
+  { text: "মোর বাপ ইমার ঠারে এলা দেনাতেন।", trans: "Mor bap imar thare ela denaten." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি আকখান পুরানা ঠার।", trans: "Bishnupriya Manipuri akhan purana thar." },
+  { text: "আমি ইমার ঠারে হপন চাউরি।", trans: "Ami imar thare hopan chauri." },
+  { text: "ইমার ঠারর অভিধান হংকরা অউরি।", trans: "Imar tharr obhidhan hongkora auri." },
+  { text: "মোর গর ইমার ঠাররে পাউর।", trans: "Mor gor imar tharore paur." },
+  { text: "ইমার ঠার মোর পরানর ভাষা।", trans: "Imar thar mor poranor bhasha." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরির লিপি নিয়াম চুনা।", trans: "Bishnupriya Manipurir lipi niyam chuna." },
+  { text: "মি ইমার ঠারে চিঠি ইকরুরি।", trans: "Mi imar thare chithi ikruri." },
+  { text: "ইমার ঠার পিতকহানরে হিকানা দরকার।", trans: "Imar thar pitakhanre hikana dorkar." },
+  { text: "আমার সংস্কৃতি আমার ঠারে বাঁচের।", trans: "Amar sanskriti amar thare bacer." },
+  { text: "ইমার ঠারর কবিতা মনহান ছুইয়া যায়।", trans: "Imar tharr kobita monhan chuiya jay." },
+  { text: "মি গর্বিত মোর মাতৃভাষায়।", trans: "Mi gorbit mor matrubhasay." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার চিরজীবী অউক।", trans: "Bishnupriya Manipuri thar chiroji-bi ouk." },
+  { text: "ইমার ঠারে কথা মাতা মানে ইমারে ডাকা।", trans: "Imar thare kotha mata mane imare daka." },
+  { text: "আমার ঠার আমার শক্তি।", trans: "Amar thar amar sokti." },
+  { text: "ইমার ঠার বাঁচলে আমি বাঁচিতৌ।", trans: "Imar thar bachle ami bachitou." },
 ];
 
 let currentIdx = 0;
@@ -828,7 +813,6 @@ async function startRecording() {
       if (seconds >= 30) stopRecording();
     }, 1000);
 
-    // Draw waveform
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
     function draw() {
@@ -847,7 +831,7 @@ async function startRecording() {
     }
     draw();
   } catch(e) {
-    showToast('মাইক্রোফোন অ্যাক্সেস দিন।');
+    showToast('মাইক্রোফোন অ্যাক্সেস দিক।');
   }
 }
 
@@ -865,7 +849,6 @@ function playRecording() {
 
 function submitRecording() {
   if (!audioBlob) return;
-  // Download to local drive with metadata filename
   const filename = buildFilename(currentIdx);
   const a = document.createElement('a');
   a.href = URL.createObjectURL(audioBlob);
@@ -877,10 +860,10 @@ function submitRecording() {
   const pct = Math.min(100,(sessionCount/20)*100);
   document.getElementById('progress-fill').style.width = pct+'%';
   document.getElementById('progress-count').textContent = `${sessionCount} / ২০`;
-  showToast(`সেভ হচ্ছে: ${filename}`);
+  showToast(`সেভ অউরি: ${filename}`);
 
   if (currentIdx < sentences.length-1) { currentIdx++; updateSentence(); }
-  else showToast('সব বাক্য শেষ! আপনাকে অনেক ধন্যবাদ।');
+  else showToast('হাবি বাক্য শেষ! তোরে অনেক থাকাত।');
 }
 
 function showToast(msg) {
