@@ -388,15 +388,12 @@
     <div class="form-step" id="step-4">
       <div class="step-label">ধাপ ৫ / ৫</div>
       <div class="step-question">তোর লিঙ্গ?</div>
-      <div class="option-grid col3">
+      <div class="option-grid col2">
         <button class="option-btn" onclick="selectOption('gender','male',this)">
           <span class="opt-icon">👨</span>পুরুষ
         </button>
         <button class="option-btn" onclick="selectOption('gender','female',this)">
           <span class="opt-icon">👩</span>মহিলা
-        </button>
-        <button class="option-btn" onclick="selectOption('gender','other',this)">
-          <span class="opt-icon">🧑</span>অন্য
         </button>
       </div>
       <div class="step-nav">
@@ -691,34 +688,34 @@ function updateFilename() {
 const sentences = [
   { text: "মোর মাতৃভাষাহান বিষ্ণুপ্রিয়া মণিপুরি।", trans: "Mor matrubhasha Bishnupriya Manipuri." },
   { text: "মি ইমার ঠারে কথা অতারানি নুঙেই পাউরি।", trans: "Mi imar thare kotha matote hada pauri." },
-  { text: "মোর ঠারহান মোর পরিচয়।", trans: "Amar thar amar porichoy." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার টিকিয়া থনা এহান আমার দায়িত্বহান।", trans: "Bishnupriya Manipuri thar tikana amar dayitto." },
-  { text: "মোর শৌ সুমারা ইমার ঠার হিকতার।", trans: "Mor pitak imar thar hikotar." },
-  { text: "ইমার ঠারর এলা হুনতে নুংশি লাগের।", trans: "Imar tharr ela hunte boli lager." },
-  { text: "আমি আকসাটে ইমার ঠারহান কারকরতাঙাই।", trans: "Ami akloge imar thar bachaaitou." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরির সাহিত্য নিয়ামপারা সমৃদ্ধ।", trans: "Bishnupriyar sahityo niyam samriddho." },
-  { text: "ডিজিটাল যুগে ইমার ঠার এহান টিকিয়া থনা জরুলি কামহান।", trans: "Digital yuge imar thar tikana joruri." },
-  { text: "মোর ডাংগ বপায় ইমার ঠারে য়ারি দিলা।", trans: "Mor ima imar thare gop matotten." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি এহান বিপদগ্রস্ত ঠারহান।", trans: "Imar tharr mat niyam mishti." },
-  { text: "মআি হারদিন ইমার ঠারে টটারারাং।", trans: "Mi hardin imar thare kotha maturi." },
-  { text: "নিজর ঠারে টটরতে লাস কতিা, উহান গর্বহান।", trans: "Amar geram-e habi Bishnupriya mator." },
-  { text: "বিদেশে থায়াউ ইমার ঠারে য়ারি দিলে মনহাৎ নুঙি আহান লাগের।", trans: "Imar thar hikle mone anondo or." },
-  { text: "মোর বাবা ইসালপাগ।", trans: "Mor bap imar thare ela denaten." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি সংখ্যাৎ য়াতইলেউ পুরানা ঠার আহান।", trans: "Bishnupriya Manipuri akhan purana thar." },
-  { text: "মি ইমার ঠারে হপন দেহুরি ।", trans: "Ami imar thare hopan chauri." },
-  { text: "ইমার ঠারল আরাতউ সাহিত্য কারনি থকি।", trans: "Imar tharr obhidhan hongkora auri." },
-  { text: "আমারতা হবা পত্রিকা নেই।", trans: "Mor gor imar tharore paur." },
-  { text: "আমার ঠারর লেখক অতারে সম্মান দেনা থক।", trans: "Imar thar mor poranor bhasha." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরির লিপি উহান বাংলা বুলানি চুম নেই, পুর্ব নাগরি বুলে পারিয়ার।", trans: "Bishnupriya Manipurir lipi niyam chuna." },
-  { text: "মি ইমার ঠারে চিঠি ইকরৌরি।", trans: "Mi imar thare chithi ikruri." },
-  { text: "ইমার ঠার অন্য মানুরেউ হিকাদেনা দরকার।", trans: "Imar thar pitakhanre hikana dorkar." },
-  { text: "আমার সংস্কৃতিহান আমার ঠারহার গজে থালগ দিয়া বাঁচের।", trans: "Amar sanskriti amar thare bacer." },
-  { text: "ইমার ঠারর নুংশি নুংশি কবিতা ইকরেসি আমার কবিয়ে।", trans: "Imar tharr kobita monhan chuiya jay." },
-  { text: "মি গর্বিত মোর মাতৃভাষাল।", trans: "Mi gorbit mor matrubhasay." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার পুনচিপালক", trans: "Bishnupriya Manipuri thar chiroji-bi ouk." },
-  { text: "ইমার ঠাররকা জীবন দিয়া গেিলগা সুদেষ্ণা সিংহই।", trans: "Imar thare kotha mata mane imare daka." },
-  { text: "আমার ঠার এহানেই আমার শক্তি।", trans: "Amar thar amar sokti." },
-  { text: "ইমার ঠার জিংতা অইলে জাত এহাহাৌ জিংতা অয়া থাইতায়।", trans: "Imar thar bachle ami bachitou." },
+  { text: "মোর ঠারহান মোর পরিচয়।", trans: "Mor tharhan mor porichoy." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার টিকিয়া থনা এহান আমার দায়িত্বহান।", trans: "Bishnupriya Manipuri thar tikiya thona ehan amar dayitwohan." },
+  { text: "মোর শৌ সুমারা ইমার ঠার হিকতার।", trans: "Mor shou sumara imar thar hikotar." },
+  { text: "ইমার ঠারর এলা হুনতে নুংশি লাগের।", trans: "Imar tharor ela hunte nungshi lager." },
+  { text: "আমি আকসাটে ইমার ঠারহান কারকরতাঙাই।", trans: "Ami aksate imar tharhan karkortangai." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরির সাহিত্য নিয়ামপারা সমৃদ্ধ।", trans: "Bishnupriya Manipurir sahitya niyampara somriddho." },
+  { text: "ডিজিটাল যুগে ইমার ঠার এহান টিকিয়া থনা জরুলি কামহান।", trans: "Digital juge imar thar ehan tikiya thona joruli kamhan." },
+  { text: "মোর ডাংগ বপায় ইমার ঠারে য়ারি দিলা।", trans: "Mor dangga bapay imar thare yari dila." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি এহান বিপদগ্রস্ত ঠারহান।", trans: "Bishnupriya Manipuri ehan bipodgrosto tharhan." },
+  { text: "আমি হারদিন ইমার ঠারে টটারারাং।", trans: "Ami hardin imar thare totararang." },
+  { text: "নিজর ঠারে টটরতে লাস কিতা, উহান গর্বহান।", trans: "Nijor thare totorte lash kita, uhan gorbohan." },
+  { text: "বিদেশে থায়াউ ইমার ঠারে য়ারি দিলে মনহাৎ নুঙি আহান লাগের।", trans: "Bideshe thayau imar thare yari dile monhat nungi ahan lager." },
+  { text: "মোর বাবা ইসালপাগ।", trans: "Mor baba isalpag." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি সংখ্যাৎ য়াতইলেউ পুরানা ঠার আহান।", trans: "Bishnupriya Manipuri sangkhyat yatoileu purana thar ahan." },
+  { text: "মি ইমার ঠারে হপন দেহুরি ।", trans: "Mi imar thare hopon dehuri." },
+  { text: "ইমার ঠারল আরাতউ সাহিত্য কারনি থকি।", trans: "Imar tharol aratau sahitya karoni thoki." },
+  { text: "আমারতা হবা পত্রিকা নেই।", trans: "Amarta haba patrika nei." },
+  { text: "আমার ঠারর লেখক অতারে সম্মান দেনা থক।", trans: "Amar tharor lekhok atare sommandena thok." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরির লিপি উহান বাংলা বুলানি চুম নেই, পুর্ব নাগরি বুলে পারিয়ার।", trans: "Bishnupriya Manipurir lipi uhan Bangla bulani chum nei, purbo Nagri bule pariyar." },
+  { text: "মি ইমার ঠারে চিঠি ইকরৌরি।", trans: "Mi imar thare chithi ikrouri." },
+  { text: "ইমার ঠার অন্য মানুরেউ হিকাদেনা দরকার।", trans: "Imar thar onno manureu hikadena dorkar." },
+  { text: "আমার সংস্কৃতিহান আমার ঠারহার গজে থালগ দিয়া বাঁচের।", trans: "Amar sanskritihan amar tharhar gaje thalog diya bachcher." },
+  { text: "ইমার ঠারর নুংশি নুংশি কবিতা ইকরেসি আমার কবিয়ে।", trans: "Imar tharor nungshi nungshi kobita ikroshi amar kobiye." },
+  { text: "মি গর্বিত মোর মাতৃভাষাল।", trans: "Mi gorbito mor matrubhashal." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার পুনচিপালক", trans: "Bishnupriya Manipuri thar punochipalok." },
+  { text: "ইমার ঠাররকা জীবন দিয়া গেিলগা সুদেষ্ণা সিংহই।", trans: "Imar tharorka jibon diya gelga Sudeshna Singhoi." },
+  { text: "আমার ঠার এহানেই আমার শক্তি।", trans: "Amar thar ehanei amar shokti." },
+  { text: "ইমার ঠার জিংতা অইলে জাত এহাহাৌ জিংতা অয়া থাইতায়।", trans: "Imar thar jingta oile jat ehanou jingta oya thaitay." },
 ];
 
 let currentIdx = 0;
