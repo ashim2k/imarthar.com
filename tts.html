@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>টেক্সট টু স্পিচ — ইমার ঠার</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
+  nav { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226,232,240,0.8); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #10b981; }
+  .page-header { background: radial-gradient(circle at top right, rgba(209,250,229,0.4), transparent), radial-gradient(circle at bottom left, rgba(240,253,250,0.4), transparent), #ffffff; background-image: radial-gradient(rgba(16,185,129,0.05) 1px, transparent 0); background-size: 24px 24px; border-bottom: 1px solid #e2e8f0; padding: 3rem 2rem 2.5rem; position: relative; overflow: hidden; }
+  .page-header::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: #10b981; border-radius: 50%; opacity: 0.07; filter: blur(50px); }
+  .page-header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #94a3b8; margin-bottom: 1rem; }
+  .breadcrumb a { color: #94a3b8; text-decoration: none; } .breadcrumb a:hover { color: #10b981; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: #d1fae5; color: #065f46; font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 99px; margin-bottom: 1rem; }
+  .page-header h1 { font-size: 32px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+  .page-header h1 span { color: #10b981; }
+  .page-header p { font-size: 15px; color: #64748b; }
+  .main { max-width: 900px; margin: 2.5rem auto 4rem; padding: 0 2rem; display: grid; grid-template-columns: 1fr 260px; gap: 2rem; align-items: start; }
+  .section-title { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
+  .tts-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+  .voice-bar { background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border-bottom: 1px solid #d1fae5; padding: 1.25rem 1.75rem; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .voice-label { font-size: 13px; font-weight: 600; color: #065f46; white-space: nowrap; }
+  .voice-select { flex: 1; min-width: 160px; padding: 8px 12px; border: 1px solid #d1fae5; border-radius: 10px; font-size: 13px; color: #0f172a; background: #ffffff; font-family: inherit; }
+  .voice-select:focus { outline: none; border-color: #10b981; }
+  .controls-bar { border-bottom: 1px solid #f1f5f9; padding: 1rem 1.75rem; display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+  .control-group { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 100px; }
+  .control-group label { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; display: flex; justify-content: space-between; }
+  .control-val { color: #10b981; }
+  .slider { width: 100%; accent-color: #10b981; cursor: pointer; height: 4px; }
+  .textarea-wrap { padding: 1.5rem 1.75rem; border-bottom: 1px solid #f1f5f9; }
+  .tts-textarea { width: 100%; min-height: 160px; padding: 14px 16px; border: 2px solid #e2e8f0; border-radius: 14px; font-size: 16px; color: #0f172a; background: #f8fafc; font-family: inherit; resize: vertical; transition: border-color 0.2s; line-height: 1.8; }
+  .tts-textarea:focus { outline: none; border-color: #10b981; background: #ffffff; }
+  .textarea-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+  .char-count { font-size: 12px; color: #94a3b8; }
+  .clear-btn { font-size: 12px; color: #94a3b8; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px; }
+  .clear-btn:hover { color: #ef4444; }
+  .wave-area { padding: 1rem 1.75rem; border-bottom: 1px solid #f1f5f9; }
+  .wave-wrap { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; height: 64px; display: flex; align-items: center; justify-content: center; gap: 4px; overflow: hidden; }
+  .wave-idle { font-size: 13px; color: #cbd5e1; display: flex; align-items: center; gap: 6px; }
+  .wave-bar { width: 4px; background: #10b981; border-radius: 99px; display: none; animation: wave-anim 1s ease-in-out infinite; }
+  .wave-bar:nth-child(2){animation-delay:0.1s} .wave-bar:nth-child(3){animation-delay:0.2s} .wave-bar:nth-child(4){animation-delay:0.3s} .wave-bar:nth-child(5){animation-delay:0.4s} .wave-bar:nth-child(6){animation-delay:0.3s} .wave-bar:nth-child(7){animation-delay:0.2s} .wave-bar:nth-child(8){animation-delay:0.1s}
+  @keyframes wave-anim { 0%,100%{height:6px} 50%{height:40px} }
+  .action-area { padding: 1.5rem 1.75rem; display: flex; gap: 10px; flex-wrap: wrap; }
+  .speak-btn { flex: 1; padding: 14px; border-radius: 14px; border: none; cursor: pointer; background: linear-gradient(135deg, #10b981, #059669); color: white; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; font-family: inherit; box-shadow: 0 4px 12px rgba(16,185,129,0.25); }
+  .speak-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(16,185,129,0.3); }
+  .speak-btn.speaking { background: linear-gradient(135deg, #ef4444, #dc2626); box-shadow: 0 4px 12px rgba(239,68,68,0.25); }
+  .side-btn { padding: 14px 18px; border-radius: 14px; border: 1px solid #e2e8f0; background: #f8fafc; color: #64748b; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.15s; font-family: inherit; }
+  .side-btn:hover:not(:disabled) { border-color: #10b981; color: #10b981; }
+  .side-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .samples-area { padding: 0 1.75rem 1.5rem; }
+  .sample-label { font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .sample-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+  .sample-pill { font-size: 12px; padding: 5px 13px; border-radius: 99px; background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; cursor: pointer; transition: all 0.15s; }
+  .sample-pill:hover { background: #f0fdf4; border-color: #10b981; color: #065f46; }
+  .sidebar-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  .sidebar-title { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
+  .sidebar-title i { color: #10b981; font-size: 16px; }
+  .info-item { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px solid #f1f5f9; font-size: 13px; color: #475569; }
+  .info-item:last-child { border-bottom: none; }
+  .info-item i { color: #10b981; flex-shrink: 0; margin-top: 1px; }
+  .note-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 10px; padding: 10px 12px; }
+  .note-title { font-size: 12px; font-weight: 700; color: #854d0e; margin-bottom: 4px; display: flex; align-items: center; gap: 5px; }
+  .note-text { font-size: 12px; color: #92400e; line-height: 1.6; }
+  footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; line-height: 1.8; }
+  footer span { color: #10b981; font-weight: 600; }
+  @media (max-width: 768px) { .main { grid-template-columns: 1fr; padding: 0 1.25rem; } .sidebar { display: none; } .page-header { padding: 2rem 1.25rem; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="tools.html" class="active">টুল</a><a href="blogs.html">ব্লগ</a><a href="papers.html">পেপার</a><a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">হোম</a><i class="ti ti-chevron-right"></i><a href="tools.html">টুল</a><i class="ti ti-chevron-right"></i><span>টেক্সট টু স্পিচ</span></div>
+    <div class="hero-badge"><i class="ti ti-volume"></i> Beta সংস্করণ</div>
+    <h1>টেক্সট টু <span>স্পিচ</span></h1>
+    <p>বিষ্ণুপ্রিয়া মণিপুরি লেখা টাইপ করিক — কণ্ঠস্বরে শুনিক।</p>
+  </div>
+</div>
+<div class="main">
+  <div>
+    <div class="section-title">টেক্সট টু স্পিচ</div>
+    <div class="tts-card">
+      <div class="voice-bar">
+        <span class="voice-label"><i class="ti ti-user-voice"></i> কণ্ঠস্বর:</span>
+        <select class="voice-select" id="voice-select"></select>
+      </div>
+      <div class="controls-bar">
+        <div class="control-group"><label>গতি <span class="control-val" id="rate-val">১.০×</span></label><input type="range" class="slider" id="rate-slider" min="0.5" max="2" step="0.1" value="1"></div>
+        <div class="control-group"><label>পিচ <span class="control-val" id="pitch-val">১.০</span></label><input type="range" class="slider" id="pitch-slider" min="0.5" max="2" step="0.1" value="1"></div>
+        <div class="control-group"><label>ভলিউম <span class="control-val" id="vol-val">১০০%</span></label><input type="range" class="slider" id="vol-slider" min="0" max="1" step="0.05" value="1"></div>
+      </div>
+      <div class="textarea-wrap">
+        <textarea class="tts-textarea" id="tts-input" placeholder="এখানে বিষ্ণুপ্রিয়া মণিপুরি লেখা টাইপ করিক বা পেস্ট করিক ..."></textarea>
+        <div class="textarea-footer"><span class="char-count" id="char-count">০ অক্ষর</span><button class="clear-btn" onclick="clearText()"><i class="ti ti-x"></i> মুছিক</button></div>
+      </div>
+      <div class="wave-area">
+        <div class="wave-wrap" id="wave-wrap">
+          <div class="wave-idle" id="wave-idle"><i class="ti ti-player-play"></i> পড়া শুরু হলে এখানে দেখাবে</div>
+          <div class="wave-bar" style="height:6px"></div><div class="wave-bar" style="height:14px"></div><div class="wave-bar" style="height:28px"></div><div class="wave-bar" style="height:40px"></div><div class="wave-bar" style="height:40px"></div><div class="wave-bar" style="height:28px"></div><div class="wave-bar" style="height:14px"></div><div class="wave-bar" style="height:6px"></div>
+        </div>
+      </div>
+      <div class="action-area">
+        <button class="side-btn" id="pause-btn" onclick="pauseSpeak()" disabled><i class="ti ti-player-pause"></i> থামাক</button>
+        <button class="speak-btn" id="speak-btn" onclick="toggleSpeak()"><i class="ti ti-volume" id="speak-icon"></i><span id="speak-label">পড়িক</span></button>
+        <button class="side-btn" id="stop-btn" onclick="stopSpeak()" disabled><i class="ti ti-player-stop"></i> বন্ধ</button>
+      </div>
+      <div class="samples-area">
+        <div class="sample-label">নমুনা বাক্য</div>
+        <div class="sample-pills">
+          <span class="sample-pill" onclick="setSample(this)">আমার মাতৃভাষা বিষ্ণুপ্রিয়া মণিপুরি।</span>
+          <span class="sample-pill" onclick="setSample(this)">ইমার ঠার আমার পরিচয়।</span>
+          <span class="sample-pill" onclick="setSample(this)">আমরা একসাথে ইমার ঠার বাঁচাইম।</span>
+          <span class="sample-pill" onclick="setSample(this)">বিষ্ণুপ্রিয়া মণিপুরি একটি প্রাচীন ভাষা।</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-info-circle"></i> এই টুল সম্পর্কে</div>
+      <div class="info-item"><i class="ti ti-check"></i> Browser built-in speech engine ব্যবহার করে</div>
+      <div class="info-item"><i class="ti ti-check"></i> ইন্টারনেট ছাড়াও কাজ করে</div>
+      <div class="info-item"><i class="ti ti-check"></i> গতি, পিচ, ভলিউম নিয়ন্ত্রণ করা যায়</div>
+      <div class="info-item"><i class="ti ti-check"></i> Chrome ও Edge-এ সবচেয়ে ভালো</div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-alert-triangle"></i> সীমাবদ্ধতা</div>
+      <div class="note-box">
+        <div class="note-title"><i class="ti ti-info-circle"></i> জানা দরকার</div>
+        <div class="note-text">এটি browser-এর সাধারণ বাংলা voice ব্যবহার করে। ভবিষ্যতে speech corpus থেকে বিষ্ণুপ্রিয়ার নিজস্ব TTS মডেল তৈরি হলে আপডেট হবে।</div>
+      </div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-bulb"></i> টিপস</div>
+      <div class="info-item"><i class="ti ti-point"></i> গতি কম রাখলে উচ্চারণ স্পষ্ট হয়</div>
+      <div class="info-item"><i class="ti ti-point"></i> ছোট ছোট বাক্যে ভাগ করিক</div>
+      <div class="info-item"><i class="ti ti-point"></i> bn-BD voice বাছলে ভালো হয়</div>
+    </div>
+  </div>
+</div>
+<footer>© ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br><small style="color:#94a3b8;">Preserving heritage through advanced computing systems.</small></footer>
+<script>
+let voices=[],speaking=false,paused=false;
+function loadVoices(){voices=speechSynthesis.getVoices();const sel=document.getElementById('voice-select');sel.innerHTML='';const bn=voices.filter(v=>v.lang.startsWith('bn')||v.lang.startsWith('hi')||v.lang.startsWith('en'));const list=bn.length?bn:voices;list.forEach((v,i)=>{const o=document.createElement('option');o.value=i;o.textContent=v.name+' ('+v.lang+')';sel.appendChild(o);});}
+speechSynthesis.onvoiceschanged=loadVoices;loadVoices();
+document.getElementById('tts-input').addEventListener('input',function(){document.getElementById('char-count').textContent=this.value.length+' অক্ষর';});
+document.getElementById('rate-slider').addEventListener('input',function(){document.getElementById('rate-val').textContent=parseFloat(this.value).toFixed(1)+'×';});
+document.getElementById('pitch-slider').addEventListener('input',function(){document.getElementById('pitch-val').textContent=parseFloat(this.value).toFixed(1);});
+document.getElementById('vol-slider').addEventListener('input',function(){document.getElementById('vol-val').textContent=Math.round(this.value*100)+'%';});
+function toggleSpeak(){if(speaking){stopSpeak();return;}const text=document.getElementById('tts-input').value.trim();if(!text)return;const sel=document.getElementById('voice-select');const voice=voices[parseInt(sel.value)];const u=new SpeechSynthesisUtterance(text);if(voice)u.voice=voice;u.rate=parseFloat(document.getElementById('rate-slider').value);u.pitch=parseFloat(document.getElementById('pitch-slider').value);u.volume=parseFloat(document.getElementById('vol-slider').value);u.onstart=()=>{speaking=true;document.getElementById('speak-btn').classList.add('speaking');document.getElementById('speak-icon').className='ti ti-player-stop';document.getElementById('speak-label').textContent='বন্ধ করিক';document.getElementById('pause-btn').disabled=false;document.getElementById('stop-btn').disabled=false;document.getElementById('wave-idle').style.display='none';document.querySelectorAll('.wave-bar').forEach(b=>b.style.display='block');};u.onend=u.onerror=()=>resetUI();speechSynthesis.speak(u);}
+function pauseSpeak(){if(paused){speechSynthesis.resume();paused=false;document.getElementById('pause-btn').innerHTML='<i class="ti ti-player-pause"></i> থামাক';}else{speechSynthesis.pause();paused=true;document.getElementById('pause-btn').innerHTML='<i class="ti ti-player-play"></i> চালু';}}
+function stopSpeak(){speechSynthesis.cancel();resetUI();}
+function resetUI(){speaking=false;paused=false;document.getElementById('speak-btn').classList.remove('speaking');document.getElementById('speak-icon').className='ti ti-volume';document.getElementById('speak-label').textContent='পড়িক';document.getElementById('pause-btn').disabled=true;document.getElementById('stop-btn').disabled=true;document.getElementById('wave-idle').style.display='flex';document.querySelectorAll('.wave-bar').forEach(b=>b.style.display='none');}
+function clearText(){document.getElementById('tts-input').value='';document.getElementById('char-count').textContent='০ অক্ষর';stopSpeak();}
+function setSample(el){document.getElementById('tts-input').value=el.textContent;document.getElementById('char-count').textContent=el.textContent.length+' অক্ষর';}
+</script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অনলাইন কীবোর্ড — ইমার ঠার</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
+  nav { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226,232,240,0.8); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #10b981; }
+  .page-header { background: radial-gradient(circle at top right, rgba(209,250,229,0.4), transparent), radial-gradient(circle at bottom left, rgba(240,253,250,0.4), transparent), #ffffff; background-image: radial-gradient(rgba(16,185,129,0.05) 1px, transparent 0); background-size: 24px 24px; border-bottom: 1px solid #e2e8f0; padding: 3rem 2rem 2.5rem; position: relative; overflow: hidden; }
+  .page-header::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: #10b981; border-radius: 50%; opacity: 0.07; filter: blur(50px); }
+  .page-header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #94a3b8; margin-bottom: 1rem; }
+  .breadcrumb a { color: #94a3b8; text-decoration: none; } .breadcrumb a:hover { color: #10b981; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: #d1fae5; color: #065f46; font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 99px; margin-bottom: 1rem; }
+  .page-header h1 { font-size: 32px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+  .page-header h1 span { color: #10b981; }
+  .page-header p { font-size: 15px; color: #64748b; }
+
+  .main { max-width: 900px; margin: 2.5rem auto 4rem; padding: 0 2rem; display: grid; grid-template-columns: 1fr 240px; gap: 2rem; align-items: start; }
+  .section-title { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
+
+  .kb-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+
+  /* Output area */
+  .output-area { padding: 1.5rem 1.75rem; border-bottom: 1px solid #f1f5f9; }
+  .output-box {
+    width: 100%; min-height: 120px; padding: 14px 16px;
+    border: 2px solid #e2e8f0; border-radius: 14px; font-size: 22px;
+    color: #0f172a; background: #f8fafc; font-family: inherit;
+    resize: none; line-height: 1.6; transition: border-color 0.2s;
+  }
+  .output-box:focus { outline: none; border-color: #10b981; background: #ffffff; }
+  .output-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; gap: 8px; flex-wrap: wrap; }
+  .char-info { font-size: 12px; color: #94a3b8; }
+  .output-actions { display: flex; gap: 7px; }
+  .action-btn { font-size: 12px; font-weight: 600; padding: 7px 14px; border-radius: 9px; border: 1px solid #e2e8f0; background: #ffffff; color: #64748b; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: all 0.15s; font-family: inherit; }
+  .action-btn:hover { border-color: #10b981; color: #10b981; }
+  .action-btn.primary { background: #10b981; border-color: #10b981; color: #ffffff; }
+  .action-btn.primary:hover { background: #059669; }
+
+  /* Layer tabs */
+  .layer-tabs { padding: 1rem 1.75rem 0; display: flex; gap: 6px; }
+  .layer-tab { font-size: 13px; font-weight: 600; padding: 7px 16px; border-radius: 10px 10px 0 0; border: 1px solid #e2e8f0; border-bottom: none; background: #f8fafc; color: #64748b; cursor: pointer; transition: all 0.15s; }
+  .layer-tab.active { background: #ffffff; color: #0f172a; border-color: #e2e8f0; }
+
+  /* Keyboard */
+  .keyboard-wrap { padding: 1rem 1.75rem 1.5rem; background: #f8fafc; border-top: 1px solid #e2e8f0; }
+  .kb-row { display: flex; gap: 6px; margin-bottom: 6px; justify-content: center; flex-wrap: wrap; }
+  .key {
+    min-width: 44px; height: 48px; border-radius: 10px; border: 1px solid #e2e8f0;
+    background: #ffffff; font-size: 18px; color: #0f172a; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: all 0.1s; box-shadow: 0 2px 0 #e2e8f0; padding: 0 8px;
+    font-family: inherit; position: relative; user-select: none;
+  }
+  .key:hover { background: #f0fdf4; border-color: #10b981; transform: translateY(-1px); box-shadow: 0 3px 0 #d1fae5; }
+  .key:active { transform: translateY(1px); box-shadow: 0 1px 0 #e2e8f0; }
+  .key.special { min-width: 64px; font-size: 13px; background: #f1f5f9; color: #64748b; }
+  .key.space-key { min-width: 200px; }
+  .key.green { background: #10b981; border-color: #059669; color: white; box-shadow: 0 2px 0 #059669; }
+  .key.green:hover { background: #059669; }
+  .key-sub { font-size: 9px; color: #94a3b8; margin-top: 1px; }
+
+  /* Sidebar */
+  .sidebar-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  .sidebar-title { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
+  .sidebar-title i { color: #10b981; font-size: 16px; }
+  .info-item { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px solid #f1f5f9; font-size: 13px; color: #475569; }
+  .info-item:last-child { border-bottom: none; }
+  .info-item i { color: #10b981; flex-shrink: 0; margin-top: 1px; }
+  .shortcut-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #f1f5f9; font-size: 12px; }
+  .shortcut-item:last-child { border-bottom: none; }
+  .shortcut-key { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px; padding: 2px 8px; font-family: monospace; font-size: 11px; color: #475569; }
+  .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: #0f172a; color: #ffffff; padding: 12px 24px; border-radius: 12px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; opacity: 0; transition: all 0.3s; z-index: 999; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast i { color: #10b981; }
+  footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; line-height: 1.8; }
+  footer span { color: #10b981; font-weight: 600; }
+  @media (max-width: 768px) { .main { grid-template-columns: 1fr; padding: 0 1.25rem; } .sidebar { display: none; } .page-header { padding: 2rem 1.25rem; } .key { min-width: 36px; height: 42px; font-size: 16px; } .key.space-key { min-width: 140px; } }
+</style>
+</head>
+<body>
+<div class="toast" id="toast"><i class="ti ti-circle-check"></i> <span id="toast-msg"></span></div>
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="tools.html" class="active">টুল</a><a href="blogs.html">ব্লগ</a><a href="papers.html">পেপার</a><a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">হোম</a><i class="ti ti-chevron-right"></i><a href="tools.html">টুল</a><i class="ti ti-chevron-right"></i><span>অনলাইন কীবোর্ড</span></div>
+    <div class="hero-badge"><i class="ti ti-keyboard"></i> বিষ্ণুপ্রিয়া মণিপুরি</div>
+    <h1>অনলাইন <span>কীবোর্ড</span></h1>
+    <p>বিষ্ণুপ্রিয়া মণিপুরি বাংলা লিপিতে টাইপ করিক এবং যেকোনো জায়গায় পেস্ট করিক।</p>
+  </div>
+</div>
+<div class="main">
+  <div>
+    <div class="section-title">কীবোর্ড</div>
+    <div class="kb-card">
+      <!-- Output -->
+      <div class="output-area">
+        <textarea class="output-box" id="output" placeholder="এখানে টাইপ করিক ..."></textarea>
+        <div class="output-footer">
+          <span class="char-info" id="char-info">০ অক্ষর</span>
+          <div class="output-actions">
+            <button class="action-btn" onclick="clearOutput()"><i class="ti ti-trash"></i> মুছিক</button>
+            <button class="action-btn primary" onclick="copyOutput()"><i class="ti ti-copy"></i> কপি করিক</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer tabs -->
+      <div class="layer-tabs">
+        <button class="layer-tab active" onclick="setLayer('vowel',this)">স্বরবর্ণ</button>
+        <button class="layer-tab" onclick="setLayer('consonant',this)">ব্যঞ্জনবর্ণ</button>
+        <button class="layer-tab" onclick="setLayer('matra',this)">মাত্রা</button>
+        <button class="layer-tab" onclick="setLayer('punct',this)">চিহ্ন</button>
+      </div>
+
+      <!-- Keyboard layers -->
+      <div class="keyboard-wrap">
+        <!-- Vowels -->
+        <div id="layer-vowel">
+          <div class="kb-row">
+            <button class="key" onclick="type('অ')">অ<span class="key-sub">a</span></button>
+            <button class="key" onclick="type('আ')">আ<span class="key-sub">aa</span></button>
+            <button class="key" onclick="type('ই')">ই<span class="key-sub">i</span></button>
+            <button class="key" onclick="type('ঈ')">ঈ<span class="key-sub">ii</span></button>
+            <button class="key" onclick="type('উ')">উ<span class="key-sub">u</span></button>
+            <button class="key" onclick="type('ঊ')">ঊ<span class="key-sub">uu</span></button>
+            <button class="key" onclick="type('এ')">এ<span class="key-sub">e</span></button>
+            <button class="key" onclick="type('ঐ')">ঐ<span class="key-sub">oi</span></button>
+            <button class="key" onclick="type('ও')">ও<span class="key-sub">o</span></button>
+            <button class="key" onclick="type('ঔ')">ঔ<span class="key-sub">ou</span></button>
+          </div>
+          <div class="kb-row">
+            <button class="key" onclick="type('ঋ')">ঋ<span class="key-sub">ri</span></button>
+            <button class="key special" onclick="backspace()"><i class="ti ti-backspace"></i> Del</button>
+            <button class="key space-key special" onclick="type(' ')">স্পেস</button>
+            <button class="key special green" onclick="type('\n')"><i class="ti ti-corner-down-left"></i> Enter</button>
+          </div>
+        </div>
+
+        <!-- Consonants -->
+        <div id="layer-consonant" style="display:none">
+          <div class="kb-row">
+            <button class="key" onclick="type('ক')">ক<span class="key-sub">k</span></button>
+            <button class="key" onclick="type('খ')">খ<span class="key-sub">kh</span></button>
+            <button class="key" onclick="type('গ')">গ<span class="key-sub">g</span></button>
+            <button class="key" onclick="type('ঘ')">ঘ<span class="key-sub">gh</span></button>
+            <button class="key" onclick="type('ঙ')">ঙ<span class="key-sub">ng</span></button>
+            <button class="key" onclick="type('চ')">চ<span class="key-sub">ch</span></button>
+            <button class="key" onclick="type('ছ')">ছ<span class="key-sub">chh</span></button>
+            <button class="key" onclick="type('জ')">জ<span class="key-sub">j</span></button>
+            <button class="key" onclick="type('ঝ')">ঝ<span class="key-sub">jh</span></button>
+            <button class="key" onclick="type('ঞ')">ঞ<span class="key-sub">ny</span></button>
+          </div>
+          <div class="kb-row">
+            <button class="key" onclick="type('ট')">ট<span class="key-sub">T</span></button>
+            <button class="key" onclick="type('ঠ')">ঠ<span class="key-sub">Th</span></button>
+            <button class="key" onclick="type('ড')">ড<span class="key-sub">D</span></button>
+            <button class="key" onclick="type('ঢ')">ঢ<span class="key-sub">Dh</span></button>
+            <button class="key" onclick="type('ণ')">ণ<span class="key-sub">N</span></button>
+            <button class="key" onclick="type('ত')">ত<span class="key-sub">t</span></button>
+            <button class="key" onclick="type('থ')">থ<span class="key-sub">th</span></button>
+            <button class="key" onclick="type('দ')">দ<span class="key-sub">d</span></button>
+            <button class="key" onclick="type('ধ')">ধ<span class="key-sub">dh</span></button>
+            <button class="key" onclick="type('ন')">ন<span class="key-sub">n</span></button>
+          </div>
+          <div class="kb-row">
+            <button class="key" onclick="type('প')">প<span class="key-sub">p</span></button>
+            <button class="key" onclick="type('ফ')">ফ<span class="key-sub">ph</span></button>
+            <button class="key" onclick="type('ব')">ব<span class="key-sub">b</span></button>
+            <button class="key" onclick="type('ভ')">ভ<span class="key-sub">bh</span></button>
+            <button class="key" onclick="type('ম')">ম<span class="key-sub">m</span></button>
+            <button class="key" onclick="type('য')">য<span class="key-sub">y</span></button>
+            <button class="key" onclick="type('র')">র<span class="key-sub">r</span></button>
+            <button class="key" onclick="type('ল')">ল<span class="key-sub">l</span></button>
+            <button class="key" onclick="type('শ')">শ<span class="key-sub">sh</span></button>
+            <button class="key" onclick="type('ষ')">ষ<span class="key-sub">Sh</span></button>
+          </div>
+          <div class="kb-row">
+            <button class="key" onclick="type('স')">স<span class="key-sub">s</span></button>
+            <button class="key" onclick="type('হ')">হ<span class="key-sub">h</span></button>
+            <button class="key" onclick="type('ড়')">ড়<span class="key-sub">R</span></button>
+            <button class="key" onclick="type('ঢ়')">ঢ়<span class="key-sub">Rh</span></button>
+            <button class="key" onclick="type('য়')">য়<span class="key-sub">y</span></button>
+            <button class="key" onclick="type('ৎ')">ৎ<span class="key-sub">t</span></button>
+            <button class="key" onclick="type('ং')">ং<span class="key-sub">ng</span></button>
+            <button class="key" onclick="type('ঃ')">ঃ<span class="key-sub">h</span></button>
+            <button class="key" onclick="type('ঁ')">ঁ<span class="key-sub">n</span></button>
+            <button class="key special" onclick="backspace()"><i class="ti ti-backspace"></i></button>
+          </div>
+          <div class="kb-row">
+            <button class="key space-key special" onclick="type(' ')">স্পেস</button>
+            <button class="key special green" onclick="type('\n')"><i class="ti ti-corner-down-left"></i> Enter</button>
+          </div>
+        </div>
+
+        <!-- Matra (vowel signs) -->
+        <div id="layer-matra" style="display:none">
+          <div class="kb-row">
+            <button class="key" onclick="type('া')">া<span class="key-sub">aa</span></button>
+            <button class="key" onclick="type('ি')">ি<span class="key-sub">i</span></button>
+            <button class="key" onclick="type('ী')">ী<span class="key-sub">ii</span></button>
+            <button class="key" onclick="type('ু')">ু<span class="key-sub">u</span></button>
+            <button class="key" onclick="type('ূ')">ূ<span class="key-sub">uu</span></button>
+            <button class="key" onclick="type('ৃ')">ৃ<span class="key-sub">ri</span></button>
+            <button class="key" onclick="type('ে')">ে<span class="key-sub">e</span></button>
+            <button class="key" onclick="type('ৈ')">ৈ<span class="key-sub">oi</span></button>
+            <button class="key" onclick="type('ো')">ো<span class="key-sub">o</span></button>
+            <button class="key" onclick="type('ৌ')">ৌ<span class="key-sub">ou</span></button>
+          </div>
+          <div class="kb-row">
+            <button class="key" onclick="type('্')">্<span class="key-sub">hasanta</span></button>
+            <button class="key special" onclick="backspace()"><i class="ti ti-backspace"></i> Del</button>
+            <button class="key space-key special" onclick="type(' ')">স্পেস</button>
+            <button class="key special green" onclick="type('\n')"><i class="ti ti-corner-down-left"></i></button>
+          </div>
+        </div>
+
+        <!-- Punctuation & Numbers -->
+        <div id="layer-punct" style="display:none">
+          <div class="kb-row">
+            <button class="key" onclick="type('০')">০</button>
+            <button class="key" onclick="type('১')">১</button>
+            <button class="key" onclick="type('২')">২</button>
+            <button class="key" onclick="type('৩')">৩</button>
+            <button class="key" onclick="type('৪')">৪</button>
+            <button class="key" onclick="type('৫')">৫</button>
+            <button class="key" onclick="type('৬')">৬</button>
+            <button class="key" onclick="type('৭')">৭</button>
+            <button class="key" onclick="type('৮')">৮</button>
+            <button class="key" onclick="type('৯')">৯</button>
+          </div>
+          <div class="kb-row">
+            <button class="key" onclick="type('।')">।<span class="key-sub">daari</span></button>
+            <button class="key" onclick="type('॥')">॥<span class="key-sub">ddaari</span></button>
+            <button class="key" onclick="type(',')">，</button>
+            <button class="key" onclick="type('?')">?</button>
+            <button class="key" onclick="type('!')">!</button>
+            <button class="key" onclick="type('"')\">"</button>
+            <button class="key" onclick="type('"')\">"</button>
+            <button class="key" onclick="type('-')">-</button>
+            <button class="key" onclick="type('()')">( )</button>
+            <button class="key special" onclick="backspace()"><i class="ti ti-backspace"></i></button>
+          </div>
+          <div class="kb-row">
+            <button class="key space-key special" onclick="type(' ')">স্পেস</button>
+            <button class="key special green" onclick="type('\n')"><i class="ti ti-corner-down-left"></i> Enter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-info-circle"></i> কীভাবে ব্যবহার করিম</div>
+      <div class="info-item"><i class="ti ti-check"></i> উপরের ট্যাব থেকে স্বরবর্ণ, ব্যঞ্জনবর্ণ বাছিক</div>
+      <div class="info-item"><i class="ti ti-check"></i> বোতামে চাপলে টেক্সটে যোগ হবে</div>
+      <div class="info-item"><i class="ti ti-check"></i> সরাসরি কীবোর্ডেও টাইপ করা যাবে</div>
+      <div class="info-item"><i class="ti ti-check"></i> কপি করে যেকোনো জায়গায় পেস্ট করিক</div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-keyboard"></i> শর্টকাট</div>
+      <div class="shortcut-item"><span>কপি</span><span class="shortcut-key">Ctrl+C</span></div>
+      <div class="shortcut-item"><span>সব মুছিক</span><span class="shortcut-key">Ctrl+A → Del</span></div>
+      <div class="shortcut-item"><span>আনডু</span><span class="shortcut-key">Ctrl+Z</span></div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title"><i class="ti ti-bulb"></i> টিপস</div>
+      <div class="info-item"><i class="ti ti-point"></i> ব্যঞ্জনবর্ণের পর মাত্রা যোগ করিক</div>
+      <div class="info-item"><i class="ti ti-point"></i> হসন্ত (্) দিয়ে যুক্তবর্ণ তৈরি হয়</div>
+      <div class="info-item"><i class="ti ti-point"></i> টাইপ করা শেষে কপি বাটন চাপিক</div>
+    </div>
+  </div>
+</div>
+
+<footer>© ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br><small style="color:#94a3b8;">Preserving heritage through advanced computing systems.</small></footer>
+
+<script>
+const output = document.getElementById('output');
+
+function type(char) {
+  const start = output.selectionStart;
+  const end = output.selectionEnd;
+  const val = output.value;
+  output.value = val.substring(0,start) + char + val.substring(end);
+  output.selectionStart = output.selectionEnd = start + char.length;
+  output.focus();
+  updateInfo();
+}
+
+function backspace() {
+  const start = output.selectionStart;
+  const end = output.selectionEnd;
+  if (start === end && start > 0) {
+    output.value = output.value.substring(0,start-1) + output.value.substring(end);
+    output.selectionStart = output.selectionEnd = start - 1;
+  } else if (start !== end) {
+    output.value = output.value.substring(0,start) + output.value.substring(end);
+    output.selectionStart = output.selectionEnd = start;
+  }
+  output.focus();
+  updateInfo();
+}
+
+function updateInfo() {
+  document.getElementById('char-info').textContent = output.value.length + ' অক্ষর';
+}
+
+output.addEventListener('input', updateInfo);
+
+function clearOutput() { output.value = ''; updateInfo(); output.focus(); }
+
+function copyOutput() {
+  if (!output.value) return;
+  navigator.clipboard.writeText(output.value).then(() => showToast('কপি হয়েছে!'));
+}
+
+function setLayer(name, btn) {
+  ['vowel','consonant','matra','punct'].forEach(l => {
+    document.getElementById('layer-'+l).style.display = l===name ? 'block' : 'none';
+  });
+  document.querySelectorAll('.layer-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function showToast(msg) {
+  document.getElementById('toast-msg').textContent = msg;
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+</script>
+</body>
+</html>
