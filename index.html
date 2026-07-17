@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
@@ -28,8 +28,6 @@
     position: sticky;
     top: 0;
     z-index: 100;
-	
-	
   }
   .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; }
   .logo span { color: #10b981; }
@@ -80,45 +78,112 @@
   .hero h1 { font-size: 42px; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem; letter-spacing: -1px; }
   .hero h1 span { color: #10b981; }
   .hero h2 { font-size: 18px; font-weight: 500; color: #94a3b8; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
-  .hero p { font-size: 16px; color: #475569; margin: 0 auto 2.5rem; line-height: 1.8; }
+  .hero p { font-size: 16px; color: #475569; margin: 0 auto 2rem; line-height: 1.8; }
 
-  /* Glassmorphic Search Bar */
-  .search-bar {
-    display: flex;
-    max-width: 520px;
-    margin: 0 auto;
-    border: 1px solid #cbd5e1;
-    border-radius: 16px;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
+  /* ── Inline Translator Widget ── */
+  .tr-widget { max-width: 560px; margin: 0 auto; text-align: left; }
+
+  .tr-dir-row {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.9); border: 1px solid #cbd5e1;
+    border-radius: 14px; padding: 8px 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
-  .search-bar:focus-within {
-    transform: translateY(-2px);
-    box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
-    border-color: #10b981;
+  .tr-lang-wrap { flex: 1; }
+  .tr-lang-wrap label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; display: block; margin-bottom: 3px; }
+  .tr-lang-wrap select {
+    width: 100%; border: none; outline: none; background: transparent;
+    font-size: 14px; font-weight: 700; color: #065f46; cursor: pointer;
+    font-family: inherit;
   }
-  .search-bar input {
-    flex: 1;
-    border: none;
-    padding: 16px 20px;
-    font-size: 15px;
-    background: transparent;
-    color: #0f172a;
-    outline: none;
+  .tr-swap-btn {
+    background: #f0fdf4; border: 1px solid #a7f3d0; color: #10b981;
+    border-radius: 50%; width: 36px; height: 36px; font-size: 18px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: all 0.2s;
   }
-  .search-bar button {
-    background: #10b981;
-    color: white;
-    border: none;
-    padding: 0 26px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
+  .tr-swap-btn:hover { background: #10b981; color: #fff; }
+
+  .tr-card {
+    background: rgba(255,255,255,0.9); border: 1px solid #cbd5e1;
+    border-radius: 16px; overflow: visible;
+    box-shadow: 0 8px 20px -5px rgba(16,185,129,0.08);
   }
-  .search-bar button:hover { background: #059669; }
+  .tr-card-input {
+    padding: 1rem 1.2rem 0.7rem;
+    border-bottom: 1px solid #f0fdf4; position: relative;
+  }
+  .tr-lang-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: #10b981; margin-bottom: 0.5rem;
+  }
+  .tr-dropdown-wrap { position: relative; }
+  #query {
+    width: 100%; border: none; outline: none;
+    font-size: 1.1rem; font-family: inherit; color: #0f172a;
+    background: transparent; resize: none; min-height: 56px; line-height: 1.5;
+  }
+  #query::placeholder { color: #cbd5e1; }
+
+  .tr-clear-btn {
+    position: absolute; top: 0; right: 0;
+    background: #f1f5f9; border: none; color: #94a3b8;
+    cursor: pointer; border-radius: 6px; padding: 4px 9px; font-size: 12px; display: none;
+  }
+  .tr-clear-btn.show { display: block; }
+  .tr-clear-btn:hover { background: #e2e8f0; }
+
+  /* Autocomplete dropdown */
+  .tr-dropdown {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: #fff; border: 1px solid #6ee7b7; border-top: none;
+    border-radius: 0 0 12px 12px; z-index: 200; display: none;
+    box-shadow: 0 8px 20px rgba(16,185,129,0.12);
+    max-height: 220px; overflow-y: auto;
+  }
+  .tr-dropdown.open { display: block; }
+  .tr-dd-item {
+    padding: 0.55rem 1.1rem; cursor: pointer; font-size: 13px;
+    color: #1e293b; border-bottom: 1px solid #f0fdf4;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: background 0.1s;
+  }
+  .tr-dd-item:last-child { border-bottom: none; }
+  .tr-dd-item:hover { background: #ecfdf5; color: #065f46; }
+  .tr-dd-item .dd-src { font-weight: 600; }
+  .tr-dd-item .dd-tgt { font-size: 12px; color: #94a3b8; margin-left: 8px; }
+
+  .tr-divider {
+    display: flex; align-items: center; gap: 8px; padding: 0 1.2rem;
+    font-size: 11px; color: #a7f3d0; text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .tr-divider::before, .tr-divider::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
+
+  .tr-card-result {
+    padding: 1rem 1.2rem 1.2rem; min-height: 84px;
+    background: #f9fffe; border-radius: 0 0 16px 16px;
+  }
+  .tr-result-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: #94a3b8; margin-bottom: 0.5rem;
+  }
+  #result { font-size: 1.1rem; font-weight: 500; color: #065f46; line-height: 1.5; }
+  #result.placeholder { color: #cbd5e1; font-size: 0.95rem; font-weight: 400; }
+  #result.error { color: #f87171; font-size: 0.85rem; font-weight: 400; }
+
+  .tr-result-actions { display: flex; gap: 8px; margin-top: 8px; }
+  .tr-copy-btn {
+    background: #f0fdf4; border: 1px solid #a7f3d0; color: #065f46;
+    border-radius: 8px; padding: 5px 12px; font-size: 12px; font-weight: 600;
+    cursor: pointer; display: flex; align-items: center; gap: 4px; transition: all 0.2s;
+  }
+  .tr-copy-btn:hover { background: #10b981; color: #fff; border-color: #10b981; }
+
+  .tr-corpus-note {
+    font-size: 11px; color: #94a3b8; text-align: center;
+    margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 4px;
+  }
 
   /* Sections Structure */
   .section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
@@ -212,6 +277,8 @@
     .hero { padding: 2rem 1.25rem 2.5rem; }
     .blog-image { display: none; }
     .section { padding: 2.5rem 1.25rem; }
+    #query, #result { font-size: 1rem; }
+    .tr-dir-row { flex-wrap: wrap; }
   }
 </style>
 </head>
@@ -220,7 +287,6 @@
 <nav>
   <a href="index.html" class="logo">imar<span>thar</span>.com</a>
   <div class="nav-links">
-    <a href="speech-corpus.html">স্পিচ কর্পাস</a>
     <a href="tools.html">টুল</a>
     <a href="blogs.html">ব্লগ</a>
     <a href="papers.html">পেপার</a>
@@ -239,21 +305,72 @@
 	  <h1>ইমার <span>ঠার</span></h1>
     <h2>My Mother Tongue</h2>
     <p>বিষ্ণুপ্রিয়া মণিপুরি ঠারর অনুবাদ, অভিধান, গবেষণা বারো কমিউনিটি প্ল্যাটফর্ম আহান।</p>
-    <div class="search-bar">
-      <input type="text" placeholder="ওয়াহি বিসারিক ..." />
-      <button>বিসারিক</button>
+
+    <!-- ── Inline Translator Widget ── -->
+    <div class="tr-widget">
+      <div class="tr-dir-row">
+        <div class="tr-lang-wrap">
+          <label>উৎস ভাষা (From)</label>
+          <select id="src-lang" onchange="onLangChange()">
+            <option value="bm">বিষ্ণুপ্রিয়া মণিপুরি</option>
+            <option value="bn">বাংলা</option>
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="zh">中文</option>
+          </select>
+        </div>
+        <button class="tr-swap-btn" onclick="swapLangs()" title="ভাষা বদলান">
+          <i class="ti ti-arrows-exchange"></i>
+        </button>
+        <div class="tr-lang-wrap">
+          <label>লক্ষ্য ভাষা (To)</label>
+          <select id="tgt-lang" onchange="onLangChange()">
+            <option value="bn">বাংলা</option>
+            <option value="bm">বিষ্ণুপ্রিয়া মণিপুরি</option>
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="zh">中文</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tr-card">
+        <div class="tr-card-input">
+          <div class="tr-lang-label" id="src-label">বিষ্ণুপ্রিয়া মণিপুরি</div>
+          <div class="tr-dropdown-wrap">
+            <textarea id="query" rows="2" placeholder="ওয়াহি বা বাক্য বিসারিক…" oninput="onType(this)"></textarea>
+            <button class="tr-clear-btn" id="clear-btn" onclick="doClear()">✕</button>
+            <div class="tr-dropdown" id="dropdown"></div>
+          </div>
+        </div>
+
+        <div class="tr-divider">অনুবাদ</div>
+
+        <div class="tr-card-result">
+          <div class="tr-result-label" id="tgt-label">বাংলা</div>
+          <div id="result" class="placeholder">অনুবাদ এখানে দেখাবে</div>
+          <div class="tr-result-actions" id="result-actions" style="display:none;">
+            <button class="tr-copy-btn" onclick="copyResult()"><i class="ti ti-copy"></i> কপি</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tr-corpus-note">
+        <i class="ti ti-database" style="font-size:12px;"></i>
+        <span id="corpus-count">corpus লোড হচ্ছে…</span>
+      </div>
     </div>
+
   </div>
 </div>
 
 <div class="section">
   <div class="section-title">টুলসমূহ</div>
   <div class="tools-grid">
-    <a href="speech-corpus.html" class="tool-card">
-      <div class="tool-icon"><i class="ti ti-microphone"></i></div>
-      <div class="tool-name">স্পিচ কর্পাস</div>
-      <div class="tool-desc">কমিউনিটি ভয়েস প্রজেক্ট — নিজের কণ্ঠ রেকর্ড করি অবদান রাখিক</div>
-    </a>
     <a href="translator.html" class="tool-card">
       <div class="tool-icon"><i class="ti ti-language"></i></div>
       <div class="tool-name">অনুবাদক</div>
@@ -262,12 +379,12 @@
     <a href="dictionary.html" class="tool-card">
       <div class="tool-icon"><i class="ti ti-book"></i></div>
       <div class="tool-name">অভিধান</div>
-      <div class="tool-desc">ওয়াহির অর্থ বারো ব্যবহার বিসারিক</div>
+      <div class="tool-desc">ওয়াহির অর্থ বারো ব্যবহার বিসারিক</div>
     </a>
     <a href="corpus.html" class="tool-card">
       <div class="tool-icon"><i class="ti ti-database"></i></div>
       <div class="tool-name">কর্পাস</div>
-      <div class="tool-desc">ভাষার ডেটাসেট রিকোয়েস্ট করিক</div>
+      <div class="tool-desc">ভাষার ডেটাসেট ডাউনলোড করিক</div>
     </a>
     <a href="papers.html" class="tool-card">
       <div class="tool-icon"><i class="ti ti-file-text"></i></div>
@@ -315,5 +432,252 @@
   <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
 </footer>
 
+<script>
+  // ── CSV column map ──
+  const COL = { bm: 0, bn: 1, en: 2, zh: 3, hi: 4, es: 5, fr: 6 };
+  const LANG_NAME = {
+    bm: 'বিষ্ণুপ্রিয়া মণিপুরি',
+    bn: 'বাংলা',
+    en: 'English',
+    zh: '中文',
+    hi: 'हिन्दी',
+    es: 'Español',
+    fr: 'Français'
+  };
+
+  let corpus = [];   // array of arrays (raw CSV rows)
+  let srcLang = 'bm';
+  let tgtLang = 'bn';
+
+  // ── ভাষা তালিকা (বিষ্ণুপ্রিয়া মণিপুরি জোড়া নিয়ম প্রয়োগের জন্য) ──
+  const SRC_FULL = [
+    { v:'bm', t:'বিষ্ণুপ্রিয়া মণিপুরি' },
+    { v:'bn', t:'বাংলা' },
+    { v:'en', t:'English' },
+    { v:'hi', t:'हिन्दी' },
+    { v:'es', t:'Español' },
+    { v:'fr', t:'Français' },
+    { v:'zh', t:'中文' }
+  ];
+  const TGT_FULL = [
+    { v:'bn', t:'বাংলা' },
+    { v:'bm', t:'বিষ্ণুপ্রিয়া মণিপুরি' },
+    { v:'en', t:'English' },
+    { v:'hi', t:'हिन्दी' },
+    { v:'es', t:'Español' },
+    { v:'fr', t:'Français' },
+    { v:'zh', t:'中文' }
+  ];
+  const BM_ONLY = [ { v:'bm', t:'বিষ্ণুপ্রিয়া মণিপুরি' } ];
+
+  function buildOptions(list, selectedVal) {
+    return list.map(l => '<option value="' + l.v + '"' + (l.v === selectedVal ? ' selected' : '') + '>' + l.t + '</option>').join('');
+  }
+
+  // src ও tgt এর বর্তমান মান অনুযায়ী দুই ড্রপডাউনের অপশন তালিকা ঠিক করে —
+  // শুধু bm→অন্য ভাষা অথবা অন্য ভাষা→bm অনুবাদ করা যাবে, bn→en এর মতো জোড়া নয়
+  function rebuildLangOptions() {
+    const srcSel = document.getElementById('src-lang');
+    const tgtSel = document.getElementById('tgt-lang');
+    const sVal = srcSel.value;
+    const tVal = tgtSel.value;
+
+    if (sVal !== 'bm') {
+      tgtSel.innerHTML = buildOptions(BM_ONLY, 'bm');
+    } else {
+      const keep = TGT_FULL.some(l => l.v === tVal) ? tVal : 'bn';
+      tgtSel.innerHTML = buildOptions(TGT_FULL, keep);
+    }
+
+    if (tVal !== 'bm') {
+      srcSel.innerHTML = buildOptions(BM_ONLY, 'bm');
+    } else {
+      const keep = SRC_FULL.some(l => l.v === sVal) ? sVal : 'bm';
+      srcSel.innerHTML = buildOptions(SRC_FULL, keep);
+    }
+  }
+
+  // ── Load CSV ──
+  fetch('bm_corpus_multilang.csv')
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+    .then(text => {
+      const lines = text.trim().split(/\r?\n/);
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+        // Proper CSV parse: handle quoted commas
+        const cols = parseCSVLine(line);
+        if (cols.length >= 2) corpus.push(cols);
+      }
+      document.getElementById('corpus-count').textContent = corpus.length + 'টি শব্দ ও বাক্য লোড হয়েছে';
+    })
+    .catch(err => {
+      document.getElementById('corpus-count').textContent = 'লোড ব্যর্থ — bm_corpus_multilang.csv খুঁজে পাওয়া যায়নি';
+      console.error(err);
+    });
+
+  function parseCSVLine(line) {
+    const result = [];
+    let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') { inQ = !inQ; }
+      else if (c === ',' && !inQ) { result.push(cur.trim()); cur = ''; }
+      else cur += c;
+    }
+    result.push(cur.trim());
+    return result;
+  }
+
+  // ── Language change ──
+  function onLangChange() {
+    rebuildLangOptions();
+    srcLang = document.getElementById('src-lang').value;
+    tgtLang = document.getElementById('tgt-lang').value;
+    document.getElementById('src-label').textContent = LANG_NAME[srcLang];
+    document.getElementById('tgt-label').textContent = LANG_NAME[tgtLang];
+    doClear();
+  }
+
+  function swapLangs() {
+    const sl = document.getElementById('src-lang');
+    const tl = document.getElementById('tgt-lang');
+    const newSrcVal = tl.value;
+    const newTgtVal = sl.value;
+
+    // নতুন মান অনুযায়ী সরাসরি সঠিক অপশন তালিকা বসানো হচ্ছে,
+    // যাতে লক করা (শুধু bm) সিলেক্ট বক্সে মান বসাতে সমস্যা না হয়
+    if (newTgtVal !== 'bm') {
+      sl.innerHTML = buildOptions(BM_ONLY, 'bm');
+    } else {
+      sl.innerHTML = buildOptions(SRC_FULL, newSrcVal);
+    }
+    if (newSrcVal !== 'bm') {
+      tl.innerHTML = buildOptions(BM_ONLY, 'bm');
+    } else {
+      tl.innerHTML = buildOptions(TGT_FULL, newTgtVal);
+    }
+
+    onLangChange();
+  }
+
+  // ── Typing handler ──
+  function onType(el) {
+    const q = el.value.trim();
+    document.getElementById('clear-btn').classList.toggle('show', q.length > 0);
+    if (!q) { resetResult(); closeDD(); return; }
+
+    const si = COL[srcLang];
+    const ti = COL[tgtLang];
+    if (si === undefined || ti === undefined) {
+      setResult('এই ভাষা-জুটি corpus-এ নেই', 'error');
+      closeDD(); return;
+    }
+
+    const ql = q.toLowerCase();
+    const hits = corpus.filter(r => r[si] && r[si].toLowerCase().includes(ql));
+
+    if (!hits.length) {
+      setResult('কোনো ফলাফল পাওয়া যায়নি', 'error');
+      closeDD(); return;
+    }
+
+    const exact = hits.find(r => r[si].toLowerCase() === ql);
+    if (exact && exact[ti]) {
+      setResult(exact[ti], '');
+      document.getElementById('result-actions').style.display = 'flex';
+    } else {
+      resetResult();
+    }
+
+    if (!exact || hits.length > 1) openDD(hits, si, ti);
+    else closeDD();
+  }
+
+  // ── Dropdown ──
+  let ddHits = [], ddSi = null, ddTi = null;
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function openDD(hits, si, ti) {
+    ddHits = hits; ddSi = si; ddTi = ti;
+    const dd = document.getElementById('dropdown');
+    const limit = Math.min(hits.length, 12);
+    let html = '';
+    for (let i = 0; i < limit; i++) {
+      const src = hits[i][si] || '';
+      const tgt = hits[i][ti] || '—';
+      html += `<div class="tr-dd-item" onclick="pickIndex(${i})">
+        <span class="dd-src">${escapeHtml(src)}</span>
+        <span class="dd-tgt">${escapeHtml(tgt)}</span>
+      </div>`;
+    }
+    dd.innerHTML = html;
+    dd.classList.add('open');
+  }
+
+  function closeDD() {
+    const dd = document.getElementById('dropdown');
+    dd.classList.remove('open');
+    dd.innerHTML = '';
+    ddHits = []; ddSi = null; ddTi = null;
+  }
+
+  function pickIndex(i) {
+    if (!ddHits[i]) return;
+    const src = ddHits[i][ddSi] || '';
+    const tgt = ddHits[i][ddTi] || '—';
+    pick(src, tgt);
+  }
+
+  function pick(src, tgt) {
+    document.getElementById('query').value = src;
+    document.getElementById('clear-btn').classList.add('show');
+    setResult(tgt, '');
+    document.getElementById('result-actions').style.display = 'flex';
+    closeDD();
+  }
+
+  // ── Result helpers ──
+  function setResult(text, cls) {
+    const el = document.getElementById('result');
+    el.textContent = text;
+    el.className = cls;
+  }
+
+  function resetResult() {
+    setResult('অনুবাদ এখানে দেখাবে', 'placeholder');
+    document.getElementById('result-actions').style.display = 'none';
+  }
+
+  function doClear() {
+    document.getElementById('query').value = '';
+    document.getElementById('clear-btn').classList.remove('show');
+    resetResult();
+    closeDD();
+  }
+
+  function copyResult() {
+    const text = document.getElementById('result').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.tr-copy-btn');
+      btn.innerHTML = '<i class="ti ti-check"></i> কপি হয়েছে!';
+      setTimeout(() => btn.innerHTML = '<i class="ti ti-copy"></i> কপি', 1500);
+    });
+  }
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.tr-dropdown-wrap')) closeDD();
+  });
+
+  rebuildLangOptions(); // পৃষ্ঠা লোড হওয়ার সময় নিয়ম অনুযায়ী ড্রপডাউন ঠিক করা
+</script>
 </body>
 </html>
