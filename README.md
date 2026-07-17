@@ -1,83 +1,85 @@
-# ইমার ঠার (imarthar.com)
+# Imar Thar
 
-**বিষ্ণুপ্রিয়া মণিপুরি ভাষার জন্য একটি উন্মুক্ত ডিজিটাল প্ল্যাটফর্ম**
+**A Digital Platform for the Bishnupriya Manipuri Language**
 
-ইমার ঠার (My Mother Tongue) হলো বিষ্ণুপ্রিয়া মণিপুরি ভাষার সংরক্ষণ, গবেষণা, অনুবাদ, কর্পাস নির্মাণ এবং ভাষাভিত্তিক কৃত্রিম বুদ্ধিমত্তা (AI) উন্নয়নের উদ্দেশ্যে নির্মিত একটি ওপেন ডিজিটাল প্ল্যাটফর্ম। ওয়েবসাইটটি ভাষার শিক্ষার্থী, গবেষক, অনুবাদক এবং সাধারণ ব্যবহারকারীদের জন্য বিভিন্ন ভাষাতাত্ত্বিক টুল একত্রে প্রদান করে। :contentReference[oaicite:0]{index=0}
+Imar Thar (My Mother Tongue) is an open digital platform dedicated to preserving, documenting, and promoting the Bishnupriya Manipuri language through modern technology. The project provides language tools, multilingual translation, digital corpora, and community-driven resources for learners, researchers, translators, and native speakers. :contentReference[oaicite:0]{index=0}
 
 ---
 
-## প্রধান বৈশিষ্ট্য
+## ✨ Features
 
-### 🌐 বহুভাষিক অনুবাদক
+### 🌍 Multilingual Translator
 
-- বিষ্ণুপ্রিয়া মণিপুরি ↔ বাংলা
-- বিষ্ণুপ্রিয়া মণিপুরি ↔ English
-- বিষ্ণুপ্রিয়া মণিপুরি ↔ हिन्दी
-- বিষ্ণুপ্রিয়া মণিপুরি ↔ Español
-- বিষ্ণুপ্রিয়া মণিপুরি ↔ Français
-- বিষ্ণুপ্রিয়া মণিপুরি ↔ 中文
+Translate between Bishnupriya Manipuri and multiple languages, including:
 
-বৈশিষ্ট্য
+- Bengali
+- English
+- Hindi
+- Spanish
+- French
+- Chinese
 
-- লাইভ সার্চ
-- অটো-কমপ্লিট
-- কর্পাস-ভিত্তিক অনুবাদ
-- ভাষা অদলবদল (Swap)
-- ফলাফল কপি
-- CSV-ভিত্তিক অভিধান অনুসন্ধান
+Features include:
+
+- Live search
+- Instant translation
+- Autocomplete suggestions
+- Language swap
+- Copy translated text
+- Corpus-based translation engine
 
 :contentReference[oaicite:1]{index=1} :contentReference[oaicite:2]{index=2}
 
 ---
 
-## উপলব্ধ টুলসমূহ
+## 🛠 Available Tools
 
-- Speech Corpus সংগ্রহ
-- Transliteration
-- Translation
-- Dictionary
-- Corpus Download
-- Text-to-Speech (TTS)
-- Online Keyboard
-- Spell Checker
+The platform includes several language technologies:
+
+- 🎙 Speech Corpus Collection
+- 🔄 Transliteration
+- 🌐 Translator
+- 📖 Dictionary
+- 📂 Corpus Download
+- 🔊 Text-to-Speech (TTS)
+- ⌨ Online Keyboard
+- ✔ Spell Checker
 
 :contentReference[oaicite:3]{index=3}
 
 ---
 
-## ব্লগ বিভাগ
+## 📚 Blog
 
-ওয়েবসাইটে ভাষা, গবেষণা এবং সংস্কৃতি বিষয়ক ব্লগ প্রকাশ করা হয়।
+The website publishes articles related to:
 
-বর্তমান বিভাগসমূহ
-
-- বিষ্ণুপ্রিয়া মণিপুরির ইতিহাস
-- ভাষা কর্পাস গবেষণা
-- সংস্কৃতি ও পরিচয়
+- Bishnupriya Manipuri language
+- Linguistic research
+- Culture and heritage
+- Digital language preservation
 
 :contentReference[oaicite:4]{index=4}
 
 ---
 
-## প্রযুক্তি
+## 🚀 Technology Stack
 
 - HTML5
 - CSS3
 - Vanilla JavaScript
 - Responsive Design
-- CSV Data Corpus
 - Unicode Support
+- CSV-based Language Corpus
 - Tabler Icons
 
 :contentReference[oaicite:5]{index=5}
 
 ---
 
-## প্রকল্প কাঠামো (প্রস্তাবিত)
+## 📁 Project Structure
 
-```
+```text
 /
-│
 ├── index.html
 ├── tools.html
 ├── translation.html
@@ -102,55 +104,84 @@
 
 ---
 
-## অনুবাদ ব্যবস্থা
+## 🔍 Translation Engine
 
-অনুবাদকটি সম্পূর্ণ কর্পাস-ভিত্তিক।
+The translator is powered by a multilingual CSV corpus.
 
-- CSV ডাটাবেস লোড করে
-- ইনপুট অনুযায়ী অনুসন্ধান করে
-- Exact Match থাকলে সরাসরি অনুবাদ দেখায়
-- একাধিক ফলাফল থাকলে Dropdown Suggestion প্রদর্শন করে
-- Clipboard Copy সমর্থন করে
+It supports:
 
-:contentReference[oaicite:6]{index=6}
+- Fast corpus lookup
+- Exact phrase matching
+- Autocomplete suggestions
+- Multiple language pairs
+- Clipboard copy
+- Dynamic language selection
+
+The translation engine loads the language corpus into memory and performs real-time searches for an efficient user experience. :contentReference[oaicite:6]{index=6}
 
 ---
 
-## ভবিষ্যৎ পরিকল্পনা
+## 🎯 Project Goals
 
-- AI Translation
-- Neural Machine Translation
-- OCR
+The mission of Imar Thar is to preserve and modernize the Bishnupriya Manipuri language by providing free, accessible, and open digital resources for the global community.
+
+The project aims to:
+
+- Preserve linguistic heritage
+- Build open language corpora
+- Support language research
+- Develop AI-powered language technologies
+- Encourage community participation
+- Promote digital literacy in Bishnupriya Manipuri
+
+---
+
+## 🔮 Future Roadmap
+
+Planned features include:
+
+- AI-powered Machine Translation
+- Optical Character Recognition (OCR)
 - Speech Recognition
-- Voice Dataset
-- Language Model
+- Large Language Models (LLMs)
 - Grammar Checker
 - Morphological Analyzer
-- Mobile Application
+- Mobile Applications
 - Public API
+- AI Voice Models
+- Educational Resources
 
 ---
 
-## উদ্দেশ্য
+## 🤝 Contributing
 
-এই প্রকল্পের মূল লক্ষ্য হলো বিষ্ণুপ্রিয়া মণিপুরি ভাষাকে ডিজিটাল জগতে সংরক্ষণ, গবেষণা এবং আধুনিক প্রযুক্তির মাধ্যমে ভবিষ্যৎ প্রজন্মের জন্য সহজলভ্য করা।
+Community contributions are welcome.
+
+You can contribute by:
+
+- Expanding the language corpus
+- Reporting bugs
+- Improving translations
+- Contributing code
+- Writing documentation
+- Publishing educational content
 
 ---
 
-## Developer
+## 👨‍💻 Developer
 
 **কুঙ্গ থাঙ**
 
-২০২৬
+Dedicated to preserving the Bishnupriya Manipuri language through open technology.
 
 ---
 
-## License
+## 📄 License
 
-এই প্রকল্পের লাইসেন্স ভবিষ্যতে নির্ধারণ করা হবে।
+The project license will be announced in a future release.
 
 ---
 
-## Website
+## 🌐 Website
 
-https://imarthar.com
+**https://imarthar.com**
