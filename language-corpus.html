@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>কর্পাস অবদান — ইমার ঠার</title>
+  <title>ভাষা কর্পাস এন্ট্রি পেজ— ইমার ঠার</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
@@ -362,22 +362,18 @@
 
 <div class="page-hero">
   <div class="page-hero-content">
-    <a href="translator.html" class="back-link">
-      <i class="ti ti-arrow-left"></i> অনুবাদকে ফিরুন
+    <a href="index.html" class="back-link">
+      <i class="ti ti-arrow-left"></i> অনুবাদকে আলথক
     </a>
-    <div class="hero-badge"><i class="ti ti-plus"></i> কর্পাস অবদান</div>
-    <h1>কর্পাস <span>গড়ে তুলুন</span></h1>
-    <p>সবাই মিলে বিষ্ণুপ্রিয়া মণিপুরি–বাংলা শব্দভাণ্ডার সমৃদ্ধ করি</p>
-    <div class="corpus-badge" id="corpus-count">এন্ট্রি লোড হচ্ছে…</div>
+    <div class="hero-badge"><i class="ti ti-plus"></i> কর্পাসে অবদান থুইক</div>
+        <p>হাবিয়ে তিলয়া বিষ্ণুপ্রিয়া মণিপুরি ঠারর ওয়াহির বারনগো বরা করিক</p>
+    <div class="corpus-badge" id="corpus-count">এন্ট্রি লোড অর …</div>
   </div>
 </div>
 
 <div class="main">
 
-  <div class="config-warning" id="config-warning">
-    <strong>Supabase কনফিগার করা হয়নি:</strong> এই ফাইলের নিচে <code>SUPABASE_URL</code> ও <code>SUPABASE_ANON_KEY</code> বসান।
-  </div>
-
+ 
   <div class="stats-row">
     <div class="stat-box">
       <div class="num" id="stat-total">০</div>
@@ -385,19 +381,19 @@
     </div>
     <div class="stat-box">
       <div class="num" id="stat-mine">০</div>
-      <div class="lbl">আপনার অবদান</div>
+      <div class="lbl">আপনাগাসির অবদান</div>
     </div>
   </div>
 
   <div class="tip-box">
     <i class="ti ti-info-circle"></i>
-    <span>নিচে একটি শব্দ বা বাক্য এবং তার বাংলা অনুবাদ লিখে জমা দিন। এন্ট্রিটি সরাসরি corpus ডাটাবেসে জমা হবে।</span>
+    <span>তলে ওয়াহি বা বাক্যহানি বারো ঔহার বাংলা/ইংরেজি/হিন্দি অনুবাদ ইকরিয়া জমা দিক। এন্ট্রি এহান সরাসরি corpus ডাটাবেসে জমা অইতয়।</span>
   </div>
 
   <div class="card">
     <div class="card-section">
       <div class="lang-label">বিষ্ণুপ্রিয়া মণিপুরি</div>
-      <textarea id="bm-input" placeholder="যেমন: তুমি কেমন আছ" oninput="updateSubmitState()"></textarea>
+      <textarea id="bm-input" placeholder="যেমন: আজিকা হারৌপার দিনহান" oninput="updateSubmitState()"></textarea>
     </div>
     <div class="card-section">
       <div class="lang-row-head">
@@ -408,15 +404,15 @@
           <option value="hindi">हिन्दी</option>
         </select>
       </div>
-      <textarea id="bn-input" placeholder="যেমন: তুমি কেমন আছো" oninput="updateSubmitState()"></textarea>
+      <textarea id="bn-input" placeholder="যেমন: কিসাদে কিতা" oninput="updateSubmitState()"></textarea>
     </div>
     <div class="card-section name-row">
-      <div class="lang-label">আপনার নাম (ঐচ্ছিক)</div>
-      <input type="text" id="name-input" placeholder="নাম না দিলে 'নামহীন' দেখাবে">
+      <div class="lang-label">আপনার নাঙহান (ঐচ্ছিক)</div>
+      <input type="text" id="name-input" placeholder="নাঙহান নাদেলে 'নাঙ নেই' দেহাদিতৈ">
     </div>
     <div class="card-section">
       <button class="submit-btn" id="submit-btn" onclick="submitEntry()" disabled>
-        <i class="ti ti-send"></i> জমা দিন
+        <i class="ti ti-send"></i> জমা দিক
       </button>
       <div class="status-msg" id="status-msg"></div>
     </div>
@@ -435,7 +431,7 @@
       </div>
     </div>
     <div class="entry-list" id="entry-list">
-      <div class="empty-note">লোড হচ্ছে…</div>
+      <div class="empty-note">লোড অর …</div>
     </div>
   </div>
 
@@ -485,7 +481,7 @@
     if (!isConfigured()) {
       document.getElementById('config-warning').classList.add('visible');
       document.getElementById('corpus-count').textContent = 'Supabase কনফিগার করা হয়নি';
-      document.getElementById('entry-list').innerHTML = '<div class="empty-note">Supabase সেটআপ শেষ করলে এন্ট্রিগুলো এখানে দেখা যাবে।</div>';
+      document.getElementById('entry-list').innerHTML = '<div class="empty-note">Supabase সেটআপ লয়করেল এন্ট্রিউতা এপেই দেহেইতয়।</div>';
       return;
     }
 
@@ -495,7 +491,7 @@
         .select('*', { count: 'exact', head: true });
       if (countError) throw countError;
 
-      document.getElementById('corpus-count').textContent = `${(count || 0).toLocaleString('bn-BD')}টি এন্ট্রি জমা হয়েছে`;
+      document.getElementById('corpus-count').textContent = `${(count || 0).toLocaleString('bn-BD')}হান এন্ট্রি জমা অসে`;
       document.getElementById('stat-total').textContent = (count || 0).toLocaleString('bn-BD');
 
       const { data, error } = await supabaseClient
@@ -507,8 +503,8 @@
 
       renderEntries(data || []);
     } catch (e) {
-      document.getElementById('corpus-count').textContent = 'ডাটা লোড করা যায়নি';
-      document.getElementById('entry-list').innerHTML = '<div class="empty-note">এন্ট্রি লোড করতে সমস্যা হয়েছে। কনসোল চেক করুন।</div>';
+      document.getElementById('corpus-count').textContent = 'ডাটা লোড করানি নারলাং';
+      document.getElementById('entry-list').innerHTML = '<div class="empty-note">এন্ট্রি লোড করতে সমস্যা দেহা দেসে। কনসোল চেক করিক।</div>';
       console.error(e);
     }
   }
@@ -516,7 +512,7 @@
   function renderEntries(entries) {
     const list = document.getElementById('entry-list');
     if (entries.length === 0) {
-      list.innerHTML = '<div class="empty-note">এখনো কোনো এন্ট্রি জমা হয়নি। প্রথম অবদানকারী হোন!</div>';
+      list.innerHTML = '<div class="empty-note">এবাকাউ কোনো এন্ট্রি জমা নাসে। পয়লা অবদানকারীগ অ!</div>';
       return;
     }
     list.innerHTML = entries.map(e => {
@@ -553,7 +549,7 @@
     if (!bm || !bn || !isConfigured()) return;
 
     btn.disabled = true;
-    statusEl.textContent = 'জমা হচ্ছে…';
+    statusEl.textContent = 'জমা অর…';
     statusEl.className = 'status-msg';
 
     const targetLang = document.getElementById('lang-select').value;
@@ -564,7 +560,7 @@
         .insert([{ bm, translation: bn, target_lang: targetLang, contributor_name: name || null }]);
       if (error) throw error;
 
-      statusEl.textContent = 'ধন্যবাদ! এন্ট্রি জমা হয়েছে।';
+      statusEl.textContent = 'থাকাত! এন্ট্রিহান জমা অইল।';
       statusEl.className = 'status-msg ok';
       bmEl.value = '';
       bnEl.value = '';
@@ -572,7 +568,7 @@
       document.getElementById('stat-mine').textContent = myCount.toLocaleString('bn-BD');
       await loadEntries();
     } catch (e) {
-      statusEl.textContent = 'দুঃখিত, জমা দেওয়া যায়নি। আবার চেষ্টা করুন।';
+      statusEl.textContent = 'সরি, জমা নাইল। বারো হৎনা করিক ।';
       statusEl.className = 'status-msg err';
       console.error(e);
     }
@@ -595,7 +591,7 @@
       if (error) throw error;
 
       if (!data || data.length === 0) {
-        alert('এই ভাষায় এখনো কোনো এন্ট্রি নেই।');
+        alert('ঠার এহানল এবকাউ কোনো এন্ট্রি নেই।');
         return;
       }
 
@@ -619,7 +615,7 @@
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     } catch (e) {
-      alert('এক্সপোর্ট ব্যর্থ হয়েছে। আবার চেষ্টা করুন।');
+      alert('এক্সপোর্ট ব্যর্থ অইল। বারো হৎনা করিক ।');
       console.error(e);
     }
   }
