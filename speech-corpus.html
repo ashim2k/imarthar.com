@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>স্পিচ কর্পাস খমকরানি — ইমার ঠার</title>
+<title>স্পিচ কর্পাস সংগ্রহ — ইমার ঠার</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,6 +39,7 @@
   .page-header h1 span { color: #10b981; }
   .page-header p { font-size: 15px; color: #64748b; max-width: 520px; }
 
+  /* ── Profile Modal ── */
   .modal-overlay {
     position: fixed; inset: 0; background: rgba(15,23,42,0.5);
     backdrop-filter: blur(6px); z-index: 200; display: flex;
@@ -106,11 +107,13 @@
   .btn-next:hover { background: #059669; }
   .btn-next:disabled { background: #cbd5e1; cursor: not-allowed; }
 
+  /* Step indicator */
   .step-dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 1.5rem; }
   .step-dot { width: 8px; height: 8px; border-radius: 50%; background: #e2e8f0; transition: all 0.2s; }
   .step-dot.active { background: #10b981; width: 24px; border-radius: 4px; }
   .step-dot.done { background: #10b981; }
 
+  /* Profile chip (shown after setup) */
   .profile-chip {
     background: #f0fdf4; border: 1px solid #d1fae5; border-radius: 12px;
     padding: 10px 14px; margin-bottom: 1.5rem; display: flex;
@@ -127,6 +130,7 @@
     background: none; border: none; font-family: inherit;
   }
 
+  /* ── Main Layout ── */
   .main-layout {
     max-width: 900px; margin: 2rem auto 4rem; padding: 0 2rem;
     display: grid; grid-template-columns: 1fr 260px; gap: 2rem; align-items: start;
@@ -138,6 +142,7 @@
   }
   .section-title::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
 
+  /* ── Recorder Card ── */
   .recorder-card {
     background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px;
     overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
@@ -236,6 +241,7 @@
   .btn-skip { background: #f8fafc; color: #94a3b8; border: 1px solid #e2e8f0; }
   .btn-skip:hover { border-color: #cbd5e1; color: #64748b; }
 
+  /* ── Sidebar ── */
   .sidebar-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
   .sidebar-title { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
   .sidebar-title i { color: #10b981; font-size: 16px; }
@@ -267,6 +273,7 @@
   .lb-name { font-size: 13px; font-weight: 600; color: #0f172a; flex: 1; }
   .lb-count { font-size: 12px; font-weight: 700; color: #10b981; }
 
+  /* Toast */
   .toast {
     position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px);
     background: #0f172a; color: #ffffff; padding: 12px 24px; border-radius: 12px;
@@ -293,12 +300,13 @@
 
 <div class="toast" id="toast"><i class="ti ti-circle-check"></i> <span id="toast-msg"></span></div>
 
+<!-- ── Profile Setup Modal ── -->
 <div class="modal-overlay" id="profile-modal">
   <div class="modal">
     <div class="modal-header">
       <div class="modal-icon"><i class="ti ti-microphone"></i></div>
-      <div class="modal-title">রেকর্ড করানির আগে</div>
-      <div class="modal-sub">তোর তথ্য দে — আকমাউ দিলেই অইতই</div>
+      <div class="modal-title">রেকর্ড শুরু করার আগে</div>
+      <div class="modal-sub">আপনার তথ্য দিন — একবার দিলেই হবে</div>
     </div>
 
     <div class="step-dots">
@@ -312,7 +320,7 @@
     <!-- Step 0: Dialect -->
     <div class="form-step active" id="step-0">
       <div class="step-label">ধাপ ১ / ৫</div>
-      <div class="step-question">তোর ডায়ালেক্টহান কিহান?</div>
+      <div class="step-question">আপনার ডায়ালেক্ট কোনটা?</div>
       <div class="option-grid col2">
         <button class="option-btn" onclick="selectOption('dialect','rajar-gang',this)">
           <span class="opt-icon">👑</span>
@@ -325,7 +333,7 @@
       </div>
       <div class="step-nav">
         <button class="btn-next" id="next-0" onclick="goStep(1)" disabled>
-          থাংনার ধাপ <i class="ti ti-arrow-right"></i>
+          পরের ধাপ <i class="ti ti-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -333,7 +341,7 @@
     <!-- Step 1: Country -->
     <div class="form-step" id="step-1">
       <div class="step-label">ধাপ ২ / ৫</div>
-      <div class="step-question">তি কোন দেশত্ত?</div>
+      <div class="step-question">আপনি কোন দেশ থেকে?</div>
       <div class="option-grid col2">
         <button class="option-btn" onclick="selectOption('country','india',this); updateZones()">
           <span class="opt-icon">🇮🇳</span>
@@ -345,9 +353,9 @@
         </button>
       </div>
       <div class="step-nav">
-        <button class="btn-back" onclick="goStep(0)"><i class="ti ti-arrow-left"></i> আগের</button>
+        <button class="btn-back" onclick="goStep(0)"><i class="ti ti-arrow-left"></i> আগে</button>
         <button class="btn-next" id="next-1" onclick="goStep(2)" disabled>
-          থাংনার ধাপ <i class="ti ti-arrow-right"></i>
+          পরের ধাপ <i class="ti ti-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -355,14 +363,14 @@
     <!-- Step 2: Zone -->
     <div class="form-step" id="step-2">
       <div class="step-label">ধাপ ৩ / ৫</div>
-      <div class="step-question">তোর এলাকা / জোন?</div>
+      <div class="step-question">আপনার এলাকা / জোন?</div>
       <select class="zone-select" id="zone-select" onchange="profile.zone=this.value; updateNextBtn(2)">
-        <option value="">— জোন বাছিয়া নেগা —</option>
+        <option value="">— জোন বাছুন —</option>
       </select>
       <div class="step-nav">
-        <button class="btn-back" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> আগের</button>
+        <button class="btn-back" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> আগে</button>
         <button class="btn-next" id="next-2" onclick="goStep(3)" disabled>
-          থাংনার ধাপ <i class="ti ti-arrow-right"></i>
+          পরের ধাপ <i class="ti ti-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -370,16 +378,16 @@
     <!-- Step 3: Age -->
     <div class="form-step" id="step-3">
       <div class="step-label">ধাপ ৪ / ৫</div>
-      <div class="step-question">তোর বয়স?</div>
+      <div class="step-question">আপনার বয়স?</div>
       <div class="option-grid col3">
         <button class="option-btn" onclick="selectOption('age','18-25',this)">১৮–২৫</button>
         <button class="option-btn" onclick="selectOption('age','26-40',this)">২৬–৪০</button>
         <button class="option-btn" onclick="selectOption('age','40+',this)">৪০+</button>
       </div>
       <div class="step-nav">
-        <button class="btn-back" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> আগের</button>
+        <button class="btn-back" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> আগে</button>
         <button class="btn-next" id="next-3" onclick="goStep(4)" disabled>
-          থাংনার ধাপ <i class="ti ti-arrow-right"></i>
+          পরের ধাপ <i class="ti ti-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -387,19 +395,22 @@
     <!-- Step 4: Gender -->
     <div class="form-step" id="step-4">
       <div class="step-label">ধাপ ৫ / ৫</div>
-      <div class="step-question">তোর লিঙ্গ?</div>
-      <div class="option-grid col2">
+      <div class="step-question">আপনার লিঙ্গ?</div>
+      <div class="option-grid col3">
         <button class="option-btn" onclick="selectOption('gender','male',this)">
           <span class="opt-icon">👨</span>পুরুষ
         </button>
         <button class="option-btn" onclick="selectOption('gender','female',this)">
           <span class="opt-icon">👩</span>মহিলা
         </button>
+        <button class="option-btn" onclick="selectOption('gender','other',this)">
+          <span class="opt-icon">🧑</span>অন্য
+        </button>
       </div>
       <div class="step-nav">
-        <button class="btn-back" onclick="goStep(3)"><i class="ti ti-arrow-left"></i> আগের</button>
+        <button class="btn-back" onclick="goStep(3)"><i class="ti ti-arrow-left"></i> আগে</button>
         <button class="btn-next" id="next-4" onclick="finishProfile()" disabled>
-          রেকর্ড করানি অকরিক <i class="ti ti-microphone"></i>
+          রেকর্ড শুরু করিক <i class="ti ti-microphone"></i>
         </button>
       </div>
     </div>
@@ -423,11 +434,11 @@
     <div class="breadcrumb">
       <a href="index.html">হোম</a>
       <i class="ti ti-chevron-right"></i>
-      <span>স্পিচ কর্পাস খমকরানি </span>
+      <span>স্পিচ কর্পাস সংগ্রহ</span>
     </div>
     <div class="hero-badge"><i class="ti ti-microphone"></i> কমিউনিটি ভয়েস প্রজেক্ট</div>
     <h1>স্পিচ <span>কর্পাস</span> সংগ্রহ</h1>
-    <p>নিজর নারগল ইমার ঠারর স্পিচ রেকর্ড করিয়া বিষ্ণুপ্রিয়া মণিপুরি ইমার ঠারর AI মডেল হংকরানিৎ অবদান থুইক।</p>
+    <p>আপনার কণ্ঠ রেকর্ড করি বিষ্ণুপ্রিয়া মণিপুরি ভাষার AI মডেল তৈরিত সাহায্য করিক।</p>
   </div>
 </div>
 
@@ -435,16 +446,18 @@
   <div>
     <div class="section-title">রেকর্ডার</div>
 
+    <!-- Profile chip -->
     <div class="profile-chip" id="profile-chip" style="display:none">
       <div class="profile-info" id="profile-tags"></div>
-      <button class="profile-edit" onclick="reopenProfile()"><i class="ti ti-edit"></i> নুয়া করে আরাকমাউ </button>
+      <button class="profile-edit" onclick="reopenProfile()"><i class="ti ti-edit"></i> বদলাক</button>
     </div>
 
     <div class="recorder-card">
+      <!-- Progress -->
       <div class="recorder-header">
         <div class="progress-info">
           <div class="progress-label-row">
-            <span class="progress-label">আজিকার অগ্রগতি</span>
+            <span class="progress-label">আজকের অগ্রগতি</span>
             <span class="progress-count" id="progress-count">০ / ২০</span>
           </div>
           <div class="progress-track">
@@ -457,26 +470,28 @@
         </div>
       </div>
 
+      <!-- Sentence -->
       <div class="sentence-area">
-        <div class="sentence-tag"><i class="ti ti-volume"></i> এরে বাক্য এহান পাকরিক</div>
+        <div class="sentence-tag"><i class="ti ti-volume"></i> এই বাক্যটা পড়িক</div>
         <div class="sentence-box" id="sentence-box">
-          <div class="sentence-text" id="sentence-text">মোর মাতৃভাষাহান বিষ্ণুপ্রিয়া মণিপুরি।</div>
-          <div class="sentence-transliteration" id="sentence-trans">Mor matrubhasha Bishnupriya Manipuri.</div>
+          <div class="sentence-text" id="sentence-text">আমার মাতৃভাষা বিষ্ণুপ্রিয়া মণিপুরি।</div>
+          <div class="sentence-transliteration" id="sentence-trans">Amar matrubhasha Bishnupriya Manipuri.</div>
         </div>
         <div class="sentence-nav">
           <button class="nav-btn" id="prev-btn" onclick="prevSentence()" disabled>
-            <i class="ti ti-chevron-left"></i> আগেকার
+            <i class="ti ti-chevron-left"></i> আগের
           </button>
           <span class="sentence-id" id="sentence-id">বাক্য ১ / ৩০</span>
           <button class="nav-btn" id="next-btn" onclick="nextSentence()">
-            থাংনার <i class="ti ti-chevron-right"></i>
+            পরের <i class="ti ti-chevron-right"></i>
           </button>
         </div>
       </div>
 
+      <!-- Waveform -->
       <div class="waveform-area">
         <div class="waveform-wrap">
-          <div class="waveform-idle" id="waveform-idle"><i class="ti ti-wave-sine"></i> রেকর্ড করানি অকরলে waveform দেহেইতয়</div>
+          <div class="waveform-idle" id="waveform-idle"><i class="ti ti-wave-sine"></i> রেকর্ড শুরু করলে waveform দেখাবে</div>
           <canvas id="waveform"></canvas>
         </div>
         <div class="timer-row">
@@ -488,22 +503,23 @@
         </div>
       </div>
 
+      <!-- Controls -->
       <div class="controls-area">
         <div class="controls-row">
           <button class="action-btn btn-play" id="play-btn" onclick="playRecording()" disabled>
-            <i class="ti ti-player-play"></i> হুনিক
+            <i class="ti ti-player-play"></i> শুনিক
           </button>
           <button class="record-btn" id="record-btn" onclick="toggleRecord()">
             <i class="ti ti-microphone" id="record-icon"></i>
-            <span class="record-label" id="record-label">অকরিক</span>
+            <span class="record-label" id="record-label">শুরু</span>
           </button>
           <button class="action-btn btn-skip" onclick="nextSentence()">
-            <i class="ti ti-player-skip-forward"></i> এহান বেলা
+            <i class="ti ti-player-skip-forward"></i> এড়িয়ে যাক
           </button>
         </div>
         <div class="controls-row">
           <button class="action-btn btn-submit" id="submit-btn" onclick="submitRecording()" disabled style="max-width:100%;width:100%;">
-            <i class="ti ti-download"></i> ডাউনলোড করিক বারো থাংনার বাক্যৎ যিকগা
+            <i class="ti ti-download"></i> ডাউনলোড করিক বারো পরের বাক্যে যাক
           </button>
         </div>
       </div>
@@ -522,22 +538,22 @@
     </div>
 
     <div class="sidebar-card">
-      <div class="sidebar-title"><i class="ti ti-help"></i> কিসারে করানি?</div>
-      <div class="how-item"><span class="how-num">১</span><span class="how-text">আগে তথ্য দিক (ডায়ালেক্ট, জোন, বয়স)</span></div>
-      <div class="how-item"><span class="how-num">২</span><span class="how-text">বাক্যহান মনোযোগ দিয়া পাকরিক </span></div>
-      <div class="how-item"><span class="how-num">৩</span><span class="how-text">মাইক বাটনগৎ যাতিয়া সেংকরে পাকরিক </span></div>
-      <div class="how-item"><span class="how-num">৪</span><span class="how-text">হুনিক — চুমইলে ডাউনলোড করিক</span></div>
+      <div class="sidebar-title"><i class="ti ti-help"></i> কীভাবে করিম?</div>
+      <div class="how-item"><span class="how-num">১</span><span class="how-text">প্রথমে আপনার তথ্য দিন (ডায়ালেক্ট, জোন, বয়স)</span></div>
+      <div class="how-item"><span class="how-num">২</span><span class="how-text">বাক্যটা মনোযোগ দিয়া পড়িক</span></div>
+      <div class="how-item"><span class="how-num">৩</span><span class="how-text">মাইক বাটনে চাপি স্পষ্টভাবে পড়িক</span></div>
+      <div class="how-item"><span class="how-num">৪</span><span class="how-text">শুনিক — ঠিক হইলে ডাউনলোড করিক</span></div>
     </div>
 
     <div class="sidebar-card">
       <div class="sidebar-title"><i class="ti ti-bulb"></i> টিপস</div>
       <div class="tip-box">
-        <div class="tip-title"><i class="ti ti-volume"></i> মাতিং রেকর্ডর আগে</div>
+        <div class="tip-title"><i class="ti ti-volume"></i> ভালো রেকর্ডের জন্য</div>
         <ul class="tip-list">
-          <li>শান্ত জাগা আাহাত রেকর্ড করিক</li>
-          <li>মাইক্রোফেনহানত্ত ১৫-২০ সেমি দূরে থাইক</li>
-          <li>স্বাভাবিক গতিল পাকরিক</li>
-          <li>ফাইলগর লগে অবদানকারির তথ্য থাকতই</li>
+          <li>শান্ত জায়গায় রেকর্ড করিক</li>
+          <li>মাইক থাকি ১৫-২০ সেমি দূরে থাকিক</li>
+          <li>স্বাভাবিক গতিতে পড়িক</li>
+          <li>ফাইলের নামে আপনার তথ্য থাকবে</li>
         </ul>
       </div>
     </div>
@@ -548,24 +564,24 @@
         <span class="lb-rank gold">১</span>
         <div class="lb-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">কথ</div>
         <span class="lb-name">কুঙ্গ থাঙ</span>
-        <span class="lb-count">৩৪২ হান</span>
+        <span class="lb-count">৩৪২ টি</span>
       </div>
       <div class="lb-item">
         <span class="lb-rank silver">২</span>
         <div class="lb-avatar" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)">রস</div>
-        <span class="lb-name">হুনাইশৌ সিংহ</span>
-        <span class="lb-count">২৮৭ হান</span>
+        <span class="lb-name">রাহুল সিং</span>
+        <span class="lb-count">২৮৭ টি</span>
       </div>
       <div class="lb-item">
         <span class="lb-rank bronze">৩</span>
         <div class="lb-avatar" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">প্রদ</div>
-        <span class="lb-name">সুজলা দেবী</span>
+        <span class="lb-name">প্রীতি দেবী</span>
         <span class="lb-count">২১৩ টি</span>
       </div>
       <div class="lb-item">
         <span class="lb-rank">৪</span>
         <div class="lb-avatar" style="background:linear-gradient(135deg,#10b981,#06b6d4)">সচ</div>
-        <span class="lb-name">হরিধন চ্যাটার্জী </span>
+        <span class="lb-name">সুমন চক্রবর্তী</span>
         <span class="lb-count">১৫৬ টি</span>
       </div>
     </div>
@@ -577,7 +593,16 @@
   <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
 </footer>
 
+<!-- Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+const SUPABASE_URL  = 'https://clybuzkhnjuhpvcobiri.supabase.co';
+const SUPABASE_KEY  = 'sb_publishable_LKPFQ99KljNZhhBQQI-s3Q_w-ElwF0f';
+const supabase = supabasejs.createClient(SUPABASE_URL, SUPABASE_KEY);
+</script>
+
+<script>
+// ── Zone Data ──
 const zones = {
   india: [
     { value: 'silchar',     label: 'শিলচর জোন — কাছাড়, সোনাই' },
@@ -588,14 +613,14 @@ const zones = {
     { value: 'other-india', label: 'অন্যান্য — মেঘালয়, মিজোরাম' },
   ],
   bangladesh: [
-    { value: 'moulvibazar', label: 'মৌলভীবাজার জোন — মৌলভীবাজার সদর, কমলগঞ্জ, শ্রীমঙ্গল' },
-    { value: 'sylhet',      label: 'সিলেট জোন — সিলেট সদর, মাছিমপুর' },
-    { value: 'habiganj',    label: 'হবিগঞ্জ জোন — হবিগঞ্জ সদর, বিশগাঁও ' },
-    { value: 'sunamganj',   label: 'সুনামগঞ্জ জোন — ছাতক, ধনিটিলা' },
-    { value: 'others',      label: 'অন্যান্য জোন — ঢাকা, চট্টগ্রাম, রাজশাহী, খুলনা' },
+    { value: 'moulvibazar', label: 'মৌলভীবাজার জোন — কমলগঞ্জ, শ্রীমঙ্গল' },
+    { value: 'sylhet',      label: 'সিলেট জোন — সিলেট সদর, গোলাপগঞ্জ' },
+    { value: 'habiganj',    label: 'হবিগঞ্জ জোন — হবিগঞ্জ সদর, বাহুবল' },
+    { value: 'sunamganj',   label: 'সুনামগঞ্জ জোন — সুনামগঞ্জ সদর' },
   ]
 };
 
+// ── Profile State ──
 const profile = { dialect: '', country: '', zone: '', age: '', gender: '' };
 let currentStep = 0;
 let profileDone = false;
@@ -632,7 +657,7 @@ function goStep(n) {
 function updateZones() {
   const sel = document.getElementById('zone-select');
   profile.zone = '';
-  sel.innerHTML = '<option value="">— জোন বাছিয়া নেগা —</option>';
+  sel.innerHTML = '<option value="">— জোন বাছুন —</option>';
   const list = zones[profile.country] || [];
   list.forEach(z => {
     const opt = document.createElement('option');
@@ -655,7 +680,7 @@ function reopenProfile() {
 
 const dialectLabel = { 'rajar-gang': 'রাজার গাঙ', 'madai-gang': 'মাদৈ গাঙ' };
 const countryLabel  = { 'india': '🇮🇳 ভারত', 'bangladesh': '🇧🇩 বাংলাদেশ' };
-const genderLabel   = { 'male': 'পুরুষ', 'female': 'মহিলা'};
+const genderLabel   = { 'male': 'পুরুষ', 'female': 'মহিলা', 'other': 'অন্য' };
 
 function renderProfileChip() {
   const chip = document.getElementById('profile-chip');
@@ -684,38 +709,38 @@ function updateFilename() {
   document.getElementById('filename-preview').textContent = buildFilename(currentIdx);
 }
 
-// ── বাক্য তালিকা — corpus pattern অনুসরণ করে সংশোধিত ──
+// ── Sentences ──
 const sentences = [
-  { text: "মোর মাতৃভাষাহান বিষ্ণুপ্রিয়া মণিপুরি।", trans: "Mor matrubhasha Bishnupriya Manipuri." },
-  { text: "মি ইমার ঠারে কথা অতারানি নুঙেই পাউরি।", trans: "Mi imar thare kotha matote hada pauri." },
-  { text: "মোর ঠারহান মোর পরিচয়।", trans: "Mor tharhan mor porichoy." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার টিকিয়া থনা এহান আমার দায়িত্বহান।", trans: "Bishnupriya Manipuri thar tikiya thona ehan amar dayitwohan." },
-  { text: "মোর শৌ সুমারা ইমার ঠার হিকতার।", trans: "Mor shou sumara imar thar hikotar." },
-  { text: "ইমার ঠারর এলা হুনতে নুংশি লাগের।", trans: "Imar tharor ela hunte nungshi lager." },
-  { text: "আমি আকসাটে ইমার ঠারহান কারকরতাঙাই।", trans: "Ami aksate imar tharhan karkortangai." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরির সাহিত্য নিয়ামপারা সমৃদ্ধ।", trans: "Bishnupriya Manipurir sahitya niyampara somriddho." },
-  { text: "ডিজিটাল যুগে ইমার ঠার এহান টিকিয়া থনা জরুলি কামহান।", trans: "Digital juge imar thar ehan tikiya thona joruli kamhan." },
-  { text: "মোর ডাংগ বপায় ইমার ঠারে য়ারি দিলা।", trans: "Mor dangga bapay imar thare yari dila." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি এহান বিপদগ্রস্ত ঠারহান।", trans: "Bishnupriya Manipuri ehan bipodgrosto tharhan." },
-  { text: "আমি হারদিন ইমার ঠারে টটারারাং।", trans: "Ami hardin imar thare totararang." },
-  { text: "নিজর ঠারে টটরতে লাস কিতা, উহান গর্বহান।", trans: "Nijor thare totorte lash kita, uhan gorbohan." },
-  { text: "বিদেশে থায়াউ ইমার ঠারে য়ারি দিলে মনহাৎ নুঙি আহান লাগের।", trans: "Bideshe thayau imar thare yari dile monhat nungi ahan lager." },
-  { text: "মোর বাবা ইসালপাগ।", trans: "Mor baba isalpag." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি সংখ্যাৎ য়াতইলেউ পুরানা ঠার আহান।", trans: "Bishnupriya Manipuri sangkhyat yatoileu purana thar ahan." },
-  { text: "মি ইমার ঠারে হপন দেহুরি ।", trans: "Mi imar thare hopon dehuri." },
-  { text: "ইমার ঠারল আরাতউ সাহিত্য কারনি থকি।", trans: "Imar tharol aratau sahitya karoni thoki." },
-  { text: "আমারতা হবা পত্রিকা নেই।", trans: "Amarta haba patrika nei." },
-  { text: "আমার ঠারর লেখক অতারে সম্মান দেনা থক।", trans: "Amar tharor lekhok atare sommandena thok." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরির লিপি উহান বাংলা বুলানি চুম নেই, পুর্ব নাগরি বুলে পারিয়ার।", trans: "Bishnupriya Manipurir lipi uhan Bangla bulani chum nei, purbo Nagri bule pariyar." },
-  { text: "মি ইমার ঠারে চিঠি ইকরৌরি।", trans: "Mi imar thare chithi ikrouri." },
-  { text: "ইমার ঠার অন্য মানুরেউ হিকাদেনা দরকার।", trans: "Imar thar onno manureu hikadena dorkar." },
-  { text: "আমার সংস্কৃতিহান আমার ঠারহার গজে থালগ দিয়া বাঁচের।", trans: "Amar sanskritihan amar tharhar gaje thalog diya bachcher." },
-  { text: "ইমার ঠারর নুংশি নুংশি কবিতা ইকরেসি আমার কবিয়ে।", trans: "Imar tharor nungshi nungshi kobita ikroshi amar kobiye." },
-  { text: "মি গর্বিত মোর মাতৃভাষাল।", trans: "Mi gorbito mor matrubhashal." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার পুনচিপালক", trans: "Bishnupriya Manipuri thar punochipalok." },
-  { text: "ইমার ঠাররকা জীবন দিয়া গেিলগা সুদেষ্ণা সিংহই।", trans: "Imar tharorka jibon diya gelga Sudeshna Singhoi." },
-  { text: "আমার ঠার এহানেই আমার শক্তি।", trans: "Amar thar ehanei amar shokti." },
-  { text: "ইমার ঠার জিংতা অইলে জাত এহাহাৌ জিংতা অয়া থাইতায়।", trans: "Imar thar jingta oile jat ehanou jingta oya thaitay." },
+  { text: "আমার মাতৃভাষা বিষ্ণুপ্রিয়া মণিপুরি।", trans: "Amar matrubhasha Bishnupriya Manipuri." },
+  { text: "আমি ইমার ঠারে কথা কওয়া পছন্দ করিউ।", trans: "Ami imar thare kotha kaoa pochhondo koriyou." },
+  { text: "আমাদের ঠার আমাদের পরিচয়।", trans: "Amader thar amader porichoy." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার টিকানা আমাদের দায়িত্ব।", trans: "Bishnupriya Manipuri thar tikana amader dayitto." },
+  { text: "আমার পুয়া ইমার ঠার শিখতারা।", trans: "Amar puya imar thar shikhtara." },
+  { text: "ইমার ঠারর গান শুনতে ভালো লাগে।", trans: "Imar tharr gaan shunte bhalo lage." },
+  { text: "আমরা একসাথে ইমার ঠার বাঁচাইম।", trans: "Amra eksathe imar thar bachhaim." },
+  { text: "বিষ্ণুপ্রিয়ার সাহিত্য অনেক সমৃদ্ধ।", trans: "Bishnupriyar sahitya anek samriddha." },
+  { text: "ডিজিটাল যুগে ইমার ঠার টিকানা জরুরি।", trans: "Digital yuge imar thar tikana joruri." },
+  { text: "আমার মা ইমার ঠারে গল্প বলতেন।", trans: "Amar ma imar thare golpo bolthen." },
+  { text: "ইমার ঠারর শব্দ অনেক মিষ্টি।", trans: "Imar tharr shobdo anek mishti." },
+  { text: "আমি প্রতিদিন ইমার ঠারে কথা কই।", trans: "Ami protidin imar thare kotha koi." },
+  { text: "আমাদের গ্রামে সবাই বিষ্ণুপ্রিয়া কয়।", trans: "Amader grame sobai Bishnupriya koy." },
+  { text: "ইমার ঠার শিখলে মনে আনন্দ হয়।", trans: "Imar thar shikhle mone ananda hoy." },
+  { text: "আমার বাপ ইমার ঠারে গান গাইতেন।", trans: "Amar bap imar thare gaan gaithen." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি একটি প্রাচীন ভাষা।", trans: "Bishnupriya Manipuri ekti prachin bhasha." },
+  { text: "আমরা ইমার ঠারে স্বপ্ন দেখি।", trans: "Amra imar thare shopno dekhi." },
+  { text: "ইমার ঠারর অভিধান তৈরি হচ্ছে।", trans: "Imar tharr obhidhan toiri hochche." },
+  { text: "আমার পরিবার ইমার ঠারকে ভালোবাসে।", trans: "Amar poribar imar thharke bhalobhase." },
+  { text: "ইমার ঠার আমার প্রাণের ভাষা।", trans: "Imar thar amar praner bhasha." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরির লিপি অনেক সুন্দর।", trans: "Bishnupriya Manipurir lipi anek sundar." },
+  { text: "আমি ইমার ঠারে চিঠি লিখি।", trans: "Ami imar thare chithi likhi." },
+  { text: "ইমার ঠার শিখানো দরকার পুয়াহানরে।", trans: "Imar thar shikhanao dorkar puyahanre." },
+  { text: "আমাদের সংস্কৃতি আমাদের ঠারে বাঁচে।", trans: "Amader sanskriti amader thare bache." },
+  { text: "ইমার ঠারর কবিতা হৃদয় ছুঁয়ে যায়।", trans: "Imar tharr kobita hridoy chhue jay." },
+  { text: "আমি গর্বিত আমার মাতৃভাষায়।", trans: "Ami gorbit amar matrubhasay." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার চিরজীবী হোক।", trans: "Bishnupriya Manipuri thar chirojeebi hok." },
+  { text: "ইমার ঠারে কথা কওয়া মানে মাকে ডাকা।", trans: "Imar thare kotha kaoa mane make daka." },
+  { text: "আমাদের ভাষা আমাদের শক্তি।", trans: "Amader bhasha amader shakti." },
+  { text: "ইমার ঠার বাঁচলে আমরা বাঁচিম।", trans: "Imar thar bachle amra bachim." },
 ];
 
 let currentIdx = 0;
@@ -749,7 +774,7 @@ function resetRecorder() {
   document.getElementById('sentence-box').className = 'sentence-box';
   document.getElementById('record-btn').className = 'record-btn';
   document.getElementById('record-icon').className = 'ti ti-microphone';
-  document.getElementById('record-label').textContent = 'অকর';
+  document.getElementById('record-label').textContent = 'শুরু';
   document.getElementById('play-btn').disabled = true;
   document.getElementById('submit-btn').disabled = true;
   document.getElementById('timer-display').textContent = '০০:০০';
@@ -786,7 +811,7 @@ async function startRecording() {
       document.getElementById('record-btn').classList.remove('recording');
       document.getElementById('record-btn').classList.add('recorded');
       document.getElementById('record-icon').className = 'ti ti-refresh';
-      document.getElementById('record-label').textContent = 'আরাকমাউ';
+      document.getElementById('record-label').textContent = 'আবার';
       document.getElementById('rec-dot').style.display = 'none';
       cancelAnimationFrame(animationId);
       stream.getTracks().forEach(t => t.stop());
@@ -811,6 +836,7 @@ async function startRecording() {
       if (seconds >= 30) stopRecording();
     }, 1000);
 
+    // Draw waveform
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
     function draw() {
@@ -829,7 +855,7 @@ async function startRecording() {
     }
     draw();
   } catch(e) {
-    showToast('মাইক্রোফোন অ্যাক্সেস দিক।');
+    showToast('মাইক্রোফোন অ্যাক্সেস দিন।');
   }
 }
 
@@ -845,23 +871,64 @@ function playRecording() {
   new Audio(audioUrl).play();
 }
 
-function submitRecording() {
+async function submitRecording() {
   if (!audioBlob) return;
   const filename = buildFilename(currentIdx);
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(audioBlob);
-  a.download = filename;
-  a.click();
+  const submitBtn = document.getElementById('submit-btn');
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<i class="ti ti-loader"></i> আপলোড হচ্ছে ...';
 
-  sessionCount++;
-  document.getElementById('total-recorded').textContent = sessionCount;
-  const pct = Math.min(100,(sessionCount/20)*100);
-  document.getElementById('progress-fill').style.width = pct+'%';
-  document.getElementById('progress-count').textContent = `${sessionCount} / ২০`;
-  showToast(`সেভ করিয়ার ি: ${filename}`);
+  try {
+    // ── ১. Supabase Storage-এ audio upload ──
+    const { data: storageData, error: storageError } = await supabase
+      .storage
+      .from('bm-speech-corpus')
+      .upload(filename, audioBlob, { contentType: 'audio/webm', upsert: true });
 
-  if (currentIdx < sentences.length-1) { currentIdx++; updateSentence(); }
-  else showToast('হাবি বাক্যহানি লমইল! গিরকরে/গিথানকরে নিয়ামপারা থাকাত।');
+    if (storageError) throw storageError;
+
+    // ── ২. Public URL নাও ──
+    const { data: urlData } = supabase
+      .storage
+      .from('bm-speech-corpus')
+      .getPublicUrl(filename);
+
+    // ── ৩. Metadata database-এ সেভ ──
+    const { error: dbError } = await supabase
+      .from('recordings')
+      .insert({
+        filename:       filename,
+        audio_url:      urlData.publicUrl,
+        dialect:        profile.dialect,
+        country:        profile.country,
+        zone:           profile.zone,
+        age:            profile.age,
+        gender:         profile.gender,
+        sentence_idx:   currentIdx,
+        sentence_text:  sentences[currentIdx].text,
+        duration_sec:   seconds,
+        created_at:     new Date().toISOString()
+      });
+
+    if (dbError) throw dbError;
+
+    sessionCount++;
+    document.getElementById('total-recorded').textContent = sessionCount;
+    const pct = Math.min(100,(sessionCount/20)*100);
+    document.getElementById('progress-fill').style.width = pct+'%';
+    document.getElementById('progress-count').textContent = `${sessionCount} / ২০`;
+    showToast('জমা হয়েছে! ধন্যবাদ।');
+
+    if (currentIdx < sentences.length-1) { currentIdx++; updateSentence(); }
+    else showToast('সব বাক্য শেষ! আপনাকে অনেক ধন্যবাদ।');
+
+  } catch(err) {
+    console.error(err);
+    showToast('আপলোড ব্যর্থ হয়েছে — আবার চেষ্টা করিক।');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<i class="ti ti-upload"></i> জমা দিক বারো পরের বাক্যে যাক';
+  }
 }
 
 function showToast(msg) {
