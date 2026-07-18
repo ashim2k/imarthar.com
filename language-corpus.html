@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>কর্পাস অবদান — ইমার ঠার</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: #10b981; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+    .page-hero {
+      position: relative;
+      background: radial-gradient(circle at top right, rgba(209, 250, 229, 0.4), transparent),
+                  radial-gradient(circle at bottom left, rgba(240, 253, 250, 0.4), transparent),
+                  #ffffff;
+      background-image: radial-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero::before, .page-hero::after {
+      content: '';
+      position: absolute;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: 0;
+    }
+    .page-hero::before { top: 0; left: 8%; background: #10b981; opacity: 0.12; }
+    .page-hero::after  { bottom: 0; right: 8%; background: #06b6d4; opacity: 0.12; }
+    .page-hero-content { position: relative; z-index: 1; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      margin-bottom: 1.2rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #10b981; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #d1fae5;
+      color: #065f46;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 99px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
+    }
+
+    .page-hero h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.4rem;
+    }
+    .page-hero h1 span { color: #10b981; }
+    .page-hero p { font-size: 15px; color: #64748b; }
+
+    .corpus-badge {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 4px 14px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 99px;
+      font-size: 12px;
+      color: #166534;
+      font-weight: 500;
+    }
+
+    .main {
+      max-width: 720px;
+      margin: 2.5rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    .config-warning {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      font-size: 13px;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+    .config-warning.visible { display: block; }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+      margin-bottom: 1.5rem;
+    }
+
+    .card-section {
+      padding: 1.4rem 1.6rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .card-section:last-child { border-bottom: none; }
+
+    .lang-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      margin-bottom: 0.6rem;
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      outline: none;
+      color: #0f172a;
+      font-family: inherit;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      resize: none;
+      padding: 0.7rem 0.9rem;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    textarea:focus, input[type="text"]:focus {
+      border-color: #10b981;
+      background: #fff;
+    }
+    textarea { min-height: 64px; }
+    textarea::placeholder, input::placeholder { color: #cbd5e1; }
+
+    .name-row { padding-top: 0; }
+    .name-row input { font-size: 0.92rem; }
+
+    .lang-row-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+    .lang-row-head .lang-label { margin-bottom: 0; }
+    select {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      outline: none;
+    }
+    select:focus { border-color: #10b981; }
+
+    .export-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .export-row select {
+      font-size: 11px;
+      padding: 5px 8px;
+    }
+
+    .lang-badge {
+      display: inline-block;
+      background: #ecfeff;
+      color: #0e7490;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 8px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: #10b981;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.85rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.15s;
+    }
+    .submit-btn:hover { background: #059669; }
+    .submit-btn:disabled { background: #a7f3d0; cursor: not-allowed; }
+
+    .status-msg {
+      text-align: center;
+      font-size: 13px;
+      margin-top: 0.7rem;
+      min-height: 18px;
+    }
+    .status-msg.ok { color: #059669; }
+    .status-msg.err { color: #dc2626; }
+
+    .stats-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 1.2rem;
+    }
+    .stat-box {
+      flex: 1;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      text-align: center;
+    }
+    .stat-box .num { font-size: 1.5rem; font-weight: 800; color: #10b981; }
+    .stat-box .lbl { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+    }
+    .section-title h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .export-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 99px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .export-btn:hover { background: #dcfce7; }
+
+    .entry-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+    .entry-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.9rem;
+    }
+    .entry-item .bm { color: #0f172a; font-weight: 500; }
+    .entry-item .bn { color: #10b981; margin-top: 2px; }
+    .entry-item .meta { font-size: 11px; color: #94a3b8; margin-top: 4px; display: flex; gap: 8px; }
+
+    .empty-note {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+      padding: 1.5rem 0;
+    }
+
+    .tip-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      font-size: 13px;
+      color: #166534;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+    .tip-box i { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+
+    footer {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.8;
+    }
+    footer span { color: #10b981; font-weight: 600; }
+
+    @media (max-width: 640px) {
+      .page-hero { padding: 2.5rem 1.25rem 2rem; }
+      .page-hero h1 { font-size: 26px; }
+      .main { padding: 0 1rem; margin-top: 1.8rem; }
+      .stats-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="speech-corpus.html">স্পিচ কর্পাস</a>
+    <a href="tools.html" class="active">টুল</a>
+    <a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <a href="translator.html" class="back-link">
+      <i class="ti ti-arrow-left"></i> অনুবাদকে ফিরুন
+    </a>
+    <div class="hero-badge"><i class="ti ti-plus"></i> কর্পাস অবদান</div>
+    <h1>কর্পাস <span>গড়ে তুলুন</span></h1>
+    <p>সবাই মিলে বিষ্ণুপ্রিয়া মণিপুরি–বাংলা শব্দভাণ্ডার সমৃদ্ধ করি</p>
+    <div class="corpus-badge" id="corpus-count">এন্ট্রি লোড হচ্ছে…</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="config-warning" id="config-warning">
+    <strong>Supabase কনফিগার করা হয়নি:</strong> এই ফাইলের নিচে <code>SUPABASE_URL</code> ও <code>SUPABASE_ANON_KEY</code> বসান।
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="num" id="stat-total">০</div>
+      <div class="lbl">মোট এন্ট্রি</div>
+    </div>
+    <div class="stat-box">
+      <div class="num" id="stat-mine">০</div>
+      <div class="lbl">আপনার অবদান</div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <i class="ti ti-info-circle"></i>
+    <span>নিচে একটি শব্দ বা বাক্য এবং তার বাংলা অনুবাদ লিখে জমা দিন। এন্ট্রিটি সরাসরি corpus ডাটাবেসে জমা হবে।</span>
+  </div>
+
+  <div class="card">
+    <div class="card-section">
+      <div class="lang-label">বিষ্ণুপ্রিয়া মণিপুরি</div>
+      <textarea id="bm-input" placeholder="যেমন: তুমি কেমন আছ" oninput="updateSubmitState()"></textarea>
+    </div>
+    <div class="card-section">
+      <div class="lang-row-head">
+        <div class="lang-label" id="tgt-label">বাংলা অনুবাদ</div>
+        <select id="lang-select" onchange="onLangChange()">
+          <option value="bengali">বাংলা</option>
+          <option value="english">English</option>
+          <option value="hindi">हिन्दी</option>
+        </select>
+      </div>
+      <textarea id="bn-input" placeholder="যেমন: তুমি কেমন আছো" oninput="updateSubmitState()"></textarea>
+    </div>
+    <div class="card-section name-row">
+      <div class="lang-label">আপনার নাম (ঐচ্ছিক)</div>
+      <input type="text" id="name-input" placeholder="নাম না দিলে 'নামহীন' দেখাবে">
+    </div>
+    <div class="card-section">
+      <button class="submit-btn" id="submit-btn" onclick="submitEntry()" disabled>
+        <i class="ti ti-send"></i> জমা দিন
+      </button>
+      <div class="status-msg" id="status-msg"></div>
+    </div>
+  </div>
+
+  <div class="card" style="padding: 1.4rem 1.6rem;">
+    <div class="section-title">
+      <h2>সাম্প্রতিক অবদান</h2>
+      <div class="export-row">
+        <select id="export-lang-select">
+          <option value="bengali">বাংলা</option>
+          <option value="english">English</option>
+          <option value="hindi">हिन्दी</option>
+        </select>
+        <button class="export-btn" onclick="exportCsv()"><i class="ti ti-download"></i> CSV</button>
+      </div>
+    </div>
+    <div class="entry-list" id="entry-list">
+      <div class="empty-note">লোড হচ্ছে…</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script>
+  // ── Supabase কনফিগারেশন ──
+  // এখানে আপনার Supabase প্রজেক্টের URL ও anon public key বসান
+  // (Project Settings → API তে পাবেন)
+  const SUPABASE_URL = 'https://ksnwykmtrczvdzhoiews.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_LKPFQ99KljNZhhBQQI-s3Q_w-ElwF0f';
+  const TABLE_NAME = 'corpus_entries';
+
+  let supabaseClient = null;
+  let myCount = 0;
+
+  const LANG_META = {
+    bengali: { label: 'বাংলা অনুবাদ', placeholder: 'যেমন: তুমি কেমন আছো', name: 'বাংলা' },
+    english: { label: 'English translation', placeholder: 'e.g. how are you', name: 'English' },
+    hindi:   { label: 'हिन्दी अनुवाद', placeholder: 'जैसे: तुम कैसे हो', name: 'हिन्दी' }
+  };
+
+  function onLangChange() {
+    const lang = document.getElementById('lang-select').value;
+    document.getElementById('tgt-label').textContent = LANG_META[lang].label;
+    document.getElementById('bn-input').placeholder = LANG_META[lang].placeholder;
+  }
+
+  function isConfigured() {
+    return SUPABASE_URL && SUPABASE_ANON_KEY &&
+      !SUPABASE_URL.includes('YOUR_SUPABASE') &&
+      !SUPABASE_ANON_KEY.includes('YOUR_SUPABASE');
+  }
+
+  function escapeHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  async function loadEntries() {
+    if (!isConfigured()) {
+      document.getElementById('config-warning').classList.add('visible');
+      document.getElementById('corpus-count').textContent = 'Supabase কনফিগার করা হয়নি';
+      document.getElementById('entry-list').innerHTML = '<div class="empty-note">Supabase সেটআপ শেষ করলে এন্ট্রিগুলো এখানে দেখা যাবে।</div>';
+      return;
+    }
+
+    try {
+      const { count, error: countError } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('*', { count: 'exact', head: true });
+      if (countError) throw countError;
+
+      document.getElementById('corpus-count').textContent = `${(count || 0).toLocaleString('bn-BD')}টি এন্ট্রি জমা হয়েছে`;
+      document.getElementById('stat-total').textContent = (count || 0).toLocaleString('bn-BD');
+
+      const { data, error } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('bm, translation, target_lang, contributor_name, created_at')
+        .order('created_at', { ascending: false })
+        .limit(15);
+      if (error) throw error;
+
+      renderEntries(data || []);
+    } catch (e) {
+      document.getElementById('corpus-count').textContent = 'ডাটা লোড করা যায়নি';
+      document.getElementById('entry-list').innerHTML = '<div class="empty-note">এন্ট্রি লোড করতে সমস্যা হয়েছে। কনসোল চেক করুন।</div>';
+      console.error(e);
+    }
+  }
+
+  function renderEntries(entries) {
+    const list = document.getElementById('entry-list');
+    if (entries.length === 0) {
+      list.innerHTML = '<div class="empty-note">এখনো কোনো এন্ট্রি জমা হয়নি। প্রথম অবদানকারী হোন!</div>';
+      return;
+    }
+    list.innerHTML = entries.map(e => {
+      const meta = LANG_META[e.target_lang] || LANG_META.bengali;
+      return `
+      <div class="entry-item">
+        <div class="bm">${escapeHtml(e.bm)}</div>
+        <div class="bn">${escapeHtml(e.translation)} <span class="lang-badge">${escapeHtml(meta.name)}</span></div>
+        <div class="meta">
+          <span><i class="ti ti-user"></i> ${escapeHtml(e.contributor_name || 'নামহীন')}</span>
+          <span>${new Date(e.created_at).toLocaleDateString('bn-BD')}</span>
+        </div>
+      </div>
+    `;
+    }).join('');
+  }
+
+  function updateSubmitState() {
+    const bm = document.getElementById('bm-input').value.trim();
+    const bn = document.getElementById('bn-input').value.trim();
+    document.getElementById('submit-btn').disabled = !(bm && bn) || !isConfigured();
+  }
+
+  async function submitEntry() {
+    const bmEl = document.getElementById('bm-input');
+    const bnEl = document.getElementById('bn-input');
+    const nameEl = document.getElementById('name-input');
+    const bm = bmEl.value.trim();
+    const bn = bnEl.value.trim();
+    const name = nameEl.value.trim();
+    const statusEl = document.getElementById('status-msg');
+    const btn = document.getElementById('submit-btn');
+
+    if (!bm || !bn || !isConfigured()) return;
+
+    btn.disabled = true;
+    statusEl.textContent = 'জমা হচ্ছে…';
+    statusEl.className = 'status-msg';
+
+    const targetLang = document.getElementById('lang-select').value;
+
+    try {
+      const { error } = await supabaseClient
+        .from(TABLE_NAME)
+        .insert([{ bm, translation: bn, target_lang: targetLang, contributor_name: name || null }]);
+      if (error) throw error;
+
+      statusEl.textContent = 'ধন্যবাদ! এন্ট্রি জমা হয়েছে।';
+      statusEl.className = 'status-msg ok';
+      bmEl.value = '';
+      bnEl.value = '';
+      myCount++;
+      document.getElementById('stat-mine').textContent = myCount.toLocaleString('bn-BD');
+      await loadEntries();
+    } catch (e) {
+      statusEl.textContent = 'দুঃখিত, জমা দেওয়া যায়নি। আবার চেষ্টা করুন।';
+      statusEl.className = 'status-msg err';
+      console.error(e);
+    }
+    updateSubmitState();
+  }
+
+  async function exportCsv() {
+    if (!isConfigured()) {
+      alert('আগে Supabase কনফিগার করুন।');
+      return;
+    }
+    const lang = document.getElementById('export-lang-select').value;
+
+    try {
+      const { data, error } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('bm, translation')
+        .eq('target_lang', lang)
+        .order('created_at', { ascending: true });
+      if (error) throw error;
+
+      if (!data || data.length === 0) {
+        alert('এই ভাষায় এখনো কোনো এন্ট্রি নেই।');
+        return;
+      }
+
+      function csvField(val) {
+        const s = String(val);
+        return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+      }
+
+      const rows = [`bishnupriya_manipuri,${lang}`];
+      for (const e of data) {
+        rows.push(`${csvField(e.bm)},${csvField(e.translation)}`);
+      }
+      const csvContent = rows.join('\n');
+      const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${lang}_corpus_${new Date().toISOString().slice(0,10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      alert('এক্সপোর্ট ব্যর্থ হয়েছে। আবার চেষ্টা করুন।');
+      console.error(e);
+    }
+  }
+
+  if (isConfigured()) {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }
+  loadEntries();
+</script>
+</body>
+</html>
