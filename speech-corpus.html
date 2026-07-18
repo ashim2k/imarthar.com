@@ -345,7 +345,7 @@
         </button>
       </div>
       <div class="step-nav">
-        <button class="btn-back" onclick="goStep(0)"><i class="ti ti-arrow-left"></i> আগের</button>
+        <button class="btn-back" onclick="goStep(0)"><i class="ti ti-arrow-left"></i> আগেকার</button>
         <button class="btn-next" id="next-1" onclick="goStep(2)" disabled>
           থাংনার ধাপ <i class="ti ti-arrow-right"></i>
         </button>
@@ -360,7 +360,7 @@
         <option value="">— জোন বাছিয়া নেগা —</option>
       </select>
       <div class="step-nav">
-        <button class="btn-back" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> আগের</button>
+        <button class="btn-back" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> আগেকার</button>
         <button class="btn-next" id="next-2" onclick="goStep(3)" disabled>
           থাংনার ধাপ <i class="ti ti-arrow-right"></i>
         </button>
@@ -390,10 +390,10 @@
       <div class="step-question">তোর লিঙ্গ?</div>
       <div class="option-grid col2">
         <button class="option-btn" onclick="selectOption('gender','male',this)">
-          <span class="opt-icon">👨</span>পুরুষ
+          <span class="opt-icon">👨</span>মুনিগ
         </button>
         <button class="option-btn" onclick="selectOption('gender','female',this)">
-          <span class="opt-icon">👩</span>মহিলা
+          <span class="opt-icon">👩</span>জেলাগ
         </button>
       </div>
       <div class="step-nav">
@@ -860,7 +860,7 @@ async function submitRecording() {
   const filename = buildFilename(currentIdx);
   const btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  btn.innerHTML = '<i class="ti ti-loader"></i> আপলোড হচ্ছে ...';
+  btn.innerHTML = '<i class="ti ti-loader"></i> আপলোড অর ...';
   try {
     const { error: upErr } = await _supabase.storage.from('bm-speech-corpus')
       .upload(filename, audioBlob, { contentType: 'audio/webm', upsert: true });
@@ -879,12 +879,12 @@ async function submitRecording() {
     const pct = Math.min(100,(sessionCount/20)*100);
     document.getElementById('progress-fill').style.width = pct+'%';
     document.getElementById('progress-count').textContent = sessionCount+' / ২০';
-    showToast('জমা হয়েছে! ধন্যবাদ।');
+    showToast('ডাটাবেসহাৎ জমা অইল! থাকাত।');
     if (currentIdx < sentences.length-1) { currentIdx++; updateSentence(); }
-    else showToast('হাবি বাক্যহানি লমইল! অনেক ধন্যবাদ।');
+    else showToast('হাবি বাক্যহানি লমইল! নিয়ামপারা থাকাত।');
   } catch(err) {
     console.error(err);
-    showToast('আপলোড ব্যর্থ হয়েছে — আবার চেষ্টা করিক।');
+    showToast('আপলোড ব্যর্থ  — বারো হন্না টা করিক।');
   } finally {
     btn.disabled = false;
     btn.innerHTML = '<i class="ti ti-upload"></i> জমা দিক বারো থাংনার বাক্যৎ যিকগা';
