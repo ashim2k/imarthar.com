@@ -353,7 +353,7 @@
 
         <div class="tr-card-result">
           <div class="tr-result-label" id="tgt-label">বাংলা</div>
-          <div id="result" class="placeholder">অনুবাদ এখানে দেখাবে</div>
+          <div id="result" class="placeholder">অনুবাদ এপেইত দেহাদিতয়ে</div>
           <div class="tr-result-actions" id="result-actions" style="display:none;">
             <button class="tr-copy-btn" onclick="copyResult()"><i class="ti ti-copy"></i> কপি</button>
           </div>
@@ -362,7 +362,7 @@
 
       <div class="tr-corpus-note">
         <i class="ti ti-database" style="font-size:12px;"></i>
-        <span id="corpus-count">corpus লোড হচ্ছে…</span>
+        <span id="corpus-count">corpus লোড অর…</span>
       </div>
     </div>
 
@@ -535,10 +535,10 @@
         const cols = parseCSVLine(line);
         if (cols.length >= 2) corpus.push(cols);
       }
-      document.getElementById('corpus-count').textContent = corpus.length + 'টি শব্দ ও বাক্য লোড হয়েছে';
+      document.getElementById('corpus-count').textContent = corpus.length + 'হার চুয়া ওয়াহি বারো বাক্য লোড অসে';
     })
     .catch(err => {
-      document.getElementById('corpus-count').textContent = 'লোড ব্যর্থ — bm_corpus_multilang.csv খুঁজে পাওয়া যায়নি';
+      document.getElementById('corpus-count').textContent = 'লোড ব্যর্থ — bm_corpus_multilang.csv বিসারিয়া নাপেইলাং ';
       console.error(err);
     });
 
