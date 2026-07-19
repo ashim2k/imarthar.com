@@ -1,16 +1,16 @@
 # Imar Thar
 
-**A Digital Platform for the Bishnupriya Manipuri Language**
+**A Digital Infrastructure Platform for Bishnupriya Manipuri Language Preservation and Computational Linguistics**
 
-Imar Thar (My Mother Tongue) is an open digital platform dedicated to preserving, documenting, and promoting the Bishnupriya Manipuri language through modern technology. The project provides language tools, multilingual translation, digital corpora, and community-driven resources for learners, researchers, translators, and native speakers.
+Imar Thar (*My Mother Tongue*) is an open-source, community-driven digital ecosystem engineered for the preservation, documentation, and computational processing of the Bishnupriya Manipuri language. The platform delivers Natural Language Processing (NLP)–oriented tools, a multilingual translation engine, structured digital corpora, and open-access linguistic resources for linguists, researchers, developers, translators, and native speakers.
 
 ---
 
-## Features
+## Core Features
 
-### Multilingual Translator
+### Multilingual Corpus-Based Translation Module
 
-Translate between Bishnupriya Manipuri and multiple languages, including:
+Supports bidirectional translation between Bishnupriya Manipuri and:
 
 - Bengali
 - English
@@ -19,143 +19,138 @@ Translate between Bishnupriya Manipuri and multiple languages, including:
 - French
 - Chinese
 
-Features include:
+**Technical Capabilities:**
 
-- Live search
-- Instant translation
-- Autocomplete suggestions
-- Language swap
-- Copy translated text
-- Corpus-based translation engine
-
----
-
-## Available Tools
-
-The platform includes several language technologies:
-
-- Speech Corpus Collection
-- Transliteration
-- Translator
-- Dictionary
-- Corpus Download
-- Text-to-Speech (TTS)
-- Online Keyboard
-- Spell Checker
+- Real-time live search (debounced query resolution)
+- Instant translation rendering
+- Autocomplete suggestion engine (prefix-matching algorithm)
+- Bidirectional language swapping
+- Clipboard API integration (copy-to-clipboard)
+- Corpus-based exact and fuzzy-matching translation engine
 
 ---
 
-## Blog
+## Platform Tools & Modules
 
-The website publishes articles related to:
+- Speech Corpus Collection Framework
+- Transliteration Engine (script-mapping system)
+- Multilingual Translator
+- Digital Lexicon / Dictionary Module
+- Corpus Export & Download Utility
+- Text-to-Speech (TTS) Synthesis Module
+- Virtual/Online Keyboard (Unicode Input Method Editor)
+- Spell Checker (rule-based validation engine)
 
-- Bishnupriya Manipuri language
-- Linguistic research
-- Culture and heritage
-- Digital language preservation
+---
+
+## Blog & Research Publication
+
+The platform publishes content covering:
+
+- Bishnupriya Manipuri linguistics
+- Computational linguistics research
+- Cultural heritage and ethnolinguistic context
+- Digital language preservation methodology
 
 ---
 
 ## Technology Stack
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Responsive Design
-- Unicode Support
-- CSV-based Language Corpus
-- Tabler Icons
+| Layer | Technology |
+|---|---|
+| Markup | HTML5 (semantic structure) |
+| Styling | CSS3 (responsive, mobile-first design) |
+| Scripting | Vanilla JavaScript (ES6+) |
+| Data Layer | CSV-based structured language corpus |
+| Encoding | Full Unicode (UTF-8) support |
+| UI Iconography | Tabler Icons |
+| Architecture | Client-side rendering (CSR), no backend dependency |
 
 ---
 
-## Project Structure
+## Project Architecture
 
 ```text
 /
-├── index.html
-├── tools.html
-├── translation.html
-├── dictionary.html
-├── transliteration.html
-├── speech-corpus.html
-├── corpus.html
-├── keyboard.html
-├── spellcheck.html
-├── tts.html
+├── index.html                 # Landing page
+├── tools.html                 # Tools dashboard
+├── translation.html           # Translation module
+├── dictionary.html            # Lexicon interface
+├── transliteration.html       # Script-mapping module
+├── speech-corpus.html         # Speech data collection
+├── language-corpus.html         # Language data collection
+├── corpus.html                # Corpus export utility
+├── keyboard.html               # Virtual keyboard (IME)
+├── spellcheck.html            # Spell-checking engine
+├── tts.html                   # Text-to-Speech interface
 │
-├── blogs/
+├── blogs/                     # Academic & cultural content
 │   ├── post-1.html
 │   ├── post-2.html
 │   └── ...
 │
-├── bm_corpus_multilang.csv
-├── css/
-├── js/
-└── assets/
+├── bm_corpus_multilang.csv    # Core language dataset
+├── css/                       # Stylesheet modules
+├── js/                        # Client-side logic
+└── assets/                    # Static resources (images, fonts, etc.)
 ```
 
 ---
 
-## Translation Engine
+## Translation Engine Architecture
 
-The translator is powered by a multilingual CSV corpus.
+The translation system is powered by an **in-memory multilingual CSV corpus**, supporting the following computational characteristics:
 
-It supports:
+- High-speed corpus lookup (linear scan / indexed lookup)
+- Exact phrase-matching algorithm
+- Prefix-based autocomplete suggestions
+- Multi-language pair support (n-to-n mapping)
+- Clipboard API integration
+- Dynamic language selection (runtime configuration)
 
-- Fast corpus lookup
-- Exact phrase matching
-- Autocomplete suggestions
-- Multiple language pairs
-- Clipboard copy
-- Dynamic language selection
-
-The translation engine loads the language corpus into memory and performs real-time searches for an efficient user experience.
+The engine loads the entire corpus into client-side memory on page load and processes search queries in real time, ensuring low-latency performance without server round-trips.
 
 ---
 
-## Project Goals
+## Mission & Objectives
 
-The mission of Imar Thar is to preserve and modernize the Bishnupriya Manipuri language by providing free, accessible, and open digital resources for the global community.
+The core mission of Imar Thar is to preserve and modernize the Bishnupriya Manipuri language through free, accessible, and open digital resources.
 
-The project aims to:
+**Strategic Objectives:**
 
 - Preserve linguistic heritage
 - Build open language corpora
-- Support language research
-- Develop AI-powered language technologies
-- Encourage community participation
+- Support linguistic research
+- Develop AI/ML-based language technologies
+- Encourage open-source community participation
 - Promote digital literacy in Bishnupriya Manipuri
 
 ---
 
-## Future Roadmap
+## Future Roadmap & R&D Pipeline
 
-Planned features include:
-
-- AI-powered Machine Translation
-- Optical Character Recognition (OCR)
-- Speech Recognition
-- Large Language Models (LLMs)
-- Grammar Checker
-- Morphological Analyzer
-- Mobile Applications
-- Public API
-- AI Voice Models
-- Educational Resources
+- AI-powered Neural Machine Translation (NMT)
+- Optical Character Recognition (OCR) engine
+- Automatic Speech Recognition (ASR)
+- Large Language Model (LLM) integration
+- Grammar Checker (syntax validation engine)
+- Morphological Analyzer (word-structure parsing)
+- Native mobile applications (iOS/Android)
+- Public REST API
+- AI-based voice synthesis models
+- Educational resource modules
 
 ---
 
 ## Contributing
 
-Community contributions are welcome.
-
-You can contribute by:
+Community contributions are welcome. Ways to contribute:
 
 - Expanding the language corpus
-- Reporting bugs
-- Improving translations
-- Contributing code
-- Writing documentation
+- Bug reporting (issue tracking)
+- Improving translation quality
+- Code contributions (pull requests)
+- Writing technical documentation
 - Publishing educational content
 
 ---
