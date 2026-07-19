@@ -45,12 +45,52 @@
   .sidebar-box h3 { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
   .sidebar-box ul { padding-left: 18px; font-size: 13px; color: #475569; display: flex; flex-direction: column; gap: 8px; }
 
+  /* ── New Topic Form ── */
+  .form-card {
+    grid-column: span 2;
+    background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px;
+    padding: 2rem; margin-bottom: 0.5rem; display: none;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  }
+  .form-card.active { display: block; }
+  .form-title { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+  .close-btn { background: transparent; border: none; color: #94a3b8; cursor: pointer; font-size: 20px; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-label { display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px; }
+  .form-input, .form-textarea {
+    width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 10px;
+    font-size: 14px; outline: none; transition: border 0.2s; font-family: inherit;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: #10b981; }
+  .form-textarea { height: 120px; resize: vertical; }
+  .primary-btn {
+    background: #10b981; color: white; border: none; padding: 10px 20px;
+    border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s;
+  }
+  .primary-btn:hover { background: #059669; }
+
+  .success-msg {
+    grid-column: span 2;
+    display: none; align-items: flex-start; gap: 12px;
+    background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px;
+    padding: 1.25rem 1.5rem; margin-bottom: 0.5rem; color: #166534;
+  }
+  .success-msg.visible { display: flex; }
+  .success-msg i { font-size: 22px; color: #10b981; flex-shrink: 0; margin-top: 2px; }
+  .success-msg strong { display: block; font-size: 14.5px; margin-bottom: 2px; }
+  .success-msg span { font-size: 13.5px; color: #15803d; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinning { display: inline-block; animation: spin 0.8s linear infinite; }
+
   footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; grid-column: span 2; margin-top: 5rem; }
   footer span { color: #10b981; font-weight: 600; }
 
   @media (max-width: 768px) {
     .forum-layout { grid-template-columns: 1fr; padding: 0 1.25rem; }
     .forum-header { grid-column: span 1; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .form-card, .success-msg { grid-column: span 1; }
     .sidebar { display: none; }
     footer { grid-column: span 1; }
     .thread-stats { display: none; }
@@ -62,7 +102,8 @@
 <nav>
   <a href="index.html" class="logo">imar<span>thar</span>.com</a>
   <div class="nav-links">
-    <a href="index.html#tools">টুল</a>
+    <a href="speech-corpus.html">স্পিচ কর্পাস</a>
+    <a href="tools.html">টুল</a>
     <a href="blogs.html">ব্লগ</a>
     <a href="papers.html">পেপার</a>
     <a href="discussion.html" class="active">আলোচনা</a>
@@ -74,11 +115,43 @@
     <div>
       <h1 class="page-title">কমিউনিটি আলোচনা</h1>
     </div>
-    <button class="new-topic-btn"><i class="ti ti-plus"></i> নতুন টপিক আলোচনা করিক</button>
+    <button class="new-topic-btn" onclick="toggleForm()"><i class="ti ti-plus"></i> নতুন টপিক আলোচনা করিক</button>
+  </div>
+
+  <div id="topic-form-card" class="form-card">
+    <div class="form-title">
+      <span>নতুন টপিক শুরু করুন</span>
+      <button class="close-btn" onclick="toggleForm()"><i class="ti ti-x"></i></button>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">তুমার নাম (Name)</label>
+      <input type="text" id="topic-name" class="form-input" placeholder="যেমন: বিজয় সিনহা">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">টপিকর শিরোনাম (Title)</label>
+      <input type="text" id="topic-title" class="form-input" placeholder="যেমন: ইমার ঠারর নতুন শব্দ নিয়া আলোচনা...">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">বার্তা (Message)</label>
+      <textarea id="topic-message" class="form-textarea" placeholder="এখানে বিস্তারিত লিখুন..."></textarea>
+    </div>
+
+    <button class="primary-btn" id="topic-submit-btn" onclick="submitTopic()"><i class="ti ti-send"></i> পোস্ট করিক</button>
+  </div>
+
+  <div id="topic-success-msg" class="success-msg">
+    <i class="ti ti-circle-check"></i>
+    <div>
+      <strong>ধন্যবাদ! তুমার টপিকহান পোস্ট হয়া গেছে।</strong>
+      <span>নিচে তালিকাত এখনি দেখা যাইবো।</span>
+    </div>
   </div>
 
   <!-- Threads -->
-  <div class="threads-list">
+  <div class="threads-list" id="threads-list">
     <!-- Thread 1 -->
     <a href="#" class="thread-card">
       <div class="avatar" style="background: #d1fae5; color: #065f46;">বি</div>
@@ -129,6 +202,120 @@
     <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
   </footer>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://ykqpsfkfztrxvohwxwht.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_hd-XmB0uuKoV7PA8jTHXZw_DCm_kc5B';
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const avatarColors = [
+    { bg: '#d1fae5', fg: '#065f46' },
+    { bg: '#e0f2fe', fg: '#0369a1' },
+    { bg: '#fef9c3', fg: '#854d0e' },
+    { bg: '#fce7f3', fg: '#9d174d' },
+    { bg: '#ede9fe', fg: '#5b21b6' }
+  ];
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function timeAgo(dateStr) {
+    const diffMs = Date.now() - new Date(dateStr).getTime();
+    const mins = Math.floor(diffMs / 60000);
+    if (mins < 1) return 'এখনই';
+    if (mins < 60) return mins + ' মিনিট আগে';
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return hrs + ' ঘন্টা আগে';
+    const days = Math.floor(hrs / 24);
+    return days + ' দিন আগে';
+  }
+
+  function toggleForm() {
+    document.getElementById('topic-form-card').classList.toggle('active');
+    document.getElementById('topic-success-msg').classList.remove('visible');
+  }
+
+  async function loadTopics() {
+    const { data, error } = await supabaseClient
+      .from('discussion_topics')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Supabase load error:', error);
+      return;
+    }
+
+    const list = document.getElementById('threads-list');
+    list.querySelectorAll('.thread-card.dynamic').forEach(el => el.remove());
+
+    data.forEach((topic, i) => {
+      const color = avatarColors[i % avatarColors.length];
+      const initial = escapeHtml((topic.name || '?').trim().charAt(0) || '?');
+      const card = document.createElement('div');
+      card.innerHTML = `
+        <a href="#" class="thread-card dynamic">
+          <div class="avatar" style="background: ${color.bg}; color: ${color.fg};">${initial}</div>
+          <div class="thread-main">
+            <h3 class="thread-title">${escapeHtml(topic.title)}</h3>
+            <div class="thread-meta">
+              <span>শুরু করলা: <strong>${escapeHtml(topic.name)}</strong></span>
+              <span><i class="ti ti-clock"></i> ${timeAgo(topic.created_at)}</span>
+            </div>
+          </div>
+          <div class="thread-stats">
+            <div class="stat-unit"><span>০</span>মন্তব্য</div>
+            <div class="stat-unit"><span>০</span>দেখেছে</div>
+          </div>
+        </a>
+      `;
+      list.insertBefore(card.firstElementChild, list.firstChild);
+    });
+  }
+
+  async function submitTopic() {
+    const name = document.getElementById('topic-name').value.trim();
+    const title = document.getElementById('topic-title').value.trim();
+    const message = document.getElementById('topic-message').value.trim();
+
+    if (!name || !title || !message) {
+      alert('অনুগ্ৰহ করিয়া নাম, শিরোনাম বারো বার্তা হাবিয়েই লিখুন!');
+      return;
+    }
+
+    const btn = document.getElementById('topic-submit-btn');
+    const originalHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="ti ti-loader-2 spinning"></i> পোস্ট হইতেছে...';
+
+    const { error } = await supabaseClient
+      .from('discussion_topics')
+      .insert([{ name: name, title: title, message: message }]);
+
+    btn.disabled = false;
+    btn.innerHTML = originalHtml;
+
+    if (error) {
+      console.error('Supabase insert error:', error);
+      alert('দুঃখিত, টপিকহান পোস্ট করতে সমস্যা হইছে। আবার চেষ্টা করুন।');
+      return;
+    }
+
+    document.getElementById('topic-name').value = '';
+    document.getElementById('topic-title').value = '';
+    document.getElementById('topic-message').value = '';
+
+    document.getElementById('topic-form-card').classList.remove('active');
+    document.getElementById('topic-success-msg').classList.add('visible');
+    await loadTopics();
+  }
+
+  window.onload = loadTopics;
+</script>
 
 </body>
 </html>
