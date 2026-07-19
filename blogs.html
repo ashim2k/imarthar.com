@@ -57,6 +57,20 @@
   .form-input:focus, .form-textarea:focus { border-color: #10b981; }
   .form-textarea { height: 150px; resize: vertical; }
 
+  /* ── Submission success message ── */
+  .success-msg {
+    display: none; align-items: flex-start; gap: 12px;
+    background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px;
+    padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; color: #166534;
+  }
+  .success-msg.visible { display: flex; }
+  .success-msg i { font-size: 22px; color: #10b981; flex-shrink: 0; margin-top: 2px; }
+  .success-msg strong { display: block; font-size: 14.5px; margin-bottom: 2px; }
+  .success-msg span { font-size: 13.5px; color: #15803d; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinning { display: inline-block; animation: spin 0.8s linear infinite; }
+
   /* ── Blog Cards Grid ── */
   .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
   .blog-card {
@@ -103,17 +117,17 @@
       <h1 class="page-title">সাম্প্রতিক ব্লগ পেজহানি</h1>
       <p class="page-desc">বিষ্ণুপ্রিয়া মণিপুরি ভাষা, সাহিত্য বারো প্রযুক্তি সংক্রান্ত তথ্যবহুল প্রবন্ধাবলি।</p>
     </div>
-    <button class="primary-btn" onclick="toggleForm()"><i class="ti ti-plus"></i> নতুন ব্লগ লিখুন</button>
+    <button class="primary-btn" onclick="toggleForm()"><i class="ti ti-plus"></i> নুয়া ব্লগ ইকরিক</button>
   </div>
 
   <div id="blog-form-card" class="form-card">
     <div class="form-title">
-      <span>নতুন ব্লগ আর্টিকেল যোগ করুন</span>
+      <span>নুয়া ব্লগ আর্টিকেল যোগ করিক</span>
       <button class="close-btn" onclick="toggleForm()"><i class="ti ti-x"></i></button>
     </div>
     
     <div class="form-group">
-      <label class="form-label">ব্লগের শিরোনাম (Title)</label>
+      <label class="form-label">ব্লগর শিরোনাম (Title)</label>
       <input type="text" id="blog-title" class="form-input" placeholder="যেমন: ইমার ঠারর কম্পিউটার কম্পিউটিং...">
     </div>
 
@@ -124,7 +138,7 @@
 
     <div class="form-group">
       <label class="form-label">ফিচার্ড ইমেজ ইউআরএল (Image URL - ঐচ্ছিক)</label>
-      <input type="text" id="blog-img" class="form-input" placeholder="https://images.unsplash.com/... অথবা খালি রাখুন">
+      <input type="text" id="blog-img" class="form-input" placeholder="https://images.unsplash.com/... অথবা খালি থইক">
     </div>
 
     <div class="form-group">
@@ -132,7 +146,15 @@
       <textarea id="blog-body" class="form-textarea" placeholder="এখানে বিস্তারিত ব্লগ কন্টেন্ট লিখুন..."></textarea>
     </div>
 
-    <button class="primary-btn" onclick="publishBlog()"><i class="ti ti-send"></i> পাবলিশ করুন</button>
+    <button class="primary-btn" id="blog-submit-btn" onclick="publishBlog()"><i class="ti ti-send"></i> পাবলিশ করিক</button>
+  </div>
+
+  <div id="blog-success-msg" class="success-msg">
+    <i class="ti ti-circle-check"></i>
+    <div>
+      <strong>থাকাত! আপনাগাসির ব্লগউগ মডারেশনরকা জমা অসে।</strong>
+      <span>স্পামিং বারো ফ্লাডিং নাক বুলিয়া ফিচার অহান থনা অইল। ভবিষ্যতে রেজিস্টার্ড ইউজাররকা অপশন এহান ওপেন অইতয়।</span>
+    </div>
   </div>
 
   <div class="blog-grid" id="blog-container">
@@ -245,6 +267,67 @@
   <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // ── Supabase কনফিগারেশন ──
+    const SUPABASE_URL = 'https://ksnwykmtrczvdzhoiews.supabase.co';       
+  const SUPABASE_ANON_KEY = 'sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno'; 
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  
+  function toggleForm() {
+    document.getElementById('blog-form-card').classList.toggle('active');
+    document.getElementById('blog-success-msg').classList.remove('visible');
+  }
+
+  
+  async function publishBlog() {
+    const title = document.getElementById('blog-title').value.trim();
+    const tag   = document.getElementById('blog-tag').value.trim() || 'সাধারণ';
+    const img   = document.getElementById('blog-img').value.trim();
+    const body  = document.getElementById('blog-body').value.trim();
+
+    if (!title || !body) {
+      alert('অনুগ্ৰহ করিয়া টাইটেল বারো বডি কন্টেন্ট ইকরিক!');
+      return;
+    }
+
+    const submitBtn = document.getElementById('blog-submit-btn');
+    const originalBtnHtml = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="ti ti-loader-2 spinning"></i> জমা চলের ...';
+
+    const { error } = await supabaseClient
+      .from('blog_submissions')
+      .insert([{
+        title: title,
+        tag: tag,
+        img_url: img || null,
+        body: body,
+        status: 'pending'
+      }]);
+
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtnHtml;
+
+    if (error) {
+      console.error('Supabase insert error:', error);
+      alert('দুঃখিত, ব্লগহান জমা দিতে সমস্যা দেহাদের। বারো হৎনা করিক।');
+      return;
+    }
+
+    // ইনপুট ফর্ম খালি করা
+    document.getElementById('blog-title').value = '';
+    document.getElementById('blog-tag').value = '';
+    document.getElementById('blog-img').value = '';
+    document.getElementById('blog-body').value = '';
+
+    // ফর্ম বন্ধ করি "মডারেশনের জন্য জমা হয়েছে" মেসেজ দেখানি
+    document.getElementById('blog-form-card').classList.remove('active');
+    document.getElementById('blog-success-msg').classList.add('visible');
+    document.getElementById('blog-success-msg').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>
 
 </body>
 </html>
