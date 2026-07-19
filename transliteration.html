@@ -211,11 +211,11 @@
 <div class="page-hero">
   <div class="page-hero-content">
     <a href="tools.html" class="back-link">
-      <i class="ti ti-arrow-left"></i> টুলসমূহে ফিরুন
+      <i class="ti ti-arrow-left"></i> টুলে আলথক
     </a>
     <div class="hero-badge"><i class="ti ti-replace"></i> ট্রান্সলিটারেশন</div>
     <h1>লিপি ↔ <span>রোমান</span></h1>
-    <p>বিষ্ণুপ্রিয়া মণিপুরি লিপি ও রোমান ফোনেটিক — দুই দিকেই কনভার্ট করুন</p>
+    <p>বিষ্ণুপ্রিয়া মণিপুরি লিপি বারো রোমান ফোনেটিক — দ্বিয়বারাদে কনভার্ট করানি অকরতই</p>
   </div>
 </div>
 
@@ -232,8 +232,8 @@
   <div class="card">
     <div class="card-top">
       <div class="lang-label">
-        <span id="src-label">বিষ্ণুপ্রিয়া মণিপুরি লিখুন</span>
-        <button class="clear-btn" id="clear-btn" onclick="clearInput()">✕ মুছুন</button>
+        <span id="src-label">বিষ্ণুপ্রিয়া মণিপুরি ঠারল ইকরিক</span>
+        <button class="clear-btn" id="clear-btn" onclick="clearInput()">✕ মুছিক</button>
       </div>
       <div class="input-wrap">
         <textarea id="query" rows="3" placeholder="যেমন: ইমার ঠার…" oninput="onInput(this)"></textarea>
@@ -245,7 +245,7 @@
     <div class="card-bottom">
       <div class="lang-label" id="tgt-label">রোমান ফোনেটিক আউটপুট</div>
       <div class="result-row">
-        <div id="result-text" class="placeholder">রোমান রূপ এখানে দেখাবে</div>
+        <div id="result-text" class="placeholder">রোমান রূপহান এপেইত আইতয়</div>
         <button class="copy-btn" id="copy-btn" onclick="copyResult()">
           <i class="ti ti-copy"></i> কপি
         </button>
@@ -255,13 +255,13 @@
 
   <div class="tip-box">
     <i class="ti ti-info-circle"></i>
-    <span id="tip-text">এইটা একটা সহজ রুল-বেসড (letter-by-letter) কনভার্টার — প্রতিটা বাংলা/বিষ্ণুপ্রিয়া অক্ষরের একটা নির্দিষ্ট রোমান রূপ আছে। উচ্চারণ প্রেক্ষাপট অনুযায়ী কিছুটা তফাত হতে পারে।</span>
+    <span id="tip-text">সামপা রুল-বেসড (letter-by-letter) কনভার্টার আহান — বিষ্ণুপ্রিয়া অক্ষর আকেইগর নির্দিষ্ট রোমান রূপ আহান আছে। উচ্চারণ প্রেক্ষাপট অনুযায়ী সিলইতে পারে।</span>
   </div>
 
   <!-- Reference table -->
   <div class="ref-section">
     <div class="ref-title" id="ref-toggle" onclick="toggleRef()">
-      <i class="ti ti-chevron-right chev"></i> বর্ণ-রোমান ম্যাপিং টেবিল দেখুন
+      <i class="ti ti-chevron-right chev"></i> বর্ণ-রোমান ম্যাপিং টেবিল চেইক
     </div>
     <div class="ref-body" id="ref-body">
 
@@ -417,15 +417,15 @@
     document.getElementById('btn-rm2bm').classList.toggle('active', dir === 'rm2bm');
     const query = document.getElementById('query');
     if (dir === 'bm2rm') {
-      document.getElementById('src-label').textContent = 'বিষ্ণুপ্রিয়া মণিপুরি লিখুন';
+      document.getElementById('src-label').textContent = 'বিষ্ণুপ্রিয়া মণিপুরিল ইকরিক';
       document.getElementById('tgt-label').textContent = 'রোমান ফোনেটিক আউটপুট';
       query.placeholder = 'যেমন: ইমার ঠার…';
-      document.getElementById('tip-text').textContent = 'এইটা একটা সহজ রুল-বেসড (letter-by-letter) কনভার্টার — প্রতিটা বাংলা/বিষ্ণুপ্রিয়া অক্ষরের একটা নির্দিষ্ট রোমান রূপ আছে। উচ্চারণ প্রেক্ষাপট অনুযায়ী কিছুটা তফাত হতে পারে।';
+      document.getElementById('tip-text').textContent = 'সামপা রুল-বেসড (letter-by-letter) কনভার্টারগ — ওয়াহি আকেইগরনির্দিষ্ট রোমান রূপ আছে। উচ্চারণ প্রেক্ষাপট অনুসারে তফাত অইতে পারে।';
     } else {
-      document.getElementById('src-label').textContent = 'রোমান ফোনেটিক লিখুন';
+      document.getElementById('src-label').textContent = 'রোমান ফোনেটিকল ইকরিক';
       document.getElementById('tgt-label').textContent = 'বিষ্ণুপ্রিয়া মণিপুরি আউটপুট';
       query.placeholder = 'যেমন: imar thar…';
-      document.getElementById('tip-text').textContent = 'রোমান→বিষ্ণুপ্রিয়া দিকে কিছু ধ্বনি একাধিক অক্ষরে ব্যবহৃত হয় (যেমন t = ত/ট উভয়ই) — তাই এই কনভার্শন আনুমানিক, সবসময় নিখুঁত বানান নাও দিতে পারে।';
+      document.getElementById('tip-text').textContent = 'রোমান→বিষ্ণুপ্রিয়া ধ্বনি একাধিক অক্ষরল ব্যবহৃত অর (যেমন t = ত/ট উভয়) — অহানে কনভার্শন এহান আনুমানিক, নিখুঁত বানান নাও আইতে পারে।';
     }
     clearInput();
   }
@@ -467,7 +467,7 @@
     const val = el.value;
     document.getElementById('clear-btn').classList.toggle('visible', val.trim().length > 0);
     const resultEl = document.getElementById('result-text');
-    const placeholderMsg = direction === 'bm2rm' ? 'রোমান রূপ এখানে দেখাবে' : 'বিষ্ণুপ্রিয়া রূপ এখানে দেখাবে';
+    const placeholderMsg = direction === 'bm2rm' ? 'রোমান রূপ এপেইত দেহেইতয়' : 'বিষ্ণুপ্রিয়া মণিপুরি রূপ এপেইত দেহেইতয়';
     if (!val.trim()) {
       resultEl.textContent = placeholderMsg;
       resultEl.classList.add('placeholder');
@@ -495,7 +495,7 @@
     navigator.clipboard.writeText(text).then(() => {
       const btn = document.getElementById('copy-btn');
       btn.classList.add('copied');
-      btn.innerHTML = '<i class="ti ti-check"></i> কপি হয়েছে';
+      btn.innerHTML = '<i class="ti ti-check"></i> কপি অইল';
       setTimeout(() => {
         btn.classList.remove('copied');
         btn.innerHTML = '<i class="ti ti-copy"></i> কপি';
