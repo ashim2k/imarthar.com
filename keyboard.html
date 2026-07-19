@@ -101,7 +101,7 @@
     <div class="breadcrumb"><a href="index.html">হোম</a><i class="ti ti-chevron-right"></i><a href="tools.html">টুল</a><i class="ti ti-chevron-right"></i><span>অনলাইন কীবোর্ড</span></div>
     <div class="hero-badge"><i class="ti ti-keyboard"></i> বিষ্ণুপ্রিয়া মণিপুরি</div>
     <h1>অনলাইন <span>কীবোর্ড</span></h1>
-    <p>বিষ্ণুপ্রিয়া মণিপুরি বাংলা লিপিতে টাইপ করিক এবং যেকোনো জায়গায় পেস্ট করিক।</p>
+    <p>বিষ্ণুপ্রিয়া মণিপুরি বাংলা লিপির বর্ণমালা বারো কীবোর্ড লে-আউট ।</p>
   </div>
 </div>
 <div class="main">
@@ -196,6 +196,8 @@
             <button class="key" onclick="type('ড়')">ড়<span class="key-sub">R</span></button>
             <button class="key" onclick="type('ঢ়')">ঢ়<span class="key-sub">Rh</span></button>
             <button class="key" onclick="type('য়')">য়<span class="key-sub">y</span></button>
+            <button class="key" onclick="type('ৱ')">য়<span class="key-sub">y</span></button>
+            <button class="key" onclick="type('ৰ')">য়<span class="key-sub">y</span></button>
             <button class="key" onclick="type('ৎ')">ৎ<span class="key-sub">t</span></button>
             <button class="key" onclick="type('ং')">ং<span class="key-sub">ng</span></button>
             <button class="key" onclick="type('ঃ')">ঃ<span class="key-sub">h</span></button>
@@ -266,26 +268,18 @@
   </div>
 
   <!-- Sidebar -->
-  <div class="sidebar">
-    <div class="sidebar-card">
-      <div class="sidebar-title"><i class="ti ti-info-circle"></i> কীভাবে ব্যবহার করিম</div>
-      <div class="info-item"><i class="ti ti-check"></i> উপরের ট্যাব থেকে স্বরবর্ণ, ব্যঞ্জনবর্ণ বাছিক</div>
-      <div class="info-item"><i class="ti ti-check"></i> বোতামে চাপলে টেক্সটে যোগ হবে</div>
-      <div class="info-item"><i class="ti ti-check"></i> সরাসরি কীবোর্ডেও টাইপ করা যাবে</div>
-      <div class="info-item"><i class="ti ti-check"></i> কপি করে যেকোনো জায়গায় পেস্ট করিক</div>
-    </div>
+
     <div class="sidebar-card">
       <div class="sidebar-title"><i class="ti ti-keyboard"></i> শর্টকাট</div>
       <div class="shortcut-item"><span>কপি</span><span class="shortcut-key">Ctrl+C</span></div>
-      <div class="shortcut-item"><span>সব মুছিক</span><span class="shortcut-key">Ctrl+A → Del</span></div>
+      <div class="shortcut-item"><span>হাবি মুছিক</span><span class="shortcut-key">Ctrl+A → Del</span></div>
       <div class="shortcut-item"><span>আনডু</span><span class="shortcut-key">Ctrl+Z</span></div>
     </div>
     <div class="sidebar-card">
-      <div class="sidebar-title"><i class="ti ti-bulb"></i> টিপস</div>
-      <div class="info-item"><i class="ti ti-point"></i> ব্যঞ্জনবর্ণের পর মাত্রা যোগ করিক</div>
-      <div class="info-item"><i class="ti ti-point"></i> হসন্ত (্) দিয়ে যুক্তবর্ণ তৈরি হয়</div>
-      <div class="info-item"><i class="ti ti-point"></i> টাইপ করা শেষে কপি বাটন চাপিক</div>
-    </div>
+      <div class="sidebar-title"><i class="ti ti-bulb"></i> খিয়ার করবাং </div>
+      <div class="info-item"><i class="ti ti-point"></i> ব্যঞ্জনবর্ণর থাংনাৎ মাত্রা যোগ অর</div>
+      <div class="info-item"><i class="ti ti-point"></i> হসন্ত (্)গলো যুক্তবর্ণ হঙর</div>
+      </div>
   </div>
 </div>
 
@@ -328,7 +322,7 @@ function clearOutput() { output.value = ''; updateInfo(); output.focus(); }
 
 function copyOutput() {
   if (!output.value) return;
-  navigator.clipboard.writeText(output.value).then(() => showToast('কপি হয়েছে!'));
+  navigator.clipboard.writeText(output.value).then(() => showToast('কপি অইল!'));
 }
 
 function setLayer(name, btn) {
