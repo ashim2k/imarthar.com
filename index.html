@@ -596,7 +596,7 @@
     const si = COL[srcLang];
     const ti = COL[tgtLang];
     if (si === undefined || ti === undefined) {
-      setResult('এই ভাষা-জুটি corpus-এ নেই', 'error');
+      setResult('এরে ভাষা-জুটি corpus-এ নেই', 'error');
       closeDD(); return;
     }
 
@@ -604,7 +604,7 @@
     const hits = corpus.filter(r => r[si] && r[si].toLowerCase().includes(ql));
 
     if (!hits.length) {
-      setResult('কোনো ফলাফল পাওয়া যায়নি', 'error');
+      setResult('কোনো ফলাফল না পেইলাং', 'error');
       closeDD(); return;
     }
 
@@ -679,7 +679,7 @@
   }
 
   function resetResult() {
-    setResult('অনুবাদ এখানে দেখাবে', 'placeholder');
+    setResult('অনুবাদহান এপেইত দেহাদিতয়', 'placeholder');
     document.getElementById('result-actions').style.display = 'none';
   }
 
@@ -694,7 +694,7 @@
     const text = document.getElementById('result').textContent;
     navigator.clipboard.writeText(text).then(() => {
       const btn = document.querySelector('.tr-copy-btn');
-      btn.innerHTML = '<i class="ti ti-check"></i> কপি হয়েছে!';
+      btn.innerHTML = '<i class="ti ti-check"></i> কপি অইলে!';
       setTimeout(() => btn.innerHTML = '<i class="ti ti-copy"></i> কপি', 1500);
     });
   }
