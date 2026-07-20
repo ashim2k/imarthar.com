@@ -345,6 +345,88 @@
       .main { padding: 0 1rem; margin-top: 1.8rem; }
       .stats-row { flex-direction: column; }
     }
+
+    .main {
+      max-width: 1080px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      align-items: start;
+      gap: 1.75rem;
+    }
+    .main-content { min-width: 0; }
+
+    .sidebar { position: sticky; top: 84px; display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .sidebar-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+    }
+    .sidebar-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 1rem;
+    }
+    .sidebar-title i { color: #f59e0b; }
+
+    .lb-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .lb-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .lb-rank {
+      width: 20px;
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-align: center;
+    }
+    .lb-rank.gold { color: #f59e0b; }
+    .lb-rank.silver { color: #94a3b8; }
+    .lb-rank.bronze { color: #b45309; }
+    .lb-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .lb-name {
+      flex: 1;
+      min-width: 0;
+      font-size: 13px;
+      font-weight: 500;
+      color: #1e293b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .lb-count {
+      font-size: 11px;
+      color: #10b981;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .main { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+    }
   </style>
 </head>
 <body>
@@ -373,7 +455,7 @@
 
 <div class="main">
 
- 
+<div class="main-content">
   <div class="stats-row">
     <div class="stat-box">
       <div class="num" id="stat-total">০</div>
@@ -426,6 +508,17 @@
       <div class="empty-note">লোড অর …</div>
     </div>
   </div>
+
+</div>
+
+<div class="sidebar">
+  <div class="sidebar-card">
+    <div class="sidebar-title"><i class="ti ti-trophy"></i> শীর্ষ অবদানকারী</div>
+    <div id="leaderboard-list">
+      <div class="empty-note" style="padding: 0.5rem 0;">লোড অর …</div>
+    </div>
+  </div>
+</div>
 
 </div>
 
@@ -498,6 +591,70 @@
     }
   }
 
+  const LB_GRADIENTS = [
+    'linear-gradient(135deg,#f59e0b,#ef4444)',
+    'linear-gradient(135deg,#06b6d4,#3b82f6)',
+    'linear-gradient(135deg,#8b5cf6,#ec4899)',
+    'linear-gradient(135deg,#10b981,#06b6d4)',
+    'linear-gradient(135deg,#f97316,#f59e0b)',
+    'linear-gradient(135deg,#6366f1,#8b5cf6)'
+  ];
+  const BN_DIGITS = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  function toBnNum(n) {
+    return String(n).split('').map(c => (c >= '0' && c <= '9') ? BN_DIGITS[c] : c).join('');
+  }
+  function initialsOf(name) {
+    const parts = name.trim().split(/\s+/).filter(Boolean);
+    if (parts.length === 0) return '?';
+    if (parts.length === 1) return parts[0].slice(0, 2);
+    return parts[0].slice(0, 1) + parts[1].slice(0, 1);
+  }
+
+  async function loadLeaderboard() {
+    const el = document.getElementById('leaderboard-list');
+    if (!isConfigured()) {
+      el.innerHTML = '<div class="empty-note" style="padding: 0.5rem 0;">Supabase কনফিগার নাসে</div>';
+      return;
+    }
+    try {
+      const { data, error } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('contributor_name')
+        .not('contributor_name', 'is', null)
+        .limit(5000);
+      if (error) throw error;
+
+      const counts = {};
+      (data || []).forEach(row => {
+        const name = (row.contributor_name || '').trim();
+        if (!name) return;
+        counts[name] = (counts[name] || 0) + 1;
+      });
+
+      const top = Object.entries(counts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 4);
+
+      if (top.length === 0) {
+        el.innerHTML = '<div class="empty-note" style="padding: 0.5rem 0;">এবাকাউ কোনো অবদানকারী নেই</div>';
+        return;
+      }
+
+      const rankClasses = ['gold', 'silver', 'bronze'];
+      el.innerHTML = top.map(([name, count], i) => `
+        <div class="lb-item">
+          <span class="lb-rank ${rankClasses[i] || ''}">${toBnNum(i + 1)}</span>
+          <div class="lb-avatar" style="background:${LB_GRADIENTS[i % LB_GRADIENTS.length]}">${escapeHtml(initialsOf(name))}</div>
+          <span class="lb-name">${escapeHtml(name)}</span>
+          <span class="lb-count">${toBnNum(count)} টি</span>
+        </div>
+      `).join('');
+    } catch (e) {
+      el.innerHTML = '<div class="empty-note" style="padding: 0.5rem 0;">লোড করতে সমস্যা</div>';
+      console.error(e);
+    }
+  }
+
   function renderEntries(entries) {
     const list = document.getElementById('entry-list');
     if (entries.length === 0) {
@@ -556,6 +713,7 @@
       myCount++;
       document.getElementById('stat-mine').textContent = myCount.toLocaleString('bn-BD');
       await loadEntries();
+      loadLeaderboard();
     } catch (e) {
       statusEl.textContent = 'সরি, জমা নাইল। বারো হৎনা করিক ।';
       statusEl.className = 'status-msg err';
@@ -613,6 +771,7 @@
     supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   }
   loadEntries();
+  loadLeaderboard();
 </script>
 </body>
 </html>
