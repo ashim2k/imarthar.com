@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
@@ -44,7 +44,7 @@
     background-image: radial-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 0);
     background-size: 24px 24px;
     border-bottom: 1px solid #e2e8f0;
-    padding: 2.5rem 2rem 3rem;
+    padding: 1.6rem 2rem 3rem;
     text-align: center;
     overflow: hidden;
   }
@@ -72,12 +72,13 @@
     font-weight: 600;
     padding: 6px 16px;
     border-radius: 99px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.4rem;
     box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
   }
   .hero h1 { font-size: 42px; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem; letter-spacing: -1px; }
   .hero h1 span { color: #10b981; }
   .hero h2 { font-size: 18px; font-weight: 500; color: #94a3b8; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+  .hero h2.hero-tagline { margin-bottom: 0.3rem; }
   .hero p { font-size: 16px; color: #475569; margin: 0 auto 2rem; line-height: 1.8; }
 
   /* ── Inline Translator Widget ── */
@@ -221,6 +222,7 @@
     border-radius: 12px; font-size: 24px; margin-bottom: 16px; color: #10b981; 
   }
   .tool-name { font-size: 16px; font-weight: 600; color: #0f172a; margin-bottom: 6px; }
+  .tool-name-en { font-size: 11px; font-weight: 400; color: #94a3b8; margin-top: -4px; margin-bottom: 6px; }
   .tool-desc { font-size: 13px; color: #64748b; line-height: 1.6; }
 
   /* Premium Blog List with Cover Art Images */
@@ -255,6 +257,7 @@
   .blog-info { flex: 1; min-width: 0; }
   .blog-tag { font-size: 11px; font-weight: 600; background: #f0fdf4; color: #166534; padding: 2px 10px; border-radius: 99px; margin-bottom: 6px; display: inline-block; }
   .blog-title { font-size: 15px; font-weight: 600; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .blog-title-en { font-size: 11px; font-weight: 400; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
   .blog-date { font-size: 13px; color: #94a3b8; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
   .blog-arrow { color: #94a3b8; font-size: 20px; padding-right: 8px; transition: color 0.2s; }
   .blog-item:hover .blog-arrow { color: #10b981; }
@@ -298,7 +301,7 @@
 <div class="hero">
   <div class="hero-content">
     <div class="hero-badge"><i class="ti ti-sparkles"></i> বিষ্ণুপ্রিয়া মণিপুরি ঠারর ডিজিটাল গরগ</div>
-    <h2>*** এরে সাইট এহান ইমে প্রস্তাবনাহান *** </h2>
+    <h2 class="hero-tagline">*** এরে সাইট এহান ইমে প্রস্তাবনাহান *** </h2>
 <!-- Visitor Counter -->
 <img src="https://hits.sh/imarthar.com.svg?view=today-total&style=flat-square&label=ভিজিটর&color=10b981&labelColor=0f172a" 
      alt="visitor counter"
@@ -375,26 +378,31 @@
     <a href="speech-corpus.html" class="tool-card">
       <div class="tool-icon"><i class="ti ti-microphone"></i></div>
       <div class="tool-name">স্পিচ কর্পাস খমকরানি</div>
+      <div class="tool-name-en">Speech Corpus Collection</div>
       <div class="tool-desc">কমিউনিটি ভয়েস প্রজেক্ট — নিজর নারে ঠারহান রেকর্ড করিয়া ভবিষ্যতরকা অবদান থুইক</div>
     </a>
 	<a href="language-corpus.html" class="tool-card">
       <div class="tool-icon"><i class="ti ti-language"></i></div>
       <div class="tool-name">ভাষা কর্পাস খমকরানি</div>
+      <div class="tool-name-en">Language Corpus Collection</div>
       <div class="tool-desc">কমিউনিটি ভাষা প্রজেক্ট — হাবিয়ে তিলয়া ভাষা-কর্পাসগো বরা করিক</div>
     </a>
     <a href="transliteration.html" class="tool-card">
       <div class="tool-icon"><i class="ti ti-replace"></i></div>
       <div class="tool-name">ট্রান্সলিটারেশন</div>
+      <div class="tool-name-en">Transliteration</div>
       <div class="tool-desc">বিষ্ণুপ্রিয়া লিপি ↔ রোমান ফোনেটিক অলকরানি</div>
     </a>
     <a href="dictionary.html" class="tool-card">
       <div class="tool-icon"><i class="ti ti-book"></i></div>
       <div class="tool-name">অভিধান</div>
+      <div class="tool-name-en">Dictionary</div>
       <div class="tool-desc">ওয়াহির অর্থ বারো ব্যবহার বিসারিক</div>
     </a>
     <a href="corpus.html" class="tool-card">
       <div class="tool-icon"><i class="ti ti-database"></i></div>
       <div class="tool-name">কর্পাস ডাউনলোড</div>
+      <div class="tool-name-en">Corpus Download</div>
       <div class="tool-desc">ভাষার ডেটাসেট রিকোয়েস্ট করিক</div>
     </a>
     <a href="tts.html" class="tool-card">
@@ -405,16 +413,19 @@
     <a href="keyboard.html" class="tool-card">
       <div class="tool-icon"><i class="ti ti-keyboard"></i></div>
       <div class="tool-name">অনলাইন কীবোর্ড</div>
+      <div class="tool-name-en">Online Keyboard</div>
       <div class="tool-desc">ইউনিকোড ভার্চুয়াল কীবোর্ড হানলো নুঙেই করে টাইপ করিক</div>
     </a>
     <a href="bm_interactive_map.html" class="tool-card">
       <div class="tool-icon"><i class="ti ti-database"></i></div>
       <div class="tool-name">ইন্টারঅ্যাকটিভ ম্যাপে বিষ্ণুপ্রিয়া মণিপুরি</div>
+      <div class="tool-name-en">Bishnupriya Manipuri on Interactive Map</div>
       <div class="tool-desc">নানান লয়াৎ বিষ্ণুপ্রিয়া মণিপুরি জনগোষ্ঠীর বসতি.. </div>
     </a>
 	  <a href="spellcheck.html" class="tool-card">
       <div class="tool-icon"><i class="ti ti-checkbox"></i></div>
       <div class="tool-name">বানান পরীক্ষক</div>
+      <div class="tool-name-en">Spell Checker</div>
       <div class="tool-desc">বিষ্ণুপ্রিয়া মণিপুরি বানানর লালচুম</div>
     </a>
   </div>
@@ -428,6 +439,7 @@
       <div class="blog-info">
         <div class="blog-tag">ভাষা</div>
         <div class="blog-title">বিষ্ণুপ্রিয়া মণিপুরির ইতিহাস বারো বিকাশ</div>
+        <div class="blog-title-en">History and Development of Bishnupriya Manipuri</div>
         <div class="blog-date"><i class="ti ti-calendar-event"></i> জুন ২০২৬</div>
       </div>
       <i class="ti ti-arrow-up-right blog-arrow"></i>
@@ -437,6 +449,7 @@
       <div class="blog-info">
         <div class="blog-tag">গবেষণা</div>
         <div class="blog-title">ইমার ঠারর কর্পাস হঙকরানির থাক</div>
+        <div class="blog-title-en">Building the Corpus of Our Mother Tongue</div>
         <div class="blog-date"><i class="ti ti-calendar-event"></i> জুন ২০২৬</div>
       </div>
       <i class="ti ti-arrow-up-right blog-arrow"></i>
@@ -446,6 +459,7 @@
       <div class="blog-info">
         <div class="blog-tag">সংস্কৃতি</div>
         <div class="blog-title">মোর ইমার ঠার মোর পরিচয়</div>
+        <div class="blog-title-en">My Mother Tongue, My Identity</div>
         <div class="blog-date"><i class="ti ti-calendar-event"></i> জুন ২০২৬</div>
       </div>
       <i class="ti ti-arrow-up-right blog-arrow"></i>
