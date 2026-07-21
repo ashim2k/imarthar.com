@@ -516,7 +516,7 @@
           <input type="text" id="contributor-name-input" class="name-field-input"
                  placeholder="যেমন: রাজকুমার সিংহ" maxlength="60"
                  oninput="profile.name = this.value; updateFilename();">
-          <span class="name-field-hint">নাঙহান দিলে ফাইলর নামত ইনিশিয়ালহান যুক্ত অইতই</span>
+          <span class="name-field-hint">নাঙহান "শীর্ষ অবদানকারী" তালিকাত দেহেইতই — ফাইলনেমত যুক্ত অইতনা</span>
         </div>
         <div class="controls-row">
           <button class="action-btn btn-submit" id="submit-btn" onclick="submitRecording()" disabled style="max-width:100%;width:100%;">
@@ -529,14 +529,7 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <div class="sidebar-card">
-      <div class="sidebar-title"><i class="ti ti-chart-bar"></i> কর্পাস পরিসংখ্যান</div>
-      <div class="stat-row"><span class="stat-key"><i class="ti ti-microphone"></i> মোট রেকর্ড</span><span class="stat-val"><span>৪,২৩৮</span></span></div>
-      <div class="stat-row"><span class="stat-key"><i class="ti ti-users"></i> অবদানকারী</span><span class="stat-val"><span>১৮৭</span></span></div>
-      <div class="stat-row"><span class="stat-key"><i class="ti ti-clock"></i> মোট সময়</span><span class="stat-val"><span>১২.৩</span> ঘণ্টা</span></div>
-      <div class="stat-row"><span class="stat-key"><i class="ti ti-wave-sine"></i> রাজার গাঙ</span><span class="stat-val"><span>২,৪৫১</span></span></div>
-      <div class="stat-row"><span class="stat-key"><i class="ti ti-wave-sine"></i> মাদৈ গাঙ</span><span class="stat-val"><span>১,৭৮৭</span></span></div>
-    </div>
+    
 
     <div class="sidebar-card">
       <div class="sidebar-title"><i class="ti ti-help"></i> কিসারে করানি?</div>
@@ -637,7 +630,7 @@ function goStep(n) {
 function updateZones() {
   const sel = document.getElementById('zone-select');
   profile.zone = '';
-  sel.innerHTML = '<option value="">— জোন বাছিয়া নেগা —</option>';
+  sel.innerHTML = '<option value="">— জোনগ বাছিয়া নেগা —</option>';
   const list = zones[profile.country] || [];
   list.forEach(z => {
     const opt = document.createElement('option');
@@ -687,16 +680,14 @@ function buildFilename(sentenceIdx) {
   const g = profile.gender  || 'x';
   const a = profile.age     || 'x';
   const s = String(sentenceIdx + 1).padStart(2, '0');
-  const initials = getInitials(profile.name);
-  const initialsPart = initials ? `_${initials}` : '';
-  return `bpm_${d}_${z}_${g}_${a}_s${s}${initialsPart}.webm`;
+  return `bpm_${d}_${z}_${g}_${a}_s${s}.webm`;
 }
 
 function updateFilename() {
   document.getElementById('filename-preview').textContent = buildFilename(currentIdx);
 }
 
-// ── বাক্য তালিকা — corpus pattern অনুসরণ করে সংশোধিত ──
+// ── বাক্য তালিকা — corpus pattern ইলয়া সংশোধিত ──
 const sentences = [
   { text: "মোর মাতৃভাষাহান বিষ্ণুপ্রিয়া মণিপুরি।", trans: "Mor matrubhasha Bishnupriya Manipuri." },
   { text: "মি ইমার ঠারে কথা অতারানি নুঙেই পাউরি।", trans: "Mi imar thare kotha matote hada pauri." },
@@ -869,14 +860,21 @@ async function submitRecording() {
       .upload(filename, audioBlob, { contentType: 'audio/webm', upsert: true });
     if (upErr) throw upErr;
     const { data: urlData } = _supabase.storage.from('bm-speech-corpus').getPublicUrl(filename);
-    const { error: dbErr } = await _supabase.from('recordings').insert({
+    const baseRow = {
       filename, audio_url: urlData.publicUrl,
       dialect: profile.dialect, country: profile.country, zone: profile.zone,
-      age: profile.age, gender: profile.gender, contributor_name: profile.name || null,
+      age: profile.age, gender: profile.gender,
       sentence_idx: currentIdx, sentence_text: sentences[currentIdx].text,
       duration_sec: seconds, created_at: new Date().toISOString()
-    });
-    if (dbErr) throw dbErr;
+    };
+    let { error: dbErr } = await _supabase.from('recordings')
+      .insert({ ...baseRow, contributor_name: profile.name || null });
+    if (dbErr) {
+      
+      console.warn('contributor_name সহ ইনসার্ট ব্যর্থ, ট্রাই:', dbErr);
+      ({ error: dbErr } = await _supabase.from('recordings').insert(baseRow));
+      if (dbErr) throw dbErr;
+    }
     sessionCount++;
     document.getElementById('total-recorded').textContent = sessionCount;
     const pct = Math.min(100,(sessionCount/20)*100);
@@ -902,8 +900,7 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3500);
 }
 
-// ── শীর্ষ অবদানকারী (top contributors) — speech-corpus এর 'recordings' টেবিল থেকে,
-//    language-corpus এর অবদানকারী তালিকার সাথে মিশ্রিত না করে ──
+
 const lbAvatarColors = ['#10b981', '#06b6d4', '#f59e0b', '#8b5cf6', '#ef4444', '#3b82f6'];
 function lbColorForName(name) {
   let hash = 0;
@@ -931,14 +928,14 @@ async function loadLeaderboard() {
     renderLeaderboard(top);
   } catch (err) {
     console.error(err);
-    wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">লোড অইল না।</div>';
+    wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">লোড নাসে</div>';
   }
 }
 
 function renderLeaderboard(top) {
   const wrap = document.getElementById('leaderboard-list');
   if (!top.length) {
-    wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">এহনো কোনো অবদানকারী নেই</div>';
+    wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">এবাকাউ কোনো অবদানকারী নেই</div>';
     return;
   }
   const rankClasses = ['gold', 'silver', 'bronze', ''];
