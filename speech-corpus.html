@@ -205,6 +205,16 @@
   .controls-area { padding: 1.25rem 1.75rem; display: flex; flex-direction: column; gap: 12px; }
   .controls-row { display: flex; gap: 10px; justify-content: center; align-items: center; }
 
+  .name-field { display: flex; flex-direction: column; gap: 6px; }
+  .name-field label { font-size: 12px; font-weight: 600; color: #64748b; }
+  .name-field-input {
+    width: 100%; padding: 10px 14px; border: 2px solid #e2e8f0; border-radius: 10px;
+    font-size: 13px; color: #0f172a; background: #f8fafc; font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .name-field-input:focus { outline: none; border-color: #10b981; background: #ffffff; }
+  .name-field-hint { font-size: 11px; color: #94a3b8; }
+
   .record-btn {
     width: 72px; height: 72px; border-radius: 50%; border: none; cursor: pointer;
     display: flex; align-items: center; justify-content: center; flex-direction: column;
@@ -357,7 +367,7 @@
       <div class="step-label">ধাপ ৩ / ৫</div>
       <div class="step-question">তোর এলাকা / জোন?</div>
       <select class="zone-select" id="zone-select" onchange="profile.zone=this.value; updateNextBtn(2)">
-        <option value="">— জোন বাছিয়া নেগা —</option>
+        <option value="">— জোনগ বাছিয়া নেগা —</option>
       </select>
       <div class="step-nav">
         <button class="btn-back" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> আগেকার</button>
@@ -501,6 +511,13 @@
             <i class="ti ti-player-skip-forward"></i> এহান বেলা
           </button>
         </div>
+        <div class="name-field">
+          <label for="contributor-name-input">আপনার নাঙহান (ঐচ্ছিক)</label>
+          <input type="text" id="contributor-name-input" class="name-field-input"
+                 placeholder="" maxlength="60"
+                 oninput="profile.name = this.value; updateFilename();">
+          <span class="name-field-hint">নাঙহান "শীর্ষ অবদানকারী" তালিকাত দেহেইতই</span>
+        </div>
         <div class="controls-row">
           <button class="action-btn btn-submit" id="submit-btn" onclick="submitRecording()" disabled style="max-width:100%;width:100%;">
             <i class="ti ti-download"></i> ডাউনলোড করিক বারো থাংনার বাক্যৎ যিকগা
@@ -512,14 +529,7 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <div class="sidebar-card">
-      <div class="sidebar-title"><i class="ti ti-chart-bar"></i> কর্পাস পরিসংখ্যান</div>
-      <div class="stat-row"><span class="stat-key"><i class="ti ti-microphone"></i> মোট রেকর্ড</span><span class="stat-val"><span>৪,২৩৮</span></span></div>
-      <div class="stat-row"><span class="stat-key"><i class="ti ti-users"></i> অবদানকারী</span><span class="stat-val"><span>১৮৭</span></span></div>
-      <div class="stat-row"><span class="stat-key"><i class="ti ti-clock"></i> মোট সময়</span><span class="stat-val"><span>১২.৩</span> ঘণ্টা</span></div>
-      <div class="stat-row"><span class="stat-key"><i class="ti ti-wave-sine"></i> রাজার গাঙ</span><span class="stat-val"><span>২,৪৫১</span></span></div>
-      <div class="stat-row"><span class="stat-key"><i class="ti ti-wave-sine"></i> মাদৈ গাঙ</span><span class="stat-val"><span>১,৭৮৭</span></span></div>
-    </div>
+    
 
     <div class="sidebar-card">
       <div class="sidebar-title"><i class="ti ti-help"></i> কিসারে করানি?</div>
@@ -544,8 +554,10 @@
 
     <div class="sidebar-card">
       <div class="sidebar-title"><i class="ti ti-trophy"></i> শীর্ষ অবদানকারী</div>
-           <div class="lb-item">
-        </div>
+      <div id="leaderboard-list">
+        <div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">লোড অর ...</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -582,7 +594,7 @@ const zones = {
   ]
 };
 
-const profile = { dialect: '', country: '', zone: '', age: '', gender: '' };
+const profile = { dialect: '', country: '', zone: '', age: '', gender: '', name: '' };
 let currentStep = 0;
 let profileDone = false;
 
@@ -618,7 +630,7 @@ function goStep(n) {
 function updateZones() {
   const sel = document.getElementById('zone-select');
   profile.zone = '';
-  sel.innerHTML = '<option value="">— জোন বাছিয়া নেগা —</option>';
+  sel.innerHTML = '<option value="">— জোনগ বাছিয়া নেগা —</option>';
   const list = zones[profile.country] || [];
   list.forEach(z => {
     const opt = document.createElement('option');
@@ -657,6 +669,11 @@ function renderProfileChip() {
   chip.style.display = 'flex';
 }
 
+function getInitials(name) {
+  if (!name) return '';
+  return name.trim().split(/\s+/).map(w => w[0]).join('').toUpperCase().slice(0, 3);
+}
+
 function buildFilename(sentenceIdx) {
   const d = profile.dialect || 'unknown';
   const z = profile.zone    || 'unknown';
@@ -670,7 +687,7 @@ function updateFilename() {
   document.getElementById('filename-preview').textContent = buildFilename(currentIdx);
 }
 
-// ── বাক্য তালিকা — corpus pattern অনুসরণ করে সংশোধিত ──
+// ── বাক্য তালিকা — corpus pattern ইলয়া সংশোধিত ──
 const sentences = [
   { text: "মোর মাতৃভাষাহান বিষ্ণুপ্রিয়া মণিপুরি।", trans: "Mor matrubhasha Bishnupriya Manipuri." },
   { text: "মি ইমার ঠারে কথা অতারানি নুঙেই পাউরি।", trans: "Mi imar thare kotha matote hada pauri." },
@@ -843,20 +860,28 @@ async function submitRecording() {
       .upload(filename, audioBlob, { contentType: 'audio/webm', upsert: true });
     if (upErr) throw upErr;
     const { data: urlData } = _supabase.storage.from('bm-speech-corpus').getPublicUrl(filename);
-    const { error: dbErr } = await _supabase.from('recordings').insert({
+    const baseRow = {
       filename, audio_url: urlData.publicUrl,
       dialect: profile.dialect, country: profile.country, zone: profile.zone,
       age: profile.age, gender: profile.gender,
       sentence_idx: currentIdx, sentence_text: sentences[currentIdx].text,
       duration_sec: seconds, created_at: new Date().toISOString()
-    });
-    if (dbErr) throw dbErr;
+    };
+    let { error: dbErr } = await _supabase.from('recordings')
+      .insert({ ...baseRow, contributor_name: profile.name || null });
+    if (dbErr) {
+      
+      console.warn('contributor_name সহ ইনসার্ট ব্যর্থ, ট্রাই:', dbErr);
+      ({ error: dbErr } = await _supabase.from('recordings').insert(baseRow));
+      if (dbErr) throw dbErr;
+    }
     sessionCount++;
     document.getElementById('total-recorded').textContent = sessionCount;
     const pct = Math.min(100,(sessionCount/20)*100);
     document.getElementById('progress-fill').style.width = pct+'%';
     document.getElementById('progress-count').textContent = sessionCount+' / ২০';
     showToast('ডাটাবেসহাৎ জমা অইল! থাকাত।');
+    loadLeaderboard();
     if (currentIdx < sentences.length-1) { currentIdx++; updateSentence(); }
     else showToast('হাবি বাক্যহানি লমইল! নিয়ামপারা থাকাত।');
   } catch(err) {
@@ -875,7 +900,59 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3500);
 }
 
+
+const lbAvatarColors = ['#10b981', '#06b6d4', '#f59e0b', '#8b5cf6', '#ef4444', '#3b82f6'];
+function lbColorForName(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  return lbAvatarColors[Math.abs(hash) % lbAvatarColors.length];
+}
+
+async function loadLeaderboard() {
+  const wrap = document.getElementById('leaderboard-list');
+  try {
+    const { data, error } = await _supabase
+      .from('recordings')
+      .select('contributor_name')
+      .not('contributor_name', 'is', null);
+    if (error) throw error;
+
+    const counts = {};
+    (data || []).forEach(row => {
+      const name = (row.contributor_name || '').trim();
+      if (!name) return;
+      counts[name] = (counts[name] || 0) + 1;
+    });
+
+    const top = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 4);
+    renderLeaderboard(top);
+  } catch (err) {
+    console.error(err);
+    wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">লোড নাসে</div>';
+  }
+}
+
+function renderLeaderboard(top) {
+  const wrap = document.getElementById('leaderboard-list');
+  if (!top.length) {
+    wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">এবাকাউ কোনো অবদানকারী নেই</div>';
+    return;
+  }
+  const rankClasses = ['gold', 'silver', 'bronze', ''];
+  wrap.innerHTML = top.map(([name, count], i) => {
+    const initials = getInitials(name) || '?';
+    return `
+      <div class="lb-item">
+        <span class="lb-rank ${rankClasses[i] || ''}">${i + 1}</span>
+        <span class="lb-avatar" style="background:${lbColorForName(name)}">${initials}</span>
+        <span class="lb-name">${name}</span>
+        <span class="lb-count">${count}</span>
+      </div>`;
+  }).join('');
+}
+
 updateSentence();
+loadLeaderboard();
 </script>
 </body>
 </html>
