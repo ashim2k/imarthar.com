@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>কর্পাস ডাউনলোড — ইমার ঠার</title>
+  <title>Corpus Download — Imar Thar</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -177,11 +177,11 @@
 <div class="page-hero">
   <div class="page-hero-content">
     <a href="tools.html" class="back-link">
-      <i class="ti ti-arrow-left"></i> টুলসমূহে ফিরুন
+      <i class="ti ti-arrow-left"></i> Back to Tools
     </a>
-    <div class="hero-badge"><i class="ti ti-database"></i> কর্পাস ডাউনলোড</div>
-    <h1>ভাষার <span>কর্পাস</span></h1>
-    <p>বিষ্ণুপ্রিয়া মণিপুরি ভাষার ডেটাসেট — শুধু রিকোয়েস্টের মাধ্যমে পাওয়া যায়</p>
+    <div class="hero-badge"><i class="ti ti-database"></i> Corpus Download</div>
+    <h1>Language <span>Corpus</span></h1>
+    <p>Bishnupriya Manipuri language dataset — available by request only</p>
   </div>
 </div>
 
@@ -192,64 +192,64 @@
   <div class="notice-box">
     <i class="ti ti-lock"></i>
     <div>
-      <div class="notice-title">এই কর্পাস সরাসরি পাবলিকলি ডাউনলোডযোগ্য না</div>
-      <div class="notice-desc">নিচের ফর্মটা পূরণ করে রিকোয়েস্ট পাঠান। রিভিউ করে ম্যানুয়ালি ইমেইলে কর্পাস ফাইল পাঠিয়ে দেওয়া হবে।</div>
+      <div class="notice-title">This corpus is not directly publicly downloadable</div>
+      <div class="notice-desc">Fill out the form below to send a request. After review, the corpus file will be sent manually via email.</div>
     </div>
   </div>
 
   <!-- Corpus info -->
   <div class="info-card">
-    <div class="info-card-title"><i class="ti ti-file-info"></i> কর্পাসে যা আছে</div>
+    <div class="info-card-title"><i class="ti ti-file-info"></i> What's in the Corpus</div>
     <ul class="info-list">
-      <li>বিষ্ণুপ্রিয়া মণিপুরি ↔ বাংলা প্যারালাল শব্দ ও বাক্য (CSV ফরম্যাট)</li>
-      <li>গবেষণা, NLP মডেল প্রশিক্ষণ ও একাডেমিক কাজের জন্য উপযোগী</li>
-      <li>ব্যক্তিগত/অ-বাণিজ্যিক ব্যবহারের জন্য নিঃশর্ত অনুমতি বিবেচনা করা হবে</li>
+      <li>Bishnupriya Manipuri ↔ Bengali parallel words and sentences (CSV format)</li>
+      <li>Suitable for research, NLP model training, and academic work</li>
+      <li>Unconditional permission will be considered for personal/non-commercial use</li>
     </ul>
   </div>
 
   <!-- Request form -->
   <div class="form-card">
-    <div class="form-card-title">কর্পাস রিকোয়েস্ট ফর্ম</div>
+    <div class="form-card-title">Corpus Request Form</div>
 
     <form id="corpus-form" onsubmit="return sendRequest(event)">
       <div class="field">
-        <label for="req-name">নাম</label>
-        <input type="text" id="req-name" placeholder="আপনার পুরো নাম" required>
+        <label for="req-name">Name</label>
+        <input type="text" id="req-name" placeholder="Your full name" required>
       </div>
 
       <div class="field">
-        <label for="req-email">ইমেইল ঠিকানা</label>
+        <label for="req-email">Email Address</label>
         <input type="email" id="req-email" placeholder="you@example.com" required>
       </div>
 
       <div class="field">
-        <label for="req-org">প্রতিষ্ঠান / বিশ্ববিদ্যালয় (ঐচ্ছিক)</label>
-        <input type="text" id="req-org" placeholder="যেমন: সিলেট বিশ্ববিদ্যালয়">
+        <label for="req-org">Institution / University (optional)</label>
+        <input type="text" id="req-org" placeholder="e.g. Sylhet University">
       </div>
 
       <div class="field">
-        <label for="req-purpose">ব্যবহারের উদ্দেশ্য</label>
+        <label for="req-purpose">Purpose of Use</label>
         <select id="req-purpose" required>
-          <option value="" disabled selected>বাছাই করুন</option>
-          <option value="Academic Research">একাডেমিক গবেষণা</option>
-          <option value="NLP / AI Model Training">NLP / AI মডেল প্রশিক্ষণ</option>
-          <option value="Personal Learning">ব্যক্তিগত শেখা</option>
-          <option value="Other">অন্যান্য</option>
+          <option value="" disabled selected>Select</option>
+          <option value="Academic Research">Academic Research</option>
+          <option value="NLP / AI Model Training">NLP / AI Model Training</option>
+          <option value="Personal Learning">Personal Learning</option>
+          <option value="Other">Other</option>
         </select>
       </div>
 
       <div class="field">
-        <label for="req-note">সংক্ষিপ্ত বিবরণ</label>
-        <textarea id="req-note" placeholder="কর্পাসটা কীভাবে ব্যবহার করবেন, সংক্ষেপে লিখুন…" required></textarea>
+        <label for="req-note">Brief Description</label>
+        <textarea id="req-note" placeholder="Briefly describe how you will use the corpus…" required></textarea>
       </div>
 
       <button type="submit" class="submit-btn">
-        <i class="ti ti-mail"></i> রিকোয়েস্ট পাঠান
+        <i class="ti ti-mail"></i> Send Request
       </button>
 
       <div class="form-hint">
-        সাবমিট করলে আপনার ইমেইল অ্যাপ খুলবে, প্রি-ফিলড মেইলসহ<br>
-        <a href="mailto:kungothang@gmail.com">kungothang@gmail.com</a> ঠিকানায় — শেষে শুধু "Send" চাপুন।
+        Submitting will open your email app with a pre-filled message<br>
+        <a href="mailto:kungothang@gmail.com">kungothang@gmail.com</a> to the address above — just click "Send" at the end.
       </div>
     </form>
   </div>
@@ -258,7 +258,7 @@
 
 <!-- Footer -->
 <footer>
-  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  © 2026 <span>imarthar.com</span> • Developed by Kungo Thang<br>
   <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
 </footer>
 
@@ -272,17 +272,17 @@
     const purpose = document.getElementById('req-purpose').value;
     const note = document.getElementById('req-note').value.trim();
 
-    const subject = `কর্পাস রিকোয়েস্ট — ${name}`;
+    const subject = `Corpus Request — ${name}`;
     const body =
-`নাম: ${name}
-ইমেইল: ${email}
-প্রতিষ্ঠান: ${org || '—'}
-উদ্দেশ্য: ${purpose}
+`Name: ${name}
+Email: ${email}
+Institution: ${org || '—'}
+Purpose: ${purpose}
 
-বিবরণ:
+Description:
 ${note}
 
-— imarthar.com এর কর্পাস রিকোয়েস্ট ফর্ম থেকে পাঠানো হয়েছে।`;
+— Sent from imarthar.com's corpus request form.`;
 
     const mailto = `mailto:kungothang@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
