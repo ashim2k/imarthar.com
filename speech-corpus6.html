@@ -205,6 +205,16 @@
   .controls-area { padding: 1.25rem 1.75rem; display: flex; flex-direction: column; gap: 12px; }
   .controls-row { display: flex; gap: 10px; justify-content: center; align-items: center; }
 
+  .name-field { display: flex; flex-direction: column; gap: 6px; }
+  .name-field label { font-size: 12px; font-weight: 600; color: #64748b; }
+  .name-field-input {
+    width: 100%; padding: 10px 14px; border: 2px solid #e2e8f0; border-radius: 10px;
+    font-size: 13px; color: #0f172a; background: #f8fafc; font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .name-field-input:focus { outline: none; border-color: #10b981; background: #ffffff; }
+  .name-field-hint { font-size: 11px; color: #94a3b8; }
+
   .record-btn {
     width: 72px; height: 72px; border-radius: 50%; border: none; cursor: pointer;
     display: flex; align-items: center; justify-content: center; flex-direction: column;
@@ -235,18 +245,6 @@
   .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
   .btn-skip { background: #f8fafc; color: #94a3b8; border: 1px solid #e2e8f0; }
   .btn-skip:hover { border-color: #cbd5e1; color: #64748b; }
-
-  .name-field-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
-  .name-field-label { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 6px; }
-  .name-field-label i { color: #10b981; font-size: 16px; }
-  .name-field-sub { font-size: 12px; color: #94a3b8; margin-bottom: 0.75rem; }
-  .name-input {
-    width: 100%; padding: 12px 14px; border: 2px solid #e2e8f0; border-radius: 12px;
-    font-size: 14px; color: #0f172a; background: #f8fafc; font-family: inherit;
-    transition: border-color 0.2s;
-  }
-  .name-input:focus { outline: none; border-color: #10b981; }
-  .name-input::placeholder { color: #cbd5e1; }
 
   .sidebar-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
   .sidebar-title { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
@@ -452,11 +450,6 @@
       <button class="profile-edit" onclick="reopenProfile()"><i class="ti ti-edit"></i> নুয়া করে আরাকমাউ </button>
     </div>
 
-    <div class="name-field-card">
-      <div class="name-field-label"><i class="ti ti-user"></i> আপনার নাঙহান (ঐচ্ছিক)</div>
-      <input type="text" class="name-input" id="user-name" placeholder="নাঙহান নাদেলে 'নাঙ নেই' দেহাদিবে" oninput="profile.name = this.value; updateFilename();">
-    </div>
-
     <div class="recorder-card">
       <div class="recorder-header">
         <div class="progress-info">
@@ -518,6 +511,13 @@
             <i class="ti ti-player-skip-forward"></i> এহান বেলা
           </button>
         </div>
+        <div class="name-field">
+          <label for="contributor-name-input">আপনার নাঙহান (ঐচ্ছিক)</label>
+          <input type="text" id="contributor-name-input" class="name-field-input"
+                 placeholder="যেমন: রাজকুমার সিংহ" maxlength="60"
+                 oninput="profile.name = this.value; updateFilename();">
+          <span class="name-field-hint">নাঙহান দিলে ফাইলর নামত ইনিশিয়ালহান যুক্ত অইতই</span>
+        </div>
         <div class="controls-row">
           <button class="action-btn btn-submit" id="submit-btn" onclick="submitRecording()" disabled style="max-width:100%;width:100%;">
             <i class="ti ti-download"></i> ডাউনলোড করিক বারো থাংনার বাক্যৎ যিকগা
@@ -561,29 +561,8 @@
 
     <div class="sidebar-card">
       <div class="sidebar-title"><i class="ti ti-trophy"></i> শীর্ষ অবদানকারী</div>
-      <div class="lb-item">
-        <span class="lb-rank gold">১</span>
-        <div class="lb-avatar" style="background:#f97316;">Ma</div>
-        <span class="lb-name">Maharaj</span>
-        <span class="lb-count">৪১ হান</span>
-      </div>
-      <div class="lb-item">
-        <span class="lb-rank silver">২</span>
-        <div class="lb-avatar" style="background:#3b82f6;">অভ</div>
-        <span class="lb-name">অভিজিৎ</span>
-        <span class="lb-count">৮ হান</span>
-      </div>
-      <div class="lb-item">
-        <span class="lb-rank bronze">৩</span>
-        <div class="lb-avatar" style="background:#a855f7;">সম</div>
-        <span class="lb-name">সমরজিত</span>
-        <span class="lb-count">৭ হান</span>
-      </div>
-      <div class="lb-item">
-        <span class="lb-rank">৪</span>
-        <div class="lb-avatar" style="background:#10b981;">সস</div>
-        <span class="lb-name">সিপন সিনহা</span>
-        <span class="lb-count">৬ হান</span>
+      <div id="leaderboard-list">
+        <div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">লোড অর ...</div>
       </div>
     </div>
   </div>
@@ -698,8 +677,8 @@ function renderProfileChip() {
 }
 
 function getInitials(name) {
-  if (!name || !name.trim()) return '';
-  return name.trim().split(/\s+/).map(w => w[0]).join('').toUpperCase();
+  if (!name) return '';
+  return name.trim().split(/\s+/).map(w => w[0]).join('').toUpperCase().slice(0, 3);
 }
 
 function buildFilename(sentenceIdx) {
@@ -709,8 +688,8 @@ function buildFilename(sentenceIdx) {
   const a = profile.age     || 'x';
   const s = String(sentenceIdx + 1).padStart(2, '0');
   const initials = getInitials(profile.name);
-  const namePart = initials ? `_${initials}` : '';
-  return `bpm_${d}_${z}_${g}_${a}${namePart}_s${s}.webm`;
+  const initialsPart = initials ? `_${initials}` : '';
+  return `bpm_${d}_${z}_${g}_${a}_s${s}${initialsPart}.webm`;
 }
 
 function updateFilename() {
@@ -893,7 +872,7 @@ async function submitRecording() {
     const { error: dbErr } = await _supabase.from('recordings').insert({
       filename, audio_url: urlData.publicUrl,
       dialect: profile.dialect, country: profile.country, zone: profile.zone,
-      age: profile.age, gender: profile.gender,
+      age: profile.age, gender: profile.gender, contributor_name: profile.name || null,
       sentence_idx: currentIdx, sentence_text: sentences[currentIdx].text,
       duration_sec: seconds, created_at: new Date().toISOString()
     });
@@ -904,6 +883,7 @@ async function submitRecording() {
     document.getElementById('progress-fill').style.width = pct+'%';
     document.getElementById('progress-count').textContent = sessionCount+' / ২০';
     showToast('ডাটাবেসহাৎ জমা অইল! থাকাত।');
+    loadLeaderboard();
     if (currentIdx < sentences.length-1) { currentIdx++; updateSentence(); }
     else showToast('হাবি বাক্যহানি লমইল! নিয়ামপারা থাকাত।');
   } catch(err) {
@@ -922,7 +902,60 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3500);
 }
 
+// ── শীর্ষ অবদানকারী (top contributors) — speech-corpus এর 'recordings' টেবিল থেকে,
+//    language-corpus এর অবদানকারী তালিকার সাথে মিশ্রিত না করে ──
+const lbAvatarColors = ['#10b981', '#06b6d4', '#f59e0b', '#8b5cf6', '#ef4444', '#3b82f6'];
+function lbColorForName(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  return lbAvatarColors[Math.abs(hash) % lbAvatarColors.length];
+}
+
+async function loadLeaderboard() {
+  const wrap = document.getElementById('leaderboard-list');
+  try {
+    const { data, error } = await _supabase
+      .from('recordings')
+      .select('contributor_name')
+      .not('contributor_name', 'is', null);
+    if (error) throw error;
+
+    const counts = {};
+    (data || []).forEach(row => {
+      const name = (row.contributor_name || '').trim();
+      if (!name) return;
+      counts[name] = (counts[name] || 0) + 1;
+    });
+
+    const top = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 4);
+    renderLeaderboard(top);
+  } catch (err) {
+    console.error(err);
+    wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">লোড অইল না।</div>';
+  }
+}
+
+function renderLeaderboard(top) {
+  const wrap = document.getElementById('leaderboard-list');
+  if (!top.length) {
+    wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">এহনো কোনো অবদানকারী নেই</div>';
+    return;
+  }
+  const rankClasses = ['gold', 'silver', 'bronze', ''];
+  wrap.innerHTML = top.map(([name, count], i) => {
+    const initials = getInitials(name) || '?';
+    return `
+      <div class="lb-item">
+        <span class="lb-rank ${rankClasses[i] || ''}">${i + 1}</span>
+        <span class="lb-avatar" style="background:${lbColorForName(name)}">${initials}</span>
+        <span class="lb-name">${name}</span>
+        <span class="lb-count">${count}</span>
+      </div>`;
+  }).join('');
+}
+
 updateSentence();
+loadLeaderboard();
 </script>
 </body>
 </html>
