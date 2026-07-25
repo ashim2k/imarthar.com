@@ -110,7 +110,7 @@
     <div class="kb-card">
       <!-- Output -->
       <div class="output-area">
-        <textarea class="output-box" id="output" placeholder="এখানে টাইপ করিক ..."></textarea>
+        <textarea class="output-box" id="output" placeholder="এহাৎ টাইপ করিক ..."></textarea>
         <div class="output-footer">
           <span class="char-info" id="char-info">০ অক্ষর</span>
           <div class="output-actions">
@@ -133,134 +133,134 @@
         <!-- Vowels -->
         <div id="layer-vowel">
           <div class="kb-row">
-            <button class="key" onclick="type('অ')">অ<span class="key-sub">a</span></button>
-            <button class="key" onclick="type('আ')">আ<span class="key-sub">aa</span></button>
-            <button class="key" onclick="type('ই')">ই<span class="key-sub">i</span></button>
-            <button class="key" onclick="type('ঈ')">ঈ<span class="key-sub">ii</span></button>
-            <button class="key" onclick="type('উ')">উ<span class="key-sub">u</span></button>
-            <button class="key" onclick="type('ঊ')">ঊ<span class="key-sub">uu</span></button>
-            <button class="key" onclick="type('এ')">এ<span class="key-sub">e</span></button>
-            <button class="key" onclick="type('ঐ')">ঐ<span class="key-sub">oi</span></button>
-            <button class="key" onclick="type('ও')">ও<span class="key-sub">o</span></button>
-            <button class="key" onclick="type('ঔ')">ঔ<span class="key-sub">ou</span></button>
+            <button class="key" onclick="typeChar('অ')">অ<span class="key-sub">a</span></button>
+            <button class="key" onclick="typeChar('আ')">আ<span class="key-sub">aa</span></button>
+            <button class="key" onclick="typeChar('ই')">ই<span class="key-sub">i</span></button>
+            <button class="key" onclick="typeChar('ঈ')">ঈ<span class="key-sub">ii</span></button>
+            <button class="key" onclick="typeChar('উ')">উ<span class="key-sub">u</span></button>
+            <button class="key" onclick="typeChar('ঊ')">ঊ<span class="key-sub">uu</span></button>
+            <button class="key" onclick="typeChar('এ')">এ<span class="key-sub">e</span></button>
+            <button class="key" onclick="typeChar('ঐ')">ঐ<span class="key-sub">oi</span></button>
+            <button class="key" onclick="typeChar('ও')">ও<span class="key-sub">o</span></button>
+            <button class="key" onclick="typeChar('ঔ')">ঔ<span class="key-sub">ou</span></button>
           </div>
           <div class="kb-row">
-            <button class="key" onclick="type('ঋ')">ঋ<span class="key-sub">ri</span></button>
+            <button class="key" onclick="typeChar('ঋ')">ঋ<span class="key-sub">ri</span></button>
             <button class="key special" onclick="backspace()"><i class="ti ti-backspace"></i> Del</button>
-            <button class="key space-key special" onclick="type(' ')">স্পেস</button>
-            <button class="key special green" onclick="type('\n')"><i class="ti ti-corner-down-left"></i> Enter</button>
+            <button class="key space-key special" onclick="typeChar(' ')">স্পেস</button>
+            <button class="key special green" onclick="typeChar('\n')"><i class="ti ti-corner-down-left"></i> Enter</button>
           </div>
         </div>
 
         <!-- Consonants -->
         <div id="layer-consonant" style="display:none">
           <div class="kb-row">
-            <button class="key" onclick="type('ক')">ক<span class="key-sub">k</span></button>
-            <button class="key" onclick="type('খ')">খ<span class="key-sub">kh</span></button>
-            <button class="key" onclick="type('গ')">গ<span class="key-sub">g</span></button>
-            <button class="key" onclick="type('ঘ')">ঘ<span class="key-sub">gh</span></button>
-            <button class="key" onclick="type('ঙ')">ঙ<span class="key-sub">ng</span></button>
-            <button class="key" onclick="type('চ')">চ<span class="key-sub">ch</span></button>
-            <button class="key" onclick="type('ছ')">ছ<span class="key-sub">chh</span></button>
-            <button class="key" onclick="type('জ')">জ<span class="key-sub">j</span></button>
-            <button class="key" onclick="type('ঝ')">ঝ<span class="key-sub">jh</span></button>
-            <button class="key" onclick="type('ঞ')">ঞ<span class="key-sub">ny</span></button>
+            <button class="key" onclick="typeChar('ক')">ক<span class="key-sub">k</span></button>
+            <button class="key" onclick="typeChar('খ')">খ<span class="key-sub">kh</span></button>
+            <button class="key" onclick="typeChar('গ')">গ<span class="key-sub">g</span></button>
+            <button class="key" onclick="typeChar('ঘ')">ঘ<span class="key-sub">gh</span></button>
+            <button class="key" onclick="typeChar('ঙ')">ঙ<span class="key-sub">ng</span></button>
+            <button class="key" onclick="typeChar('চ')">চ<span class="key-sub">ch</span></button>
+            <button class="key" onclick="typeChar('ছ')">ছ<span class="key-sub">chh</span></button>
+            <button class="key" onclick="typeChar('জ')">জ<span class="key-sub">j</span></button>
+            <button class="key" onclick="typeChar('ঝ')">ঝ<span class="key-sub">jh</span></button>
+            <button class="key" onclick="typeChar('ঞ')">ঞ<span class="key-sub">ny</span></button>
           </div>
           <div class="kb-row">
-            <button class="key" onclick="type('ট')">ট<span class="key-sub">T</span></button>
-            <button class="key" onclick="type('ঠ')">ঠ<span class="key-sub">Th</span></button>
-            <button class="key" onclick="type('ড')">ড<span class="key-sub">D</span></button>
-            <button class="key" onclick="type('ঢ')">ঢ<span class="key-sub">Dh</span></button>
-            <button class="key" onclick="type('ণ')">ণ<span class="key-sub">N</span></button>
-            <button class="key" onclick="type('ত')">ত<span class="key-sub">t</span></button>
-            <button class="key" onclick="type('থ')">থ<span class="key-sub">th</span></button>
-            <button class="key" onclick="type('দ')">দ<span class="key-sub">d</span></button>
-            <button class="key" onclick="type('ধ')">ধ<span class="key-sub">dh</span></button>
-            <button class="key" onclick="type('ন')">ন<span class="key-sub">n</span></button>
+            <button class="key" onclick="typeChar('ট')">ট<span class="key-sub">T</span></button>
+            <button class="key" onclick="typeChar('ঠ')">ঠ<span class="key-sub">Th</span></button>
+            <button class="key" onclick="typeChar('ড')">ড<span class="key-sub">D</span></button>
+            <button class="key" onclick="typeChar('ঢ')">ঢ<span class="key-sub">Dh</span></button>
+            <button class="key" onclick="typeChar('ণ')">ণ<span class="key-sub">N</span></button>
+            <button class="key" onclick="typeChar('ত')">ত<span class="key-sub">t</span></button>
+            <button class="key" onclick="typeChar('থ')">থ<span class="key-sub">th</span></button>
+            <button class="key" onclick="typeChar('দ')">দ<span class="key-sub">d</span></button>
+            <button class="key" onclick="typeChar('ধ')">ধ<span class="key-sub">dh</span></button>
+            <button class="key" onclick="typeChar('ন')">ন<span class="key-sub">n</span></button>
           </div>
           <div class="kb-row">
-            <button class="key" onclick="type('প')">প<span class="key-sub">p</span></button>
-            <button class="key" onclick="type('ফ')">ফ<span class="key-sub">ph</span></button>
-            <button class="key" onclick="type('ব')">ব<span class="key-sub">b</span></button>
-            <button class="key" onclick="type('ভ')">ভ<span class="key-sub">bh</span></button>
-            <button class="key" onclick="type('ম')">ম<span class="key-sub">m</span></button>
-            <button class="key" onclick="type('য')">য<span class="key-sub">y</span></button>
-            <button class="key" onclick="type('র')">র<span class="key-sub">r</span></button>
-            <button class="key" onclick="type('ল')">ল<span class="key-sub">l</span></button>
-            <button class="key" onclick="type('শ')">শ<span class="key-sub">sh</span></button>
-            <button class="key" onclick="type('ষ')">ষ<span class="key-sub">Sh</span></button>
+            <button class="key" onclick="typeChar('প')">প<span class="key-sub">p</span></button>
+            <button class="key" onclick="typeChar('ফ')">ফ<span class="key-sub">ph</span></button>
+            <button class="key" onclick="typeChar('ব')">ব<span class="key-sub">b</span></button>
+            <button class="key" onclick="typeChar('ভ')">ভ<span class="key-sub">bh</span></button>
+            <button class="key" onclick="typeChar('ম')">ম<span class="key-sub">m</span></button>
+            <button class="key" onclick="typeChar('য')">য<span class="key-sub">y</span></button>
+            <button class="key" onclick="typeChar('র')">র<span class="key-sub">r</span></button>
+            <button class="key" onclick="typeChar('ল')">ল<span class="key-sub">l</span></button>
+            <button class="key" onclick="typeChar('শ')">শ<span class="key-sub">sh</span></button>
+            <button class="key" onclick="typeChar('ষ')">ষ<span class="key-sub">Sh</span></button>
           </div>
           <div class="kb-row">
-            <button class="key" onclick="type('স')">স<span class="key-sub">s</span></button>
-            <button class="key" onclick="type('হ')">হ<span class="key-sub">h</span></button>
-            <button class="key" onclick="type('ড়')">ড়<span class="key-sub">R</span></button>
-            <button class="key" onclick="type('ঢ়')">ঢ়<span class="key-sub">Rh</span></button>
-            <button class="key" onclick="type('য়')">য়<span class="key-sub">y</span></button>
-            <button class="key" onclick="type('ৱ')">য়<span class="key-sub">y</span></button>
-            <button class="key" onclick="type('ৰ')">য়<span class="key-sub">y</span></button>
-            <button class="key" onclick="type('ৎ')">ৎ<span class="key-sub">t</span></button>
-            <button class="key" onclick="type('ং')">ং<span class="key-sub">ng</span></button>
-            <button class="key" onclick="type('ঃ')">ঃ<span class="key-sub">h</span></button>
-            <button class="key" onclick="type('ঁ')">ঁ<span class="key-sub">n</span></button>
+            <button class="key" onclick="typeChar('স')">স<span class="key-sub">s</span></button>
+            <button class="key" onclick="typeChar('হ')">হ<span class="key-sub">h</span></button>
+            <button class="key" onclick="typeChar('ড়')">ড়<span class="key-sub">R</span></button>
+            <button class="key" onclick="typeChar('ঢ়')">ঢ়<span class="key-sub">Rh</span></button>
+            <button class="key" onclick="typeChar('য়')">য়<span class="key-sub">y</span></button>
+            <button class="key" onclick="typeChar('ৱ')">ৱ<span class="key-sub">y</span></button>
+            <button class="key" onclick="typeChar('ৰ')">ৰ<span class="key-sub">y</span></button>
+            <button class="key" onclick="typeChar('ৎ')">ৎ<span class="key-sub">t</span></button>
+            <button class="key" onclick="typeChar('ং')">ং<span class="key-sub">ng</span></button>
+            <button class="key" onclick="typeChar('ঃ')">ঃ<span class="key-sub">h</span></button>
+            <button class="key" onclick="typeChar('ঁ')">ঁ<span class="key-sub">n</span></button>
             <button class="key special" onclick="backspace()"><i class="ti ti-backspace"></i></button>
           </div>
           <div class="kb-row">
-            <button class="key space-key special" onclick="type(' ')">স্পেস</button>
-            <button class="key special green" onclick="type('\n')"><i class="ti ti-corner-down-left"></i> Enter</button>
+            <button class="key space-key special" onclick="typeChar(' ')">স্পেস</button>
+            <button class="key special green" onclick="typeChar('\n')"><i class="ti ti-corner-down-left"></i> Enter</button>
           </div>
         </div>
 
         <!-- Matra (vowel signs) -->
         <div id="layer-matra" style="display:none">
           <div class="kb-row">
-            <button class="key" onclick="type('া')">া<span class="key-sub">aa</span></button>
-            <button class="key" onclick="type('ি')">ি<span class="key-sub">i</span></button>
-            <button class="key" onclick="type('ী')">ী<span class="key-sub">ii</span></button>
-            <button class="key" onclick="type('ু')">ু<span class="key-sub">u</span></button>
-            <button class="key" onclick="type('ূ')">ূ<span class="key-sub">uu</span></button>
-            <button class="key" onclick="type('ৃ')">ৃ<span class="key-sub">ri</span></button>
-            <button class="key" onclick="type('ে')">ে<span class="key-sub">e</span></button>
-            <button class="key" onclick="type('ৈ')">ৈ<span class="key-sub">oi</span></button>
-            <button class="key" onclick="type('ো')">ো<span class="key-sub">o</span></button>
-            <button class="key" onclick="type('ৌ')">ৌ<span class="key-sub">ou</span></button>
+            <button class="key" onclick="typeChar('া')">া<span class="key-sub">aa</span></button>
+            <button class="key" onclick="typeChar('ি')">ি<span class="key-sub">i</span></button>
+            <button class="key" onclick="typeChar('ী')">ী<span class="key-sub">ii</span></button>
+            <button class="key" onclick="typeChar('ু')">ু<span class="key-sub">u</span></button>
+            <button class="key" onclick="typeChar('ূ')">ূ<span class="key-sub">uu</span></button>
+            <button class="key" onclick="typeChar('ৃ')">ৃ<span class="key-sub">ri</span></button>
+            <button class="key" onclick="typeChar('ে')">ে<span class="key-sub">e</span></button>
+            <button class="key" onclick="typeChar('ৈ')">ৈ<span class="key-sub">oi</span></button>
+            <button class="key" onclick="typeChar('ো')">ো<span class="key-sub">o</span></button>
+            <button class="key" onclick="typeChar('ৌ')">ৌ<span class="key-sub">ou</span></button>
           </div>
           <div class="kb-row">
-            <button class="key" onclick="type('্')">্<span class="key-sub">hasanta</span></button>
+            <button class="key" onclick="typeChar('্')">্<span class="key-sub">hasanta</span></button>
             <button class="key special" onclick="backspace()"><i class="ti ti-backspace"></i> Del</button>
-            <button class="key space-key special" onclick="type(' ')">স্পেস</button>
-            <button class="key special green" onclick="type('\n')"><i class="ti ti-corner-down-left"></i></button>
+            <button class="key space-key special" onclick="typeChar(' ')">স্পেস</button>
+            <button class="key special green" onclick="typeChar('\n')"><i class="ti ti-corner-down-left"></i></button>
           </div>
         </div>
 
         <!-- Punctuation & Numbers -->
         <div id="layer-punct" style="display:none">
           <div class="kb-row">
-            <button class="key" onclick="type('০')">০</button>
-            <button class="key" onclick="type('১')">১</button>
-            <button class="key" onclick="type('২')">২</button>
-            <button class="key" onclick="type('৩')">৩</button>
-            <button class="key" onclick="type('৪')">৪</button>
-            <button class="key" onclick="type('৫')">৫</button>
-            <button class="key" onclick="type('৬')">৬</button>
-            <button class="key" onclick="type('৭')">৭</button>
-            <button class="key" onclick="type('৮')">৮</button>
-            <button class="key" onclick="type('৯')">৯</button>
+            <button class="key" onclick="typeChar('০')">০</button>
+            <button class="key" onclick="typeChar('১')">১</button>
+            <button class="key" onclick="typeChar('২')">২</button>
+            <button class="key" onclick="typeChar('৩')">৩</button>
+            <button class="key" onclick="typeChar('৪')">৪</button>
+            <button class="key" onclick="typeChar('৫')">৫</button>
+            <button class="key" onclick="typeChar('৬')">৬</button>
+            <button class="key" onclick="typeChar('৭')">৭</button>
+            <button class="key" onclick="typeChar('৮')">৮</button>
+            <button class="key" onclick="typeChar('৯')">৯</button>
           </div>
           <div class="kb-row">
-            <button class="key" onclick="type('।')">।<span class="key-sub">daari</span></button>
-            <button class="key" onclick="type('॥')">॥<span class="key-sub">ddaari</span></button>
-            <button class="key" onclick="type(',')">，</button>
-            <button class="key" onclick="type('?')">?</button>
-            <button class="key" onclick="type('!')">!</button>
-            <button class="key" onclick="type('"')\">"</button>
-            <button class="key" onclick="type('"')\">"</button>
-            <button class="key" onclick="type('-')">-</button>
-            <button class="key" onclick="type('()')">( )</button>
+            <button class="key" onclick="typeChar('।')">।<span class="key-sub">daari</span></button>
+            <button class="key" onclick="typeChar('॥')">॥<span class="key-sub">ddaari</span></button>
+            <button class="key" onclick="typeChar(',')">，</button>
+            <button class="key" onclick="typeChar('?')">?</button>
+            <button class="key" onclick="typeChar('!')">!</button>
+            <button class="key" onclick="typeChar('&quot;')">"</button>
+            <button class="key" onclick="typeChar('&quot;')">"</button>
+            <button class="key" onclick="typeChar('-')">-</button>
+            <button class="key" onclick="typeChar('()')">( )</button>
             <button class="key special" onclick="backspace()"><i class="ti ti-backspace"></i></button>
           </div>
           <div class="kb-row">
-            <button class="key space-key special" onclick="type(' ')">স্পেস</button>
-            <button class="key special green" onclick="type('\n')"><i class="ti ti-corner-down-left"></i> Enter</button>
+            <button class="key space-key special" onclick="typeChar(' ')">স্পেস</button>
+            <button class="key special green" onclick="typeChar('\n')"><i class="ti ti-corner-down-left"></i> Enter</button>
           </div>
         </div>
       </div>
@@ -279,7 +279,7 @@
       <div class="sidebar-title"><i class="ti ti-bulb"></i> খিয়ার করবাং </div>
       <div class="info-item"><i class="ti ti-point"></i> ব্যঞ্জনবর্ণর থাংনাৎ মাত্রা যোগ অর</div>
       <div class="info-item"><i class="ti ti-point"></i> হসন্ত (্)গলো যুক্তবর্ণ হঙর</div>
-      </div>
+    </div>
   </div>
 </div>
 
@@ -288,7 +288,7 @@
 <script>
 const output = document.getElementById('output');
 
-function type(char) {
+function typeChar(char) {
   const start = output.selectionStart;
   const end = output.selectionEnd;
   const val = output.value;
