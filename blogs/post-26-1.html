@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>বিষ্ণুপ্রিয়া মণিপুরি ভাষার ইতিহাস ও বিকাশ — ইমার ঠার</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    line-height: 1.5;
+  }
+
+  /* Reading progress bar */
+  #reading-progress-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: transparent; z-index: 300; }
+  #reading-progress { height: 100%; width: 0%; background: #10b981; transition: width .1s; }
+
+  /* Nav */
+  nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; text-decoration: none; letter-spacing: -0.5px; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+  /* Layout */
+  .article-layout {
+    max-width: 1100px; margin: 2rem auto; padding: 0 2rem;
+    display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start;
+  }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: #64748b; text-decoration: none; margin-bottom: 1rem; }
+  .back-btn:hover { color: #10b981; }
+
+  article { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+  .article-cover { width: 100%; height: 320px; object-fit: cover; display: block; }
+  .article-body { padding: 2rem; }
+  .breadcrumb { font-size: 13px; color: #94a3b8; margin-bottom: 1rem; }
+  .breadcrumb a { color: #94a3b8; text-decoration: none; }
+  .breadcrumb a:hover { color: #10b981; }
+  .article-tag { display: inline-block; font-size: 12px; font-weight: 600; background: #f0fdf4; color: #166534; padding: 4px 12px; border-radius: 99px; margin-bottom: 1rem; }
+  .article-title { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 1rem; letter-spacing: -0.5px; line-height: 1.35; }
+  .article-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 13px; color: #94a3b8; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e2e8f0; }
+  .author-chip { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+  .author-avatar { width: 28px; height: 28px; border-radius: 50%; background: #10b981; color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .author-name { font-size: 13px; font-weight: 600; color: #334155; }
+
+  .article-content { font-size: 16px; color: #334155; line-height: 1.9; }
+  .article-content h2 { color: #0f172a; font-size: 21px; font-weight: 800; margin: 1.85rem 0 0.85rem; scroll-margin-top: 90px; }
+  .article-content h3 { color: #0f172a; font-size: 17px; font-weight: 700; margin: 1.5rem 0 0.6rem; scroll-margin-top: 90px; }
+  .article-content strong { color: #0f172a; }
+  .article-content p { margin-bottom: 1rem; }
+  .article-content ul { margin: 0 0 1rem 1.2rem; }
+  .pull-quote { border-left: 3px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #065f46; font-size: 15.5px; font-weight: 500; border-radius: 0 12px 12px 0; }
+  .excerpt-lead { font-size: 17px; color: #475569; font-style: italic; border-left: 3px solid #10b981; padding-left: 1rem; margin-bottom: 1.5rem; }
+  .refs { font-size: 13px; color: #64748b; line-height: 1.8; }
+
+  .article-footer { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; }
+  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag-pill { font-size: 12px; font-weight: 600; background: #f1f5f9; color: #475569; padding: 5px 12px; border-radius: 99px; text-decoration: none; }
+  .tag-pill:hover { background: #10b981; color: #fff; }
+
+  .related-section { margin-top: 2rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; }
+  .section-title { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
+  .related-card { display: flex; align-items: center; gap: 14px; text-decoration: none; padding: .75rem 0; border-bottom: 1px solid #f1f5f9; }
+  .related-card:last-child { border-bottom: none; }
+  .related-img { width: 64px; height: 56px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+  .related-info { min-width: 0; }
+  .related-tag { font-size: 11px; font-weight: 600; color: #10b981; margin-bottom: 2px; }
+  .related-title { font-size: 14px; font-weight: 600; color: #0f172a; }
+
+  .sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 84px; }
+  .sidebar-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; }
+  .sidebar-title { font-size: 13px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
+  .progress-bar-wrap { width: 100%; height: 6px; background: #f1f5f9; border-radius: 99px; overflow: hidden; margin-bottom: .5rem; }
+  #sidebar-progress-fill { display: block; height: 100%; width: 0%; background: #10b981; transition: width .1s; }
+  .progress-label { font-size: 12px; color: #94a3b8; text-align: right; }
+  .toc-list { display: flex; flex-direction: column; gap: .4rem; }
+  .toc-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #64748b; text-decoration: none; padding: 6px 8px; border-radius: 8px; }
+  .toc-item:hover, .toc-item.active { background: #f0fdf4; color: #065f46; }
+  .toc-num { font-size: 11px; font-weight: 700; color: #10b981; }
+  .recent-list { display: flex; flex-direction: column; gap: .35rem; }
+  .recent-item { display: flex; align-items: flex-start; gap: 10px; text-decoration: none; padding: 8px; border-radius: 8px; }
+  .recent-item:hover { background: #f8fafc; }
+  .recent-num { font-size: 11px; font-weight: 700; color: #10b981; flex-shrink: 0; margin-top: 1px; }
+  .recent-text { font-size: 13px; color: #334155; font-weight: 500; }
+
+  footer { background: #fff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; line-height: 1.8; }
+  footer span { color: #10b981; font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .article-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+  }
+  @media (max-width: 640px) {
+    .article-layout { padding: 0 1.1rem; }
+    .article-body { padding: 1.25rem; }
+    .article-title { font-size: 22px; }
+    .article-cover { height: 190px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="reading-progress-wrap"><div id="reading-progress"></div></div>
+
+<nav>
+  <a href="../index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="../tools.html">টুল</a>
+    <a class="active" href="blogs.html">ব্লগ</a>
+    <a href="../papers.html">পেপার</a>
+    <a href="../discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<div class="article-layout">
+  <div>
+    <a class="back-btn" href="../blogs.html">&larr; ব্লগে ফিরিক</a>
+    <article>
+      <img class="article-cover" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=900&auto=format&fit=crop&q=70" alt="বিষ্ণুপ্রিয়া মণিপুরির ইতিহাস">
+      <div class="article-body">
+        <div class="breadcrumb"><a href="../index.html">হোম</a> &rsaquo; <a href="blogs.html">ব্লগ</a> &rsaquo; ভাষা</div>
+        <div class="article-tag">ভাষা</div>
+        <h1 class="article-title">ডিজিটাল যুগে বিপন্ন ঠার— ক্লাউড সার্ভারর বিতরে বিপন্ন মেয়েক </h1>
+        <div class="article-meta">
+          <span class="meta-item"><i class="ti ti-calendar-event"></i> জুন ২০২৬</span>
+          <span class="meta-item"><i class="ti ti-clock"></i> ৫ মিনিট পড়া</span>
+          <span class="meta-item"><i class="ti ti-eye"></i> ১.২ হাজার</span>
+          <div class="author-chip">
+            <div class="author-avatar">কথ</div>
+            <span class="author-name">কুঙ্গ থাঙ</span>
+          </div>
+        </div>
+        <div id="article-content" class="article-content">
+
+<p>ঠার আহান বিপন্ন অর উপেই মানুয়ৌ বিপন্ন অইতার। ঠার উহান ইমে যোগাযোগর মাধ্যমহান বুললে লালৈতয়। ঠারহান হুত্তুমে জাত আহার আত্মাগর রৌ-হান। ওয়াহি আকেইগৎ লুকিয়া থার ইতিহাস, পরম্পরা, য়ারিপরি বারো ও জনম জনমর ঠুনিংশ্বা আকেইগ। অহানে ঠার আহান মাঙয়া যানা মানে শিচ্চিল ওয়াহি কতগর মরনদশা নাগৈ, থঙমেই আকেইগ নিবিয়া যানা।&nbsp; ডিজিটাল দুনিয়া এহানে ঠার আকেইহানরে যেসাদে ঙালকরেসে, ঔসাদে ঠার আকেইহানরে মিমুৎ করানির পথেদে সালকরেসে।&nbsp; <br /><br />ঠার আকেইহান এমাটিক ইঙাল ঙাল যে, হুরুকাং ঠারর ছেয়া উগ উপেইত মাময়া যারগা।&nbsp; ইংরেজি, স্প্যানিশ,&nbsp; হিন্দি, বাংলার সাদে ভাষা উতা হারিদিন ওয়েবর কোটি কোটি পাতা ইঙাল ঙালকনিয়া থইতে আছে, আরক আগদে বিষ্ণুপ্রিয়া মণিপুরি, সাঁওতালি বারো মান্দির সাদে ভাষা উতা তাপ্প তাপ্প হমিতে আছে সার্চ অ্যালগরিদমর আধারে। অসম যুদ্ধ আহান শ্বৈনেই।&nbsp;</p>
+<p><br />এরে যুদ্ধ এহান ইমে প্রযুক্তির যুদ্ধহান নাগৈ, দৃষ্টিভঙ্গিরৌ।&nbsp; আমি হারপাসি, ভাষা আহান ব্যবহারিক নাইলে ভাষা উহান বিলুপ্ত অইতে সময় না লাগের।&nbsp; মানুয়ে ভাষার ডিজিটালাইজেশন য়ারিপরি দিতারা, কিন্তু ভাষা আহানরে ডাটাহান হঙকরিয়া ক্লাউড সার্ভারগর বিতরে বরিয়া থইলেই ভাষা অহান জিংতা অয়া থাইতৈ এসাদে য়ারি নেই। ব্যবহারিক অনা বুলতে যেসাদে বাস্তব দুনিয়াৎ, ঔসাদে ডিজিটাল মিডিয়াতৌ ব্যবহারিক অনা লাগের।&nbsp;</p>
+<p><br />গেলগা তিন বসরে আমার উইকিপিডিয়া, ব্লগ বারো ডিজিটাল কনটেন্ট উতার এক্সেস লগ চেইলে ঙাকনা লাগের।&nbsp; ব্যবহারকারীতে নেই, চাকুরাউ নেই।&nbsp; এসাদে ভাষা আহান জিংতা ইয়া থানা নারের, প্রযুক্তির বিতরে থায়াউ নিঃশব্দে মরিয়া যারগা। সার্চ ইঞ্জিন, সার্চ এলগরিদম, এসইও&rsquo;র চেপাৎ খামতলে পড়িয়া থার।&nbsp;</p>
+<p><br />অহানে বিপন্ন ঠার আহার মুঙে এবাকা দ্বৈত চ্যালেঞ্জ&mdash; নিজে টিকিয়া থানা, ডিজিটাল ফাংনাতৌ আগুয়েয়া থানা।&nbsp;</p>
+<p><br />আমার ঠার এহানরে ইউনেস্কোয় বিপন্ন ভাষা ক্যাটগরিৎ য়ৌকরেসি।&nbsp; ইউনেস্কোয় বিপন্ন ভাষা ক্যাটগরিৎ না য়ৌকররেউ আমি বিপন্ন।&nbsp; যে ঠারহার মানু ভারত বাংলাদেশ তিলয়া বিশ্বমিমাঙে লামসাম লাখ আহার চুয়া, যে জাতহার জন্মহার মৃত্যূহারেত্ত কম &ndash; ঔরে জাত অহান, ঠার অহান এমনেউ বিপন্ন।&nbsp; ইউনেস্কোয় ব্যবহার করেসি ওয়াহিগ &lsquo;ঝুঁকিপূর্ণ&rsquo;, অর্থ্যাৎ যথাযথ সংরক্ষন কার্যক্রম নাকরলে ঠার এহান ভবিষ্যতর সময় আহান অবলুপ্ত অইতে পারে।&nbsp; এহান চিন্তার য়ারিহান কিয়াবুল্লে ডিজিটাল যুগর উৎকর্ষতাৎ অনেকগয় এবাকাই প্রস্তাব দিতারা ভাষার সংখ্যা সীমিত করানি।&nbsp; এতা গ্লোবালাইজেশনর সাইড ইফেক্ট, ওয়ার্ল্ড ব্যাংকর নীতিনির্ধারক উতায় হুত্তুমে এসাদে প্রস্তাব থসিলা।</p>
+<p><br />এবাকা &lsquo;যথাযথ কার্যক্রম&rsquo; ঔহানি কিতা কিতা অইতে পারে এতাল গবেষনা করানি থকিব।&nbsp;<br />মোর মতে, যে ভাষাহান বিপন্ন ঔরে জনগোষ্ঠি অহার দ্বায়িত্ব হাবিত্ত বপ।&nbsp; নিজর মাতৃভাষাহান মানুয়ে আয়া রক্ষা নাকরে দিতায়।&nbsp; ঠার আহান টিকিয়া থনার হাবিত্ত কার্যকর উপায়হান অইলতা ঔ ঠারর লিখিত সাহিত্য।&nbsp; সাহিত্যর কলেবরগ বরা করানি।&nbsp; আমারতা সাহিত্য ইকরেকুরা বারো পাঠকর সংখ্যা কম।&nbsp; নিয়মিত সাহিত্য পত্রিকাউ কম।&nbsp; ঠার আহার সাহিত্যর ভান্ডারগ বরা অইলে ঔহানরে কুনোগৌ অগ্রাহ্য করে নারতায়।&nbsp;&nbsp;<br /><br />ভাষা সংরক্ষণরকা ডিজিটাল বারো অনলাইন উপস্থিতি নিয়ামপারা গুরুত্বপূর্ণ।&nbsp; সোশ্যাল মিডিয়াৎ আমার ঠারে ভিডিও রিলস বারো কনটেন্ট ক্রিয়েটর নিকুলেসি এহান নিঃসন্দেহে ইতিবাচক, কিয়াবুল্লে এতা তরুণ প্রজন্মর বিতরে খৌরাঙ আহান জাগাদের।&nbsp; খন্ডিত সময় আহার কাজে অইলেউ তানু নিজর ভাষা সংস্কৃতির লগে যুক্ত অইতারা।&nbsp; তবে এরে কনটেন্ট এতার স্থায়ীত্ব কম, সময়র লগে পলিসি বা কমিউনিটি স্ট্যান্ডার্ডর চেপাৎ পড়িয়া ডিলিট অইতে পারে।&nbsp;<br /><br />এবাকার এআই (AI)&nbsp; মডেলউতা সাধারণত গুগল বারো ওয়েবের ওপেন সোর্স ডেটার গজে নির্ভরশীল, সরাসরি সোশ্যাল মিডিয়াত্ত ডেটা না নেরগা বা নেনা নারের।&nbsp; গতিকে ফেসবুক বা ইউটিউবে ভাষার উপস্থিতি অহানেই যথেষ্ট নাগৈ।&nbsp;<br />ফেসবুক বারো ইউটিউবর বারে আরতাউ আবকসা প্ল্যাটফর্ম থা গেসেগা কনটেন্ট হঙকরানিরকা যেমন:&nbsp;&nbsp;</p>
+<p><br /><strong>১. Reddit / Quora</strong>: এতাৎ বিষ্ণুপ্রিয়া মণিপুরি ঠারর আলোচনা, প্রশ্নোত্তর, এবং তথ্যভিত্তিক পোস্ট হংকরানি অকরের।&nbsp; সার্চ ইঞ্জিন উতায় এরে সাইট এতা চালাক্করে বিসারিয়া পার।&nbsp;<br /><br /><strong>২. ওয়েবসাইট বারো ব্লগ</strong>: বিষ্ণুপ্রিয়া মণিপুরি ঠারে ইকরা ব্লগ বা ওয়েবসাইটর স্থায়ীত্ব দীর্ঘমেয়াদর। এতারে সার্চ ইঞ্জিনে তালিকাভুক্ত করানি অকরের, ফলে বিশ্বব্যাপী পাঠক বারো গবেষকে থক্ক ভাষা এহার ডেটা তথ্য উপাত্ত অ্যাক্সেস করানি পারতারা<br /><br /><strong>৩. উইকিপিডিয়া:</strong> উইকিপিডিয়াত বিশ্বর হাব্বি বিষয়র মাতুঙে সাধারণ তথ্য থার বা কোন বিশেষ বিষয় আহানর সম্বন্ধে মুল ফাৎকরা বারো লিমপা য়ারি থার। হুদ্দা ইংরেজি নাগই, এবাকা পেয়া বিশ্বর প্রায় ৩০০ হান মুখ্য ঠারে এরে তথ্য এতা পানা একরের। এহান মুক্ত বিশ্বকোষহান, অর্থাৎ এরে বিশ্বকোষ এহান যেগউ চানা পারতারা, উপযুক্ত রেফারেন্সলো তথ্য সংযুক্ত করানি পারতারা বারো অন্য কুনোহাতৌ এরে তথ্য উতা ব্যবহার করানি পারতারা।</p>
+<p><br /><strong>৪. ডিজিটাল আর্কাইভ বারো ই-বুক প্ল্যাটফর্ম:</strong> বিষ্ণুপ্রিয়া মণিপুরি ঠারর মৌখিক বারো লিখিত সাহিত্য উতা আর্কাইভ হংকরিয়া সংরক্ষণ করানি পারিয়ার।&nbsp;<br />হাবিত্ত জরুরিহান, আমার ঠার এহানরে নিয়ামপারা ব্যবহারিক করানি।&nbsp; পরিবার, স্কুল, ধর্মীয় বারো সামাজিক অনুষ্ঠান এতাৎ নিজর ঠারহার ব্যবহার নিশ্চিত করানি লাগতৈ।&nbsp; পালা কীর্তন, রাস রাখুয়াল, এলা, লোকসঙ্গীত আগে মিয়াঙর ঠারল দিলাং উতা দিলাং&mdash;&nbsp; এবাকা নিজর ঠারহান পারিলমাহি বরিক।&nbsp; রাস-রাখুয়ালে আমি যে এলা দিয়ার এতা বাঙালি বৈষ্ণবপদকর্তার লেংকরা এলা - বাংলা, ব্রজবুলি নাইলে মৈথিলি ঠারে।&nbsp; মৈতৈয়ৌ পয়লা পয়লা মিয়াঙর ঠারল এলা দিয়া গেলেগা, পিসেদে এলা অতারে তানু নিজর ঠারে অলকরিয়া গাইলা।&nbsp; এবাকা রাস রাখুয়ালে তানু বিজাতীয় ঠারে এলা নাদতারা।&nbsp; নংসাঙ দিন বাদে কাছাড়ে আমার সাহিত্যিক বারো অজারেল গিরকলকেইরাং চেতনা অহান আহিল।&nbsp; তানুয়ৌ বাংলা ব্রজবুলিত্ত বিষ্ণুপ্রিয়া মণিপুরি ঠারে অলকরিয়া বা নিজে লেংকরিয়া এলা দেনা অকরলা।&nbsp; কাছাড়ে এবাকা রাস রাখুয়াল পালা কীর্ত্তন হাবি আমার ঠারে অর।&nbsp;&nbsp;<br /><br />আমি পালার ইসালপা উগরে, কীর্তন গার কীর্তনউলা উগরে মাতিক- এলাহান আমার ঠারে অলকরিয়া দেনারকা।&nbsp; নারলে রাসর এলা, রাখুয়ালর এলা আমার কবি-সাহিত্যিকে যেতা ইকরিয়া থসি, ঔতা ব্যবহার করিক।&nbsp; কুনোপেই রসর কমতি থাইলে, ভাব-ভঙ্গি তঙাল অইলে ঔহান চুমকরিক।&nbsp; ভাষাহান মাঙয়া হদেইলে ভাব-রসল আর কিতা করানি?&nbsp;<br /><br /><br />কুঙ্গ থাঙ<br />ব্লগার, লেখক বারো গবেষক</p>
+<p>&nbsp;</p>
+<!-- Comments are visible in the HTML source only -->
+
+        </div>
+        <div class="article-footer">
+          <div class="tag-row">
+<a class="tag-pill" href="#">ভাষাবিজ্ঞান</a>
+<a class="tag-pill" href="#">ইতিহাস</a>
+<a class="tag-pill" href="#">মণিপুর</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="related-section">
+      <div class="section-title">আরতাউ পাকরিক</div>
+<a class="related-card" href="blogs/post-2.html"><img class="related-img" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=120&auto=format&fit=crop&q=60" alt=""><div class="related-info"><div class="related-tag">গবেষণা</div><div class="related-title">ইমার ঠার কর্পাস হঙকরানির থাক</div></div></a>
+<a class="related-card" href="blogs/post-6.html"><img class="related-img" src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=120&auto=format&fit=crop&q=60" alt=""><div class="related-info"><div class="related-tag">সংস্কৃতি</div><div class="related-title">ইমার ঠার, আমার পরিচয়</div></div></a>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">তামকরানির অগ্রগতি</div>
+      <div class="progress-bar-wrap"><div id="sidebar-progress-fill"></div></div>
+      <div id="progress-label" class="progress-label">০%</div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">বিষয়বস্তু</div>
+      <div class="toc-list">
+<a class="toc-item active" href="#origin"><span class="toc-num">০১</span> উৎপত্তি বারো পরিবার</a>
+<a class="toc-item" href="#script"><span class="toc-num">০২</span> লিপি বারো সাহিত্য</a>
+<a class="toc-item" href="#digital"><span class="toc-num">০৩</span> ডিজিটাল যুগে চ্যালেঞ্জ</a>
+      </div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">আরতাউ ব্লগ </div>
+      <div class="recent-list">
+<a class="recent-item" href="blogs/post-2.html"><span class="recent-num">০১</span> <span class="recent-text">ইমার ঠার কর্পাস হঙকরানির থাক</span></a>
+<a class="recent-item" href="blogs/post-6.html"><span class="recent-num">০২</span> <span class="recent-text">ইমার ঠার, আমার পরিচয়</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color:#94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script>
+  window.addEventListener('scroll', function () {
+    var winHeight = window.innerHeight;
+    var docHeight = document.body.scrollHeight - winHeight;
+    var pct = docHeight > 0 ? Math.min(100, Math.max(0, (window.scrollY / docHeight) * 100)) : 0;
+    var bar = document.getElementById('reading-progress');
+    if (bar) bar.style.width = pct + '%';
+    var fill = document.getElementById('sidebar-progress-fill');
+    if (fill) fill.style.width = pct + '%';
+    var label = document.getElementById('progress-label');
+    if (label) label.textContent = Math.round(pct) + '%';
+  });
+</script>
+</body>
+</html>
