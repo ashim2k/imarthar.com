@@ -713,7 +713,6 @@
         .from(TABLE_NAME)
         .select('id')
         .ilike('translation', bn)
-        .eq('target_lang', targetLang)
         .limit(1);
       if (bnError) throw bnError;
 
