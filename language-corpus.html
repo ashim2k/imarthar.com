@@ -701,6 +701,32 @@
     const targetLang = document.getElementById('lang-select').value;
 
     try {
+      // ডুপ্লিকেট চেক: bm অথবা translation যেকোনো একটা মিললেই ডুপ্লিকেট ধরা হবে
+      const { data: bmMatch, error: bmError } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('id')
+        .ilike('bm', bm)
+        .limit(1);
+      if (bmError) throw bmError;
+
+      const { data: bnMatch, error: bnError } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('id')
+        .ilike('translation', bn)
+        .eq('target_lang', targetLang)
+        .limit(1);
+      if (bnError) throw bnError;
+
+      const isDuplicate = (bmMatch && bmMatch.length > 0) || (bnMatch && bnMatch.length > 0);
+
+      if (isDuplicate) {
+        statusEl.textContent = 'এহান আগেই করানি অসে';
+        statusEl.className = 'status-msg err';
+        btn.disabled = false;
+        updateSubmitState();
+        return;
+      }
+
       const { error } = await supabaseClient
         .from(TABLE_NAME)
         .insert([{ bm, translation: bn, target_lang: targetLang, contributor_name: name || null }]);
