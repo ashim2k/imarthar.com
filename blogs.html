@@ -351,14 +351,37 @@
 
  
   document.getElementById('blog-img-file').addEventListener('change', function (e) {
-    const file = e.target.files[0];
+    const fileInput = e.target;
+    const files = fileInput.files;
     const wrap = document.getElementById('blog-img-preview-wrap');
     const preview = document.getElementById('blog-img-preview');
-    if (!file) {
+
+    if (!files || files.length === 0) {
       wrap.style.display = 'none';
       preview.src = '';
       return;
     }
+
+    
+    if (files.length > 1) {
+      alert('এখান একহান ইমেজ ফাইলে বেচি দেওয়া নাযাইতাই। অনুগ্ৰহ করিয়া কেবল একহান ইমেজ বাছিক।');
+      fileInput.value = '';
+      wrap.style.display = 'none';
+      preview.src = '';
+      return;
+    }
+
+    const file = files[0];
+
+    
+    if (!file.type || !file.type.startsWith('image/')) {
+      alert('কেবল ইমেজ ফাইলহান গ্ৰহনযোগ্য। অন্য কোনো মিডিয়া ফাইল (ভিডিও, অডিও, ডকুমেন্ট ইত্যাদি) নেওয়া নাযায়।');
+      fileInput.value = '';
+      wrap.style.display = 'none';
+      preview.src = '';
+      return;
+    }
+
     const reader = new FileReader();
     reader.onload = function (ev) {
       preview.src = ev.target.result;
@@ -374,9 +397,39 @@
     const body   = document.getElementById('blog-body').value.trim();
     const imgFile = document.getElementById('blog-img-file').files[0] || null;
 
-    if (!title || !author || !body) {
-      alert('অনুগ্ৰহ করিয়া টাইটেল, ব্লগারর নাঙ বারো বডি কন্টেন্ট ইকরিক!');
+    
+    if (!title) {
+      alert('অনুগ্ৰহ করিয়া ব্লগর শিরোনামহান ইকরিক!');
       return;
+    }
+    if (!author) {
+      alert('অনুগ্ৰহ করিয়া ব্লগারর নাঙহান ইকরিক!');
+      return;
+    }
+    if (!body) {
+      alert('অনুগ্ৰহ করিয়া মূল বক্তব্য (বডি কন্টেন্ট) ইকরিক!');
+      return;
+    }
+
+    
+    const wordCount = body.split(/\s+/).filter(function (w) { return w.length > 0; }).length;
+    if (wordCount < 100) {
+      alert('ব্লগে কমপক্ষে ১০০হান শব্দ ইকরিক');
+      return;
+    }
+
+    
+    const imgFilesList = document.getElementById('blog-img-file').files;
+    if (imgFilesList && imgFilesList.length > 1) {
+      alert('এখান একহান ইমেজ ফাইলে বেচি দেওয়া নাযাইতাই। অনুগ্ৰহ করিয়া কেবল একহান ইমেজ বাছিক।');
+      return;
+    }
+    if (imgFilesList && imgFilesList.length === 1) {
+      const chosenFile = imgFilesList[0];
+      if (!chosenFile.type || !chosenFile.type.startsWith('image/')) {
+        alert('কেবল ইমেজ ফাইলহান গ্ৰহনযোগ্য। অন্য কোনো মিডিয়া ফাইল (ভিডিও, অডিও, ডকুমেন্ট ইত্যাদি) নেওয়া নাযায়।');
+        return;
+      }
     }
 
     const submitBtn = document.getElementById('blog-submit-btn');
