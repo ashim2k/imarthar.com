@@ -128,11 +128,11 @@
     
     <div class="form-group">
       <label class="form-label">ব্লগর শিরোনাম (Title)</label>
-      <input type="text" id="blog-title" class="form-input" placeholder="যেমন: ইমার ঠারর কম্পিউটার কম্পিউটিং...">
+      <input type="text" id="blog-title" class="form-input" placeholder="যেমন: ইমার ঠারর কম্পিউটিং...">
     </div>
 
     <div class="form-group">
-      <label class="form-label">ব্লগারর নাম (Author Name)</label>
+      <label class="form-label">ব্লগারর নাঙহান (Author Name)</label>
       <input type="text" id="blog-author" class="form-input" placeholder="যেমন: কুঙ্গ থাঙ">
     </div>
 
@@ -151,7 +151,7 @@
 
     <div class="form-group">
       <label class="form-label">মূল বক্তব্য (Body Content)</label>
-      <textarea id="blog-body" class="form-textarea" placeholder="এখানে বিস্তারিত ব্লগ কন্টেন্ট লিখুন..."></textarea>
+      <textarea id="blog-body" class="form-textarea" placeholder="এপেই বিস্তারিত ব্লগ কন্টেন্ট ইকরিক..."></textarea>
     </div>
 
     <button class="primary-btn" id="blog-submit-btn" onclick="publishBlog()"><i class="ti ti-send"></i> পাবলিশ করিক</button>
@@ -277,13 +277,13 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  // ── Supabase কনফিগারেশন ──
+  
     const SUPABASE_URL = 'https://ksnwykmtrczvdzhoiews.supabase.co';       
   const SUPABASE_ANON_KEY = 'sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno'; 
   const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   
-  // ছবি আপলোডের জন্য Supabase Storage bucket-এর নাম
+  
   const BLOG_IMAGE_BUCKET = 'blog-images';
 
   function toggleForm() {
@@ -317,7 +317,7 @@
     const imgFile = document.getElementById('blog-img-file').files[0] || null;
 
     if (!title || !author || !body) {
-      alert('অনুগ্ৰহ করিয়া টাইটেল, ব্লগারর নাংহান বারো বডি কন্টেন্ট ইকরিক!');
+      alert('অনুগ্ৰহ করিয়া টাইটেল, ব্লগারর নাঙ বারো বডি কন্টেন্ট ইকরিক!');
       return;
     }
 
