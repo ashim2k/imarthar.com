@@ -89,6 +89,19 @@
   .card-desc { font-size: 13.5px; color: #475569; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .card-meta { font-size: 12px; color: #94a3b8; margin-top: auto; display: flex; align-items: center; gap: 4px; }
 
+  /* ── লিংক মিসিং/Not-found হাইলাইট ── */
+  @keyframes shake-highlight {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+  }
+  .blog-card.link-missing {
+    animation: shake-highlight 0.4s ease;
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+    cursor: not-allowed;
+  }
+
   footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; margin-top: 5rem;}
   footer span { color: #10b981; font-weight: 600; }
 
@@ -294,6 +307,41 @@
 
   
   
+  // ── ব্লগ কার্ড লিংক চেক (মিসিং/Not-found পেজ হইলে খালি হাইলাইট, ক্লিক নাযার) ──
+  function setupBlogCardLinkGuard() {
+    document.querySelectorAll('.blog-card').forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        e.preventDefault();
+        const url = card.getAttribute('href');
+        if (!url) return;
+
+        fetch(url, { method: 'HEAD', cache: 'no-store' })
+          .then(function (res) {
+            if (res.ok) {
+              window.location.href = url;
+            } else {
+              flashMissingCard(card);
+            }
+          })
+          .catch(function () {
+            flashMissingCard(card);
+          });
+      });
+    });
+  }
+
+  function flashMissingCard(card) {
+    card.classList.remove('link-missing');
+    // reflow দিয়া animation নতুন করি চালু করানি
+    void card.offsetWidth;
+    card.classList.add('link-missing');
+    setTimeout(function () {
+      card.classList.remove('link-missing');
+    }, 650);
+  }
+
+  document.addEventListener('DOMContentLoaded', setupBlogCardLinkGuard);
+
   const BLOG_IMAGE_BUCKET = 'blog-images';
 
   function toggleForm() {
