@@ -132,13 +132,21 @@
     </div>
 
     <div class="form-group">
+      <label class="form-label">ব্লগারর নাম (Author Name)</label>
+      <input type="text" id="blog-author" class="form-input" placeholder="যেমন: কুঙ্গ থাঙ">
+    </div>
+
+    <div class="form-group">
       <label class="form-label">ক্যাটাগরি/ট্যাগ (Category)</label>
       <input type="text" id="blog-tag" class="form-input" placeholder="যেমন: ভাষা, প্রযুক্তি, সংস্কৃতি...">
     </div>
 
     <div class="form-group">
-      <label class="form-label">ফিচার্ড ইমেজ ইউআরএল (Image URL - ঐচ্ছিক)</label>
-      <input type="text" id="blog-img" class="form-input" placeholder="https://images.unsplash.com/... অথবা খালি থইক">
+      <label class="form-label">ফিচার্ড ইমেজ (Image Upload - ঐচ্ছিক)</label>
+      <input type="file" id="blog-img-file" class="form-input" accept="image/*">
+      <div id="blog-img-preview-wrap" style="display:none; margin-top:10px;">
+        <img id="blog-img-preview" src="" alt="প্রিভিউ" style="max-width:100%; max-height:180px; border-radius:10px; border:1px solid #e2e8f0;">
+      </div>
     </div>
 
     <div class="form-group">
@@ -275,20 +283,41 @@
   const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   
+  // ছবি আপলোডের জন্য Supabase Storage bucket-এর নাম
+  const BLOG_IMAGE_BUCKET = 'blog-images';
+
   function toggleForm() {
     document.getElementById('blog-form-card').classList.toggle('active');
     document.getElementById('blog-success-msg').classList.remove('visible');
   }
 
-  
-  async function publishBlog() {
-    const title = document.getElementById('blog-title').value.trim();
-    const tag   = document.getElementById('blog-tag').value.trim() || 'সাধারণ';
-    const img   = document.getElementById('blog-img').value.trim();
-    const body  = document.getElementById('blog-body').value.trim();
+  // ছবি বাছাই করলেই প্রিভিউ দেখানি
+  document.getElementById('blog-img-file').addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    const wrap = document.getElementById('blog-img-preview-wrap');
+    const preview = document.getElementById('blog-img-preview');
+    if (!file) {
+      wrap.style.display = 'none';
+      preview.src = '';
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = function (ev) {
+      preview.src = ev.target.result;
+      wrap.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  });
 
-    if (!title || !body) {
-      alert('অনুগ্ৰহ করিয়া টাইটেল বারো বডি কন্টেন্ট ইকরিক!');
+  async function publishBlog() {
+    const title  = document.getElementById('blog-title').value.trim();
+    const author = document.getElementById('blog-author').value.trim();
+    const tag    = document.getElementById('blog-tag').value.trim() || 'সাধারণ';
+    const body   = document.getElementById('blog-body').value.trim();
+    const imgFile = document.getElementById('blog-img-file').files[0] || null;
+
+    if (!title || !author || !body) {
+      alert('অনুগ্ৰহ করিয়া টাইটেল, ব্লগারর নাংহান বারো বডি কন্টেন্ট ইকরিক!');
       return;
     }
 
@@ -297,12 +326,44 @@
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="ti ti-loader-2 spinning"></i> জমা চলের ...';
 
+    let imgUrl = null;
+
+    
+    if (imgFile) {
+      submitBtn.innerHTML = '<i class="ti ti-loader-2 spinning"></i> ছবি আপলোড অসের ...';
+      const fileExt = imgFile.name.split('.').pop();
+      const fileName = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${fileExt}`;
+      const filePath = `submissions/${fileName}`;
+
+      const { error: uploadError } = await supabaseClient
+        .storage
+        .from(BLOG_IMAGE_BUCKET)
+        .upload(filePath, imgFile, { cacheControl: '3600', upsert: false });
+
+      if (uploadError) {
+        console.error('Supabase storage upload error:', uploadError);
+        alert('দুঃখিত, ছবিগ আপলোড করতে সমস্যা দেহাদের। বারো হৎনা করিক।');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+        return;
+      }
+
+      const { data: publicUrlData } = supabaseClient
+        .storage
+        .from(BLOG_IMAGE_BUCKET)
+        .getPublicUrl(filePath);
+
+      imgUrl = publicUrlData ? publicUrlData.publicUrl : null;
+      submitBtn.innerHTML = '<i class="ti ti-loader-2 spinning"></i> জমা চলের ...';
+    }
+
     const { error } = await supabaseClient
       .from('blog_submissions')
       .insert([{
         title: title,
+        author: author,
         tag: tag,
-        img_url: img || null,
+        img_url: imgUrl,
         body: body,
         status: 'pending'
       }]);
@@ -316,13 +377,16 @@
       return;
     }
 
-    // ইনপুট ফর্ম খালি করা
+    
     document.getElementById('blog-title').value = '';
+    document.getElementById('blog-author').value = '';
     document.getElementById('blog-tag').value = '';
-    document.getElementById('blog-img').value = '';
+    document.getElementById('blog-img-file').value = '';
+    document.getElementById('blog-img-preview-wrap').style.display = 'none';
+    document.getElementById('blog-img-preview').src = '';
     document.getElementById('blog-body').value = '';
 
-    // ফর্ম বন্ধ করি "মডারেশনের জন্য জমা হয়েছে" মেসেজ দেখানি
+    
     document.getElementById('blog-form-card').classList.remove('active');
     document.getElementById('blog-success-msg').classList.add('visible');
     document.getElementById('blog-success-msg').scrollIntoView({ behavior: 'smooth', block: 'center' });
