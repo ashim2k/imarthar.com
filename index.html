@@ -491,7 +491,7 @@
   let srcLang = 'bm';
   let tgtLang = 'bn';
 
-  // ── ভাষা তালিকা (বিষ্ণুপ্রিয়া মণিপুরি জোড়া নিয়ম প্রয়োগের জন্য) ──
+  
   const SRC_FULL = [
     { v:'bm', t:'বিষ্ণুপ্রিয়া মণিপুরি' },
     { v:'bn', t:'বাংলা' },
@@ -516,8 +516,6 @@
     return list.map(l => '<option value="' + l.v + '"' + (l.v === selectedVal ? ' selected' : '') + '>' + l.t + '</option>').join('');
   }
 
-  // src ও tgt এর বর্তমান মান অনুযায়ী দুই ড্রপডাউনের অপশন তালিকা ঠিক করে —
-  // শুধু bm→অন্য ভাষা অথবা অন্য ভাষা→bm অনুবাদ করা যাবে, bn→en এর মতো জোড়া নয়
   function rebuildLangOptions() {
     const srcSel = document.getElementById('src-lang');
     const tgtSel = document.getElementById('tgt-lang');
@@ -587,8 +585,7 @@
     const newSrcVal = tl.value;
     const newTgtVal = sl.value;
 
-    // নতুন মান অনুযায়ী সরাসরি সঠিক অপশন তালিকা বসানো হচ্ছে,
-    // যাতে লক করা (শুধু bm) সিলেক্ট বক্সে মান বসাতে সমস্যা না হয়
+    
     if (newTgtVal !== 'bm') {
       sl.innerHTML = buildOptions(BM_ONLY, 'bm');
     } else {
@@ -719,7 +716,7 @@
     if (!e.target.closest('.tr-dropdown-wrap')) closeDD();
   });
 
-  rebuildLangOptions(); // পৃষ্ঠা লোড হওয়ার সময় নিয়ম অনুযায়ী ড্রপডাউন ঠিক করা
+  rebuildLangOptions(); 
 </script>
 </body>
 </html>
