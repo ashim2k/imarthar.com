@@ -60,6 +60,43 @@
   footer span { color: #10b981; font-weight: 600; }
   .state-box { max-width: 500px; margin: 4rem auto; text-align: center; background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 3rem 2rem; color: #64748b; font-size: 14px; }
   .state-box i { font-size: 32px; color: #cbd5e1; margin-bottom: 1rem; display: block; }
+
+  /* ── Comments Section ── */
+  .comments-section { margin-top: 2rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; }
+  .comments-section .section-title { display: flex; align-items: center; gap: 6px; }
+  #comment-count { color: #10b981; text-transform: none; letter-spacing: 0; font-weight: 700; }
+  .comment-form-card { margin-bottom: 1.5rem; }
+  .comment-input, .comment-textarea {
+    width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 10px;
+    font-size: 14px; outline: none; transition: border .2s; font-family: inherit; margin-bottom: .75rem;
+  }
+  .comment-input:focus, .comment-textarea:focus { border-color: #10b981; }
+  .comment-textarea { min-height: 90px; resize: vertical; }
+  .comment-form-footer { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+  .comment-error { font-size: 12.5px; color: #ef4444; margin-right: auto; }
+  .primary-btn {
+    background: #10b981; color: #fff; border: none; padding: 9px 18px;
+    border-radius: 10px; font-weight: 600; font-size: 13.5px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px; transition: background .2s;
+  }
+  .primary-btn:hover { background: #059669; }
+  .primary-btn:disabled { opacity: .6; cursor: not-allowed; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinning { display: inline-block; animation: spin .8s linear infinite; }
+  .comments-list { display: flex; flex-direction: column; gap: 1rem; }
+  .comment-item { display: flex; gap: 12px; padding-top: 1rem; border-top: 1px solid #f1f5f9; }
+  .comment-item:first-child { padding-top: 0; border-top: none; }
+  .comment-avatar {
+    width: 34px; height: 34px; border-radius: 50%; background: #10b981; color: #fff;
+    font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .comment-body { flex: 1; min-width: 0; }
+  .comment-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 2px; flex-wrap: wrap; }
+  .comment-author { font-size: 13.5px; font-weight: 700; color: #0f172a; }
+  .comment-time { font-size: 11.5px; color: #94a3b8; }
+  .comment-text { font-size: 14px; color: #334155; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+  .comments-empty { text-align: center; color: #94a3b8; font-size: 13.5px; padding: 1.5rem 0; }
+  @media (max-width: 640px) { .comments-section { padding: 1.1rem; } }
   @media (max-width: 900px) { .article-layout { grid-template-columns: 1fr; } .sidebar { position: static; } }
   @media (max-width: 640px) { .article-layout { padding: 0 1.1rem; } .article-body { padding: 1.25rem; } .article-title { font-size: 22px; } .article-cover { height: 190px; } }
 </style>
@@ -118,6 +155,22 @@
     <div id="related-section" class="related-section" style="display:none;">
       <div class="section-title">আরতাউ পাকরিক</div>
       <div id="related-list"></div>
+    </div>
+
+    <div class="comments-section">
+      <div class="section-title">মন্তব্য <span id="comment-count"></span></div>
+
+      <div class="comment-form-card">
+        <input type="text" id="comment-name" class="comment-input" placeholder="আপনার নাঙহান" maxlength="60">
+        <textarea id="comment-text" class="comment-textarea" placeholder="আপনার মন্তব্যহান ইকরিক..." maxlength="2000"></textarea>
+        <div class="comment-form-footer">
+          <span id="comment-error" class="comment-error"></span>
+          <button class="primary-btn" id="comment-submit-btn" onclick="submitComment()"><i class="ti ti-send"></i> মন্তব্য করিক</button>
+        </div>
+      </div>
+
+      <div id="comments-list" class="comments-list"></div>
+      <div id="comments-empty" class="comments-empty" style="display:none;">এহানে হারাদিন প্রথম মন্তব্যহান ইকরিক!</div>
     </div>
   </div>
 
@@ -201,6 +254,8 @@
     document.getElementById('error-msg').textContent = msg;
   }
 
+  let currentPostId = null;
+
   async function loadPost() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
@@ -214,6 +269,8 @@
       .single();
 
     if (error || !post) { showError('পোস্টহান পাওয়া নাযায়, অথবা এহান এবাকা পাবলিশড নায়।'); return; }
+
+    currentPostId = post.id;
 
     document.getElementById('page-title').textContent = `${post.title} — ইমার ঠার`;
     document.getElementById('article-cover').src = post.img_url || getCategoryImage(post.tag);
@@ -234,6 +291,7 @@
     document.getElementById('page-footer').style.display = 'block';
 
     loadRelated(post.id);
+    loadComments(post.id);
   }
 
   async function loadRelated(currentId) {
@@ -267,6 +325,93 @@
         <span class="recent-num">${toBnDigits(String(i + 1).padStart(2, '0'))}</span>
         <span class="recent-text">${escapeHtml(r.title)}</span>
       </a>`).join('');
+  }
+
+  // ── মন্তব্য (Comments) ──
+  function timeAgoBn(dateStr) {
+    const then = new Date(dateStr).getTime();
+    const now = Date.now();
+    const diffSec = Math.max(0, Math.floor((now - then) / 1000));
+    if (diffSec < 60) return 'এবাকাউ';
+    const diffMin = Math.floor(diffSec / 60);
+    if (diffMin < 60) return `${toBnDigits(diffMin)} মিনিট আগে`;
+    const diffHr = Math.floor(diffMin / 60);
+    if (diffHr < 24) return `${toBnDigits(diffHr)} ঘন্টা আগে`;
+    const diffDay = Math.floor(diffHr / 24);
+    if (diffDay < 30) return `${toBnDigits(diffDay)} দিন আগে`;
+    return formatBnDate(new Date(dateStr));
+  }
+
+  function renderComments(rows) {
+    const list = document.getElementById('comments-list');
+    const empty = document.getElementById('comments-empty');
+    const countEl = document.getElementById('comment-count');
+    countEl.textContent = rows.length ? `(${toBnDigits(rows.length)})` : '';
+
+    if (!rows.length) {
+      list.innerHTML = '';
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+    list.innerHTML = rows.map(c => `
+      <div class="comment-item">
+        <div class="comment-avatar">${escapeHtml(avatarInitials(c.name))}</div>
+        <div class="comment-body">
+          <div class="comment-head">
+            <span class="comment-author">${escapeHtml(c.name)}</span>
+            <span class="comment-time">${timeAgoBn(c.created_at)}</span>
+          </div>
+          <div class="comment-text">${escapeHtml(c.comment)}</div>
+        </div>
+      </div>`).join('');
+  }
+
+  async function loadComments(postId) {
+    const { data, error } = await supabaseClient
+      .from('blog_comments')
+      .select('*')
+      .eq('post_id', postId)
+      .order('created_at', { ascending: false });
+
+    if (error) { console.error('Comment fetch error:', error); return; }
+    renderComments(data || []);
+  }
+
+  async function submitComment() {
+    const nameEl = document.getElementById('comment-name');
+    const textEl = document.getElementById('comment-text');
+    const errEl = document.getElementById('comment-error');
+    const btn = document.getElementById('comment-submit-btn');
+
+    const name = nameEl.value.trim();
+    const comment = textEl.value.trim();
+    errEl.textContent = '';
+
+    if (!name) { errEl.textContent = 'অনুগ্ৰহ করিয়া নাঙহান ইকরিক।'; return; }
+    if (!comment) { errEl.textContent = 'অনুগ্ৰহ করিয়া মন্তব্যহান ইকরিক।'; return; }
+    if (!currentPostId) return;
+
+    btn.disabled = true;
+    const originalHtml = btn.innerHTML;
+    btn.innerHTML = '<i class="ti ti-loader-2 spinning"></i> পাঠাদেসের...';
+
+    const { error } = await supabaseClient
+      .from('blog_comments')
+      .insert([{ post_id: currentPostId, name: name, comment: comment }]);
+
+    btn.disabled = false;
+    btn.innerHTML = originalHtml;
+
+    if (error) {
+      console.error('Comment insert error:', error);
+      errEl.textContent = 'দুঃখিত, মন্তব্যহান জমা দিতে সমস্যা দেহাদের। বারো হৎনা করিক।';
+      return;
+    }
+
+    nameEl.value = '';
+    textEl.value = '';
+    loadComments(currentPostId);
   }
 
   window.addEventListener('scroll', function () {
