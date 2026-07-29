@@ -178,6 +178,23 @@
     return Math.max(1, Math.round(words / 180));
   }
 
+  // ── ক্যাটাগরি অনুযায়ি ডিফল্ট ইমেজ (ছবি আপলোড না করলে) ──
+  const CATEGORY_DEFAULT_IMAGES = {
+    'টেকনোলজি': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=60',
+    'প্রযুক্তি': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=60',
+    'ভাষা': 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&auto=format&fit=crop&q=60',
+    'গবেষণা': 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&auto=format&fit=crop&q=60',
+    'লিপি': 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&auto=format&fit=crop&q=60',
+    'সাহিত্য': 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&auto=format&fit=crop&q=60',
+    'কৃত্রিম বুদ্ধিমত্তা': 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&auto=format&fit=crop&q=60',
+    'শিক্ষা': 'https://images.unsplash.com/photo-1585079542156-2755d9c8a094?w=800&auto=format&fit=crop&q=60',
+    'সংরক্ষণ': 'https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=800&auto=format&fit=crop&q=60',
+    'সাধারণ': 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&auto=format&fit=crop&q=60'
+  };
+  function getCategoryImage(tag) {
+    return CATEGORY_DEFAULT_IMAGES[(tag || '').trim()] || CATEGORY_DEFAULT_IMAGES['সাধারণ'];
+  }
+
   function showError(msg) {
     document.getElementById('loading-state').style.display = 'none';
     document.getElementById('error-state').style.display = 'block';
@@ -199,7 +216,7 @@
     if (error || !post) { showError('পোস্টহান পাওয়া নাযায়, অথবা এহান এবাকা পাবলিশড নায়।'); return; }
 
     document.getElementById('page-title').textContent = `${post.title} — ইমার ঠার`;
-    document.getElementById('article-cover').src = post.img_url || '';
+    document.getElementById('article-cover').src = post.img_url || getCategoryImage(post.tag);
     document.getElementById('article-cover').alt = post.title;
     document.getElementById('breadcrumb-tag').textContent = post.tag || 'সাধারণ';
     document.getElementById('article-tag').textContent = post.tag || 'সাধারণ';
@@ -235,7 +252,7 @@
     relatedSection.style.display = 'block';
     relatedList.innerHTML = relatedRows.slice(0, 2).map(r => `
       <a class="related-card" href="post.html?id=${encodeURIComponent(r.id)}">
-        <img class="related-img" src="${escapeHtml(r.img_url || '')}" alt="">
+        <img class="related-img" src="${escapeHtml(r.img_url || getCategoryImage(r.tag))}" alt="">
         <div class="related-info">
           <div class="related-tag">${escapeHtml(r.tag || 'সাধারণ')}</div>
           <div class="related-title">${escapeHtml(r.title)}</div>
