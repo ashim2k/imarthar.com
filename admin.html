@@ -481,8 +481,8 @@ ${related && related.length ? `
       <div class="expand-link" onclick="document.getElementById('body-${row.id}').classList.toggle('expanded')" style="margin-bottom:.85rem;">আরো দেখিক / লুকাইক</div>
       <div class="sub-actions" id="actions-${row.id}">
         ${row.status === 'pending' ? `
-          <button class="btn btn-publish" onclick="publishRow(${row.id})"><i class="ti ti-send"></i> পাবলিশ করিক</button>
-          <button class="btn btn-reject" onclick="rejectRow(${row.id})"><i class="ti ti-x"></i> বাতিল করিক</button>
+          <button class="btn btn-publish" onclick="publishRow('${row.id}')"><i class="ti ti-send"></i> পাবলিশ করিক</button>
+          <button class="btn btn-reject" onclick="rejectRow('${row.id}')"><i class="ti ti-x"></i> বাতিল করিক</button>
         ` : ''}
         ${row.status === 'published' && row.page_url ? `
           <a class="btn btn-link" href="${escapeHtml(row.page_url)}" target="_blank"><i class="ti ti-external-link"></i> পেজ দেখিক</a>
