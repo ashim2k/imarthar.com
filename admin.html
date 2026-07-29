@@ -318,7 +318,7 @@
 
   // ── Approve → status আপডেট (post.html ডাইনামিকভাবে বাকি সব করবে) ──
   async function publishRow(id) {
-    const row = allRows.find(r => r.id === id);
+    const row = allRows.find(r => String(r.id) === String(id));
     if (!row) return;
     const btns = document.getElementById(`actions-${id}`);
     btns.innerHTML = '<button class="btn btn-publish" disabled><i class="ti ti-loader-2 spinning"></i> পাবলিশ অসের...</button>';

@@ -434,7 +434,7 @@
 
 <div class="section" style="padding-top: 0;">
   <div class="section-title">হাদি এহাৎ ইকরেসি ব্লগ</div>
-  <div class="blog-list">
+  <div class="blog-list" id="blog-list">
 
 	<a href="blogs/post-26-1.html" class="blog-item">
       <img class="blog-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=150&auto=format&fit=crop&q=60" alt="Technology">
@@ -474,6 +474,55 @@
   <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // ── Supabase: হোমপেজের "সাম্প্রতিক ব্লগ" সেকশনে পাবলিশড পোস্ট ডাইনামিকভাবে যোগ করানি ──
+  const SUPABASE_URL = 'https://ksnwykmtrczvdzhoiews.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno';
+  const supabaseClientHome = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  function escapeHtmlHome(str) {
+    return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  const BN_DIGITS_HOME = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  function toBnDigitsHome(n) { return String(n).replace(/[0-9]/g, d => BN_DIGITS_HOME[d]); }
+  const BN_MONTHS_HOME = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+  function formatBnDateHome(d) { return `${BN_MONTHS_HOME[d.getMonth()]} ${toBnDigitsHome(d.getFullYear())}`; }
+
+  async function loadHomeBlogPosts() {
+    const { data, error } = await supabaseClientHome
+      .from('blog_submissions')
+      .select('id, title, tag, img_url, published_at')
+      .eq('status', 'published')
+      .order('published_at', { ascending: false })
+      .limit(4);
+
+    if (error) { console.error('Home blog fetch error:', error); return; }
+    if (!data || !data.length) return;
+
+    const list = document.getElementById('blog-list');
+    // নতুন পোস্টউতা সবচে ওপরে যোগ করিক, পুরানা reverse order (published_at ascending) দি insert
+    data.slice().reverse().forEach(post => {
+      if (!post.id) return; // id নাই এমন row skip
+      const a = document.createElement('a');
+      a.className = 'blog-item';
+      a.href = `post.html?id=${encodeURIComponent(post.id)}`;
+      const dateStr = post.published_at ? formatBnDateHome(new Date(post.published_at)) : '';
+      a.innerHTML = `
+        <img class="blog-image" src="${escapeHtmlHome(post.img_url || '')}" alt="${escapeHtmlHome(post.title)}">
+        <div class="blog-info">
+          <div class="blog-tag">${escapeHtmlHome(post.tag || 'সাধারণ')}</div>
+          <div class="blog-title">${escapeHtmlHome(post.title)}</div>
+          <div class="blog-date"><i class="ti ti-calendar-event"></i> ${dateStr}</div>
+        </div>
+        <i class="ti ti-arrow-up-right blog-arrow"></i>
+      `;
+      list.insertBefore(a, list.firstChild);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', loadHomeBlogPosts);
+</script>
 <script>
   // ── CSV column map ──
   const COL = { bm: 0, bn: 1, en: 2, zh: 3, hi: 4, es: 5, fr: 6 };
