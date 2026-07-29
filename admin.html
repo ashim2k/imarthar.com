@@ -130,13 +130,6 @@
   const SUPABASE_ANON_KEY = 'sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno';
   const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-  // ⚠️ এহান আপনার আসল লাইভ সাইটর ডোমেইনে বদলে দিক — জেনারেট করা
-  // পোস্ট পেজতুন হোম/ব্লগ পেজে ফিরার লিংক এহানর ওপরে নির্ভর করের,
-  // কিয়াবুল্লে জেনারেট করা ফাইল আলগ ডোমেইনে (Supabase Storage) থাকতয়।
-  const SITE_BASE_URL = 'https://imarthar.com';
-
-  const PAGE_BUCKET = 'blog-pages';
-
   // ── Supabase Auth লগইন গার্ড ───────────────────────────
   function showLogin() {
     document.getElementById('login-screen').style.display = 'flex';
@@ -246,182 +239,6 @@
       </svg>`
     );
 
-  // ── HTML জেনারেটর: post-26-1.html টেমপ্লেট থনে বানানো ──
-  function generatePostHTML(post, related) {
-    const title = escapeHtml(post.title);
-    const author = escapeHtml(post.author);
-    const tag = escapeHtml(post.tag || 'সাধারণ');
-    const img = post.img_url || FALLBACK_IMG;
-    const dateStr = formatBnDate(post.published_at ? new Date(post.published_at) : new Date());
-    const readMin = toBnDigits(estimateReadMinutes(post.body));
-    const initials = escapeHtml(avatarInitials(post.author));
-    const bodyHtml = paragraphsHtml(post.body);
-
-    const relatedHtml = (related || []).map(r => `
-<a class="related-card" href="${escapeHtml(r.page_url || '#')}">
-  <img class="related-img" src="${escapeHtml(r.img_url || FALLBACK_IMG)}" alt="">
-  <div class="related-info">
-    <div class="related-tag">${escapeHtml(r.tag || 'সাধারণ')}</div>
-    <div class="related-title">${escapeHtml(r.title)}</div>
-  </div>
-</a>`).join('\n');
-
-    const recentHtml = (related || []).map((r, i) => `
-<a class="recent-item" href="${escapeHtml(r.page_url || '#')}">
-  <span class="recent-num">${toBnDigits(String(i + 1).padStart(2, '0'))}</span>
-  <span class="recent-text">${escapeHtml(r.title)}</span>
-</a>`).join('\n');
-
-    return `<!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${title} — ইমার ঠার</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
-  #reading-progress-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: transparent; z-index: 300; }
-  #reading-progress { height: 100%; width: 0%; background: #10b981; transition: width .1s; }
-  nav { background: rgba(255,255,255,.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226,232,240,.8); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
-  .logo { font-size: 22px; font-weight: 700; color: #0f172a; text-decoration: none; letter-spacing: -0.5px; }
-  .logo span { color: #10b981; }
-  .nav-links { display: flex; gap: 28px; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; }
-  .nav-links a:hover, .nav-links a.active { color: #10b981; }
-  .article-layout { max-width: 1100px; margin: 2rem auto; padding: 0 2rem; display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start; }
-  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: #64748b; text-decoration: none; margin-bottom: 1rem; }
-  .back-btn:hover { color: #10b981; }
-  article { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,.02); }
-  .article-cover { width: 100%; height: 320px; object-fit: cover; display: block; }
-  .article-body { padding: 2rem; }
-  .breadcrumb { font-size: 13px; color: #94a3b8; margin-bottom: 1rem; }
-  .breadcrumb a { color: #94a3b8; text-decoration: none; }
-  .breadcrumb a:hover { color: #10b981; }
-  .article-tag { display: inline-block; font-size: 12px; font-weight: 600; background: #f0fdf4; color: #166534; padding: 4px 12px; border-radius: 99px; margin-bottom: 1rem; }
-  .article-title { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 1rem; letter-spacing: -0.5px; line-height: 1.35; }
-  .article-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 13px; color: #94a3b8; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e2e8f0; }
-  .author-chip { display: flex; align-items: center; gap: 8px; margin-left: auto; }
-  .author-avatar { width: 28px; height: 28px; border-radius: 50%; background: #10b981; color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-  .author-name { font-size: 13px; font-weight: 600; color: #334155; }
-  .article-content { font-size: 16px; color: #334155; line-height: 1.9; }
-  .article-content p { margin-bottom: 1rem; }
-  .article-footer { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; }
-  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tag-pill { font-size: 12px; font-weight: 600; background: #f1f5f9; color: #475569; padding: 5px 12px; border-radius: 99px; text-decoration: none; }
-  .tag-pill:hover { background: #10b981; color: #fff; }
-  .related-section { margin-top: 2rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; }
-  .section-title { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1.25rem; }
-  .related-card { display: flex; align-items: center; gap: 14px; text-decoration: none; padding: .75rem 0; border-bottom: 1px solid #f1f5f9; }
-  .related-card:last-child { border-bottom: none; }
-  .related-img { width: 64px; height: 56px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
-  .related-info { min-width: 0; }
-  .related-tag { font-size: 11px; font-weight: 600; color: #10b981; margin-bottom: 2px; }
-  .related-title { font-size: 14px; font-weight: 600; color: #0f172a; }
-  .sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 84px; }
-  .sidebar-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; }
-  .sidebar-title { font-size: 13px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 1rem; }
-  .progress-bar-wrap { width: 100%; height: 6px; background: #f1f5f9; border-radius: 99px; overflow: hidden; margin-bottom: .5rem; }
-  #sidebar-progress-fill { display: block; height: 100%; width: 0%; background: #10b981; transition: width .1s; }
-  .progress-label { font-size: 12px; color: #94a3b8; text-align: right; }
-  .recent-list { display: flex; flex-direction: column; gap: .35rem; }
-  .recent-item { display: flex; align-items: flex-start; gap: 10px; text-decoration: none; padding: 8px; border-radius: 8px; }
-  .recent-item:hover { background: #f8fafc; }
-  .recent-num { font-size: 11px; font-weight: 700; color: #10b981; flex-shrink: 0; margin-top: 1px; }
-  .recent-text { font-size: 13px; color: #334155; font-weight: 500; }
-  footer { background: #fff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; line-height: 1.8; }
-  footer span { color: #10b981; font-weight: 600; }
-  @media (max-width: 900px) { .article-layout { grid-template-columns: 1fr; } .sidebar { position: static; } }
-  @media (max-width: 640px) { .article-layout { padding: 0 1.1rem; } .article-body { padding: 1.25rem; } .article-title { font-size: 22px; } .article-cover { height: 190px; } }
-</style>
-</head>
-<body>
-
-<div id="reading-progress-wrap"><div id="reading-progress"></div></div>
-
-<nav>
-  <a href="${SITE_BASE_URL}/index.html" class="logo">imar<span>thar</span>.com</a>
-  <div class="nav-links">
-    <a href="${SITE_BASE_URL}/tools.html">টুল</a>
-    <a class="active" href="${SITE_BASE_URL}/blogs.html">ব্লগ</a>
-    <a href="${SITE_BASE_URL}/papers.html">পেপার</a>
-    <a href="${SITE_BASE_URL}/discussion.html">আলোচনা</a>
-  </div>
-</nav>
-
-<div class="article-layout">
-  <div>
-    <a class="back-btn" href="${SITE_BASE_URL}/blogs.html">&larr; ব্লগে ফিরিক</a>
-    <article>
-      <img class="article-cover" src="${escapeHtml(img)}" alt="${title}">
-      <div class="article-body">
-        <div class="breadcrumb"><a href="${SITE_BASE_URL}/index.html">হোম</a> &rsaquo; <a href="${SITE_BASE_URL}/blogs.html">ব্লগ</a> &rsaquo; ${tag}</div>
-        <div class="article-tag">${tag}</div>
-        <h1 class="article-title">${title}</h1>
-        <div class="article-meta">
-          <span class="meta-item"><i class="ti ti-calendar-event"></i> ${dateStr}</span>
-          <span class="meta-item"><i class="ti ti-clock"></i> ${readMin} মিনিট পড়া</span>
-          <div class="author-chip">
-            <div class="author-avatar">${initials}</div>
-            <span class="author-name">${author}</span>
-          </div>
-        </div>
-        <div id="article-content" class="article-content">
-${bodyHtml}
-        </div>
-        <div class="article-footer">
-          <div class="tag-row">
-            <a class="tag-pill" href="${SITE_BASE_URL}/blogs.html">${tag}</a>
-          </div>
-        </div>
-      </div>
-    </article>
-${related && related.length ? `
-    <div class="related-section">
-      <div class="section-title">আরতাউ পাকরিক</div>
-      ${relatedHtml}
-    </div>` : ''}
-  </div>
-
-  <div class="sidebar">
-    <div class="sidebar-card">
-      <div class="sidebar-title">তামকরানির অগ্রগতি</div>
-      <div class="progress-bar-wrap"><div id="sidebar-progress-fill"></div></div>
-      <div id="progress-label" class="progress-label">০%</div>
-    </div>
-${related && related.length ? `
-    <div class="sidebar-card">
-      <div class="sidebar-title">আরতাউ ব্লগ</div>
-      <div class="recent-list">
-        ${recentHtml}
-      </div>
-    </div>` : ''}
-  </div>
-</div>
-
-<footer>
-  © ${toBnDigits(new Date().getFullYear())} <span>imarthar.com</span> • লেখক: ${author}<br>
-  <small style="color:#94a3b8;">Preserving heritage through advanced computing systems.</small>
-</footer>
-
-<script>` + `
-  window.addEventListener('scroll', function () {
-    var winHeight = window.innerHeight;
-    var docHeight = document.body.scrollHeight - winHeight;
-    var pct = docHeight > 0 ? Math.min(100, Math.max(0, (window.scrollY / docHeight) * 100)) : 0;
-    var bar = document.getElementById('reading-progress');
-    if (bar) bar.style.width = pct + '%';
-    var fill = document.getElementById('sidebar-progress-fill');
-    if (fill) fill.style.width = pct + '%';
-    var label = document.getElementById('progress-label');
-    if (label) label.textContent = Math.round(pct) + '%';
-  });
-` + `<\/script>
-</body>
-</html>`;
-  }
-
   // ── ডেটা লোড ───────────────────────────────────────────
   async function loadSubmissions() {
     document.getElementById('list-container').innerHTML = '<div class="empty-state">লোড অসের...</div>';
@@ -484,8 +301,8 @@ ${related && related.length ? `
           <button class="btn btn-publish" onclick="publishRow('${row.id}')"><i class="ti ti-send"></i> পাবলিশ করিক</button>
           <button class="btn btn-reject" onclick="rejectRow('${row.id}')"><i class="ti ti-x"></i> বাতিল করিক</button>
         ` : ''}
-        ${row.status === 'published' && row.page_url ? `
-          <a class="btn btn-link" href="${escapeHtml(row.page_url)}" target="_blank"><i class="ti ti-external-link"></i> পেজ দেখিক</a>
+        ${row.status === 'published' ? `
+          <a class="btn btn-link" href="post.html?id=${encodeURIComponent(row.id)}" target="_blank"><i class="ti ti-external-link"></i> পেজ দেখিক</a>
         ` : ''}
       </div>
     `;
@@ -499,7 +316,7 @@ ${related && related.length ? `
     setTimeout(() => t.classList.remove('visible'), 3200);
   }
 
-  // ── Approve → জেনারেট → আপলোড → status আপডেট ──────────
+  // ── Approve → status আপডেট (post.html ডাইনামিকভাবে বাকি সব করবে) ──
   async function publishRow(id) {
     const row = allRows.find(r => r.id === id);
     if (!row) return;
@@ -507,36 +324,9 @@ ${related && related.length ? `
     btns.innerHTML = '<button class="btn btn-publish" disabled><i class="ti ti-loader-2 spinning"></i> পাবলিশ অসের...</button>';
 
     try {
-      // এই পোস্টর related/recent সেকশনরকা সাম্প্রতিক ২হান পাবলিশড পোস্ট
-      const { data: relatedRows } = await supabaseClient
-        .from('blog_submissions')
-        .select('title, tag, img_url, page_url')
-        .eq('status', 'published')
-        .order('published_at', { ascending: false })
-        .limit(2);
-
-      const slug = `post-${row.id}`;
-      const publishedAt = new Date();
-      const htmlContent = generatePostHTML({ ...row, published_at: publishedAt }, relatedRows || []);
-      const filePath = `posts/${slug}.html`;
-
-      const { error: uploadError } = await supabaseClient
-        .storage
-        .from(PAGE_BUCKET)
-        .upload(filePath, new Blob([htmlContent], { type: 'text/html' }), {
-          cacheControl: '3600',
-          upsert: true,
-          contentType: 'text/html'
-        });
-
-      if (uploadError) throw uploadError;
-
-      const { data: publicUrlData } = supabaseClient.storage.from(PAGE_BUCKET).getPublicUrl(filePath);
-      const pageUrl = publicUrlData.publicUrl;
-
       const { error: updateError } = await supabaseClient
         .from('blog_submissions')
-        .update({ status: 'published', slug, page_url: pageUrl, published_at: publishedAt.toISOString() })
+        .update({ status: 'published', published_at: new Date().toISOString() })
         .eq('id', id);
 
       if (updateError) throw updateError;

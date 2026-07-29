@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">লোড অসের... — ইমার ঠার</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
+  #reading-progress-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: transparent; z-index: 300; }
+  #reading-progress { height: 100%; width: 0%; background: #10b981; transition: width .1s; }
+  nav { background: rgba(255,255,255,.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226,232,240,.8); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; text-decoration: none; letter-spacing: -0.5px; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; }
+  .nav-links a:hover, .nav-links a.active { color: #10b981; }
+  .article-layout { max-width: 1100px; margin: 2rem auto; padding: 0 2rem; display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start; }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: #64748b; text-decoration: none; margin-bottom: 1rem; }
+  .back-btn:hover { color: #10b981; }
+  article { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,.02); }
+  .article-cover { width: 100%; height: 320px; object-fit: cover; display: block; background: #f1f5f9; }
+  .article-body { padding: 2rem; }
+  .breadcrumb { font-size: 13px; color: #94a3b8; margin-bottom: 1rem; }
+  .breadcrumb a { color: #94a3b8; text-decoration: none; }
+  .breadcrumb a:hover { color: #10b981; }
+  .article-tag { display: inline-block; font-size: 12px; font-weight: 600; background: #f0fdf4; color: #166534; padding: 4px 12px; border-radius: 99px; margin-bottom: 1rem; }
+  .article-title { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 1rem; letter-spacing: -0.5px; line-height: 1.35; }
+  .article-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 13px; color: #94a3b8; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e2e8f0; }
+  .author-chip { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+  .author-avatar { width: 28px; height: 28px; border-radius: 50%; background: #10b981; color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .author-name { font-size: 13px; font-weight: 600; color: #334155; }
+  .article-content { font-size: 16px; color: #334155; line-height: 1.9; }
+  .article-content p { margin-bottom: 1rem; }
+  .article-footer { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; }
+  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag-pill { font-size: 12px; font-weight: 600; background: #f1f5f9; color: #475569; padding: 5px 12px; border-radius: 99px; text-decoration: none; }
+  .tag-pill:hover { background: #10b981; color: #fff; }
+  .related-section { margin-top: 2rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; }
+  .section-title { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1.25rem; }
+  .related-card { display: flex; align-items: center; gap: 14px; text-decoration: none; padding: .75rem 0; border-bottom: 1px solid #f1f5f9; }
+  .related-card:last-child { border-bottom: none; }
+  .related-img { width: 64px; height: 56px; border-radius: 10px; object-fit: cover; flex-shrink: 0; background: #f1f5f9; }
+  .related-info { min-width: 0; }
+  .related-tag { font-size: 11px; font-weight: 600; color: #10b981; margin-bottom: 2px; }
+  .related-title { font-size: 14px; font-weight: 600; color: #0f172a; }
+  .sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 84px; }
+  .sidebar-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; }
+  .sidebar-title { font-size: 13px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 1rem; }
+  .progress-bar-wrap { width: 100%; height: 6px; background: #f1f5f9; border-radius: 99px; overflow: hidden; margin-bottom: .5rem; }
+  #sidebar-progress-fill { display: block; height: 100%; width: 0%; background: #10b981; transition: width .1s; }
+  .progress-label { font-size: 12px; color: #94a3b8; text-align: right; }
+  .recent-list { display: flex; flex-direction: column; gap: .35rem; }
+  .recent-item { display: flex; align-items: flex-start; gap: 10px; text-decoration: none; padding: 8px; border-radius: 8px; }
+  .recent-item:hover { background: #f8fafc; }
+  .recent-num { font-size: 11px; font-weight: 700; color: #10b981; flex-shrink: 0; margin-top: 1px; }
+  .recent-text { font-size: 13px; color: #334155; font-weight: 500; }
+  footer { background: #fff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; line-height: 1.8; }
+  footer span { color: #10b981; font-weight: 600; }
+  .state-box { max-width: 500px; margin: 4rem auto; text-align: center; background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 3rem 2rem; color: #64748b; font-size: 14px; }
+  .state-box i { font-size: 32px; color: #cbd5e1; margin-bottom: 1rem; display: block; }
+  @media (max-width: 900px) { .article-layout { grid-template-columns: 1fr; } .sidebar { position: static; } }
+  @media (max-width: 640px) { .article-layout { padding: 0 1.1rem; } .article-body { padding: 1.25rem; } .article-title { font-size: 22px; } .article-cover { height: 190px; } }
+</style>
+</head>
+<body>
+
+<div id="reading-progress-wrap"><div id="reading-progress"></div></div>
+
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="tools.html">টুল</a>
+    <a class="active" href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<div id="loading-state" class="state-box">
+  <i class="ti ti-loader-2"></i>
+  পোস্ট লোড অসের...
+</div>
+
+<div id="error-state" class="state-box" style="display:none;">
+  <i class="ti ti-file-off"></i>
+  <span id="error-msg">পোস্টহান পাওয়া নাযায়।</span><br><br>
+  <a href="blogs.html" class="back-btn" style="justify-content:center;">&larr; ব্লগে ফিরিক</a>
+</div>
+
+<div id="article-layout" class="article-layout" style="display:none;">
+  <div>
+    <a class="back-btn" href="blogs.html">&larr; ব্লগে ফিরিক</a>
+    <article>
+      <img id="article-cover" class="article-cover" src="" alt="">
+      <div class="article-body">
+        <div class="breadcrumb"><a href="index.html">হোম</a> &rsaquo; <a href="blogs.html">ব্লগ</a> &rsaquo; <span id="breadcrumb-tag"></span></div>
+        <div id="article-tag" class="article-tag"></div>
+        <h1 id="article-title" class="article-title"></h1>
+        <div class="article-meta">
+          <span class="meta-item"><i class="ti ti-calendar-event"></i> <span id="article-date"></span></span>
+          <span class="meta-item"><i class="ti ti-clock"></i> <span id="article-readtime"></span></span>
+          <div class="author-chip">
+            <div id="author-avatar" class="author-avatar"></div>
+            <span id="author-name" class="author-name"></span>
+          </div>
+        </div>
+        <div id="article-content" class="article-content"></div>
+        <div class="article-footer">
+          <div class="tag-row">
+            <a id="footer-tag" class="tag-pill" href="blogs.html"></a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div id="related-section" class="related-section" style="display:none;">
+      <div class="section-title">আরতাউ পাকরিক</div>
+      <div id="related-list"></div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">তামকরানির অগ্রগতি</div>
+      <div class="progress-bar-wrap"><div id="sidebar-progress-fill"></div></div>
+      <div id="progress-label" class="progress-label">০%</div>
+    </div>
+    <div id="recent-card" class="sidebar-card" style="display:none;">
+      <div class="sidebar-title">আরতাউ ব্লগ</div>
+      <div id="recent-list" class="recent-list"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="page-footer" style="display:none;">
+  © <span id="footer-year"></span> <span>imarthar.com</span><br>
+  <small style="color:#94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://ksnwykmtrczvdzhoiews.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno';
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  function escapeHtml(str) {
+    return String(str || '')
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  const BN_DIGITS = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  function toBnDigits(n) { return String(n).replace(/[0-9]/g, d => BN_DIGITS[d]); }
+
+  const BN_MONTHS = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+  function formatBnDate(date) { return `${BN_MONTHS[date.getMonth()]} ${toBnDigits(date.getFullYear())}`; }
+
+  function avatarInitials(name) {
+    const parts = String(name || '').trim().split(/\s+/).filter(Boolean);
+    if (parts.length >= 2) return parts[0][0] + parts[1][0];
+    if (parts.length === 1) return parts[0].slice(0, 2);
+    return '?';
+  }
+
+  function paragraphsHtml(body) {
+    return String(body || '')
+      .split(/\n{1,}/)
+      .map(l => l.trim())
+      .filter(Boolean)
+      .map(l => `<p>${escapeHtml(l)}</p>`)
+      .join('');
+  }
+
+  function estimateReadMinutes(body) {
+    const words = String(body || '').split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.round(words / 180));
+  }
+
+  function showError(msg) {
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('error-state').style.display = 'block';
+    document.getElementById('error-msg').textContent = msg;
+  }
+
+  async function loadPost() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    if (!id) { showError('এহানে কোনো পোস্ট আইডি নাই।'); return; }
+
+    const { data: post, error } = await supabaseClient
+      .from('blog_submissions')
+      .select('*')
+      .eq('id', id)
+      .eq('status', 'published')
+      .single();
+
+    if (error || !post) { showError('পোস্টহান পাওয়া নাযায়, অথবা এহান এবাকা পাবলিশড নায়।'); return; }
+
+    document.getElementById('page-title').textContent = `${post.title} — ইমার ঠার`;
+    document.getElementById('article-cover').src = post.img_url || '';
+    document.getElementById('article-cover').alt = post.title;
+    document.getElementById('breadcrumb-tag').textContent = post.tag || 'সাধারণ';
+    document.getElementById('article-tag').textContent = post.tag || 'সাধারণ';
+    document.getElementById('article-title').textContent = post.title;
+    document.getElementById('article-date').textContent = formatBnDate(post.published_at ? new Date(post.published_at) : new Date());
+    document.getElementById('article-readtime').textContent = `${toBnDigits(estimateReadMinutes(post.body))} মিনিট পড়া`;
+    document.getElementById('author-avatar').textContent = avatarInitials(post.author);
+    document.getElementById('author-name').textContent = post.author;
+    document.getElementById('article-content').innerHTML = paragraphsHtml(post.body);
+    document.getElementById('footer-tag').textContent = post.tag || 'সাধারণ';
+    document.getElementById('footer-year').textContent = toBnDigits(new Date().getFullYear());
+
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('article-layout').style.display = 'grid';
+    document.getElementById('page-footer').style.display = 'block';
+
+    loadRelated(post.id);
+  }
+
+  async function loadRelated(currentId) {
+    const { data: relatedRows } = await supabaseClient
+      .from('blog_submissions')
+      .select('id, title, tag, img_url')
+      .eq('status', 'published')
+      .neq('id', currentId)
+      .order('published_at', { ascending: false })
+      .limit(4);
+
+    if (!relatedRows || !relatedRows.length) return;
+
+    const relatedSection = document.getElementById('related-section');
+    const relatedList = document.getElementById('related-list');
+    relatedSection.style.display = 'block';
+    relatedList.innerHTML = relatedRows.slice(0, 2).map(r => `
+      <a class="related-card" href="post.html?id=${encodeURIComponent(r.id)}">
+        <img class="related-img" src="${escapeHtml(r.img_url || '')}" alt="">
+        <div class="related-info">
+          <div class="related-tag">${escapeHtml(r.tag || 'সাধারণ')}</div>
+          <div class="related-title">${escapeHtml(r.title)}</div>
+        </div>
+      </a>`).join('');
+
+    const recentCard = document.getElementById('recent-card');
+    const recentList = document.getElementById('recent-list');
+    recentCard.style.display = 'block';
+    recentList.innerHTML = relatedRows.map((r, i) => `
+      <a class="recent-item" href="post.html?id=${encodeURIComponent(r.id)}">
+        <span class="recent-num">${toBnDigits(String(i + 1).padStart(2, '0'))}</span>
+        <span class="recent-text">${escapeHtml(r.title)}</span>
+      </a>`).join('');
+  }
+
+  window.addEventListener('scroll', function () {
+    const winHeight = window.innerHeight;
+    const docHeight = document.body.scrollHeight - winHeight;
+    const pct = docHeight > 0 ? Math.min(100, Math.max(0, (window.scrollY / docHeight) * 100)) : 0;
+    document.getElementById('reading-progress').style.width = pct + '%';
+    const fill = document.getElementById('sidebar-progress-fill');
+    if (fill) fill.style.width = pct + '%';
+    const label = document.getElementById('progress-label');
+    if (label) label.textContent = Math.round(pct) + '%';
+  });
+
+  loadPost();
+</script>
+</body>
+</html>

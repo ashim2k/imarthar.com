@@ -380,7 +380,7 @@
     data.forEach(function (post) {
       const a = document.createElement('a');
       a.className = 'blog-card';
-      a.href = post.page_url;
+      a.href = `post.html?id=${encodeURIComponent(post.id)}`;
       const dateStr = post.published_at ? formatBnDateBlog(new Date(post.published_at)) : '';
       const desc = String(post.body || '').replace(/\s+/g, ' ').trim();
       const descShort = desc.length > 140 ? desc.slice(0, 140).trim() + '…' : desc;
