@@ -442,7 +442,7 @@
 
     
     if (files.length > 1) {
-      alert('এখান একহান ইমেজ ফাইলে বেচি দেওয়া নাযাইতাই। অনুগ্ৰহ করিয়া কেবল একহান ইমেজ বাছিক।');
+      alert('এহাৎ ছবি ইমে আকগ দেনা একরতই');
       fileInput.value = '';
       wrap.style.display = 'none';
       preview.src = '';
@@ -453,7 +453,7 @@
 
     
     if (!file.type || !file.type.startsWith('image/')) {
-      alert('কেবল ইমেজ ফাইলহান গ্ৰহনযোগ্য। অন্য কোনো মিডিয়া ফাইল (ভিডিও, অডিও, ডকুমেন্ট ইত্যাদি) নেওয়া নাযায়।');
+      alert('হুদ্দা ইমেজ ফাইল গ্ৰহনযোগ্য');
       fileInput.value = '';
       wrap.style.display = 'none';
       preview.src = '';
@@ -499,13 +499,13 @@
     
     const imgFilesList = document.getElementById('blog-img-file').files;
     if (imgFilesList && imgFilesList.length > 1) {
-      alert('এখান একহান ইমেজ ফাইলে বেচি দেওয়া নাযাইতাই। অনুগ্ৰহ করিয়া কেবল একহান ইমেজ বাছিক।');
+      alert('ছবি আগকর গজে দেনা নাকরব !');
       return;
     }
     if (imgFilesList && imgFilesList.length === 1) {
       const chosenFile = imgFilesList[0];
       if (!chosenFile.type || !chosenFile.type.startsWith('image/')) {
-        alert('কেবল ইমেজ ফাইলহান গ্ৰহনযোগ্য। অন্য কোনো মিডিয়া ফাইল (ভিডিও, অডিও, ডকুমেন্ট ইত্যাদি) নেওয়া নাযায়।');
+        alert('হুদ্দা  ইমেজ ফাইল গ্ৰহনযোগ্য');
         return;
       }
     }
