@@ -87,7 +87,8 @@
   .card-tag { font-size: 11px; font-weight: 700; background: #f0fdf4; color: #166534; padding: 2px 10px; border-radius: 99px; align-self: flex-start; margin-bottom: 10px; }
   .card-title { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 8px; line-height: 1.4; }
   .card-desc { font-size: 13.5px; color: #475569; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .card-meta { font-size: 12px; color: #94a3b8; margin-top: auto; display: flex; align-items: center; gap: 4px; }
+  .card-meta { font-size: 12px; color: #94a3b8; margin-top: auto; display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+  .card-meta .meta-dot { margin: 0 2px; color: #cbd5e1; }
 
   /* ── লিংক মিসিং/Not-found হাইলাইট ── */
   @keyframes shake-highlight {
@@ -374,7 +375,7 @@
     'কৃত্রিম বুদ্ধিমত্তা': 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=400&auto=format&fit=crop&q=60',
     'শিক্ষা': 'https://images.unsplash.com/photo-1585079542156-2755d9c8a094?w=400&auto=format&fit=crop&q=60',
     'সংরক্ষণ': 'https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=400&auto=format&fit=crop&q=60',
-    'সাধারণ': 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&auto=format&fit=crop&q=60'
+    'সাধারণ': 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&auto=format&fit=crop&q=60'
   };
   function getCategoryImageBlog(tag) {
     return CATEGORY_DEFAULT_IMAGES[(tag || '').trim()] || CATEGORY_DEFAULT_IMAGES['সাধারণ'];
@@ -407,7 +408,7 @@
           <div class="card-tag">${escapeHtmlBlog(post.tag || 'সাধারণ')}</div>
           <h2 class="card-title">${escapeHtmlBlog(post.title)}</h2>
           <p class="card-desc">${escapeHtmlBlog(descShort)}</p>
-          <div class="card-meta"><i class="ti ti-calendar-event"></i> ${dateStr}</div>
+          <div class="card-meta"><i class="ti ti-user"></i> ${escapeHtmlBlog(post.author || 'অজ্ঞাত')}<span class="meta-dot">•</span><i class="ti ti-calendar-event"></i> ${dateStr}</div>
         </div>
       `;
       grid.insertBefore(a, grid.firstChild);
@@ -442,7 +443,7 @@
 
     
     if (files.length > 1) {
-      alert('এহাৎ ছবি ইমে আকগ দেনা একরতই');
+      alert('এখান একহান ইমেজ ফাইলে বেচি দেওয়া নাযাইতাই। অনুগ্ৰহ করিয়া কেবল একহান ইমেজ বাছিক।');
       fileInput.value = '';
       wrap.style.display = 'none';
       preview.src = '';
@@ -453,7 +454,7 @@
 
     
     if (!file.type || !file.type.startsWith('image/')) {
-      alert('হুদ্দা ইমেজ ফাইল গ্ৰহনযোগ্য');
+      alert('কেবল ইমেজ ফাইলহান গ্ৰহনযোগ্য। অন্য কোনো মিডিয়া ফাইল (ভিডিও, অডিও, ডকুমেন্ট ইত্যাদি) নেওয়া নাযায়।');
       fileInput.value = '';
       wrap.style.display = 'none';
       preview.src = '';
@@ -499,13 +500,13 @@
     
     const imgFilesList = document.getElementById('blog-img-file').files;
     if (imgFilesList && imgFilesList.length > 1) {
-      alert('ছবি আগকর গজে দেনা নাকরব !');
+      alert('এখান একহান ইমেজ ফাইলে বেচি দেওয়া নাযাইতাই। অনুগ্ৰহ করিয়া কেবল একহান ইমেজ বাছিক।');
       return;
     }
     if (imgFilesList && imgFilesList.length === 1) {
       const chosenFile = imgFilesList[0];
       if (!chosenFile.type || !chosenFile.type.startsWith('image/')) {
-        alert('হুদ্দা  ইমেজ ফাইল গ্ৰহনযোগ্য');
+        alert('কেবল ইমেজ ফাইলহান গ্ৰহনযোগ্য। অন্য কোনো মিডিয়া ফাইল (ভিডিও, অডিও, ডকুমেন্ট ইত্যাদি) নেওয়া নাযায়।');
         return;
       }
     }
