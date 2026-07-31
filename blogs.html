@@ -359,7 +359,7 @@
   const BN_DIGITS_MAP = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
   function toBnDigitsBlog(n) { return String(n).replace(/[0-9]/g, d => BN_DIGITS_MAP[d]); }
   const BN_MONTHS_BLOG = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
-  function formatBnDateBlog(d) { return `${BN_MONTHS_BLOG[d.getMonth()]} ${toBnDigitsBlog(d.getFullYear())}`; }
+  function formatBnDateBlog(d) { return `${toBnDigitsBlog(d.getDate())} ${BN_MONTHS_BLOG[d.getMonth()]} ${toBnDigitsBlog(d.getFullYear())}`; }
   function escapeHtmlBlog(str) {
     return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
@@ -395,7 +395,7 @@
     if (!data || !data.length) return;
 
     const grid = document.getElementById('blog-container');
-    data.forEach(function (post) {
+    data.slice().reverse().forEach(function (post) {
       const a = document.createElement('a');
       a.className = 'blog-card';
       a.href = `post.html?id=${encodeURIComponent(post.id)}`;

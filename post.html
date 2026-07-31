@@ -137,7 +137,6 @@
         <h1 id="article-title" class="article-title"></h1>
         <div class="article-meta">
           <span class="meta-item"><i class="ti ti-calendar-event"></i> <span id="article-date"></span></span>
-          <span class="meta-item"><i class="ti ti-clock"></i> <span id="article-readtime"></span></span>
           <div class="author-chip">
             <div id="author-avatar" class="author-avatar"></div>
             <span id="author-name" class="author-name"></span>
@@ -208,7 +207,7 @@
   function toBnDigits(n) { return String(n).replace(/[0-9]/g, d => BN_DIGITS[d]); }
 
   const BN_MONTHS = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
-  function formatBnDate(date) { return `${BN_MONTHS[date.getMonth()]} ${toBnDigits(date.getFullYear())}`; }
+  function formatBnDate(date) { return `${toBnDigits(date.getDate())} ${BN_MONTHS[date.getMonth()]} ${toBnDigits(date.getFullYear())}`; }
 
   function avatarInitials(name) {
     const parts = String(name || '').trim().split(/\s+/).filter(Boolean);
@@ -226,12 +225,6 @@
       .join('');
   }
 
-  function estimateReadMinutes(body) {
-    const words = String(body || '').split(/\s+/).filter(Boolean).length;
-    return Math.max(1, Math.round(words / 180));
-  }
-
-  // ── ক্যাটাগরি অনুযায়ি ডিফল্ট ইমেজ (ছবি আপলোড না করলে) ──
   const CATEGORY_DEFAULT_IMAGES = {
     'টেকনোলজি': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=60',
     'প্রযুক্তি': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=60',
@@ -279,7 +272,6 @@
     document.getElementById('article-tag').textContent = post.tag || 'সাধারণ';
     document.getElementById('article-title').textContent = post.title;
     document.getElementById('article-date').textContent = formatBnDate(post.published_at ? new Date(post.published_at) : new Date());
-    document.getElementById('article-readtime').textContent = `${toBnDigits(estimateReadMinutes(post.body))} মিনিট পড়া`;
     document.getElementById('author-avatar').textContent = avatarInitials(post.author);
     document.getElementById('author-name').textContent = post.author;
     document.getElementById('article-content').innerHTML = paragraphsHtml(post.body);
