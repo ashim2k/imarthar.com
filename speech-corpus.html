@@ -292,7 +292,8 @@
 
   @media (max-width: 768px) {
     .main-layout { grid-template-columns: 1fr; padding: 0 1.25rem; }
-    .sidebar { display: none; }
+    .sidebar { display: block; }
+    .sidebar-card.mobile-hide { display: none; }
     .page-header { padding: 2rem 1.25rem; }
     .sentence-text { font-size: 18px; }
     .option-grid.col3 { grid-template-columns: 1fr 1fr; }
@@ -382,7 +383,7 @@
       <div class="step-label">ধাপ ৪ / ৫</div>
       <div class="step-question">তোর বয়স?</div>
       <div class="option-grid col3">
-        <button class="option-btn" onclick="selectOption('age','18-25',this)">১৮–২৫</button>
+        <button class="option-btn" onclick="selectOption('age','18-25',this)">১৪–২৫</button>
         <button class="option-btn" onclick="selectOption('age','26-40',this)">২৬–৪০</button>
         <button class="option-btn" onclick="selectOption('age','40+',this)">৪০+</button>
       </div>
@@ -531,7 +532,7 @@
   <div class="sidebar">
     
 
-    <div class="sidebar-card">
+    <div class="sidebar-card mobile-hide">
       <div class="sidebar-title"><i class="ti ti-help"></i> কিসারে করানি?</div>
       <div class="how-item"><span class="how-num">১</span><span class="how-text">আগে তথ্য দিক (ডায়ালেক্ট, জোন, বয়স)</span></div>
       <div class="how-item"><span class="how-num">২</span><span class="how-text">বাক্যহান মনোযোগ দিয়া পাকরিক </span></div>
@@ -539,7 +540,7 @@
       <div class="how-item"><span class="how-num">৪</span><span class="how-text">হুনিক — চুমইলে ডাউনলোড করিক</span></div>
     </div>
 
-    <div class="sidebar-card">
+    <div class="sidebar-card mobile-hide">
       <div class="sidebar-title"><i class="ti ti-bulb"></i> টিপস</div>
       <div class="tip-box">
         <div class="tip-title"><i class="ti ti-volume"></i> মাতিং রেকর্ডর আগে</div>
@@ -693,7 +694,7 @@ const sentences = [
   { text: "মি ইমার ঠারে কথা অতারানি নুঙেই পাউরি।", trans: "Mi imar thare kotha matote hada pauri." },
   { text: "মোর ঠারহান মোর পরিচয়।", trans: "Mor tharhan mor porichoy." },
   { text: "নংসাংদিন আগে কিতাপারা গাঙ আহাত বুড়া-বুড়ি হেইমাক আহান আসিলাতা। তাঙরতা শৌ কিতা নেইসিলা।", trans: "Nongsangdin age kitapara gang ahat bura-buri heimak ahan asilata. Tangrota shou kita neisila." },
-  { text: "মোর শৌ সুমারা ইমার ঠার হিকতার।", trans: "Mor shou sumara imar thar hikotar." },
+  { text: "মোর শৌ সুমারা ইমার ঠার হিকতারা।", trans: "Mor shou sumara imar thar hikotar." },
   { text: "বুড়া অনাইতে কাম কিতাউ পাং করে নুয়ারতারা। কুনোমতে ধানগুলি খেতি করিয়া অতা খেয়া জিংতা অয়া আসি।", trans: "Bura onaite kam kitau pang kore nuartara. Kunomote dhangguli kheti koriya ota kheya jingta oya asi." },
   { text: "এগদে মুড়াকচু লাগানির সময় আহানৌ দিয়া আহের। বুড়াই মাতের, অবুড়ি, মুড়াকচু খানি লাগাবেলিকগা।", trans: "Egode murakochu laganir somoy ahanou diya aher. Burai mater, oburi, murakochu khani lagabelikga." },
   { text: "বুড়াই বুড়িয়ে ঘরর পিছবারাদে বিসারা  টুমা আহান আসে অহাত কচু লাগানির কাজে গেলাগা।  বুড়াই কদালহানল মাটি খুলিয়া কচু লাগানির জুগত করল।", trans: "Burai buriye ghoror pichbarade bisara tuma ahan ase ohat kochu laganir kaje gelaga. Burai kodalhanol mati khuliya kochu laganir jugot korol." },
@@ -953,6 +954,11 @@ function renderLeaderboard(top) {
 
 updateSentence();
 loadLeaderboard();
+
+// পেজ ব্যাক/ফরওয়ার্ড ক্যাশ (bfcache) থেকে ফিরে আসলেও leaderboard আবার লোড করানি
+window.addEventListener('pageshow', function (e) {
+  if (e.persisted) loadLeaderboard();
+});
 </script>
 </body>
 </html>
