@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title">লোড অসের... — ইমার ঠার</title>
+<title id="page-title">লোড র... — ইমার ঠার</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -117,18 +117,18 @@
 
 <div id="loading-state" class="state-box">
   <i class="ti ti-loader-2"></i>
-  পোস্ট লোড অসের...
+  পোস্টহান লোড অর...
 </div>
 
 <div id="error-state" class="state-box" style="display:none;">
   <i class="ti ti-file-off"></i>
-  <span id="error-msg">পোস্টহান পাওয়া নাযায়।</span><br><br>
-  <a href="blogs.html" class="back-btn" style="justify-content:center;">&larr; ব্লগে ফিরিক</a>
+  <span id="error-msg">পোস্টহান নাপেইলাং </span><br><br>
+  <a href="blogs.html" class="back-btn" style="justify-content:center;">&larr; ব্লগে আলথক</a>
 </div>
 
 <div id="article-layout" class="article-layout" style="display:none;">
   <div>
-    <a class="back-btn" href="blogs.html">&larr; ব্লগে ফিরিক</a>
+    <a class="back-btn" href="blogs.html">&larr; ব্লগে আলথক</a>
     <article>
       <img id="article-cover" class="article-cover" src="" alt="">
       <div class="article-body">
@@ -169,7 +169,7 @@
       </div>
 
       <div id="comments-list" class="comments-list"></div>
-      <div id="comments-empty" class="comments-empty" style="display:none;">এহানে হারাদিন প্রথম মন্তব্যহান ইকরিক!</div>
+      <div id="comments-empty" class="comments-empty" style="display:none;">এহানাৎ পয়লা মন্তব্যহান ইকরিক!</div>
     </div>
   </div>
 
@@ -252,7 +252,7 @@
   async function loadPost() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
-    if (!id) { showError('এহানে কোনো পোস্ট আইডি নাই।'); return; }
+    if (!id) { showError('এহানাৎ কোনো পোস্ট আইডি নেই।'); return; }
 
     const { data: post, error } = await supabaseClient
       .from('blog_submissions')
@@ -261,7 +261,7 @@
       .eq('status', 'published')
       .single();
 
-    if (error || !post) { showError('পোস্টহান পাওয়া নাযায়, অথবা এহান এবাকা পাবলিশড নায়।'); return; }
+    if (error || !post) { showError('পোস্টহান নাাপসি , অথবা এহান এবাকা পাবলিশড নাসে।'); return; }
 
     currentPostId = post.id;
 
