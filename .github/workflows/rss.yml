@@ -1,23 +1,32 @@
 name: Generate RSS Feed
 
 on:
-  schedule:
-    - cron: "*/15 * * * *"
   workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
 
 jobs:
   rss:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - run: npm install
-      - run: node generate-feed.js
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate feed
+        run: node generate-feed.js
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+
       - name: Commit feed.xml
         run: |
           git config user.name "github-actions"
