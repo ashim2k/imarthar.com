@@ -742,22 +742,20 @@
     }
   }
 
-  // ── Load CSV ──
-  fetch('bm_corpus_multilang.csv')
-    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-    .then(text => {
-      const lines = text.trim().split(/\r?\n/);
-      for (let i = 1; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if (!line) continue;
-        // Proper CSV parse: handle quoted commas
-        const cols = parseCSVLine(line);
-        if (cols.length >= 2) corpus.push(cols);
-      }
-      document.getElementById('corpus-count').textContent = corpus.length + 'হার চুয়া ওয়াহি বারো বাক্য লোড অসে';
+  // ── Load corpus from Supabase (আগে bm_corpus_multilang.csv GitHub থেকে লোড অইতো) ──
+  supabaseClientHome
+    .from('bm_corpus')
+    .select('bm, bn, en, zh, hi, es, fr')
+    .then(({ data, error }) => {
+      if (error) throw error;
+      corpus = (data || []).map(row => [
+        row.bm || '', row.bn || '', row.en || '',
+        row.zh || '', row.hi || '', row.es || '', row.fr || ''
+      ]);
+      document.getElementById('corpus-count').textContent = corpus.length + 'হার চুয়া ওয়াহি বারো বাক্য লোড অসে';
     })
     .catch(err => {
-      document.getElementById('corpus-count').textContent = 'লোড ব্যর্থ — bm_corpus_multilang.csv বিসারিয়া নাপেইলাং ';
+      document.getElementById('corpus-count').textContent = 'লোড ব্যর্থ — corpus বিসারিয়া নাপেইলাং ';
       console.error(err);
     });
 
