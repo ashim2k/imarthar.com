@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
@@ -742,9 +742,9 @@
     }
   }
 
-  // ── Load corpus from Supabase (আগে bm_corpus_multilang.csv GitHub থেকে লোড অইতো) ──
+  // ── Load corpus from Supabase ──
   supabaseClientHome
-    .from('bm_corpus')
+    .from('bm_corpus_multilang')
     .select('bm, bn, en, zh, hi, es, fr')
     .then(({ data, error }) => {
       if (error) throw error;
