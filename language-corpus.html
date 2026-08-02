@@ -617,22 +617,13 @@
       return;
     }
     try {
-      const { data, error } = await supabaseClient
-        .from(TABLE_NAME)
-        .select('contributor_name')
-        .not('contributor_name', 'is', null)
-        .limit(5000);
+      // সার্ভার-সাইড এ group-by/count করা RPC — কোনো row-limit এর কারণে
+      // নতুন এন্ট্রি বাদ পড়া বা কাউন্ট আটকাই থাকার সমস্যা এখানে নেই।
+      const { data, error } = await supabaseClient.rpc('get_corpus_leaderboard');
       if (error) throw error;
 
-      const counts = {};
-      (data || []).forEach(row => {
-        const name = (row.contributor_name || '').trim();
-        if (!name) return;
-        counts[name] = (counts[name] || 0) + 1;
-      });
-
-      const top = Object.entries(counts)
-        .sort((a, b) => b[1] - a[1])
+      const top = (data || [])
+        .map(row => [row.contributor_name, Number(row.entry_count)])
         .slice(0, 20);
 
       if (top.length === 0) {
