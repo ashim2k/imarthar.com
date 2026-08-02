@@ -377,23 +377,28 @@
   <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   let corpus = [];
   let direction = 'bm2bn';
 
+  const SUPABASE_URL = 'https://ksnwykmtrczvdzhoiews.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno';
+  const supabaseClientTr = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
   async function loadCorpus() {
     try {
-      const res = await fetch('bm_bengali_corpus.csv');
-      const text = await res.text();
-      const lines = text.trim().split('\n').slice(1);
-      corpus = lines.map(line => {
-        const parts = line.split(',');
-        if (parts.length < 2) return null;
-        return { bm: parts[0].trim(), bn: parts.slice(1).join(',').trim() };
-      }).filter(Boolean);
+      const { data, error } = await supabaseClientTr
+        .from('bm_bengali_corpus')
+        .select('bishnupriya_manipuri, bengali');
+      if (error) throw error;
+      corpus = (data || [])
+        .map(row => ({ bm: (row.bishnupriya_manipuri || '').trim(), bn: (row.bengali || '').trim() }))
+        .filter(r => r.bm && r.bn);
       document.getElementById('corpus-count').textContent = `${corpus.length}টি শব্দ ও বাক্য`;
     } catch (e) {
       document.getElementById('corpus-count').textContent = 'corpus লোড ব্যর্থ';
+      console.error(e);
     }
   }
 
