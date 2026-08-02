@@ -742,15 +742,15 @@
     }
   }
 
-  // ── Load corpus from Supabase ──
+  // ── Load corpus from Supabase (আগে bm_corpus_multilang.csv GitHub থেকে লোড অইতো) ──
   supabaseClientHome
     .from('bm_corpus_multilang')
-    .select('bm, bn, en, zh, hi, es, fr')
+    .select('bm, bn, en, zh_cn, hi, es, fr')
     .then(({ data, error }) => {
       if (error) throw error;
       corpus = (data || []).map(row => [
         row.bm || '', row.bn || '', row.en || '',
-        row.zh || '', row.hi || '', row.es || '', row.fr || ''
+        row.zh_cn || '', row.hi || '', row.es || '', row.fr || ''
       ]);
       document.getElementById('corpus-count').textContent = corpus.length + 'হার চুয়া ওয়াহি বারো বাক্য লোড অসে';
     })
