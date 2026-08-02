@@ -63,7 +63,7 @@
 
   .hero-content { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
 
-  /* ── শীর্ষ অবদানকারী — fixed top-right card, পেজ খুললেই দেখা যায় ── */
+  /* ── শীর্ষ অবদানকারী — fixed top-right card */
   .top-leaderboard {
     position: fixed;
     top: 76px;
@@ -383,7 +383,7 @@
 </nav>
 
 <div class="top-leaderboard">
-  <div class="sidebar-title"><i class="ti ti-trophy"></i> ভাষা কর্পাস খমকরানিৎ শীর্ষ অবদান</div>
+  <div class="sidebar-title"><i class="ti ti-trophy"></i> ভাষা কর্পাসে শীর্ষ অবদান</div>
   <div id="leaderboard-list">
     <div class="empty-note">লোড অর …</div>
   </div>
@@ -576,7 +576,7 @@
     return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
-  // ── ক্যাটাগরি অনুযায়ি ডিফল্ট ইমেজ (ছবি আপলোড না করলে) ──
+  // ── ক্যাটাগরি অনুযায়ি ডিফল্ট ইমেজ ──
   const CATEGORY_DEFAULT_IMAGES = {
     'টেকনোলজি': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop&q=60',
     'প্রযুক্তি': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop&q=60',
@@ -609,7 +609,7 @@
     if (!data || !data.length) return;
 
     const list = document.getElementById('blog-list');
-    // নতুন পোস্টউতা সবচে ওপরে যোগ করিক, পুরানা reverse order (published_at ascending) দি insert
+    // reverse order (published_at ascending) 
     data.slice().reverse().forEach(post => {
       if (!post.id) return; // id নাই এমন row skip
       const a = document.createElement('a');
