@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ভাষা কর্পাস এন্ট্রি পেজ— ইমার ঠার</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: #10b981; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+    .page-hero {
+      position: relative;
+      background: radial-gradient(circle at top right, rgba(209, 250, 229, 0.4), transparent),
+                  radial-gradient(circle at bottom left, rgba(240, 253, 250, 0.4), transparent),
+                  #ffffff;
+      background-image: radial-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero::before, .page-hero::after {
+      content: '';
+      position: absolute;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: 0;
+    }
+    .page-hero::before { top: 0; left: 8%; background: #10b981; opacity: 0.12; }
+    .page-hero::after  { bottom: 0; right: 8%; background: #06b6d4; opacity: 0.12; }
+    .page-hero-content { position: relative; z-index: 1; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      margin-bottom: 1.2rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #10b981; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #d1fae5;
+      color: #065f46;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 99px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
+    }
+
+    .page-hero h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.4rem;
+    }
+    .page-hero h1 span { color: #10b981; }
+    .page-hero p { font-size: 15px; color: #64748b; }
+
+    .corpus-badge {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 4px 14px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 99px;
+      font-size: 12px;
+      color: #166534;
+      font-weight: 500;
+    }
+
+    .main {
+      max-width: 720px;
+      margin: 2.5rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    .config-warning {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      font-size: 13px;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+    .config-warning.visible { display: block; }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+      margin-bottom: 1.5rem;
+    }
+
+    .card-section {
+      padding: 1.4rem 1.6rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .card-section:last-child { border-bottom: none; }
+
+    .lang-label {
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #000000;
+      margin-bottom: 0.6rem;
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      outline: none;
+      color: #0f172a;
+      font-family: inherit;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      resize: none;
+      padding: 0.7rem 0.9rem;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    textarea:focus, input[type="text"]:focus {
+      border-color: #10b981;
+      background: #fff;
+    }
+    textarea { min-height: 64px; }
+    textarea::placeholder, input::placeholder { color: #cbd5e1; }
+
+    .name-row { padding-top: 0; }
+    .name-row input { font-size: 0.92rem; }
+
+    .lang-row-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+    .lang-row-head .lang-label { margin-bottom: 0; }
+    select {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      outline: none;
+    }
+    select:focus { border-color: #10b981; }
+
+    .export-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .export-row select {
+      font-size: 11px;
+      padding: 5px 8px;
+    }
+
+    .lang-badge {
+      display: inline-block;
+      background: #ecfeff;
+      color: #0e7490;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 8px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: #10b981;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.85rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.15s;
+    }
+    .submit-btn:hover { background: #059669; }
+    .submit-btn:disabled { background: #a7f3d0; cursor: not-allowed; }
+
+    .status-msg {
+      text-align: center;
+      font-size: 13px;
+      margin-top: 0.7rem;
+      min-height: 18px;
+    }
+    .status-msg.ok { color: #059669; }
+    .status-msg.err { color: #dc2626; }
+
+    .stats-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 1.2rem;
+    }
+    .stat-box {
+      flex: 1;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      text-align: center;
+    }
+    .stat-box .num { font-size: 1.5rem; font-weight: 800; color: #10b981; }
+    .stat-box .lbl { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+    }
+    .section-title h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .export-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 99px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .export-btn:hover { background: #dcfce7; }
+
+    .entry-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+    .entry-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.9rem;
+    }
+    .entry-item .bm { color: #0f172a; font-weight: 500; }
+    .entry-item .bn { color: #10b981; margin-top: 2px; }
+    .entry-item .meta { font-size: 11px; color: #94a3b8; margin-top: 4px; display: flex; gap: 8px; }
+
+    .empty-note {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+      padding: 1.5rem 0;
+    }
+
+    .tip-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      font-size: 13px;
+      color: #166534;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+    .tip-box i { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+
+    .suggest-box {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.85rem 1.2rem;
+      font-size: 13px;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+    .suggest-box .suggest-left { display: flex; align-items: center; gap: 10px; }
+    .suggest-box i { font-size: 16px; color: #64748b; flex-shrink: 0; }
+    .suggest-box b { color: #1e293b; }
+    #suggest-topic {
+      display: inline-block;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    #suggest-topic.fade-out {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    .suggest-box .suggest-refresh {
+      background: none;
+      border: none;
+      color: #64748b;
+      cursor: pointer;
+      font-size: 15px;
+      padding: 4px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      transition: background 0.15s, color 0.15s;
+    }
+    .suggest-box .suggest-refresh:hover { background: #e2e8f0; color: #1e293b; }
+
+    footer {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.8;
+    }
+    footer span { color: #10b981; font-weight: 600; }
+
+    @media (max-width: 640px) {
+      .page-hero { padding: 2.5rem 1.25rem 2rem; }
+      .page-hero h1 { font-size: 26px; }
+      .main { padding: 0 1rem; margin-top: 1.8rem; }
+      .stats-row { flex-direction: column; }
+    }
+
+    .main {
+      max-width: 1080px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      align-items: start;
+      gap: 1.75rem;
+    }
+    .main-content { min-width: 0; }
+
+    .sidebar { position: sticky; top: 84px; display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .sidebar-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+    }
+    .sidebar-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 1rem;
+    }
+    .sidebar-title i { color: #f59e0b; }
+
+    .lb-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .lb-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .lb-rank {
+      width: 20px;
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-align: center;
+    }
+    .lb-rank.gold { color: #f59e0b; }
+    .lb-rank.silver { color: #94a3b8; }
+    .lb-rank.bronze { color: #b45309; }
+    .lb-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .lb-name {
+      flex: 1;
+      min-width: 0;
+      font-size: 13px;
+      font-weight: 500;
+      color: #1e293b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .lb-count {
+      font-size: 11px;
+      color: #10b981;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .main { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="speech-corpus.html">স্পিচ কর্পাস</a>
+    <a href="tools.html" class="active">টুল</a>
+    <a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <a href="index.html" class="back-link">
+      <i class="ti ti-arrow-left"></i> অনুবাদকে আলথক
+    </a>
+    <div class="hero-badge"><i class="ti ti-plus"></i> কর্পাসে অবদান থুইক</div>
+        <p>হাবিয়ে তিলয়া বিষ্ণুপ্রিয়া মণিপুরি ঠারর ওয়াহির বারনগো বরা করিক</p>
+    <div class="corpus-badge" id="corpus-count">এন্ট্রি লোড অর …</div>
+  </div>
+</div>
+
+<div class="main">
+
+<div class="main-content">
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="num" id="stat-total">০</div>
+      <div class="lbl">মোট এন্ট্রি</div>
+    </div>
+    <div class="stat-box">
+      <div class="num" id="stat-mine">০</div>
+      <div class="lbl">আপনাগাসির অবদান</div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <i class="ti ti-info-circle"></i>
+    <span>তলে ওয়াহি বা বাক্যহানি বারো ঔহার বাংলা/ইংরেজি/হিন্দি অনুবাদ ইকরিয়া জমা দিক। এন্ট্রি এহান সরাসরি corpus ডাটাবেসে জমা অইতয়।</span>
+  </div>
+
+  <div class="suggest-box">
+    <div class="suggest-left">
+      <i class="ti ti-bulb"></i>
+      <span>আপনি <b id="suggest-topic">লোড অর…</b> নিয়ে লিখতে পারেন</span>
+    </div>
+    <button class="suggest-refresh" onclick="newSuggestion(); startSuggestRotation();" title="নতুন সাজেশন">
+      <i class="ti ti-refresh"></i>
+    </button>
+  </div>
+
+  <!-- topics.csv fetch করা না গেলে (যেমন file:// থেকে খোলা হলে) এই এমবেডেড কপি থেকে সাজেশন লোড হয়।
+       topics.csv ফাইল আপডেট করলে ভবিষ্যতে এই ব্লকটাও মিলিয়ে নেওয়া ভালো। -->
+  <textarea id="topics-fallback-csv" style="display:none" aria-hidden="true">
+category,topic
+প্রকৃতি ও ভূগোল,জলবায়ু
+প্রকৃতি ও ভূগোল,আবহাওয়া
+প্রকৃতি ও ভূগোল,ভূ-প্রকৃতি
+প্রকৃতি ও ভূগোল,নদ-নদী
+প্রকৃতি ও ভূগোল,পাহাড়-পর্বত
+প্রকৃতি ও ভূগোল,সমুদ্র ও হ্রদ
+প্রকৃতি ও ভূগোল,মাটি
+প্রকৃতি ও ভূগোল,মহাকাশ
+প্রকৃতি ও ভূগোল,ঋতু
+প্রকৃতি ও ভূগোল,বন-জঙ্গল
+জীবজগৎ,পশুপাখি
+জীবজগৎ,কীটপতঙ্গ
+জীবজগৎ,উদ্ভিদ
+জীবজগৎ,গাছপালা
+জীবজগৎ,ফুল
+জীবজগৎ,অণুজীব
+জীবজগৎ,মাছ
+মানবশরীর ও স্বাস্থ্য,মানবশরীরের অঙ্গপ্রত্যঙ্গ
+মানবশরীর ও স্বাস্থ্য,রোগব্যাধি
+মানবশরীর ও স্বাস্থ্য,চিকিৎসা
+মানবশরীর ও স্বাস্থ্য,শারীরবৃত্তীয় প্রক্রিয়া
+মানবশরীর ও স্বাস্থ্য,পুষ্টি
+গৃহস্থালি ও জীবনযাপন,আসবাবপত্র
+গৃহস্থালি ও জীবনযাপন,বাসনপত্র
+গৃহস্থালি ও জীবনযাপন,পোশাক-পরিচ্ছদ
+গৃহস্থালি ও জীবনযাপন,বাসস্থান
+গৃহস্থালি ও জীবনযাপন,প্রসাধনী
+গৃহস্থালি ও জীবনযাপন,গৃহস্থালি সরঞ্জাম
+খাদ্য ও পানীয়,শস্য
+খাদ্য ও পানীয়,রান্না করা খাবার
+খাদ্য ও পানীয়,ফলমূল
+খাদ্য ও পানীয়,শাকসবজি
+খাদ্য ও পানীয়,মশলা
+খাদ্য ও পানীয়,পানীয়
+খাদ্য ও পানীয়,মিষ্টান্ন
+পেশা ও কর্মক্ষেত্র,কৃষিকাজ
+পেশা ও কর্মক্ষেত্র,ব্যবসা-বাণিজ্য
+পেশা ও কর্মক্ষেত্র,বিজ্ঞান
+পেশা ও কর্মক্ষেত্র,শিল্পকারখানা
+পেশা ও কর্মক্ষেত্র,দিনমজুরি
+পেশা ও কর্মক্ষেত্র,প্রযুক্তি
+পেশা ও কর্মক্ষেত্র,শিক্ষকতা
+পেশা ও কর্মক্ষেত্র,চিকিৎসাপেশা
+সমাজ ও সম্পর্ক,আত্মীয়তা
+সমাজ ও সম্পর্ক,সামাজিক পদমর্যাদা
+সমাজ ও সম্পর্ক,ধর্ম
+সমাজ ও সম্পর্ক,প্রথা
+সমাজ ও সম্পর্ক,উৎসব
+সমাজ ও সম্পর্ক,বিবাহ
+সমাজ ও সম্পর্ক,শোক-অনুষ্ঠান
+বিজ্ঞান ও প্রযুক্তি,যন্ত্রাংশ
+বিজ্ঞান ও প্রযুক্তি,উপাদান
+বিজ্ঞান ও প্রযুক্তি,মাধ্যম (মিডিয়া)
+বিজ্ঞান ও প্রযুক্তি,গণিত
+বিজ্ঞান ও প্রযুক্তি,পদার্থবিজ্ঞান
+বিজ্ঞান ও প্রযুক্তি,রসায়ন
+বিজ্ঞান ও প্রযুক্তি,তথ্যপ্রযুক্তি
+বিজ্ঞান ও প্রযুক্তি,ইন্টারনেট
+"শিল্প, কলা ও সংস্কৃতি",সংগীত
+"শিল্প, কলা ও সংস্কৃতি",নৃত্য
+"শিল্প, কলা ও সংস্কৃতি",সাহিত্য
+"শিল্প, কলা ও সংস্কৃতি",খেলাধুলা
+"শিল্প, কলা ও সংস্কৃতি",বিনোদন
+"শিল্প, কলা ও সংস্কৃতি",চিত্রকলা
+"শিল্প, কলা ও সংস্কৃতি",লোকসংস্কৃতি
+প্রতিষ্ঠান ও নিয়মকানুন,প্রতিষ্ঠান
+প্রতিষ্ঠান ও নিয়মকানুন,সংগঠন
+প্রতিষ্ঠান ও নিয়মকানুন,নিয়ম-কানুন
+প্রতিষ্ঠান ও নিয়মকানুন,রীতিনীতি
+প্রতিষ্ঠান ও নিয়মকানুন,আইন
+প্রতিষ্ঠান ও নিয়মকানুন,রাজনীতি
+প্রতিষ্ঠান ও নিয়মকানুন,প্রশাসন
+</textarea>
+
+  <div class="card">
+    <div class="card-section">
+      <div class="lang-label">বিষ্ণুপ্রিয়া মণিপুরি</div>
+      <textarea id="bm-input" placeholder="যেমন: কিসারে কিতা" oninput="updateSubmitState()"></textarea>
+    </div>
+    <div class="card-section">
+      <div class="lang-row-head">
+        <div class="lang-label" id="tgt-label">বাংলা অনুবাদ</div>
+        <select id="lang-select" onchange="onLangChange()">
+          <option value="bengali">বাংলা</option>
+          <option value="english">English</option>
+          <option value="hindi">हिन्दी</option>
+        </select>
+      </div>
+      <textarea id="bn-input" placeholder="যেমন: কেমন আছেন" oninput="updateSubmitState()"></textarea>
+    </div>
+    <div class="card-section name-row">
+      <div class="lang-label">আপনার নাঙহান (ঐচ্ছিক)</div>
+      <input type="text" id="name-input" placeholder="নাঙহান নাদেলে 'নাঙ নেই' দেহাদিতৈ">
+    </div>
+    <div class="card-section">
+      <button class="submit-btn" id="submit-btn" onclick="submitEntry()" disabled>
+        <i class="ti ti-send"></i> জমা দিক
+      </button>
+      <div class="status-msg" id="status-msg"></div>
+    </div>
+  </div>
+
+  <div class="card" style="padding: 1.4rem 1.6rem;">
+    <div class="section-title">
+      <h2>সাম্প্রতিক অবদান</h2>
+          </div>
+    <div class="entry-list" id="entry-list">
+      <div class="empty-note">লোড অর …</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="sidebar">
+  <div class="sidebar-card">
+    <div class="sidebar-title"><i class="ti ti-trophy"></i> শীর্ষ অবদানকারী</div>
+    <div id="leaderboard-list">
+      <div class="empty-note" style="padding: 0.5rem 0;">লোড অর …</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script>
+  const SUPABASE_URL = 'https://ksnwykmtrczvdzhoiews.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno';
+  const TABLE_NAME = 'corpus_entries';
+
+  let supabaseClient = null;
+  let myCount = 0;
+
+  const LANG_META = {
+    bengali: { label: 'বাংলা অনুবাদ', placeholder: 'যেমন: তুমি কেমন আছো', name: 'বাংলা' },
+    english: { label: 'English translation', placeholder: 'e.g. how are you', name: 'English' },
+    hindi:   { label: 'हिन्दी अनुवाद', placeholder: 'जैसे: तुम कैसे हो', name: 'हिन्दी' }
+  };
+
+  function onLangChange() {
+    const lang = document.getElementById('lang-select').value;
+    document.getElementById('tgt-label').textContent = LANG_META[lang].label;
+    document.getElementById('bn-input').placeholder = LANG_META[lang].placeholder;
+  }
+
+  const SUGGEST_TOPICS_CSV_PATH = 'topics.csv';
+  let SUGGEST_TOPICS = [];
+  let suggestRotateTimer = null;
+
+  // সাধারণ CSV লাইন পার্সার — কোটেড ফিল্ডের ভেতরের কমা সঠিকভাবে হ্যান্ডল করে
+  function parseCsvLine(line) {
+    const out = [];
+    let cur = '';
+    let inQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (inQuotes) {
+        if (ch === '"' && line[i + 1] === '"') { cur += '"'; i++; }
+        else if (ch === '"') { inQuotes = false; }
+        else { cur += ch; }
+      } else {
+        if (ch === '"') inQuotes = true;
+        else if (ch === ',') { out.push(cur); cur = ''; }
+        else cur += ch;
+      }
+    }
+    out.push(cur);
+    return out.map(s => s.trim());
+  }
+
+  function parseTopicsCsv(text) {
+    const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
+    const rows = [];
+    for (let i = 1; i < lines.length; i++) { // স্কিপ হেডার সারি
+      const parts = parseCsvLine(lines[i]);
+      if (parts.length < 2) continue;
+      const category = parts[0];
+      const topic = parts[1];
+      if (topic) rows.push({ category, topic });
+    }
+    return rows;
+  }
+
+  // fetch (যেমন file:// থেকে খোলা হলে) ব্যর্থ হলে ব্যবহারের জন্য এমবেডেড ফলব্যাক কপি
+  function loadEmbeddedFallbackTopics() {
+    const el = document.getElementById('topics-fallback-csv');
+    if (!el) return [];
+    return parseTopicsCsv(el.value || el.textContent || '');
+  }
+
+  async function loadSuggestTopics() {
+    try {
+      const res = await fetch(`${SUGGEST_TOPICS_CSV_PATH}?t=${Date.now()}`);
+      if (!res.ok) throw new Error('topics.csv লোড ব্যর্থ');
+      const text = await res.text();
+      const parsed = parseTopicsCsv(text);
+      SUGGEST_TOPICS = parsed.length ? parsed : loadEmbeddedFallbackTopics();
+    } catch (e) {
+      console.warn('বহিঃস্থ topics.csv ফেচ অইতে ব্যর্থ, এমবেডেড ফলব্যাক ব্যবহার অইতাসে:', e);
+      SUGGEST_TOPICS = loadEmbeddedFallbackTopics();
+    }
+  }
+
+  function newSuggestion() {
+    const topicEl = document.getElementById('suggest-topic');
+    if (!topicEl) return;
+    topicEl.classList.add('fade-out');
+    setTimeout(() => {
+      if (!SUGGEST_TOPICS.length) {
+        topicEl.textContent = 'যেকোনো বিষয়';
+      } else {
+        const pick = SUGGEST_TOPICS[Math.floor(Math.random() * SUGGEST_TOPICS.length)];
+        topicEl.textContent = pick.topic;
+      }
+      topicEl.classList.remove('fade-out');
+    }, 350);
+  }
+
+  function startSuggestRotation() {
+    if (suggestRotateTimer) clearInterval(suggestRotateTimer);
+    suggestRotateTimer = setInterval(newSuggestion, 5000);
+  }
+
+  function isConfigured() {
+    return SUPABASE_URL && SUPABASE_ANON_KEY &&
+      !SUPABASE_URL.includes('YOUR_SUPABASE') &&
+      !SUPABASE_ANON_KEY.includes('YOUR_SUPABASE');
+  }
+
+  function escapeHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  async function loadEntries() {
+    if (!isConfigured()) {
+      document.getElementById('config-warning').classList.add('visible');
+      document.getElementById('corpus-count').textContent = 'Supabase কনফিগার নাসে';
+      document.getElementById('entry-list').innerHTML = '<div class="empty-note">Supabase সেটআপ লয়করলে এন্ট্রিউতা এপেই দেহেইতয়।</div>';
+      return;
+    }
+
+    try {
+      const { count, error: countError } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('*', { count: 'exact', head: true });
+      if (countError) throw countError;
+
+      document.getElementById('corpus-count').textContent = `${(count || 0).toLocaleString('bn-BD')}হান এন্ট্রি জমা অসে`;
+      document.getElementById('stat-total').textContent = (count || 0).toLocaleString('bn-BD');
+
+      const { data, error } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('bm, translation, target_lang, contributor_name, created_at')
+        .order('created_at', { ascending: false })
+        .limit(15);
+      if (error) throw error;
+
+      renderEntries(data || []);
+    } catch (e) {
+      document.getElementById('corpus-count').textContent = 'ডাটা লোড করানি নারলাং';
+      document.getElementById('entry-list').innerHTML = '<div class="empty-note">এন্ট্রি লোড করতে সমস্যা দেহা দেসে। কনসোল চেক করিক।</div>';
+      console.error(e);
+    }
+  }
+
+  const LB_GRADIENTS = [
+    'linear-gradient(135deg,#f59e0b,#ef4444)',
+    'linear-gradient(135deg,#06b6d4,#3b82f6)',
+    'linear-gradient(135deg,#8b5cf6,#ec4899)',
+    'linear-gradient(135deg,#10b981,#06b6d4)',
+    'linear-gradient(135deg,#f97316,#f59e0b)',
+    'linear-gradient(135deg,#6366f1,#8b5cf6)'
+  ];
+  const BN_DIGITS = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  function toBnNum(n) {
+    return String(n).split('').map(c => (c >= '0' && c <= '9') ? BN_DIGITS[c] : c).join('');
+  }
+  function initialsOf(name) {
+    const parts = name.trim().split(/\s+/).filter(Boolean);
+    if (parts.length === 0) return '?';
+    if (parts.length === 1) return parts[0].slice(0, 2);
+    return parts[0].slice(0, 1) + parts[1].slice(0, 1);
+  }
+
+  async function loadLeaderboard() {
+    const el = document.getElementById('leaderboard-list');
+    if (!isConfigured()) {
+      el.innerHTML = '<div class="empty-note" style="padding: 0.5rem 0;">Supabase কনফিগার নাসে</div>';
+      return;
+    }
+    try {
+      // সার্ভার-সাইড এ group-by/count করা RPC — কোনো row-limit এর কারণে
+      // নতুন এন্ট্রি বাদ পড়া বা কাউন্ট আটকাই থাকার সমস্যা এখানে নেই।
+      const { data, error } = await supabaseClient.rpc('get_corpus_leaderboard');
+      if (error) throw error;
+
+      const top = (data || [])
+        .map(row => [row.contributor_name, Number(row.entry_count)])
+        .slice(0, 20);
+
+      if (top.length === 0) {
+        el.innerHTML = '<div class="empty-note" style="padding: 0.5rem 0;">এবাকাউ কোনো অবদানকারী নেই</div>';
+        return;
+      }
+
+      const rankClasses = ['gold', 'silver', 'bronze'];
+      el.innerHTML = top.map(([name, count], i) => `
+        <div class="lb-item">
+          <span class="lb-rank ${rankClasses[i] || ''}">${toBnNum(i + 1)}</span>
+          <div class="lb-avatar" style="background:${LB_GRADIENTS[i % LB_GRADIENTS.length]}">${escapeHtml(initialsOf(name))}</div>
+          <span class="lb-name">${escapeHtml(name)}</span>
+          <span class="lb-count">${toBnNum(count)} হান</span>
+        </div>
+      `).join('');
+    } catch (e) {
+      el.innerHTML = '<div class="empty-note" style="padding: 0.5rem 0;">লোড করতে সমস্যা</div>';
+      console.error(e);
+    }
+  }
+
+  function renderEntries(entries) {
+    const list = document.getElementById('entry-list');
+    if (entries.length === 0) {
+      list.innerHTML = '<div class="empty-note">এবাকাউ কোনো এন্ট্রি জমা নাসে। পয়লা অবদানকারীগ অ!</div>';
+      return;
+    }
+    list.innerHTML = entries.map(e => {
+      const meta = LANG_META[e.target_lang] || LANG_META.bengali;
+      return `
+      <div class="entry-item">
+        <div class="bm">${escapeHtml(e.bm)}</div>
+        <div class="bn">${escapeHtml(e.translation)} <span class="lang-badge">${escapeHtml(meta.name)}</span></div>
+        <div class="meta">
+          <span><i class="ti ti-user"></i> ${escapeHtml(e.contributor_name || 'নাঙহীন')}</span>
+          <span>${new Date(e.created_at).toLocaleDateString('bn-BD')}</span>
+        </div>
+      </div>
+    `;
+    }).join('');
+  }
+
+  function updateSubmitState() {
+    const bm = document.getElementById('bm-input').value.trim();
+    const bn = document.getElementById('bn-input').value.trim();
+    document.getElementById('submit-btn').disabled = !(bm && bn) || !isConfigured();
+  }
+
+  async function submitEntry() {
+    const bmEl = document.getElementById('bm-input');
+    const bnEl = document.getElementById('bn-input');
+    const nameEl = document.getElementById('name-input');
+    const bm = bmEl.value.trim();
+    const bn = bnEl.value.trim();
+    const name = nameEl.value.trim();
+    const statusEl = document.getElementById('status-msg');
+    const btn = document.getElementById('submit-btn');
+
+    if (!bm || !bn || !isConfigured()) return;
+
+    btn.disabled = true;
+    statusEl.textContent = 'জমা অর…';
+    statusEl.className = 'status-msg';
+
+    const targetLang = document.getElementById('lang-select').value;
+
+    try {
+      // ডুপ্লিকেট চেক: bm অথবা translation যেকোনো একটা মিললেই ডুপ্লিকেট ধরা হবে
+      const { data: bmMatch, error: bmError } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('id')
+        .ilike('bm', bm)
+        .limit(1);
+      if (bmError) throw bmError;
+
+      const { data: bnMatch, error: bnError } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('id')
+        .ilike('translation', bn)
+        .limit(1);
+      if (bnError) throw bnError;
+
+      const isDuplicate = (bmMatch && bmMatch.length > 0) || (bnMatch && bnMatch.length > 0);
+
+      if (isDuplicate) {
+        statusEl.textContent = 'এহান আগেই করানি অসে';
+        statusEl.className = 'status-msg err';
+        btn.disabled = false;
+        updateSubmitState();
+        return;
+      }
+
+      const { error } = await supabaseClient
+        .from(TABLE_NAME)
+        .insert([{ bm, translation: bn, target_lang: targetLang, contributor_name: name || null }]);
+      if (error) throw error;
+
+      statusEl.textContent = 'থাকাত! এন্ট্রিহান জমা অইল।';
+      statusEl.className = 'status-msg ok';
+      bmEl.value = '';
+      bnEl.value = '';
+      myCount++;
+      document.getElementById('stat-mine').textContent = myCount.toLocaleString('bn-BD');
+      newSuggestion();
+      await loadEntries();
+      loadLeaderboard();
+    } catch (e) {
+      statusEl.textContent = 'সরি, জমা নাইল। বারো হৎনা করিক ।';
+      statusEl.className = 'status-msg err';
+      console.error(e);
+    }
+    updateSubmitState();
+  }
+
+  async function exportCsv() {
+    if (!isConfigured()) {
+      alert('আগে Supabase কনফিগার করুন।');
+      return;
+    }
+    const lang = document.getElementById('export-lang-select').value;
+
+    try {
+      const { data, error } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('bm, translation')
+        .eq('target_lang', lang)
+        .order('created_at', { ascending: true });
+      if (error) throw error;
+
+      if (!data || data.length === 0) {
+        alert('ঠার এহানল এবকাউ কোনো এন্ট্রি নেই।');
+        return;
+      }
+
+      function csvField(val) {
+        const s = String(val);
+        return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+      }
+
+      const rows = [`bishnupriya_manipuri,${lang}`];
+      for (const e of data) {
+        rows.push(`${csvField(e.bm)},${csvField(e.translation)}`);
+      }
+      const csvContent = rows.join('\n');
+      const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${lang}_corpus_${new Date().toISOString().slice(0,10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      alert('এক্সপোর্ট ব্যর্থ অইল। বারো হৎনা করিক ।');
+      console.error(e);
+    }
+  }
+
+  if (isConfigured()) {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }
+  loadEntries();
+  loadLeaderboard();
+  loadSuggestTopics().then(() => { newSuggestion(); startSuggestRotation(); });
+</script>
+</body>
+</html>
