@@ -265,6 +265,14 @@
 
     currentPostId = post.id;
 
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', `https://imarthar.com/post.html?id=${encodeURIComponent(post.id)}`);
+
     document.getElementById('page-title').textContent = `${post.title} — ইমার ঠার`;
     document.getElementById('article-cover').src = post.img_url || getCategoryImage(post.tag);
     document.getElementById('article-cover').alt = post.title;
