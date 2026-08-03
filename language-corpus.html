@@ -729,7 +729,7 @@ category,topic
       const parsed = parseTopicsCsv(text);
       SUGGEST_TOPICS = parsed.length ? parsed : loadEmbeddedFallbackTopics();
     } catch (e) {
-      console.warn('বহিঃস্থ topics.csv ফেচ অইতে ব্যর্থ, এমবেডেড ফলব্যাক ব্যবহার অইতাসে:', e);
+      console.warn('বহিঃস্থ তালিকা লোড নাইল, এমবেডেড ফলব্যাক চেইক:', e);
       SUGGEST_TOPICS = loadEmbeddedFallbackTopics();
     }
   }
