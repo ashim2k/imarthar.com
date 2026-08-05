@@ -917,20 +917,12 @@ function lbColorForName(name) {
 async function loadLeaderboard() {
   const wrap = document.getElementById('leaderboard-list');
   try {
-    const { data, error } = await _supabase
-      .from('recordings')
-      .select('contributor_name')
-      .not('contributor_name', 'is', null);
+    const { data, error } = await _supabase.rpc('get_speech_corpus_leaderboard');
     if (error) throw error;
 
-    const counts = {};
-    (data || []).forEach(row => {
-      const name = (row.contributor_name || '').trim();
-      if (!name) return;
-      counts[name] = (counts[name] || 0) + 1;
-    });
-
-    const top = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 4);
+    const top = (data || [])
+      .map(row => [row.contributor_name, Number(row.entry_count)])
+      .slice(0, 4);
     renderLeaderboard(top);
   } catch (err) {
     console.error(err);
