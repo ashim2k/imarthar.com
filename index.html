@@ -68,89 +68,6 @@
 
   .hero-content { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
 
-  /* ── শীর্ষ অবদানকারী — fixed top-right card */
-  .top-leaderboard {
-    position: fixed;
-    top: 76px;
-    right: 20px;
-    width: 250px;
-    max-height: 72vh;
-    overflow-y: auto;
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 1rem 1.1rem;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
-    z-index: 150;
-  }
-  .top-leaderboard .sidebar-title {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 0.85rem;
-  }
-  .top-leaderboard .sidebar-title i { color: #f59e0b; }
-  .top-leaderboard .lb-item {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    padding: 0.45rem 0;
-    border-bottom: 1px solid #f1f5f9;
-  }
-  .top-leaderboard .lb-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .top-leaderboard .lb-rank {
-    width: 18px;
-    flex-shrink: 0;
-    font-size: 11px;
-    font-weight: 700;
-    color: #94a3b8;
-    text-align: center;
-  }
-  .top-leaderboard .lb-rank.gold { color: #f59e0b; }
-  .top-leaderboard .lb-rank.silver { color: #94a3b8; }
-  .top-leaderboard .lb-rank.bronze { color: #b45309; }
-  .top-leaderboard .lb-avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-  }
-  .top-leaderboard .lb-name {
-    flex: 1;
-    min-width: 0;
-    font-size: 12px;
-    font-weight: 500;
-    color: #1e293b;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .top-leaderboard .lb-count {
-    font-size: 10px;
-    color: #10b981;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .top-leaderboard .empty-note { font-size: 11px; color: #94a3b8; }
-
-  @media (max-width: 1150px) {
-    .top-leaderboard {
-      position: static;
-      width: calc(100% - 2rem);
-      max-width: 420px;
-      margin: 1rem auto 0;
-      max-height: none;
-    }
-  }
   .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -386,13 +303,6 @@
     <a href="discussion.html">আলোচনা</a>
   </div>
 </nav>
-
-<div class="top-leaderboard">
-  <div class="sidebar-title"><i class="ti ti-trophy"></i> ভাষা কর্পাসে শীর্ষ অবদান</div>
-  <div id="leaderboard-list">
-    <div class="empty-note">লোড অর …</div>
-  </div>
-</div>
 
 <div class="hero">
   <div class="hero-content">
@@ -635,54 +545,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', loadHomeBlogPosts);
-
-  // ── ভাষা কর্পাস — শীর্ষ অবদানকারী (সার্ভার-সাইড group-by RPC) ──
-  const LB_GRADIENTS = [
-    'linear-gradient(135deg,#f59e0b,#ef4444)',
-    'linear-gradient(135deg,#06b6d4,#3b82f6)',
-    'linear-gradient(135deg,#8b5cf6,#ec4899)',
-    'linear-gradient(135deg,#10b981,#06b6d4)',
-    'linear-gradient(135deg,#f97316,#f59e0b)',
-    'linear-gradient(135deg,#6366f1,#8b5cf6)'
-  ];
-  function lbInitialsOf(name) {
-    const parts = name.trim().split(/\s+/).filter(Boolean);
-    if (parts.length === 0) return '?';
-    if (parts.length === 1) return parts[0].slice(0, 2);
-    return parts[0].slice(0, 1) + parts[1].slice(0, 1);
-  }
-
-  async function loadLeaderboard() {
-    const el = document.getElementById('leaderboard-list');
-    if (!el) return;
-    try {
-      const { data, error } = await supabaseClientHome.rpc('get_corpus_leaderboard');
-      if (error) throw error;
-
-      const top = (data || [])
-        .map(row => [row.contributor_name, Number(row.entry_count)])
-        .slice(0, 10);
-
-      if (top.length === 0) {
-        el.innerHTML = '<div class="empty-note">এবাকাউ কোনো অবদানকারী নেই</div>';
-        return;
-      }
-
-      const rankClasses = ['gold', 'silver', 'bronze'];
-      el.innerHTML = top.map(([name, count], i) => `
-        <div class="lb-item">
-          <span class="lb-rank ${rankClasses[i] || ''}">${toBnDigitsHome(i + 1)}</span>
-          <div class="lb-avatar" style="background:${LB_GRADIENTS[i % LB_GRADIENTS.length]}">${escapeHtmlHome(lbInitialsOf(name))}</div>
-          <span class="lb-name">${escapeHtmlHome(name)}</span>
-          <span class="lb-count">${toBnDigitsHome(count)} হান</span>
-        </div>
-      `).join('');
-    } catch (e) {
-      el.innerHTML = '<div class="empty-note">লোড করতে সমস্যা</div>';
-      console.error(e);
-    }
-  }
-  document.addEventListener('DOMContentLoaded', loadLeaderboard);
 </script>
 <script>
   // ── CSV column map ──
