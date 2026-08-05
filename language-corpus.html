@@ -831,7 +831,7 @@ category,topic
 
       const top = (data || [])
         .map(row => [row.contributor_name, Number(row.entry_count)])
-        .slice(0, 20);
+        .slice(0, 30);
 
       if (top.length === 0) {
         el.innerHTML = '<div class="empty-note" style="padding: 0.5rem 0;">এবাকাউ কোনো অবদানকারী নেই</div>';
