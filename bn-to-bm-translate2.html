@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>বাংলা → বিষ্ণুপ্রিয়া মণিপুরি অনুবাদ — ইমার ঠার</title>
+  <link rel="canonical" href="https://imarthar.com/bn-to-bm-translate.html" />
+  <meta name="description" content="বাংলা বাক্যগুলার বিষ্ণুপ্রিয়া মণিপুরি অনুবাদ যোগ করিক — হাবিয়ে তিলয়া ভাষা-কর্পাসগো বরা করিক।">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: #10b981; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+    .page-hero {
+      position: relative;
+      background: radial-gradient(circle at top right, rgba(209, 250, 229, 0.4), transparent),
+                  radial-gradient(circle at bottom left, rgba(240, 253, 250, 0.4), transparent),
+                  #ffffff;
+      background-image: radial-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero::before, .page-hero::after {
+      content: '';
+      position: absolute;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: 0;
+    }
+    .page-hero::before { top: 0; left: 8%; background: #10b981; opacity: 0.12; }
+    .page-hero::after  { bottom: 0; right: 8%; background: #06b6d4; opacity: 0.12; }
+    .page-hero-content { position: relative; z-index: 1; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #64748b;
+      text-decoration: none;
+      margin-bottom: 1.2rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #10b981; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #d1fae5;
+      color: #065f46;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 99px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
+    }
+
+    .page-hero h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.4rem;
+    }
+    .page-hero h1 span { color: #10b981; }
+    .page-hero p { font-size: 15px; color: #64748b; }
+
+    .corpus-badge {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 4px 14px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 99px;
+      font-size: 12px;
+      color: #166534;
+      font-weight: 500;
+    }
+
+    .main {
+      max-width: 1080px;
+      margin: 2.5rem auto 4rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      align-items: start;
+      gap: 1.75rem;
+    }
+    .main-content { min-width: 0; }
+
+    .stats-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 1.2rem;
+    }
+    .stat-box {
+      flex: 1;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      text-align: center;
+    }
+    .stat-box .num { font-size: 1.5rem; font-weight: 800; color: #10b981; }
+    .stat-box .lbl { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+
+    .tip-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      font-size: 13px;
+      color: #166534;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+    .tip-box i { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+
+    .config-warning {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      font-size: 13px;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+    .config-warning.visible { display: block; }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+      margin-bottom: 1.5rem;
+    }
+    .card-section {
+      padding: 1.4rem 1.6rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .card-section:last-child { border-bottom: none; }
+
+    .lang-label {
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #000000;
+      margin-bottom: 0.6rem;
+    }
+
+    .lang-row-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+    .lang-row-head .lang-label { margin-bottom: 0; }
+
+    .skip-btn {
+      background: none;
+      border: 1px solid #e2e8f0;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, color 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .skip-btn:hover { background: #f1f5f9; color: #1e293b; }
+    .skip-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .bangla-display {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #0f172a;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+    }
+    .bangla-display.loading { color: #94a3b8; font-size: 0.95rem; }
+
+    .word-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 0.55rem 0.9rem;
+      width: 100%;
+    }
+    .word-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+    .word-col .w { font-size: 1.15rem; color: #0f172a; white-space: nowrap; }
+    .word-col .p {
+      font-size: 10px;
+      font-weight: 600;
+      color: #10b981;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 5px;
+      padding: 1px 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .pos-tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 11px;
+      color: #94a3b8;
+      font-family: monospace;
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      outline: none;
+      color: #0f172a;
+      font-family: inherit;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      resize: none;
+      padding: 0.7rem 0.9rem;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    textarea:focus, input[type="text"]:focus {
+      border-color: #10b981;
+      background: #fff;
+    }
+    textarea { min-height: 64px; }
+    textarea::placeholder, input::placeholder { color: #cbd5e1; }
+
+    .name-row { padding-top: 0; }
+    .name-row input { font-size: 0.92rem; }
+
+    .submit-btn {
+      width: 100%;
+      background: #10b981;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.85rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.15s;
+    }
+    .submit-btn:hover { background: #059669; }
+    .submit-btn:disabled { background: #a7f3d0; cursor: not-allowed; }
+
+    .status-msg {
+      text-align: center;
+      font-size: 13px;
+      margin-top: 0.7rem;
+      min-height: 18px;
+    }
+    .status-msg.ok { color: #059669; }
+    .status-msg.err { color: #dc2626; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+    }
+    .section-title h2 { font-size: 15px; font-weight: 700; color: #0f172a; }
+
+    .entry-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+    .entry-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.9rem;
+    }
+    .entry-item .bn { color: #0f172a; font-weight: 500; }
+    .entry-item .bm { color: #10b981; margin-top: 2px; }
+    .entry-item .meta { font-size: 11px; color: #94a3b8; margin-top: 4px; display: flex; gap: 8px; }
+
+    .empty-note {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+      padding: 1.5rem 0;
+    }
+
+    .all-done-box {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #166534;
+    }
+    .all-done-box i { font-size: 28px; margin-bottom: 8px; display: block; }
+
+    footer {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.8;
+    }
+    footer span { color: #10b981; font-weight: 600; }
+
+    .sidebar { position: sticky; top: 84px; display: flex; flex-direction: column; gap: 1.5rem; }
+    .sidebar-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+    }
+    .sidebar-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 1rem;
+    }
+    .sidebar-title i { color: #f59e0b; }
+
+    .lb-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .lb-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .lb-rank { width: 20px; flex-shrink: 0; font-size: 12px; font-weight: 700; color: #94a3b8; text-align: center; }
+    .lb-rank.gold { color: #f59e0b; }
+    .lb-rank.silver { color: #94a3b8; }
+    .lb-rank.bronze { color: #b45309; }
+    .lb-avatar {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 11px; font-weight: 700;
+    }
+    .lb-name {
+      flex: 1; min-width: 0; font-size: 13px; font-weight: 500; color: #1e293b;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .lb-count { font-size: 11px; color: #10b981; font-weight: 700; flex-shrink: 0; }
+
+    @media (max-width: 900px) {
+      .main { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+    }
+    @media (max-width: 640px) {
+      .page-hero { padding: 2.5rem 1.25rem 2rem; }
+      .page-hero h1 { font-size: 26px; }
+      .main { padding: 0 1rem; margin-top: 1.8rem; }
+      .stats-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="language-corpus.html">ভাষা কর্পাস</a>
+    <a href="speech-corpus.html">স্পিচ কর্পাস</a>
+    <a href="tools.html" class="active">টুল</a>
+    <a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html">আলোচনা</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <a href="index.html" class="back-link">
+      <i class="ti ti-arrow-left"></i> অনুবাদকে আলথক
+    </a>
+    <div class="hero-badge"><i class="ti ti-language"></i> বাংলা → বিষ্ণুপ্রিয়া মণিপুরি</div>
+    <h1>ওয়াহিগো <span>অনুবাদ</span> করিক</h1>
+    <p>তলে বাংলা বাক্যহান দেহাদেতৈ, আপনাগাসি ঔহার বিষ্ণুপ্রিয়া মণিপুরি অনুবাদহান ইকরিয়া জমা দিক</p>
+    <div class="corpus-badge" id="corpus-count">লোড অর …</div>
+  </div>
+</div>
+
+<div class="main">
+
+<div class="main-content">
+  <div class="config-warning" id="config-warning">
+    Supabase কনফিগার করানি নাসে। SUPABASE_URL আরো SUPABASE_ANON_KEY সেট করিক।
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="num" id="stat-total">০</div>
+      <div class="lbl">মোট বাক্য</div>
+    </div>
+    <div class="stat-box">
+      <div class="num" id="stat-done">০</div>
+      <div class="lbl">অনুবাদ অসে</div>
+    </div>
+    <div class="stat-box">
+      <div class="num" id="stat-remaining">০</div>
+      <div class="lbl">বাকি আসে</div>
+    </div>
+    <div class="stat-box">
+      <div class="num" id="stat-mine">০</div>
+      <div class="lbl">আপনাগাসির অবদান</div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <i class="ti ti-info-circle"></i>
+    <span>তলর বাংলা বাক্য এহানরে বিষ্ণুপ্রিয়া মণিপুরিত ইকরিয়া জমা দিক। </span>
+  </div>
+
+  <div class="card">
+    <div class="card-section">
+      <div class="lang-row-head">
+        <div class="lang-label">বাংলা</div>
+        <button class="skip-btn" id="skip-btn" onclick="skipCurrent()" disabled>
+          <i class="ti ti-arrow-right"></i> থাংনার বাক্য অহান
+        </button>
+      </div>
+      <div class="bangla-display loading" id="bangla-display">লোড অর …</div>
+      <div class="pos-tag" id="pos-tag"></div>
+    </div>
+    <div class="card-section">
+      <div class="lang-label">বিষ্ণুপ্রিয়া মণিপুরি অনুবাদ</div>
+      <textarea id="bm-input" placeholder="ওয়াহিহানর অনুবাদহান ইকরিক" oninput="updateSubmitState()" disabled></textarea>
+    </div>
+    <div class="card-section name-row">
+      <div class="lang-label">আপনার নাঙহান (ঐচ্ছিক)</div>
+      <input type="text" id="name-input" placeholder="নাঙহান নাদেলে 'নাঙহীন' দেহাদিতৈ">
+    </div>
+    <div class="card-section">
+      <button class="submit-btn" id="submit-btn" onclick="submitEntry()" disabled>
+        <i class="ti ti-send"></i> জমা দিক
+      </button>
+      <div class="status-msg" id="status-msg"></div>
+    </div>
+  </div>
+
+  <div class="card" style="padding: 1.4rem 1.6rem;">
+    <div class="section-title">
+      <h2>সাম্প্রতিক অনুবাদ</h2>
+    </div>
+    <div class="entry-list" id="entry-list">
+      <div class="empty-note">লোড অর …</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="sidebar">
+  <div class="sidebar-card">
+    <div class="sidebar-title"><i class="ti ti-trophy"></i> শীর্ষ অবদানকারী</div>
+    <div id="leaderboard-list">
+      <div class="empty-note" style="padding: 0.5rem 0;">লোড অর …</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script>
+  // বর্তমান language-corpus.html পেজের মতো একই Supabase প্রজেক্ট — শুধু নতুন টেবিল
+  const SUPABASE_URL = 'https://ksnwykmtrczvdzhoiews.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno';
+  const TABLE_NAME = 'bn_to_bm_pairs';
+
+  let supabaseClient = null;
+  let myCount = 0;
+  let current = null; // { id, bangla, pos }
+  let lastId = null;  // শেষ যে বাক্যহান দেহাদেসি ঔহার id — সিরিয়াল রাখার লাগি
+
+  function isConfigured() {
+    return SUPABASE_URL && SUPABASE_ANON_KEY &&
+      !SUPABASE_URL.includes('YOUR_SUPABASE') &&
+      !SUPABASE_ANON_KEY.includes('YOUR_SUPABASE');
+  }
+
+  function escapeHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  // প্রত্যেকটা শব্দর নিচে ঔহার POS ট্যাগহান দেহাদেতৈ (মূল টেবিলর pos কলাম থেকে)।
+  // pos কলামহান স্পেস-সেপারেটেড, বাক্যর শব্দসংখ্যার সাথে মিলে গেলেই word-by-word বসে;
+  // না মিললে (পুরান কিছু রো-তে হৈতে পারে) পুরা ট্যাগহান একলগে তলে দেহাদেয়।
+  function renderBanglaWithPos(bangla, pos) {
+    const words = bangla.trim().split(/\s+/);
+    const tags = (pos || '').trim().split(/\s+/).filter(Boolean);
+
+    if (tags.length !== words.length) {
+      return `<div class="word-row">${words.map(w => `
+        <div class="word-col"><span class="w">${escapeHtml(w)}</span></div>
+      `).join('')}</div>` +
+      (tags.length ? `<div class="pos-tag">${escapeHtml(pos)}</div>` : '');
+    }
+
+    return `<div class="word-row">${words.map((w, i) => `
+      <div class="word-col">
+        <span class="w">${escapeHtml(w)}</span>
+        <span class="p">${escapeHtml(tags[i])}</span>
+      </div>
+    `).join('')}</div>`;
+  }
+
+  const BN_DIGITS = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  function toBnNum(n) {
+    return String(n).split('').map(c => (c >= '0' && c <= '9') ? BN_DIGITS[c] : c).join('');
+  }
+
+  async function updateStats() {
+    try {
+      const { count: total } = await supabaseClient
+        .from(TABLE_NAME).select('*', { count: 'exact', head: true });
+      const { count: done } = await supabaseClient
+        .from(TABLE_NAME).select('*', { count: 'exact', head: true }).not('bm', 'is', null);
+
+      const totalN = total || 0;
+      const doneN = done || 0;
+      document.getElementById('stat-total').textContent = toBnNum(totalN);
+      document.getElementById('stat-done').textContent = toBnNum(doneN);
+      document.getElementById('stat-remaining').textContent = toBnNum(totalN - doneN);
+      document.getElementById('corpus-count').textContent = `${toBnNum(doneN)} / ${toBnNum(totalN)} বাক্য অনুবাদ অসে`;
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async function loadNextPending() {
+    const displayEl = document.getElementById('bangla-display');
+    const posEl = document.getElementById('pos-tag');
+    const bmEl = document.getElementById('bm-input');
+    const skipBtn = document.getElementById('skip-btn');
+
+    displayEl.textContent = 'লোড অর …';
+    displayEl.classList.add('loading');
+    posEl.textContent = '';
+    bmEl.value = '';
+    current = null;
+    updateSubmitState();
+
+    try {
+      // সিরিয়ালি: id অনুসারে সাজিয়ে শেষ দেহানির পরেরহান আনতেই।
+      async function fetchPending(afterId) {
+        let q = supabaseClient
+          .from(TABLE_NAME)
+          .select('id, bangla, pos')
+          .is('bm', null)
+          .order('id', { ascending: true })
+          .limit(1);
+        if (afterId !== null) q = q.gt('id', afterId);
+        const { data, error } = await q;
+        if (error) throw error;
+        return data;
+      }
+
+      let data = await fetchPending(lastId);
+      // তলে আর কিচ্ছু নাসিলে (স্কিপ করা বাক্য থাকতে পারে) — পয়লাত্তু বারো হুরু কর
+      if ((!data || data.length === 0) && lastId !== null) {
+        lastId = null;
+        data = await fetchPending(null);
+      }
+
+      if (!data || data.length === 0) {
+        current = null;
+        displayEl.classList.remove('loading');
+        displayEl.innerHTML = '<div class="all-done-box"><i class="ti ti-confetti"></i>সব বাক্যর অনুবাদ অইগেসে! থাকাত অবদানর লাগিসে।</div>';
+        bmEl.disabled = true;
+        skipBtn.disabled = true;
+        return;
+      }
+
+      current = data[0];
+      lastId = current.id;
+      displayEl.classList.remove('loading');
+      displayEl.innerHTML = renderBanglaWithPos(current.bangla, current.pos);
+      posEl.textContent = '';
+      bmEl.disabled = false;
+      skipBtn.disabled = false;
+      updateSubmitState();
+    } catch (e) {
+      displayEl.classList.remove('loading');
+      displayEl.textContent = 'লোড করতে সমস্যা অসে। পাতাহান রিফ্রেশ করিক।';
+      console.error(e);
+    }
+  }
+
+  function skipCurrent() {
+    loadNextPending();
+  }
+
+  function updateSubmitState() {
+    const bm = document.getElementById('bm-input').value.trim();
+    document.getElementById('submit-btn').disabled = !(bm && current && isConfigured());
+  }
+
+  async function submitEntry() {
+    if (!current) return;
+    const bmEl = document.getElementById('bm-input');
+    const nameEl = document.getElementById('name-input');
+    const bm = bmEl.value.trim();
+    const name = nameEl.value.trim();
+    const statusEl = document.getElementById('status-msg');
+    const btn = document.getElementById('submit-btn');
+
+    if (!bm) return;
+
+    btn.disabled = true;
+    statusEl.textContent = 'জমা অর…';
+    statusEl.className = 'status-msg';
+
+    try {
+      // অ্যাটমিক claim: bm এখনও NULL থাকলেই কেবল আপডেট অইতয়।
+      // অন্য কেহ একইসাথে এই রোহান আগে ধরিলে, নিচের data খালি থাকতয়।
+      const { data, error } = await supabaseClient
+        .from(TABLE_NAME)
+        .update({ bm, contributor_name: name || null, created_at: new Date().toISOString() })
+        .eq('id', current.id)
+        .is('bm', null)
+        .select();
+      if (error) throw error;
+
+      if (!data || data.length === 0) {
+        // রোহান সত্যিই আপডেট অসেনি নানি — ডেটাবেইসত বারো হাবিয়া চ
+        const { data: check } = await supabaseClient
+          .from(TABLE_NAME).select('bm').eq('id', current.id).maybeSingle();
+
+        if (check && check.bm === bm) {
+          // লেহা অসে, খালি RETURNING-র রো ফিরত নাসিল
+        } else if (check && check.bm) {
+          statusEl.textContent = 'সরি, এহান আগেই কেহ করিফেলাসে। পরেরহান লোড অর…';
+          statusEl.className = 'status-msg err';
+          await loadNextPending();
+          btn.disabled = false;
+          return;
+        } else {
+          // bm এবাকাউ NULL — মানে UPDATE ডেটাবেইসে পৌঁছেও লেহা নাইল (RLS ব্লক করেসে)
+          statusEl.textContent = 'জমা নাইল: ডেটাবেইসে লেহার অনুমতি নেই (RLS UPDATE policy)।';
+          statusEl.className = 'status-msg err';
+          btn.disabled = false;
+          return;
+        }
+      }
+
+      statusEl.textContent = 'থাকাত! অনুবাদহান জমা অইল।';
+      statusEl.className = 'status-msg ok';
+      myCount++;
+      document.getElementById('stat-mine').textContent = toBnNum(myCount);
+      await Promise.all([updateStats(), loadEntries(), loadLeaderboard()]);
+      await loadNextPending();
+    } catch (e) {
+      statusEl.textContent = 'সরি, জমা নাইল — ' + (e && (e.message || e.hint) ? (e.message || e.hint) : 'বারো হৎনা করিক।');
+      statusEl.className = 'status-msg err';
+      console.error(e);
+      btn.disabled = false;
+    }
+  }
+
+  async function loadEntries() {
+    try {
+      const { data, error } = await supabaseClient
+        .from(TABLE_NAME)
+        .select('bangla, bm, contributor_name, created_at')
+        .not('bm', 'is', null)
+        .order('created_at', { ascending: false })
+        .limit(15);
+      if (error) throw error;
+
+      const list = document.getElementById('entry-list');
+      if (!data || data.length === 0) {
+        list.innerHTML = '<div class="empty-note">এবাকাউ কোনো অনুবাদ জমা নাসে। পয়লা অবদানকারীগ অ!</div>';
+        return;
+      }
+      list.innerHTML = data.map(e => `
+        <div class="entry-item">
+          <div class="bn">${escapeHtml(e.bangla)}</div>
+          <div class="bm">${escapeHtml(e.bm)}</div>
+          <div class="meta">
+            <span><i class="ti ti-user"></i> ${escapeHtml(e.contributor_name || 'নাঙহীন')}</span>
+            <span>${e.created_at ? new Date(e.created_at).toLocaleDateString('bn-BD') : ''}</span>
+          </div>
+        </div>
+      `).join('');
+    } catch (e) {
+      document.getElementById('entry-list').innerHTML = '<div class="empty-note">এন্ট্রি লোড করতে সমস্যা দেহা দেসে।</div>';
+      console.error(e);
+    }
+  }
+
+  const LB_GRADIENTS = [
+    'linear-gradient(135deg,#f59e0b,#ef4444)',
+    'linear-gradient(135deg,#06b6d4,#3b82f6)',
+    'linear-gradient(135deg,#8b5cf6,#ec4899)',
+    'linear-gradient(135deg,#10b981,#06b6d4)',
+    'linear-gradient(135deg,#f97316,#f59e0b)',
+    'linear-gradient(135deg,#6366f1,#8b5cf6)'
+  ];
+  function initialsOf(name) {
+    const parts = name.trim().split(/\s+/).filter(Boolean);
+    if (parts.length === 0) return '?';
+    if (parts.length === 1) return parts[0].slice(0, 2);
+    return parts[0].slice(0, 1) + parts[1].slice(0, 1);
+  }
+
+  async function loadLeaderboard() {
+    const el = document.getElementById('leaderboard-list');
+    try {
+      const { data, error } = await supabaseClient.rpc('get_bn_to_bm_leaderboard');
+      if (error) throw error;
+
+      const top = (data || [])
+        .map(row => [row.contributor_name, Number(row.entry_count)])
+        .slice(0, 30);
+
+      if (top.length === 0) {
+        el.innerHTML = '<div class="empty-note" style="padding: 0.5rem 0;">এবাকাউ কোনো অবদানকারী নেই</div>';
+        return;
+      }
+
+      const rankClasses = ['gold', 'silver', 'bronze'];
+      el.innerHTML = top.map(([name, count], i) => `
+        <div class="lb-item">
+          <span class="lb-rank ${rankClasses[i] || ''}">${toBnNum(i + 1)}</span>
+          <div class="lb-avatar" style="background:${LB_GRADIENTS[i % LB_GRADIENTS.length]}">${escapeHtml(initialsOf(name))}</div>
+          <span class="lb-name">${escapeHtml(name)}</span>
+          <span class="lb-count">${toBnNum(count)} হান</span>
+        </div>
+      `).join('');
+    } catch (e) {
+      el.innerHTML = '<div class="empty-note" style="padding: 0.5rem 0;">লোড করতে সমস্যা</div>';
+      console.error(e);
+    }
+  }
+
+  async function init() {
+    if (!isConfigured()) {
+      document.getElementById('config-warning').classList.add('visible');
+      document.getElementById('corpus-count').textContent = 'Supabase কনফিগার নাসে';
+      return;
+    }
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    await Promise.all([updateStats(), loadEntries(), loadLeaderboard()]);
+    await loadNextPending();
+  }
+
+  init();
+</script>
+</body>
+</html>
