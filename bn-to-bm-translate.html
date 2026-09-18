@@ -293,23 +293,6 @@
     }
     .section-title h2 { font-size: 15px; font-weight: 700; color: #0f172a; }
 
-    .export-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      color: #166534;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 99px;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.15s;
-    }
-    .export-btn:hover { background: #dcfce7; }
-
     .entry-list {
       display: flex;
       flex-direction: column;
@@ -494,9 +477,6 @@
   <div class="card" style="padding: 1.4rem 1.6rem;">
     <div class="section-title">
       <h2>সাম্প্রতিক অনুবাদ</h2>
-      <button class="export-btn" onclick="exportDoneCsv()">
-        <i class="ti ti-download"></i> CSV এক্সপোর্ট
-      </button>
     </div>
     <div class="entry-list" id="entry-list">
       <div class="empty-note">লোড অর …</div>
@@ -530,6 +510,7 @@
   let supabaseClient = null;
   let myCount = 0;
   let current = null; // { id, bangla, pos }
+  let lastId = null;  // শেষ যে বাক্যহান দেহাদেসি ঔহার id — সিরিয়াল রাখার লাগি
 
   function isConfigured() {
     return SUPABASE_URL && SUPABASE_ANON_KEY &&
@@ -580,8 +561,26 @@
     updateSubmitState();
 
     try {
-      const { data, error } = await supabaseClient.rpc('get_random_pending_bn_to_bm');
-      if (error) throw error;
+      // সিরিয়ালি: id অনুসারে সাজিয়ে শেষ দেহানির পরেরহান আনতেই।
+      async function fetchPending(afterId) {
+        let q = supabaseClient
+          .from(TABLE_NAME)
+          .select('id, bangla, pos')
+          .is('bm', null)
+          .order('id', { ascending: true })
+          .limit(1);
+        if (afterId !== null) q = q.gt('id', afterId);
+        const { data, error } = await q;
+        if (error) throw error;
+        return data;
+      }
+
+      let data = await fetchPending(lastId);
+      // তলে আর কিচ্ছু নাসিলে (স্কিপ করা বাক্য থাকতে পারে) — পয়লাত্তু বারো হুরু কর
+      if ((!data || data.length === 0) && lastId !== null) {
+        lastId = null;
+        data = await fetchPending(null);
+      }
 
       if (!data || data.length === 0) {
         current = null;
@@ -593,6 +592,7 @@
       }
 
       current = data[0];
+      lastId = current.id;
       displayEl.classList.remove('loading');
       displayEl.textContent = current.bangla;
       posEl.textContent = current.pos || '';
@@ -642,11 +642,25 @@
       if (error) throw error;
 
       if (!data || data.length === 0) {
-        statusEl.textContent = 'সরি, এহান আগেই কেহ করিফেলাসে। পরেরহান লোড অর…';
-        statusEl.className = 'status-msg err';
-        await loadNextPending();
-        btn.disabled = false;
-        return;
+        // রোহান সত্যিই আপডেট অসেনি নানি — ডেটাবেইসত বারো হাবিয়া চ
+        const { data: check } = await supabaseClient
+          .from(TABLE_NAME).select('bm').eq('id', current.id).maybeSingle();
+
+        if (check && check.bm === bm) {
+          // লেহা অসে, খালি RETURNING-র রো ফিরত নাসিল
+        } else if (check && check.bm) {
+          statusEl.textContent = 'সরি, এহান আগেই কেহ করিফেলাসে। পরেরহান লোড অর…';
+          statusEl.className = 'status-msg err';
+          await loadNextPending();
+          btn.disabled = false;
+          return;
+        } else {
+          // bm এবাকাউ NULL — মানে UPDATE ডেটাবেইসে পৌঁছেও লেহা নাইল (RLS ব্লক করেসে)
+          statusEl.textContent = 'জমা নাইল: ডেটাবেইসে লেহার অনুমতি নেই (RLS UPDATE policy)।';
+          statusEl.className = 'status-msg err';
+          btn.disabled = false;
+          return;
+        }
       }
 
       statusEl.textContent = 'থাকাত! অনুবাদহান জমা অইল।';
@@ -656,7 +670,7 @@
       await Promise.all([updateStats(), loadEntries(), loadLeaderboard()]);
       await loadNextPending();
     } catch (e) {
-      statusEl.textContent = 'সরি, জমা নাইল। বারো হৎনা করিক।';
+      statusEl.textContent = 'সরি, জমা নাইল — ' + (e && (e.message || e.hint) ? (e.message || e.hint) : 'বারো হৎনা করিক।');
       statusEl.className = 'status-msg err';
       console.error(e);
       btn.disabled = false;
@@ -735,43 +749,6 @@
       `).join('');
     } catch (e) {
       el.innerHTML = '<div class="empty-note" style="padding: 0.5rem 0;">লোড করতে সমস্যা</div>';
-      console.error(e);
-    }
-  }
-
-  async function exportDoneCsv() {
-    try {
-      const { data, error } = await supabaseClient
-        .from(TABLE_NAME)
-        .select('bangla, bm')
-        .not('bm', 'is', null)
-        .order('created_at', { ascending: true });
-      if (error) throw error;
-
-      if (!data || data.length === 0) {
-        alert('এবাকাউ কোনো অনুবাদ নেই।');
-        return;
-      }
-
-      function csvField(val) {
-        const s = String(val);
-        return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-      }
-
-      const rows = ['bn,bm'];
-      for (const e of data) rows.push(`${csvField(e.bangla)},${csvField(e.bm)}`);
-      const csvContent = rows.join('\n');
-      const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `done_BN_to_BM_dataset_${new Date().toISOString().slice(0,10)}.csv`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    } catch (e) {
-      alert('এক্সপোর্ট ব্যর্থ অইল। বারো হৎনা করিক।');
       console.error(e);
     }
   }
