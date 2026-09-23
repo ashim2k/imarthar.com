@@ -29,6 +29,12 @@ h1{font-size:30px;line-height:1.4;color:#0f172a;margin-bottom:1.25rem}
 .av{width:40px;height:40px;border-radius:50%;background:#10b981;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .an{font-weight:700;color:#0f172a;font-size:15px}.ai{font-size:13px;color:#94a3b8}
 .content{font-size:17px;color:#334155;line-height:2}.content p{margin-bottom:1.1rem}
+
+.rich{font-family:'Noto Serif Bengali',Georgia,serif;line-height:1.95;color:#334155}
+.rich p,.rich div{margin-bottom:1rem}.rich h2{font-size:1.4em;margin:1.4rem 0 .6rem;color:#0f172a}.rich h3{font-size:1.15em;margin:1.2rem 0 .5rem;color:#0f172a}
+.rich blockquote{border-left:4px solid #10b981;background:#f0fdf4;padding:.6rem 1rem;margin:1rem 0;border-radius:0 10px 10px 0;color:#065f46}
+.rich ul,.rich ol{margin:0 0 1rem 1.5rem}.rich a{color:#059669;text-decoration:underline}
+.content{font-size:17px}.kws{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #e2e8f0}.kws a{font-size:12.5px;font-weight:600;background:#f1f5f9;color:#475569;padding:5px 12px;border-radius:99px;text-decoration:none}.kws a:hover{background:#10b981;color:#fff}
 .cta{margin-top:1.5rem;text-align:center;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:16px;padding:1.5rem;font-size:14px;color:#166534}
 .cta a{display:inline-block;margin-top:.6rem;background:#10b981;color:#fff;text-decoration:none;font-weight:600;padding:9px 18px;border-radius:10px}
 .state{max-width:500px;margin:4rem auto;text-align:center;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:3rem 2rem;color:#64748b;font-size:14px}
@@ -55,16 +61,19 @@ footer{background:#fff;border-top:1px solid #e2e8f0;padding:2.5rem 2rem;text-ali
       <div class="badges" id="badges"></div>
       <h1 class="serif" id="title"></h1>
       <div class="author"><div class="av" id="av"></div><div><div class="an" id="an"></div><div class="ai" id="ai"></div></div></div>
-      <div class="content serif" id="content"></div>
+      <div class="content rich" id="content"></div><div class="kws" id="kws"></div>
     </div>
   </article>
   <div class="cta">আপনিও লিখুন — মাতৃভাষায় আপনার লেখা জমা দিন।<br><a href="competition.html#submit">প্রতিযোগিতায় অংশ নিন</a></div>
 </div>
 <footer>© ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br><small style="color:#94a3b8">Preserving heritage through advanced computing systems.</small></footer>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const sb=supabase.createClient('https://ksnwykmtrczvdzhoiews.supabase.co','sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno');
-const COLS='id,participant_name,category,institution_level,institution,age,language_variant,title,body,img_url,is_winner,published_at';
+const COLS='id,participant_name,category,institution_level,institution,age,language_variant,topic,tags,title,body,img_url,is_winner,published_at';
+const clean=h=>DOMPurify.sanitize(h,{ALLOWED_TAGS:['p','br','b','strong','i','em','u','s','h2','h3','blockquote','ul','ol','li','a','font','div','span'],ALLOWED_ATTR:['href','color','target','rel'],ALLOWED_URI_REGEXP:/^(https?:|mailto:)/i});
+DOMPurify.addHook('afterSanitizeAttributes',n=>{if(n.tagName==='A'){n.setAttribute('target','_blank');n.setAttribute('rel','noopener noreferrer nofollow');}});
 const $=id=>document.getElementById(id);
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const bn=n=>String(n).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
@@ -81,6 +90,7 @@ const MO=['জানুয়ারি','ফেব্রুয়ারি','ম
   $('win').style.display=p.is_winner?'block':'none';
   const b=[`<span class="badge">${p.category==='student'?'শিক্ষার্থী বিভাগ':'উন্মুক্ত বিভাগ'}</span>`];
   if(p.category==='student'&&p.institution_level)b.push(`<span class="badge alt">${LV[p.institution_level]}</span>`);
+  if(p.topic)b.push(`<span class="badge">${esc(p.topic)}</span>`);
   if(p.language_variant)b.push(`<span class="badge alt">${esc(p.language_variant)}</span>`);
   $('badges').innerHTML=b.join('');
   $('title').textContent=p.title;
@@ -92,7 +102,9 @@ const MO=['জানুয়ারি','ফেব্রুয়ারি','ম
   if(p.age)info.push('বয়স '+bn(p.age));
   if(p.published_at){const d=new Date(p.published_at);info.push(`${bn(d.getDate())} ${MO[d.getMonth()]} ${bn(d.getFullYear())}`);}
   $('ai').textContent=info.join(' • ');
-  $('content').innerHTML=String(p.body).split(/\n+/).map(l=>l.trim()).filter(Boolean).map(l=>`<p>${esc(l)}</p>`).join('');
+  $('content').innerHTML=clean(p.body);
+  $('kws').innerHTML=(p.tags||[]).map(t=>`<a href="competition.html?tag=${encodeURIComponent(t)}#gallery">#${esc(t)}</a>`).join('');
+  if(!(p.tags||[]).length)$('kws').style.display='none';
   $('state').style.display='none';$('wrap').style.display='block';
 })();
 addEventListener('scroll',()=>{const h=document.body.scrollHeight-innerHeight;$('bar').style.width=(h>0?Math.min(100,scrollY/h*100):0)+'%'});

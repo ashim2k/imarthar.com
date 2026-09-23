@@ -75,6 +75,26 @@ label.fl em{color:#ef4444;font-style:normal}label.fl small{font-weight:400;color
 .empty{grid-column:1/-1;text-align:center;color:#94a3b8;padding:2.5rem 1rem;background:#fff;border:1px dashed var(--line);border-radius:16px;font-size:14px}
 footer{background:#fff;border-top:1px solid var(--line);padding:2.5rem 2rem;text-align:center;font-size:13px;color:var(--mut);margin-top:5rem}
 footer span{color:var(--g);font-weight:600}
+
+.rich{font-family:'Noto Serif Bengali',Georgia,serif;line-height:1.95;color:#334155}
+.rich p,.rich div{margin-bottom:1rem}.rich h2{font-size:1.4em;margin:1.4rem 0 .6rem;color:#0f172a}.rich h3{font-size:1.15em;margin:1.2rem 0 .5rem;color:#0f172a}
+.rich blockquote{border-left:4px solid #10b981;background:#f0fdf4;padding:.6rem 1rem;margin:1rem 0;border-radius:0 10px 10px 0;color:#065f46}
+.rich ul,.rich ol{margin:0 0 1rem 1.5rem}.rich a{color:#059669;text-decoration:underline}
+
+.ed-wrap{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}.ed-wrap:focus-within{border-color:var(--g)}
+.ed-bar{display:flex;flex-wrap:wrap;gap:4px;padding:8px;border-bottom:1px solid var(--line);background:#f8fafc;position:relative}
+.eb{border:none;background:transparent;min-width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:16px;color:#334155;display:inline-flex;align-items:center;justify-content:center;font-family:inherit}
+.eb:hover{background:#e2e8f0}.eb.on{background:#d1fae5;color:#065f46}.sep{width:1px;background:var(--line);margin:4px 2px}
+.pal{display:none;position:absolute;top:46px;left:8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;gap:8px;flex-wrap:wrap;width:190px;z-index:20;box-shadow:0 10px 25px -5px rgba(0,0,0,.15)}.pal.on{display:flex}
+.sw{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer}
+.ed{min-height:300px;max-height:620px;overflow:auto;padding:14px 16px;outline:none;font-size:16px}
+.ed:empty:before{content:attr(data-ph);color:#94a3b8}
+.tagbox{display:flex;flex-wrap:wrap;gap:6px;border:1px solid var(--line);border-radius:10px;padding:6px 8px;background:#fff}.tagbox:focus-within{border-color:var(--g)}
+.tagbox input{border:none;outline:none;flex:1;min-width:140px;font-size:14px;font-family:inherit;padding:4px}
+.kw{background:#f0fdf4;color:#166534;font-size:12.5px;font-weight:600;padding:3px 6px 3px 10px;border-radius:99px;display:inline-flex;gap:4px;align-items:center}.kw button{border:none;background:none;cursor:pointer;color:#166534;font-size:14px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.tags .tag{margin:0;align-self:auto}.tag.alt{background:#f1f5f9;color:#475569}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:1.25rem}.filters .chips{margin:0}
+#tagnote{font-size:13px;color:#166534;background:#f0fdf4;border-radius:10px;padding:8px 12px;margin-bottom:1rem;display:none}
 @keyframes spin{to{transform:rotate(360deg)}}.spinning{display:inline-block;animation:spin .8s linear infinite}
 @media(max-width:640px){.container{padding:0 1.25rem}.hero{padding:3rem 1.25rem}.row,.cats{grid-template-columns:1fr}.nav-links{gap:14px}nav{padding:0 1rem}.form-card{padding:1.25rem}}
 </style>
@@ -133,8 +153,39 @@ footer span{color:var(--g);font-weight:600}
       </div>
       <div class="fg"><label class="fl">যোগাযোগ (ফোন বা ইমেইল) <em>*</em></label><input class="fi" id="contact" maxlength="120"><div class="note">বিজয়ীদের সঙ্গে যোগাযোগের জন্য। এটি কোথাও প্রকাশ করা হবে না।</div></div>
       <div class="fg"><label class="fl">লেখার শিরোনাম <em>*</em></label><input class="fi serif" id="title" maxlength="150"></div>
+      <div class="row fg">
+        <div><label class="fl">লেখার বিষয় (ক্যাটাগরি) <em>*</em></label><select class="fs" id="topic"></select></div>
+        <div><label class="fl">কীওয়ার্ড / ট্যাগ <small>(ঐচ্ছিক, সর্বোচ্চ ৫টি)</small></label><div class="tagbox" id="tagbox"><input id="taginp" placeholder="লিখে এন্টার বা কমা চাপুন"></div></div>
+      </div>
       <div class="fg"><label class="fl">ছবি <small>(ঐচ্ছিক, সর্বোচ্চ ৫ এমবি)</small></label><input class="fi" id="img" type="file" accept="image/*"></div>
-      <div class="fg"><label class="fl">মূল লেখা <em>*</em></label><textarea class="ft" id="body" placeholder="এখানে আপনার লেখা শুরু করুন…"></textarea></div>
+      <div class="fg"><label class="fl">মূল লেখা <em>*</em></label>
+        <div class="ed-wrap">
+          <div class="ed-bar" id="bar">
+            <button type="button" class="eb" data-c="bold" title="বোল্ড"><b>B</b></button>
+            <button type="button" class="eb" data-c="italic" title="ইটালিক"><i>I</i></button>
+            <button type="button" class="eb" data-c="underline" title="আন্ডারলাইন"><u>U</u></button>
+            <button type="button" class="eb" data-c="strikeThrough" title="কাটা লেখা"><s>S</s></button>
+            <span class="sep"></span>
+            <button type="button" class="eb" data-b="h2" title="বড় শিরোনাম">H2</button>
+            <button type="button" class="eb" data-b="h3" title="ছোট শিরোনাম">H3</button>
+            <button type="button" class="eb" data-b="p" title="সাধারণ অনুচ্ছেদ"><i class="ti ti-pilcrow"></i></button>
+            <button type="button" class="eb" data-b="blockquote" title="উদ্ধৃতি"><i class="ti ti-quote"></i></button>
+            <span class="sep"></span>
+            <button type="button" class="eb" data-c="insertUnorderedList" title="বুলেট তালিকা"><i class="ti ti-list"></i></button>
+            <button type="button" class="eb" data-c="insertOrderedList" title="ক্রমিক তালিকা"><i class="ti ti-list-numbers"></i></button>
+            <span class="sep"></span>
+            <button type="button" class="eb" id="colbtn" title="লেখার রং"><i class="ti ti-palette"></i></button>
+            <button type="button" class="eb" id="linkbtn" title="লিংক বসান"><i class="ti ti-link"></i></button>
+            <button type="button" class="eb" data-c="unlink" title="লিংক সরান"><i class="ti ti-link-off"></i></button>
+            <span class="sep"></span>
+            <button type="button" class="eb" data-c="removeFormat" title="ফরম্যাটিং মুছুন"><i class="ti ti-clear-formatting"></i></button>
+            <button type="button" class="eb" data-c="undo" title="আনডু"><i class="ti ti-arrow-back-up"></i></button>
+            <button type="button" class="eb" data-c="redo" title="রিডু"><i class="ti ti-arrow-forward-up"></i></button>
+            <div class="pal" id="pal"></div>
+          </div>
+          <div class="ed rich" id="body" contenteditable="true" data-ph="এখানে আপনার লেখা শুরু করুন…"></div>
+        </div>
+        <div class="note">অন্য জায়গা থেকে কপি করলে শুধু লেখাটি বসবে; ফরম্যাটিং এখানে দিন।</div></div>
       <button class="btn" id="btn" onclick="submitEntry()"><i class="ti ti-send"></i> জমা দিন</button>
     </div>
   </section>
@@ -142,19 +193,62 @@ footer span{color:var(--g);font-weight:600}
   <section class="sec">
     <h2 class="serif">প্রকাশিত লেখা</h2>
     <p>🏆 চিহ্নিত লেখাগুলো বিজয়ী।</p>
-    <div class="chips">
+    <div id="tagnote"></div>
+    <div class="filters"><div class="chips">
       <button class="chip active" data-f="all">সব</button><button class="chip" data-f="student">শিক্ষার্থী বিভাগ</button><button class="chip" data-f="open">উন্মুক্ত বিভাগ</button>
-    </div>
+    </div><select class="fs" id="topicf" style="max-width:230px"></select></div>
     <div class="grid" id="gallery"><div class="empty">লোড হচ্ছে…</div></div>
   </section>
 </div>
 
 <footer>© ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br><small style="color:#94a3b8">Preserving heritage through advanced computing systems.</small></footer>
 
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const sb=supabase.createClient('https://ksnwykmtrczvdzhoiews.supabase.co','sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno');
-const COLS='id,participant_name,category,institution_level,institution,age,title,body,img_url,is_winner,published_at';
+const COLS='id,participant_name,category,institution_level,institution,age,topic,tags,title,body,img_url,is_winner,published_at';
+const clean=h=>DOMPurify.sanitize(h,{ALLOWED_TAGS:['p','br','b','strong','i','em','u','s','h2','h3','blockquote','ul','ol','li','a','font','div','span'],ALLOWED_ATTR:['href','color','target','rel'],ALLOWED_URI_REGEXP:/^(https?:|mailto:)/i});
+DOMPurify.addHook('afterSanitizeAttributes',n=>{if(n.tagName==='A'){n.setAttribute('target','_blank');n.setAttribute('rel','noopener noreferrer nofollow');}});
+const TOPICS=['ভাষা ও লিপি','সাহিত্য ও কবিতা','ইতিহাস','সংস্কৃতি ও ঐতিহ্য','উৎসব ও ধর্মীয় অনুষ্ঠান','নৃত্য ও সংগীত','খাদ্য, পোশাক ও শিল্প','সমাজ ও জীবনযাপন','শিক্ষা','প্রযুক্তি ও ভাষার ভবিষ্যৎ','ব্যক্তিগত অভিজ্ঞতা ও স্মৃতিকথা','অন্যান্য'];
+const COLORS=['#0f172a','#dc2626','#ea580c','#ca8a04','#16a34a','#0891b2','#2563eb','#9333ea','#db2777','#64748b'];
+const tagf=new URLSearchParams(location.search).get('tag');let tf='',tags=[];
+$('topic').innerHTML='<option value="">বিষয় বাছাই করুন</option>'+TOPICS.map(t=>`<option>${t}</option>`).join('');
+$('topicf').innerHTML='<option value="">সব বিষয়</option>'+TOPICS.map(t=>`<option>${t}</option>`).join('');
+$('topicf').onchange=e=>{tf=e.target.value;render();};
+if(tagf){$('tagnote').style.display='block';$('tagnote').innerHTML=`কীওয়ার্ড: <b>#${esc(tagf)}</b> — <a href="competition.html#gallery">ফিল্টার সরান</a>`;}
+const txt=h=>new DOMParser().parseFromString(String(h).replace(/<\/(p|div|h2|h3|li|blockquote)>/gi,' $&'),'text/html').body.textContent.replace(/\s+/g,' ').trim();
+
+/* ── কীওয়ার্ড ── */
+function drawTags(){document.querySelectorAll('.kw').forEach(e=>e.remove());const inp=$('taginp');
+  tags.forEach((t,i)=>{const k=document.createElement('span');k.className='kw';k.innerHTML=`${esc(t)}<button type="button" aria-label="মুছুন">×</button>`;k.querySelector('button').onclick=()=>{tags.splice(i,1);drawTags();};$('tagbox').insertBefore(k,inp);});}
+function addTag(){const inp=$('taginp');const t=inp.value.replace(/[,،#]/g,'').trim().slice(0,30);inp.value='';
+  if(!t||tags.includes(t))return;if(tags.length>=5)return alert('সর্বোচ্চ ৫টি কীওয়ার্ড দেওয়া যাবে।');tags.push(t);drawTags();}
+$('taginp').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===','){e.preventDefault();addTag();}else if(e.key==='Backspace'&&!e.target.value&&tags.length){tags.pop();drawTags();}});
+$('taginp').addEventListener('blur',addTag);
+
+/* ── এডিটর ── */
+const ed=$('body');document.execCommand('defaultParagraphSeparator',false,'p');
+$('pal').innerHTML=COLORS.map(c=>`<span class="sw" data-col="${c}" style="background:${c}" title="${c}"></span>`).join('')+'<input type="color" id="colpick" title="নিজের পছন্দের রং" style="width:26px;height:26px;border:none;padding:0;background:none">';
+$('bar').addEventListener('mousedown',e=>{if(!e.target.closest('input'))e.preventDefault();});
+$('bar').addEventListener('click',e=>{
+  const b=e.target.closest('.eb'),sw=e.target.closest('.sw');ed.focus();
+  if(sw){document.execCommand('foreColor',false,sw.dataset.col);$('pal').classList.remove('on');return;}
+  if(!b)return;
+  if(b.id==='colbtn'){$('pal').classList.toggle('on');return;}
+  if(b.id==='linkbtn'){let u=prompt('লিংকের ঠিকানা (URL) লিখুন:','https://');if(!u)return;u=u.trim();
+    if(!/^(https?:|mailto:)/i.test(u))u='https://'+u;const sel=getSelection();
+    if(sel.isCollapsed)document.execCommand('insertHTML',false,`<a href="${esc(u)}">${esc(u)}</a>`);else document.execCommand('createLink',false,u);return;}
+  if(b.dataset.b){const cur=document.queryCommandValue('formatBlock').toLowerCase();document.execCommand('formatBlock',false,cur===b.dataset.b?'p':b.dataset.b);return;}
+  document.execCommand(b.dataset.c,false,null);
+});
+$('colpick').addEventListener('input',e=>{ed.focus();document.execCommand('foreColor',false,e.target.value);});
+ed.addEventListener('paste',e=>{e.preventDefault();const t=(e.clipboardData||window.clipboardData).getData('text/plain');
+  document.execCommand('insertHTML',false,t.split(/\n+/).filter(l=>l.trim()).map(l=>`<p>${esc(l)}</p>`).join(''));});
+ed.addEventListener('input',()=>{if(!ed.textContent.trim()&&!ed.querySelector('li'))ed.innerHTML='';});
+const upBar=()=>document.querySelectorAll('#bar .eb[data-c]').forEach(b=>{try{b.classList.toggle('on',['bold','italic','underline','strikeThrough'].includes(b.dataset.c)&&document.queryCommandState(b.dataset.c));}catch(_){}});
+document.addEventListener('selectionchange',upBar);
+
 const $=id=>document.getElementById(id);
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const bn=n=>String(n).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
@@ -168,7 +262,7 @@ document.querySelectorAll('input[name=cat]').forEach(r=>r.addEventListener('chan
 async function submitEntry(){
   const cat=(document.querySelector('input[name=cat]:checked')||{}).value;
   const v=id=>$(id).value.trim();
-  const d={participant_name:v('name'),category:cat,age:parseInt(v('age')),language_variant:v('variant')||null,contact:v('contact'),title:v('title'),body:v('body'),status:'pending'};
+  const d={participant_name:v('name'),category:cat,age:parseInt(v('age')),language_variant:v('variant')||null,contact:v('contact'),title:v('title'),topic:v('topic'),body:'',status:'pending'};
   if(!d.participant_name)return alert('অনুগ্রহ করে আপনার নাম লিখুন।');
   if(!cat)return alert('ক্যাটাগরি বাছাই করুন।');
   if(cat==='student'){
@@ -179,7 +273,10 @@ async function submitEntry(){
   if(!d.age||d.age<4||d.age>120)return alert('সঠিক বয়স লিখুন।');
   if(!d.contact)return alert('যোগাযোগের তথ্য দিন।');
   if(!d.title)return alert('লেখার শিরোনাম দিন।');
-  if(!d.body)return alert('মূল লেখা খালি রাখা যাবে না।');
+  if(!d.topic)return alert('লেখার বিষয় (ক্যাটাগরি) বাছাই করুন।');
+  addTag();d.tags=tags.slice();
+  if(!ed.textContent.trim())return alert('মূল লেখা খালি রাখা যাবে না।');
+  d.body=clean(ed.innerHTML);
   const f=$('img').files[0];
   if(f&&(!f.type.startsWith('image/')||f.size>5*1024*1024))return alert('৫ এমবির মধ্যে একটি ছবি বাছাই করুন।');
   const btn=$('btn'),old=btn.innerHTML;btn.disabled=true;
@@ -195,21 +292,21 @@ async function submitEntry(){
     if(error)throw error;
     document.querySelectorAll('#form input:not([type=radio]),#form textarea,#form select').forEach(e=>e.value='');
     document.querySelectorAll('input[name=cat]').forEach(r=>r.checked=false);
-    $('student-box').classList.remove('on');
+    $('student-box').classList.remove('on');ed.innerHTML='';tags=[];drawTags();
     $('ok').classList.add('on');$('ok').scrollIntoView({behavior:'smooth',block:'center'});
   }catch(e){console.error(e);alert('দুঃখিত, জমা দিতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');}
   btn.disabled=false;btn.innerHTML=old;
 }
 
 function render(){
-  const list=rows.filter(r=>filter==='all'||r.category===filter);
+  const list=rows.filter(r=>(filter==='all'||r.category===filter)&&(!tf||r.topic===tf)&&(!tagf||(r.tags||[]).includes(tagf)));
   $('gallery').innerHTML=list.length?list.map(r=>{
     const who=esc(r.participant_name)+(r.category==='student'&&r.institution?' • '+esc(r.institution):'');
-    const desc=String(r.body).replace(/\s+/g,' ').trim();
+    const desc=txt(r.body);
     return `<a class="card ${r.is_winner?'win':''}" href="competition-post.html?id=${encodeURIComponent(r.id)}">
       ${r.is_winner?'<span class="trophy">🏆 বিজয়ী</span>':''}
       ${r.img_url?`<img src="${esc(r.img_url)}" alt="">`:`<div class="ph serif">${esc(Array.from(r.title)[0])}</div>`}
-      <div class="cc"><span class="tag">${r.category==='student'?'শিক্ষার্থী বিভাগ':'উন্মুক্ত বিভাগ'}</span>
+      <div class="cc"><div class="tags"><span class="tag">${r.category==='student'?'শিক্ষার্থী বিভাগ':'উন্মুক্ত বিভাগ'}</span>${r.topic?`<span class="tag alt">${esc(r.topic)}</span>`:''}</div>
       <h3 class="serif">${esc(r.title)}</h3><p>${esc(desc.length>140?desc.slice(0,140)+'…':desc)}</p><div class="meta">${who}</div></div></a>`;
   }).join(''):'<div class="empty">এই বিভাগে এখনো কোনো লেখা প্রকাশিত হয়নি।</div>';
 }

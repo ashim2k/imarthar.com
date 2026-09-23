@@ -27,7 +27,12 @@ nav{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1p
 .pill{font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px;background:#f0fdf4;color:#166534}
 .pill.s-pending{background:#fef3c7;color:#92400e}.pill.s-rejected{background:#fee2e2;color:#991b1b}.pill.gold{background:#fef3c7;color:#92400e}
 .contact{font-size:13px;background:#f8fafc;border-radius:10px;padding:8px 12px;margin-bottom:.85rem;color:#334155}
-.sub-body{font-size:13.5px;color:#475569;white-space:pre-wrap;max-height:110px;overflow:hidden;border-top:1px solid #f1f5f9;padding-top:.85rem;margin-bottom:.5rem}
+
+.rich{font-family:'Noto Serif Bengali',Georgia,serif;line-height:1.95;color:#334155}
+.rich p,.rich div{margin-bottom:1rem}.rich h2{font-size:1.4em;margin:1.4rem 0 .6rem;color:#0f172a}.rich h3{font-size:1.15em;margin:1.2rem 0 .5rem;color:#0f172a}
+.rich blockquote{border-left:4px solid #10b981;background:#f0fdf4;padding:.6rem 1rem;margin:1rem 0;border-radius:0 10px 10px 0;color:#065f46}
+.rich ul,.rich ol{margin:0 0 1rem 1.5rem}.rich a{color:#059669;text-decoration:underline}
+.sub-body{font-size:14px;color:#475569;max-height:110px;overflow:hidden;border-top:1px solid #f1f5f9;padding-top:.85rem;margin-bottom:.5rem}
 .sub-body.expanded{max-height:none}
 .expand-link{font-size:12.5px;color:#10b981;cursor:pointer;font-weight:600;margin-bottom:.85rem}
 .sub-actions{display:flex;gap:10px;flex-wrap:wrap}
@@ -79,9 +84,12 @@ nav{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1p
 </div>
 <div id="toast" class="toast"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const sb=supabase.createClient('https://ksnwykmtrczvdzhoiews.supabase.co','sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno');
+const clean=h=>DOMPurify.sanitize(h,{ALLOWED_TAGS:['p','br','b','strong','i','em','u','s','h2','h3','blockquote','ul','ol','li','a','font','div','span'],ALLOWED_ATTR:['href','color','target','rel'],ALLOWED_URI_REGEXP:/^(https?:|mailto:)/i});
+DOMPurify.addHook('afterSanitizeAttributes',n=>{if(n.tagName==='A'){n.setAttribute('target','_blank');n.setAttribute('rel','noopener noreferrer nofollow');}});
 const $=id=>document.getElementById(id);
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const bn=n=>String(n).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
@@ -132,12 +140,14 @@ function render(){
           ${r.is_winner?'<span class="pill gold">🏆 বিজয়ী</span>':''}
           <span>${esc(r.participant_name)}, বয়স ${bn(r.age||'—')}</span>
           ${r.category==='student'?`<span>${LV[r.institution_level]||''} — ${esc(r.institution)}</span>`:''}
+          ${r.topic?`<span class="pill" style="background:#f1f5f9;color:#475569">${esc(r.topic)}</span>`:''}
+          ${(r.tags||[]).map(t=>`<span>#${esc(t)}</span>`).join('')}
           ${r.language_variant?`<span>${esc(r.language_variant)}</span>`:''}
         </div>
       </div>
     </div>
     <div class="contact"><i class="ti ti-phone"></i> ${esc(r.contact)}</div>
-    <div class="sub-body" id="b-${r.id}">${esc(r.body)}</div>
+    <div class="sub-body rich" id="b-${r.id}">${clean(r.body)}</div>
     <div class="expand-link" onclick="document.getElementById('b-${r.id}').classList.toggle('expanded')">আরও দেখুন / লুকান</div>
     <div class="sub-actions">
       ${r.status==='pending'?`<button class="btn btn-publish" onclick="setStatus('${r.id}','published')"><i class="ti ti-send"></i> প্রকাশ করুন</button>
