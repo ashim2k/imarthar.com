@@ -112,21 +112,20 @@ footer span{color:var(--g);font-weight:600}
   <div class="hero-en">BLOG WRITING CONTEST</div>
   <h1 class="serif">ব্লগ লেখা প্রতিযোগিতা</h1>
   <p class="hero-org">আয়োজক — মণিপুরি বিজ্ঞান প্রজন্ম</p>
-  <blockquote class="quote serif">মাতৃভাষা-রূপ খনি, পূর্ণ মণিজালে;<small>— মাইকেল মধুসূদন দত্ত</small></blockquote>
-  <a href="#submit" class="btn hero-cta"><i class="ti ti-pencil"></i> লেখা জমা দিন</a>
+   <a href="#submit" class="btn hero-cta"><i class="ti ti-pencil"></i> লেখা জমা দিন</a>
 </div></header>
 
 <div class="container">
   <section class="sec">
-    <h2 class="serif">আপনার ভেতরের লেখককে জাগান</h2>
-    <p>হয়তো আপনার এই লেখাই হয়ে উঠবে ভবিষ্যতের কোনো প্রামাণ্য দলিল। নিয়মাবলি:</p>
-    <div class="rules">
-      <div class="rule"><i class="ti ti-language"></i><h3>ভাষা</h3><p>বিষ্ণুপ্রিয়া মণিপুরি — মাদৈগাং অথবা রাজারগাং, যেকোনো ভাষায় লেখা যাবে।</p></div>
-      <div class="rule"><i class="ti ti-bulb"></i><h3>বিষয়: সম্পূর্ণ উন্মুক্ত</h3><p>সংস্কৃতি, ঐতিহ্য, ভাষা, সমাজ, জীবনযাপন, ইতিহাস, সাহিত্য কিংবা ব্যক্তিগত অভিজ্ঞতা।</p></div>
-      <div class="rule"><i class="ti ti-users-group"></i><h3>দুটি ক্যাটাগরি</h3><p><b>শিক্ষার্থী:</b> প্রাথমিক, মাধ্যমিক ও কলেজ।<br><b>উন্মুক্ত:</b> কলেজ-পরবর্তী সবাই।</p></div>
-      <div class="rule"><i class="ti ti-writing"></i><h3>শব্দসংখ্যা</h3><p>কোনো ধরাবাঁধা শব্দসীমা নেই। মনের ভাব প্রকাশ করুন স্বাধীনভাবে।</p></div>
-      <div class="rule prize"><i class="ti ti-trophy"></i><h3>পুরস্কার ও স্বীকৃতি</h3><p>জমাকৃত লেখা থেকে বাছাই করে সেরা ৫ জন লেখক বিজয়ী হবেন।</p></div>
-    </div>
+    <h2 class="serif">নিয়মাবলি:</h2>
+<ul class="rules-list">
+      <li><strong>ভাষা:</strong> বিষ্ণুপ্রিয়া মণিপুরি — মাদৈগাং অথবা রাজারগাং, যেকোনো ভাষায় লেখা যাবে।</li>
+      <li><strong>বিষয়:</strong> সম্পূর্ণ উন্মুক্ত — সংস্কৃতি, ঐতিহ্য, ভাষা, সমাজ, জীবনযাপন, ইতিহাস, সাহিত্য কিংবা ব্যক্তিগত অভিজ্ঞতা।</li>
+      <li><strong>দুটি ক্যাটাগরি:</strong> <strong>শিক্ষার্থী:</strong> প্রাথমিক, মাধ্যমিক ও কলেজ। <strong>উন্মুক্ত:</strong> যে কেউ ।</li>
+      <li><strong>শব্দসংখ্যা:</strong> কোনো ধরাবাঁধা শব্দসীমা নেই। মনের ভাব প্রকাশ করুন স্বাধীনভাবে।</li>
+      <li><strong>পুরস্কার ও স্বীকৃতি:</strong> জমাকৃত লেখা থেকে বাছাই করে সেরা ৫ জন লেখক বিজয়ী হবেন।</li>
+    </ul>
+    
   </section>
 
   <section class="sec" id="submit">
@@ -138,7 +137,7 @@ footer span{color:var(--g);font-weight:600}
       <div class="fg"><label class="fl">ক্যাটাগরি <em>*</em></label>
         <div class="cats">
           <label class="cat"><input type="radio" name="cat" value="student"><span><b>শিক্ষার্থী বিভাগ</b>প্রাথমিক, মাধ্যমিক ও কলেজ</span></label>
-          <label class="cat"><input type="radio" name="cat" value="open"><span><b>উন্মুক্ত বিভাগ</b>কলেজ-পরবর্তী সকলে</span></label>
+          <label class="cat"><input type="radio" name="cat" value="open"><span><b>উন্মুক্ত বিভাগ</b>যে কেউ </span></label>
         </div>
       </div>
       <div id="student-box">
@@ -149,7 +148,7 @@ footer span{color:var(--g);font-weight:600}
       </div>
       <div class="row fg">
         <div><label class="fl">বয়স <em>*</em></label><input class="fi" id="age" type="number" min="4" max="120"></div>
-        <div><label class="fl">ভাষা-ভ্যারিয়েন্ট <small>(ঐচ্ছিক)</small></label><select class="fs" id="variant"><option value="">উল্লেখ করতে চাই না</option><option>মাদৈগাং</option><option>রাজারগাং</option></select></div>
+        <div><label class="fl">ভাষা-ভ্যারিয়েন্ট <small>(ঐচ্ছিক)</small></label><select class="fs" id="variant"><option value="">মিশ্র বিষ্ণুপ্রিয়া মণিপুরি</option><option>মাদৈগাং</option><option>রাজারগাং</option></select></div>
       </div>
       <div class="fg"><label class="fl">যোগাযোগ (ফোন বা ইমেইল) <em>*</em></label><input class="fi" id="contact" maxlength="120"><div class="note">বিজয়ীদের সঙ্গে যোগাযোগের জন্য। এটি কোথাও প্রকাশ করা হবে না।</div></div>
       <div class="fg"><label class="fl">লেখার শিরোনাম <em>*</em></label><input class="fi serif" id="title" maxlength="150"></div>
