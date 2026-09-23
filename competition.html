@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ব্লগ লেখা প্রতিযোগিতা — ইমার ঠার</title>
+<link rel="canonical" href="https://imarthar.com/competition.html">
+<meta name="description" content="বিষ্ণুপ্রিয়া মণিপুরি ভাষায় ব্লগ লেখা প্রতিযোগিতা। আয়োজক: মণিপুরি বিজ্ঞান প্রজন্ম।">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@500;700;800&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--g:#10b981;--gd:#065f46;--ink:#0f172a;--mut:#64748b;--line:#e2e8f0;--gold:#b45309;--goldbg:#fef3c7}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6}
+.serif{font-family:'Noto Serif Bengali',Georgia,serif}
+nav{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.logo{font-size:22px;font-weight:700;color:var(--ink);text-decoration:none}.logo span{color:var(--g)}
+.nav-links{display:flex;gap:28px}.nav-links a{font-size:14px;font-weight:500;color:var(--mut);text-decoration:none}
+.nav-links a:hover,.nav-links a.active{color:var(--g)}
+.hero{background:linear-gradient(135deg,#064e3b,#059669 60%,#10b981);color:#fff;padding:4.5rem 2rem 4rem;position:relative;overflow:hidden}
+/* খাতার রুলটানা লাইন — লেখালেখির ইঙ্গিত */
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 39px,rgba(255,255,255,.07) 39px 40px);pointer-events:none}
+.hero-in{max-width:900px;margin:auto;position:relative}
+.hero-en{font-size:12px;letter-spacing:.22em;font-weight:600;opacity:.8;margin-bottom:.75rem}
+.hero h1{font-size:clamp(34px,6vw,56px);line-height:1.25;font-weight:800;margin-bottom:1rem}
+.hero-org{font-size:15px;opacity:.9;margin-bottom:2rem}
+.quote{border-left:3px solid #fbbf24;padding-left:1rem;max-width:520px;font-size:20px;line-height:1.7}
+.quote small{display:block;font-family:'Segoe UI',sans-serif;font-size:13px;opacity:.75;margin-top:.4rem}
+.hero-cta{display:inline-flex;margin-top:2rem}
+.container{max-width:900px;margin:0 auto;padding:0 2rem}
+.sec{margin-top:3.5rem}
+.sec h2{font-size:24px;color:var(--ink);margin-bottom:.4rem}
+.sec>p{color:var(--mut);font-size:14.5px;margin-bottom:1.5rem}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.rule{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.25rem}
+.rule i{font-size:22px;color:var(--g);display:block;margin-bottom:.5rem}
+.rule h3{font-size:15px;color:var(--ink);margin-bottom:.3rem}.rule p{font-size:13.5px;color:#475569}
+.rule.prize{border-color:#fcd34d;background:#fffbeb}.rule.prize i{color:var(--gold)}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:2rem;box-shadow:0 10px 25px -5px rgba(0,0,0,.05)}
+.fg{margin-bottom:1.25rem}.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label.fl{display:block;font-size:13px;font-weight:600;color:#475569;margin-bottom:6px}
+label.fl em{color:#ef4444;font-style:normal}label.fl small{font-weight:400;color:#94a3b8}
+.fi,.ft,.fs{width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:10px;font-size:14px;outline:none;font-family:inherit;background:#fff}
+.fi:focus,.ft:focus,.fs:focus{border-color:var(--g)}
+.ft{min-height:260px;resize:vertical;font-family:'Noto Serif Bengali',serif;line-height:1.9;font-size:15.5px}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat input{position:absolute;opacity:0}
+.cat span{display:block;border:1.5px solid var(--line);border-radius:14px;padding:.9rem 1rem;cursor:pointer;font-size:13px;color:var(--mut)}
+.cat span b{display:block;font-size:15px;color:var(--ink)}
+.cat input:checked+span{border-color:var(--g);background:#f0fdf4}
+.cat input:focus-visible+span{outline:2px solid var(--g);outline-offset:2px}
+#student-box{display:none;background:#f8fafc;border:1px dashed var(--line);border-radius:14px;padding:1rem;margin-bottom:1.25rem}
+#student-box.on{display:block}
+.btn{background:var(--g);color:#fff;border:none;padding:11px 22px;border-radius:12px;font-weight:600;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.btn:hover{background:#059669}.btn:disabled{opacity:.6;cursor:not-allowed}
+.hero .btn{background:#fff;color:var(--gd)}
+.note{font-size:12.5px;color:#94a3b8;margin-top:6px}
+.ok{display:none;gap:12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;color:#166534;font-size:14px}
+.ok.on{display:flex}.ok i{font-size:22px;color:var(--g)}
+.chips{display:flex;gap:8px;margin-bottom:1.25rem;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:#fff;color:var(--mut);font-size:13px;font-weight:600;padding:7px 14px;border-radius:99px;cursor:pointer}
+.chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;position:relative;transition:border-color .2s,box-shadow .2s}
+.card:hover{border-color:var(--g);box-shadow:0 12px 20px -8px rgba(16,185,129,.2)}
+.card.win{border-color:#fcd34d}
+.ph,.card img{width:100%;height:140px;object-fit:cover;background:#f1f5f9}
+.ph{display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:800;color:rgba(255,255,255,.9);background:linear-gradient(135deg,#065f46,#10b981)}
+.cc{padding:1.1rem;flex:1;display:flex;flex-direction:column}
+.tag{font-size:11px;font-weight:700;background:#f0fdf4;color:#166534;padding:2px 10px;border-radius:99px;align-self:flex-start;margin-bottom:8px}
+.trophy{position:absolute;top:10px;right:10px;background:var(--goldbg);color:var(--gold);font-size:12px;font-weight:700;padding:4px 10px;border-radius:99px;z-index:1}
+.card h3{font-size:16px;line-height:1.5;color:var(--ink);margin-bottom:6px}
+.card p{font-size:13.5px;color:#475569;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:10px}
+.meta{font-size:12px;color:#94a3b8;margin-top:auto}
+.empty{grid-column:1/-1;text-align:center;color:#94a3b8;padding:2.5rem 1rem;background:#fff;border:1px dashed var(--line);border-radius:16px;font-size:14px}
+footer{background:#fff;border-top:1px solid var(--line);padding:2.5rem 2rem;text-align:center;font-size:13px;color:var(--mut);margin-top:5rem}
+footer span{color:var(--g);font-weight:600}
+@keyframes spin{to{transform:rotate(360deg)}}.spinning{display:inline-block;animation:spin .8s linear infinite}
+@media(max-width:640px){.container{padding:0 1.25rem}.hero{padding:3rem 1.25rem}.row,.cats{grid-template-columns:1fr}.nav-links{gap:14px}nav{padding:0 1rem}.form-card{padding:1.25rem}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="speech-corpus.html">স্পিচ কর্পাস</a><a href="tools.html">টুল</a><a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a><a href="discussion.html">আলোচনা</a><a href="competition.html" class="active">প্রতিযোগিতা</a>
+  </div>
+</nav>
+
+<header class="hero"><div class="hero-in">
+  <div class="hero-en">BLOG WRITING CONTEST</div>
+  <h1 class="serif">ব্লগ লেখা প্রতিযোগিতা</h1>
+  <p class="hero-org">আয়োজক — মণিপুরি বিজ্ঞান প্রজন্ম</p>
+  <blockquote class="quote serif">মাতৃভাষা-রূপ খনি, পূর্ণ মণিজালে;<small>— মাইকেল মধুসূদন দত্ত</small></blockquote>
+  <a href="#submit" class="btn hero-cta"><i class="ti ti-pencil"></i> লেখা জমা দিন</a>
+</div></header>
+
+<div class="container">
+  <section class="sec">
+    <h2 class="serif">আপনার ভেতরের লেখককে জাগান</h2>
+    <p>হয়তো আপনার এই লেখাই হয়ে উঠবে ভবিষ্যতের কোনো প্রামাণ্য দলিল। নিয়মাবলি:</p>
+    <div class="rules">
+      <div class="rule"><i class="ti ti-language"></i><h3>ভাষা</h3><p>বিষ্ণুপ্রিয়া মণিপুরি — মাদৈগাং অথবা রাজারগাং, যেকোনো ভাষায় লেখা যাবে।</p></div>
+      <div class="rule"><i class="ti ti-bulb"></i><h3>বিষয়: সম্পূর্ণ উন্মুক্ত</h3><p>সংস্কৃতি, ঐতিহ্য, ভাষা, সমাজ, জীবনযাপন, ইতিহাস, সাহিত্য কিংবা ব্যক্তিগত অভিজ্ঞতা।</p></div>
+      <div class="rule"><i class="ti ti-users-group"></i><h3>দুটি ক্যাটাগরি</h3><p><b>শিক্ষার্থী:</b> প্রাথমিক, মাধ্যমিক ও কলেজ।<br><b>উন্মুক্ত:</b> কলেজ-পরবর্তী সবাই।</p></div>
+      <div class="rule"><i class="ti ti-writing"></i><h3>শব্দসংখ্যা</h3><p>কোনো ধরাবাঁধা শব্দসীমা নেই। মনের ভাব প্রকাশ করুন স্বাধীনভাবে।</p></div>
+      <div class="rule prize"><i class="ti ti-trophy"></i><h3>পুরস্কার ও স্বীকৃতি</h3><p>জমাকৃত লেখা থেকে বাছাই করে সেরা ৫ জন লেখক বিজয়ী হবেন।</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="submit">
+    <h2 class="serif">আপনার লেখা জমা দিন</h2>
+    <p>জমা দেওয়া লেখা পর্যালোচনার পর প্রকাশিত হবে।</p>
+    <div class="ok" id="ok"><i class="ti ti-circle-check"></i><div><b>ধন্যবাদ! আপনার লেখা জমা হয়েছে।</b><br>পর্যালোচনার পর গ্যালারিতে প্রকাশ করা হবে।</div></div>
+    <div class="form-card" id="form">
+      <div class="fg"><label class="fl">আপনার নাম <em>*</em></label><input class="fi" id="name" maxlength="80"></div>
+      <div class="fg"><label class="fl">ক্যাটাগরি <em>*</em></label>
+        <div class="cats">
+          <label class="cat"><input type="radio" name="cat" value="student"><span><b>শিক্ষার্থী বিভাগ</b>প্রাথমিক, মাধ্যমিক ও কলেজ</span></label>
+          <label class="cat"><input type="radio" name="cat" value="open"><span><b>উন্মুক্ত বিভাগ</b>কলেজ-পরবর্তী সকলে</span></label>
+        </div>
+      </div>
+      <div id="student-box">
+        <div class="row">
+          <div><label class="fl">স্তর <em>*</em></label><select class="fs" id="level"><option value="">বাছাই করুন</option><option value="primary">প্রাথমিক বিদ্যালয়</option><option value="secondary">মাধ্যমিক বিদ্যালয়</option><option value="college">কলেজ</option></select></div>
+          <div><label class="fl">প্রতিষ্ঠানের নাম <em>*</em></label><input class="fi" id="inst" maxlength="120"></div>
+        </div>
+      </div>
+      <div class="row fg">
+        <div><label class="fl">বয়স <em>*</em></label><input class="fi" id="age" type="number" min="4" max="120"></div>
+        <div><label class="fl">ভাষা-ভ্যারিয়েন্ট <small>(ঐচ্ছিক)</small></label><select class="fs" id="variant"><option value="">উল্লেখ করতে চাই না</option><option>মাদৈগাং</option><option>রাজারগাং</option></select></div>
+      </div>
+      <div class="fg"><label class="fl">যোগাযোগ (ফোন বা ইমেইল) <em>*</em></label><input class="fi" id="contact" maxlength="120"><div class="note">বিজয়ীদের সঙ্গে যোগাযোগের জন্য। এটি কোথাও প্রকাশ করা হবে না।</div></div>
+      <div class="fg"><label class="fl">লেখার শিরোনাম <em>*</em></label><input class="fi serif" id="title" maxlength="150"></div>
+      <div class="fg"><label class="fl">ছবি <small>(ঐচ্ছিক, সর্বোচ্চ ৫ এমবি)</small></label><input class="fi" id="img" type="file" accept="image/*"></div>
+      <div class="fg"><label class="fl">মূল লেখা <em>*</em></label><textarea class="ft" id="body" placeholder="এখানে আপনার লেখা শুরু করুন…"></textarea></div>
+      <button class="btn" id="btn" onclick="submitEntry()"><i class="ti ti-send"></i> জমা দিন</button>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2 class="serif">প্রকাশিত লেখা</h2>
+    <p>🏆 চিহ্নিত লেখাগুলো বিজয়ী।</p>
+    <div class="chips">
+      <button class="chip active" data-f="all">সব</button><button class="chip" data-f="student">শিক্ষার্থী বিভাগ</button><button class="chip" data-f="open">উন্মুক্ত বিভাগ</button>
+    </div>
+    <div class="grid" id="gallery"><div class="empty">লোড হচ্ছে…</div></div>
+  </section>
+</div>
+
+<footer>© ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br><small style="color:#94a3b8">Preserving heritage through advanced computing systems.</small></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const sb=supabase.createClient('https://ksnwykmtrczvdzhoiews.supabase.co','sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno');
+const COLS='id,participant_name,category,institution_level,institution,age,title,body,img_url,is_winner,published_at';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const bn=n=>String(n).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const LV={primary:'প্রাথমিক',secondary:'মাধ্যমিক',college:'কলেজ'};
+let rows=[],filter='all';
+
+document.querySelectorAll('input[name=cat]').forEach(r=>r.addEventListener('change',()=>{
+  $('student-box').classList.toggle('on',r.value==='student'&&r.checked);
+}));
+
+async function submitEntry(){
+  const cat=(document.querySelector('input[name=cat]:checked')||{}).value;
+  const v=id=>$(id).value.trim();
+  const d={participant_name:v('name'),category:cat,age:parseInt(v('age')),language_variant:v('variant')||null,contact:v('contact'),title:v('title'),body:v('body'),status:'pending'};
+  if(!d.participant_name)return alert('অনুগ্রহ করে আপনার নাম লিখুন।');
+  if(!cat)return alert('ক্যাটাগরি বাছাই করুন।');
+  if(cat==='student'){
+    d.institution_level=v('level');d.institution=v('inst');
+    if(!d.institution_level)return alert('প্রতিষ্ঠানের স্তর বাছাই করুন।');
+    if(!d.institution)return alert('প্রতিষ্ঠানের নাম লিখুন।');
+  }
+  if(!d.age||d.age<4||d.age>120)return alert('সঠিক বয়স লিখুন।');
+  if(!d.contact)return alert('যোগাযোগের তথ্য দিন।');
+  if(!d.title)return alert('লেখার শিরোনাম দিন।');
+  if(!d.body)return alert('মূল লেখা খালি রাখা যাবে না।');
+  const f=$('img').files[0];
+  if(f&&(!f.type.startsWith('image/')||f.size>5*1024*1024))return alert('৫ এমবির মধ্যে একটি ছবি বাছাই করুন।');
+  const btn=$('btn'),old=btn.innerHTML;btn.disabled=true;
+  btn.innerHTML='<i class="ti ti-loader-2 spinning"></i> জমা হচ্ছে…';
+  try{
+    if(f){
+      const path=`submissions/${Date.now()}-${Math.random().toString(36).slice(2,8)}.${f.name.split('.').pop()}`;
+      const {error:ue}=await sb.storage.from('competition-images').upload(path,f,{cacheControl:'3600'});
+      if(ue)throw ue;
+      d.img_url=sb.storage.from('competition-images').getPublicUrl(path).data.publicUrl;
+    }
+    const {error}=await sb.from('competition_submissions').insert([d]);
+    if(error)throw error;
+    document.querySelectorAll('#form input:not([type=radio]),#form textarea,#form select').forEach(e=>e.value='');
+    document.querySelectorAll('input[name=cat]').forEach(r=>r.checked=false);
+    $('student-box').classList.remove('on');
+    $('ok').classList.add('on');$('ok').scrollIntoView({behavior:'smooth',block:'center'});
+  }catch(e){console.error(e);alert('দুঃখিত, জমা দিতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');}
+  btn.disabled=false;btn.innerHTML=old;
+}
+
+function render(){
+  const list=rows.filter(r=>filter==='all'||r.category===filter);
+  $('gallery').innerHTML=list.length?list.map(r=>{
+    const who=esc(r.participant_name)+(r.category==='student'&&r.institution?' • '+esc(r.institution):'');
+    const desc=String(r.body).replace(/\s+/g,' ').trim();
+    return `<a class="card ${r.is_winner?'win':''}" href="competition-post.html?id=${encodeURIComponent(r.id)}">
+      ${r.is_winner?'<span class="trophy">🏆 বিজয়ী</span>':''}
+      ${r.img_url?`<img src="${esc(r.img_url)}" alt="">`:`<div class="ph serif">${esc(Array.from(r.title)[0])}</div>`}
+      <div class="cc"><span class="tag">${r.category==='student'?'শিক্ষার্থী বিভাগ':'উন্মুক্ত বিভাগ'}</span>
+      <h3 class="serif">${esc(r.title)}</h3><p>${esc(desc.length>140?desc.slice(0,140)+'…':desc)}</p><div class="meta">${who}</div></div></a>`;
+  }).join(''):'<div class="empty">এই বিভাগে এখনো কোনো লেখা প্রকাশিত হয়নি।</div>';
+}
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{
+  filter=c.dataset.f;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x===c));render();
+});
+(async()=>{
+  const {data,error}=await sb.from('competition_submissions').select(COLS).eq('status','published')
+    .order('is_winner',{ascending:false}).order('published_at',{ascending:false});
+  if(error)console.error(error);
+  rows=data||[];render();
+})();
+</script>
+</body>
+</html>

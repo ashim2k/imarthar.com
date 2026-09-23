@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">প্রতিযোগিতার লেখা — ইমার ঠার</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@500;700;800&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6}
+.serif{font-family:'Noto Serif Bengali',Georgia,serif}
+#bar-wrap{position:fixed;top:0;left:0;width:100%;height:3px;z-index:300}#bar{height:100%;width:0;background:#10b981}
+nav{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.logo{font-size:22px;font-weight:700;color:#0f172a;text-decoration:none}.logo span{color:#10b981}
+.nav-links{display:flex;gap:28px}.nav-links a{font-size:14px;font-weight:500;color:#64748b;text-decoration:none}.nav-links a:hover,.nav-links a.active{color:#10b981}
+.wrap{max-width:760px;margin:2rem auto;padding:0 2rem}
+.back{display:inline-flex;gap:6px;font-size:14px;color:#64748b;text-decoration:none;margin-bottom:1rem}.back:hover{color:#10b981}
+article{background:#fff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden}
+.cover{width:100%;max-height:340px;object-fit:cover;display:block}
+.cover-ph{height:150px;background:linear-gradient(135deg,#064e3b,#10b981)}
+.win-band{background:#fef3c7;color:#92400e;font-weight:700;font-size:14px;padding:10px 2rem;border-bottom:1px solid #fcd34d}
+.body{padding:2rem}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
+.badge{font-size:12px;font-weight:600;padding:4px 12px;border-radius:99px;background:#f0fdf4;color:#166534}
+.badge.alt{background:#f1f5f9;color:#475569}
+h1{font-size:30px;line-height:1.4;color:#0f172a;margin-bottom:1.25rem}
+.author{display:flex;align-items:center;gap:12px;padding-bottom:1.25rem;border-bottom:1px solid #e2e8f0;margin-bottom:1.5rem}
+.av{width:40px;height:40px;border-radius:50%;background:#10b981;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.an{font-weight:700;color:#0f172a;font-size:15px}.ai{font-size:13px;color:#94a3b8}
+.content{font-size:17px;color:#334155;line-height:2}.content p{margin-bottom:1.1rem}
+.cta{margin-top:1.5rem;text-align:center;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:16px;padding:1.5rem;font-size:14px;color:#166534}
+.cta a{display:inline-block;margin-top:.6rem;background:#10b981;color:#fff;text-decoration:none;font-weight:600;padding:9px 18px;border-radius:10px}
+.state{max-width:500px;margin:4rem auto;text-align:center;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:3rem 2rem;color:#64748b;font-size:14px}
+footer{background:#fff;border-top:1px solid #e2e8f0;padding:2.5rem 2rem;text-align:center;font-size:13px;color:#64748b;margin-top:4rem}footer span{color:#10b981;font-weight:600}
+@media(max-width:640px){.wrap{padding:0 1rem}.body{padding:1.25rem}h1{font-size:23px}nav{padding:0 1rem}.nav-links{gap:14px}}
+</style>
+</head>
+<body>
+<div id="bar-wrap"><div id="bar"></div></div>
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="speech-corpus.html">স্পিচ কর্পাস</a><a href="tools.html">টুল</a><a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a><a href="discussion.html">আলোচনা</a><a href="competition.html" class="active">প্রতিযোগিতা</a>
+  </div>
+</nav>
+<div id="state" class="state">লোড হচ্ছে…</div>
+<div class="wrap" id="wrap" style="display:none">
+  <a class="back" href="competition.html#gallery">&larr; প্রতিযোগিতায় ফিরুন</a>
+  <article>
+    <div id="cover"></div>
+    <div id="win" class="win-band" style="display:none">🏆 এই লেখাটি ব্লগ লেখা প্রতিযোগিতার বিজয়ী</div>
+    <div class="body">
+      <div class="badges" id="badges"></div>
+      <h1 class="serif" id="title"></h1>
+      <div class="author"><div class="av" id="av"></div><div><div class="an" id="an"></div><div class="ai" id="ai"></div></div></div>
+      <div class="content serif" id="content"></div>
+    </div>
+  </article>
+  <div class="cta">আপনিও লিখুন — মাতৃভাষায় আপনার লেখা জমা দিন।<br><a href="competition.html#submit">প্রতিযোগিতায় অংশ নিন</a></div>
+</div>
+<footer>© ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br><small style="color:#94a3b8">Preserving heritage through advanced computing systems.</small></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const sb=supabase.createClient('https://ksnwykmtrczvdzhoiews.supabase.co','sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno');
+const COLS='id,participant_name,category,institution_level,institution,age,language_variant,title,body,img_url,is_winner,published_at';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const bn=n=>String(n).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const LV={primary:'প্রাথমিক বিদ্যালয়',secondary:'মাধ্যমিক বিদ্যালয়',college:'কলেজ'};
+const MO=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+(async()=>{
+  const id=new URLSearchParams(location.search).get('id');
+  const fail=m=>$('state').innerHTML=m+'<br><br><a class="back" href="competition.html">&larr; প্রতিযোগিতায় ফিরুন</a>';
+  if(!id)return fail('কোনো লেখার আইডি পাওয়া যায়নি।');
+  const {data:p,error}=await sb.from('competition_submissions').select(COLS).eq('id',id).eq('status','published').single();
+  if(error||!p)return fail('লেখাটি পাওয়া যায়নি, অথবা এখনো প্রকাশিত হয়নি।');
+  document.title=p.title+' — ইমার ঠার';
+  $('cover').innerHTML=p.img_url?`<img class="cover" src="${esc(p.img_url)}" alt="${esc(p.title)}">`:'<div class="cover-ph"></div>';
+  $('win').style.display=p.is_winner?'block':'none';
+  const b=[`<span class="badge">${p.category==='student'?'শিক্ষার্থী বিভাগ':'উন্মুক্ত বিভাগ'}</span>`];
+  if(p.category==='student'&&p.institution_level)b.push(`<span class="badge alt">${LV[p.institution_level]}</span>`);
+  if(p.language_variant)b.push(`<span class="badge alt">${esc(p.language_variant)}</span>`);
+  $('badges').innerHTML=b.join('');
+  $('title').textContent=p.title;
+  const ini=String(p.participant_name).trim().split(/\s+/);
+  $('av').textContent=ini.length>1?ini[0][0]+ini[1][0]:ini[0].slice(0,2);
+  $('an').textContent=p.participant_name;
+  const info=[];
+  if(p.category==='student'&&p.institution)info.push(p.institution);
+  if(p.age)info.push('বয়স '+bn(p.age));
+  if(p.published_at){const d=new Date(p.published_at);info.push(`${bn(d.getDate())} ${MO[d.getMonth()]} ${bn(d.getFullYear())}`);}
+  $('ai').textContent=info.join(' • ');
+  $('content').innerHTML=String(p.body).split(/\n+/).map(l=>l.trim()).filter(Boolean).map(l=>`<p>${esc(l)}</p>`).join('');
+  $('state').style.display='none';$('wrap').style.display='block';
+})();
+addEventListener('scroll',()=>{const h=document.body.scrollHeight-innerHeight;$('bar').style.width=(h>0?Math.min(100,scrollY/h*100):0)+'%'});
+</script>
+</body>
+</html>

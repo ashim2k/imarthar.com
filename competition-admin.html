@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>প্রতিযোগিতা মডারেশন — ইমার ঠার</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.5}
+nav{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.logo{font-size:22px;font-weight:700;color:#0f172a;text-decoration:none}.logo span{color:#10b981}
+.badge{font-size:12px;font-weight:700;background:#fef3c7;color:#92400e;padding:4px 12px;border-radius:99px}
+.container{max-width:900px;margin:3rem auto;padding:0 2rem}
+.page-title{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:.4rem}.page-desc{color:#64748b;font-size:14px;margin-bottom:2rem}
+.tabs{display:flex;gap:8px;margin-bottom:1.75rem;flex-wrap:wrap}
+.tab-btn{border:1px solid #e2e8f0;background:#fff;color:#64748b;font-size:13.5px;font-weight:600;padding:8px 16px;border-radius:10px;cursor:pointer}
+.tab-btn.active{background:#0f172a;color:#fff;border-color:#0f172a}
+.empty-state{text-align:center;color:#94a3b8;padding:3rem 1rem;background:#fff;border:1px dashed #e2e8f0;border-radius:16px;font-size:14px}
+.sub-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.sub-card.win{border-color:#fcd34d;background:#fffdf5}
+.sub-head{display:flex;gap:14px;margin-bottom:1rem}
+.sub-thumb{width:90px;height:68px;border-radius:10px;object-fit:cover;background:linear-gradient(135deg,#065f46,#10b981);flex-shrink:0}
+.sub-title{font-size:16.5px;font-weight:700;color:#0f172a;margin-bottom:4px}
+.sub-meta{font-size:12.5px;color:#64748b;display:flex;gap:8px 12px;flex-wrap:wrap;align-items:center}
+.pill{font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px;background:#f0fdf4;color:#166534}
+.pill.s-pending{background:#fef3c7;color:#92400e}.pill.s-rejected{background:#fee2e2;color:#991b1b}.pill.gold{background:#fef3c7;color:#92400e}
+.contact{font-size:13px;background:#f8fafc;border-radius:10px;padding:8px 12px;margin-bottom:.85rem;color:#334155}
+.sub-body{font-size:13.5px;color:#475569;white-space:pre-wrap;max-height:110px;overflow:hidden;border-top:1px solid #f1f5f9;padding-top:.85rem;margin-bottom:.5rem}
+.sub-body.expanded{max-height:none}
+.expand-link{font-size:12.5px;color:#10b981;cursor:pointer;font-weight:600;margin-bottom:.85rem}
+.sub-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:none;border-radius:10px;padding:9px 16px;font-size:13.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.btn-publish{background:#10b981;color:#fff}.btn-publish:hover{background:#059669}
+.btn-reject{background:#fee2e2;color:#991b1b}.btn-link{background:#f1f5f9;color:#334155}
+.btn-win{background:#fef3c7;color:#92400e}.btn-win.on{background:#b45309;color:#fff}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+@keyframes spin{to{transform:rotate(360deg)}}.spinning{display:inline-block;animation:spin .8s linear infinite}
+.toast{position:fixed;bottom:24px;right:24px;background:#0f172a;color:#fff;padding:12px 18px;border-radius:12px;font-size:13.5px;opacity:0;transform:translateY(10px);transition:all .25s;pointer-events:none;z-index:400}
+.toast.visible{opacity:1;transform:none}.toast.error{background:#991b1b}
+#login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.login-card{width:100%;max-width:360px;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:2rem}
+.login-logo{font-size:20px;font-weight:700;color:#0f172a;margin-bottom:.3rem}.login-logo span{color:#10b981}
+.login-sub{font-size:13.5px;color:#64748b;margin-bottom:1.5rem}
+.login-error{display:none;background:#fee2e2;color:#991b1b;font-size:13px;padding:10px 14px;border-radius:10px;margin-bottom:1rem}.login-error.visible{display:block}
+.login-card label{display:block;font-size:13px;font-weight:600;color:#475569;margin-bottom:6px}
+.login-card input{width:100%;padding:10px 14px;border:1px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;margin-bottom:1rem}
+#app-root{display:none}
+@media(max-width:640px){.container{padding:0 1.25rem}nav{padding:0 1rem}}
+</style>
+</head>
+<body>
+<div id="login-screen"><div class="login-card">
+  <div class="login-logo">imar<span>thar</span>.com</div>
+  <div class="login-sub">প্রতিযোগিতা অ্যাডমিনে লগইন করুন</div>
+  <div class="login-error" id="login-error"></div>
+  <form id="login-form">
+    <label>ইমেইল</label><input type="email" id="login-email" required>
+    <label>পাসওয়ার্ড</label><input type="password" id="login-password" required>
+    <button type="submit" class="btn btn-publish" id="login-btn" style="width:100%;justify-content:center">লগইন করুন</button>
+  </form>
+</div></div>
+
+<div id="app-root">
+  <nav>
+    <a href="competition.html" class="logo">imar<span>thar</span>.com <span style="color:#64748b;font-weight:500;font-size:13px">/ প্রতিযোগিতা অ্যাডমিন</span></a>
+    <div style="display:flex;align-items:center;gap:12px">
+      <span class="badge" id="win-badge">🏆 ০/৫</span><span class="badge" id="pend-badge">— পেন্ডিং</span>
+      <button class="btn btn-link" onclick="logout()" style="padding:6px 12px"><i class="ti ti-logout"></i> লগআউট</button>
+    </div>
+  </nav>
+  <div class="container">
+    <h1 class="page-title">ব্লগ প্রতিযোগিতা মডারেশন</h1>
+    <p class="page-desc">জমা পড়া লেখা পর্যালোচনা করে প্রকাশ বা বাতিল করুন। প্রকাশিত লেখা থেকে সেরা ৫ জনকে 🏆 দিয়ে বিজয়ী চিহ্নিত করুন।</p>
+    <div class="tabs" id="tabs"></div>
+    <div id="list"><div class="empty-state">লোড হচ্ছে…</div></div>
+  </div>
+</div>
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const sb=supabase.createClient('https://ksnwykmtrczvdzhoiews.supabase.co','sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno');
+const $=id=>document.getElementById(id);
+const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const bn=n=>String(n).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const LV={primary:'প্রাথমিক',secondary:'মাধ্যমিক',college:'কলেজ'};
+const TABS=[['pending','পেন্ডিং'],['published','প্রকাশিত'],['rejected','বাতিল']];
+const ST={pending:'পেন্ডিং',published:'প্রকাশিত',rejected:'বাতিল'};
+let tab='pending',all=[];
+
+function showApp(){$('login-screen').style.display='none';$('app-root').style.display='block';load();}
+function showLogin(){$('login-screen').style.display='flex';$('app-root').style.display='none';}
+$('login-form').addEventListener('submit',async e=>{
+  e.preventDefault();const b=$('login-btn');b.disabled=true;b.innerHTML='<i class="ti ti-loader-2 spinning"></i> লগইন হচ্ছে…';
+  const {error}=await sb.auth.signInWithPassword({email:$('login-email').value.trim(),password:$('login-password').value});
+  b.disabled=false;b.textContent='লগইন করুন';
+  if(error){$('login-error').textContent='লগইন ব্যর্থ: ইমেইল বা পাসওয়ার্ড ভুল।';$('login-error').classList.add('visible');return;}
+  showApp();
+});
+async function logout(){await sb.auth.signOut();showLogin();}
+sb.auth.getSession().then(({data})=>data.session?showApp():showLogin());
+sb.auth.onAuthStateChange((_e,s)=>s?showApp():showLogin());
+
+function toast(m,err){const t=$('toast');t.textContent=m;t.className='toast visible'+(err?' error':'');setTimeout(()=>t.classList.remove('visible'),3200);}
+const cnt=s=>all.filter(r=>r.status===s).length;
+
+async function load(){
+  const {data,error}=await sb.from('competition_submissions').select('*').order('created_at',{ascending:false});
+  if(error){console.error(error);$('list').innerHTML='<div class="empty-state">ডেটা লোড করা যায়নি। কনসোল দেখুন।</div>';return;}
+  all=data||[];
+  $('pend-badge').textContent=bn(cnt('pending'))+' পেন্ডিং';
+  $('win-badge').textContent='🏆 '+bn(all.filter(r=>r.is_winner).length)+'/৫';
+  $('tabs').innerHTML=TABS.map(([k,l])=>`<button class="tab-btn ${k===tab?'active':''}" onclick="switchTab('${k}')">${l} (${bn(cnt(k))})</button>`).join('');
+  render();
+}
+function switchTab(t){tab=t;load();}
+
+function render(){
+  const rows=all.filter(r=>r.status===tab);
+  if(!rows.length){$('list').innerHTML='<div class="empty-state">এখানে এখন কিছু নেই।</div>';return;}
+  $('list').innerHTML=rows.map(r=>`
+  <div class="sub-card ${r.is_winner?'win':''}">
+    <div class="sub-head">
+      ${r.img_url?`<img class="sub-thumb" src="${esc(r.img_url)}" alt="">`:'<div class="sub-thumb"></div>'}
+      <div>
+        <div class="sub-title">${esc(r.title)}</div>
+        <div class="sub-meta">
+          <span class="pill">${r.category==='student'?'শিক্ষার্থী':'উন্মুক্ত'}</span>
+          <span class="pill s-${r.status}">${ST[r.status]}</span>
+          ${r.is_winner?'<span class="pill gold">🏆 বিজয়ী</span>':''}
+          <span>${esc(r.participant_name)}, বয়স ${bn(r.age||'—')}</span>
+          ${r.category==='student'?`<span>${LV[r.institution_level]||''} — ${esc(r.institution)}</span>`:''}
+          ${r.language_variant?`<span>${esc(r.language_variant)}</span>`:''}
+        </div>
+      </div>
+    </div>
+    <div class="contact"><i class="ti ti-phone"></i> ${esc(r.contact)}</div>
+    <div class="sub-body" id="b-${r.id}">${esc(r.body)}</div>
+    <div class="expand-link" onclick="document.getElementById('b-${r.id}').classList.toggle('expanded')">আরও দেখুন / লুকান</div>
+    <div class="sub-actions">
+      ${r.status==='pending'?`<button class="btn btn-publish" onclick="setStatus('${r.id}','published')"><i class="ti ti-send"></i> প্রকাশ করুন</button>
+        <button class="btn btn-reject" onclick="setStatus('${r.id}','rejected')"><i class="ti ti-x"></i> বাতিল করুন</button>`:''}
+      ${r.status==='published'?`<button class="btn btn-win ${r.is_winner?'on':''}" onclick="toggleWinner('${r.id}',${!r.is_winner})"><i class="ti ti-trophy"></i> ${r.is_winner?'বিজয়ী (সরান)':'বিজয়ী করুন'}</button>
+        <a class="btn btn-link" href="competition-post.html?id=${encodeURIComponent(r.id)}" target="_blank"><i class="ti ti-external-link"></i> পেজ দেখুন</a>
+        <button class="btn btn-reject" onclick="setStatus('${r.id}','rejected')"><i class="ti ti-eye-off"></i> প্রত্যাহার</button>`:''}
+      ${r.status==='rejected'?`<button class="btn btn-link" onclick="setStatus('${r.id}','pending')"><i class="ti ti-arrow-back-up"></i> পেন্ডিংয়ে ফেরত</button>`:''}
+    </div>
+  </div>`).join('');
+}
+
+async function setStatus(id,status){
+  if(status==='rejected'&&!confirm('লেখাটি বাতিল করা হবে। নিশ্চিত?'))return;
+  const upd={status};
+  if(status==='published')upd.published_at=new Date().toISOString();
+  if(status!=='published')upd.is_winner=false;
+  const {error}=await sb.from('competition_submissions').update(upd).eq('id',id);
+  if(error){console.error(error);return toast('আপডেট করা যায়নি।',true);}
+  toast(status==='published'?'লেখা প্রকাশিত হয়েছে।':status==='rejected'?'লেখা বাতিল হয়েছে।':'পেন্ডিংয়ে ফেরত গেছে।');
+  load();
+}
+async function toggleWinner(id,val){
+  if(val&&all.filter(r=>r.is_winner).length>=5&&!confirm('ইতিমধ্যে ৫ জন বিজয়ী চিহ্নিত আছে। তবুও যোগ করবেন?'))return;
+  const {error}=await sb.from('competition_submissions').update({is_winner:val}).eq('id',id);
+  if(error){console.error(error);return toast('আপডেট করা যায়নি।',true);}
+  toast(val?'🏆 বিজয়ী চিহ্নিত হয়েছে।':'বিজয়ী চিহ্ন সরানো হয়েছে।');
+  load();
+}
+</script>
+</body>
+</html>
