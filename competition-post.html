@@ -72,7 +72,7 @@ footer{background:#fff;border-top:1px solid #e2e8f0;padding:2.5rem 2rem;text-ali
 <script>
 const sb=supabase.createClient('https://ksnwykmtrczvdzhoiews.supabase.co','sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno');
 const COLS='id,participant_name,category,institution_level,institution,age,language_variant,topic,tags,title,body,img_url,is_winner,published_at';
-const clean=h=>DOMPurify.sanitize(h,{ALLOWED_TAGS:['p','br','b','strong','i','em','u','s','h2','h3','blockquote','ul','ol','li','a','font','div','span'],ALLOWED_ATTR:['href','color','target','rel'],ALLOWED_URI_REGEXP:/^(https?:|mailto:)/i});
+const clean=h=>DOMPurify.sanitize(h,{ALLOWED_TAGS:['p','br','b','strong','i','em','u','s','h2','h3','blockquote','ul','ol','li','a','font','div','span'],ALLOWED_ATTR:['href','color','target','rel'],ALLOWED_URI_REGEXP:/^(?:(?:https?|mailto):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i});
 DOMPurify.addHook('afterSanitizeAttributes',n=>{if(n.tagName==='A'){n.setAttribute('target','_blank');n.setAttribute('rel','noopener noreferrer nofollow');}});
 const $=id=>document.getElementById(id);
 const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

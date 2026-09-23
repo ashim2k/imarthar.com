@@ -207,8 +207,12 @@ footer span{color:var(--g);font-weight:600}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const sb=supabase.createClient('https://ksnwykmtrczvdzhoiews.supabase.co','sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno');
+const $=id=>document.getElementById(id);
+const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const bn=n=>String(n).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const LV={primary:'প্রাথমিক',secondary:'মাধ্যমিক',college:'কলেজ'};
 const COLS='id,participant_name,category,institution_level,institution,age,topic,tags,title,body,img_url,is_winner,published_at';
-const clean=h=>DOMPurify.sanitize(h,{ALLOWED_TAGS:['p','br','b','strong','i','em','u','s','h2','h3','blockquote','ul','ol','li','a','font','div','span'],ALLOWED_ATTR:['href','color','target','rel'],ALLOWED_URI_REGEXP:/^(https?:|mailto:)/i});
+const clean=h=>DOMPurify.sanitize(h,{ALLOWED_TAGS:['p','br','b','strong','i','em','u','s','h2','h3','blockquote','ul','ol','li','a','font','div','span'],ALLOWED_ATTR:['href','color','target','rel'],ALLOWED_URI_REGEXP:/^(?:(?:https?|mailto):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i});
 DOMPurify.addHook('afterSanitizeAttributes',n=>{if(n.tagName==='A'){n.setAttribute('target','_blank');n.setAttribute('rel','noopener noreferrer nofollow');}});
 const TOPICS=['ভাষা ও লিপি','সাহিত্য ও কবিতা','ইতিহাস','সংস্কৃতি ও ঐতিহ্য','উৎসব ও ধর্মীয় অনুষ্ঠান','নৃত্য ও সংগীত','খাদ্য, পোশাক ও শিল্প','সমাজ ও জীবনযাপন','শিক্ষা','প্রযুক্তি ও ভাষার ভবিষ্যৎ','ব্যক্তিগত অভিজ্ঞতা ও স্মৃতিকথা','অন্যান্য'];
 const COLORS=['#0f172a','#dc2626','#ea580c','#ca8a04','#16a34a','#0891b2','#2563eb','#9333ea','#db2777','#64748b'];
@@ -249,10 +253,6 @@ ed.addEventListener('input',()=>{if(!ed.textContent.trim()&&!ed.querySelector('l
 const upBar=()=>document.querySelectorAll('#bar .eb[data-c]').forEach(b=>{try{b.classList.toggle('on',['bold','italic','underline','strikeThrough'].includes(b.dataset.c)&&document.queryCommandState(b.dataset.c));}catch(_){}});
 document.addEventListener('selectionchange',upBar);
 
-const $=id=>document.getElementById(id);
-const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const bn=n=>String(n).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
-const LV={primary:'প্রাথমিক',secondary:'মাধ্যমিক',college:'কলেজ'};
 let rows=[],filter='all';
 
 document.querySelectorAll('input[name=cat]').forEach(r=>r.addEventListener('change',()=>{
