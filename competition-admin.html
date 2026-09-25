@@ -102,14 +102,20 @@ function showApp(){$('login-screen').style.display='none';$('app-root').style.di
 function showLogin(){$('login-screen').style.display='flex';$('app-root').style.display='none';}
 $('login-form').addEventListener('submit',async e=>{
   e.preventDefault();const b=$('login-btn');b.disabled=true;b.innerHTML='<i class="ti ti-loader-2 spinning"></i> লগইন হচ্ছে…';
-  const {error}=await sb.auth.signInWithPassword({email:$('login-email').value.trim(),password:$('login-password').value});
+  const {data,error}=await sb.auth.signInWithPassword({email:$('login-email').value.trim(),password:$('login-password').value});
   b.disabled=false;b.textContent='লগইন করুন';
   if(error){$('login-error').textContent='লগইন ব্যর্থ: ইমেইল বা পাসওয়ার্ড ভুল।';$('login-error').classList.add('visible');return;}
-  showApp();
+  await checkAndEnter(data.session);
 });
 async function logout(){await sb.auth.signOut();showLogin();}
-sb.auth.getSession().then(({data})=>data.session?showApp():showLogin());
-sb.auth.onAuthStateChange((_e,s)=>s?showApp():showLogin());
+function hasRole(session){const r=session&&session.user&&session.user.user_metadata&&session.user.user_metadata.role;return r==='competition_admin'||r==='super_admin';}
+async function checkAndEnter(session){
+  if(session&&hasRole(session)){showApp();return;}
+  if(session&&!hasRole(session)){await sb.auth.signOut();$('login-error').textContent='এই আইডিতে প্রতিযোগিতা অ্যাডমিনে ঢোকার অনুমতি নেই।';$('login-error').classList.add('visible');}
+  showLogin();
+}
+sb.auth.getSession().then(({data})=>checkAndEnter(data.session));
+sb.auth.onAuthStateChange((_e,s)=>{if(s)checkAndEnter(s);else showLogin();});
 
 function toast(m,err){const t=$('toast');t.textContent=m;t.className='toast visible'+(err?' error':'');setTimeout(()=>t.classList.remove('visible'),3200);}
 const cnt=s=>all.filter(r=>r.status===s).length;
