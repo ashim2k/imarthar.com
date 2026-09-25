@@ -192,6 +192,39 @@
     margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 4px;
   }
 
+  /* Announcement Marquee Banner */
+  .announce-bar {
+    position: relative;
+    background: linear-gradient(90deg, #10b981, #06b6d4);
+    padding: 8px 0;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px -2px rgba(16, 185, 129, 0.25);
+  }
+  .announce-bar a {
+    display: inline-block;
+    white-space: nowrap;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    padding-left: 100%;
+    animation: announce-scroll 18s linear infinite, announce-blink 1.4s ease-in-out infinite;
+  }
+  .announce-bar a:hover { animation-play-state: paused; }
+  @keyframes announce-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  @keyframes announce-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+  }
+  @media (max-width: 640px) {
+    .announce-bar a { font-size: 12px; }
+  }
+
   /* Sections Structure */
   .section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
   .section-title { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.75rem; display: flex; align-items: center; gap: 8px; }
@@ -300,14 +333,16 @@
     <a href="tools.html">টুল</a>
     <a href="blogs.html">ব্লগ</a>
     <a href="papers.html">পেপার</a>
-    <a href="discussion.html">আলোচনা</a>
+    <a href="competition.html">কম্পিটিশন</a>
   </div>
 </nav>
 
 <div class="hero">
   <div class="hero-content">
     <div class="hero-badge"><i class="ti ti-sparkles"></i> বিষ্ণুপ্রিয়া মণিপুরি ঠারর ডিজিটাল গরগ</div>
-    <h2 class="hero-tagline">*** এরে সাইট এহান ইমে প্রস্তাবনাহান *** </h2>
+    <div class="announce-bar">
+      <a href="competition.html">📢 মণিপুরি বিজ্ঞান প্রজন্মের আয়োজনে ব্লগ রাইটিং কম্পিটিশন ২০২৬ — বিস্তারিত জানতে ক্লিক করুন</a>
+    </div>
 <!-- Visitor Counter -->
 <img src="https://hits.sh/imarthar.com.svg?view=today-total&style=flat-square&label=ভিজিটর&color=10b981&labelColor=0f172a" 
      alt="visitor counter"
