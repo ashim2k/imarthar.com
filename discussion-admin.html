@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অ্যাডমিন — ইমার ঠার আলোচনা</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
+
+  nav {
+    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100;
+  }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; text-decoration: none; }
+  .logo span { color: #10b981; }
+  .logout-btn { background: #f1f5f9; color: #475569; border: none; padding: 8px 16px; border-radius: 10px; font-weight: 600; font-size: 13px; cursor: pointer; display: none; align-items: center; gap: 6px; }
+  .logout-btn.show { display: inline-flex; }
+
+  .wrap { max-width: 760px; margin: 3rem auto; padding: 0 2rem; }
+
+  /* Login box */
+  .login-box { max-width: 380px; margin: 4rem auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 2rem; }
+  .login-box h1 { font-size: 20px; font-weight: 800; margin-bottom: 1.2rem; color: #0f172a; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+  .form-group input, .form-group textarea {
+    width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 10px 12px;
+    font-size: 14px; font-family: inherit; outline: none; color: #0f172a; resize: vertical;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,0.12); }
+  .btn-primary { background: #10b981; color: #fff; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 600; font-size: 14px; cursor: pointer; width: 100%; }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+  .form-error { color: #dc2626; font-size: 12.5px; margin-top: 10px; display: none; }
+  .form-error.show { display: block; }
+
+  /* Dashboard */
+  .page-title { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 1.5rem; }
+  .state-box { background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 16px; padding: 2rem 1.25rem; text-align: center; color: #94a3b8; font-size: 14px; }
+
+  .admin-topic { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; margin-bottom: 14px; }
+  .admin-topic-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .admin-topic-title { font-size: 15px; font-weight: 700; color: #0f172a; }
+  .admin-topic-meta { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+  .admin-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .icon-btn { background: #f1f5f9; border: none; color: #475569; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .icon-btn:hover { background: #e2e8f0; }
+  .icon-btn.danger:hover { background: #fee2e2; color: #dc2626; }
+  .icon-btn.toggle:hover { background: #d1fae5; color: #065f46; }
+
+  .admin-topic-body { font-size: 13.5px; color: #475569; margin-top: 10px; white-space: pre-wrap; }
+
+  .edit-area { display: none; margin-top: 12px; border-top: 1px solid #f1f5f9; padding-top: 12px; }
+  .edit-area.open { display: block; }
+  .edit-actions { display: flex; gap: 8px; margin-top: 8px; }
+  .btn-small { padding: 7px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; }
+  .btn-small.save { background: #10b981; color: #fff; }
+  .btn-small.cancel { background: #f1f5f9; color: #475569; }
+
+  .replies-area { display: none; margin-top: 12px; border-top: 1px solid #f1f5f9; padding-top: 12px; }
+  .replies-area.open { display: block; }
+  .admin-reply { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f8fafc; font-size: 13px; }
+  .admin-reply:last-child { border-bottom: none; }
+  .admin-reply .r-author { font-weight: 700; color: #0f172a; }
+  .admin-reply .r-body { color: #475569; margin-top: 2px; white-space: pre-wrap; }
+  .admin-reply .r-meta { color: #94a3b8; font-size: 11.5px; margin-top: 2px; }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com <small style="font-size:12px; color:#94a3b8; font-weight:500;">/ অ্যাডমিন</small></a>
+  <button class="logout-btn" id="logout-btn" onclick="doLogout()"><i class="ti ti-logout"></i> লগআউট</button>
+</nav>
+
+<!-- Login -->
+<div class="login-box" id="login-box">
+  <h1>অ্যাডমিন লগইন</h1>
+  <form id="login-form">
+    <div class="form-group">
+      <label for="l-email">ইমেইল</label>
+      <input type="email" id="l-email" required autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label for="l-password">পাসওয়ার্ড</label>
+      <input type="password" id="l-password" required autocomplete="current-password">
+    </div>
+    <button type="submit" class="btn-primary" id="login-btn">লগইন করিক</button>
+    <div class="form-error" id="login-error"></div>
+  </form>
+</div>
+
+<!-- Dashboard -->
+<div class="wrap" id="dashboard" style="display:none;">
+  <h1 class="page-title">টপিক মডারেশন</h1>
+  <div id="admin-topics-list">
+    <div class="state-box">লোড অহের...</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://apvlnappmxasieeggtsf.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_5SehbItbk0583Q3YGDXbvQ_FDHCq4h_';
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  function escapeHtml(str) {
+    return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  const BN_DIGITS = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  function toBn(n) { return String(n).replace(/[0-9]/g, d => BN_DIGITS[d]); }
+  function fmtDate(dateStr) {
+    const d = new Date(dateStr);
+    return toBn(d.getDate()) + '/' + toBn(d.getMonth() + 1) + '/' + toBn(d.getFullYear());
+  }
+
+  // ── Auth state ──
+  async function checkSession() {
+    const { data } = await sb.auth.getSession();
+    if (data.session) showDashboard();
+    else showLogin();
+  }
+
+  function showLogin() {
+    document.getElementById('login-box').style.display = 'block';
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('logout-btn').classList.remove('show');
+  }
+
+  function showDashboard() {
+    document.getElementById('login-box').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    document.getElementById('logout-btn').classList.add('show');
+    loadAdminTopics();
+  }
+
+  document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errEl = document.getElementById('login-error');
+    errEl.classList.remove('show');
+    const btn = document.getElementById('login-btn');
+    btn.disabled = true;
+    btn.textContent = 'লগইন অহের...';
+
+    const email = document.getElementById('l-email').value.trim();
+    const password = document.getElementById('l-password').value;
+
+    const { error } = await sb.auth.signInWithPassword({ email, password });
+
+    btn.disabled = false;
+    btn.textContent = 'লগইন করিক';
+
+    if (error) {
+      errEl.textContent = 'লগইন ব্যর্থ — ইমেইল বা পাসওয়ার্ড ভুল।';
+      errEl.classList.add('show');
+      return;
+    }
+    showDashboard();
+  });
+
+  async function doLogout() {
+    await sb.auth.signOut();
+    showLogin();
+  }
+
+  // ── Load topics for admin ──
+  let allTopics = [];
+  async function loadAdminTopics() {
+    const listEl = document.getElementById('admin-topics-list');
+    listEl.innerHTML = '<div class="state-box">লোড অহের...</div>';
+
+    const { data, error } = await sb
+      .from('discussion_topics')
+      .select('id, title, body, author_name, created_at, views_count, replies_count')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error(error);
+      listEl.innerHTML = '<div class="state-box">লোড করানিত ভুল অইলে।</div>';
+      return;
+    }
+
+    allTopics = data || [];
+    if (!allTopics.length) {
+      listEl.innerHTML = '<div class="state-box">এবাংকা কোনো টপিক নেই।</div>';
+      return;
+    }
+
+    listEl.innerHTML = allTopics.map(t => `
+      <div class="admin-topic" id="topic-${t.id}">
+        <div class="admin-topic-head">
+          <div>
+            <div class="admin-topic-title">${escapeHtml(t.title)}</div>
+            <div class="admin-topic-meta">${escapeHtml(t.author_name)} • ${fmtDate(t.created_at)} • ${toBn(t.replies_count || 0)} মন্তব্য • ${toBn(t.views_count || 0)} চাসি</div>
+          </div>
+          <div class="admin-actions">
+            <button class="icon-btn toggle" title="মন্তব্য দেখাদিক" onclick="toggleReplies('${t.id}')"><i class="ti ti-message-circle"></i></button>
+            <button class="icon-btn" title="এডিট" onclick="toggleEdit('${t.id}')"><i class="ti ti-pencil"></i></button>
+            <button class="icon-btn danger" title="ডিলিট" onclick="deleteTopic('${t.id}')"><i class="ti ti-trash"></i></button>
+          </div>
+        </div>
+        <div class="admin-topic-body">${escapeHtml(t.body)}</div>
+
+        <div class="edit-area" id="edit-${t.id}">
+          <div class="form-group">
+            <label>শিরোনাম</label>
+            <input type="text" id="edit-title-${t.id}" value="${escapeHtml(t.title)}">
+          </div>
+          <div class="form-group">
+            <label>বিস্তারিত</label>
+            <textarea id="edit-body-${t.id}" rows="4">${escapeHtml(t.body)}</textarea>
+          </div>
+          <div class="edit-actions">
+            <button class="btn-small save" onclick="saveTopic('${t.id}')">সংরক্ষণ করিক</button>
+            <button class="btn-small cancel" onclick="toggleEdit('${t.id}')">বাতিল</button>
+          </div>
+        </div>
+
+        <div class="replies-area" id="replies-${t.id}"></div>
+      </div>
+    `).join('');
+  }
+
+  function toggleEdit(id) {
+    document.getElementById('edit-' + id).classList.toggle('open');
+  }
+
+  async function saveTopic(id) {
+    const title = document.getElementById('edit-title-' + id).value.trim();
+    const body = document.getElementById('edit-body-' + id).value.trim();
+    if (title.length < 3 || body.length < 3) { alert('শিরোনাম বারো বিস্তারিত ঠিকমতো লিখক।'); return; }
+
+    const { error } = await sb.from('discussion_topics').update({ title, body }).eq('id', id);
+    if (error) { console.error(error); alert('সংরক্ষণ করানিত ভুল অইলে।'); return; }
+    loadAdminTopics();
+  }
+
+  async function deleteTopic(id) {
+    if (!confirm('এই টপিকহান বারো এইতানর সগইল মন্তব্য পুরাপুরি ডিলিট করানি চান?')) return;
+    const { error } = await sb.from('discussion_topics').delete().eq('id', id);
+    if (error) { console.error(error); alert('ডিলিট করানিত ভুল অইলে।'); return; }
+    loadAdminTopics();
+  }
+
+  const openReplyPanels = {};
+  async function toggleReplies(topicId) {
+    const panel = document.getElementById('replies-' + topicId);
+    const isOpen = panel.classList.contains('open');
+    if (isOpen) { panel.classList.remove('open'); return; }
+
+    panel.innerHTML = 'লোড অহের...';
+    panel.classList.add('open');
+
+    const { data, error } = await sb
+      .from('discussion_replies')
+      .select('id, author_name, body, created_at')
+      .eq('topic_id', topicId)
+      .order('created_at', { ascending: true });
+
+    if (error) { panel.innerHTML = 'মন্তব্য লোড করানিত ভুল অইলে।'; return; }
+
+    if (!data || !data.length) { panel.innerHTML = '<div class="state-box">কোনো মন্তব্য নেই।</div>'; return; }
+
+    panel.innerHTML = data.map(r => `
+      <div class="admin-reply">
+        <div>
+          <div class="r-author">${escapeHtml(r.author_name)}</div>
+          <div class="r-body">${escapeHtml(r.body)}</div>
+          <div class="r-meta">${fmtDate(r.created_at)}</div>
+        </div>
+        <button class="icon-btn danger" title="ডিলিট" onclick="deleteReply('${r.id}', '${topicId}')"><i class="ti ti-trash"></i></button>
+      </div>
+    `).join('');
+  }
+
+  async function deleteReply(replyId, topicId) {
+    if (!confirm('এই মন্তব্যহান ডিলিট করানি চান?')) return;
+    const { error } = await sb.from('discussion_replies').delete().eq('id', replyId);
+    if (error) { console.error(error); alert('ডিলিট করানিত ভুল অইলে।'); return; }
+    document.getElementById('replies-' + topicId).classList.remove('open');
+    toggleReplies(topicId);
+    loadAdminTopics();
+  }
+
+  checkSession();
+</script>
+
+</body>
+</html>
