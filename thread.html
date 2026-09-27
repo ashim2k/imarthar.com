@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>টপিক — ইমার ঠার</title>
+<link rel="canonical" href="https://imarthar.com/thread.html" />
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
+
+  nav {
+    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100;
+  }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; text-decoration: none; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; }
+  .nav-links a:hover, .nav-links a.active { color: #10b981; }
+
+  .thread-layout { max-width: 720px; margin: 2.5rem auto; padding: 0 2rem; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #64748b; text-decoration: none; margin-bottom: 1.2rem; font-weight: 600; }
+  .back-link:hover { color: #10b981; }
+
+  .op-card, .reply-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; margin-bottom: 16px; }
+  .op-title { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 10px; }
+  .op-meta, .reply-meta { display: flex; align-items: center; gap: 10px; font-size: 12.5px; color: #94a3b8; margin-bottom: 14px; }
+  .avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 13px; flex-shrink: 0; }
+  .op-meta .avatar { width: 40px; height: 40px; font-size: 14px; }
+  .author-block { display: flex; flex-direction: column; }
+  .author-name { font-weight: 700; color: #0f172a; font-size: 13.5px; }
+  .op-body, .reply-body { font-size: 15px; color: #334155; white-space: pre-wrap; word-wrap: break-word; }
+  .op-stats { display: flex; gap: 18px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #f1f5f9; font-size: 12.5px; color: #94a3b8; }
+
+  .replies-heading { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; margin: 1.8rem 0 1rem; display: flex; align-items: center; gap: 8px; }
+  .replies-heading::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
+
+  .state-box { background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 16px; padding: 2.5rem 1.25rem; text-align: center; color: #94a3b8; font-size: 14px; }
+  .state-box.error { color: #dc2626; border-color: #fecaca; background: #fef2f2; }
+
+  .reply-form-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; margin-top: 1.2rem; }
+  .reply-form-box h3 { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+  .form-group input, .form-group textarea {
+    width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 10px 12px;
+    font-size: 14px; font-family: inherit; outline: none; color: #0f172a; resize: vertical;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,0.12); }
+  .form-group textarea { min-height: 90px; }
+  .form-error { color: #dc2626; font-size: 12.5px; margin-top: 4px; display: none; }
+  .form-error.show { display: block; }
+  .btn-submit { background: #10b981; color: #fff; border: none; padding: 10px 22px; border-radius: 10px; font-weight: 600; font-size: 14px; cursor: pointer; }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+
+  footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; margin-top: 3rem; }
+  footer span { color: #10b981; font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .thread-layout { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">imar<span>thar</span>.com</a>
+  <div class="nav-links">
+    <a href="index.html#tools">টুল</a>
+    <a href="blogs.html">ব্লগ</a>
+    <a href="papers.html">পেপার</a>
+    <a href="discussion.html" class="active">আলোচনা</a>
+  </div>
+</nav>
+
+<div class="thread-layout">
+  <a href="discussion.html" class="back-link"><i class="ti ti-arrow-left"></i> সগইলর টপিকত ফিরিক</a>
+
+  <div id="thread-content">
+    <div class="state-box">টপিকহান লোড অহের...</div>
+  </div>
+</div>
+
+<footer>
+  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
+  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://apvlnappmxasieeggtsf.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_5SehbItbk0583Q3YGDXbvQ_FDHCq4h_';
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const AVATAR_COLORS = [
+    { bg: '#d1fae5', fg: '#065f46' },
+    { bg: '#e0f2fe', fg: '#0369a1' },
+    { bg: '#fef3c7', fg: '#92400e' },
+    { bg: '#fce7f3', fg: '#9d174d' },
+    { bg: '#ede9fe', fg: '#5b21b6' }
+  ];
+  function avatarColorFor(name) {
+    let sum = 0;
+    for (let i = 0; i < name.length; i++) sum += name.charCodeAt(i);
+    return AVATAR_COLORS[sum % AVATAR_COLORS.length];
+  }
+  function escapeHtml(str) {
+    return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  const BN_DIGITS = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  function toBn(n) { return String(n).replace(/[0-9]/g, d => BN_DIGITS[d]); }
+  function initialsOf(name) { return (name || '?').trim().charAt(0).toUpperCase() || '?'; }
+
+  function timeAgoBn(dateStr) {
+    const then = new Date(dateStr).getTime();
+    const diffSec = Math.max(0, Math.floor((Date.now() - then) / 1000));
+    if (diffSec < 60) return 'এবাংকা';
+    const min = Math.floor(diffSec / 60);
+    if (min < 60) return toBn(min) + ' মিনিট আগে';
+    const hr = Math.floor(min / 60);
+    if (hr < 24) return toBn(hr) + ' ঘন্টা আগে';
+    const day = Math.floor(hr / 24);
+    if (day < 30) return toBn(day) + ' দিন আগে';
+    const month = Math.floor(day / 30);
+    if (month < 12) return toBn(month) + ' মাস আগে';
+    return toBn(Math.floor(month / 12)) + ' বছর আগে';
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const topicId = params.get('id');
+  const contentEl = document.getElementById('thread-content');
+
+  function avatarHtml(name, size) {
+    const c = avatarColorFor(name || '?');
+    return `<div class="avatar" style="background:${c.bg}; color:${c.fg};">${escapeHtml(initialsOf(name))}</div>`;
+  }
+
+  function renderReply(r) {
+    return `
+    <div class="reply-card">
+      <div class="reply-meta">
+        ${avatarHtml(r.author_name)}
+        <div class="author-block">
+          <span class="author-name">${escapeHtml(r.author_name)}</span>
+          <span>${timeAgoBn(r.created_at)}</span>
+        </div>
+      </div>
+      <div class="reply-body">${escapeHtml(r.body)}</div>
+    </div>`;
+  }
+
+  async function loadThread() {
+    if (!topicId) {
+      contentEl.innerHTML = '<div class="state-box error">টপিক পেয়া নাগেইলাং।</div>';
+      return;
+    }
+
+    const { data: topic, error: topicErr } = await sb
+      .from('discussion_topics')
+      .select('id, title, body, author_name, created_at, views_count, replies_count')
+      .eq('id', topicId)
+      .single();
+
+    if (topicErr || !topic) {
+      console.error(topicErr);
+      contentEl.innerHTML = '<div class="state-box error">টপিকহান পেয়া নাগেইলাং। হয়তো এহান মুছি ফেলা অইছে।</div>';
+      return;
+    }
+
+    const { data: replies, error: repliesErr } = await sb
+      .from('discussion_replies')
+      .select('id, author_name, body, created_at')
+      .eq('topic_id', topicId)
+      .order('created_at', { ascending: true });
+
+    if (repliesErr) console.error(repliesErr);
+
+    const repliesList = replies || [];
+
+    contentEl.innerHTML = `
+      <div class="op-card">
+        <h1 class="op-title">${escapeHtml(topic.title)}</h1>
+        <div class="op-meta">
+          ${avatarHtml(topic.author_name)}
+          <div class="author-block">
+            <span class="author-name">${escapeHtml(topic.author_name)}</span>
+            <span>${timeAgoBn(topic.created_at)}</span>
+          </div>
+        </div>
+        <div class="op-body">${escapeHtml(topic.body)}</div>
+        <div class="op-stats">
+          <span><i class="ti ti-message-circle"></i> ${toBn(topic.replies_count || 0)} মন্তব্য</span>
+          <span><i class="ti ti-eye"></i> ${toBn((topic.views_count || 0) + 1)} চাসি</span>
+        </div>
+      </div>
+
+      <div class="replies-heading">মন্তব্য (${toBn(repliesList.length)})</div>
+      <div id="replies-list">
+        ${repliesList.length ? repliesList.map(renderReply).join('') : '<div class="state-box">এবাংকা কোনো মন্তব্য নেই। সাংগোত প্রথম মন্তব্যহান করিক!</div>'}
+      </div>
+
+      <div class="reply-form-box">
+        <h3>মন্তব্য লিখক</h3>
+        <form id="reply-form">
+          <div class="form-group">
+            <label for="r-name">তার নাঙ</label>
+            <input type="text" id="r-name" maxlength="50" placeholder="যেমন: বিজয় সিনহা" required>
+          </div>
+          <div class="form-group">
+            <label for="r-body">মন্তব্য</label>
+            <textarea id="r-body" maxlength="3000" placeholder="তার মন্তব্যহান লিখক..." required></textarea>
+          </div>
+          <div class="hp-field">
+            <label for="r-website">Website</label>
+            <input type="text" id="r-website" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="form-error" id="reply-error"></div>
+          <button type="submit" class="btn-submit" id="reply-submit-btn">মন্তব্য পোস্ট করিক</button>
+        </form>
+      </div>
+    `;
+
+    document.getElementById('reply-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errEl = document.getElementById('reply-error');
+      errEl.classList.remove('show');
+
+      if (document.getElementById('r-website').value.trim() !== '') return;
+
+      const name = document.getElementById('r-name').value.trim();
+      const body = document.getElementById('r-body').value.trim();
+
+      if (!name || !body) {
+        errEl.textContent = 'দয়া করিয়া নাঙ বারো মন্তব্য দুয়েহান লিখক।';
+        errEl.classList.add('show');
+        return;
+      }
+
+      const btn = document.getElementById('reply-submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'পোস্ট অহের...';
+
+      const { error } = await sb
+        .from('discussion_replies')
+        .insert({ topic_id: topicId, author_name: name, body });
+
+      btn.disabled = false;
+      btn.textContent = 'মন্তব্য পোস্ট করিক';
+
+      if (error) {
+        console.error(error);
+        errEl.textContent = 'মন্তব্য পোস্ট করানিত ভুল অইলে। এবাকা ট্রাই করিক।';
+        errEl.classList.add('show');
+        return;
+      }
+
+      loadThread();
+    });
+
+    // ভিউ কাউন্ট বাড়ানি (fire-and-forget)
+    sb.rpc('increment_topic_views', { p_topic_id: topicId }).then(({ error }) => {
+      if (error) console.error('view count error:', error);
+    });
+  }
+
+  loadThread();
+</script>
+
+</body>
+</html>
