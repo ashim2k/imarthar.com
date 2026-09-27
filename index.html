@@ -33,11 +33,21 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    gap: 12px;
   }
-  .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; flex-shrink: 0; white-space: nowrap; }
   .logo span { color: #10b981; }
-  .nav-links { display: flex; gap: 28px; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    flex-shrink: 1;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: flex-end;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; white-space: nowrap; }
   .nav-links a:hover { color: #10b981; }
 
   /* Premium Hero Section with Graphics & Gradients */
@@ -210,7 +220,7 @@
     font-size: 14px;
     text-decoration: none;
     padding-left: 100%;
-    text-shadow: 0 0 6px #ff0000, 0 0 12px #ff0000, 0 1px 2px rgba(0,0,0,0.4);
+    text-shadow: 0 0 6px #ff1a1a, 0 0 12px #ff1a1a, 0 0 20px #ff1a1a, 0 1px 2px rgba(0,0,0,0.5);
     animation: announce-scroll 18s linear infinite, announce-blink 1.4s ease-in-out infinite;
   }
   .announce-bar a:hover { animation-play-state: paused; }
@@ -219,8 +229,8 @@
     100% { transform: translateX(-100%); }
   }
   @keyframes announce-blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.45; }
+    0%, 100% { text-shadow: 0 0 6px #ff1a1a, 0 0 12px #ff1a1a, 0 0 20px #ff1a1a, 0 1px 2px rgba(0,0,0,0.5); }
+    50% { text-shadow: 0 0 12px #ff1a1a, 0 0 24px #ff1a1a, 0 0 36px #ff1a1a, 0 1px 2px rgba(0,0,0,0.5); }
   }
   @media (max-width: 640px) {
     .announce-bar a { font-size: 12px; }
@@ -322,6 +332,10 @@
     .section { padding: 2.5rem 1.25rem; }
     #query, #result { font-size: 1rem; }
     .tr-dir-row { flex-wrap: wrap; }
+    nav { padding: 0 1rem; }
+    .logo { font-size: 17px; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 12px; }
   }
 </style>
 </head>
