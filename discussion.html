@@ -136,21 +136,21 @@
 <!-- New Topic Modal -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal-box">
-    <h2>নতুন টপিক তৈয়ার করিক</h2>
+    <h2>নতুন টপিক আহান হংকরিক </h2>
     <form id="new-topic-form">
       <div class="form-group">
-        <label for="f-name">তার নাঙ</label>
+        <label for="f-name">নাঙহান</label>
         <input type="text" id="f-name" maxlength="50" placeholder="যেমন: বিজয় সিনহা" required>
       </div>
       <div class="form-group">
         <label for="f-title">টপিকর শিরোনাম</label>
-        <input type="text" id="f-title" maxlength="200" placeholder="একহান স্পষ্ট শিরোনাম লিখক" required>
+        <input type="text" id="f-title" maxlength="200" placeholder="এহানাৎ শিরোনামহান ইকরিক" required>
       </div>
       <div class="form-group">
         <label for="f-body">বিস্তারিত</label>
-        <textarea id="f-body" maxlength="5000" placeholder="তার বিষয়হান বিস্তারিত করিয়া লিখক..." required></textarea>
+        <textarea id="f-body" maxlength="5000" placeholder="িষয়হান বিস্তারিত করিয়া ইকরিক..." required></textarea>
       </div>
-      <!-- honeypot: বট আটকাদার জন্য, খালি থবা লাগে -->
+      <!-- honeypot: বট আটকানির কা -->
       <div class="hp-field">
         <label for="f-website">Website</label>
         <input type="text" id="f-website" tabindex="-1" autocomplete="off">
@@ -166,7 +166,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  // ── Supabase config (discussion বোর্ডর জন্য আলাদা প্রজেক্ট) ──
+  // ── Supabase config (discussion বোর্ডরকা আলাদা প্রজেক্ট) ──
   const SUPABASE_URL = 'https://apvlnappmxasieeggtsf.supabase.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_5SehbItbk0583Q3YGDXbvQ_FDHCq4h_';
   const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -201,7 +201,7 @@
     const day = Math.floor(hr / 24);
     if (day < 30) return toBn(day) + ' দিন আগে';
     const month = Math.floor(day / 30);
-    if (month < 12) return toBn(month) + ' মাস আগে';
+    if (month < 12) return toBn(month) + ' মাহা আগে';
     const yr = Math.floor(month / 12);
     return toBn(yr) + ' বছর আগে';
   }
@@ -221,12 +221,12 @@
 
     if (error) {
       console.error(error);
-      listEl.innerHTML = '<div class="state-box error">টপিকহান লোড করানিত ভুল অইলে। এবাকা ট্রাই করিক।</div>';
+      listEl.innerHTML = '<div class="state-box error">টপিকহান লোড করানিৎ ভুল অসে। আরকমাউ ট্রাই করিক।</div>';
       return;
     }
 
     if (!data || !data.length) {
-      listEl.innerHTML = '<div class="state-box">এবাংকা তক কোনো টপিক নেই। সাংগোত নতুন টপিক আলোচনা করিক!</div>';
+      listEl.innerHTML = '<div class="state-box">এবাকা পেয়া কোনো টপিক নেই</div>';
       return;
     }
 
@@ -268,7 +268,7 @@
     const errEl = document.getElementById('form-error');
     errEl.classList.remove('show');
 
-    // honeypot চেক — বট ভরিলে চুপচাপ ব্লক
+    // honeypot চেক — বট ব্লক
     if (document.getElementById('f-website').value.trim() !== '') return;
 
     const name = document.getElementById('f-name').value.trim();
@@ -276,14 +276,14 @@
     const body = document.getElementById('f-body').value.trim();
 
     if (name.length < 1 || title.length < 3 || body.length < 3) {
-      errEl.textContent = 'দয়া করিয়া সবহান ফিল্ড ঠিকমতো পুরাদিক।';
+      errEl.textContent = 'ফিল্ডহানি চুমকরে পুরন করবাং';
       errEl.classList.add('show');
       return;
     }
 
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
-    btn.textContent = 'পোস্ট অহের...';
+    btn.textContent = 'ডিশকাশন...';
 
     const { data, error } = await sb
       .from('discussion_topics')
@@ -296,7 +296,7 @@
 
     if (error) {
       console.error(error);
-      errEl.textContent = 'পোস্ট করানিত ভুল অইলে। এবাকা ট্রাই করিক।';
+      errEl.textContent = 'পোস্ট করানিৎ ভুল অসে। আরাকমাউ ট্রাই করিক।';
       errEl.classList.add('show');
       return;
     }
