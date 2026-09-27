@@ -32,11 +32,13 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    gap: 12px;
   }
-  .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; white-space: nowrap; }
   .logo span { color: #10b981; }
-  .nav-links { display: flex; gap: 28px; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+  .nav-links { display: flex; gap: 28px; flex-shrink: 1; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; justify-content: flex-end; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; white-space: nowrap; }
   .nav-links a:hover, .nav-links a.active { color: #10b981; }
 
   /* ── Page Header ── */
@@ -117,6 +119,10 @@
   footer span { color: #10b981; font-weight: 600; }
 
   @media (max-width: 640px) {
+    nav { padding: 0 1rem; }
+    .logo { font-size: 17px; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 12px; }
     .page-header h1 { font-size: 26px; }
     .page-header { padding: 2.25rem 1.25rem 2rem; }
     .container { padding: 2.25rem 1.25rem 3.5rem; }
