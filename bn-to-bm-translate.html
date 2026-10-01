@@ -446,10 +446,6 @@
 <div class="main">
 
 <div class="main-content">
-  <div class="config-warning" id="config-warning">
-    Supabase কনফিগার করানি নাসে। SUPABASE_URL আরো SUPABASE_ANON_KEY সেট করিক।
-  </div>
-
   <div class="stats-row">
     <div class="stat-box">
       <div class="num" id="stat-total">০</div>
@@ -804,8 +800,7 @@
 
   async function init() {
     if (!isConfigured()) {
-      document.getElementById('config-warning').classList.add('visible');
-      document.getElementById('corpus-count').textContent = 'Supabase কনফিগার নাসে';
+      console.warn('Supabase config missing');
       return;
     }
     supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
