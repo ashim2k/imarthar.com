@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
 <title>মডারেশন ড্যাশবোর্ড — ইমার ঠার</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
@@ -23,7 +24,7 @@
   .page-title { font-size: 26px; font-weight: 800; color: #0f172a; margin-bottom: 0.4rem; }
   .page-desc { color: #64748b; font-size: 14px; margin-bottom: 2rem; }
 
-  .tabs { display: flex; gap: 8px; margin-bottom: 1.75rem; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 1.75rem; flex-wrap: wrap; }
   .tab-btn {
     border: 1px solid #e2e8f0; background: #fff; color: #64748b; font-size: 13.5px; font-weight: 600;
     padding: 8px 16px; border-radius: 10px; cursor: pointer;
@@ -47,7 +48,8 @@
   .sub-body.expanded { max-height: none; }
   .expand-link { font-size: 12.5px; color: #10b981; cursor: pointer; font-weight: 600; }
 
-  .sub-actions { display: flex; gap: 10px; }
+  .sub-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  a.btn { text-decoration: none; }
   .btn { border: none; border-radius: 10px; padding: 9px 16px; font-size: 13.5px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
   .btn-publish { background: #10b981; color: #fff; }
   .btn-publish:hover { background: #059669; }
@@ -109,11 +111,7 @@
     <h1 class="page-title">ব্লগ মডারেশন</h1>
     <p class="page-desc">সাবমিট করা ব্লগ পোস্ট রিভিউ করিয়া পাবলিশ বা বাতিল করিক। পাবলিশ করলে টেমপ্লেট থনে স্বয়ংক্রিয়ভাবে HTML পেজ হংকরিয়া Supabase Storage-এ আপলোড অইতয়।</p>
 
-    <div class="tabs">
-      <button class="tab-btn active" data-status="pending" onclick="switchTab('pending')">পেন্ডিং</button>
-      <button class="tab-btn" data-status="published" onclick="switchTab('published')">পাবলিশড</button>
-      <button class="tab-btn" data-status="rejected" onclick="switchTab('rejected')">বাতিল</button>
-    </div>
+    <div class="tabs" id="tabs"></div>
 
     <div id="list-container">
       <div class="empty-state">লোড অসের...</div>
@@ -256,12 +254,21 @@
     allRows = data || [];
     document.getElementById('pending-count-badge').textContent =
       toBnDigits(allRows.filter(r => (r.status || 'pending') === 'pending').length) + ' পেন্ডিং';
+    renderTabs();
     renderList();
+  }
+
+  const TABS = [['pending', 'পেন্ডিং'], ['published', 'পাবলিশড'], ['rejected', 'বাতিল']];
+  const countBy = s => allRows.filter(r => (r.status || 'pending') === s).length;
+  function renderTabs() {
+    document.getElementById('tabs').innerHTML = TABS.map(([k, l]) =>
+      `<button class="tab-btn ${k === currentTab ? 'active' : ''}" onclick="switchTab('${k}')">${l} (${toBnDigits(countBy(k))})</button>`
+    ).join('');
   }
 
   function switchTab(status) {
     currentTab = status;
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.status === status));
+    renderTabs();
     renderList();
   }
 
@@ -303,6 +310,10 @@
         ` : ''}
         ${row.status === 'published' ? `
           <a class="btn btn-link" href="post.html?id=${encodeURIComponent(row.id)}" target="_blank"><i class="ti ti-external-link"></i> পেজ দেখিক</a>
+          <button class="btn btn-reject" onclick="withdrawRow('${row.id}')"><i class="ti ti-eye-off"></i> প্রত্যাহার</button>
+        ` : ''}
+        ${row.status === 'rejected' ? `
+          <button class="btn btn-link" onclick="restoreRow('${row.id}')"><i class="ti ti-arrow-back-up"></i> পেন্ডিংয়ে ফেরত</button>
         ` : ''}
       </div>
     `;
@@ -349,6 +360,31 @@
       return;
     }
     showToast('পোস্টহান বাতিল অইলো।');
+    await loadSubmissions();
+  }
+
+  // পাবলিশড পোস্ট প্রত্যাহার (বাতিল তালিকায় যাইব)
+  async function withdrawRow(id) {
+    if (!confirm('পাবলিশ করা পোস্টহান প্রত্যাহার করানি নিশ্চিত?')) return;
+    const { error } = await supabaseClient.from('blog_submissions').update({ status: 'rejected' }).eq('id', id);
+    if (error) {
+      console.error(error);
+      showToast('প্রত্যাহার করতে সমস্যা অসে।', true);
+      return;
+    }
+    showToast('পোস্টহান প্রত্যাহার অইলো।');
+    await loadSubmissions();
+  }
+
+  // বাতিল পোস্ট আবার পেন্ডিংয়ে ফেরত
+  async function restoreRow(id) {
+    const { error } = await supabaseClient.from('blog_submissions').update({ status: 'pending' }).eq('id', id);
+    if (error) {
+      console.error(error);
+      showToast('ফেরত পাঠাইতে সমস্যা অসে।', true);
+      return;
+    }
+    showToast('পোস্টহান পেন্ডিংয়ে ফেরত গেল।');
     await loadSubmissions();
   }
 
