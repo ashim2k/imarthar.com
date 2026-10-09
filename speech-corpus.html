@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>স্পিচ কর্পাস খমকরানি — ইমার ঠার</title>
- <link rel="canonical" href="https://imarthar.com/speech-corpus.html" />
-<meta name="description" content="বিষ্ণুপ্রিয়া মণিপুরি স্পিচ কর্পাস কালেকশন — নিজর নারে ঠারহান রেকর্ড করিয়া অবদান থুইক। Bishnupriya Manipuri speech corpus — community voice recording project.">
-<meta property="og:title" content="স্পিচ কর্পাস খমকরানি — Speech Corpus Collection | Imar Thar">
+<title>স্পিচ কর্পাস সংগ্রহ — ইমার ঠার</title>
+<link rel="canonical" href="https://imarthar.com/speech-corpus.html" />
+<meta name="description" content="বিষ্ণুপ্রিয়া মণিপুরি স্পিচ কর্পাস — কমিউনিটি ভয়েস রেকর্ডিং। Bishnupriya Manipuri speech corpus — community voice recording project.">
+<meta property="og:title" content="স্পিচ কর্পাস সংগ্রহ — Speech Corpus | Imar Thar">
 <meta property="og:description" content="নিজর নারে ঠারহান রেকর্ড করিয়া ভবিষ্যতরকা অবদান থুইক।">
 <meta property="og:url" content="https://imarthar.com/speech-corpus.html">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.11.0/tabler-icons.min.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
@@ -96,6 +96,8 @@
   }
   .zone-select:focus { outline: none; border-color: #10b981; }
 
+  .consent-box { display: flex; gap: 10px; align-items: flex-start; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; font-size: 13px; color: #475569; line-height: 1.6; cursor: pointer; margin-top: 1rem; }
+  .consent-box input { margin-top: 4px; accent-color: #10b981; flex-shrink: 0; }
   .step-nav { display: flex; gap: 8px; margin-top: 1.5rem; }
   .btn-back {
     padding: 10px 20px; border-radius: 10px; border: 1px solid #e2e8f0;
@@ -308,120 +310,148 @@
     .sentence-text { font-size: 18px; }
     .option-grid.col3 { grid-template-columns: 1fr 1fr; }
   }
+  .mode-grid { display: none; grid-template-columns: 1fr; gap: 12px; margin-bottom: 1.25rem; }
+  .mode-card { display: flex; align-items: center; gap: 14px; text-align: left; background: #ffffff; border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px 18px; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+  .mode-card:hover { border-color: #10b981; background: #f0fdf4; }
+  .mode-card i { font-size: 26px; color: #10b981; flex-shrink: 0; }
+  .mode-card b { display: block; font-size: 15px; color: #0f172a; }
+  .mode-card span { font-size: 12px; color: #64748b; }
+  .mode-hint { font-size: 12px; color: #64748b; margin-top: 10px; line-height: 1.6; text-align: center; min-height: 0; }
+  .mode-hint:empty { display: none; }
+  .volunteer-line { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 13px; color: #065f46; background: #f0fdf4; border: 1px solid #d1fae5; border-radius: 12px; padding: 10px 14px; margin-bottom: 1rem; }
+  .link-btn { background: none; border: none; color: #10b981; font-weight: 600; font-size: 12px; cursor: pointer; font-family: inherit; }
+  .consent-box { display: flex; gap: 10px; align-items: flex-start; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; font-size: 13px; color: #475569; line-height: 1.6; cursor: pointer; margin-top: 1rem; }
+  .consent-box input { margin-top: 4px; accent-color: #10b981; flex-shrink: 0; }
 </style>
 </head>
 <body>
 
 <div class="toast" id="toast"><i class="ti ti-circle-check"></i> <span id="toast-msg"></span></div>
 
-<div class="modal-overlay" id="profile-modal">
+<!-- ১. ভলান্টিয়ার গেট -->
+<div class="modal-overlay" id="gate-modal">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon"><i class="ti ti-microphone"></i></div>
-      <div class="modal-title">রেকর্ড করানির আগে</div>
-      <div class="modal-sub">তোর তথ্য দে — আকমাউ দিলেই অইতই</div>
+      <div class="modal-icon"><i class="ti ti-id-badge-2"></i></div>
+      <div class="modal-title">ভলান্টিয়ার লগইন</div>
+      <div class="modal-sub">সমন্বয়কারীর দেওয়া কোড দিন</div>
+    </div>
+    <div class="name-field">
+      <label for="volunteer-code">ভলান্টিয়ার কোড</label>
+      <input type="text" id="volunteer-code" class="name-field-input" autocomplete="off" maxlength="40"
+             onkeydown="if(event.key==='Enter')verifyVolunteer()">
+      <span class="name-field-hint" id="gate-error"></span>
+    </div>
+    <div class="step-nav">
+      <button class="btn-next" id="gate-btn" onclick="verifyVolunteer()">ঢুকি <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ২. বক্তার প্রোফাইল ও সম্মতি -->
+<div class="modal-overlay hidden" id="profile-modal">
+  <div class="modal" style="max-height:92vh; overflow-y:auto;">
+    <div class="modal-header">
+      <div class="modal-icon"><i class="ti ti-user"></i></div>
+      <div class="modal-title">বক্তার তথ্য ও সম্মতি</div>
+      <div class="modal-sub">ভলান্টিয়ার বক্তার হয়ে তথ্যগুলো দিবেন</div>
     </div>
 
-    <div class="step-dots">
-      <div class="step-dot active" id="dot-0"></div>
-      <div class="step-dot" id="dot-1"></div>
-      <div class="step-dot" id="dot-2"></div>
-      <div class="step-dot" id="dot-3"></div>
-      <div class="step-dot" id="dot-4"></div>
-    </div>
+    <div class="step-dots" id="step-dots"></div>
 
-    <!-- Step 0: Dialect -->
     <div class="form-step active" id="step-0">
-      <div class="step-label">ধাপ ১ / ৫</div>
-      <div class="step-question">তোর ডায়ালেক্টহান কিহান?</div>
+      <div class="step-label">ধাপ ১ / ৭</div>
+      <div class="step-question">বক্তার ডায়ালেক্ট কী?</div>
       <div class="option-grid col2">
-        <button class="option-btn" onclick="selectOption('dialect','rajar-gang',this)">
-          <span class="opt-icon">👑</span>
-          রাজার গাঙ
-        </button>
-        <button class="option-btn" onclick="selectOption('dialect','madai-gang',this)">
-          <span class="opt-icon">🏞️</span>
-          মাদৈ গাঙ
-        </button>
+        <button class="option-btn" onclick="selectOption('dialect','rajar-gang',this)"><span class="opt-icon">👑</span>রাজার গাঙ</button>
+        <button class="option-btn" onclick="selectOption('dialect','madai-gang',this)"><span class="opt-icon">🏞️</span>মাদৈ গাঙ</button>
       </div>
-      <div class="step-nav">
-        <button class="btn-next" id="next-0" onclick="goStep(1)" disabled>
-          থাংনার ধাপ <i class="ti ti-arrow-right"></i>
-        </button>
-      </div>
+      <div class="step-nav"><button class="btn-next" id="next-0" onclick="goStep(1)" disabled>থাংনার ধাপ <i class="ti ti-arrow-right"></i></button></div>
     </div>
 
-    <!-- Step 1: Country -->
     <div class="form-step" id="step-1">
-      <div class="step-label">ধাপ ২ / ৫</div>
-      <div class="step-question">তি কোন দেশত্ত?</div>
+      <div class="step-label">ধাপ ২ / ৭</div>
+      <div class="step-question">কোন দেশে থাকেন?</div>
       <div class="option-grid col2">
-        <button class="option-btn" onclick="selectOption('country','india',this); updateZones()">
-          <span class="opt-icon">🇮🇳</span>
-          ভারত
-        </button>
-        <button class="option-btn" onclick="selectOption('country','bangladesh',this); updateZones()">
-          <span class="opt-icon">🇧🇩</span>
-          বাংলাদেশ
-        </button>
+        <button class="option-btn" onclick="selectOption('country','india',this); updateZones()"><span class="opt-icon">🇮🇳</span>ভারত</button>
+        <button class="option-btn" onclick="selectOption('country','bangladesh',this); updateZones()"><span class="opt-icon">🇧🇩</span>বাংলাদেশ</button>
       </div>
       <div class="step-nav">
         <button class="btn-back" onclick="goStep(0)"><i class="ti ti-arrow-left"></i> আগেকার</button>
-        <button class="btn-next" id="next-1" onclick="goStep(2)" disabled>
-          থাংনার ধাপ <i class="ti ti-arrow-right"></i>
-        </button>
+        <button class="btn-next" id="next-1" onclick="goStep(2)" disabled>থাংনার ধাপ <i class="ti ti-arrow-right"></i></button>
       </div>
     </div>
 
-    <!-- Step 2: Zone -->
     <div class="form-step" id="step-2">
-      <div class="step-label">ধাপ ৩ / ৫</div>
-      <div class="step-question">তোর এলাকা / জোন?</div>
+      <div class="step-label">ধাপ ৩ / ৭</div>
+      <div class="step-question">এলাকা / জোন?</div>
       <select class="zone-select" id="zone-select" onchange="profile.zone=this.value; updateNextBtn(2)">
         <option value="">— জোনগ বাছিয়া নেগা —</option>
       </select>
       <div class="step-nav">
         <button class="btn-back" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> আগেকার</button>
-        <button class="btn-next" id="next-2" onclick="goStep(3)" disabled>
-          থাংনার ধাপ <i class="ti ti-arrow-right"></i>
-        </button>
+        <button class="btn-next" id="next-2" onclick="goStep(3)" disabled>থাংনার ধাপ <i class="ti ti-arrow-right"></i></button>
       </div>
     </div>
 
-    <!-- Step 3: Age -->
     <div class="form-step" id="step-3">
-      <div class="step-label">ধাপ ৪ / ৫</div>
-      <div class="step-question">তোর বয়স?</div>
-      <div class="option-grid col3">
-        <button class="option-btn" onclick="selectOption('age','18-25',this)">১৪–২৫</button>
+      <div class="step-label">ধাপ ৪ / ৭</div>
+      <div class="step-question">বয়স কত?</div>
+      <div class="option-grid col2">
+        <button class="option-btn" onclick="selectOption('age','18-25',this)">১৮–২৫</button>
         <button class="option-btn" onclick="selectOption('age','26-40',this)">২৬–৪০</button>
         <button class="option-btn" onclick="selectOption('age','40+',this)">৪০+</button>
+        <button class="option-btn" onclick="pickUnder18(this)">১৮ বছরের কম</button>
       </div>
       <div class="step-nav">
         <button class="btn-back" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> আগের</button>
-        <button class="btn-next" id="next-3" onclick="goStep(4)" disabled>
-          থাংনার ধাপ <i class="ti ti-arrow-right"></i>
-        </button>
+        <button class="btn-next" id="next-3" onclick="goStep(4)" disabled>থাংনার ধাপ <i class="ti ti-arrow-right"></i></button>
       </div>
     </div>
 
-    <!-- Step 4: Gender -->
     <div class="form-step" id="step-4">
-      <div class="step-label">ধাপ ৫ / ৫</div>
-      <div class="step-question">তোর লিঙ্গ?</div>
+      <div class="step-label">ধাপ ৫ / ৭</div>
+      <div class="step-question">লিঙ্গ?</div>
       <div class="option-grid col2">
-        <button class="option-btn" onclick="selectOption('gender','male',this)">
-          <span class="opt-icon">👨</span>মুনিগ
-        </button>
-        <button class="option-btn" onclick="selectOption('gender','female',this)">
-          <span class="opt-icon">👩</span>জেলাগ
-        </button>
+        <button class="option-btn" onclick="selectOption('gender','male',this)"><span class="opt-icon">👨</span>পুরুষ</button>
+        <button class="option-btn" onclick="selectOption('gender','female',this)"><span class="opt-icon">👩</span>মহিলা</button>
       </div>
       <div class="step-nav">
         <button class="btn-back" onclick="goStep(3)"><i class="ti ti-arrow-left"></i> আগের</button>
-        <button class="btn-next" id="next-4" onclick="finishProfile()" disabled>
-          রেকর্ড করানি অকরিক <i class="ti ti-microphone"></i>
-        </button>
+        <button class="btn-next" id="next-4" onclick="goStep(5)" disabled>থাংনার ধাপ <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <div class="form-step" id="step-5">
+      <div class="step-label">ধাপ ৬ / ৭ — সম্মতি</div>
+      <div class="step-question">রেকর্ডিংয়ের আগে সম্মতি</div>
+      <div class="consent-box" style="margin-top:0;cursor:default"><span id="consent-text"></span></div>
+      <div class="step-question" style="margin-top:1rem;font-size:14px">কীভাবে সম্মতি নেওয়া হলো?</div>
+      <div class="option-grid col2">
+        <button class="option-btn" onclick="selectOption('consentMethod','self',this)"><span class="opt-icon">📖</span>বক্তা নিজে পড়েছেন</button>
+        <button class="option-btn" onclick="selectOption('consentMethod','read_aloud',this)"><span class="opt-icon">🗣️</span>ভলান্টিয়ার শুনিয়েছেন</button>
+      </div>
+      <label class="consent-box">
+        <input type="checkbox" id="consent-check" onchange="updateNextBtn(5)">
+        <span>উপরের সব শর্ত আমি বুঝেছি এবং মেনে নিচ্ছি। আমার বয়স ১৮ বা তার বেশি।</span>
+      </label>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(4)"><i class="ti ti-arrow-left"></i> আগের</button>
+        <button class="btn-next" id="next-5" onclick="goStep(6)" disabled>থাংনার ধাপ <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <div class="form-step" id="step-6">
+      <div class="step-label">ধাপ ৭ / ৭</div>
+      <div class="step-question">নাম (ঐচ্ছিক)</div>
+      <div class="name-field">
+        <input type="text" id="speaker-name-input" class="name-field-input" maxlength="60"
+               oninput="profile.name = this.value">
+        <span class="name-field-hint">নাম শুধু গবেষণা রেকর্ডে থাকবে, কোথাও প্রকাশ হবে না।</span>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(5)"><i class="ti ti-arrow-left"></i> আগের</button>
+        <button class="btn-next" id="next-6" onclick="finishProfile()">প্রোফাইল সম্পন্ন <i class="ti ti-check"></i></button>
       </div>
     </div>
   </div>
@@ -444,7 +474,7 @@
     <div class="breadcrumb">
       <a href="index.html">হোম</a>
       <i class="ti ti-chevron-right"></i>
-      <span>স্পিচ কর্পাস খমকরানি </span>
+      <span>স্পিচ কর্পাস</span>
     </div>
     <div class="hero-badge"><i class="ti ti-microphone"></i> কমিউনিটি ভয়েস প্রজেক্ট</div>
     <h1>স্পিচ <span>কর্পাস</span> সংগ্রহ</h1>
@@ -454,42 +484,61 @@
 
 <div class="main-layout">
   <div>
-    <div class="section-title">রেকর্ডার</div>
+    <div class="volunteer-line" id="volunteer-line" style="display:none">
+      <span><i class="ti ti-id-badge-2"></i> ভলান্টিয়ার: <b id="volunteer-name"></b></span>
+      <button class="link-btn" onclick="leaveVolunteer()">বের হও</button>
+    </div>
 
     <div class="profile-chip" id="profile-chip" style="display:none">
       <div class="profile-info" id="profile-tags"></div>
-      <button class="profile-edit" onclick="reopenProfile()"><i class="ti ti-edit"></i> নুয়া করে আরাকমাউ </button>
+      <button class="profile-edit" onclick="leaveSpeaker()"><i class="ti ti-user-plus"></i> নতুন বক্তা</button>
     </div>
 
-    <div class="recorder-card">
+    <div class="section-title" id="mode-title" style="display:none">কী রেকর্ড করবেন?</div>
+    <div class="mode-grid" id="mode-screen">
+      <button class="mode-card" onclick="selectMode('read')">
+        <i class="ti ti-book"></i>
+        <div><b>১. রেডিমেট টেক্সট পড়া</b><span>দেওয়া বাক্যটি স্পষ্ট করে পড়ুন</span></div>
+      </button>
+      <button class="mode-card" onclick="selectMode('conv')">
+        <i class="ti ti-messages"></i>
+        <div><b>২. কথোপকথন বা সাক্ষাৎকার</b><span>স্ক্রিনের প্রশ্নের উত্তর নিজের ভাষায় বলুন</span></div>
+      </button>
+      <button class="mode-card" onclick="selectMode('desc')">
+        <i class="ti ti-photo"></i>
+        <div><b>৩. বস্তুর বিবরণ</b><span>স্ক্রিনে দেখানো বস্তুটি বর্ণনা করুন</span></div>
+      </button>
+    </div>
+
+    <div class="recorder-card" id="recorder" style="display:none">
       <div class="recorder-header">
         <div class="progress-info">
           <div class="progress-label-row">
-            <span class="progress-label">আজিকার অগ্রগতি</span>
-            <span class="progress-count" id="progress-count">০ / ২০</span>
+            <span class="progress-label">এই কাজের অগ্রগতি</span>
+            <span class="progress-count" id="progress-count">০ / ০</span>
           </div>
-          <div class="progress-track">
-            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
-          </div>
+          <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
         </div>
         <div class="session-badge">
           <div class="session-num"><span id="total-recorded">০</span></div>
-          <div class="session-label">মোট রেকর্ড</div>
+          <div class="session-label">জমা হয়েছে</div>
         </div>
       </div>
 
       <div class="sentence-area">
-        <div class="sentence-tag"><i class="ti ti-volume"></i> এরে বাক্য এহান পাকরিক</div>
+        <div class="sentence-tag" id="mode-tag"></div>
         <div class="sentence-box" id="sentence-box">
-          <div class="sentence-text" id="sentence-text">মোর মাতৃভাষাহান বিষ্ণুপ্রিয়া মণিপুরি।</div>
-          <div class="sentence-transliteration" id="sentence-trans">Mor matrubhasha Bishnupriya Manipuri.</div>
+          <div class="sentence-text" id="sentence-text"></div>
+          <div class="sentence-transliteration" id="sentence-trans"></div>
+          <img id="prompt-image" alt="" style="display:none;max-width:100%;max-height:200px;border-radius:10px;margin-top:10px">
         </div>
+        <div class="mode-hint" id="mode-hint"></div>
         <div class="sentence-nav">
-          <button class="nav-btn" id="prev-btn" onclick="prevSentence()" disabled>
+          <button class="nav-btn" id="prev-btn" onclick="prevPrompt()" disabled aria-label="আগের প্রম্পট">
             <i class="ti ti-chevron-left"></i> আগেকার
           </button>
-          <span class="sentence-id" id="sentence-id">বাক্য ১ / ৩০</span>
-          <button class="nav-btn" id="next-btn" onclick="nextSentence()">
+          <span class="sentence-id" id="sentence-id"></span>
+          <button class="nav-btn" id="next-btn" onclick="nextPrompt()" aria-label="পরের প্রম্পট">
             থাংনার <i class="ti ti-chevron-right"></i>
           </button>
         </div>
@@ -497,13 +546,14 @@
 
       <div class="waveform-area">
         <div class="waveform-wrap">
-          <div class="waveform-idle" id="waveform-idle"><i class="ti ti-wave-sine"></i> রেকর্ড করানি অকরলে waveform দেহেইতয়</div>
+          <div class="waveform-idle" id="waveform-idle"><i class="ti ti-wave-sine"></i> রেকর্ড করানি অকরলে waveform দেহেইতয়</div>
           <canvas id="waveform"></canvas>
         </div>
         <div class="timer-row">
           <div class="timer-display">
             <span class="rec-dot" id="rec-dot"></span>
             <span id="timer-display">০০:০০</span>
+            <span id="max-display" style="font-weight:400;color:#94a3b8"></span>
           </div>
           <div class="filename-preview" id="filename-preview"></div>
         </div>
@@ -514,24 +564,22 @@
           <button class="action-btn btn-play" id="play-btn" onclick="playRecording()" disabled>
             <i class="ti ti-player-play"></i> হুনিক
           </button>
-          <button class="record-btn" id="record-btn" onclick="toggleRecord()">
+          <button class="record-btn" id="record-btn" onclick="toggleRecord()" aria-label="রেকর্ড শুরু বা থামান">
             <i class="ti ti-microphone" id="record-icon"></i>
             <span class="record-label" id="record-label">অকরিক</span>
           </button>
-          <button class="action-btn btn-skip" onclick="nextSentence()">
+          <button class="action-btn btn-skip" onclick="nextPrompt()">
             <i class="ti ti-player-skip-forward"></i> এহান বেলা
           </button>
         </div>
-        <div class="name-field">
-          <label for="contributor-name-input">আপনার নাঙহান (ঐচ্ছিক)</label>
-          <input type="text" id="contributor-name-input" class="name-field-input"
-                 placeholder="" maxlength="60"
-                 oninput="profile.name = this.value; updateFilename();">
-          <span class="name-field-hint">নাঙহান "শীর্ষ অবদানকারী" তালিকাত দেহেইতই</span>
+        <div class="controls-row">
+          <button class="action-btn btn-skip" style="max-width:100%;width:100%" onclick="backToModes()">
+            <i class="ti ti-arrow-back-up"></i> অন্য কাজের ধরন বাছিয়া নেগা
+          </button>
         </div>
         <div class="controls-row">
           <button class="action-btn btn-submit" id="submit-btn" onclick="submitRecording()" disabled style="max-width:100%;width:100%;">
-            <i class="ti ti-download"></i> ডাউনলোড করিক বারো থাংনার বাক্যৎ যিকগা
+            <i class="ti ti-upload"></i> জমা দিক
           </button>
         </div>
       </div>
@@ -540,33 +588,31 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    
-
     <div class="sidebar-card mobile-hide">
       <div class="sidebar-title"><i class="ti ti-help"></i> কিসারে করানি?</div>
-      <div class="how-item"><span class="how-num">১</span><span class="how-text">আগে তথ্য দিক (ডায়ালেক্ট, জোন, বয়স)</span></div>
-      <div class="how-item"><span class="how-num">২</span><span class="how-text">বাক্যহান মনোযোগ দিয়া পাকরিক </span></div>
-      <div class="how-item"><span class="how-num">৩</span><span class="how-text">মাইক বাটনগৎ যাতিয়া সেংকরে পাকরিক </span></div>
-      <div class="how-item"><span class="how-num">৪</span><span class="how-text">হুনিক — চুমইলে ডাউনলোড করিক</span></div>
+      <div class="how-item"><span class="how-num">১</span><span class="how-text">ভলান্টিয়ার কোড দিয়ে ঢুকুন</span></div>
+      <div class="how-item"><span class="how-num">২</span><span class="how-text">বক্তার তথ্য ও সম্মতি নিন</span></div>
+      <div class="how-item"><span class="how-num">৩</span><span class="how-text">কাজের ধরন বাছুন ও রেকর্ড করুন</span></div>
+      <div class="how-item"><span class="how-num">৪</span><span class="how-text">শুনে নিন, তারপর জমা দিন</span></div>
     </div>
 
     <div class="sidebar-card mobile-hide">
       <div class="sidebar-title"><i class="ti ti-bulb"></i> টিপস</div>
       <div class="tip-box">
-        <div class="tip-title"><i class="ti ti-volume"></i> মাতিং রেকর্ডর আগে</div>
+        <div class="tip-title"><i class="ti ti-volume"></i> রেকর্ডিংয়ের আগে</div>
         <ul class="tip-list">
-          <li>শান্ত জাগা আাহাত রেকর্ড করিক</li>
-          <li>মাইক্রোফেনহানত্ত ১৫-২০ সেমি দূরে থাইক</li>
-          <li>স্বাভাবিক গতিল পাকরিক</li>
-          <li>ফাইলগর লগে অবদানকারির তথ্য থাকতই</li>
+          <li>শান্ত জায়গায় রেকর্ড করুন</li>
+          <li>মাইক থেকে ১৫–২০ সেমি দূরে থাকুন</li>
+          <li>স্বাভাবিক গতিতে বলুন</li>
+          <li>সাক্ষাৎকারের সময় প্রশ্নকর্তা কথা বলবেন না</li>
         </ul>
       </div>
     </div>
 
     <div class="sidebar-card">
-      <div class="sidebar-title"><i class="ti ti-trophy"></i> শীর্ষ অবদানকারী</div>
+      <div class="sidebar-title"><i class="ti ti-trophy"></i> শীর্ষ ভলান্টিয়ার</div>
       <div id="leaderboard-list">
-        <div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">লোড অর ...</div>
+        <div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">লোড অইতই ...</div>
       </div>
     </div>
   </div>
@@ -577,16 +623,47 @@
   <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
 </footer>
 
-<!-- Supabase SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
   const _supabase = supabase.createClient(
     'https://clybuzkhnjuhpvcobiri.supabase.co',
     'sb_publishable_LKPFQ99KljNZhhBQQI-s3Q_w-ElwF0f'
   );
 </script>
-
 <script>
+const sentences = [
+  { text: "মোর মাতৃভাষাহান বিষ্ণুপ্রিয়া মণিপুরি।", trans: "Mor matrubhasha Bishnupriya Manipuri." },
+  { text: "মি ইমার ঠারে কথা অতারানি নুঙেই পাউরি।", trans: "Mi imar thare kotha matote hada pauri." },
+  { text: "মোর ঠারহান মোর পরিচয়।", trans: "Mor tharhan mor porichoy." },
+  { text: "নংসাংদিন আগে কিতাপারা গাঙ আহাত বুড়া-বুড়ি হেইমাক আহান আসিলাতা। তাঙরতা শৌ কিতা নেইসিলা।", trans: "Nongsangdin age kitapara gang ahat bura-buri heimak ahan asilata. Tangrota shou kita neisila." },
+  { text: "মোর শৌ সুমারা ইমার ঠার হিকতারা।", trans: "Mor shou sumara imar thar hikotar." },
+  { text: "বুড়া অনাইতে কাম কিতাউ পাং করে নুয়ারতারা। কুনোমতে ধানগুলি খেতি করিয়া অতা খেয়া জিংতা অয়া আসি।", trans: "Bura onaite kam kitau pang kore nuartara. Kunomote dhangguli kheti koriya ota kheya jingta oya asi." },
+  { text: "এগদে মুড়াকচু লাগানির সময় আহানৌ দিয়া আহের। বুড়াই মাতের, অবুড়ি, মুড়াকচু খানি লাগাবেলিকগা।", trans: "Egode murakochu laganir somoy ahanou diya aher. Burai mater, oburi, murakochu khani lagabelikga." },
+  { text: "বুড়াই বুড়িয়ে ঘরর পিছবারাদে বিসারা টুমা আহান আসে অহাত কচু লাগানির কাজে গেলাগা। বুড়াই কদালহানল মাটি খুলিয়া কচু লাগানির জুগত করল।", trans: "Burai buriye ghoror pichbarade bisara tuma ahan ase ohat kochu laganir kaje gelaga. Burai kodalhanol mati khuliya kochu laganir jugot korol." },
+  { text: "ডিজিটাল যুগে ইমার ঠার এহান টিকিয়া থনা জরুলি কামহান।", trans: "Digital juge imar thar ehan tikiya thona joruli kamhan." },
+  { text: "মোর ডাংগ বপায় ইমার ঠারে য়ারি দিলা।", trans: "Mor dangga bapay imar thare yari dila." },
+  { text: "কচু পারেং আহান লাগিয়া লমিতে না লমিতে কাদাহার জঙ্গল অগত্ত লামুই দাপা আহান আহিয়া বুড়া-বুড়িয়ে কচু লাগিতারা অহান চেইতারাগা।", trans: "Kochu poreng ahan lagiya lomite na lomite kadahar jonggol ogotto lamui dapa ahan ahiya bura-buriye kochu lagitara ohan cheitaraga." },
+  { text: "লামুই অতাই বুড়াবুড়িরে কুইকরিয়া বহিসি। লামুই দাপা অহানর সর্দার অগই আংকরেরতা, অ বপা, তুমি কিতা কররাইতা?", trans: "Lamui otai buraburire kuikoriya bohisi. Lamui dapa ohanor sordar ogoi angkororeta, o bapa, tumi kita korraita?" },
+  { text: "নিজর ঠারে টটরতে লাস কিতা, উহান গর্বহান।", trans: "Nijor thare totorte lash kita, uhan gorbohan." },
+  { text: "বিদেশে থায়াউ ইমার ঠারে য়ারি দিলে মনহাৎ নুঙি আহান লাগের।", trans: "Bideshe thayau imar thare yari dile monhat nungi ahan lager." },
+  { text: "মোর বাবা ইসালপাগ।", trans: "Mor baba isalpag." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি সংখ্যাৎ য়াতইলেউ পুরানা ঠার আহান।", trans: "Bishnupriya Manipuri sangkhyat yatoileu purana thar ahan." },
+  { text: "মি ইমার ঠারে হপন দেহুরি।", trans: "Mi imar thare hopon dehuri." },
+  { text: "ইমার ঠারল আরতাউ সাহিত্য ইকরানি থক।", trans: "Imar tharol aratau sahitya karoni thoki." },
+  { text: "আমারতা হবা পত্রিকা নেই।", trans: "Amarta haba patrika nei." },
+  { text: "আমার ঠারর লেখক অতারে সম্মান দেনা থক।", trans: "Amar tharor lekhok atare sommandena thok." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরির লিপি উহান বাংলা বুলানি চুম নেই, পুর্ব নাগরি বুলে পারিয়ার।", trans: "Bishnupriya Manipurir lipi uhan Bangla bulani chum nei, purbo Nagri bule pariyar." },
+  { text: "মি ইমার ঠারে চিঠি ইকরৌরি।", trans: "Mi imar thare chithi ikrouri." },
+  { text: "ইমার ঠার অন্য মানুরেউ হিকাদেনা দরকার।", trans: "Imar thar onno manureu hikadena dorkar." },
+  { text: "আমার সংস্কৃতিহান আমার ঠারহার গজে থালগ দিয়া বাঁচের।", trans: "Amar sanskritihan amar tharhar gaje thalog diya bachcher." },
+  { text: "ইমার ঠারর নুংশি নুংশি কবিতা ইকরেসি আমার কবিয়ে।", trans: "Imar tharor nungshi nungshi kobita ikroshi amar kobiye." },
+  { text: "মি গর্বিত মোর মাতৃভাষাল।", trans: "Mi gorbito mor matrubhashal." },
+  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার পুনচিপালক", trans: "Bishnupriya Manipuri thar punochipalok." },
+  { text: "ইমার ঠাররকা জীবন দিয়া গেলিগা সুদেষ্ণা সিংহই।", trans: "Imar tharorka jibon diya gelga Sudeshna Singhoi." },
+  { text: "আমার ঠার এহানেই আমার শক্তি।", trans: "Amar thar ehanei amar shokti." },
+  { text: "ইমার ঠার জিংতা অইলে জাত এহাহাৌ জিংতা অয়া থাইতায়।", trans: "Imar thar jingta oile jat ehanou jingta oya thaitay." },
+];
+
 const zones = {
   india: [
     { value: 'silchar',     label: 'শিলচর জোন — কাছাড়, সোনাই' },
@@ -605,165 +682,324 @@ const zones = {
   ]
 };
 
-const profile = { dialect: '', country: '', zone: '', age: '', gender: '', name: '' };
-let currentStep = 0;
-let profileDone = false;
+// ── কনফিগ ──
+// Supabase সার্ভার-সাইড সেটআপ (বাধ্যতামূলক, README দেখুন):
+//  - bucket 'bm-speech-corpus' PRIVATE; anon শুধু INSERT
+//  - টেবিল: speakers, consents, recordings — anon শুধু INSERT
+//  - verify_volunteer() ও get_speech_corpus_leaderboard() RPC — security definer
+const CONSENT_VERSION = 'v2-2026-10';
+const BUCKET = 'bm-speech-corpus';
+const SUBMIT_HTML = '<i class="ti ti-upload"></i> জমা দিক';
+const QUEUE_DB = 'bm-corpus-queue';
+const CONSENT_TEXT = 'আমার বয়স ১৮ বছর বা তার বেশি। আমি স্বেচ্ছায় এই রেকর্ডিং দিচ্ছি। এটি স্পিচ কর্পাস ও গবেষণার কাজে ব্যবহৃত হতে পারে। আমার বয়স, এলাকা ও অন্যান্য ব্যক্তিগত তথ্য প্রকাশ্যে দেখানো হবে না। পরে অনুরোধ করে আমার রেকর্ডিং সরিয়ে নেওয়া যাবে।';
 
-function selectOption(key, value, btn) {
-  profile[key] = value;
-  const grid = btn.closest('.option-grid');
-  grid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  updateNextBtn(currentStep);
+// ── কাজের ধরন ও প্রম্পট ──
+const TASKS = {
+  read: {
+    label: 'রেডিমেট টেক্সট পড়া', icon: 'ti-book', tag: 'এই বাক্যটি পড়ুন', max: 30,
+    hint: '',
+    prompts: sentences.map((s, i) => ({ id: 's' + String(i + 1).padStart(2, '0'), text: s.text, trans: s.trans, image: '' }))
+  },
+  conv: {
+    label: 'কথোপকথন বা সাক্ষাৎকার', icon: 'ti-messages', tag: 'প্রশ্নের উত্তর দিন', max: 180,
+    hint: 'প্রশ্নটি শুধু স্ক্রিনে দেখানো হবে। প্রশ্নকর্তা রেকর্ডিংয়ের সময় কথা বলবেন না; বক্তা নিজের ভাষায় উত্তর দেবেন।',
+    prompts: [
+      { id: 'q01', text: 'তোর ছোটবেলার কোনো উৎসবের কথা বল।', trans: '', image: '' },
+      { id: 'q02', text: 'তোর বাড়িতে আগে কী ধরনের খাবার রান্না হইত?', trans: '', image: '' },
+      { id: 'q03', text: 'ধান কাটার সময় কী কী কাজ করা হয়?', trans: '', image: '' },
+      { id: 'q04', text: 'তোর ঠাকুর-দাদা বা ঠাকুমার কোনো গল্প বল।', trans: '', image: '' },
+      { id: 'q05', text: 'গ্রামে বিয়ের অনুষ্ঠান কীভাবে হয়?', trans: '', image: '' },
+      { id: 'q06', text: 'তুই কোন ভাষায় স্বপ্ন দেখিস, আর কেন?', trans: '', image: '' },
+      { id: 'q07', text: 'বর্ষাকালে তোদের গ্রামের জীবন কেমন থাকে?', trans: '', image: '' },
+      { id: 'q08', text: 'তোর পছন্দের কোনো লোককথা বা উপকথা বল।', trans: '', image: '' }
+    ]
+  },
+  desc: {
+    label: 'বস্তুর বিবরণ', icon: 'ti-photo', tag: 'বস্তুটি বর্ণনা করুন', max: 60,
+    hint: 'বস্তুটি কী, দেখতে কেমন, কী কাজে লাগে — যতটা পারেন বলুন।',
+    prompts: [
+      { id: 'o01', text: 'ধান', trans: 'Paddy', image: '' },
+      { id: 'o02', text: 'লাঙল', trans: 'Plough', image: '' },
+      { id: 'o03', text: 'কলস', trans: 'Pitcher', image: '' },
+      { id: 'o04', text: 'নৌকা', trans: 'Boat', image: '' },
+      { id: 'o05', text: 'ঢেঁকি', trans: 'Paddy husker', image: '' },
+      { id: 'o06', text: 'হাঁড়ি', trans: 'Clay pot', image: '' },
+      { id: 'o07', text: 'তাঁত', trans: 'Loom', image: '' },
+      { id: 'o08', text: 'কুলা', trans: 'Winnowing basket', image: '' }
+    ]
+  }
+};
+const MODE_LABEL = { read: 'পড়া', conv: 'সাক্ষাৎকার', desc: 'বিবরণ' };
+
+const dialectLabel = { 'rajar-gang': 'রাজার গাঙ', 'madai-gang': 'মাদৈ গাঙ' };
+const countryLabel = { 'india': '🇮🇳 ভারত', 'bangladesh': '🇧🇩 বাংলাদেশ' };
+const genderLabel  = { 'male': 'পুরুষ', 'female': 'মহিলা' };
+const consentLabel = { 'self': 'নিজে পড়েছেন', 'read_aloud': 'শুনিয়েছেন' };
+
+// ── স্টেট ──
+const profile = { dialect: '', country: '', zone: '', age: '', gender: '', name: '', consentMethod: '', speakerId: '' };
+let volunteer = null;          // { code, name }
+let currentStep = 0;
+const STEP_COUNT = 7;
+let mode = null;
+const idx = { read: 0, conv: 0, desc: 0 };
+const recorded = { read: new Set(), conv: new Set(), desc: new Set() };
+let mediaRecorder = null, audioChunks = [], audioBlob = null, audioUrl = null;
+let isRecording = false, timerInterval = null, seconds = 0, animationId = null, analyser = null;
+let recordedDuration = 0, qualityNote = '';
+let recordingMime = '', recordingExt = 'webm';
+let sessionCount = 0;
+
+// ── ইউটিলিটি ──
+function showToast(msg) {
+  document.getElementById('toast-msg').textContent = msg;
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => t.classList.remove('show'), 3500);
 }
 
-function updateNextBtn(step) {
-  const checks = ['dialect','country','zone','age','gender'];
-  const btn = document.getElementById('next-' + step);
-  if (!btn) return;
-  if (step === 2) {
-    btn.disabled = !profile.zone;
-  } else {
-    btn.disabled = !profile[checks[step]];
+// ── ১. ভলান্টিয়ার গেট (সার্ভার-সাইড যাচাই) ──
+async function verifyVolunteer() {
+  const code = document.getElementById('volunteer-code').value.trim();
+  const err = document.getElementById('gate-error');
+  const btn = document.getElementById('gate-btn');
+  if (!code) { err.textContent = 'কোড লিখিক।'; return; }
+  btn.disabled = true;
+  err.textContent = 'যাচাই অইতই...';
+  try {
+    const { data, error } = await _supabase.rpc('verify_volunteer', { p_code: code });
+    if (error) throw error;
+    if (!data) { err.textContent = 'কোড ঠিক নয়।'; return; }
+    volunteer = { code, name: data };
+    document.getElementById('volunteer-name').textContent = data;
+    document.getElementById('volunteer-line').style.display = 'flex';
+    document.getElementById('gate-modal').classList.add('hidden');
+    document.getElementById('profile-modal').classList.remove('hidden');
+    document.getElementById('consent-text').textContent = CONSENT_TEXT;
+    goStep(0);
+    showToast('স্বাগতম, ' + data);
+  } catch (e) {
+    console.error(e);
+    err.textContent = 'ইন্টারনেট চেক করিক।';
+  } finally {
+    btn.disabled = false;
   }
+}
+
+function leaveVolunteer() {
+  if (isRecording) stopRecording();
+  location.reload();
+}
+
+// ── ২. বক্তার প্রোফাইল ──
+function renderDots() {
+  document.getElementById('step-dots').innerHTML = Array.from({ length: STEP_COUNT }, (_, i) =>
+    `<div class="step-dot ${i === currentStep ? 'active' : i < currentStep ? 'done' : ''}"></div>`).join('');
 }
 
 function goStep(n) {
   document.getElementById('step-' + currentStep).classList.remove('active');
-  document.getElementById('dot-' + currentStep).classList.remove('active');
-  document.getElementById('dot-' + currentStep).classList.add('done');
   currentStep = n;
   document.getElementById('step-' + n).classList.add('active');
-  document.getElementById('dot-' + n).classList.remove('done');
-  document.getElementById('dot-' + n).classList.add('active');
+  renderDots();
+  updateNextBtn(n);
+}
+
+function canNext(step) {
+  switch (step) {
+    case 0: return !!profile.dialect;
+    case 1: return !!profile.country;
+    case 2: return !!profile.zone;
+    case 3: return !!profile.age;
+    case 4: return !!profile.gender;
+    case 5: return !!profile.consentMethod && document.getElementById('consent-check').checked;
+    default: return true;
+  }
+}
+
+function updateNextBtn(step) {
+  const btn = document.getElementById('next-' + step);
+  if (btn) btn.disabled = !canNext(step);
+}
+
+function selectOption(key, value, btn) {
+  profile[key] = value;
+  btn.closest('.option-grid').querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  updateNextBtn(currentStep);
+}
+
+function pickUnder18(btn) {
+  profile.age = '';
+  btn.closest('.option-grid').querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  showToast('১৮ বছরের কম বয়সীদের রেকর্ডিং নেওয়া যাবে না।');
+  updateNextBtn(3);
 }
 
 function updateZones() {
   const sel = document.getElementById('zone-select');
   profile.zone = '';
   sel.innerHTML = '<option value="">— জোনগ বাছিয়া নেগা —</option>';
-  const list = zones[profile.country] || [];
-  list.forEach(z => {
+  (zones[profile.country] || []).forEach(z => {
     const opt = document.createElement('option');
     opt.value = z.value; opt.textContent = z.label;
     sel.appendChild(opt);
   });
-  updateNextBtn(1);
+  updateNextBtn(2);
 }
 
-function finishProfile() {
-  profileDone = true;
+function zoneLabel(value) {
+  const z = (zones[profile.country] || []).find(z => z.value === value);
+  return z ? z.label.split('—')[0].trim() : value;
+}
+
+async function finishProfile() {
+  const btn = document.getElementById('next-6');
+  btn.disabled = true;
+  const speakerId = crypto.randomUUID();
+  try {
+    const { error: sErr } = await _supabase.from('speakers').insert({
+      speaker_id: speakerId,
+      recorder_id: volunteer.code,
+      dialect: profile.dialect, country: profile.country, zone: profile.zone,
+      age: profile.age, gender: profile.gender,
+      speaker_name: profile.name || null
+    });
+    if (sErr) throw sErr;
+    const { error: cErr } = await _supabase.from('consents').insert({
+      speaker_id: speakerId,
+      consent_version: CONSENT_VERSION,
+      method: profile.consentMethod,
+      recorder_id: volunteer.code
+    });
+    if (cErr) throw cErr;
+  } catch (e) {
+    console.error(e);
+    showToast('প্রোফাইল জমা হয়নি — ইন্টারনেট চেক করে আবার চেষ্টা করিক।');
+    btn.disabled = false;
+    return;
+  }
+  profile.speakerId = speakerId;
   document.getElementById('profile-modal').classList.add('hidden');
   renderProfileChip();
-  updateFilename();
+  document.getElementById('mode-title').style.display = 'block';
+  document.getElementById('mode-screen').style.display = 'grid';
+  showToast('বক্তার আইডি: ' + speakerId.slice(0, 8) + ' (প্রত্যাহারের জন্য লাগবে)');
 }
-
-function reopenProfile() {
-  document.getElementById('profile-modal').classList.remove('hidden');
-}
-
-const dialectLabel = { 'rajar-gang': 'রাজার গাঙ', 'madai-gang': 'মাদৈ গাঙ' };
-const countryLabel  = { 'india': '🇮🇳 ভারত', 'bangladesh': '🇧🇩 বাংলাদেশ' };
-const genderLabel   = { 'male': 'পুরুষ', 'female': 'মহিলা'};
 
 function renderProfileChip() {
-  const chip = document.getElementById('profile-chip');
-  const tags = document.getElementById('profile-tags');
-  const zoneText = [...document.getElementById('zone-select').options].find(o => o.value === profile.zone)?.text?.split('—')[0]?.trim() || profile.zone;
-  tags.innerHTML = [
+  const tags = [
     dialectLabel[profile.dialect],
     countryLabel[profile.country],
-    zoneText,
+    zoneLabel(profile.zone),
     profile.age,
-    genderLabel[profile.gender]
-  ].map(t => `<span class="profile-tag">${t}</span>`).join('');
-  chip.style.display = 'flex';
+    genderLabel[profile.gender],
+    'সম্মতি: ' + consentLabel[profile.consentMethod]
+  ];
+  document.getElementById('profile-tags').innerHTML =
+    tags.filter(Boolean).map(t => `<span class="profile-tag">${t}</span>`).join('');
+  document.getElementById('profile-chip').style.display = 'flex';
 }
 
-function getInitials(name) {
-  if (!name) return '';
-  return name.trim().split(/\s+/).map(w => w[0]).join('').toUpperCase().slice(0, 3);
+function leaveSpeaker() {
+  if (isRecording) stopRecording();
+  Object.assign(profile, { dialect: '', country: '', zone: '', age: '', gender: '', name: '', consentMethod: '', speakerId: '' });
+  document.querySelectorAll('#profile-modal .option-btn.selected').forEach(b => b.classList.remove('selected'));
+  document.getElementById('zone-select').innerHTML = '<option value="">— জোনগ বাছিয়া নেগা —</option>';
+  document.getElementById('consent-check').checked = false;
+  document.getElementById('speaker-name-input').value = '';
+  mode = null;
+  document.getElementById('recorder').style.display = 'none';
+  document.getElementById('mode-screen').style.display = 'none';
+  document.getElementById('mode-title').style.display = 'none';
+  document.getElementById('profile-chip').style.display = 'none';
+  document.getElementById('profile-modal').classList.remove('hidden');
+  goStep(0);
 }
 
-function buildFilename(sentenceIdx) {
-  const d = profile.dialect || 'unknown';
-  const z = profile.zone    || 'unknown';
-  const g = profile.gender  || 'x';
-  const a = profile.age     || 'x';
-  const s = String(sentenceIdx + 1).padStart(2, '0');
-  return `bpm_${d}_${z}_${g}_${a}_s${s}.webm`;
+// ── ৩. কাজের ধরন ──
+function selectMode(m) {
+  if (isRecording || !profile.speakerId) return;
+  mode = m;
+  document.getElementById('mode-screen').style.display = 'none';
+  document.getElementById('mode-title').style.display = 'none';
+  document.getElementById('recorder').style.display = 'block';
+  renderPrompt();
 }
 
-function updateFilename() {
-  document.getElementById('filename-preview').textContent = buildFilename(currentIdx);
+function backToModes() {
+  if (isRecording) return;
+  mode = null;
+  document.getElementById('recorder').style.display = 'none';
+  document.getElementById('mode-title').style.display = 'block';
+  document.getElementById('mode-screen').style.display = 'grid';
 }
 
-// ── বাক্য তালিকা — corpus pattern ইলয়া সংশোধিত ──
-const sentences = [
-  { text: "মোর মাতৃভাষাহান বিষ্ণুপ্রিয়া মণিপুরি।", trans: "Mor matrubhasha Bishnupriya Manipuri." },
-  { text: "মি ইমার ঠারে কথা অতারানি নুঙেই পাউরি।", trans: "Mi imar thare kotha matote hada pauri." },
-  { text: "মোর ঠারহান মোর পরিচয়।", trans: "Mor tharhan mor porichoy." },
-  { text: "নংসাংদিন আগে কিতাপারা গাঙ আহাত বুড়া-বুড়ি হেইমাক আহান আসিলাতা। তাঙরতা শৌ কিতা নেইসিলা।", trans: "Nongsangdin age kitapara gang ahat bura-buri heimak ahan asilata. Tangrota shou kita neisila." },
-  { text: "মোর শৌ সুমারা ইমার ঠার হিকতারা।", trans: "Mor shou sumara imar thar hikotar." },
-  { text: "বুড়া অনাইতে কাম কিতাউ পাং করে নুয়ারতারা। কুনোমতে ধানগুলি খেতি করিয়া অতা খেয়া জিংতা অয়া আসি।", trans: "Bura onaite kam kitau pang kore nuartara. Kunomote dhangguli kheti koriya ota kheya jingta oya asi." },
-  { text: "এগদে মুড়াকচু লাগানির সময় আহানৌ দিয়া আহের। বুড়াই মাতের, অবুড়ি, মুড়াকচু খানি লাগাবেলিকগা।", trans: "Egode murakochu laganir somoy ahanou diya aher. Burai mater, oburi, murakochu khani lagabelikga." },
-  { text: "বুড়াই বুড়িয়ে ঘরর পিছবারাদে বিসারা  টুমা আহান আসে অহাত কচু লাগানির কাজে গেলাগা।  বুড়াই কদালহানল মাটি খুলিয়া কচু লাগানির জুগত করল।", trans: "Burai buriye ghoror pichbarade bisara tuma ahan ase ohat kochu laganir kaje gelaga. Burai kodalhanol mati khuliya kochu laganir jugot korol." },
-  { text: "ডিজিটাল যুগে ইমার ঠার এহান টিকিয়া থনা জরুলি কামহান।", trans: "Digital juge imar thar ehan tikiya thona joruli kamhan." },
-  { text: "মোর ডাংগ বপায় ইমার ঠারে য়ারি দিলা।", trans: "Mor dangga bapay imar thare yari dila." },
-  { text: "কচু পারেং আহান লাগিয়া লমিতে না লমিতে কাদাহার জঙ্গল অগত্ত লামুই দাপা আহান আহিয়া বুড়া-বুড়িয়ে কচু লাগিতারা অহান চেইতারাগা।", trans: "Kochu poreng ahan lagiya lomite na lomite kadahar jonggol ogotto lamui dapa ahan ahiya bura-buriye kochu lagitara ohan cheitaraga." },
-  { text: "লামুই অতাই বুড়াবুড়িরে কুইকরিয়া বহিসি। লামুই দাপা অহানর সর্দার অগই আংকরেরতা, অ বপা, তুমি কিতা কররাইতা?", trans: "Lamui otai buraburire kuikoriya bohisi. Lamui dapa ohanor sordar ogoi angkororeta, o bapa, tumi kita korraita?" },
-  { text: "নিজর ঠারে টটরতে লাস কিতা, উহান গর্বহান।", trans: "Nijor thare totorte lash kita, uhan gorbohan." },
-  { text: "বিদেশে থায়াউ ইমার ঠারে য়ারি দিলে মনহাৎ নুঙি আহান লাগের।", trans: "Bideshe thayau imar thare yari dile monhat nungi ahan lager." },
-  { text: "মোর বাবা ইসালপাগ।", trans: "Mor baba isalpag." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি সংখ্যাৎ য়াতইলেউ পুরানা ঠার আহান।", trans: "Bishnupriya Manipuri sangkhyat yatoileu purana thar ahan." },
-  { text: "মি ইমার ঠারে হপন দেহুরি ।", trans: "Mi imar thare hopon dehuri." },
-  { text: "ইমার ঠারল আরতাউ সাহিত্য ইকরানি থক।", trans: "Imar tharol aratau sahitya karoni thoki." },
-  { text: "আমারতা হবা পত্রিকা নেই।", trans: "Amarta haba patrika nei." },
-  { text: "আমার ঠারর লেখক অতারে সম্মান দেনা থক।", trans: "Amar tharor lekhok atare sommandena thok." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরির লিপি উহান বাংলা বুলানি চুম নেই, পুর্ব নাগরি বুলে পারিয়ার।", trans: "Bishnupriya Manipurir lipi uhan Bangla bulani chum nei, purbo Nagri bule pariyar." },
-  { text: "মি ইমার ঠারে চিঠি ইকরৌরি।", trans: "Mi imar thare chithi ikrouri." },
-  { text: "ইমার ঠার অন্য মানুরেউ হিকাদেনা দরকার।", trans: "Imar thar onno manureu hikadena dorkar." },
-  { text: "আমার সংস্কৃতিহান আমার ঠারহার গজে থালগ দিয়া বাঁচের।", trans: "Amar sanskritihan amar tharhar gaje thalog diya bachcher." },
-  { text: "ইমার ঠারর নুংশি নুংশি কবিতা ইকরেসি আমার কবিয়ে।", trans: "Imar tharor nungshi nungshi kobita ikroshi amar kobiye." },
-  { text: "মি গর্বিত মোর মাতৃভাষাল।", trans: "Mi gorbito mor matrubhashal." },
-  { text: "বিষ্ণুপ্রিয়া মণিপুরি ঠার পুনচিপালক", trans: "Bishnupriya Manipuri thar punochipalok." },
-  { text: "ইমার ঠাররকা জীবন দিয়া গেলিগা সুদেষ্ণা সিংহই।", trans: "Imar tharorka jibon diya gelga Sudeshna Singhoi." },
-  { text: "আমার ঠার এহানেই আমার শক্তি।", trans: "Amar thar ehanei amar shokti." },
-  { text: "ইমার ঠার জিংতা অইলে জাত এহাহাৌ জিংতা অয়া থাইতায়।", trans: "Imar thar jingta oile jat ehanou jingta oya thaitay." },
-];
-
-let currentIdx = 0;
-let mediaRecorder = null;
-let audioChunks = [];
-let audioBlob = null;
-let audioUrl = null;
-let isRecording = false;
-let timerInterval = null;
-let seconds = 0;
-let sessionCount = 0;
-let animationId = null;
-let analyser = null;
-
-function updateSentence() {
-  const s = sentences[currentIdx];
-  document.getElementById('sentence-text').textContent = s.text;
-  document.getElementById('sentence-trans').textContent = s.trans;
-  document.getElementById('sentence-id').textContent = `বাক্য ${currentIdx+1} / ${sentences.length}`;
-  document.getElementById('prev-btn').disabled = currentIdx === 0;
-  document.getElementById('next-btn').disabled = currentIdx === sentences.length - 1;
+function renderPrompt() {
+  const task = TASKS[mode];
+  const i = idx[mode];
+  const p = task.prompts[i];
+  document.getElementById('mode-tag').innerHTML = `<i class="ti ${task.icon}"></i> ${task.label} — ${task.tag}`;
+  document.getElementById('sentence-text').textContent = p.text;
+  const tr = document.getElementById('sentence-trans');
+  tr.textContent = p.trans || '';
+  tr.style.display = p.trans ? 'block' : 'none';
+  const img = document.getElementById('prompt-image');
+  if (p.image) { img.src = p.image; img.style.display = 'block'; }
+  else { img.removeAttribute('src'); img.style.display = 'none'; }
+  document.getElementById('mode-hint').textContent = task.hint || '';
+  document.getElementById('sentence-id').textContent = `${i + 1} / ${task.prompts.length}`;
+  document.getElementById('prev-btn').disabled = i === 0;
+  document.getElementById('next-btn').disabled = i === task.prompts.length - 1;
+  document.getElementById('max-display').textContent = '/ ' + fmt(task.max);
+  updateProgress();
   updateFilename();
   resetRecorder();
 }
 
-function prevSentence() { if(currentIdx>0){ currentIdx--; updateSentence(); } }
-function nextSentence() { if(currentIdx<sentences.length-1){ currentIdx++; updateSentence(); } }
+function updateProgress() {
+  const total = TASKS[mode].prompts.length;
+  const n = recorded[mode].size;
+  document.getElementById('progress-count').textContent = `${n} / ${total}`;
+  document.getElementById('progress-fill').style.width = (n / total * 100) + '%';
+  document.getElementById('total-recorded').textContent = n;
+}
 
+function prevPrompt() {
+  if (isRecording || idx[mode] === 0) return;
+  idx[mode]--; renderPrompt();
+}
+
+function nextPrompt() {
+  if (isRecording || idx[mode] >= TASKS[mode].prompts.length - 1) return;
+  idx[mode]++; renderPrompt();
+}
+
+function fmt(sec) {
+  return String(Math.floor(sec / 60)).padStart(2, '0') + ':' + String(sec % 60).padStart(2, '0');
+}
+
+// ── ফাইলের নাম ──
+function buildFilename(m, i, stamp) {
+  const p = TASKS[m].prompts[i];
+  const sid = profile.speakerId || 'unknown';
+  const t = stamp ? '_' + stamp : '';
+  return `bpm_${sid}_${m}_${p.id}${t}.${recordingExt}`;
+}
+
+function updateFilename() {
+  if (!mode) return;
+  document.getElementById('filename-preview').textContent = buildFilename(mode, idx[mode]);
+}
+
+// ── রেকর্ডিং ──
 function resetRecorder() {
-  audioBlob = null; audioUrl = null;
+  audioBlob = null; audioUrl = null; recordedDuration = 0; qualityNote = '';
   document.getElementById('sentence-box').className = 'sentence-box';
   document.getElementById('record-btn').className = 'record-btn';
   document.getElementById('record-icon').className = 'ti ti-microphone';
-  document.getElementById('record-label').textContent = 'অকর';
+  document.getElementById('record-label').textContent = 'অকরিক';
   document.getElementById('play-btn').disabled = true;
   document.getElementById('submit-btn').disabled = true;
   document.getElementById('timer-display').textContent = '০০:০০';
@@ -778,6 +1014,7 @@ function toggleRecord() {
 }
 
 async function startRecording() {
+  if (!mode) return;
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     const audioCtx = new AudioContext();
@@ -787,11 +1024,14 @@ async function startRecording() {
     source.connect(analyser);
     const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
-    mediaRecorder = new MediaRecorder(stream);
+    recordingMime = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4']
+      .find(m => MediaRecorder.isTypeSupported(m)) || '';
+    recordingExt = recordingMime.includes('mp4') ? 'm4a' : 'webm';
+    mediaRecorder = new MediaRecorder(stream, recordingMime ? { mimeType: recordingMime } : {});
     audioChunks = [];
     mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
     mediaRecorder.onstop = () => {
-      audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+      audioBlob = new Blob(audioChunks, { type: (mediaRecorder.mimeType || recordingMime || 'audio/webm').split(';')[0] });
       audioUrl = URL.createObjectURL(audioBlob);
       document.getElementById('play-btn').disabled = false;
       document.getElementById('submit-btn').disabled = false;
@@ -804,6 +1044,8 @@ async function startRecording() {
       document.getElementById('rec-dot').style.display = 'none';
       cancelAnimationFrame(animationId);
       stream.getTracks().forEach(t => t.stop());
+      audioCtx.close().catch(() => {});
+      runQualityCheck();
     };
     mediaRecorder.start();
     isRecording = true;
@@ -816,102 +1058,195 @@ async function startRecording() {
     document.getElementById('waveform-idle').style.display = 'none';
     document.getElementById('waveform').style.display = 'block';
 
+    const max = TASKS[mode].max;
     seconds = 0; clearInterval(timerInterval);
     timerInterval = setInterval(() => {
       seconds++;
-      const m = String(Math.floor(seconds/60)).padStart(2,'0');
-      const s2 = String(seconds%60).padStart(2,'0');
-      document.getElementById('timer-display').textContent = m+':'+s2;
-      if (seconds >= 30) stopRecording();
+      document.getElementById('timer-display').textContent = fmt(seconds);
+      if (seconds >= max) stopRecording();
     }, 1000);
 
     const canvas = document.getElementById('waveform');
     const ctx = canvas.getContext('2d');
-    function draw() {
+    (function draw() {
       animationId = requestAnimationFrame(draw);
       canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight;
       analyser.getByteFrequencyData(dataArray);
-      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       const barW = (canvas.width / dataArray.length) * 2.5;
       let x = 0;
-      for(let i=0;i<dataArray.length;i++){
-        const h = (dataArray[i]/255)*canvas.height;
-        ctx.fillStyle = `rgba(16,185,129,${0.4+(dataArray[i]/255)*0.6})`;
-        ctx.fillRect(x, canvas.height-h, barW-1, h);
+      for (let i = 0; i < dataArray.length; i++) {
+        const h = (dataArray[i] / 255) * canvas.height;
+        ctx.fillStyle = `rgba(16,185,129,${0.4 + (dataArray[i] / 255) * 0.6})`;
+        ctx.fillRect(x, canvas.height - h, barW - 1, h);
         x += barW;
       }
-    }
-    draw();
-  } catch(e) {
+    })();
+  } catch (e) {
+    console.error(e);
     showToast('মাইক্রোফোন অ্যাক্সেস দিক।');
   }
 }
 
 function stopRecording() {
   if (mediaRecorder && isRecording) {
-    mediaRecorder.stop(); isRecording = false;
+    mediaRecorder.stop();
+    isRecording = false;
     clearInterval(timerInterval);
   }
 }
 
 function playRecording() {
-  if (!audioUrl) return;
-  new Audio(audioUrl).play();
+  if (audioUrl) new Audio(audioUrl).play();
 }
 
-
-async function submitRecording() {
-  if (!audioBlob) return;
-  const filename = buildFilename(currentIdx);
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.innerHTML = '<i class="ti ti-loader"></i> আপলোড অর ...';
+// ── মান যাচাই ──
+async function runQualityCheck() {
+  recordedDuration = 0;
+  qualityNote = '';
   try {
-    const { error: upErr } = await _supabase.storage.from('bm-speech-corpus')
-      .upload(filename, audioBlob, { contentType: 'audio/webm', upsert: true });
-    if (upErr) throw upErr;
-    const { data: urlData } = _supabase.storage.from('bm-speech-corpus').getPublicUrl(filename);
-    const baseRow = {
-      filename, audio_url: urlData.publicUrl,
-      dialect: profile.dialect, country: profile.country, zone: profile.zone,
-      age: profile.age, gender: profile.gender,
-      sentence_idx: currentIdx, sentence_text: sentences[currentIdx].text,
-      duration_sec: seconds, created_at: new Date().toISOString()
-    };
-    let { error: dbErr } = await _supabase.from('recordings')
-      .insert({ ...baseRow, contributor_name: profile.name || null });
-    if (dbErr) {
-      
-      console.warn('contributor_name সহ ইনসার্ট ব্যর্থ, ট্রাই:', dbErr);
-      ({ error: dbErr } = await _supabase.from('recordings').insert(baseRow));
-      if (dbErr) throw dbErr;
+    const ctx = new AudioContext();
+    const buf = await ctx.decodeAudioData(await audioBlob.arrayBuffer());
+    ctx.close();
+    recordedDuration = buf.duration;
+    const data = buf.getChannelData(0);
+    let peak = 0, sumSq = 0;
+    for (let i = 0; i < data.length; i++) {
+      const a = Math.abs(data[i]);
+      if (a > peak) peak = a;
+      sumSq += data[i] * data[i];
     }
-    sessionCount++;
-    document.getElementById('total-recorded').textContent = sessionCount;
-    const pct = Math.min(100,(sessionCount/20)*100);
-    document.getElementById('progress-fill').style.width = pct+'%';
-    document.getElementById('progress-count').textContent = sessionCount+' / ২০';
-    showToast('ডাটাবেসহাৎ জমা অইল! থাকাত।');
-    loadLeaderboard();
-    if (currentIdx < sentences.length-1) { currentIdx++; updateSentence(); }
-    else showToast('হাবি বাক্যহানি লমইল! নিয়ামপারা থাকাত।');
-  } catch(err) {
-    console.error(err);
-    showToast('আপলোড ব্যর্থ  — বারো হন্না টা করিক।');
+    const rms = Math.sqrt(sumSq / data.length);
+    if (buf.duration < 1) qualityNote = 'রেকর্ডিং খুব ছোট — আবার বলিক।';
+    else if (rms < 0.005) qualityNote = 'আওয়াজ খুব কম — মাইকের কাছে গিয়া আবার বলিক।';
+    else if (peak >= 0.99) qualityNote = 'আওয়াজ বেশি জোরে — একটু দূরে থাকিয়া আবার বলিক।';
+  } catch (e) {
+    console.warn('মান যাচাই করা যায়নি:', e);
+    recordedDuration = seconds;
+  }
+  if (qualityNote) showToast(qualityNote);
+}
+
+// ── অফলাইন কিউ (IndexedDB) ──
+function openQueue() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(QUEUE_DB, 1);
+    req.onupgradeneeded = () => req.result.createObjectStore('pending', { keyPath: 'filename' });
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function queueTx(txMode, action) {
+  return openQueue().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction('pending', txMode);
+    const req = action(tx.objectStore('pending'));
+    tx.oncomplete = () => { db.close(); resolve(req ? req.result : undefined); };
+    tx.onerror = () => reject(tx.error);
+    tx.onabort = () => reject(tx.error);
+  }));
+}
+
+const savePending = item => queueTx('readwrite', s => s.put(item));
+const deletePending = key => queueTx('readwrite', s => s.delete(key));
+const getAllPending = () => queueTx('readonly', s => s.getAll());
+
+let flushing = false;
+async function flushPending() {
+  if (flushing || !navigator.onLine) return;
+  flushing = true;
+  try {
+    const items = await getAllPending();
+    for (const item of items) {
+      try {
+        await sendRecording(item);
+        await deletePending(item.filename);
+        loadLeaderboard();
+      } catch (e) {
+        console.warn('পরে আবার চেষ্টা হবে:', e);
+      }
+    }
+  } catch (e) {
+    console.warn('কিউ পড়া যায়নি:', e);
   } finally {
-    btn.disabled = false;
-    btn.innerHTML = '<i class="ti ti-upload"></i> জমা দিক বারো থাংনার বাক্যৎ যিকগা';
+    flushing = false;
   }
 }
 
-function showToast(msg) {
-  document.getElementById('toast-msg').textContent = msg;
-  const t = document.getElementById('toast');
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3500);
+// ── আপলোড ও ডাটাবেস ──
+function isAlreadyExists(err) {
+  return String(err.statusCode) === '409' || /already exists|duplicate/i.test(err.message || '');
 }
 
+async function sendRecording(item) {
+  const { error: upErr } = await _supabase.storage.from(BUCKET)
+    .upload(item.filename, item.blob, { contentType: item.blob.type || 'audio/webm', upsert: false });
+  // আগের চেষ্টায় আপলোড হয়ে গেলে retry-তে সেটি সফল ধরা হবে
+  if (upErr && !isAlreadyExists(upErr)) throw upErr;
 
+  const { error: dbErr } = await _supabase.from('recordings').insert(item.row);
+  // 23505 = একই ফাইল আগেই জমা আছে — সফল ধরা হবে
+  if (dbErr && dbErr.code !== '23505') throw dbErr;
+}
+
+function onRecordingDone(m, i) {
+  recorded[m].add(TASKS[m].prompts[i].id);
+  if (mode === m && idx[m] === i) {
+    if (i < TASKS[m].prompts.length - 1) { idx[m]++; renderPrompt(); }
+    else { renderPrompt(); showToast('এই কাজের সব অংশ শেষ! ধন্যবাদ।'); }
+  } else if (mode === m) {
+    updateProgress();
+  }
+  loadLeaderboard();
+}
+
+async function submitRecording() {
+  if (!audioBlob || !mode) return;
+  const m = mode, i = idx[m], p = TASKS[m].prompts[i];
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="ti ti-loader"></i> জমা অইতই...';
+
+  const filename = buildFilename(m, i, Date.now());
+  const item = {
+    filename,
+    blob: audioBlob,
+    row: {
+      filename,
+      audio_path: filename,
+      speaker_id: profile.speakerId,
+      recorder_id: volunteer.code,
+      task_type: m,
+      prompt_id: p.id,
+      prompt_text: p.text,
+      duration_sec: recordedDuration || seconds,
+      recording_mime: audioBlob.type,
+      consent_version: CONSENT_VERSION,
+      created_at: new Date().toISOString()
+    }
+  };
+
+  try {
+    try {
+      await sendRecording(item);
+      showToast('ডাটাবেসে জমা অইল! ধন্যবাদ।');
+    } catch (err) {
+      console.error(err);
+      await savePending(item);
+      showToast('ইন্টারনেট সমস্যা — ফোনে রাখা অইল, পরে নিজে যাইবো।');
+    }
+    sessionCount++;
+    onRecordingDone(m, i);
+  } catch (err) {
+    console.error(err);
+    showToast('জমা রাখা যায়নি — আবার চেষ্টা করিক।');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = SUBMIT_HTML;
+  }
+}
+
+// ── লিডারবোর্ড (ভলান্টিয়ার) ──
 const lbAvatarColors = ['#10b981', '#06b6d4', '#f59e0b', '#8b5cf6', '#ef4444', '#3b82f6'];
 function lbColorForName(name) {
   let hash = 0;
@@ -919,16 +1254,17 @@ function lbColorForName(name) {
   return lbAvatarColors[Math.abs(hash) % lbAvatarColors.length];
 }
 
+function getInitials(name) {
+  if (!name) return '';
+  return name.trim().split(/\s+/).map(w => w[0]).join('').toUpperCase().slice(0, 3);
+}
+
 async function loadLeaderboard() {
   const wrap = document.getElementById('leaderboard-list');
   try {
     const { data, error } = await _supabase.rpc('get_speech_corpus_leaderboard');
     if (error) throw error;
-
-    const top = (data || [])
-      .map(row => [row.contributor_name, Number(row.entry_count)])
-      .slice(0, 4);
-    renderLeaderboard(top);
+    renderLeaderboard((data || []).map(r => [r.contributor_name, Number(r.entry_count)]).slice(0, 5));
   } catch (err) {
     console.error(err);
     wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">লোড নাসে</div>';
@@ -938,29 +1274,26 @@ async function loadLeaderboard() {
 function renderLeaderboard(top) {
   const wrap = document.getElementById('leaderboard-list');
   if (!top.length) {
-    wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">এবাকাউ কোনো অবদানকারী নেই</div>';
+    wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">এখনও কোনো অবদান নেই</div>';
     return;
   }
   const rankClasses = ['gold', 'silver', 'bronze', ''];
-  wrap.innerHTML = top.map(([name, count], i) => {
-    const initials = getInitials(name) || '?';
-    return `
+  wrap.innerHTML = top.map(([name, count], i) => `
       <div class="lb-item">
         <span class="lb-rank ${rankClasses[i] || ''}">${i + 1}</span>
-        <span class="lb-avatar" style="background:${lbColorForName(name)}">${initials}</span>
+        <span class="lb-avatar" style="background:${lbColorForName(name)}">${getInitials(name) || '?'}</span>
         <span class="lb-name">${name}</span>
         <span class="lb-count">${count}</span>
-      </div>`;
-  }).join('');
+      </div>`).join('');
 }
 
-updateSentence();
+// ── শুরু ──
+renderDots();
 loadLeaderboard();
+flushPending();
+window.addEventListener('online', flushPending);
+window.addEventListener('pageshow', e => { if (e.persisted) loadLeaderboard(); });
 
-// পেজ ব্যাক/ফরওয়ার্ড ক্যাশ (bfcache) থেকে ফিরে আসলেও leaderboard আবার লোড করানি
-window.addEventListener('pageshow', function (e) {
-  if (e.persisted) loadLeaderboard();
-});
 </script>
 </body>
 </html>
