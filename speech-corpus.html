@@ -328,28 +328,8 @@
 
 <div class="toast" id="toast"><i class="ti ti-circle-check"></i> <span id="toast-msg"></span></div>
 
-<!-- ১. ভলান্টিয়ার গেট -->
-<div class="modal-overlay" id="gate-modal">
-  <div class="modal">
-    <div class="modal-header">
-      <div class="modal-icon"><i class="ti ti-id-badge-2"></i></div>
-      <div class="modal-title">ভলান্টিয়ার লগইন</div>
-      <div class="modal-sub">সমন্বয়কারীর দেওয়া কোড দিন</div>
-    </div>
-    <div class="name-field">
-      <label for="volunteer-code">ভলান্টিয়ার কোড</label>
-      <input type="text" id="volunteer-code" class="name-field-input" autocomplete="off" maxlength="40"
-             onkeydown="if(event.key==='Enter')verifyVolunteer()">
-      <span class="name-field-hint" id="gate-error"></span>
-    </div>
-    <div class="step-nav">
-      <button class="btn-next" id="gate-btn" onclick="verifyVolunteer()">ঢুকি <i class="ti ti-arrow-right"></i></button>
-    </div>
-  </div>
-</div>
-
 <!-- ২. বক্তার প্রোফাইল ও সম্মতি -->
-<div class="modal-overlay hidden" id="profile-modal">
+<div class="modal-overlay" id="profile-modal">
   <div class="modal" style="max-height:92vh; overflow-y:auto;">
     <div class="modal-header">
       <div class="modal-icon"><i class="ti ti-user"></i></div>
@@ -398,10 +378,10 @@
       <div class="step-label">ধাপ ৪ / ৭</div>
       <div class="step-question">বয়স কত?</div>
       <div class="option-grid col2">
+        <button class="option-btn" onclick="selectOption('age','12-18',this)">১২–১৮</button>
         <button class="option-btn" onclick="selectOption('age','18-25',this)">১৮–২৫</button>
         <button class="option-btn" onclick="selectOption('age','26-40',this)">২৬–৪০</button>
         <button class="option-btn" onclick="selectOption('age','40+',this)">৪০+</button>
-        <button class="option-btn" onclick="pickUnder18(this)">১৮ বছরের কম</button>
       </div>
       <div class="step-nav">
         <button class="btn-back" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> আগের</button>
@@ -426,14 +406,13 @@
       <div class="step-label">ধাপ ৬ / ৭ — সম্মতি</div>
       <div class="step-question">রেকর্ডিংয়ের আগে সম্মতি</div>
       <div class="consent-box" style="margin-top:0;cursor:default"><span id="consent-text"></span></div>
-      <div class="step-question" style="margin-top:1rem;font-size:14px">কীভাবে সম্মতি নেওয়া হলো?</div>
-      <div class="option-grid col2">
-        <button class="option-btn" onclick="selectOption('consentMethod','self',this)"><span class="opt-icon">📖</span>বক্তা নিজে পড়েছেন</button>
-        <button class="option-btn" onclick="selectOption('consentMethod','read_aloud',this)"><span class="opt-icon">🗣️</span>ভলান্টিয়ার শুনিয়েছেন</button>
-      </div>
       <label class="consent-box">
         <input type="checkbox" id="consent-check" onchange="updateNextBtn(5)">
-        <span>উপরের সব শর্ত আমি বুঝেছি এবং মেনে নিচ্ছি। আমার বয়স ১৮ বা তার বেশি।</span>
+        <span>উপরের সব শর্ত আমি বুঝেছি এবং মেনে নিচ্ছি।</span>
+      </label>
+      <label class="consent-box" id="guardian-box" style="display:none">
+        <input type="checkbox" id="guardian-check" onchange="updateNextBtn(5)">
+        <span>বক্তার বয়স ১২–১৮ বছর। আমি তাঁর আইনগত অভিভাবক এবং এই রেকর্ডিংয়ে সম্মতি দিচ্ছি।</span>
       </label>
       <div class="step-nav">
         <button class="btn-back" onclick="goStep(4)"><i class="ti ti-arrow-left"></i> আগের</button>
@@ -484,11 +463,6 @@
 
 <div class="main-layout">
   <div>
-    <div class="volunteer-line" id="volunteer-line" style="display:none">
-      <span><i class="ti ti-id-badge-2"></i> ভলান্টিয়ার: <b id="volunteer-name"></b></span>
-      <button class="link-btn" onclick="leaveVolunteer()">বের হও</button>
-    </div>
-
     <div class="profile-chip" id="profile-chip" style="display:none">
       <div class="profile-info" id="profile-tags"></div>
       <button class="profile-edit" onclick="leaveSpeaker()"><i class="ti ti-user-plus"></i> নতুন বক্তা</button>
@@ -525,6 +499,10 @@
         </div>
       </div>
 
+      <div class="name-field" id="interviewer-field" style="display:none;margin-bottom:12px">
+        <label for="interviewer-name">সাক্ষাৎকার নিচ্ছেন (ঐচ্ছিক নাম)</label>
+        <input type="text" id="interviewer-name" class="name-field-input" maxlength="60" oninput="interviewerName = this.value">
+      </div>
       <div class="sentence-area">
         <div class="sentence-tag" id="mode-tag"></div>
         <div class="sentence-box" id="sentence-box">
@@ -590,9 +568,9 @@
   <div class="sidebar">
     <div class="sidebar-card mobile-hide">
       <div class="sidebar-title"><i class="ti ti-help"></i> কিসারে করানি?</div>
-      <div class="how-item"><span class="how-num">১</span><span class="how-text">ভলান্টিয়ার কোড দিয়ে ঢুকুন</span></div>
-      <div class="how-item"><span class="how-num">২</span><span class="how-text">বক্তার তথ্য ও সম্মতি নিন</span></div>
-      <div class="how-item"><span class="how-num">৩</span><span class="how-text">কাজের ধরন বাছুন ও রেকর্ড করুন</span></div>
+      <div class="how-item"><span class="how-num">১</span><span class="how-text">বক্তার তথ্য ও সম্মতি দিন</span></div>
+      <div class="how-item"><span class="how-num">২</span><span class="how-text">কাজের ধরন বাছুন</span></div>
+      <div class="how-item"><span class="how-num">৩</span><span class="how-text">রেকর্ড করুন (সাক্ষাৎকারে চাইলে নিজের নাম দিন)</span></div>
       <div class="how-item"><span class="how-num">৪</span><span class="how-text">শুনে নিন, তারপর জমা দিন</span></div>
     </div>
 
@@ -609,12 +587,6 @@
       </div>
     </div>
 
-    <div class="sidebar-card">
-      <div class="sidebar-title"><i class="ti ti-trophy"></i> শীর্ষ ভলান্টিয়ার</div>
-      <div id="leaderboard-list">
-        <div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">লোড অইতই ...</div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -683,15 +655,14 @@ const zones = {
 };
 
 // ── কনফিগ ──
-// Supabase সার্ভার-সাইড সেটআপ (বাধ্যতামূলক, README দেখুন):
+// Supabase সার্ভার-সাইড সেটআপ (বাধ্যতামূলক):
 //  - bucket 'bm-speech-corpus' PRIVATE; anon শুধু INSERT
 //  - টেবিল: speakers, consents, recordings — anon শুধু INSERT
-//  - verify_volunteer() ও get_speech_corpus_leaderboard() RPC — security definer
-const CONSENT_VERSION = 'v2-2026-10';
+const CONSENT_VERSION = 'v3-2026-10';
 const BUCKET = 'bm-speech-corpus';
 const SUBMIT_HTML = '<i class="ti ti-upload"></i> জমা দিক';
 const QUEUE_DB = 'bm-corpus-queue';
-const CONSENT_TEXT = 'আমার বয়স ১৮ বছর বা তার বেশি। আমি স্বেচ্ছায় এই রেকর্ডিং দিচ্ছি। এটি স্পিচ কর্পাস ও গবেষণার কাজে ব্যবহৃত হতে পারে। আমার বয়স, এলাকা ও অন্যান্য ব্যক্তিগত তথ্য প্রকাশ্যে দেখানো হবে না। পরে অনুরোধ করে আমার রেকর্ডিং সরিয়ে নেওয়া যাবে।';
+const CONSENT_TEXT = 'আমি স্বেচ্ছায় এই রেকর্ডিং দিচ্ছি। এটি স্পিচ কর্পাস ও গবেষণার কাজে ব্যবহৃত হতে পারে। আমার বয়স, এলাকা ও অন্যান্য ব্যক্তিগত তথ্য প্রকাশ্যে দেখানো হবে না। পরে অনুরোধ করে আমার রেকর্ডিং সরিয়ে নেওয়া যাবে।';
 
 // ── কাজের ধরন ও প্রম্পট ──
 const TASKS = {
@@ -733,12 +704,12 @@ const MODE_LABEL = { read: 'পড়া', conv: 'সাক্ষাৎকার
 
 const dialectLabel = { 'rajar-gang': 'রাজার গাঙ', 'madai-gang': 'মাদৈ গাঙ' };
 const countryLabel = { 'india': '🇮🇳 ভারত', 'bangladesh': '🇧🇩 বাংলাদেশ' };
+const ageLabel = { '12-18': '১২–১৮', '18-25': '১৮–২৫', '26-40': '২৬–৪০', '40+': '৪০+' };
 const genderLabel  = { 'male': 'পুরুষ', 'female': 'মহিলা' };
-const consentLabel = { 'self': 'নিজে পড়েছেন', 'read_aloud': 'শুনিয়েছেন' };
 
 // ── স্টেট ──
-const profile = { dialect: '', country: '', zone: '', age: '', gender: '', name: '', consentMethod: '', speakerId: '' };
-let volunteer = null;          // { code, name }
+const profile = { dialect: '', country: '', zone: '', age: '', gender: '', name: '', speakerId: '' };
+let interviewerName = '';
 let currentStep = 0;
 const STEP_COUNT = 7;
 let mode = null;
@@ -757,39 +728,6 @@ function showToast(msg) {
   t.classList.add('show');
   clearTimeout(showToast._t);
   showToast._t = setTimeout(() => t.classList.remove('show'), 3500);
-}
-
-// ── ১. ভলান্টিয়ার গেট (সার্ভার-সাইড যাচাই) ──
-async function verifyVolunteer() {
-  const code = document.getElementById('volunteer-code').value.trim();
-  const err = document.getElementById('gate-error');
-  const btn = document.getElementById('gate-btn');
-  if (!code) { err.textContent = 'কোড লিখিক।'; return; }
-  btn.disabled = true;
-  err.textContent = 'যাচাই অইতই...';
-  try {
-    const { data, error } = await _supabase.rpc('verify_volunteer', { p_code: code });
-    if (error) throw error;
-    if (!data) { err.textContent = 'কোড ঠিক নয়।'; return; }
-    volunteer = { code, name: data };
-    document.getElementById('volunteer-name').textContent = data;
-    document.getElementById('volunteer-line').style.display = 'flex';
-    document.getElementById('gate-modal').classList.add('hidden');
-    document.getElementById('profile-modal').classList.remove('hidden');
-    document.getElementById('consent-text').textContent = CONSENT_TEXT;
-    goStep(0);
-    showToast('স্বাগতম, ' + data);
-  } catch (e) {
-    console.error(e);
-    err.textContent = 'ইন্টারনেট চেক করিক।';
-  } finally {
-    btn.disabled = false;
-  }
-}
-
-function leaveVolunteer() {
-  if (isRecording) stopRecording();
-  location.reload();
 }
 
 // ── ২. বক্তার প্রোফাইল ──
@@ -813,12 +751,15 @@ function canNext(step) {
     case 2: return !!profile.zone;
     case 3: return !!profile.age;
     case 4: return !!profile.gender;
-    case 5: return !!profile.consentMethod && document.getElementById('consent-check').checked;
+    case 5: return document.getElementById('consent-check').checked &&
+      (profile.age !== '12-18' || document.getElementById('guardian-check').checked);
     default: return true;
   }
 }
 
 function updateNextBtn(step) {
+  const gb = document.getElementById('guardian-box');
+  if (gb) gb.style.display = profile.age === '12-18' ? 'flex' : 'none';
   const btn = document.getElementById('next-' + step);
   if (btn) btn.disabled = !canNext(step);
 }
@@ -828,13 +769,6 @@ function selectOption(key, value, btn) {
   btn.closest('.option-grid').querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   updateNextBtn(currentStep);
-}
-
-function pickUnder18(btn) {
-  profile.age = '';
-  btn.closest('.option-grid').querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-  showToast('১৮ বছরের কম বয়সীদের রেকর্ডিং নেওয়া যাবে না।');
-  updateNextBtn(3);
 }
 
 function updateZones() {
@@ -861,7 +795,6 @@ async function finishProfile() {
   try {
     const { error: sErr } = await _supabase.from('speakers').insert({
       speaker_id: speakerId,
-      recorder_id: volunteer.code,
       dialect: profile.dialect, country: profile.country, zone: profile.zone,
       age: profile.age, gender: profile.gender,
       speaker_name: profile.name || null
@@ -870,8 +803,8 @@ async function finishProfile() {
     const { error: cErr } = await _supabase.from('consents').insert({
       speaker_id: speakerId,
       consent_version: CONSENT_VERSION,
-      method: profile.consentMethod,
-      recorder_id: volunteer.code
+      method: 'self_checkbox',
+      guardian_consent: profile.age === '12-18'
     });
     if (cErr) throw cErr;
   } catch (e) {
@@ -893,9 +826,8 @@ function renderProfileChip() {
     dialectLabel[profile.dialect],
     countryLabel[profile.country],
     zoneLabel(profile.zone),
-    profile.age,
-    genderLabel[profile.gender],
-    'সম্মতি: ' + consentLabel[profile.consentMethod]
+    ageLabel[profile.age] || profile.age,
+    genderLabel[profile.gender]
   ];
   document.getElementById('profile-tags').innerHTML =
     tags.filter(Boolean).map(t => `<span class="profile-tag">${t}</span>`).join('');
@@ -904,10 +836,11 @@ function renderProfileChip() {
 
 function leaveSpeaker() {
   if (isRecording) stopRecording();
-  Object.assign(profile, { dialect: '', country: '', zone: '', age: '', gender: '', name: '', consentMethod: '', speakerId: '' });
+  Object.assign(profile, { dialect: '', country: '', zone: '', age: '', gender: '', name: '', speakerId: '' });
   document.querySelectorAll('#profile-modal .option-btn.selected').forEach(b => b.classList.remove('selected'));
   document.getElementById('zone-select').innerHTML = '<option value="">— জোনগ বাছিয়া নেগা —</option>';
   document.getElementById('consent-check').checked = false;
+  document.getElementById('guardian-check').checked = false;
   document.getElementById('speaker-name-input').value = '';
   mode = null;
   document.getElementById('recorder').style.display = 'none';
@@ -949,6 +882,7 @@ function renderPrompt() {
   if (p.image) { img.src = p.image; img.style.display = 'block'; }
   else { img.removeAttribute('src'); img.style.display = 'none'; }
   document.getElementById('mode-hint').textContent = task.hint || '';
+  document.getElementById('interviewer-field').style.display = mode === 'conv' ? 'block' : 'none';
   document.getElementById('sentence-id').textContent = `${i + 1} / ${task.prompts.length}`;
   document.getElementById('prev-btn').disabled = i === 0;
   document.getElementById('next-btn').disabled = i === task.prompts.length - 1;
@@ -1161,7 +1095,6 @@ async function flushPending() {
       try {
         await sendRecording(item);
         await deletePending(item.filename);
-        loadLeaderboard();
       } catch (e) {
         console.warn('পরে আবার চেষ্টা হবে:', e);
       }
@@ -1197,7 +1130,6 @@ function onRecordingDone(m, i) {
   } else if (mode === m) {
     updateProgress();
   }
-  loadLeaderboard();
 }
 
 async function submitRecording() {
@@ -1215,7 +1147,7 @@ async function submitRecording() {
       filename,
       audio_path: filename,
       speaker_id: profile.speakerId,
-      recorder_id: volunteer.code,
+      interviewer_name: m === 'conv' ? (interviewerName || null) : null,
       task_type: m,
       prompt_id: p.id,
       prompt_text: p.text,
@@ -1246,53 +1178,11 @@ async function submitRecording() {
   }
 }
 
-// ── লিডারবোর্ড (ভলান্টিয়ার) ──
-const lbAvatarColors = ['#10b981', '#06b6d4', '#f59e0b', '#8b5cf6', '#ef4444', '#3b82f6'];
-function lbColorForName(name) {
-  let hash = 0;
-  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
-  return lbAvatarColors[Math.abs(hash) % lbAvatarColors.length];
-}
-
-function getInitials(name) {
-  if (!name) return '';
-  return name.trim().split(/\s+/).map(w => w[0]).join('').toUpperCase().slice(0, 3);
-}
-
-async function loadLeaderboard() {
-  const wrap = document.getElementById('leaderboard-list');
-  try {
-    const { data, error } = await _supabase.rpc('get_speech_corpus_leaderboard');
-    if (error) throw error;
-    renderLeaderboard((data || []).map(r => [r.contributor_name, Number(r.entry_count)]).slice(0, 5));
-  } catch (err) {
-    console.error(err);
-    wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">লোড নাসে</div>';
-  }
-}
-
-function renderLeaderboard(top) {
-  const wrap = document.getElementById('leaderboard-list');
-  if (!top.length) {
-    wrap.innerHTML = '<div style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0;">এখনও কোনো অবদান নেই</div>';
-    return;
-  }
-  const rankClasses = ['gold', 'silver', 'bronze', ''];
-  wrap.innerHTML = top.map(([name, count], i) => `
-      <div class="lb-item">
-        <span class="lb-rank ${rankClasses[i] || ''}">${i + 1}</span>
-        <span class="lb-avatar" style="background:${lbColorForName(name)}">${getInitials(name) || '?'}</span>
-        <span class="lb-name">${name}</span>
-        <span class="lb-count">${count}</span>
-      </div>`).join('');
-}
-
 // ── শুরু ──
 renderDots();
-loadLeaderboard();
+document.getElementById('consent-text').textContent = CONSENT_TEXT;
 flushPending();
 window.addEventListener('online', flushPending);
-window.addEventListener('pageshow', e => { if (e.persisted) loadLeaderboard(); });
 
 </script>
 </body>
