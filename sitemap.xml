@@ -3,126 +3,308 @@
 
   <url>
     <loc>https://imarthar.com/</loc>
-    <priority>1.0</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
 
   <!-- Tools -->
   <url>
     <loc>https://imarthar.com/tools.html</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://imarthar.com/translator.html</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://imarthar.com/translator_multilang.html</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/bn-to-bm-translate.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://imarthar.com/transliteration.html</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://imarthar.com/spellcheck.html</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://imarthar.com/keyboard.html</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://imarthar.com/tts.html</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://imarthar.com/dictionary.html</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/bm_interactive_map.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- Corpus & Research -->
   <url>
     <loc>https://imarthar.com/corpus.html</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://imarthar.com/speech-corpus.html</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/language-corpus.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://imarthar.com/papers.html</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- Blog -->
   <url>
     <loc>https://imarthar.com/blogs.html</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://imarthar.com/blog-post.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <changefreq>weekly</changefreq>
   </url>
 
   <url>
-    <loc>https://imarthar.com/post-1.html</loc>
-    <priority>0.6</priority>
+    <loc>https://imarthar.com/blogs/post-1.html</loc>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://imarthar.com/post-09.html</loc>
-    <priority>0.6</priority>
+    <loc>https://imarthar.com/blogs/post-2.html</loc>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://imarthar.com/post-10.html</loc>
-    <priority>0.6</priority>
+    <loc>https://imarthar.com/blogs/post-6.html</loc>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://imarthar.com/post-11.html</loc>
-    <priority>0.6</priority>
+    <loc>https://imarthar.com/blogs/post-26-1.html</loc>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Blog posts (from feed.xml) -->
+  <url>
+    <loc>https://imarthar.com/post.html?id=9026068d-eeba-42ee-b0b0-d1674bddb793</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://imarthar.com/post.html</loc>
-    <priority>0.6</priority>
+    <loc>https://imarthar.com/post.html?id=20e8d7b6-6565-40a9-847f-258d96578c22</loc>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=94560cda-9e57-4846-8157-ed31b86d2792</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=2456ae24-cd0e-4460-b99d-58c1650fa813</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=1c95115e-b150-4565-b7a6-c1dba33bfb01</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=777a03e1-08c2-4b51-87a9-a7b4e2f69bb6</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=e443b3bc-18eb-4a13-82bd-acbf4176b993</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=2d16c7ca-8ebe-4571-8af2-429ef3acd6b4</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=dda01861-6774-4a2c-a249-7c5ff79b509b</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=61fd29f5-33be-43c2-ba2c-ec069b42e38e</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=5525e097-c4bd-4329-b738-8aa9924a41cf</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=013df3af-295f-43ef-8f95-f9b567331cf7</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=73cb7f0e-584a-495e-b0f3-718bc6518711</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=75abc8d3-733b-4b07-9091-203db0b3b69a</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=50934784-cf59-4376-9be3-4ac5d0ad9a7a</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=e7f324eb-185f-468b-9eaf-c808d643ffd7</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=94209e4b-5ec0-42c2-8576-ece4cf1e3609</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=b20dad7a-1867-4bc8-9a71-ec73a8e4852a</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=9070f2a4-232c-4410-b2a6-3027a3937771</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/post.html?id=5f73a4b1-9f81-48eb-aab8-e8dcbd169ce3</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- Community -->
   <url>
     <loc>https://imarthar.com/discussion.html</loc>
-    <priority>0.7</priority>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://imarthar.com/competition.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
