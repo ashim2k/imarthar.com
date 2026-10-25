@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ইমার ঠারর বানান পরীক্ষক</title>
 <link rel="canonical" href="https://imarthar.com/spellcheck.html" />
-<meta name="description" content="বিষ্ণুপ্রিয়া মণিপুরি বানান পরীক্ষক — বানানর ভুল লালচুম করিক। Bishnupriya Manipuri spell checker — check and correct spelling.">
+<meta name="description" content="বিষ্ণুপ্রিয়া মণিপুরি বানান পরীক্ষক — বানানর ভুল চুমকরিক। Bishnupriya Manipuri spell checker — check and correct spelling.">
 <meta property="og:title" content="বানান পরীক্ষক — Bishnupriya Manipuri Spell Checker | Imar Thar">
 <meta property="og:description" content="বানানর ভুল লালচুম করিক এহানাৎ।">
 <meta property="og:url" content="https://imarthar.com/spellcheck.html">
@@ -95,7 +95,7 @@
   <div class="page-header-inner">
     <div class="breadcrumb"><a href="index.html">হোম</a><span>›</span><a href="tools.html">টুল</a><span>›</span><span>ইমার ঠারর বানান পরীক্ষক</span></div>
     <h1>ইমার ঠারর বানান <span>পরীক্ষক</span></h1>
-    <p>বিষ্ণুপ্রিয়া মণিপুরি ঠারর স্পেল-চেকিং টুল — লেখা পেস্ট করুন, ভুল শব্দে ক্লিক করে সঠিক বানান বেছে নিন।</p>
+    <p>বিষ্ণুপ্রিয়া মণিপুরি ঠারর স্পেল-চেকিং টুল — ভার্সন ১.০২ </p>
   </div>
 </div>
 
@@ -132,7 +132,7 @@
 
 <script>
 var API_URL = "https://clybuzkhnjuhpvcobiri.supabase.co/functions/v1/spellcheck";
-var SAMPLE = "কামহাণ অইব-নাইব আহান মাতিক। ছাপাব চিঠিত্ত আতুৱা চিঠি পেইলেই হবা লাগের। বিয়ানকার আটানিহান গারিরকা অইছা।";
+var SAMPLE = "কামহাণ অইব-নাইব আহান মাতিক। বিয়ানকার আটানিহান গারিগরকা হবা।";
 
 (function () {
   "use strict";
@@ -187,7 +187,7 @@ var SAMPLE = "কামহাণ অইব-নাইব আহান মাত�
   function learnWord(err) {
     var w = norm(err.word); personal[w] = 1;
     try { localStorage.setItem("bpm_personal", JSON.stringify(personal)); } catch (e) {}
-    closePop(); rerender(); toast("“" + w + "” অভিধানে যোগ কারনি অইল");
+    closePop(); rerender(); toast("“" + w + "” অভিধানে যোগ করানি অইল");
   }
 
   function chips(err, container) {
@@ -200,7 +200,7 @@ var SAMPLE = "কামহাণ অইব-নাইব আহান মাত�
   }
   function actions(err, container) {
     var a = el("button", null, "অভিধানে যোগ করিক"); a.type = "button"; a.addEventListener("click", function (e) { e.stopPropagation(); learnWord(err); });
-    var b = el("button", null, "থাক এহান"); b.type = "button"; b.addEventListener("click", function (e) { e.stopPropagation(); ignoreWord(err); });
+    var b = el("button", null, "এক্ক থাক"); b.type = "button"; b.addEventListener("click", function (e) { e.stopPropagation(); ignoreWord(err); });
     container.appendChild(a); container.appendChild(b);
   }
 
