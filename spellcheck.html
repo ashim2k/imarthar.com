@@ -95,7 +95,7 @@ p<!DOCTYPE html>
   <div class="page-header-inner">
     <div class="breadcrumb"><a href="index.html">হোম</a><span>›</span><a href="tools.html">টুল</a><span>›</span><span>বানান পরীক্ষক</span></div>
     <h1> বিষ্ণুপ্রিয়া মণিপুরি বানান <span>পরীক্ষক</span></h1>
-    <p>বিষ্ণুপ্রিয়া মণিপুরি ঠারর স্পেল-চেকিং টুল — লেখা পেস্ট করুন, ভুল শব্দে ক্লিক করে সঠিক বানান বেছে নিন।</p>
+    <p>বিষ্ণুপ্রিয়া মণিপুরি ঠারর স্পেল-চেকিং টুল</p>
   </div>
 </div>
 
@@ -188,7 +188,7 @@ var SAMPLE = "কামহাণ অইব-নাইব আহান মাত�
   function learnWord(err) {
     var w = norm(err.word); personal[w] = 1;
     try { localStorage.setItem("bpm_personal", JSON.stringify(personal)); } catch (e) {}
-    closePop(); rerender(); toast("“" + w + "” অভিধানে যোগ হয়েছে");
+    closePop(); rerender(); toast("“" + w + "” অভিধানে যোগ অইল);
   }
 
   function chips(err, container) {
@@ -200,8 +200,8 @@ var SAMPLE = "কামহাণ অইব-নাইব আহান মাত�
     });
   }
   function actions(err, container) {
-    var a = el("button", null, "অভিধানে যোগ করুন"); a.type = "button"; a.addEventListener("click", function (e) { e.stopPropagation(); learnWord(err); });
-    var b = el("button", null, "উপেক্ষা করুন"); b.type = "button"; b.addEventListener("click", function (e) { e.stopPropagation(); ignoreWord(err); });
+    var a = el("button", null, "অভিধানে যোগ করিক"); a.type = "button"; a.addEventListener("click", function (e) { e.stopPropagation(); learnWord(err); });
+    var b = el("button", null, "ইগনোর"); b.type = "button"; b.addEventListener("click", function (e) { e.stopPropagation(); ignoreWord(err); });
     container.appendChild(a); container.appendChild(b);
   }
 
@@ -287,10 +287,10 @@ var SAMPLE = "কামহাণ অইব-নাইব আহান মাত�
     state.errors.slice().sort(function (a, b) { return b.start - a.start; }).forEach(function (e) {
       if (e.sug.length && e.sug[0].dist <= 1) { v = v.slice(0, e.start) + e.sug[0].term + v.slice(e.end); n++; }
     });
-    input.value = v; run(); toast(bn(n) + "টি ভুল ঠিক করা হয়েছে");
+    input.value = v; run(); toast(bn(n) + "হান বানান চুমকরানি অইল ");
   });
   $("copy").addEventListener("click", function () {
-    var done = function () { toast("কপি হয়েছে"); };
+    var done = function () { toast("কপি অইল"); };
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(input.value).then(done, function () { input.select(); document.execCommand("copy"); done(); });
     else { input.select(); document.execCommand("copy"); done(); }
   });
