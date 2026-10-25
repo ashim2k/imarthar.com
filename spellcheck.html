@@ -9,7 +9,6 @@
 <meta property="og:title" content="বানান পরীক্ষক — Bishnupriya Manipuri Spell Checker | Imar Thar">
 <meta property="og:description" content="বানানর ভুল লালচুম করিক এহানাৎ।">
 <meta property="og:url" content="https://imarthar.com/spellcheck.html">
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
@@ -20,76 +19,72 @@
   .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover, .nav-links a.active { color: #10b981; }
   .page-header { background: radial-gradient(circle at top right, rgba(209,250,229,0.4), transparent), radial-gradient(circle at bottom left, rgba(240,253,250,0.4), transparent), #ffffff; background-image: radial-gradient(rgba(16,185,129,0.05) 1px, transparent 0); background-size: 24px 24px; border-bottom: 1px solid #e2e8f0; padding: 3rem 2rem 2.5rem; position: relative; overflow: hidden; }
-  .page-header::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: #10b981; border-radius: 50%; opacity: 0.07; filter: blur(50px); }
-  .page-header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .page-header-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
   .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #94a3b8; margin-bottom: 1rem; }
   .breadcrumb a { color: #94a3b8; text-decoration: none; } .breadcrumb a:hover { color: #10b981; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: #fef3c7; color: #92400e; font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 99px; margin-bottom: 1rem; }
   .page-header h1 { font-size: 32px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
   .page-header h1 span { color: #10b981; }
   .page-header p { font-size: 15px; color: #64748b; }
 
-  .main { max-width: 700px; margin: 4rem auto 6rem; padding: 0 2rem; }
+  .main { max-width: 1000px; margin: 2rem auto 4rem; padding: 0 2rem; }
+  .grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+  .card h2 { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: .6rem; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .card h2 small { font-weight: 500; color: #94a3b8; font-size: 12px; }
+  .stack { display: flex; flex-direction: column; gap: 1.25rem; }
 
-  /* Under construction card */
-  .uc-card {
-    background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px;
-    padding: 4rem 2rem; text-align: center;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
-  }
-  .uc-icon {
-    width: 80px; height: 80px; border-radius: 24px; margin: 0 auto 1.5rem;
-    background: linear-gradient(135deg, #fef3c7, #fde68a);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 40px; position: relative;
-  }
-  .uc-icon::after {
-    content: '🔧'; position: absolute; bottom: -8px; right: -8px;
-    font-size: 22px;
-  }
-  .uc-title { font-size: 26px; font-weight: 800; color: #0f172a; margin-bottom: 0.75rem; }
-  .uc-title span { color: #10b981; }
-  .uc-desc { font-size: 15px; color: #64748b; max-width: 420px; margin: 0 auto 2rem; line-height: 1.7; }
+  textarea#input { width: 100%; min-height: 190px; resize: vertical; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; font: inherit; font-size: 17px; line-height: 1.8; color: #0f172a; background: #fff; }
+  textarea#input:focus { outline: none; border-color: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,.12); }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: .75rem; }
+  .btn { padding: 9px 16px; border-radius: 10px; border: 1px solid #e2e8f0; background: #fff; color: #334155; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; transition: all .15s; }
+  .btn:hover { border-color: #10b981; color: #10b981; }
+  .btn.primary { background: #10b981; border-color: #10b981; color: #fff; }
+  .btn.primary:hover { background: #059669; border-color: #059669; color: #fff; }
+  .btn:disabled { opacity: .45; cursor: default; pointer-events: none; }
+  .spacer { flex: 1; }
+  .opt { font-size: 12.5px; color: #64748b; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
 
-  /* Progress timeline */
-  .timeline { display: flex; flex-direction: column; gap: 0; max-width: 380px; margin: 0 auto 2.5rem; text-align: left; }
-  .timeline-item { display: flex; gap: 14px; align-items: flex-start; }
-  .timeline-left { display: flex; flex-direction: column; align-items: center; }
-  .tl-dot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
-  .tl-dot.done { background: #10b981; color: white; }
-  .tl-dot.active { background: #fbbf24; color: white; animation: pulse-dot 2s infinite; }
-  .tl-dot.todo { background: #f1f5f9; color: #94a3b8; border: 2px solid #e2e8f0; }
-  @keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 0 rgba(251,191,36,0.4)} 50%{box-shadow:0 0 0 8px rgba(251,191,36,0)} }
-  .tl-line { width: 2px; flex: 1; min-height: 24px; background: #e2e8f0; margin: 4px 0; }
-  .tl-line.done { background: #10b981; }
-  .tl-content { padding-bottom: 20px; flex: 1; }
-  .tl-label { font-size: 14px; font-weight: 600; color: #0f172a; }
-  .tl-label.todo { color: #94a3b8; }
-  .tl-sub { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+  #marked { font-size: 17px; line-height: 2; white-space: pre-wrap; word-break: break-word; min-height: 60px; color: #0f172a; }
+  #marked .empty { color: #94a3b8; font-size: 14px; }
+  .err { background: #fee2e2; border-bottom: 2px wavy #ef4444; border-radius: 3px; cursor: pointer; padding: 0 1px; color: #7f1d1d; }
+  .err:hover, .err.open { background: #fecaca; }
+  .err.nosug { background: #fef3c7; border-bottom-color: #f59e0b; color: #78350f; }
 
-  /* Notify form */
-  .notify-box { background: #f0fdf4; border: 1px solid #d1fae5; border-radius: 16px; padding: 1.5rem; max-width: 400px; margin: 0 auto; }
-  .notify-title { font-size: 14px; font-weight: 700; color: #065f46; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
-  .notify-row { display: flex; gap: 8px; }
-  .notify-input { flex: 1; padding: 10px 14px; border: 1px solid #d1fae5; border-radius: 10px; font-size: 14px; font-family: inherit; background: #ffffff; color: #0f172a; }
-  .notify-input:focus { outline: none; border-color: #10b981; }
-  .notify-btn { padding: 10px 18px; background: #10b981; color: white; border: none; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; transition: background 0.2s; white-space: nowrap; }
-  .notify-btn:hover { background: #059669; }
+  .status { font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 99px; background: #f1f5f9; color: #475569; }
+  .status.ok { background: #d1fae5; color: #065f46; }
+  .status.bad { background: #fee2e2; color: #991b1b; }
 
-  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #64748b; text-decoration: none; padding: 8px 16px; border: 1px solid #e2e8f0; border-radius: 10px; background: #ffffff; margin-top: 2rem; transition: all 0.15s; }
-  .back-link:hover { border-color: #10b981; color: #10b981; }
+  .errlist { display: flex; flex-direction: column; gap: 10px; max-height: 560px; overflow: auto; }
+  .eitem { border: 1px solid #e2e8f0; border-radius: 12px; padding: 10px 12px; }
+  .eitem .w { font-weight: 700; color: #b91c1c; font-size: 16px; cursor: pointer; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .chip { border: 1px solid #d1fae5; background: #f0fdf4; color: #065f46; border-radius: 99px; padding: 3px 12px; font: inherit; font-size: 15px; cursor: pointer; }
+  .chip:hover { background: #10b981; color: #fff; border-color: #10b981; }
+  .chip small { color: inherit; opacity: .6; font-size: 11px; margin-left: 4px; }
+  .mini { margin-top: 8px; display: flex; gap: 12px; }
+  .mini button { background: none; border: none; color: #64748b; font: inherit; font-size: 12px; cursor: pointer; text-decoration: underline; }
+  .mini button:hover { color: #10b981; }
+  .none { font-size: 13px; color: #94a3b8; }
 
-  .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: #0f172a; color: #ffffff; padding: 12px 24px; border-radius: 12px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; opacity: 0; transition: all 0.3s; z-index: 999; }
+  #pop { position: absolute; z-index: 300; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 10px; box-shadow: 0 12px 28px rgba(15,23,42,.16); min-width: 190px; max-width: 320px; display: none; }
+  #pop.show { display: block; }
+  #pop .ph { font-size: 12px; color: #94a3b8; margin-bottom: 6px; }
+  #pop .chips { margin-top: 0; }
+
+  details.help { margin-top: 1.25rem; font-size: 13px; color: #64748b; line-height: 1.8; }
+  details.help summary { cursor: pointer; font-weight: 600; color: #475569; }
+  details.help p { margin-top: .5rem; }
+
+  .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: #0f172a; color: #fff; padding: 12px 24px; border-radius: 12px; font-size: 14px; font-weight: 500; opacity: 0; transition: all .3s; z-index: 999; pointer-events: none; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-  .toast i { color: #10b981; }
 
-  footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; line-height: 1.8; }
+  footer { background: #fff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; line-height: 1.8; }
   footer span { color: #10b981; font-weight: 600; }
-  @media (max-width: 640px) { .main { padding: 0 1.25rem; } .page-header { padding: 2rem 1.25rem; } .notify-row { flex-direction: column; } }
+  @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } .main { padding: 0 1.25rem; } .page-header { padding: 2rem 1.25rem; } nav { padding: 0 1.25rem; } .nav-links { gap: 16px; } }
 </style>
 </head>
 <body>
-<div class="toast" id="toast"><i class="ti ti-circle-check"></i> <span id="toast-msg"></span></div>
+<div class="toast" id="toast"></div>
 <nav>
   <a href="index.html" class="logo">imar<span>thar</span>.com</a>
   <div class="nav-links">
@@ -98,88 +93,218 @@
 </nav>
 <div class="page-header">
   <div class="page-header-inner">
-    <div class="breadcrumb"><a href="index.html">হোম</a><i class="ti ti-chevron-right"></i><a href="tools.html">টুল</a><i class="ti ti-chevron-right"></i><span>বানান পরীক্ষক</span></div>
-        <h1>বানান <span>পরীক্ষক</span></h1>
-    <p>বিষ্ণুপ্রিয়া মণিপুরি ঠারর স্পেল-চেকিং টুল </p>
+    <div class="breadcrumb"><a href="index.html">হোম</a><span>›</span><a href="tools.html">টুল</a><span>›</span><span>বানান পরীক্ষক</span></div>
+    <h1>বানান <span>পরীক্ষক</span></h1>
+    <p>বিষ্ণুপ্রিয়া মণিপুরি ঠারর স্পেল-চেকিং টুল — লেখা পেস্ট করুন, ভুল শব্দে ক্লিক করে সঠিক বানান বেছে নিন।</p>
   </div>
 </div>
 
 <div class="main">
-  <div class="uc-card">
-        <!-- Timeline -->
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-left">
-          <div class="tl-dot done"><i class="ti ti-check"></i></div>
-          <div class="tl-line done"></div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-label">ডিকশনারি ডাটাবেস</div>
-          <div class="tl-sub">কাম আগুয়ার </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-left">
-          <div class="tl-dot done"><i class="ti ti-check"></i></div>
-          <div class="tl-line done"></div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-label">ওয়াহির তালিকা হঙকরানি </div>
-          <div class="tl-sub">কর্পাসেত্ত থেকে ওয়াহি অতা পাজালানির কাম আগুয়ার </div>
+  <div class="grid">
+    <div class="stack">
+      <div class="card">
+        <h2>আপনার লেখা <small id="count"></small></h2>
+        <textarea id="input" spellcheck="false" placeholder="এখানে বিষ্ণুপ্রিয়া মণিপুরি লেখা লিখুন বা পেস্ট করুন…"></textarea>
+        <div class="toolbar">
+          <button class="btn primary" id="fixAll" disabled>প্রথম সাজেশন দিয়ে ঠিক করুন</button>
+          <button class="btn" id="copy">কপি</button>
+          <button class="btn" id="sample">উদাহরণ</button>
+          <button class="btn" id="clear">মুছুন</button>
+          <span class="spacer"></span>
+          <label class="opt" title="উদাহরণ-বাক্য থেকে যন্ত্রে পাওয়া প্রত্যয়গুলো বাদ দেয়: কিছু বেশি ভুল ধরে, তবে কিছু সঠিক শব্দও ভুল দেখাতে পারে"><input type="checkbox" id="strict"> কঠোর মোড</label>
         </div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-left">
-          <div class="tl-dot active"><i class="ti ti-loader"></i></div>
-          <div class="tl-line"></div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-label">শব্দভান্ডার যাচাই 🔄</div>
-          <div class="tl-sub">ম্যানুয়ালি বানান যাচাই  — কাম চলের </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-left">
-          <div class="tl-dot todo">৪</div>
-          <div class="tl-line"></div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-label todo">Spell-check অ্যালগরিদম</div>
-          <div class="tl-sub">Levenshtein distance ব্যবহার করিয়া suggestion</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-left">
-          <div class="tl-dot todo">৫</div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-label todo">লঞ্চ </div>
-          <div class="tl-sub">আনুমানিক ২০২৬ সাল লমনির পাতাপে </div>
-        </div>
+      <div class="card">
+        <h2>চিহ্নিত লেখা <span class="status" id="status">—</span></h2>
+        <div id="marked"></div>
       </div>
     </div>
 
-    <!-- Notify -->
-    
-
-    <a href="tools.html" class="back-link"><i class="ti ti-arrow-left"></i> টুল পেজে আলথক</a>
+    <div class="card">
+      <h2>ভুল ও সাজেশন <small id="elcount"></small></h2>
+      <div class="errlist" id="errlist"></div>
+      <details class="help">
+        <summary>এটা কীভাবে কাজ করে?</summary>
+        <p>ডিকশনারি ও শব্দভান্ডারের শব্দভান্ডার ও প্রত্যয়ের তালিকা সার্ভারে থাকে; লেখা সেখানে পাঠিয়ে শব্দ মেলানো হয়। শব্দ = মূল শব্দ + প্রত্যয় (যেমন <i>পাতা + হানি</i>) হলেও সঠিক ধরা হয়। সাজেশন আসে এক-দুই অক্ষরের তফাত থেকে; কর্পাসে বেশি ব্যবহৃত শব্দ সাজেশনে আগে আসে। <b>ঽ</b> ও <b>'</b> চিহ্ন থাকা বা না-থাকা দুটোই গ্রহণযোগ্য।</p>
+        <p>লাল = সাজেশন আছে, হলুদ = কাছাকাছি কোনো শব্দ পাওয়া যায়নি। "প্রথম সাজেশন দিয়ে ঠিক করুন" শুধু এক অক্ষর তফাতের ভুলে প্রথম সাজেশনটি বসায়; পরে একবার চোখ বুলিয়ে নিন, কারণ প্রথম সাজেশন সব সময় ঠিক নাও হতে পারে। যে শব্দ ঠিক কিন্তু ভুল দেখাচ্ছে, "অভিধানে যোগ করুন" চাপুন — এটি আপনার ব্রাউজারেই সংরক্ষিত থাকবে।</p>
+        <p>অভিধানে নেই এমন সঠিক শব্দ (নাম, নতুন শব্দ) ভুল দেখাতে পারে; আবার ভুল বানান দৈবাৎ অন্য শব্দ হয়ে গেলে ধরা পড়বে না।</p>
+      </details>
+    </div>
   </div>
 </div>
+<div id="pop" role="menu"></div>
 
 <footer>© ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br><small style="color:#94a3b8;">Preserving heritage through advanced computing systems.</small></footer>
+
 <script>
-function submitNotify() {
-  const email = document.getElementById('notify-email').value.trim();
-  if (!email || !email.includes('@')) { showToast('সঠিক ইমেইল দিন'); return; }
-  document.getElementById('notify-email').value = '';
-  showToast('ধন্যবাদ! লঞ্চ হলে জানাব।');
-}
-function showToast(msg) {
-  document.getElementById('toast-msg').textContent = msg;
-  const t = document.getElementById('toast');
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
-}
+var API_URL = "https://clybuzkhnjuhpvcobiri.supabase.co/functions/v1/spellcheck";
+var SAMPLE = "কামহাণ অইব-নাইব আহান মাতিক। ছাপাব চিঠিত্ত আতুৱা চিঠি পেইলেই হবা লাগের। বিয়ানকার আটানিহান গারিরকা অইছা।";
+
+(function () {
+  "use strict";
+  // ---------------------------------------------------------------- normalise
+  var NUKTA = [["ড়", "ড়"], ["ঢ়", "ঢ়"], ["য়", "য়"]];
+  function norm(w) {
+    w = w.normalize("NFC").replace(/[‌‍]/g, "").replace(/’/g, "'");
+    for (var i = 0; i < NUKTA.length; i++) w = w.split(NUKTA[i][0]).join(NUKTA[i][1]);
+    return w;
+  }
+
+  // ---------------------------------------------------------------- ব্যবহারকারীর নিজস্ব তালিকা (শুধু এই ব্রাউজারে)
+  var strict = false;
+  var personal = {}, ignored = new Set();
+  try { personal = JSON.parse(localStorage.getItem("bpm_personal") || "{}") || {}; } catch (e) { personal = {}; }
+
+  // ---------------------------------------------------------------- সার্ভার থেকে যাচাই (ডেটা ব্রাউজারে আসে না)
+  var seq = 0;
+  function remoteCheck(text) {
+    return fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: text, strict: strict })
+    }).then(function (r) {
+      if (!r.ok) { var e = new Error("http"); e.status = r.status; throw e; }
+      return r.json();
+    });
+  }
+  function mine(r) {
+    var errs = r.errors.filter(function (e) { var n = norm(e.word); return !ignored.has(n) && !personal[n]; });
+    return { errors: errs, total: r.total };
+  }
+
+  // ---------------------------------------------------------------- UI
+  var $ = function (id) { return document.getElementById(id); };
+  var input = $("input"), marked = $("marked"), errlist = $("errlist"), pop = $("pop"), statusEl = $("status");
+  var state = { errors: [], total: 0 }, timer = null;
+
+  function toast(msg) {
+    var t = $("toast"); t.textContent = msg; t.classList.add("show");
+    clearTimeout(toast.h); toast.h = setTimeout(function () { t.classList.remove("show"); }, 2200);
+  }
+  function bn(n) { return n.toLocaleString("bn-BD"); }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+  function replaceAt(err, term) {
+    var v = input.value;
+    input.value = v.slice(0, err.start) + term + v.slice(err.end);
+    closePop(); run(); input.focus();
+  }
+  function ignoreWord(err) { ignored.add(norm(err.word)); closePop(); rerender(); }
+  function learnWord(err) {
+    var w = norm(err.word); personal[w] = 1;
+    try { localStorage.setItem("bpm_personal", JSON.stringify(personal)); } catch (e) {}
+    closePop(); rerender(); toast("“" + w + "” অভিধানে যোগ হয়েছে");
+  }
+
+  function chips(err, container) {
+    err.sug.forEach(function (s) {
+      var b = el("button", "chip", s.term); b.type = "button";
+      if (s.dist > 1) b.appendChild(el("small", null, "দূরত্ব " + bn(s.dist)));
+      b.addEventListener("click", function (e) { e.stopPropagation(); replaceAt(err, s.term); });
+      container.appendChild(b);
+    });
+  }
+  function actions(err, container) {
+    var a = el("button", null, "অভিধানে যোগ করুন"); a.type = "button"; a.addEventListener("click", function (e) { e.stopPropagation(); learnWord(err); });
+    var b = el("button", null, "উপেক্ষা করুন"); b.type = "button"; b.addEventListener("click", function (e) { e.stopPropagation(); ignoreWord(err); });
+    container.appendChild(a); container.appendChild(b);
+  }
+
+  function render() {
+    var text = input.value, errs = state.errors;
+    $("count").textContent = text.length ? bn(state.total) + " শব্দ" : "";
+    // highlighted copy of the text (built with text nodes only)
+    marked.textContent = "";
+    if (!text.trim()) { marked.appendChild(el("span", "empty", "লেখা দিলে এখানে ভুল শব্দগুলো চিহ্নিত হবে।")); }
+    else {
+      var pos = 0;
+      errs.forEach(function (err, i) {
+        if (err.start > pos) marked.appendChild(document.createTextNode(text.slice(pos, err.start)));
+        var s = el("span", "err" + (err.sug.length ? "" : " nosug"), text.slice(err.start, err.end));
+        s.dataset.i = i; s.tabIndex = 0;
+        s.addEventListener("click", function (e) { e.stopPropagation(); openPop(i, s); });
+        s.addEventListener("keydown", function (e) { if (e.key === "Enter") openPop(i, s); });
+        marked.appendChild(s); pos = err.end;
+      });
+      if (pos < text.length) marked.appendChild(document.createTextNode(text.slice(pos)));
+    }
+    // status
+    statusEl.className = "status";
+    if (!text.trim()) statusEl.textContent = "—";
+    else if (!errs.length) { statusEl.textContent = "কোনো ভুল পাওয়া যায়নি ✓"; statusEl.classList.add("ok"); }
+    else { statusEl.textContent = bn(errs.length) + "টি ভুল"; statusEl.classList.add("bad"); }
+    // list
+    errlist.textContent = ""; $("elcount").textContent = errs.length ? bn(errs.length) + "টি" : "";
+    if (!errs.length) errlist.appendChild(el("div", "none", text.trim() ? "সব শব্দ অভিধান ও প্রত্যয়-নিয়মের সাথে মিলেছে।" : "এখনো কোনো লেখা নেই।"));
+    errs.forEach(function (err, i) {
+      var item = el("div", "eitem"), w = el("div", "w", err.word);
+      w.addEventListener("click", function () { var t = marked.querySelector('[data-i="' + i + '"]'); if (t) { t.scrollIntoView({ block: "center" }); openPop(i, t); } });
+      item.appendChild(w);
+      if (err.sug.length) { var c = el("div", "chips"); chips(err, c); item.appendChild(c); }
+      else item.appendChild(el("div", "none", "কাছাকাছি কোনো শব্দ পাওয়া যায়নি"));
+      var m = el("div", "mini"); actions(err, m); item.appendChild(m);
+      errlist.appendChild(item);
+    });
+    $("fixAll").disabled = !errs.some(function (e) { return e.sug.length && e.sug[0].dist <= 1; });
+  }
+
+  function openPop(i, anchor) {
+    var err = state.errors[i]; pop.textContent = "";
+    Array.prototype.forEach.call(marked.querySelectorAll(".err.open"), function (n) { n.classList.remove("open"); });
+    anchor.classList.add("open");
+    pop.appendChild(el("div", "ph", err.sug.length ? "সাজেশন" : "কাছাকাছি কোনো শব্দ নেই"));
+    if (err.sug.length) { var c = el("div", "chips"); chips(err, c); pop.appendChild(c); }
+    var m = el("div", "mini"); actions(err, m); pop.appendChild(m);
+    pop.classList.add("show");
+    var r = anchor.getBoundingClientRect(), pw = pop.offsetWidth;
+    var left = Math.min(Math.max(8, r.left + window.scrollX), window.scrollX + document.documentElement.clientWidth - pw - 8);
+    pop.style.left = left + "px"; pop.style.top = (r.bottom + window.scrollY + 6) + "px";
+  }
+  function closePop() {
+    pop.classList.remove("show");
+    Array.prototype.forEach.call(document.querySelectorAll(".err.open"), function (n) { n.classList.remove("open"); });
+  }
+
+  var lastRaw = null;
+  function rerender() { var r = mine(lastRaw); state.errors = r.errors; state.total = r.total; render(); }
+  function run() {
+    var text = input.value, my = ++seq;
+    if (!text.trim()) { lastRaw = { errors: [], total: 0 }; rerender(); return; }
+    statusEl.className = "status"; statusEl.textContent = "যাচাই হচ্ছে…";
+    remoteCheck(text).then(function (r) {
+      if (my !== seq) return;            // পুরনো উত্তর বাদ
+      lastRaw = r; rerender();
+    }).catch(function (e) {
+      if (my !== seq) return;
+      statusEl.className = "status bad";
+      statusEl.textContent = e && e.status === 429 ? "অনেক বেশি অনুরোধ — একটু পরে চেষ্টা করুন" :
+                             e && e.status === 413 ? "লেখা অনেক বড় (সর্বোচ্চ ৬০০০ অক্ষর)" : "সার্ভারের সাথে সংযোগ হয়নি";
+    });
+  }
+
+  input.addEventListener("input", function () { closePop(); clearTimeout(timer); timer = setTimeout(run, 450); });
+  document.addEventListener("click", function (e) { if (!pop.contains(e.target)) closePop(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closePop(); });
+  window.addEventListener("resize", closePop);
+
+  $("fixAll").addEventListener("click", function () {
+    var v = input.value, n = 0;
+    state.errors.slice().sort(function (a, b) { return b.start - a.start; }).forEach(function (e) {
+      if (e.sug.length && e.sug[0].dist <= 1) { v = v.slice(0, e.start) + e.sug[0].term + v.slice(e.end); n++; }
+    });
+    input.value = v; run(); toast(bn(n) + "টি ভুল ঠিক করা হয়েছে");
+  });
+  $("copy").addEventListener("click", function () {
+    var done = function () { toast("কপি হয়েছে"); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(input.value).then(done, function () { input.select(); document.execCommand("copy"); done(); });
+    else { input.select(); document.execCommand("copy"); done(); }
+  });
+  $("clear").addEventListener("click", function () { input.value = ""; ignored.clear(); run(); input.focus(); });
+  $("sample").addEventListener("click", function () { input.value = SAMPLE; run(); });
+  $("strict").addEventListener("change", function (e) { strict = e.target.checked; run(); });
+
+  run();
+})();
 </script>
 </body>
 </html>
