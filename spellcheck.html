@@ -1,9 +1,9 @@
-p<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>বানান পরীক্ষক — ইমার ঠার</title>
+<title>ইমার ঠারর বানান পরীক্ষক</title>
 <link rel="canonical" href="https://imarthar.com/spellcheck.html" />
 <meta name="description" content="বিষ্ণুপ্রিয়া মণিপুরি বানান পরীক্ষক — বানানর ভুল লালচুম করিক। Bishnupriya Manipuri spell checker — check and correct spelling.">
 <meta property="og:title" content="বানান পরীক্ষক — Bishnupriya Manipuri Spell Checker | Imar Thar">
@@ -93,9 +93,9 @@ p<!DOCTYPE html>
 </nav>
 <div class="page-header">
   <div class="page-header-inner">
-    <div class="breadcrumb"><a href="index.html">হোম</a><span>›</span><a href="tools.html">টুল</a><span>›</span><span>বানান পরীক্ষক</span></div>
-    <h1> বিষ্ণুপ্রিয়া মণিপুরি বানান <span>পরীক্ষক</span></h1>
-    <p>বিষ্ণুপ্রিয়া মণিপুরি ঠারর স্পেল-চেকিং টুল</p>
+    <div class="breadcrumb"><a href="index.html">হোম</a><span>›</span><a href="tools.html">টুল</a><span>›</span><span>ইমার ঠারর বানান পরীক্ষক</span></div>
+    <h1>ইমার ঠারর বানান <span>পরীক্ষক</span></h1>
+    <p>বিষ্ণুপ্রিয়া মণিপুরি ঠারর স্পেল-চেকিং টুল — লেখা পেস্ট করুন, ভুল শব্দে ক্লিক করে সঠিক বানান বেছে নিন।</p>
   </div>
 </div>
 
@@ -104,14 +104,14 @@ p<!DOCTYPE html>
     <div class="stack">
       <div class="card">
         <h2>আপনাগাসির ইকরা <small id="count"></small></h2>
-        <textarea id="input" spellcheck="false" placeholder="এপেইত বিষ্ণুপ্রিয়া মণিপুরি লেখা ইকরিক বা পেস্ট করিক…"></textarea>
+        <textarea id="input" spellcheck="false" placeholder="এপেই বিষ্ণুপ্রিয়া মণিপুরি ঠারে ইকরিক"></textarea>
         <div class="toolbar">
-          <button class="btn primary" id="fixAll" disabled>পয়লা সাজেশন চেয়া চুমকরিক</button>
+          <button class="btn primary" id="fixAll" disabled>পয়লা সাজেশন ইলয়া চুমকরিক</button>
           <button class="btn" id="copy">কপি</button>
           <button class="btn" id="sample">উদাহরণ</button>
-          <button class="btn" id="clear">ক্লিয়ার</button>
+          <button class="btn" id="clear">ক্লিয়ার</button>
           <span class="spacer"></span>
-          <label class="opt" title="উদাহরণ-বাক্যত্ত পাসি প্রত্যয়উতা বাদ দিলে বানান পরীক্ষাৎ ভুল দেহাদিতে পারে"><input type="checkbox" id="strict"> কঠোর মোড</label>
+          <label class="opt" title="উদাহরণ - বাক্যর লগে মেশিন জেনেরেটডে প্রত্যয় উতার বিতরে লেইলেইক থাইতে পারে।"><input type="checkbox" id="strict"> স্ট্রিক্ট মোড</label>
         </div>
       </div>
       <div class="card">
@@ -121,9 +121,8 @@ p<!DOCTYPE html>
     </div>
 
     <div class="card">
-      <h2>বানানর লালচুম বারো সাজেশন <small id="elcount"></small></h2>
+      <h2>ভুল বারো সাজেশন <small id="elcount"></small></h2>
       <div class="errlist" id="errlist"></div>
-     
     </div>
   </div>
 </div>
@@ -133,7 +132,7 @@ p<!DOCTYPE html>
 
 <script>
 var API_URL = "https://clybuzkhnjuhpvcobiri.supabase.co/functions/v1/spellcheck";
-var SAMPLE = "কামহাণ অইব-নাইব আহান মাতিক";
+var SAMPLE = "কামহাণ অইব-নাইব আহান মাতিক। ছাপাব চিঠিত্ত আতুৱা চিঠি পেইলেই হবা লাগের। বিয়ানকার আটানিহান গারিরকা অইছা।";
 
 (function () {
   "use strict";
@@ -188,29 +187,29 @@ var SAMPLE = "কামহাণ অইব-নাইব আহান মাত�
   function learnWord(err) {
     var w = norm(err.word); personal[w] = 1;
     try { localStorage.setItem("bpm_personal", JSON.stringify(personal)); } catch (e) {}
-    closePop(); rerender(); toast("“" + w + "” অভিধানে যোগ অইল);
+    closePop(); rerender(); toast("“" + w + "” অভিধানে যোগ কারনি অইল");
   }
 
   function chips(err, container) {
     err.sug.forEach(function (s) {
       var b = el("button", "chip", s.term); b.type = "button";
-      if (s.dist > 1) b.appendChild(el("small", null, "দূরত্ব " + bn(s.dist)));
+      if (s.dist > 1) b.appendChild(el("small", null, "দূরেইপা " + bn(s.dist)));
       b.addEventListener("click", function (e) { e.stopPropagation(); replaceAt(err, s.term); });
       container.appendChild(b);
     });
   }
   function actions(err, container) {
     var a = el("button", null, "অভিধানে যোগ করিক"); a.type = "button"; a.addEventListener("click", function (e) { e.stopPropagation(); learnWord(err); });
-    var b = el("button", null, "ইগনোর"); b.type = "button"; b.addEventListener("click", function (e) { e.stopPropagation(); ignoreWord(err); });
+    var b = el("button", null, "থাক এহান"); b.type = "button"; b.addEventListener("click", function (e) { e.stopPropagation(); ignoreWord(err); });
     container.appendChild(a); container.appendChild(b);
   }
 
   function render() {
     var text = input.value, errs = state.errors;
-    $("count").textContent = text.length ? bn(state.total) + " শব্দ" : "";
+    $("count").textContent = text.length ? bn(state.total) + " ওয়াহি" : "";
     // highlighted copy of the text (built with text nodes only)
     marked.textContent = "";
-    if (!text.trim()) { marked.appendChild(el("span", "empty", "লেখা দিলে এখানে ভুল শব্দগুলো চিহ্নিত হবে।")); }
+    if (!text.trim()) { marked.appendChild(el("span", "empty", "ইকারহান দিলে এপেই ভুল ওয়াহি উতা চুমকরানি অইতয়")); }
     else {
       var pos = 0;
       errs.forEach(function (err, i) {
@@ -226,17 +225,17 @@ var SAMPLE = "কামহাণ অইব-নাইব আহান মাত�
     // status
     statusEl.className = "status";
     if (!text.trim()) statusEl.textContent = "—";
-    else if (!errs.length) { statusEl.textContent = "কোনো ভুল পাওয়া যায়নি ✓"; statusEl.classList.add("ok"); }
-    else { statusEl.textContent = bn(errs.length) + "টি ভুল"; statusEl.classList.add("bad"); }
+    else if (!errs.length) { statusEl.textContent = "এবাকাউ কোনো ভুল নাপাসি ✓"; statusEl.classList.add("ok"); }
+    else { statusEl.textContent = bn(errs.length) + "হান ভুল"; statusEl.classList.add("bad"); }
     // list
-    errlist.textContent = ""; $("elcount").textContent = errs.length ? bn(errs.length) + "টি" : "";
-    if (!errs.length) errlist.appendChild(el("div", "none", text.trim() ? "সব শব্দ অভিধান ও প্রত্যয়-নিয়মের সাথে মিলেছে।" : "এখনো কোনো লেখা নেই।"));
+    errlist.textContent = ""; $("elcount").textContent = errs.length ? bn(errs.length) + "হান" : "";
+    if (!errs.length) errlist.appendChild(el("div", "none", text.trim() ? "হাবি ওয়াহি অভিধান বারো প্রত্যয়-নিয়মর লগে চান্না অসে" : "এপেই কোনো ইকরা নেই"));
     errs.forEach(function (err, i) {
       var item = el("div", "eitem"), w = el("div", "w", err.word);
       w.addEventListener("click", function () { var t = marked.querySelector('[data-i="' + i + '"]'); if (t) { t.scrollIntoView({ block: "center" }); openPop(i, t); } });
       item.appendChild(w);
       if (err.sug.length) { var c = el("div", "chips"); chips(err, c); item.appendChild(c); }
-      else item.appendChild(el("div", "none", "কাছাকাছি কোনো শব্দ পাওয়া যায়নি"));
+      else item.appendChild(el("div", "none", "কাদাবারার কোনো ওয়াহি বিসারিয়া নাপাসি"));
       var m = el("div", "mini"); actions(err, m); item.appendChild(m);
       errlist.appendChild(item);
     });
@@ -247,7 +246,7 @@ var SAMPLE = "কামহাণ অইব-নাইব আহান মাত�
     var err = state.errors[i]; pop.textContent = "";
     Array.prototype.forEach.call(marked.querySelectorAll(".err.open"), function (n) { n.classList.remove("open"); });
     anchor.classList.add("open");
-    pop.appendChild(el("div", "ph", err.sug.length ? "সাজেশন" : "কাছাকাছি কোনো শব্দ নেই"));
+    pop.appendChild(el("div", "ph", err.sug.length ? "সাজেশন" : "কাদাবারার কোনো ওয়াহি নেই"));
     if (err.sug.length) { var c = el("div", "chips"); chips(err, c); pop.appendChild(c); }
     var m = el("div", "mini"); actions(err, m); pop.appendChild(m);
     pop.classList.add("show");
@@ -265,15 +264,15 @@ var SAMPLE = "কামহাণ অইব-নাইব আহান মাত�
   function run() {
     var text = input.value, my = ++seq;
     if (!text.trim()) { lastRaw = { errors: [], total: 0 }; rerender(); return; }
-    statusEl.className = "status"; statusEl.textContent = "যাচাই হচ্ছে…";
+    statusEl.className = "status"; statusEl.textContent = "যাচাই অর..";
     remoteCheck(text).then(function (r) {
       if (my !== seq) return;            // পুরনো উত্তর বাদ
       lastRaw = r; rerender();
     }).catch(function (e) {
       if (my !== seq) return;
       statusEl.className = "status bad";
-      statusEl.textContent = e && e.status === 429 ? "অনেক বেশি অনুরোধ — একটু পরে চেষ্টা করুন" :
-                             e && e.status === 413 ? "লেখা অনেক বড় (সর্বোচ্চ ৬০০০ অক্ষর)" : "সার্ভারের সাথে সংযোগ হয়নি";
+      statusEl.textContent = e && e.status === 429 ? "রিকুয়েস্ট বপসে — খানিচুয়া পিসেদ বারো চেস্টা করিক" :
+                             e && e.status === 413 ? "ইকরাহান নিয়াম ডাঙর অসে (সর্বোচ্চ ৬০০০ অক্ষর)" : "সার্ভারগর লগে সংযোগ নাসে";
     });
   }
 
@@ -287,7 +286,7 @@ var SAMPLE = "কামহাণ অইব-নাইব আহান মাত�
     state.errors.slice().sort(function (a, b) { return b.start - a.start; }).forEach(function (e) {
       if (e.sug.length && e.sug[0].dist <= 1) { v = v.slice(0, e.start) + e.sug[0].term + v.slice(e.end); n++; }
     });
-    input.value = v; run(); toast(bn(n) + "হান বানান চুমকরানি অইল ");
+    input.value = v; run(); toast(bn(n) + "হান ভুল অসে");
   });
   $("copy").addEventListener("click", function () {
     var done = function () { toast("কপি অইল"); };
