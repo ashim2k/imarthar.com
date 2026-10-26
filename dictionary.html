@@ -103,7 +103,7 @@
 
     /* ── Main ── */
     .main {
-      max-width: 620px;
+      max-width: 760px;
       margin: 3rem auto 5rem;
       padding: 0 1.5rem;
     }
@@ -193,6 +193,32 @@
     .credit a { color: #10b981; text-decoration: none; font-weight: 500; }
     .credit a:hover { text-decoration: underline; }
 
+
+    /* ── Results ── */
+    .status { margin-top: 1.4rem; font-size: 14px; color: #64748b; text-align: center; }
+    .status.error { color: #b91c1c; background: #fef2f2; border: 1px solid #fecaca;
+      border-radius: 10px; padding: 0.9rem 1.1rem; text-align: left; }
+    .results { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .word-card {
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 16px;
+      padding: 1.4rem 1.6rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+    }
+    .word-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1rem; }
+    .word-title { font-size: 26px; font-weight: 800; color: #0f172a; }
+    .word-meta { font-size: 14px; color: #64748b; }
+    .word-meta .ipa { font-family: 'Segoe UI', 'Noto Sans', sans-serif; color: #059669; }
+    .entry { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #e2e8f0; }
+    .entry:first-of-type { margin-top: 0.9rem; }
+    .entry-top { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.45rem; }
+    .tag { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 99px;
+      background: #f1f5f9; color: #475569; }
+    .tag.pos { background: #d1fae5; color: #065f46; }
+    .tag.origin { background: #e0f2fe; color: #075985; }
+    .definition { font-size: 16px; color: #1e293b; }
+    .detail { margin-top: 0.4rem; font-size: 13.5px; color: #475569; }
+    .detail b { color: #334155; font-weight: 600; }
+    .entry-source { margin-top: 0.5rem; font-size: 12px; color: #94a3b8; }
+
     /* ── Footer ── */
     footer {
       background: #ffffff;
@@ -250,7 +276,8 @@
         type="text"
         id="search-input"
         placeholder="যেমন: পারেং, থমেই, ইনাফি…"
-        onkeydown="if(event.key==='Enter') doSearch()"
+        autocomplete="off" autofocus
+        onkeydown="if(event.key==='Enter'){clearTimeout(timer);doSearch();}"
       />
       <button class="search-btn" onclick="doSearch()">
         <i class="ti ti-search"></i> বিসারিক
@@ -259,14 +286,12 @@
 
     <div class="info-box">
       <i class="ti ti-info-circle"></i>
-      <span>শব্দহান ইকরিয়া বিসারিক বাটনে ক্লিক করিন বা Enter যাতিক — owahi.com এত্ত নুয়া ট্যাব আগ নিকুলতয়।</span>
+      <span>বাংলা লিপিতে বা ইংরেজি হরফে (যেমন: obosor) শব্দ লিখে খোঁজা যায়। ইংরেজি অর্থ দিয়েও খোঁজা যায়।</span>
     </div>
   </div>
 
-  <div class="credit">
-    অভিধান সেবা দেনাৎ :  <a href="https://owahi.com" target="_blank">owahi.com</a> —
-    বিষ্ণুপ্রিয়া মণিপুরি অনলাইন অভিধান
-  </div>
+  <div id="status" class="status" role="status" aria-live="polite"></div>
+  <div id="results" class="results"></div>
 </div>
 
 <!-- Footer -->
@@ -276,15 +301,158 @@
 </footer>
 
 <script>
+  // ── কনফিগারেশন ─────────────────────────────────────────────
+  // Supabase → Project Settings → API থেকে নিন।
+  // শুধু anon (public) key বসান — service_role key কখনও এখানে নয়।
+  var SUPABASE_URL = 'https://clybuzkhnjuhpvcobiri.supabase.co';
+  var SUPABASE_ANON_KEY = 'sb_publishable_LKPFQ99KljNZhhBQQI-s3Q_w-ElwF0f';
+
+  var input = document.getElementById('search-input');
+  var statusEl = document.getElementById('status');
+  var resultsEl = document.getElementById('results');
+  var timer = null;
+  var requestId = 0;
+
+  var FIELD_LABELS = {
+    dialect: 'উপভাষা', synonym: 'সমার্থক শব্দ', antonym: 'বিপরীত শব্দ',
+    suffix: 'প্রত্যয়', picture: 'ছবি'
+  };
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  // "বই-নাম. (1986). লেখক…" → "বই-নাম (1986)"
+  function shortSource(src) {
+    var m = /^(.*?)\.\s*\(([^)]+)\)/.exec(src || '');
+    return m ? m[1] + ' (' + m[2] + ')' : (src || '');
+  }
+
+  function setStatus(text, isError) {
+    statusEl.textContent = text || '';
+    statusEl.className = 'status' + (isError ? ' error' : '');
+  }
+
+  function isConfigured() {
+    return SUPABASE_URL.indexOf('YOUR-PROJECT') === -1 && SUPABASE_ANON_KEY.indexOf('YOUR-ANON') === -1;
+  }
+
+  // নতুন sb_publishable_ key JWT নয়, তাই শুধু apikey হেডারে যায়;
+  // পুরনো eyJ... (anon JWT) key হলে Authorization হেডারও দেওয়া হয়।
+  function authHeaders() {
+    var h = { 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json' };
+    if (SUPABASE_ANON_KEY.indexOf('eyJ') === 0) h['Authorization'] = 'Bearer ' + SUPABASE_ANON_KEY;
+    return h;
+  }
+
+  function groupByWord(rows) {
+    var order = [], map = {};
+    rows.forEach(function (r) {
+      if (!map[r.word]) { map[r.word] = []; order.push(r.word); }
+      map[r.word].push(r);
+    });
+    return order.map(function (w) { return { word: w, entries: map[w] }; });
+  }
+
+  function parseExtra(text) {
+    if (!text) return null;
+    try { return JSON.parse(text); } catch (e) { return null; }
+  }
+
+  function renderExtra(extra) {
+    if (!extra || typeof extra !== 'object') return '';
+    return Object.keys(extra).map(function (k) {
+      var v = extra[k];
+      if (v == null || String(v).trim() === '' || k === 'picture') return '';
+      var label = FIELD_LABELS[k] || k;
+      return '<div class="detail"><b>' + esc(label) + ':</b> ' + esc(v) + '</div>';
+    }).join('');
+  }
+
+  function renderEntry(e) {
+    var tags = '';
+    if (e.pos) tags += '<span class="tag pos">' + esc(e.pos) + '</span>';
+    if (e.origin) tags += '<span class="tag origin">' + esc(e.origin) + '</span>';
+    return '<div class="entry">' +
+      (tags ? '<div class="entry-top">' + tags + '</div>' : '') +
+      '<div class="definition">' + (e.definition ? esc(e.definition) : '—') + '</div>' +
+      (e.etymology ? '<div class="detail"><b>ব্যুৎপত্তি:</b> ' + esc(e.etymology) + '</div>' : '') +
+      renderExtra(parseExtra(e.extra_json)) +
+      (e.source ? '<div class="entry-source" title="' + esc(e.source) + '">উৎস: ' + esc(shortSource(e.source)) + '</div>' : '') +
+      '</div>';
+  }
+
+  function renderResults(rows) {
+    resultsEl.innerHTML = groupByWord(rows).map(function (g) {
+      var first = g.entries[0];
+      var meta = [];
+      if (first.romanized) meta.push(esc(first.romanized));
+      if (first.ipa) meta.push('<span class="ipa">/' + esc(first.ipa) + '/</span>');
+      return '<article class="word-card">' +
+        '<div class="word-head"><div class="word-title">' + esc(g.word) + '</div>' +
+        (meta.length ? '<div class="word-meta">' + meta.join(' · ') + '</div>' : '') +
+        '</div>' + g.entries.map(renderEntry).join('') + '</article>';
+    }).join('');
+  }
+
   function doSearch() {
-    var word = document.getElementById('search-input').value.trim();
+    var word = input.value.trim();
+    var url = new URL(window.location);
+    if (word) url.searchParams.set('q', word); else url.searchParams.delete('q');
+    history.replaceState(null, '', url);
+
     if (!word) {
-      document.getElementById('search-input').focus();
+      resultsEl.innerHTML = '';
+      setStatus('');
+      input.focus();
       return;
     }
-    var url = 'https://owahi.com/' + encodeURIComponent(word) + '.html';
-    window.open(url, '_blank');
+    if (!isConfigured()) {
+      resultsEl.innerHTML = '';
+      setStatus('Supabase এখনও সেট করা হয়নি — ফাইলের শুরুর দিকে SUPABASE_URL ও SUPABASE_ANON_KEY বসান।', true);
+      return;
+    }
+
+    var myRequest = ++requestId;
+    setStatus('খোঁজা হচ্ছে…');
+
+    fetch(SUPABASE_URL + '/rest/v1/rpc/search_dictionary', {
+      method: 'POST',
+      headers: authHeaders(),
+      body: JSON.stringify({ q: word, max_rows: 60 })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function (rows) {
+        if (myRequest !== requestId) return; // নতুন খোঁজ শুরু হয়ে গেছে, পুরনোটা বাদ
+        if (!rows.length) {
+          resultsEl.innerHTML = '';
+          setStatus('“' + word + '” পাওয়া যায়নি। অন্য বানানে চেষ্টা করুন।');
+          return;
+        }
+        setStatus(rows.length + 'টি ফলাফল');
+        renderResults(rows);
+      })
+      .catch(function (err) {
+        if (myRequest !== requestId) return;
+        resultsEl.innerHTML = '';
+        setStatus('খোঁজা যায়নি (' + err.message + ')। ইন্টারনেট বা Supabase কনফিগারেশন যাচাই করুন।', true);
+      });
   }
+
+  // টাইপ করতে করতে স্বয়ংক্রিয় খোঁজ (থামার ৩০০ms পর)
+  input.addEventListener('input', function () {
+    clearTimeout(timer);
+    timer = setTimeout(doSearch, 300);
+  });
+
+  // লিংক থেকে সরাসরি খোলা: dictionary.html?q=অবসর
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) { input.value = initial; doSearch(); }
 </script>
 
 </body>
