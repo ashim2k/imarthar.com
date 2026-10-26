@@ -151,12 +151,12 @@ var SAMPLE = "কামহাণ অইব-নাইব আহান মাত�
     return w;
   }
 
-  // ---------------------------------------------------------------- ব্যবহারকারীর নিজস্ব তালিকা (শুধু এই ব্রাউজারে)
+  // ---------------------------------------------------------------- user's personal word list (stored only in this browser)
   var strict = false;
   var personal = {}, ignored = new Set();
   try { personal = JSON.parse(localStorage.getItem("bpm_personal") || "{}") || {}; } catch (e) { personal = {}; }
 
-  // ---------------------------------------------------------------- সার্ভার থেকে যাচাই (ডেটা ব্রাউজারে আসে না)
+  // ---------------------------------------------------------------- server-side check (the dictionary data never reaches the browser)
   var seq = 0;
   function remoteCheck(text) {
     return fetch(API_URL, {
@@ -273,7 +273,7 @@ var SAMPLE = "কামহাণ অইব-নাইব আহান মাত�
     if (!text.trim()) { lastRaw = { errors: [], total: 0 }; rerender(); return; }
     statusEl.className = "status"; statusEl.textContent = "যাচাই অর..";
     remoteCheck(text).then(function (r) {
-      if (my !== seq) return;            // পুরনো উত্তর বাদ
+      if (my !== seq) return;            // discard stale response
       lastRaw = r; rerender();
     }).catch(function (e) {
       if (my !== seq) return;

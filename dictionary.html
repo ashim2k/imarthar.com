@@ -307,17 +307,17 @@
 </footer>
 
 <script>
-  // ── কনফিগারেশন ─────────────────────────────────────────────
-  // Supabase → Project Settings → API থেকে নিন।
-  // শুধু anon (public) key বসান — service_role key কখনও এখানে নয়।
+  // ── Configuration ─────────────────────────────────────────────
+  // Get these from Supabase → Project Settings → API.
+  // Use only the anon (public) key — never put the service_role key here.
   var SUPABASE_URL = 'https://clybuzkhnjuhpvcobiri.supabase.co';
   var SUPABASE_ANON_KEY = 'sb_publishable_LKPFQ99KljNZhhBQQI-s3Q_w-ElwF0f';
 
   var input = document.getElementById('search-input');
   var statusEl = document.getElementById('status');
   var resultsEl = document.getElementById('results');
-  var MAX_WORDS = 5;    // সর্বোচ্চ কয়টি শব্দ দেখাবে
-  var MAX_ENTRIES = 5;  // এক শব্দের সর্বোচ্চ কয়টি অর্থ/এন্ট্রি দেখাবে
+  var MAX_WORDS = 5;    // maximum number of words to show
+  var MAX_ENTRIES = 5;  // maximum number of meanings/entries shown per word
   var timer = null;
   var requestId = 0;
 
@@ -332,7 +332,7 @@
     });
   }
 
-  // "বই-নাম. (1986). লেখক…" → "বই-নাম (1986)"
+  // "Book-Title. (1986). Author…" → "Book-Title (1986)"
   function shortSource(src) {
     var m = /^(.*?)\.\s*\(([^)]+)\)/.exec(src || '');
     return m ? m[1] + ' (' + m[2] + ')' : (src || '');
@@ -347,8 +347,8 @@
     return SUPABASE_URL.indexOf('YOUR-PROJECT') === -1 && SUPABASE_ANON_KEY.indexOf('YOUR-ANON') === -1;
   }
 
-  // নতুন sb_publishable_ key JWT নয়, তাই শুধু apikey হেডারে যায়;
-  // পুরনো eyJ... (anon JWT) key হলে Authorization হেডারও দেওয়া হয়।
+  // The new sb_publishable_ key is not a JWT, so it goes only in the apikey header;
+  // for an old eyJ... (anon JWT) key, the Authorization header is sent as well.
   function authHeaders() {
     var h = { 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json' };
     if (SUPABASE_ANON_KEY.indexOf('eyJ') === 0) h['Authorization'] = 'Bearer ' + SUPABASE_ANON_KEY;
@@ -418,7 +418,7 @@
     }
     if (!isConfigured()) {
       resultsEl.innerHTML = '';
-      setStatus('Supabase এখনও সেট করা হয়নি — ফাইলের শুরুর দিকে SUPABASE_URL ও SUPABASE_ANON_KEY বসান।', true);
+      setStatus('Supabase Not Set', true);
       return;
     }
 
@@ -435,10 +435,10 @@
         return res.json();
       })
       .then(function (rows) {
-        if (myRequest !== requestId) return; // নতুন খোঁজ শুরু হয়ে গেছে, পুরনোটা বাদ
+        if (myRequest !== requestId) return; // a newer search has started; discard this one
         if (!rows.length) {
           resultsEl.innerHTML = '';
-          setStatus('“' + word + '” পাওয়া যায়নি। অন্য বানানে চেষ্টা করুন।');
+          setStatus('“' + word + '” নাপেইলাং। অন্য বানান হৎনা করিক।');
           return;
         }
         renderResults(rows);
@@ -447,17 +447,17 @@
       .catch(function (err) {
         if (myRequest !== requestId) return;
         resultsEl.innerHTML = '';
-        setStatus('খোঁজা যায়নি (' + err.message + ')। ইন্টারনেট বা Supabase কনফিগারেশন যাচাই করুন।', true);
+        setStatus('বিসারানি নাইল (' + err.message + ')। ইন্টারনেট কনফিগারেশন যাচাই করিক।', true);
       });
   }
 
-  // টাইপ করতে করতে স্বয়ংক্রিয় খোঁজ (থামার ৩০০ms পর)
+  // auto-search while typing (300ms after the user pauses)
   input.addEventListener('input', function () {
     clearTimeout(timer);
     timer = setTimeout(doSearch, 300);
   });
 
-  // লিংক থেকে সরাসরি খোলা: dictionary.html?q=অবসর
+  // open directly from a link: dictionary.html?q=অবসর
   var initial = new URLSearchParams(window.location.search).get('q');
   if (initial) { input.value = initial; doSearch(); }
 </script>
