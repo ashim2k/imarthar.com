@@ -310,6 +310,8 @@
   var input = document.getElementById('search-input');
   var statusEl = document.getElementById('status');
   var resultsEl = document.getElementById('results');
+  var MAX_WORDS = 5;    // সর্বোচ্চ কয়টি শব্দ দেখাবে
+  var MAX_ENTRIES = 5;  // এক শব্দের সর্বোচ্চ কয়টি অর্থ/এন্ট্রি দেখাবে
   var timer = null;
   var requestId = 0;
 
@@ -374,18 +376,17 @@
   function renderEntry(e) {
     var tags = '';
     if (e.pos) tags += '<span class="tag pos">' + esc(e.pos) + '</span>';
-    if (e.origin) tags += '<span class="tag origin">' + esc(e.origin) + '</span>';
     return '<div class="entry">' +
       (tags ? '<div class="entry-top">' + tags + '</div>' : '') +
       '<div class="definition">' + (e.definition ? esc(e.definition) : '—') + '</div>' +
       (e.etymology ? '<div class="detail"><b>ব্যুৎপত্তি:</b> ' + esc(e.etymology) + '</div>' : '') +
-      renderExtra(parseExtra(e.extra_json)) +
       (e.source ? '<div class="entry-source" title="' + esc(e.source) + '">উৎস: ' + esc(shortSource(e.source)) + '</div>' : '') +
       '</div>';
   }
 
   function renderResults(rows) {
-    resultsEl.innerHTML = groupByWord(rows).map(function (g) {
+    var groups = groupByWord(rows).slice(0, MAX_WORDS);
+    resultsEl.innerHTML = groups.map(function (g) {
       var first = g.entries[0];
       var meta = [];
       if (first.romanized) meta.push(esc(first.romanized));
@@ -393,7 +394,7 @@
       return '<article class="word-card">' +
         '<div class="word-head"><div class="word-title">' + esc(g.word) + '</div>' +
         (meta.length ? '<div class="word-meta">' + meta.join(' · ') + '</div>' : '') +
-        '</div>' + g.entries.map(renderEntry).join('') + '</article>';
+        '</div>' + g.entries.slice(0, MAX_ENTRIES).map(renderEntry).join('') + '</article>';
     }).join('');
   }
 
@@ -421,7 +422,7 @@
     fetch(SUPABASE_URL + '/rest/v1/rpc/search_dictionary', {
       method: 'POST',
       headers: authHeaders(),
-      body: JSON.stringify({ q: word, max_rows: 60 })
+      body: JSON.stringify({ q: word, max_rows: 25 })
     })
       .then(function (res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -434,8 +435,8 @@
           setStatus('“' + word + '” পাওয়া যায়নি। অন্য বানানে চেষ্টা করুন।');
           return;
         }
-        setStatus(rows.length + 'টি ফলাফল');
         renderResults(rows);
+        setStatus('');
       })
       .catch(function (err) {
         if (myRequest !== requestId) return;
