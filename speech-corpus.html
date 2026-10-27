@@ -788,7 +788,7 @@ async function loadLeaderboard() {
   try {
     const { data, error } = await sb.rpc('get_speech_corpus_leaderboard');
     if (error) throw error;
-    renderLeaderboard((data || []).slice(0, 4).map(r => [r.contributor_name, Number(r.entry_count)]));
+    renderLeaderboard((data || []).slice(0, 10).map(r => [r.contributor_name, Number(r.entry_count)]));
   } catch (err) {
     console.error(err);
     wrap.innerHTML = '<div class="note">লোড নাসে</div>';
