@@ -423,7 +423,7 @@
     }
 
     var myRequest = ++requestId;
-    setStatus('খোঁজা হচ্ছে…');
+    setStatus('বিসারানি অর…');
 
     fetch(SUPABASE_URL + '/rest/v1/rpc/search_dictionary', {
       method: 'POST',
@@ -438,7 +438,7 @@
         if (myRequest !== requestId) return; // a newer search has started; discard this one
         if (!rows.length) {
           resultsEl.innerHTML = '';
-          setStatus('“' + word + '” নাপেইলাং। অন্য বানান হৎনা করিক।');
+          setStatus('“' + word + '” নাপেইলাং। আরাক ওয়াহি আগ হৎনা করিক।');
           return;
         }
         renderResults(rows);
