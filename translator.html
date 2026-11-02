@@ -1,494 +1,424 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>অনুবাদক — ইমার ঠার</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অনুবাদক — ইমার ঠার</title>
 <link rel="canonical" href="https://imarthar.com/translator.html" />
-<meta name="description" content="বিষ্ণুপ্রিয়া মণিপুরি অনুবাদক — বাংলা, ইংরেজি বারো আরাংগো ভাষার লগে অনুবাদ করিক। Bishnupriya Manipuri translator — translate to/from Bengali, English and more.">
+<meta name="description" content="বিষ্ণুপ্রিয়া মণিপুরি অনুবাদক — বাংলা ও বিষ্ণুপ্রিয়ার মধ্যে অনুবাদ। Bishnupriya Manipuri translator — translate between Bengali and Bishnupriya Manipuri.">
 <meta property="og:title" content="অনুবাদক — Bishnupriya Manipuri Translator | Imar Thar">
-<meta property="og:description" content="বাংলা, ইংরেজি বারো আরাংগো ভাষার লগে অনুবাদ করিক।">
 <meta property="og:url" content="https://imarthar.com/translator.html">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f8fafc;
-      color: #1e293b;
-      line-height: 1.5;
-    }
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Imar Thar">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2310b981%22/%3E%3Cpath d=%22M17 34l10 10 20-23%22 fill=%22none%22 stroke=%22%23fff%22 stroke-width=%227%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E">
+<style>
+  [hidden] { display: none !important; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
+  nav { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226,232,240,0.8); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+  .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
+  .logo span { color: #10b981; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #10b981; }
+  .page-header { background: radial-gradient(circle at top right, rgba(209,250,229,0.4), transparent), radial-gradient(circle at bottom left, rgba(240,253,250,0.4), transparent), #ffffff; background-image: radial-gradient(rgba(16,185,129,0.05) 1px, transparent 0); background-size: 24px 24px; border-bottom: 1px solid #e2e8f0; padding: 3rem 2rem 2.5rem; position: relative; overflow: hidden; }
+  .page-header-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+  .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #94a3b8; margin-bottom: 1rem; }
+  .breadcrumb a { color: #94a3b8; text-decoration: none; } .breadcrumb a:hover { color: #10b981; }
+  .page-header h1 { font-size: 32px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+  .page-header h1 span { color: #10b981; }
+  .page-header p { font-size: 15px; color: #64748b; }
 
-    /* ── Nav (same as index) ── */
-    nav {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .logo { font-size: 22px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; text-decoration: none; }
-    .logo span { color: #10b981; }
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a { font-size: 14px; font-weight: 500; color: #64748b; text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: #10b981; }
+  .main { max-width: 1000px; margin: 2rem auto 4rem; padding: 0 2rem; }
+  .grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+  .card h2 { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: .6rem; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .card h2 small { font-weight: 500; color: #94a3b8; font-size: 12px; }
+  .stack { display: flex; flex-direction: column; gap: 1.25rem; }
 
-    /* ── Page Hero (smaller than index) ── */
-    .page-hero {
-      position: relative;
-      background: radial-gradient(circle at top right, rgba(209, 250, 229, 0.4), transparent),
-                  radial-gradient(circle at bottom left, rgba(240, 253, 250, 0.4), transparent),
-                  #ffffff;
-      background-image: radial-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 0);
-      background-size: 24px 24px;
-      border-bottom: 1px solid #e2e8f0;
-      padding: 3rem 2rem 2.5rem;
-      text-align: center;
-      overflow: hidden;
-    }
-    .page-hero::before, .page-hero::after {
-      content: '';
-      position: absolute;
-      width: 120px; height: 120px;
-      border-radius: 50%;
-      filter: blur(50px);
-      z-index: 0;
-    }
-    .page-hero::before { top: 0; left: 8%; background: #10b981; opacity: 0.12; }
-    .page-hero::after  { bottom: 0; right: 8%; background: #06b6d4; opacity: 0.12; }
+  .seg { display: inline-flex; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; margin-bottom: .9rem; }
+  .seg button { padding: 7px 14px; background: #fff; border: none; font: inherit; font-size: 13px; font-weight: 600; color: #64748b; cursor: pointer; }
+  .seg button.on { background: #10b981; color: #fff; }
+  .seg .sep { width: 1px; background: #e2e8f0; }
 
-    .page-hero-content { position: relative; z-index: 1; }
+  textarea#query { width: 100%; min-height: 130px; resize: vertical; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; font: inherit; font-size: 17px; line-height: 1.8; color: #0f172a; background: #fff; }
+  textarea#query:focus { outline: none; border-color: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,.12); }
+  textarea.fix { width: 100%; min-height: 70px; resize: vertical; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 10px; font: inherit; font-size: 15px; margin-top: .6rem; }
+  textarea.fix:focus { outline: none; border-color: #10b981; }
 
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      color: #64748b;
-      text-decoration: none;
-      margin-bottom: 1.2rem;
-      transition: color 0.2s;
-    }
-    .back-link:hover { color: #10b981; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: .75rem; }
+  .btn { padding: 9px 16px; border-radius: 10px; border: 1px solid #e2e8f0; background: #fff; color: #334155; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; transition: all .15s; }
+  .btn:hover { border-color: #10b981; color: #10b981; }
+  .btn.primary { background: #10b981; border-color: #10b981; color: #fff; }
+  .btn.primary:hover { background: #059669; border-color: #059669; color: #fff; }
+  .btn:disabled { opacity: .45; cursor: default; pointer-events: none; }
+  .spacer { flex: 1; }
+  .hint { font-size: 12.5px; color: #94a3b8; }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #d1fae5;
-      color: #065f46;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 99px;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
-    }
+  .suggest { margin-top: .6rem; border: 1px solid #d1fae5; border-radius: 12px; overflow: hidden; }
+  .suggest button { display: block; width: 100%; text-align: left; padding: 9px 12px; background: #fff; border: none; border-bottom: 1px solid #f1f5f9; font: inherit; font-size: 15px; color: #1e293b; cursor: pointer; }
+  .suggest button:last-child { border-bottom: none; }
+  .suggest button:hover { background: #f0fdf4; color: #059669; }
 
-    .page-hero h1 {
-      font-size: 32px;
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.5px;
-      margin-bottom: 0.4rem;
-    }
-    .page-hero h1 span { color: #10b981; }
-    .page-hero p { font-size: 15px; color: #64748b; }
+  .badge { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 99px; background: #f1f5f9; color: #475569; }
+  .badge.ok { background: #d1fae5; color: #065f46; }
+  .badge.exp { background: #fef3c7; color: #92400e; }
 
-    .corpus-badge {
-      display: inline-block;
-      margin-top: 0.8rem;
-      padding: 4px 14px;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 99px;
-      font-size: 12px;
-      color: #166534;
-      font-weight: 500;
-    }
+  .result { font-size: 17px; line-height: 1.9; color: #0f172a; min-height: 40px; }
+  .result .item { padding: 6px 0; border-bottom: 1px solid #f1f5f9; }
+  .result .item:last-child { border-bottom: none; }
+  .result.empty { color: #94a3b8; font-size: 14px; }
 
-    /* ── Main layout ── */
-    .main {
-      max-width: 720px;
-      margin: 2.5rem auto 4rem;
-      padding: 0 1.5rem;
-    }
+  .warn { margin-top: .9rem; font-size: 12.5px; color: #78350f; background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 8px 12px; }
 
-    /* ── Direction toggle ── */
-    .direction-toggle {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      overflow: hidden;
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-    }
-    .dir-btn {
-      padding: 0.6rem 1.5rem;
-      background: #fff;
-      border: none;
-      color: #64748b;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 500;
-      font-family: inherit;
-      transition: all 0.2s;
-    }
-    .dir-btn.active { background: #10b981; color: #fff; font-weight: 600; }
-    .dir-sep { width: 1px; background: #e2e8f0; }
+  .feedback { margin-top: 1rem; padding-top: .9rem; border-top: 1px solid #f1f5f9; font-size: 13px; color: #64748b; }
+  .feedback .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 
-    /* ── Translator card ── */
-    .card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      overflow: visible;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
-    }
+  .status { font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 99px; background: #f1f5f9; color: #475569; display: inline-block; }
+  .status.ok { background: #d1fae5; color: #065f46; }
+  .status.err { background: #fee2e2; color: #991b1b; }
 
-    .card-top {
-      padding: 1.4rem 1.6rem 1rem;
-      border-bottom: 1px solid #e2e8f0;
-    }
+  .notes { font-size: 13px; color: #64748b; line-height: 1.8; }
+  .notes b { color: #475569; }
+  .count { font-size: 22px; font-weight: 800; color: #0f172a; }
 
-    .lang-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #94a3b8;
-      margin-bottom: 0.7rem;
-    }
-
-    .input-wrap { position: relative; }
-
-    #query {
-      width: 100%;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #0f172a;
-      font-family: inherit;
-      font-size: 1.4rem;
-      line-height: 1.6;
-      resize: none;
-      min-height: 80px;
-    }
-    #query::placeholder { color: #cbd5e1; font-size: 1.1rem; }
-
-    .clear-btn {
-      position: absolute;
-      top: 0; right: 0;
-      background: #f1f5f9;
-      border: none;
-      color: #94a3b8;
-      cursor: pointer;
-      font-size: 0.9rem;
-      border-radius: 6px;
-      padding: 4px 8px;
-      display: none;
-      transition: all 0.15s;
-    }
-    .clear-btn:hover { background: #e2e8f0; color: #475569; }
-    .clear-btn.visible { display: block; }
-
-    /* ── Dropdown ── */
-    .dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0; right: 0;
-      background: #fff;
-      border: 1px solid #10b981;
-      border-top: none;
-      border-radius: 0 0 12px 12px;
-      z-index: 100;
-      overflow: hidden;
-      display: none;
-      box-shadow: 0 8px 16px -4px rgba(16,185,129,0.12);
-    }
-    .dropdown.visible { display: block; }
-    .dropdown-item {
-      padding: 0.65rem 1.2rem;
-      cursor: pointer;
-      font-size: 0.95rem;
-      color: #1e293b;
-      border-bottom: 1px solid #f1f5f9;
-      transition: background 0.15s;
-    }
-    .dropdown-item:last-child { border-bottom: none; }
-    .dropdown-item:hover { background: #f0fdf4; color: #059669; }
-
-    /* ── Result area ── */
-    .card-bottom {
-      padding: 1.2rem 1.6rem 1.4rem;
-      min-height: 110px;
-    }
-
-    .result-text {
-      font-size: 1.4rem;
-      color: #10b981;
-      line-height: 1.6;
-      font-weight: 500;
-    }
-    .result-text.placeholder {
-      color: #cbd5e1;
-      font-size: 1rem;
-      font-weight: 400;
-    }
-    .no-result { color: #94a3b8; font-size: 0.88rem; }
-
-    /* ── Divider between result sections ── */
-    .card-divider {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0 1.6rem;
-      color: #94a3b8;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .card-divider::before, .card-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: #e2e8f0;
-    }
-
-    /* ── Tip box ── */
-    .tip-box {
-      margin-top: 1.5rem;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 12px;
-      padding: 1rem 1.2rem;
-      font-size: 13px;
-      color: #166534;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .tip-box i { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
-
-    /* ── Footer (same as index) ── */
-    footer {
-      background: #ffffff;
-      border-top: 1px solid #e2e8f0;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      font-size: 13px;
-      color: #64748b;
-      line-height: 1.8;
-    }
-    footer span { color: #10b981; font-weight: 600; }
-
-    @media (max-width: 640px) {
-      .page-hero { padding: 2.5rem 1.25rem 2rem; }
-      .page-hero h1 { font-size: 26px; }
-      .main { padding: 0 1rem; margin-top: 1.8rem; }
-      #query { font-size: 1.2rem; }
-      .result-text { font-size: 1.2rem; }
-    }
-  </style>
+  footer { background: #fff; border-top: 1px solid #e2e8f0; padding: 2.5rem 2rem; text-align: center; font-size: 13px; color: #64748b; line-height: 1.8; }
+  footer span { color: #10b981; font-weight: 600; }
+  @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } .main { padding: 0 1.25rem; } .page-header { padding: 2rem 1.25rem; } nav { padding: 0 1.25rem; } .nav-links { gap: 16px; } }
+</style>
 </head>
 <body>
 
-<!-- Nav -->
 <nav>
   <a href="index.html" class="logo">imar<span>thar</span>.com</a>
   <div class="nav-links">
-    <a href="speech-corpus.html">স্পিচ কর্পাস</a>
-    <a href="tools.html" class="active">টুল</a>
-    <a href="blogs.html">ব্লগ</a>
-    <a href="papers.html">পেপার</a>
-    <a href="discussion.html">আলোচনা</a>
+    <a href="tools.html" class="active">টুল</a><a href="blogs.html">ব্লগ</a><a href="papers.html">পেপার</a><a href="discussion.html">আলোচনা</a>
   </div>
 </nav>
 
-<!-- Page Hero -->
-<div class="page-hero">
-  <div class="page-hero-content">
-    <a href="index.html" class="back-link">
-      <i class="ti ti-arrow-left"></i> মূলপাতায় ফিরুন
-    </a>
-    <div class="hero-badge"><i class="ti ti-language"></i> অনুবাদক</div>
-    <h1>বিষ্ণুপ্রিয়া ↔ <span>বাংলা</span></h1>
-    <p>corpus-ভিত্তিক অনুবাদ · Corpus-based Translation</p>
-    <div class="corpus-badge" id="corpus-count">corpus লোড হচ্ছে…</div>
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">হোম</a><span>›</span><a href="tools.html">টুল</a><span>›</span><span>অনুবাদক</span></div>
+    <h1>বিষ্ণুপ্রিয়া <span>↔ বাংলা</span> অনুবাদক</h1>
+    <p>প্রথমে যাচাই করা কর্পাস দেখা হয়, না মিললে মডেলের অনুবাদ দেখানো হয়</p>
   </div>
 </div>
 
-<!-- Main -->
 <div class="main">
+  <div class="grid">
 
-  <!-- Direction toggle -->
-  <div class="direction-toggle">
-    <button class="dir-btn active" id="btn-bm2bn" onclick="setDirection('bm2bn')">বিষ্ণুপ্রিয়া → বাংলা</button>
-    <div class="dir-sep"></div>
-    <button class="dir-btn" id="btn-bn2bm" onclick="setDirection('bn2bm')">বাংলা → বিষ্ণুপ্রিয়া</button>
-  </div>
+    <div class="stack">
 
-  <!-- Translator card -->
-  <div class="card">
-    <!-- Input -->
-    <div class="card-top">
-      <div class="lang-label" id="src-label">বিষ্ণুপ্রিয়া মণিপুরি লিখুন</div>
-      <div class="input-wrap">
-        <textarea id="query" rows="3" placeholder="এখানে লিখুন…" oninput="onInput(this)"></textarea>
-        <button class="clear-btn" id="clear-btn" onclick="clearInput()" title="মুছুন">✕</button>
-        <div class="dropdown" id="dropdown"></div>
+      <!-- Input -->
+      <div class="card">
+        <h2>লিখুন</h2>
+        <div class="seg" role="group">
+          <button class="on" id="dBm" type="button">বিষ্ণুপ্রিয়া → বাংলা</button>
+          <span class="sep"></span>
+          <button id="dBn" type="button">বাংলা → বিষ্ণুপ্রিয়া</button>
+        </div>
+        <textarea id="query" maxlength="2000" spellcheck="false" placeholder="এখানে বাক্য লিখুন বা কপি-পেস্ট করুন"></textarea>
+        <div id="suggest" class="suggest" hidden></div>
+        <div class="toolbar">
+          <button class="btn primary" id="go" type="button">অনুবাদ করিক</button>
+          <button class="btn" id="copy" type="button">কপি</button>
+          <button class="btn" id="clear" type="button">ক্লিয়ার</button>
+          <span class="spacer"></span>
+          <span class="hint" id="len">০ / ২০০০</span>
+        </div>
       </div>
+
+      <!-- Corpus result -->
+      <div class="card">
+        <h2 id="corpusTitle">কর্পাসের অনুবাদ <span class="badge ok">যাচাই করা</span></h2>
+        <div class="result empty" id="corpusOut">অনুবাদ করিক বোতাম চাপলে এখানে ফল দেখাবে।</div>
+      </div>
+
+      <!-- Model result (placeholder until the API is connected) -->
+      <div class="card">
+        <h2>মডেলের অনুবাদ <span class="badge exp">পরীক্ষামূলক</span></h2>
+        <div class="result empty" id="modelOut">মডেল এখনো যুক্ত হয়নি। শীঘ্রই এখানে স্বয়ংক্রিয় অনুবাদ দেখাবে।</div>
+        <div class="warn">স্বয়ংক্রিয় অনুবাদে নাম, সংখ্যা ও দীর্ঘ বা সাহিত্যিক লেখায় ভুল হতে পারে। গুরুত্বপূর্ণ কাজে মানুষের যাচাই জরুরি।</div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="card" id="feedbackCard" hidden>
+        <h2>ফলটি কেমন ছিল?</h2>
+        <div class="feedback">
+          <div class="row">
+            <button class="btn" id="btnOk" type="button">ঠিক আছে</button>
+            <button class="btn" id="btnWrong" type="button">ভুল / সঠিক রূপ লিখুন</button>
+            <span class="spacer"></span>
+            <span class="status" id="status" hidden></span>
+          </div>
+          <div id="fixBox" hidden>
+            <textarea class="fix" id="fixText" maxlength="2000" placeholder="সঠিক বিষ্ণুপ্রিয়া/বাংলা অনুবাদ লিখুন"></textarea>
+            <div class="toolbar">
+              <button class="btn primary" id="btnSend" type="button">পাঠান</button>
+              <span class="hint">পাঠানো লেখা যাচাইয়ের পর কর্পাসে যোগ হবে</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Divider -->
-    <div class="card-divider">অনুবাদ</div>
+    <div class="stack">
 
-    <!-- Result -->
-    <div class="card-bottom">
-      <div class="lang-label" id="tgt-label">বাংলা অনুবাদ</div>
-      <div id="result-area">
-        <div class="result-text placeholder">অনুবাদ এখানে দেখাবে</div>
+      <div class="card">
+        <h2>কর্পাস</h2>
+        <div class="count" id="corpusCount">লোড হচ্ছে…</div>
+        <div class="hint" style="margin-top:6px;">যাচাই করা বাক্য ও শব্দজোড়া</div>
       </div>
+
+      <div class="card">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <div class="notes">
+          <b>ভালো ফল:</b> ছোট ও সহজ বাক্য, প্রচলিত শব্দ।<br>
+          <b>কম ভরসা:</b> দীর্ঘ সাহিত্যিক লেখা, নাম, সংখ্যা, বানান-ভেদ।<br>
+          <b>সাহায্য করুন:</b> ভুল পেলে সঠিক রূপ লিখুন, তা যাচাইয়ের পর কর্পাসে যুক্ত হবে।
+        </div>
+      </div>
+
     </div>
   </div>
-
-  <!-- Tip -->
-  <div class="tip-box">
-    <i class="ti ti-info-circle"></i>
-    <span>শব্দ টাইপ করলে নিচে সাজেশন আসবে। সঠিক শব্দটি সিলেক্ট করুন, অনুবাদ দেখাবে।</span>
-  </div>
-
-  <div style="text-align:center; margin-top: 1.2rem;">
-    <a href="translator_multilang.html" style="font-size:13px; color:#10b981; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
-      <i class="ti ti-world"></i> English, हिन्दी, Español সহ অন্য ভাষায় অনুবাদ করতে চান? বহুভাষিক অনুবাদক ব্যবহার করুন →
-    </a>
-  </div>
-
 </div>
 
-<!-- Footer -->
-<footer>
-  © ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br>
-  <small style="color: #94a3b8;">Preserving heritage through advanced computing systems.</small>
-</footer>
+<footer>© ২০২৬ <span>imarthar.com</span> • Developed by কুঙ্গ থাঙ<br><small style="color:#94a3b8;">Preserving heritage through advanced computing systems.</small></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  let corpus = [];
-  let direction = 'bm2bn';
+(function () {
+  "use strict";
 
-  const SUPABASE_URL = 'https://ksnwykmtrczvdzhoiews.supabase.co';
-  const SUPABASE_ANON_KEY = 'sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno';
-  const supabaseClientTr = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  var SUPABASE_URL = "https://aapzrkbdfsrktdauvjdx.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_eYx2pCgrJ1HlRxCPbDCltA_zCkJ53N_";
+  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+  var $ = function (id) { return document.getElementById(id); };
+  var direction = "bm2bn";
+  var corpus = [];                 // [{bm, bn}]
+  var mapBm = new Map(), mapBn = new Map();
+  var lastShown = null;            // {source, output|null}
+  var cooldownUntil = 0, timer = null;
+
+  // ------------------------------------------------------------ text helpers
+  function norm(s) {
+    return String(s || "").normalize("NFC")
+      .replace(/[\u200B-\u200D\uFEFF]/g, "")
+      .replace(/’/g, "'")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+  function keyOf(s) { return norm(s).toLowerCase(); }
+  function addTo(map, k, v) {
+    if (!map.has(k)) map.set(k, []);
+    var arr = map.get(k);
+    if (arr.indexOf(v) === -1) arr.push(v);
+  }
+
+  // ------------------------------------------------------------ corpus load (paged, no 1000-row cap)
   async function loadCorpus() {
-    try {
-      const { data, error } = await supabaseClientTr
-        .from('bm_bengali_corpus')
-        .select('bishnupriya_manipuri, bengali');
-      if (error) throw error;
-      corpus = (data || [])
-        .map(row => ({ bm: (row.bishnupriya_manipuri || '').trim(), bn: (row.bengali || '').trim() }))
-        .filter(r => r.bm && r.bn);
-      document.getElementById('corpus-count').textContent = `${corpus.length}টি শব্দ ও বাক্য`;
-    } catch (e) {
-      document.getElementById('corpus-count').textContent = 'corpus লোড ব্যর্থ';
-      console.error(e);
+    var size = 1000, from = 0, all = [];
+    while (true) {
+      var res = await sb.from("bm_bengali_corpus")
+        .select("bishnupriya_manipuri,bengali")
+        .order("id", { ascending: true })
+        .range(from, from + size - 1);
+      if (res.error) throw res.error;
+      var data = res.data || [];
+      all = all.concat(data);
+      if (data.length < size) break;
+      from += size;
+    }
+    corpus = all.map(function (r) {
+      return { bm: norm(r.bishnupriya_manipuri), bn: norm(r.bengali) };
+    }).filter(function (r) { return r.bm && r.bn; });
+
+    corpus.forEach(function (r) {
+      addTo(mapBm, keyOf(r.bm), r.bn);
+      addTo(mapBn, keyOf(r.bn), r.bm);
+    });
+    $("corpusCount").textContent = corpus.length.toLocaleString("bn-BD") + "টি বাক্য";
+  }
+
+  // ------------------------------------------------------------ suggestions
+  function srcKey() { return direction === "bm2bn" ? "bm" : "bn"; }
+
+  function showSuggestions() {
+    var q = keyOf($("query").value);
+    var box = $("suggest");
+    box.textContent = "";
+    if (!q || !corpus.length) { box.hidden = true; return; }
+    var k = srcKey(), seen = new Set(), hits = [];
+    for (var i = 0; i < corpus.length && hits.length < 8; i++) {
+      var s = corpus[i][k];
+      var sl = s.toLowerCase();
+      if (sl.indexOf(q) !== -1 && !seen.has(sl)) {
+        seen.add(sl);
+        hits.push(s);
+      }
+    }
+    if (!hits.length) { box.hidden = true; return; }
+    hits.forEach(function (text) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.textContent = text;
+      b.addEventListener("click", function () {
+        $("query").value = text;
+        box.hidden = true;
+        translate();
+      });
+      box.appendChild(b);
+    });
+    box.hidden = false;
+  }
+
+  // ------------------------------------------------------------ translation lookup
+  function translate() {
+    var q = norm($("query").value);
+    $("suggest").hidden = true;
+    $("len").textContent = $("query").value.length + " / 2000";
+    if (!q) { reset(); return; }
+
+    var map = direction === "bm2bn" ? mapBm : mapBn;
+    var targets = map.get(keyOf(q)) || [];
+    var out = $("corpusOut");
+    out.textContent = "";
+
+    if (targets.length) {
+      targets.forEach(function (t) {
+        var d = document.createElement("div");
+        d.className = "item";
+        d.textContent = t;
+        out.appendChild(d);
+      });
+      out.classList.remove("empty");
+      lastShown = { source: q, output: targets.join(" | ") };
+      setFeedbackMode("match");
+    } else {
+      out.classList.add("empty");
+      out.textContent = "কর্পাসে এই বাক্যের হুবহু মিল নেই।";
+      lastShown = { source: q, output: null };
+      setFeedbackMode("missing");
+    }
+    $("feedbackCard").hidden = false;
+    hideStatus();
+    $("fixBox").hidden = true;
+    $("fixText").value = "";
+  }
+
+  function reset() {
+    $("corpusOut").textContent = "অনুবাদ করিক বোতাম চাপলে এখানে ফল দেখাবে।";
+    $("corpusOut").classList.add("empty");
+    $("feedbackCard").hidden = true;
+    $("fixBox").hidden = true;
+    $("fixText").value = "";
+    $("len").textContent = $("query").value.length + " / 2000";
+    lastShown = null;
+    hideStatus();
+  }
+
+  // ------------------------------------------------------------ feedback
+  function setFeedbackMode(mode) {
+    if (mode === "match") {
+      $("btnOk").hidden = false;
+      $("btnWrong").textContent = "ভুল / সঠিক রূপ লিখুন";
+    } else {
+      $("btnOk").hidden = true;
+      $("btnWrong").textContent = "এই বাক্যের অনুবাদ যোগ করুন";
     }
   }
-
-  function setDirection(dir) {
-    direction = dir;
-    document.getElementById('btn-bm2bn').classList.toggle('active', dir === 'bm2bn');
-    document.getElementById('btn-bn2bm').classList.toggle('active', dir === 'bn2bm');
-    document.getElementById('src-label').textContent =
-      dir === 'bm2bn' ? 'বিষ্ণুপ্রিয়া মণিপুরি লিখুন' : 'বাংলা লিখুন';
-    document.getElementById('tgt-label').textContent =
-      dir === 'bm2bn' ? 'বাংলা অনুবাদ' : 'বিষ্ণুপ্রিয়া মণিপুরি অনুবাদ';
-    clearInput();
+  function showStatus(msg, cls) {
+    var s = $("status");
+    s.textContent = msg;
+    s.className = "status " + (cls || "");
+    s.hidden = false;
   }
+  function hideStatus() { $("status").hidden = true; }
 
-  function onInput(el) {
-    const q = el.value.trim().toLowerCase();
-    document.getElementById('clear-btn').classList.toggle('visible', q.length > 0);
-
-    if (!q) { showPlaceholder(); hideDropdown(); return; }
-
-    const srcKey = direction === 'bm2bn' ? 'bm' : 'bn';
-    const tgtKey = direction === 'bm2bn' ? 'bn' : 'bm';
-
-    const matches = corpus.filter(row => row[srcKey].toLowerCase().includes(q));
-
-    if (matches.length === 0) {
-      document.getElementById('result-area').innerHTML =
-        '<div class="no-result">কোনো ফলাফল পাওয়া যায়নি</div>';
-      hideDropdown();
+  async function send(verdict, correction) {
+    if (!lastShown) return;
+    if (Date.now() < cooldownUntil) { showStatus("একটু অপেক্ষা করিক", "err"); return; }
+    var payload = {
+      direction: direction,
+      source_text: lastShown.source.slice(0, 2000),
+      model_output: lastShown.output ? lastShown.output.slice(0, 2000) : null,
+      verdict: verdict,
+      correction: correction ? correction.slice(0, 2000) : null,
+      status: "pending"
+    };
+    var res = await sb.from("review").insert(payload);
+    if (res.error) {
+      console.error(res.error);
+      showStatus("জমা দেওয়া যায়নি, আবার চেষ্টা করিক", "err");
       return;
     }
-
-    const exact = matches.find(r => r[srcKey].toLowerCase() === q);
-    if (exact) showResult(exact[tgtKey]);
-    else showPlaceholder();
-
-    if (matches.length > 1 || !exact) showDropdown(matches, srcKey, tgtKey);
-    else hideDropdown();
+    cooldownUntil = Date.now() + 5000;
+    showStatus("ধন্যবাদ, জমা হয়েছে", "ok");
+    $("fixBox").hidden = true;
+    $("fixText").value = "";
   }
 
-  function showResult(text) {
-    document.getElementById('result-area').innerHTML =
-      `<div class="result-text">${text}</div>`;
+  // ------------------------------------------------------------ events
+  function setDirection(dir) {
+    direction = dir;
+    $("dBm").classList.toggle("on", dir === "bm2bn");
+    $("dBn").classList.toggle("on", dir === "bn2bm");
+    $("query").placeholder = dir === "bm2bn" ? "বিষ্ণুপ্রিয়া মণিপুরি লিখুন" : "বাংলা লিখুন";
+    $("corpusTitle").firstChild.textContent = dir === "bm2bn" ? "কর্পাসের অনুবাদ " : "কর্পাসের অনুবাদ ";
+    if (norm($("query").value)) translate(); else reset();
   }
 
-  function showDropdown(matches, srcKey, tgtKey) {
-    const dd = document.getElementById('dropdown');
-    dd.innerHTML = matches.slice(0, 10).map(r => `
-      <div class="dropdown-item"
-        onclick="selectSuggestion('${r[srcKey].replace(/'/g,"\\'")}','${r[tgtKey].replace(/'/g,"\\'")}')">
-        ${r[srcKey]}
-      </div>`).join('');
-    dd.classList.add('visible');
-  }
+  $("dBm").addEventListener("click", function () { setDirection("bm2bn"); });
+  $("dBn").addEventListener("click", function () { setDirection("bn2bm"); });
 
-  function hideDropdown() {
-    const dd = document.getElementById('dropdown');
-    dd.classList.remove('visible');
-    dd.innerHTML = '';
-  }
+  $("query").addEventListener("input", function () {
+    $("len").textContent = $("query").value.length + " / 2000";
+    clearTimeout(timer);
+    timer = setTimeout(showSuggestions, 150);
+  });
+  $("query").addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); translate(); }
+  });
+  $("go").addEventListener("click", translate);
 
-  function selectSuggestion(src, tgt) {
-    document.getElementById('query').value = src;
-    document.getElementById('clear-btn').classList.add('visible');
-    showResult(tgt);
-    hideDropdown();
-  }
-
-  function showPlaceholder() {
-    document.getElementById('result-area').innerHTML =
-      '<div class="result-text placeholder">অনুবাদ এখানে দেখাবে</div>';
-  }
-
-  function clearInput() {
-    document.getElementById('query').value = '';
-    document.getElementById('clear-btn').classList.remove('visible');
-    showPlaceholder();
-    hideDropdown();
-  }
-
-  document.addEventListener('click', e => {
-    if (!e.target.closest('.input-wrap')) hideDropdown();
+  $("clear").addEventListener("click", function () {
+    $("query").value = "";
+    $("suggest").hidden = true;
+    reset();
+    $("query").focus();
   });
 
-  loadCorpus();
+  $("copy").addEventListener("click", function () {
+    var first = $("corpusOut").querySelector(".item");
+    var text = first ? first.textContent : "";
+    if (!text) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { showStatus("কপি হয়েছে", "ok"); });
+    }
+  });
+
+  $("btnOk").addEventListener("click", function () { send("ok", null); });
+  $("btnWrong").addEventListener("click", function () {
+    $("fixBox").hidden = false;
+    $("fixText").focus();
+  });
+  $("btnSend").addEventListener("click", function () {
+    var fix = norm($("fixText").value);
+    if (!fix) { showStatus("সঠিক রূপটি লিখুন", "err"); return; }
+    send("wrong", fix);
+  });
+
+  // ------------------------------------------------------------ start
+  reset();
+  loadCorpus().catch(function (e) {
+    console.error(e);
+    $("corpusCount").textContent = "লোড ব্যর্থ";
+    showStatus("কর্পাস লোড হয়নি", "err");
+  });
+})();
 </script>
 </body>
 </html>
