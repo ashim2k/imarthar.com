@@ -7,6 +7,7 @@
 <link rel="canonical" href="https://imarthar.com/translator.html" />
 <meta name="description" content="বিষ্ণুপ্রিয়া মণিপুরি অনুবাদক — বাংলা ও বিষ্ণুপ্রিয়ার মধ্যে অনুবাদ। Bishnupriya Manipuri translator — translate between Bengali and Bishnupriya Manipuri.">
 <meta property="og:title" content="অনুবাদক — Bishnupriya Manipuri Translator | Imar Thar">
+<meta property="og:description" content="বাংলা ও বিষ্ণুপ্রিয়ার মধ্যে অনুবাদ করিক।">
 <meta property="og:url" content="https://imarthar.com/translator.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Imar Thar">
@@ -192,18 +193,22 @@
 (function () {
   "use strict";
 
-  var SUPABASE_URL = "https://aapzrkbdfsrktdauvjdx.supabase.co";
-  var SUPABASE_KEY = "sb_publishable_eYx2pCgrJ1HlRxCPbDCltA_zCkJ53N_";
+  // Original Supabase project (the one this site already used).
+  // Only the publishable key is here; row-level security limits anonymous access.
+  var SUPABASE_URL = "https://ksnwykmtrczvdzhoiews.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_rDe8p4jNcIyz9THgpFUKrw_51BinZno";
   var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
   var $ = function (id) { return document.getElementById(id); };
-  var direction = "bm2bn";
+  var direction = "bm2bn";         // "bm2bn" or "bn2bm"
   var corpus = [];                 // [{bm, bn}]
   var mapBm = new Map(), mapBn = new Map();
-  var lastShown = null;            // {source, output|null}
+  var lastShown = null;            // {source, output|null} for the feedback form
   var cooldownUntil = 0, timer = null;
 
   // ------------------------------------------------------------ text helpers
+
+  // Normalize Unicode (NFC), remove zero-width characters, unify apostrophes and spaces
   function norm(s) {
     return String(s || "").normalize("NFC")
       .replace(/[\u200B-\u200D\uFEFF]/g, "")
@@ -218,7 +223,9 @@
     if (arr.indexOf(v) === -1) arr.push(v);
   }
 
-  // ------------------------------------------------------------ corpus load (paged, no 1000-row cap)
+  // ------------------------------------------------------------ corpus loading
+
+  // Supabase returns at most 1000 rows per request, so fetch the corpus page by page
   async function loadCorpus() {
     var size = 1000, from = 0, all = [];
     while (true) {
@@ -236,24 +243,28 @@
       return { bm: norm(r.bishnupriya_manipuri), bn: norm(r.bengali) };
     }).filter(function (r) { return r.bm && r.bn; });
 
+    // Build lookup maps in both directions
     corpus.forEach(function (r) {
       addTo(mapBm, keyOf(r.bm), r.bn);
       addTo(mapBn, keyOf(r.bn), r.bm);
     });
-    $("corpusCount").textContent = corpus.length.toLocaleString("bn-BD") + "টি বাক্য";
+    $("corpusCount").textContent = corpus.length.toLocaleString("bn-BD") + " টি বাক্য";
   }
 
   // ------------------------------------------------------------ suggestions
-  function srcKey() { return direction === "bm2bn" ? "bm" : "bn"; }
 
+  function sourceField() { return direction === "bm2bn" ? "bm" : "bn"; }
+
+  // Show up to 8 corpus sentences that contain what the user has typed
   function showSuggestions() {
     var q = keyOf($("query").value);
     var box = $("suggest");
     box.textContent = "";
     if (!q || !corpus.length) { box.hidden = true; return; }
-    var k = srcKey(), seen = new Set(), hits = [];
+
+    var field = sourceField(), seen = new Set(), hits = [];
     for (var i = 0; i < corpus.length && hits.length < 8; i++) {
-      var s = corpus[i][k];
+      var s = corpus[i][field];
       var sl = s.toLowerCase();
       if (sl.indexOf(q) !== -1 && !seen.has(sl)) {
         seen.add(sl);
@@ -261,6 +272,7 @@
       }
     }
     if (!hits.length) { box.hidden = true; return; }
+
     hits.forEach(function (text) {
       var b = document.createElement("button");
       b.type = "button";
@@ -276,6 +288,7 @@
   }
 
   // ------------------------------------------------------------ translation lookup
+
   function translate() {
     var q = norm($("query").value);
     $("suggest").hidden = true;
@@ -321,6 +334,9 @@
   }
 
   // ------------------------------------------------------------ feedback
+
+  // "match": a corpus answer exists, so the user can confirm it or correct it.
+  // "missing": nothing in the corpus, so the user can add a translation.
   function setFeedbackMode(mode) {
     if (mode === "match") {
       $("btnOk").hidden = false;
@@ -330,6 +346,7 @@
       $("btnWrong").textContent = "এই বাক্যের অনুবাদ যোগ করুন";
     }
   }
+
   function showStatus(msg, cls) {
     var s = $("status");
     s.textContent = msg;
@@ -338,9 +355,11 @@
   }
   function hideStatus() { $("status").hidden = true; }
 
+  // Save one feedback row to the review table (insert only; anonymous users cannot read it)
   async function send(verdict, correction) {
     if (!lastShown) return;
     if (Date.now() < cooldownUntil) { showStatus("একটু অপেক্ষা করিক", "err"); return; }
+
     var payload = {
       direction: direction,
       source_text: lastShown.source.slice(0, 2000),
@@ -362,18 +381,20 @@
   }
 
   // ------------------------------------------------------------ events
+
   function setDirection(dir) {
     direction = dir;
     $("dBm").classList.toggle("on", dir === "bm2bn");
     $("dBn").classList.toggle("on", dir === "bn2bm");
     $("query").placeholder = dir === "bm2bn" ? "বিষ্ণুপ্রিয়া মণিপুরি লিখুন" : "বাংলা লিখুন";
-    $("corpusTitle").firstChild.textContent = dir === "bm2bn" ? "কর্পাসের অনুবাদ " : "কর্পাসের অনুবাদ ";
+    $("corpusTitle").firstChild.textContent = "কর্পাসের অনুবাদ ";
     if (norm($("query").value)) translate(); else reset();
   }
 
   $("dBm").addEventListener("click", function () { setDirection("bm2bn"); });
   $("dBn").addEventListener("click", function () { setDirection("bn2bm"); });
 
+  // Suggestions update 150 ms after the user stops typing
   $("query").addEventListener("input", function () {
     $("len").textContent = $("query").value.length + " / 2000";
     clearTimeout(timer);
@@ -412,6 +433,7 @@
   });
 
   // ------------------------------------------------------------ start
+
   reset();
   loadCorpus().catch(function (e) {
     console.error(e);
